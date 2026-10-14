@@ -1,0 +1,3034 @@
+{
+ "slug": "elec-emer-config",
+ "title": "ELEC EMER CONFIG",
+ "kind": "ecam",
+ "alert": {
+  "level": "warning",
+  "land_asap": "red",
+  "memory_items": false,
+  "qrh_summary": true,
+  "trigger": "AC BUS 1 and AC BUS 2 are not supplied.",
+  "inhibited_phases": [
+   4,
+   8
+  ],
+  "refs": [
+   {
+    "book": "FCOM",
+    "code": "PRO-ABN-ELEC",
+    "page": "P 90/122",
+    "pdf": 3215
+   }
+  ]
+ },
+ "effectivity": {
+  "branches": [
+   "HS-TXA..TXO",
+   "HS-TXP..TXU"
+  ],
+  "note": "Procedure lines identical; STATUS INOP SYS and centre-tank fuel differ."
+ },
+ "summary": "Both AC main buses are lost. The RAT drives the emergency generator, leaving essentially CM1 instruments, VHF1/HF1/ATC1 and alternate law (direct law with gear down). CM1 flies manually as PF while the PM works the ECAM; after STATUS the crew uses the QRH summary to decide, prepare and fly the approach at no less than 140 kt.",
+ "key_limits": [
+  {
+   "label": "MIN RAT SPEED",
+   "value": "140 kt",
+   "applies_to": [
+    "all"
+   ],
+   "refs": [
+    {
+     "book": "FCOM",
+     "code": "PRO-ABN-ELEC",
+     "page": "P 91/122",
+     "pdf": 3216
+    },
+    {
+     "book": "FCOM",
+     "code": "PRO-ABN-ELEC",
+     "page": "P 93/122",
+     "pdf": 3218
+    },
+    {
+     "book": "FCOM",
+     "code": "PRO-ABN-ELEC",
+     "page": "P 97/122",
+     "pdf": 3222
+    }
+   ]
+  },
+  {
+   "label": "MAX SPEED",
+   "value": "320 kt",
+   "applies_to": [
+    "all"
+   ],
+   "refs": [
+    {
+     "book": "FCOM",
+     "code": "PRO-ABN-ELEC",
+     "page": "P 93/122",
+     "pdf": 3218
+    },
+    {
+     "book": "FCOM",
+     "code": "PRO-ABN-ELEC",
+     "page": "P 97/122",
+     "pdf": 3222
+    }
+   ]
+  },
+  {
+   "label": "MAX BRK PR",
+   "value": "1 000 PSI",
+   "applies_to": [
+    "all"
+   ],
+   "refs": [
+    {
+     "book": "FCOM",
+     "code": "PRO-ABN-ELEC",
+     "page": "P 93/122",
+     "pdf": 3218
+    },
+    {
+     "book": "FCOM",
+     "code": "PRO-ABN-ELEC",
+     "page": "P 97/122",
+     "pdf": 3222
+    }
+   ]
+  },
+  {
+   "label": "FOR LDG",
+   "value": "FLAP LVR 3",
+   "applies_to": [
+    "all"
+   ],
+   "refs": [
+    {
+     "book": "FCOM",
+     "code": "PRO-ABN-ELEC",
+     "page": "P 93/122",
+     "pdf": 3218
+    },
+    {
+     "book": "FCOM",
+     "code": "PRO-ABN-ELEC",
+     "page": "P 97/122",
+     "pdf": 3222
+    }
+   ]
+  },
+  {
+   "label": "APPR SPD",
+   "value": "VREF +10 / 140 kt",
+   "applies_to": [
+    "all"
+   ],
+   "refs": [
+    {
+     "book": "FCOM",
+     "code": "PRO-ABN-ELEC",
+     "page": "P 93/122",
+     "pdf": 3218
+    },
+    {
+     "book": "FCOM",
+     "code": "PRO-ABN-ELEC",
+     "page": "P 97/122",
+     "pdf": 3222
+    }
+   ]
+  },
+  {
+   "label": "MAX FL",
+   "value": "4 000 ft below REC MAX FL",
+   "applies_to": [
+    "all"
+   ],
+   "refs": [
+    {
+     "book": "QRH",
+     "code": "18.01",
+     "page": "18.01A",
+     "pdf": 152
+    }
+   ]
+  }
+ ],
+ "flow": [
+  {
+   "phase": "Recognise",
+   "steps": [
+    {
+     "actor": "BOTH",
+     "items": [
+      {
+       "kind": "action",
+       "text": "First to notice: MASTER WARNING reset",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "FCTM",
+         "code": "AOP-30-30",
+         "page": "P 2/6",
+         "pdf": 83
+        }
+       ]
+      }
+     ]
+    },
+    {
+     "actor": "PF",
+     "items": [
+      {
+       "kind": "action",
+       "text": "Fly the aircraft; safe flight path first",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "FCTM",
+         "code": "AOP-30-30",
+         "page": "P 1/6",
+         "pdf": 82
+        }
+       ]
+      }
+     ]
+    },
+    {
+     "actor": "PM",
+     "items": [
+      {
+       "kind": "callout",
+       "text": "ELEC EMER CONFIG",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "FCTM",
+         "code": "AOP-30-30",
+         "page": "P 2/6",
+         "pdf": 83
+        }
+       ]
+      },
+      {
+       "kind": "action",
+       "text": "Expect RAT extension; batteries carry the network ~8 s until EMER GEN couples",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "FCOM",
+         "code": "DSC-24-10-30-30",
+         "page": "P 4/10",
+         "pdf": 1455
+        }
+       ]
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "phase": "Stabilise and roles",
+   "steps": [
+    {
+     "actor": "PF",
+     "items": [
+      {
+       "kind": "action",
+       "text": "Left-seat pilot (CM1) is PF — only PFD1 is available",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "FCTM",
+         "code": "PR-AEP-ELEC",
+         "page": "P 1/2",
+         "pdf": 400
+        }
+       ]
+      },
+      {
+       "kind": "action",
+       "text": "Fly manually: no AP/FD, no A/THR; alternate law",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "FCTM",
+         "code": "PR-AEP-ELEC",
+         "page": "P 1/2",
+         "pdf": 400
+        }
+       ]
+      },
+      {
+       "kind": "action",
+       "text": "Keep speed 140–320 kt",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "FCOM",
+         "code": "PRO-ABN-ELEC",
+         "page": "P 91/122",
+         "pdf": 3216
+        },
+        {
+         "book": "FCOM",
+         "code": "PRO-ABN-ELEC",
+         "page": "P 93/122",
+         "pdf": 3218
+        }
+       ]
+      },
+      {
+       "kind": "callout",
+       "text": "MAYDAY",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "FCTM",
+         "code": "PR-AEP-ELEC",
+         "page": "P 1/2",
+         "pdf": 400
+        }
+       ]
+      },
+      {
+       "kind": "note",
+       "text": "Transmit on VHF1 via the ACP — reselect the transmission key",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "FCOM",
+         "code": "PRO-ABN-ELEC",
+         "page": "P 91/122",
+         "pdf": 3216
+        }
+       ]
+      }
+     ]
+    },
+    {
+     "actor": "PM",
+     "items": [
+      {
+       "kind": "action",
+       "text": "Monitor flight path; only the EWD remains — use the ECP with discipline",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "FCTM",
+         "code": "PR-AEP-ELEC",
+         "page": "P 1/2",
+         "pdf": 400
+        }
+       ]
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "phase": "ECAM actions",
+   "steps": [
+    {
+     "actor": "PF",
+     "items": [
+      {
+       "kind": "callout",
+       "text": "ECAM ACTION",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "FCOM",
+         "code": "PRO-ABN-ABN-00",
+         "page": "P 8/12",
+         "pdf": 2831
+        },
+        {
+         "book": "FCTM",
+         "code": "AOP-30-30",
+         "page": "P 3/6",
+         "pdf": 84
+        },
+        {
+         "book": "PDP",
+         "code": "Management of abnormal operations",
+         "page": "XFTDN6ECAM00001",
+         "pdf": 424
+        }
+       ]
+      },
+      {
+       "kind": "action",
+       "text": "Communicate with ATC while the PM works the procedure",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "FCTM",
+         "code": "AOP-20",
+         "page": "P 1–2/10",
+         "pdf": 68
+        }
+       ]
+      }
+     ]
+    },
+    {
+     "actor": "PM",
+     "items": [
+      {
+       "kind": "ecam",
+       "item": "MIN RAT SPEED",
+       "setting": "140 KT",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "FCOM",
+         "code": "PRO-ABN-ELEC",
+         "page": "P 91/122",
+         "pdf": 3216
+        }
+       ]
+      },
+      {
+       "kind": "ecam",
+       "item": "GEN 1 + 2",
+       "setting": "OFF THEN ON",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "FCOM",
+         "code": "PRO-ABN-ELEC",
+         "page": "P 91/122",
+         "pdf": 3216
+        }
+       ]
+      },
+      {
+       "kind": "condition",
+       "text": "IF UNSUCCESSFUL",
+       "children": [
+        {
+         "kind": "ecam",
+         "item": "BUS TIE",
+         "setting": "OFF",
+         "applies_to": [
+          "all"
+         ],
+         "refs": [
+          {
+           "book": "FCOM",
+           "code": "PRO-ABN-ELEC",
+           "page": "P 91/122",
+           "pdf": 3216
+          }
+         ]
+        },
+        {
+         "kind": "ecam",
+         "item": "GEN 1 + 2",
+         "setting": "OFF THEN ON",
+         "applies_to": [
+          "all"
+         ],
+         "refs": [
+          {
+           "book": "FCOM",
+           "code": "PRO-ABN-ELEC",
+           "page": "P 91/122",
+           "pdf": 3216
+          }
+         ]
+        },
+        {
+         "kind": "note",
+         "text": "If any generator reset is successful, reset both FACs",
+         "applies_to": [
+          "all"
+         ],
+         "refs": [
+          {
+           "book": "FCOM",
+           "code": "PRO-ABN-ELEC",
+           "page": "P 91/122",
+           "pdf": 3216
+          }
+         ]
+        },
+        {
+         "kind": "condition",
+         "text": "If EMER GEN not in line",
+         "children": [
+          {
+           "kind": "ecam",
+           "item": "EMER ELEC PWR",
+           "setting": "MAN ON",
+           "applies_to": [
+            "all"
+           ],
+           "refs": [
+            {
+             "book": "FCOM",
+             "code": "PRO-ABN-ELEC",
+             "page": "P 91/122",
+             "pdf": 3216
+            },
+            {
+             "book": "FCOM",
+             "code": "DSC-24-20",
+             "page": "P 7/22",
+             "pdf": 1470
+            }
+           ]
+          },
+          {
+           "kind": "callout",
+           "text": "CONFIRM?",
+           "applies_to": [
+            "all"
+           ],
+           "refs": [
+            {
+             "book": "PDP",
+             "code": "Management of abnormal operations",
+             "page": "XFTDN6ECAM00001",
+             "pdf": 432
+            }
+           ]
+          },
+          {
+           "kind": "note",
+           "text": "Guarded: PM points at it; PF answers “CONFIRMED”; then press",
+           "applies_to": [
+            "all"
+           ],
+           "refs": [
+            {
+             "book": "PDP",
+             "code": "Management of abnormal operations",
+             "page": "XFTDN6ECAM00001",
+             "pdf": 432
+            },
+            {
+             "book": "FCTM",
+             "code": "AOP-30-20",
+             "page": "P 1/2",
+             "pdf": 80
+            }
+           ]
+          }
+         ],
+         "applies_to": [
+          "all"
+         ],
+         "refs": [
+          {
+           "book": "FCOM",
+           "code": "PRO-ABN-ELEC",
+           "page": "P 91/122",
+           "pdf": 3216
+          }
+         ]
+        },
+        {
+         "kind": "ecam",
+         "item": "ENG MODE SEL",
+         "setting": "IGN",
+         "applies_to": [
+          "all"
+         ],
+         "refs": [
+          {
+           "book": "FCOM",
+           "code": "PRO-ABN-ELEC",
+           "page": "P 91/122",
+           "pdf": 3216
+          }
+         ]
+        }
+       ],
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "FCOM",
+         "code": "PRO-ABN-ELEC",
+         "page": "P 91/122",
+         "pdf": 3216
+        }
+       ]
+      },
+      {
+       "kind": "ecam",
+       "item": "VHF1/HF1/ATC1",
+       "setting": "USE",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "FCOM",
+         "code": "PRO-ABN-ELEC",
+         "page": "P 91/122",
+         "pdf": 3216
+        }
+       ]
+      },
+      {
+       "kind": "ecam",
+       "item": "PROC : GRVTY FUEL FEEDING",
+       "setting": "APPLY (QRH)",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "FCOM",
+         "code": "PRO-ABN-ELEC",
+         "page": "P 91/122",
+         "pdf": 3216
+        }
+       ]
+      },
+      {
+       "kind": "note",
+       "text": "Keep the ECAM displayed while doing the QRH procedure",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "FCTM",
+         "code": "AOP-30-30",
+         "page": "P 2/6",
+         "pdf": 83
+        }
+       ]
+      },
+      {
+       "kind": "ecam",
+       "item": "FAC 1",
+       "setting": "OFF THEN ON",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "FCOM",
+         "code": "PRO-ABN-ELEC",
+         "page": "P 91/122",
+         "pdf": 3216
+        }
+       ]
+      },
+      {
+       "kind": "ecam",
+       "item": "BUS TIE",
+       "setting": "AUTO",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "FCOM",
+         "code": "PRO-ABN-ELEC",
+         "page": "P 92/122",
+         "pdf": 3217
+        }
+       ]
+      },
+      {
+       "kind": "ecam",
+       "item": "APU (IF AVAIL)",
+       "setting": "START",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "FCOM",
+         "code": "PRO-ABN-ELEC",
+         "page": "P 92/122",
+         "pdf": 3217
+        }
+       ]
+      },
+      {
+       "kind": "note",
+       "text": "Not before 45 s after the generators were lost; below FL 250",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "FCOM",
+         "code": "PRO-ABN-ELEC",
+         "page": "P 92/122",
+         "pdf": 3217
+        }
+       ]
+      },
+      {
+       "kind": "ecam",
+       "item": "BLOWER + EXTRACT",
+       "setting": "OVRD",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "FCOM",
+         "code": "PRO-ABN-ELEC",
+         "page": "P 92/122",
+         "pdf": 3217
+        }
+       ]
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "phase": "STOP ECAM · STATUS",
+   "steps": [
+    {
+     "actor": "PM",
+     "items": [
+      {
+       "kind": "callout",
+       "text": "CLEAR ELEC ?",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "FCOM",
+         "code": "PRO-ABN-ABN-00",
+         "page": "P 8/12",
+         "pdf": 2831
+        },
+        {
+         "book": "FCTM",
+         "code": "AOP-30-30",
+         "page": "P 3/6",
+         "pdf": 84
+        },
+        {
+         "book": "PDP",
+         "code": "Management of abnormal operations",
+         "page": "XFTDN6ECAM00001",
+         "pdf": 424
+        }
+       ]
+      }
+     ]
+    },
+    {
+     "actor": "PF",
+     "items": [
+      {
+       "kind": "callout",
+       "text": "CLEAR ELEC",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "FCOM",
+         "code": "PRO-ABN-ABN-00",
+         "page": "P 8/12",
+         "pdf": 2831
+        },
+        {
+         "book": "FCTM",
+         "code": "AOP-30-30",
+         "page": "P 3/6",
+         "pdf": 84
+        },
+        {
+         "book": "PDP",
+         "code": "Management of abnormal operations",
+         "page": "XFTDN6ECAM00001",
+         "pdf": 424
+        }
+       ]
+      }
+     ]
+    },
+    {
+     "actor": "PM",
+     "items": [
+      {
+       "kind": "callout",
+       "text": "STATUS",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "FCTM",
+         "code": "AOP-30-30",
+         "page": "P 3/6",
+         "pdf": 84
+        },
+        {
+         "book": "PDP",
+         "code": "Management of abnormal operations",
+         "page": "XFTDN6ECAM00001",
+         "pdf": 426
+        }
+       ]
+      }
+     ]
+    },
+    {
+     "actor": "PF",
+     "items": [
+      {
+       "kind": "callout",
+       "text": "STOP ECAM",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "FCTM",
+         "code": "AOP-30-30",
+         "page": "P 3/6",
+         "pdf": 84
+        },
+        {
+         "book": "PDP",
+         "code": "Management of abnormal operations",
+         "page": "XFTDN6ECAM00001",
+         "pdf": 426
+        }
+       ]
+      },
+      {
+       "kind": "action",
+       "text": "Normal C/L as applicable, resets only per QRH",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "FCTM",
+         "code": "AOP-30-30",
+         "page": "P 4/6",
+         "pdf": 85
+        },
+        {
+         "book": "PDP",
+         "code": "Management of abnormal operations",
+         "page": "XFTDN6ECAM00001",
+         "pdf": 426
+        }
+       ]
+      },
+      {
+       "kind": "callout",
+       "text": "CONTINUE ECAM",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "FCTM",
+         "code": "AOP-30-30",
+         "page": "P 3/6",
+         "pdf": 84
+        },
+        {
+         "book": "PDP",
+         "code": "Management of abnormal operations",
+         "page": "XFTDN6ECAM00001",
+         "pdf": 426
+        }
+       ]
+      }
+     ]
+    },
+    {
+     "actor": "PM",
+     "items": [
+      {
+       "kind": "action",
+       "text": "Read the whole STATUS page; preview APPR PROC workload",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "FCTM",
+         "code": "AOP-30-30",
+         "page": "P 3/6",
+         "pdf": 84
+        },
+        {
+         "book": "FCTM",
+         "code": "AOP-30-30",
+         "page": "P 4/6",
+         "pdf": 85
+        }
+       ]
+      },
+      {
+       "kind": "callout",
+       "text": "REMOVE STATUS ?",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "FCTM",
+         "code": "AOP-30-30",
+         "page": "P 3/6",
+         "pdf": 84
+        }
+       ]
+      }
+     ]
+    },
+    {
+     "actor": "PF",
+     "items": [
+      {
+       "kind": "callout",
+       "text": "REMOVE STATUS",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "FCOM",
+         "code": "PRO-ABN-ABN-00",
+         "page": "P 8/12",
+         "pdf": 2831
+        },
+        {
+         "book": "FCTM",
+         "code": "AOP-30-30",
+         "page": "P 3/6",
+         "pdf": 84
+        },
+        {
+         "book": "PDP",
+         "code": "Management of abnormal operations",
+         "page": "XFTDN6ECAM00001",
+         "pdf": 426
+        }
+       ]
+      }
+     ]
+    },
+    {
+     "actor": "PM",
+     "items": [
+      {
+       "kind": "callout",
+       "text": "ECAM ACTIONS COMPLETE",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "FCOM",
+         "code": "PRO-ABN-ABN-00",
+         "page": "P 8/12",
+         "pdf": 2831
+        },
+        {
+         "book": "FCTM",
+         "code": "AOP-30-30",
+         "page": "P 3/6",
+         "pdf": 84
+        }
+       ]
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "phase": "Decide",
+   "steps": [
+    {
+     "actor": "PM",
+     "items": [
+      {
+       "kind": "action",
+       "text": "QRH summary CRUISE: limits, max FL, fuel, COM/NAV",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "QRH",
+         "code": "18.01",
+         "page": "18.01A",
+         "pdf": 152
+        },
+        {
+         "book": "PDP",
+         "code": "Use of summary",
+         "page": "XFTDN1USESUMM01",
+         "pdf": 440
+        }
+       ]
+      },
+      {
+       "kind": "action",
+       "text": "Fuel: predictions unreliable — apply fuel penalty method, monitor actual burn",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "FCOM",
+         "code": "PRO-ABN-ELEC",
+         "page": "P 93/122",
+         "pdf": 3218
+        },
+        {
+         "book": "QRH",
+         "code": "OPS.03",
+         "page": "OPS.03A",
+         "pdf": 271
+        }
+       ]
+      },
+      {
+       "kind": "action",
+       "text": "Landing performance: EFB application, LDG DIST PROC",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "QRH",
+         "code": "18.01",
+         "page": "18.01A",
+         "pdf": 152
+        },
+        {
+         "book": "FCOM",
+         "code": "EFB-LDG-50",
+         "page": "P 3/4",
+         "pdf": 4890
+        }
+       ]
+      }
+     ]
+    },
+    {
+     "actor": "PF",
+     "items": [
+      {
+       "kind": "action",
+       "text": "Red LAND ASAP — nearest airport for a safe landing; avoid a poorly equipped field in marginal weather; do not prolong the flight",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "FCTM",
+         "code": "AOP-30-10",
+         "page": "P 2/2",
+         "pdf": 79
+        },
+        {
+         "book": "FCTM",
+         "code": "PR-AEP-ELEC",
+         "page": "P 1/2",
+         "pdf": 400
+        }
+       ]
+      },
+      {
+       "kind": "action",
+       "text": "Inform ATC, cabin crew, passengers, company",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "FCTM",
+         "code": "AOP-30-30",
+         "page": "P 5/6",
+         "pdf": 86
+        }
+       ]
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "phase": "Approach",
+   "steps": [
+    {
+     "actor": "PF",
+     "items": [
+      {
+       "kind": "action",
+       "text": "Brief with STATUS + QRH APPROACH / LANDING / GO-AROUND",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "FCTM",
+         "code": "AOP-30-60",
+         "page": "P 2–3/4",
+         "pdf": 93
+        }
+       ]
+      }
+     ]
+    },
+    {
+     "actor": "PM",
+     "items": [
+      {
+       "kind": "action",
+       "text": "Check STATUS: all APPR PROC actions done",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "FCTM",
+         "code": "AOP-30-60",
+         "page": "P 4/4",
+         "pdf": 95
+        }
+       ]
+      }
+     ]
+    },
+    {
+     "actor": "PF",
+     "items": [
+      {
+       "kind": "action",
+       "text": "FLAP LVR 3, VREF +10 kt, never below 140 kt",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "FCOM",
+         "code": "PRO-ABN-ELEC",
+         "page": "P 93/122",
+         "pdf": 3218
+        },
+        {
+         "book": "FCOM",
+         "code": "PRO-ABN-ELEC",
+         "page": "P 97/122",
+         "pdf": 3222
+        },
+        {
+         "book": "FCTM",
+         "code": "PR-AEP-ELEC",
+         "page": "P 2/2",
+         "pdf": 401
+        }
+       ]
+      },
+      {
+       "kind": "action",
+       "text": "Gear down → direct law: USE MAN PITCH TRIM",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "QRH",
+         "code": "18.01",
+         "page": "18.01A",
+         "pdf": 152
+        },
+        {
+         "book": "FCTM",
+         "code": "PR-AEP-ELEC",
+         "page": "P 2/2",
+         "pdf": 401
+        }
+       ]
+      }
+     ]
+    },
+    {
+     "actor": "PM",
+     "items": [
+      {
+       "kind": "action",
+       "text": "Make the radio-height callouts (RA 1+2 lost)",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "FCTM",
+         "code": "PR-AEP-ELEC",
+         "page": "P 2/2",
+         "pdf": 401
+        }
+       ]
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "phase": "Landing",
+   "steps": [
+    {
+     "actor": "PF",
+     "items": [
+      {
+       "kind": "action",
+       "text": "Direct-law flare, only 2 spoilers per wing",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "QRH",
+         "code": "18.01",
+         "page": "18.01B",
+         "pdf": 153
+        }
+       ]
+      },
+      {
+       "kind": "action",
+       "text": "No reversers; alternate braking without anti-skid, max 1 000 PSI; no nosewheel steering",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "QRH",
+         "code": "18.01",
+         "page": "18.01B",
+         "pdf": 153
+        },
+        {
+         "book": "FCTM",
+         "code": "PR-AEP-ELEC",
+         "page": "P 2/2",
+         "pdf": 401
+        }
+       ]
+      }
+     ]
+    },
+    {
+     "actor": "BOTH",
+     "items": [
+      {
+       "kind": "note",
+       "text": "All display units are lost approaching 50 kt",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "FCTM",
+         "code": "PR-AEP-ELEC",
+         "page": "P 2/2",
+         "pdf": 401
+        },
+        {
+         "book": "FCOM",
+         "code": "DSC-24-10-30-30",
+         "page": "P 4/10",
+         "pdf": 1455
+        }
+       ]
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "phase": "Go-around",
+   "steps": [
+    {
+     "actor": "PF",
+     "items": [
+      {
+       "kind": "action",
+       "text": "When L/G uplocked: ALTN LAW, PROT LOST; keep ≥ 140 kt",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "QRH",
+         "code": "18.01",
+         "page": "18.01B",
+         "pdf": 153
+        },
+        {
+         "book": "FCOM",
+         "code": "PRO-ABN-ELEC",
+         "page": "P 91/122",
+         "pdf": 3216
+        }
+       ]
+      }
+     ]
+    }
+   ]
+  }
+ ],
+ "procedures": [
+  {
+   "title": "ECAM procedure",
+   "source": "FCOM PRO-ABN-ELEC",
+   "lines": [
+    {
+     "kind": "land_asap",
+     "text": "LAND ASAP (red)",
+     "level": 0,
+     "applies_to": [
+      "all"
+     ],
+     "refs": [
+      {
+       "book": "FCOM",
+       "code": "PRO-ABN-ELEC",
+       "page": "P 91/122",
+       "pdf": 3216
+      }
+     ]
+    },
+    {
+     "kind": "action",
+     "item": "MIN RAT SPEED",
+     "setting": "140 KT",
+     "text": "",
+     "level": 0,
+     "applies_to": [
+      "all"
+     ],
+     "refs": [
+      {
+       "book": "FCOM",
+       "code": "PRO-ABN-ELEC",
+       "page": "P 91/122",
+       "pdf": 3216
+      }
+     ]
+    },
+    {
+     "kind": "caution",
+     "text": "The RAT is able to supply the EMER GEN down to 125 kt, however it may not be able to supply the EMER GEN during flare at these speeds.",
+     "level": 0,
+     "applies_to": [
+      "all"
+     ],
+     "refs": [
+      {
+       "book": "FCOM",
+       "code": "PRO-ABN-ELEC",
+       "page": "P 91/122",
+       "pdf": 3216
+      }
+     ]
+    },
+    {
+     "kind": "action",
+     "item": "GEN 1 + 2",
+     "setting": "OFF THEN ON",
+     "text": "Turn off then on all generators one after the other.",
+     "level": 0,
+     "applies_to": [
+      "all"
+     ],
+     "refs": [
+      {
+       "book": "FCOM",
+       "code": "PRO-ABN-ELEC",
+       "page": "P 91/122",
+       "pdf": 3216
+      }
+     ]
+    },
+    {
+     "kind": "condition",
+     "text": "IF UNSUCCESSFUL:",
+     "level": 0,
+     "applies_to": [
+      "all"
+     ],
+     "refs": [
+      {
+       "book": "FCOM",
+       "code": "PRO-ABN-ELEC",
+       "page": "P 91/122",
+       "pdf": 3216
+      }
+     ]
+    },
+    {
+     "kind": "action",
+     "item": "BUS TIE",
+     "setting": "OFF",
+     "text": "",
+     "level": 1,
+     "applies_to": [
+      "all"
+     ],
+     "refs": [
+      {
+       "book": "FCOM",
+       "code": "PRO-ABN-ELEC",
+       "page": "P 91/122",
+       "pdf": 3216
+      }
+     ]
+    },
+    {
+     "kind": "action",
+     "item": "GEN 1 + 2",
+     "setting": "OFF THEN ON",
+     "text": "If any generator reset is successful, reset both FACs.",
+     "level": 1,
+     "applies_to": [
+      "all"
+     ],
+     "refs": [
+      {
+       "book": "FCOM",
+       "code": "PRO-ABN-ELEC",
+       "page": "P 91/122",
+       "pdf": 3216
+      }
+     ]
+    },
+    {
+     "kind": "action",
+     "item": "EMER ELEC PWR",
+     "setting": "MAN ON",
+     "text": "Displayed if the emergency generator is not in line.",
+     "level": 1,
+     "applies_to": [
+      "all"
+     ],
+     "refs": [
+      {
+       "book": "FCOM",
+       "code": "PRO-ABN-ELEC",
+       "page": "P 91/122",
+       "pdf": 3216
+      }
+     ]
+    },
+    {
+     "kind": "action",
+     "item": "ENG MODE SEL",
+     "setting": "IGN",
+     "text": "Engines are fed by gravity only.",
+     "level": 1,
+     "applies_to": [
+      "all"
+     ],
+     "refs": [
+      {
+       "book": "FCOM",
+       "code": "PRO-ABN-ELEC",
+       "page": "P 91/122",
+       "pdf": 3216
+      }
+     ]
+    },
+    {
+     "kind": "action",
+     "item": "VHF1/HF1/ATC1",
+     "setting": "USE",
+     "text": "Both ACP remain available; reselect the transmission key to transmit.",
+     "level": 0,
+     "applies_to": [
+      "all"
+     ],
+     "refs": [
+      {
+       "book": "FCOM",
+       "code": "PRO-ABN-ELEC",
+       "page": "P 91/122",
+       "pdf": 3216
+      }
+     ]
+    },
+    {
+     "kind": "note",
+     "text": "The flight crew can recover FMGC 1, which is lost temporarily, through the MCDU MENU page.",
+     "level": 0,
+     "applies_to": [
+      "all"
+     ],
+     "refs": [
+      {
+       "book": "FCOM",
+       "code": "PRO-ABN-ELEC",
+       "page": "P 91/122",
+       "pdf": 3216
+      }
+     ]
+    },
+    {
+     "kind": "info",
+     "text": "FUEL GRVTY FEED — avoid negative G",
+     "level": 0,
+     "applies_to": [
+      "all"
+     ],
+     "refs": [
+      {
+       "book": "FCOM",
+       "code": "PRO-ABN-ELEC",
+       "page": "P 91/122",
+       "pdf": 3216
+      }
+     ]
+    },
+    {
+     "kind": "action",
+     "item": "PROC : GRVTY FUEL FEEDING",
+     "setting": "APPLY",
+     "text": "",
+     "level": 0,
+     "applies_to": [
+      "all"
+     ],
+     "refs": [
+      {
+       "book": "FCOM",
+       "code": "PRO-ABN-ELEC",
+       "page": "P 91/122",
+       "pdf": 3216
+      }
+     ]
+    },
+    {
+     "kind": "action",
+     "item": "FAC 1",
+     "setting": "OFF THEN ON",
+     "text": "Rudder trim recovered, no indication.",
+     "level": 0,
+     "applies_to": [
+      "all"
+     ],
+     "refs": [
+      {
+       "book": "FCOM",
+       "code": "PRO-ABN-ELEC",
+       "page": "P 91/122",
+       "pdf": 3216
+      }
+     ]
+    },
+    {
+     "kind": "action",
+     "item": "BUS TIE",
+     "setting": "AUTO",
+     "text": "",
+     "level": 0,
+     "applies_to": [
+      "all"
+     ],
+     "refs": [
+      {
+       "book": "FCOM",
+       "code": "PRO-ABN-ELEC",
+       "page": "P 92/122",
+       "pdf": 3217
+      }
+     ]
+    },
+    {
+     "kind": "action",
+     "item": "APU (IF AVAIL)",
+     "setting": "START",
+     "text": "Not available for 45 s after loss of both engine generators; below FL 250.",
+     "level": 0,
+     "applies_to": [
+      "all"
+     ],
+     "refs": [
+      {
+       "book": "FCOM",
+       "code": "PRO-ABN-ELEC",
+       "page": "P 92/122",
+       "pdf": 3217
+      }
+     ]
+    },
+    {
+     "kind": "action",
+     "item": "BLOWER + EXTRACT",
+     "setting": "OVRD",
+     "text": "",
+     "level": 0,
+     "applies_to": [
+      "all"
+     ],
+     "refs": [
+      {
+       "book": "FCOM",
+       "code": "PRO-ABN-ELEC",
+       "page": "P 92/122",
+       "pdf": 3217
+      }
+     ]
+    },
+    {
+     "kind": "info",
+     "text": "FUEL CONSUMPT INCRSD · FMS PRED UNRELIABLE",
+     "level": 0,
+     "applies_to": [
+      "all"
+     ],
+     "refs": [
+      {
+       "book": "FCOM",
+       "code": "PRO-ABN-ELEC",
+       "page": "P 92/122",
+       "pdf": 3217
+      }
+     ]
+    },
+    {
+     "kind": "info",
+     "text": "Associated procedure: F/CTL ALTN LAW (PROT LOST)",
+     "level": 0,
+     "applies_to": [
+      "all"
+     ],
+     "refs": [
+      {
+       "book": "FCOM",
+       "code": "PRO-ABN-ELEC",
+       "page": "P 92/122",
+       "pdf": 3217
+      }
+     ]
+    }
+   ]
+  }
+ ],
+ "status": {
+  "limitations": [
+   {
+    "text": "MIN RAT SPEED ....... 140 KT",
+    "applies_to": [
+     "all"
+    ],
+    "refs": [
+     {
+      "book": "FCOM",
+      "code": "PRO-ABN-ELEC",
+      "page": "P 93/122",
+      "pdf": 3218
+     },
+     {
+      "book": "FCOM",
+      "code": "PRO-ABN-ELEC",
+      "page": "P 97/122",
+      "pdf": 3222
+     }
+    ]
+   },
+   {
+    "text": "MAX SPEED ....... 320 KT",
+    "applies_to": [
+     "all"
+    ],
+    "refs": [
+     {
+      "book": "FCOM",
+      "code": "PRO-ABN-ELEC",
+      "page": "P 93/122",
+      "pdf": 3218
+     },
+     {
+      "book": "FCOM",
+      "code": "PRO-ABN-ELEC",
+      "page": "P 97/122",
+      "pdf": 3222
+     }
+    ]
+   },
+   {
+    "text": "MAX BRK PR ....... 1 000 PSI",
+    "applies_to": [
+     "all"
+    ],
+    "refs": [
+     {
+      "book": "FCOM",
+      "code": "PRO-ABN-ELEC",
+      "page": "P 93/122",
+      "pdf": 3218
+     },
+     {
+      "book": "FCOM",
+      "code": "PRO-ABN-ELEC",
+      "page": "P 97/122",
+      "pdf": 3222
+     }
+    ]
+   },
+   {
+    "text": "FUEL GRVTY FEED",
+    "applies_to": [
+     "all"
+    ],
+    "refs": [
+     {
+      "book": "FCOM",
+      "code": "PRO-ABN-ELEC",
+      "page": "P 93/122",
+      "pdf": 3218
+     },
+     {
+      "book": "FCOM",
+      "code": "PRO-ABN-ELEC",
+      "page": "P 97/122",
+      "pdf": 3222
+     }
+    ]
+   },
+   {
+    "text": "AVOID NEGATIVE G FACTOR",
+    "applies_to": [
+     "all"
+    ],
+    "refs": [
+     {
+      "book": "FCOM",
+      "code": "PRO-ABN-ELEC",
+      "page": "P 93/122",
+      "pdf": 3218
+     },
+     {
+      "book": "FCOM",
+      "code": "PRO-ABN-ELEC",
+      "page": "P 97/122",
+      "pdf": 3222
+     }
+    ]
+   }
+  ],
+  "info": [
+   {
+    "text": "Airspeed discrepancy CM1 PFD vs STBY: disregard the STBY indication (probe not de-iced).",
+    "applies_to": [
+     "all"
+    ],
+    "refs": [
+     {
+      "book": "FCOM",
+      "code": "PRO-ABN-ELEC",
+      "page": "P 93/122",
+      "pdf": 3218
+     },
+     {
+      "book": "FCOM",
+      "code": "PRO-ABN-ELEC",
+      "page": "P 97/122",
+      "pdf": 3222
+     }
+    ]
+   },
+   {
+    "text": "FUEL CONSUMPT INCRSD · FMS PRED UNRELIABLE — disregard FMS fuel predictions; use QRH fuel penalty factors.",
+    "applies_to": [
+     "all"
+    ],
+    "refs": [
+     {
+      "book": "FCOM",
+      "code": "PRO-ABN-ELEC",
+      "page": "P 93/122",
+      "pdf": 3218
+     },
+     {
+      "book": "FCOM",
+      "code": "PRO-ABN-ELEC",
+      "page": "P 97/122",
+      "pdf": 3222
+     },
+     {
+      "book": "FCOM",
+      "code": "PRO-ABN-ELEC",
+      "page": "P 94/122",
+      "pdf": 3219
+     }
+    ]
+   },
+   {
+    "text": "ALTN LAW: PROT LOST · WHEN L/G DN: DIRECT LAW (pitch and roll)",
+    "applies_to": [
+     "all"
+    ],
+    "refs": [
+     {
+      "book": "FCOM",
+      "code": "PRO-ABN-ELEC",
+      "page": "P 93/122",
+      "pdf": 3218
+     },
+     {
+      "book": "FCOM",
+      "code": "PRO-ABN-ELEC",
+      "page": "P 97/122",
+      "pdf": 3222
+     }
+    ]
+   },
+   {
+    "text": "SLATS/FLAPS SLOW · FLS LIMITED TO F-APP + RAW",
+    "applies_to": [
+     "all"
+    ],
+    "refs": [
+     {
+      "book": "FCOM",
+      "code": "PRO-ABN-ELEC",
+      "page": "P 93/122",
+      "pdf": 3218
+     },
+     {
+      "book": "FCOM",
+      "code": "PRO-ABN-ELEC",
+      "page": "P 97/122",
+      "pdf": 3222
+     }
+    ]
+   },
+   {
+    "text": "Centre tank fuel is unusable.",
+    "applies_to": [
+     "HS-TXA..TXO"
+    ],
+    "refs": [
+     {
+      "book": "FCOM",
+      "code": "PRO-ABN-ELEC",
+      "page": "P 94/122",
+      "pdf": 3219
+     }
+    ]
+   },
+   {
+    "text": "Centre tank fuel can be transferred to the wings by gravity (jet pumps), except the last two tons.",
+    "applies_to": [
+     "HS-TXP..TXU"
+    ],
+    "refs": [
+     {
+      "book": "FCOM",
+      "code": "PRO-ABN-ELEC",
+      "page": "P 98/122",
+      "pdf": 3223
+     }
+    ]
+   }
+  ],
+  "appr_proc": [
+   {
+    "kind": "action",
+    "item": "FOR LDG",
+    "setting": "FLAP LVR 3",
+    "text": "",
+    "level": 0,
+    "applies_to": [
+     "all"
+    ],
+    "refs": [
+     {
+      "book": "FCOM",
+      "code": "PRO-ABN-ELEC",
+      "page": "P 93/122",
+      "pdf": 3218
+     },
+     {
+      "book": "FCOM",
+      "code": "PRO-ABN-ELEC",
+      "page": "P 97/122",
+      "pdf": 3222
+     }
+    ]
+   },
+   {
+    "kind": "action",
+    "item": "APPR SPD",
+    "setting": "VREF +10/140 KT",
+    "text": "At least the minimum RAT speed (140 kt).",
+    "level": 0,
+    "applies_to": [
+     "all"
+    ],
+    "refs": [
+     {
+      "book": "FCOM",
+      "code": "PRO-ABN-ELEC",
+      "page": "P 93/122",
+      "pdf": 3218
+     },
+     {
+      "book": "FCOM",
+      "code": "PRO-ABN-ELEC",
+      "page": "P 97/122",
+      "pdf": 3222
+     }
+    ]
+   },
+   {
+    "kind": "action",
+    "item": "LDG DIST PROC",
+    "setting": "APPLY",
+    "text": "",
+    "level": 0,
+    "applies_to": [
+     "all"
+    ],
+    "refs": [
+     {
+      "book": "FCOM",
+      "code": "PRO-ABN-ELEC",
+      "page": "P 93/122",
+      "pdf": 3218
+     },
+     {
+      "book": "FCOM",
+      "code": "PRO-ABN-ELEC",
+      "page": "P 97/122",
+      "pdf": 3222
+     }
+    ]
+   }
+  ],
+  "inop_sys": [
+   {
+    "text": "F/CTL PROT",
+    "applies_to": [
+     "all"
+    ],
+    "refs": [
+     {
+      "book": "FCOM",
+      "code": "PRO-ABN-ELEC",
+      "page": "P 93/122",
+      "pdf": 3218
+     },
+     {
+      "book": "FCOM",
+      "code": "PRO-ABN-ELEC",
+      "page": "P 97/122",
+      "pdf": 3222
+     }
+    ]
+   },
+   {
+    "text": "REVERSER 1+2",
+    "applies_to": [
+     "all"
+    ],
+    "refs": [
+     {
+      "book": "FCOM",
+      "code": "PRO-ABN-ELEC",
+      "page": "P 93/122",
+      "pdf": 3218
+     },
+     {
+      "book": "FCOM",
+      "code": "PRO-ABN-ELEC",
+      "page": "P 97/122",
+      "pdf": 3222
+     }
+    ]
+   },
+   {
+    "text": "ADR 2+3",
+    "applies_to": [
+     "all"
+    ],
+    "refs": [
+     {
+      "book": "FCOM",
+      "code": "PRO-ABN-ELEC",
+      "page": "P 93/122",
+      "pdf": 3218
+     },
+     {
+      "book": "FCOM",
+      "code": "PRO-ABN-ELEC",
+      "page": "P 97/122",
+      "pdf": 3222
+     }
+    ]
+   },
+   {
+    "text": "IR 2+3",
+    "applies_to": [
+     "all"
+    ],
+    "refs": [
+     {
+      "book": "FCOM",
+      "code": "PRO-ABN-ELEC",
+      "page": "P 93/122",
+      "pdf": 3218
+     },
+     {
+      "book": "FCOM",
+      "code": "PRO-ABN-ELEC",
+      "page": "P 97/122",
+      "pdf": 3222
+     }
+    ]
+   },
+   {
+    "text": "RA 1+2",
+    "applies_to": [
+     "all"
+    ],
+    "refs": [
+     {
+      "book": "FCOM",
+      "code": "PRO-ABN-ELEC",
+      "page": "P 93/122",
+      "pdf": 3218
+     },
+     {
+      "book": "FCOM",
+      "code": "PRO-ABN-ELEC",
+      "page": "P 97/122",
+      "pdf": 3222
+     }
+    ]
+   },
+   {
+    "text": "SPLR 1+2+5",
+    "applies_to": [
+     "all"
+    ],
+    "refs": [
+     {
+      "book": "FCOM",
+      "code": "PRO-ABN-ELEC",
+      "page": "P 93/122",
+      "pdf": 3218
+     },
+     {
+      "book": "FCOM",
+      "code": "PRO-ABN-ELEC",
+      "page": "P 97/122",
+      "pdf": 3222
+     }
+    ]
+   },
+   {
+    "text": "ELAC 2",
+    "applies_to": [
+     "all"
+    ],
+    "refs": [
+     {
+      "book": "FCOM",
+      "code": "PRO-ABN-ELEC",
+      "page": "P 93/122",
+      "pdf": 3218
+     },
+     {
+      "book": "FCOM",
+      "code": "PRO-ABN-ELEC",
+      "page": "P 97/122",
+      "pdf": 3222
+     }
+    ]
+   },
+   {
+    "text": "SEC 2+3",
+    "applies_to": [
+     "all"
+    ],
+    "refs": [
+     {
+      "book": "FCOM",
+      "code": "PRO-ABN-ELEC",
+      "page": "P 93/122",
+      "pdf": 3218
+     },
+     {
+      "book": "FCOM",
+      "code": "PRO-ABN-ELEC",
+      "page": "P 97/122",
+      "pdf": 3222
+     }
+    ]
+   },
+   {
+    "text": "A/CALL OUT",
+    "applies_to": [
+     "all"
+    ],
+    "refs": [
+     {
+      "book": "FCOM",
+      "code": "PRO-ABN-ELEC",
+      "page": "P 93/122",
+      "pdf": 3218
+     },
+     {
+      "book": "FCOM",
+      "code": "PRO-ABN-ELEC",
+      "page": "P 97/122",
+      "pdf": 3222
+     }
+    ]
+   },
+   {
+    "text": "AP 1+2",
+    "applies_to": [
+     "all"
+    ],
+    "refs": [
+     {
+      "book": "FCOM",
+      "code": "PRO-ABN-ELEC",
+      "page": "P 93/122",
+      "pdf": 3218
+     },
+     {
+      "book": "FCOM",
+      "code": "PRO-ABN-ELEC",
+      "page": "P 97/122",
+      "pdf": 3222
+     }
+    ]
+   },
+   {
+    "text": "A/THR",
+    "applies_to": [
+     "all"
+    ],
+    "refs": [
+     {
+      "book": "FCOM",
+      "code": "PRO-ABN-ELEC",
+      "page": "P 93/122",
+      "pdf": 3218
+     },
+     {
+      "book": "FCOM",
+      "code": "PRO-ABN-ELEC",
+      "page": "P 97/122",
+      "pdf": 3222
+     }
+    ]
+   },
+   {
+    "text": "FMGC 2",
+    "applies_to": [
+     "all"
+    ],
+    "refs": [
+     {
+      "book": "FCOM",
+      "code": "PRO-ABN-ELEC",
+      "page": "P 93/122",
+      "pdf": 3218
+     },
+     {
+      "book": "FCOM",
+      "code": "PRO-ABN-ELEC",
+      "page": "P 97/122",
+      "pdf": 3222
+     }
+    ]
+   },
+   {
+    "text": "FUEL PUMPS",
+    "applies_to": [
+     "all"
+    ],
+    "refs": [
+     {
+      "book": "FCOM",
+      "code": "PRO-ABN-ELEC",
+      "page": "P 93/122",
+      "pdf": 3218
+     },
+     {
+      "book": "FCOM",
+      "code": "PRO-ABN-ELEC",
+      "page": "P 97/122",
+      "pdf": 3222
+     }
+    ]
+   },
+   {
+    "text": "ANTI SKID",
+    "applies_to": [
+     "all"
+    ],
+    "refs": [
+     {
+      "book": "FCOM",
+      "code": "PRO-ABN-ELEC",
+      "page": "P 93/122",
+      "pdf": 3218
+     },
+     {
+      "book": "FCOM",
+      "code": "PRO-ABN-ELEC",
+      "page": "P 97/122",
+      "pdf": 3222
+     }
+    ]
+   },
+   {
+    "text": "N/W STRG",
+    "applies_to": [
+     "all"
+    ],
+    "refs": [
+     {
+      "book": "FCOM",
+      "code": "PRO-ABN-ELEC",
+      "page": "P 93/122",
+      "pdf": 3218
+     },
+     {
+      "book": "FCOM",
+      "code": "PRO-ABN-ELEC",
+      "page": "P 97/122",
+      "pdf": 3222
+     }
+    ]
+   },
+   {
+    "text": "CAT 2",
+    "applies_to": [
+     "all"
+    ],
+    "refs": [
+     {
+      "book": "FCOM",
+      "code": "PRO-ABN-ELEC",
+      "page": "P 93/122",
+      "pdf": 3218
+     },
+     {
+      "book": "FCOM",
+      "code": "PRO-ABN-ELEC",
+      "page": "P 97/122",
+      "pdf": 3222
+     }
+    ]
+   },
+   {
+    "text": "STEEP APPR",
+    "applies_to": [
+     "HS-TXA..TXO"
+    ],
+    "refs": [
+     {
+      "book": "FCOM",
+      "code": "PRO-ABN-ELEC",
+      "page": "P 93/122",
+      "pdf": 3218
+     }
+    ]
+   }
+  ]
+ },
+ "qrh": [
+  {
+   "title": "ELEC EMER CONFIG SUMMARY",
+   "sections": [
+    {
+     "name": "CRUISE",
+     "lines": [
+      {
+       "text": "MAX SPD : 320 kt · MAX FL : 4000FT BELOW REC MAX FL",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "QRH",
+         "code": "18.01",
+         "page": "18.01A",
+         "pdf": 152
+        }
+       ]
+      },
+      {
+       "text": "ALTN LAW: PROT LOST",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "QRH",
+         "code": "18.01",
+         "page": "18.01A",
+         "pdf": 152
+        }
+       ]
+      },
+      {
+       "text": "ONLY CAPT PITOT AND AOA HEATED",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "QRH",
+         "code": "18.01",
+         "page": "18.01A",
+         "pdf": 152
+        }
+       ]
+      },
+      {
+       "text": "FUEL: CTR TK UNUSABLE — FUEL GRAVITY FEEDING",
+       "applies_to": [
+        "HS-TXA..TXO"
+       ],
+       "refs": [
+        {
+         "book": "QRH",
+         "code": "18.01",
+         "page": "18.01A",
+         "pdf": 152
+        }
+       ]
+      },
+      {
+       "text": "FUEL: CTR TK USABLE BY GRAVITY: 2 t (4 400 lb) UNUSABLE — FUEL GRAVITY FEEDING",
+       "applies_to": [
+        "HS-TXP..TXU"
+       ],
+       "refs": [
+        {
+         "book": "QRH",
+         "code": "18.01",
+         "page": "18.01A",
+         "pdf": 152
+        }
+       ]
+      },
+      {
+       "text": "COM: VHF1, HF1, ATC1, RMP1 only · NAV: ILS1, VOR1, GPS1 (if MMR is installed) only",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "QRH",
+         "code": "18.01",
+         "page": "18.01A",
+         "pdf": 152
+        }
+       ]
+      },
+      {
+       "text": "For landing performance assessment, use the performance application of the EFB.",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "QRH",
+         "code": "18.01",
+         "page": "18.01A",
+         "pdf": 152
+        }
+       ]
+      }
+     ]
+    },
+    {
+     "name": "APPROACH",
+     "lines": [
+      {
+       "text": "CAT 2 INOP",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "QRH",
+         "code": "18.01",
+         "page": "18.01A",
+         "pdf": 152
+        }
+       ]
+      },
+      {
+       "text": "MINIMUM RAT SPEED 140 KT",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "QRH",
+         "code": "18.01",
+         "page": "18.01A",
+         "pdf": 152
+        }
+       ]
+      },
+      {
+       "text": "SLATS / FLAPS SLOW",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "QRH",
+         "code": "18.01",
+         "page": "18.01A",
+         "pdf": 152
+        }
+       ]
+      },
+      {
+       "text": "FOR LDG : FLAP LVR 3",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "QRH",
+         "code": "18.01",
+         "page": "18.01A",
+         "pdf": 152
+        }
+       ]
+      },
+      {
+       "text": "When L/G down: USE MAN PITCH TRIM (DIRECT LAW)",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "QRH",
+         "code": "18.01",
+         "page": "18.01A",
+         "pdf": 152
+        }
+       ]
+      }
+     ]
+    },
+    {
+     "name": "LANDING",
+     "lines": [
+      {
+       "text": "FLARE: Only 2 spoilers per wing. Direct law",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "QRH",
+         "code": "18.01",
+         "page": "18.01B",
+         "pdf": 153
+        }
+       ]
+      },
+      {
+       "text": "NO REVERSER",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "QRH",
+         "code": "18.01",
+         "page": "18.01B",
+         "pdf": 153
+        }
+       ]
+      },
+      {
+       "text": "BRAKING: ALTERNATE without antiskid · MAX BRK PR : 1 000 PSI",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "QRH",
+         "code": "18.01",
+         "page": "18.01B",
+         "pdf": 153
+        }
+       ]
+      },
+      {
+       "text": "NO NOSEWHEEL STEERING",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "QRH",
+         "code": "18.01",
+         "page": "18.01B",
+         "pdf": 153
+        }
+       ]
+      }
+     ]
+    },
+    {
+     "name": "GO-AROUND",
+     "lines": [
+      {
+       "text": "When L/G uplocked: ALTN LAW: PROT LOST",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "QRH",
+         "code": "18.01",
+         "page": "18.01B",
+         "pdf": 153
+        }
+       ]
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "title": "SYS REMAINING — highlights",
+   "sections": [
+    {
+     "name": "On EMER GEN / on batteries",
+     "lines": [
+      {
+       "text": "ND1 lost on batteries; PFD1, upper ECAM, DMC 1/3, SDAC 1/FWC 1 normal (lost below 50 kt on ground).",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "QRH",
+         "code": "18.02",
+         "page": "18.02C",
+         "pdf": 156
+        }
+       ]
+      },
+      {
+       "text": "IR, ADR, VOR, MMR, DME, ATC N°1 only (DME, ATC, ADF lost on batteries). IR2/IR3 lost 5 min after main generators fail unless IR3 replaces IR1.",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "QRH",
+         "code": "18.02",
+         "page": "18.02E–F",
+         "pdf": 158
+        }
+       ]
+      },
+      {
+       "text": "FMGC, MCDU, FAC N°1 only (lost on batteries); FCU ch 1 only.",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "QRH",
+         "code": "18.02",
+         "page": "18.02A",
+         "pdf": 154
+        }
+       ]
+      },
+      {
+       "text": "ELAC, SEC, FCDC, SFCC N°1 only.",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "QRH",
+         "code": "18.02",
+         "page": "18.02D",
+         "pdf": 157
+        }
+       ]
+      },
+      {
+       "text": "HF1 and CVR lost on batteries; VHF1, RMP1, ACPs, interphone normal.",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "QRH",
+         "code": "18.02",
+         "page": "18.02C",
+         "pdf": 156
+        }
+       ]
+      },
+      {
+       "text": "ENG FIRE EXT bottle 1 only; IGNITION A only; MAN PRESS CTL inop.",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "QRH",
+         "code": "18.02",
+         "page": "18.02B–D",
+         "pdf": 155
+        }
+       ]
+      }
+     ]
+    }
+   ]
+  }
+ ],
+ "tables": [],
+ "background": [
+  {
+   "text": "RAT extends automatically when AC BUS 1 and 2 are lost above 100 kt; blue hydraulics drive the EMER GEN, which supplies AC ESS and (via ESS TR) DC ESS.",
+   "applies_to": [
+    "all"
+   ],
+   "refs": [
+    {
+     "book": "FCOM",
+     "code": "DSC-24-10-30-30",
+     "page": "P 4/10",
+     "pdf": 1455
+    },
+    {
+     "book": "FCTM",
+     "code": "PR-AEP-ELEC",
+     "page": "P 1/2",
+     "pdf": 400
+    }
+   ]
+  },
+  {
+   "text": "If the RAT stalls, the network transfers to the batteries and static inverter, and AC/DC SHED ESS are shed. On ground: DC BAT BUS connected below 100 kt; AC ESS shed below 50 kt (all displays lost).",
+   "applies_to": [
+    "all"
+   ],
+   "refs": [
+    {
+     "book": "FCOM",
+     "code": "DSC-24-10-30-30",
+     "page": "P 4/10",
+     "pdf": 1455
+    },
+    {
+     "book": "FCTM",
+     "code": "PR-AEP-ELEC",
+     "page": "P 1/2",
+     "pdf": 400
+    }
+   ]
+  },
+  {
+   "text": "EMER ELEC PWR MAN ON (guarded): manual RAT extension; EMER GEN couples 3 s after the RAT supplies it. Red FAULT light: EMER GEN not supplying power.",
+   "applies_to": [
+    "all"
+   ],
+   "refs": [
+    {
+     "book": "FCOM",
+     "code": "DSC-24-20",
+     "page": "P 7/22",
+     "pdf": 1470
+    }
+   ]
+  },
+  {
+   "text": "Remaining: FLY — PFD1, alternate law; NAVIGATE — ND1, FMGC1, RMP1, VOR1/ILS1, DME1; COMMUNICATE — VHF1, HF1, ATC1. On batteries FAC1 and FMGC1 are also lost.",
+   "applies_to": [
+    "all"
+   ],
+   "refs": [
+    {
+     "book": "FCTM",
+     "code": "PR-AEP-ELEC",
+     "page": "P 2/2",
+     "pdf": 401
+    }
+   ]
+  },
+  {
+   "text": "Secondary failures are inhibited on the ECAM in ELEC EMER CONFIG.",
+   "applies_to": [
+    "all"
+   ],
+   "refs": [
+    {
+     "book": "FCOM",
+     "code": "DSC-31-15",
+     "page": "P 5/12",
+     "pdf": 1842
+    }
+   ]
+  }
+ ],
+ "technique": [
+  {
+   "text": "Red LAND ASAP, but approaching a poorly equipped airfield in marginal weather is unwise; prolonged flight is not recommended.",
+   "applies_to": [
+    "all"
+   ],
+   "refs": [
+    {
+     "book": "FCTM",
+     "code": "PR-AEP-ELEC",
+     "page": "P 1/2",
+     "pdf": 400
+    }
+   ]
+  },
+  {
+   "text": "A clear reading of STATUS is essential to sequence actions during the approach.",
+   "applies_to": [
+    "all"
+   ],
+   "refs": [
+    {
+     "book": "FCTM",
+     "code": "PR-AEP-ELEC",
+     "page": "P 1/2",
+     "pdf": 400
+    }
+   ]
+  },
+  {
+   "text": "Complex procedure: use the QRH summary after the ECAM procedure.",
+   "applies_to": [
+    "all"
+   ],
+   "refs": [
+    {
+     "book": "FCTM",
+     "code": "PR-AEP-ELEC",
+     "page": "P 2/2",
+     "pdf": 401
+    }
+   ]
+  },
+  {
+   "text": "BSCUs lost: no NWS or anti-skid; alternate braking with yellow hydraulics up to 1 000 PSI; no reversers.",
+   "applies_to": [
+    "all"
+   ],
+   "refs": [
+    {
+     "book": "FCTM",
+     "code": "PR-AEP-ELEC",
+     "page": "P 2/2",
+     "pdf": 401
+    }
+   ]
+  },
+  {
+   "text": "RA 1+2 lost with their automatic callouts — the PM makes the callouts.",
+   "applies_to": [
+    "all"
+   ],
+   "refs": [
+    {
+     "book": "FCTM",
+     "code": "PR-AEP-ELEC",
+     "page": "P 2/2",
+     "pdf": 401
+    }
+   ]
+  },
+  {
+   "text": "Approaching 50 kt on the landing roll, all display units are lost.",
+   "applies_to": [
+    "all"
+   ],
+   "refs": [
+    {
+     "book": "FCTM",
+     "code": "PR-AEP-ELEC",
+     "page": "P 2/2",
+     "pdf": 401
+    }
+   ]
+  }
+ ],
+ "related": [
+  {
+   "title": "[QRH] GRAVITY FUEL FEEDING",
+   "why": "ECAM line PROC : GRVTY FUEL FEEDING",
+   "key_actions": [
+    "ENG MODE SEL IGN; avoid negative G",
+    "Gravity feed ceiling (HS-TXA..TXT): current FL if > 30 min above FL 300; FL 300 if < 30 min; FL 150 or 7 000 ft above departure if FL 300 never exceeded; FL 100 for JET B",
+    "Gravity feed ceiling (HS-TXU): FL 360 / FL 260 / FL 150 or 7 000 ft",
+    "At the ceiling: FUEL X FEED OFF"
+   ],
+   "refs": [
+    {
+     "book": "FCOM",
+     "code": "PRO-ABN-FUEL",
+     "page": "P 13/76",
+     "pdf": 3618
+    },
+    {
+     "book": "FCOM",
+     "code": "PRO-ABN-FUEL",
+     "page": "P 12/76",
+     "pdf": 3617
+    },
+    {
+     "book": "QRH",
+     "code": "21.10",
+     "page": "21.10A–B",
+     "pdf": 206
+    }
+   ]
+  },
+  {
+   "title": "F/CTL ALTN LAW (PROT LOST)",
+   "why": "Associated procedure",
+   "key_actions": [
+    "Protections lost except manoeuvre protection",
+    "MAX SPEED 320 KT",
+    "Respect stall warning in TAWS manoeuvres"
+   ],
+   "refs": [
+    {
+     "book": "FCOM",
+     "code": "PRO-ABN-F_CTL",
+     "page": "P 9–12/132",
+     "pdf": 3482
+    }
+   ]
+  },
+  {
+   "title": "F/CTL DIRECT LAW",
+   "why": "At landing gear extension",
+   "key_actions": [
+    "MAN PITCH TRIM USE",
+    "MAX SPEED 320/.77",
+    "Manoeuvre with care; manual thrust recommended"
+   ],
+   "refs": [
+    {
+     "book": "FCOM",
+     "code": "PRO-ABN-F_CTL",
+     "page": "P 19–20/132",
+     "pdf": 3492
+    }
+   ]
+  }
+ ],
+ "differences": [
+  {
+   "topic": "STATUS INOP SYS",
+   "values": {
+    "HS-TXA..TXO": "includes STEEP APPR",
+    "HS-TXP..TXU": "no STEEP APPR"
+   },
+   "refs": [
+    {
+     "book": "FCOM",
+     "code": "PRO-ABN-ELEC",
+     "page": "P 93/122",
+     "pdf": 3218
+    },
+    {
+     "book": "FCOM",
+     "code": "PRO-ABN-ELEC",
+     "page": "P 97/122",
+     "pdf": 3222
+    }
+   ]
+  },
+  {
+   "topic": "Centre tank fuel",
+   "values": {
+    "HS-TXA..TXO": "unusable",
+    "HS-TXP..TXU": "usable by gravity except last 2 t"
+   },
+   "refs": [
+    {
+     "book": "FCOM",
+     "code": "PRO-ABN-ELEC",
+     "page": "P 94/122",
+     "pdf": 3219
+    },
+    {
+     "book": "FCOM",
+     "code": "PRO-ABN-ELEC",
+     "page": "P 98/122",
+     "pdf": 3223
+    },
+    {
+     "book": "QRH",
+     "code": "18.01",
+     "page": "18.01A",
+     "pdf": 152
+    }
+   ]
+  }
+ ],
+ "gaps": [
+  {
+   "text": "No ELEC EMER CONFIG row in the HS-TX fuel penalty tables although FCOM points to them.",
+   "applies_to": [
+    "all"
+   ],
+   "refs": [
+    {
+     "book": "QRH",
+     "code": "OPS.04",
+     "page": "OPS.04C/E",
+     "pdf": 275
+    }
+   ]
+  },
+  {
+   "text": "FCOM STATUS shows FLS LIMITED TO F-APP + RAW; the HS-TX QRH approach summary does not.",
+   "applies_to": [
+    "all"
+   ],
+   "refs": [
+    {
+     "book": "FCOM",
+     "code": "PRO-ABN-ELEC",
+     "page": "P 93/122",
+     "pdf": 3218
+    },
+    {
+     "book": "FCOM",
+     "code": "PRO-ABN-ELEC",
+     "page": "P 97/122",
+     "pdf": 3222
+    },
+    {
+     "book": "QRH",
+     "code": "18.01",
+     "page": "18.01A",
+     "pdf": 152
+    }
+   ]
+  },
+  {
+   "text": "HS-TO-only material omitted (FCOM P 98–105/122 and HS-TO QRH/FCTM blocks).",
+   "applies_to": [
+    "all"
+   ],
+   "refs": [
+    {
+     "book": "FCOM",
+     "code": "PRO-ABN-ELEC",
+     "page": "P 98–105/122",
+     "pdf": 3223
+    }
+   ]
+  }
+ ],
+ "sources": [
+  {
+   "book": "FCOM",
+   "section": "PRO-ABN-ELEC — ELEC EMER CONFIG",
+   "pages": "P 90–98/122",
+   "pdf": "3215–3223",
+   "rev": "26 MAY 26"
+  },
+  {
+   "book": "FCOM",
+   "section": "DSC-24 Electrical",
+   "pages": "DSC-24-10-30-30 P 4–7; DSC-24-20 P 7",
+   "pdf": "1455–1458, 1470",
+   "rev": "21 MAY 25"
+  },
+  {
+   "book": "QRH",
+   "section": "18.01 Summary · 18.02 Sys remaining",
+   "pages": "18.01A–18.02F",
+   "pdf": "152–159",
+   "rev": "18 FEB 26"
+  },
+  {
+   "book": "FCTM",
+   "section": "PR-AEP-ELEC",
+   "pages": "P 1–2/2",
+   "pdf": "400–401",
+   "rev": "26 MAY 26"
+  },
+  {
+   "book": "FCTM",
+   "section": "AOP-20 · AOP-30",
+   "pages": "—",
+   "pdf": "68–95",
+   "rev": "26 MAY 26"
+  },
+  {
+   "book": "PDP",
+   "section": "Management of abnormal operations · Use of summary",
+   "pages": "XFTDN6ECAM00001 · XFTDN1USESUMM01",
+   "pdf": "420–442",
+   "rev": "JAN 2024"
+  }
+ ],
+ "schema": "a320-ecam-abnormal/3",
+ "generated": "2026-10-14"
+}

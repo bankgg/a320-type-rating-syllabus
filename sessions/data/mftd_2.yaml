@@ -1,0 +1,16 @@
+session:
+  id: mftd-2
+  title: MFTD/FBS 2
+  focus: Abnormal and unusual practice
+  effectivity: HS-TX
+  syllabus_ref: S1
+
+sources:
+  S1:
+    title: A320 Trainee A vs B Syllabus Comparison
+    path: sources/A320_Trainee_A_vs_B_Syllabus_Comparison.html
+    locator: MFTD/FBS 2 · exercise IDs e01–e07
+    applicability: syllabus
+
+scenarios: []
+excluded_items: [mftd-2-e01, mftd-2-e02, mftd-2-e03, mftd-2-e04, mftd-2-e05, mftd-2-e06, mftd-2-e07]

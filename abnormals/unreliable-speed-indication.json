@@ -1,0 +1,2206 @@
+{
+ "slug": "unreliable-speed-indication",
+ "title": "UNRELIABLE SPEED INDICATION · SEVERE TURBULENCE",
+ "kind": "qrh",
+ "alert": {
+  "level": "memory",
+  "land_asap": "none",
+  "memory_items": true,
+  "qrh_summary": false,
+  "trigger": "ADR CHECK PROC APPLY on ECAM (e.g. NAV ADR DISAGREE), or crew suspicion: speed discrepancies, fluctuating IAS/altitude, abnormal pitch/thrust/speed correlation, abnormal AP/FD/A/THR behaviour, stall/overspeed warning contradicting IAS.",
+  "inhibited_phases": [],
+  "refs": [
+   {
+    "book": "FCTM",
+    "code": "PR-AEP-NAV",
+    "page": "P 14/20",
+    "pdf": 491
+   },
+   {
+    "book": "FCTM",
+    "code": "PR-AEP-NAV",
+    "page": "P 15/20",
+    "pdf": 492
+   }
+  ]
+ },
+ "effectivity": {
+  "branches": [
+   "HS-TXA..TXF",
+   "HS-TXG..TXU"
+  ],
+  "note": "Unreliable speed: one version for all HS-TX. Severe turbulence N1 table differs HS-TXA..TXF / HS-TXG..TXU."
+ },
+ "summary": "If the safe conduct of the flight is affected, fly the memory pitch/thrust, then level off and stabilise using the QRH pitch/thrust tables while the PM identifies and isolates the faulty ADR. This brief also compares the QRH table with the Severe Turbulence table: unreliable speed gives pitch and thrust to fly without trusting speed, while severe turbulence keeps the AP on and sets a target speed/Mach with a reference N1.",
+ "key_limits": [
+  {
+   "label": "Below THR RED ALT",
+   "value": "15° / TOGA",
+   "applies_to": [
+    "all"
+   ],
+   "refs": [
+    {
+     "book": "FCOM",
+     "code": "PRO-ABN-NAV",
+     "page": "P 1/124",
+     "pdf": 3826
+    },
+    {
+     "book": "QRH",
+     "code": "26.02",
+     "page": "26.02A",
+     "pdf": 235
+    }
+   ]
+  },
+  {
+   "label": "THR RED ALT – FL 100",
+   "value": "10° / CLB",
+   "applies_to": [
+    "all"
+   ],
+   "refs": [
+    {
+     "book": "FCOM",
+     "code": "PRO-ABN-NAV",
+     "page": "P 1/124",
+     "pdf": 3826
+    },
+    {
+     "book": "QRH",
+     "code": "26.02",
+     "page": "26.02A",
+     "pdf": 235
+    }
+   ]
+  },
+  {
+   "label": "Above FL 100",
+   "value": "5° / CLB",
+   "applies_to": [
+    "all"
+   ],
+   "refs": [
+    {
+     "book": "FCOM",
+     "code": "PRO-ABN-NAV",
+     "page": "P 1/124",
+     "pdf": 3826
+    },
+    {
+     "book": "QRH",
+     "code": "26.02",
+     "page": "26.02A",
+     "pdf": 235
+    }
+   ]
+  },
+  {
+   "label": "Level-off pitch, clean",
+   "value": "4° (≤ FL 250) · 3° (above)",
+   "applies_to": [
+    "all"
+   ],
+   "refs": [
+    {
+     "book": "QRH",
+     "code": "26.02",
+     "page": "26.02C",
+     "pdf": 237
+    }
+   ]
+  },
+  {
+   "label": "Severe turbulence target",
+   "value": "275 kt · M.76 at FL 330+",
+   "applies_to": [
+    "all"
+   ],
+   "refs": [
+    {
+     "book": "QRH",
+     "code": "25.08",
+     "page": "25.08A–B",
+     "pdf": 226
+    },
+    {
+     "book": "QRH",
+     "code": "25.08",
+     "page": "25.08B–C",
+     "pdf": 227
+    }
+   ]
+  }
+ ],
+ "flow": [
+  {
+   "phase": "Memory items (if safe flight is affected)",
+   "steps": [
+    {
+     "actor": "BOTH",
+     "items": [
+      {
+       "kind": "callout",
+       "text": "UNRELIABLE SPEED",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "FCOM",
+         "code": "PRO-ABN-ABN-00",
+         "page": "P 9/12",
+         "pdf": 2832
+        }
+       ]
+      }
+     ]
+    },
+    {
+     "actor": "PF",
+     "items": [
+      {
+       "kind": "ecam",
+       "item": "AP / A/THR / FD",
+       "setting": "OFF",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "FCOM",
+         "code": "PRO-ABN-NAV",
+         "page": "P 1/124",
+         "pdf": 3826
+        }
+       ]
+      },
+      {
+       "kind": "ecam",
+       "item": "PITCH/THRUST",
+       "setting": "15°/TOGA · 10°/CLB · 5°/CLB",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "FCOM",
+         "code": "PRO-ABN-NAV",
+         "page": "P 1/124",
+         "pdf": 3826
+        }
+       ]
+      },
+      {
+       "kind": "ecam",
+       "item": "FLAPS",
+       "setting": "MAINTAIN (CONF FULL → CONF 3)",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "FCOM",
+         "code": "PRO-ABN-NAV",
+         "page": "P 1/124",
+         "pdf": 3826
+        }
+       ]
+      },
+      {
+       "kind": "ecam",
+       "item": "SPEEDBRAKES",
+       "setting": "CHECK RETRACTED",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "FCOM",
+         "code": "PRO-ABN-NAV",
+         "page": "P 1/124",
+         "pdf": 3826
+        }
+       ]
+      },
+      {
+       "kind": "ecam",
+       "item": "L/G",
+       "setting": "UP",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "FCOM",
+         "code": "PRO-ABN-NAV",
+         "page": "P 1/124",
+         "pdf": 3826
+        }
+       ]
+      },
+      {
+       "kind": "note",
+       "text": "Once pitch/thrust are stable, go to the QRH without delay — memory values held too long can exceed speed limits",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "FCTM",
+         "code": "PR-AEP-NAV",
+         "page": "P 17/20",
+         "pdf": 494
+        }
+       ]
+      }
+     ]
+    },
+    {
+     "actor": "PM",
+     "items": [
+      {
+       "kind": "action",
+       "text": "Confirm discrepancies: STBY vs own PFD, own PFD vs PF PFD",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "FCTM",
+         "code": "PR-AEP-NAV",
+         "page": "P 15/20",
+         "pdf": 492
+        }
+       ]
+      },
+      {
+       "kind": "action",
+       "text": "Rely on the STALL warning (AOA-based)",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "FCTM",
+         "code": "PR-AEP-NAV",
+         "page": "P 15/20",
+         "pdf": 492
+        }
+       ]
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "phase": "Level off (QRH procedure)",
+   "steps": [
+    {
+     "actor": "PF",
+     "items": [
+      {
+       "kind": "action",
+       "text": "At or above MSA / circuit altitude: level off for troubleshooting",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "FCOM",
+         "code": "PRO-ABN-NAV",
+         "page": "P 1/124",
+         "pdf": 3826
+        },
+        {
+         "book": "PDP",
+         "code": "Unreliable speed indication",
+         "page": "XFTDA6UNRASPD01",
+         "pdf": 557
+        }
+       ]
+      },
+      {
+       "kind": "ecam",
+       "item": "AP",
+       "setting": "OFF",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "PDP",
+         "code": "Unreliable speed indication",
+         "page": "XFTDA6UNRASPD01",
+         "pdf": 559
+        },
+        {
+         "book": "FCOM",
+         "code": "PRO-ABN-NAV",
+         "page": "P 1/124",
+         "pdf": 3826
+        }
+       ]
+      },
+      {
+       "kind": "callout",
+       "text": "FDs OFF",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "PDP",
+         "code": "Unreliable speed indication",
+         "page": "XFTDA6UNRASPD01",
+         "pdf": 559
+        }
+       ]
+      }
+     ]
+    },
+    {
+     "actor": "PM",
+     "items": [
+      {
+       "kind": "ecam",
+       "item": "FDs",
+       "setting": "OFF",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "PDP",
+         "code": "Unreliable speed indication",
+         "page": "XFTDA6UNRASPD01",
+         "pdf": 559
+        }
+       ]
+      }
+     ]
+    },
+    {
+     "actor": "PF",
+     "items": [
+      {
+       "kind": "ecam",
+       "item": "A/THR",
+       "setting": "OFF",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "PDP",
+         "code": "Unreliable speed indication",
+         "page": "XFTDA6UNRASPD01",
+         "pdf": 559
+        },
+        {
+         "book": "FCOM",
+         "code": "PRO-ABN-NAV",
+         "page": "P 1/124",
+         "pdf": 3826
+        }
+       ]
+      },
+      {
+       "kind": "ecam",
+       "item": "SPEEDBRAKES",
+       "setting": "CHECK RETRACTED",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "PDP",
+         "code": "Unreliable speed indication",
+         "page": "XFTDA6UNRASPD01",
+         "pdf": 559
+        },
+        {
+         "book": "FCOM",
+         "code": "PRO-ABN-NAV",
+         "page": "P 1/124",
+         "pdf": 3826
+        }
+       ]
+      },
+      {
+       "kind": "ecam",
+       "item": "PITCH/THRUST",
+       "setting": "APPLY",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "PDP",
+         "code": "Unreliable speed indication",
+         "page": "XFTDA6UNRASPD01",
+         "pdf": 559
+        },
+        {
+         "book": "QRH",
+         "code": "26.02",
+         "page": "26.02C",
+         "pdf": 237
+        }
+       ]
+      }
+     ]
+    },
+    {
+     "actor": "PM",
+     "items": [
+      {
+       "kind": "ecam",
+       "item": "PITCH/THRUST",
+       "setting": "DETERMINE FROM QRH TABLE",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "PDP",
+         "code": "Unreliable speed indication",
+         "page": "XFTDA6UNRASPD01",
+         "pdf": 559
+        },
+        {
+         "book": "QRH",
+         "code": "26.02",
+         "page": "26.02C",
+         "pdf": 237
+        }
+       ]
+      }
+     ]
+    },
+    {
+     "actor": "PF",
+     "items": [
+      {
+       "kind": "ecam",
+       "item": "LEVEL OFF",
+       "setting": "PERFORM",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "PDP",
+         "code": "Unreliable speed indication",
+         "page": "XFTDA6UNRASPD01",
+         "pdf": 559
+        }
+       ]
+      },
+      {
+       "kind": "note",
+       "text": "Pitch above target → more thrust; below → less thrust. Altitude unreliable → GPS altitude (MCDU GPS MONITOR)",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "FCOM",
+         "code": "PRO-ABN-NAV",
+         "page": "P 1/124",
+         "pdf": 3826
+        },
+        {
+         "book": "QRH",
+         "code": "26.02",
+         "page": "26.02C",
+         "pdf": 237
+        },
+        {
+         "book": "PDP",
+         "code": "Unreliable speed indication",
+         "page": "XFTDA6UNRASPD01",
+         "pdf": 560
+        }
+       ]
+      },
+      {
+       "kind": "note",
+       "text": "Below FL 250: reversible BUSS if installed",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "PDP",
+         "code": "Unreliable speed indication",
+         "page": "XFTDA6UNRASPD01",
+         "pdf": 559
+        }
+       ]
+      },
+      {
+       "kind": "condition",
+       "text": "If needed and reliable (bird reliable if baro altitude reliable)",
+       "children": [
+        {
+         "kind": "callout",
+         "text": "BIRD ON",
+         "applies_to": [
+          "all"
+         ],
+         "refs": [
+          {
+           "book": "PDP",
+           "code": "Unreliable speed indication",
+           "page": "XFTDA6UNRASPD01",
+           "pdf": 559
+          }
+         ]
+        }
+       ],
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "PDP",
+         "code": "Unreliable speed indication",
+         "page": "XFTDA6UNRASPD01",
+         "pdf": 559
+        }
+       ]
+      }
+     ]
+    },
+    {
+     "actor": "PM",
+     "items": [
+      {
+       "kind": "condition",
+       "text": "After “BIRD ON”",
+       "children": [
+        {
+         "kind": "ecam",
+         "item": "TRK/FPA (BIRD)",
+         "setting": "SELECT",
+         "applies_to": [
+          "all"
+         ],
+         "refs": [
+          {
+           "book": "PDP",
+           "code": "Unreliable speed indication",
+           "page": "XFTDA6UNRASPD01",
+           "pdf": 559
+          }
+         ]
+        }
+       ],
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "PDP",
+         "code": "Unreliable speed indication",
+         "page": "XFTDA6UNRASPD01",
+         "pdf": 559
+        }
+       ]
+      }
+     ]
+    },
+    {
+     "actor": "BOTH",
+     "items": [
+      {
+       "kind": "callout",
+       "text": "RESPECT STALL WARNING",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "FCOM",
+         "code": "PRO-ABN-NAV",
+         "page": "P 2/124",
+         "pdf": 3827
+        },
+        {
+         "book": "PDP",
+         "code": "Unreliable speed indication",
+         "page": "XFTDA6UNRASPD01",
+         "pdf": 559
+        }
+       ]
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "phase": "Flight path stabilised",
+   "steps": [
+    {
+     "actor": "PF",
+     "items": [
+      {
+       "kind": "ecam",
+       "item": "AP / A/THR",
+       "setting": "OFF",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "PDP",
+         "code": "Unreliable speed indication",
+         "page": "XFTDA6UNRASPD01",
+         "pdf": 561
+        },
+        {
+         "book": "FCOM",
+         "code": "PRO-ABN-NAV",
+         "page": "P 2/124",
+         "pdf": 3827
+        }
+       ]
+      }
+     ]
+    },
+    {
+     "actor": "PM",
+     "items": [
+      {
+       "kind": "ecam",
+       "item": "FDs",
+       "setting": "OFF",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "PDP",
+         "code": "Unreliable speed indication",
+         "page": "XFTDA6UNRASPD01",
+         "pdf": 561
+        }
+       ]
+      }
+     ]
+    },
+    {
+     "actor": "PF",
+     "items": [
+      {
+       "kind": "ecam",
+       "item": "SPEEDBRAKES",
+       "setting": "CHECK RETRACTED",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "PDP",
+         "code": "Unreliable speed indication",
+         "page": "XFTDA6UNRASPD01",
+         "pdf": 561
+        }
+       ]
+      },
+      {
+       "kind": "ecam",
+       "item": "FLIGHT PATH",
+       "setting": "KEEP STABILIZED",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "PDP",
+         "code": "Unreliable speed indication",
+         "page": "XFTDA6UNRASPD01",
+         "pdf": 561
+        },
+        {
+         "book": "FCOM",
+         "code": "PRO-ABN-NAV",
+         "page": "P 2/124",
+         "pdf": 3827
+        }
+       ]
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "phase": "Identify the faulty ADR",
+   "steps": [
+    {
+     "actor": "PF",
+     "items": [
+      {
+       "kind": "action",
+       "text": "Advise ATC without delay (altitude may be wrong)",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "FCTM",
+         "code": "PR-AEP-NAV",
+         "page": "P 4/20",
+         "pdf": 481
+        }
+       ]
+      }
+     ]
+    },
+    {
+     "actor": "PM",
+     "items": [
+      {
+       "kind": "ecam",
+       "item": "PROBE/WINDOW HEAT",
+       "setting": "ON",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "FCOM",
+         "code": "PRO-ABN-NAV",
+         "page": "P 3/124",
+         "pdf": 3828
+        }
+       ]
+      },
+      {
+       "kind": "ecam",
+       "item": "ALL SPEED INDICATIONS",
+       "setting": "CROSSCHECK",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "FCOM",
+         "code": "PRO-ABN-NAV",
+         "page": "P 3/124",
+         "pdf": 3828
+        }
+       ]
+      },
+      {
+       "kind": "note",
+       "text": "ADR3 and STBY speed use the same probe",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "FCOM",
+         "code": "PRO-ABN-NAV",
+         "page": "P 3/124",
+         "pdf": 3828
+        }
+       ]
+      },
+      {
+       "kind": "condition",
+       "text": "At least one ADR confirmed reliable",
+       "children": [
+        {
+         "kind": "ecam",
+         "item": "RELIABLE AIR DATA",
+         "setting": "USE",
+         "applies_to": [
+          "all"
+         ],
+         "refs": [
+          {
+           "book": "FCOM",
+           "code": "PRO-ABN-NAV",
+           "page": "P 3/124",
+           "pdf": 3828
+          }
+         ]
+        },
+        {
+         "kind": "ecam",
+         "item": "UNRELIABLE ADR pb(s)",
+         "setting": "OFF",
+         "applies_to": [
+          "all"
+         ],
+         "refs": [
+          {
+           "book": "FCOM",
+           "code": "PRO-ABN-NAV",
+           "page": "P 3/124",
+           "pdf": 3828
+          }
+         ]
+        }
+       ],
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "FCOM",
+         "code": "PRO-ABN-NAV",
+         "page": "P 3/124",
+         "pdf": 3828
+        }
+       ]
+      },
+      {
+       "kind": "condition",
+       "text": "Cannot identify / all affected — above FL 250",
+       "children": [
+        {
+         "kind": "note",
+         "text": "KEEP ONE ADR ON",
+         "applies_to": [
+          "all"
+         ],
+         "refs": [
+          {
+           "book": "FCOM",
+           "code": "PRO-ABN-NAV",
+           "page": "P 3/124",
+           "pdf": 3828
+          }
+         ]
+        },
+        {
+         "kind": "ecam",
+         "item": "TWO ADR pbs",
+         "setting": "OFF",
+         "applies_to": [
+          "all"
+         ],
+         "refs": [
+          {
+           "book": "FCOM",
+           "code": "PRO-ABN-NAV",
+           "page": "P 3/124",
+           "pdf": 3828
+          }
+         ]
+        },
+        {
+         "kind": "ecam",
+         "item": "ATC/XPDR",
+         "setting": "ALT RPTG OFF",
+         "applies_to": [
+          "all"
+         ],
+         "refs": [
+          {
+           "book": "FCOM",
+           "code": "PRO-ABN-NAV",
+           "page": "P 3/124",
+           "pdf": 3828
+          }
+         ]
+        },
+        {
+         "kind": "note",
+         "text": "Flight continuation: pitch/thrust tables",
+         "applies_to": [
+          "all"
+         ],
+         "refs": [
+          {
+           "book": "FCOM",
+           "code": "PRO-ABN-NAV",
+           "page": "P 3/124",
+           "pdf": 3828
+          }
+         ]
+        }
+       ],
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "FCOM",
+         "code": "PRO-ABN-NAV",
+         "page": "P 3/124",
+         "pdf": 3828
+        }
+       ]
+      },
+      {
+       "kind": "condition",
+       "text": "Below FL 250, speed still unreliable",
+       "children": [
+        {
+         "kind": "ecam",
+         "item": "ALL ADR pbs",
+         "setting": "OFF",
+         "applies_to": [
+          "all"
+         ],
+         "refs": [
+          {
+           "book": "FCOM",
+           "code": "PRO-ABN-NAV",
+           "page": "P 3/124",
+           "pdf": 3828
+          }
+         ]
+        },
+        {
+         "kind": "ecam",
+         "item": "SPEED",
+         "setting": "FLY THE GREEN (BUSS)",
+         "applies_to": [
+          "all"
+         ],
+         "refs": [
+          {
+           "book": "FCOM",
+           "code": "PRO-ABN-NAV",
+           "page": "P 3/124",
+           "pdf": 3828
+          }
+         ]
+        },
+        {
+         "kind": "ecam",
+         "item": "NAV ADR 1+2+3 FAULT ECAM",
+         "setting": "APPLY",
+         "applies_to": [
+          "all"
+         ],
+         "refs": [
+          {
+           "book": "FCOM",
+           "code": "PRO-ABN-NAV",
+           "page": "P 3/124",
+           "pdf": 3828
+          }
+         ]
+        }
+       ],
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "FCOM",
+         "code": "PRO-ABN-NAV",
+         "page": "P 3/124",
+         "pdf": 3828
+        }
+       ]
+      },
+      {
+       "kind": "note",
+       "text": "ADR pbs are switched off with the pb — not the rotary selector",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "FCTM",
+         "code": "PR-AEP-NAV",
+         "page": "P 2/20",
+         "pdf": 479
+        }
+       ]
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "phase": "Continue the flight",
+   "steps": [
+    {
+     "actor": "PF",
+     "items": [
+      {
+       "kind": "action",
+       "text": "Fly pitch/thrust by phase — climb, cruise, descent, approach — early stabilised approach",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "FCOM",
+         "code": "PRO-ABN-NAV",
+         "page": "P 4/124",
+         "pdf": 3829
+        },
+        {
+         "book": "FCTM",
+         "code": "PR-AEP-NAV",
+         "page": "P 14/20",
+         "pdf": 491
+        }
+       ]
+      }
+     ]
+    },
+    {
+     "actor": "PM",
+     "items": [
+      {
+       "kind": "action",
+       "text": "Read the table for each phase; radome damage → +5 % N1, fuel flow +27 %",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "FCOM",
+         "code": "PRO-ABN-NAV",
+         "page": "P 4/124",
+         "pdf": 3829
+        },
+        {
+         "book": "QRH",
+         "code": "26.02",
+         "page": "26.02E",
+         "pdf": 239
+        }
+       ]
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "phase": "Compare: Severe turbulence (QRH 25.08)",
+   "steps": [
+    {
+     "actor": "PF",
+     "items": [
+      {
+       "kind": "ecam",
+       "item": "SEAT BELTS",
+       "setting": "ON",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "QRH",
+         "code": "25.08",
+         "page": "25.08A–B",
+         "pdf": 226
+        }
+       ]
+      },
+      {
+       "kind": "action",
+       "text": "KEEP AUTO PILOT ON; excessive thrust variations → disconnect A/THR",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "QRH",
+         "code": "25.08",
+         "page": "25.08A–B",
+         "pdf": 226
+        }
+       ]
+      },
+      {
+       "kind": "action",
+       "text": "Target 275 kt (FL 200–310) / M.76 (FL 330+), 250 kt at FL 150 and below",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "QRH",
+         "code": "25.08",
+         "page": "25.08A–B",
+         "pdf": 226
+        },
+        {
+         "book": "QRH",
+         "code": "25.08",
+         "page": "25.08B–C",
+         "pdf": 227
+        }
+       ]
+      },
+      {
+       "kind": "action",
+       "text": "Consider descending to or below OPT FL for buffet margin",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "QRH",
+         "code": "25.08",
+         "page": "25.08A–B",
+         "pdf": 226
+        }
+       ]
+      }
+     ]
+    },
+    {
+     "actor": "PM",
+     "items": [
+      {
+       "kind": "ecam",
+       "item": "SPEED AND THRUST",
+       "setting": "ADJUST (table N1 by FL / weight)",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "QRH",
+         "code": "25.08",
+         "page": "25.08A–B",
+         "pdf": 226
+        },
+        {
+         "book": "QRH",
+         "code": "25.08",
+         "page": "25.08B–C",
+         "pdf": 227
+        }
+       ]
+      },
+      {
+       "kind": "condition",
+       "text": "For approach",
+       "children": [
+        {
+         "kind": "ecam",
+         "item": "A/THR",
+         "setting": "ON",
+         "applies_to": [
+          "all"
+         ],
+         "refs": [
+          {
+           "book": "QRH",
+           "code": "25.08",
+           "page": "25.08A–B",
+           "pdf": 226
+          }
+         ]
+        },
+        {
+         "kind": "note",
+         "text": "USE MANAGED SPEED",
+         "applies_to": [
+          "all"
+         ],
+         "refs": [
+          {
+           "book": "QRH",
+           "code": "25.08",
+           "page": "25.08A–B",
+           "pdf": 226
+          }
+         ]
+        }
+       ],
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "QRH",
+         "code": "25.08",
+         "page": "25.08A–B",
+         "pdf": 226
+        }
+       ]
+      }
+     ]
+    }
+   ]
+  }
+ ],
+ "procedures": [
+  {
+   "title": "[MEM] UNRELIABLE SPEED INDICATION — memory items",
+   "source": "FCOM PRO-ABN-NAV / QRH 26.02",
+   "lines": [
+    {
+     "kind": "condition",
+     "text": "If the safe conduct of the flight is impacted:",
+     "level": 0,
+     "applies_to": [
+      "all"
+     ],
+     "refs": [
+      {
+       "book": "FCOM",
+       "code": "PRO-ABN-NAV",
+       "page": "P 1/124",
+       "pdf": 3826
+      },
+      {
+       "book": "QRH",
+       "code": "26.02",
+       "page": "26.02A",
+       "pdf": 235
+      }
+     ]
+    },
+    {
+     "kind": "action",
+     "item": "AP",
+     "setting": "OFF",
+     "text": "",
+     "level": 1,
+     "applies_to": [
+      "all"
+     ],
+     "refs": [
+      {
+       "book": "FCOM",
+       "code": "PRO-ABN-NAV",
+       "page": "P 1/124",
+       "pdf": 3826
+      }
+     ]
+    },
+    {
+     "kind": "action",
+     "item": "A/THR",
+     "setting": "OFF",
+     "text": "",
+     "level": 1,
+     "applies_to": [
+      "all"
+     ],
+     "refs": [
+      {
+       "book": "FCOM",
+       "code": "PRO-ABN-NAV",
+       "page": "P 1/124",
+       "pdf": 3826
+      }
+     ]
+    },
+    {
+     "kind": "action",
+     "item": "FD",
+     "setting": "OFF",
+     "text": "",
+     "level": 1,
+     "applies_to": [
+      "all"
+     ],
+     "refs": [
+      {
+       "book": "FCOM",
+       "code": "PRO-ABN-NAV",
+       "page": "P 1/124",
+       "pdf": 3826
+      }
+     ]
+    },
+    {
+     "kind": "info",
+     "text": "PITCH/THRUST:",
+     "level": 1,
+     "applies_to": [
+      "all"
+     ],
+     "refs": [
+      {
+       "book": "FCOM",
+       "code": "PRO-ABN-NAV",
+       "page": "P 1/124",
+       "pdf": 3826
+      }
+     ]
+    },
+    {
+     "kind": "action",
+     "item": "Below THRUST RED ALT",
+     "setting": "15° / TOGA",
+     "text": "",
+     "level": 2,
+     "applies_to": [
+      "all"
+     ],
+     "refs": [
+      {
+       "book": "FCOM",
+       "code": "PRO-ABN-NAV",
+       "page": "P 1/124",
+       "pdf": 3826
+      }
+     ]
+    },
+    {
+     "kind": "action",
+     "item": "Above THRUST RED ALT and Below FL 100",
+     "setting": "10° / CLB",
+     "text": "",
+     "level": 2,
+     "applies_to": [
+      "all"
+     ],
+     "refs": [
+      {
+       "book": "FCOM",
+       "code": "PRO-ABN-NAV",
+       "page": "P 1/124",
+       "pdf": 3826
+      }
+     ]
+    },
+    {
+     "kind": "action",
+     "item": "Above THRUST RED ALT and Above FL 100",
+     "setting": "5° / CLB",
+     "text": "",
+     "level": 2,
+     "applies_to": [
+      "all"
+     ],
+     "refs": [
+      {
+       "book": "FCOM",
+       "code": "PRO-ABN-NAV",
+       "page": "P 1/124",
+       "pdf": 3826
+      }
+     ]
+    },
+    {
+     "kind": "action",
+     "item": "FLAPS (if CONF 0(1)(2)(3))",
+     "setting": "MAINTAIN CURRENT CONF",
+     "text": "",
+     "level": 1,
+     "applies_to": [
+      "all"
+     ],
+     "refs": [
+      {
+       "book": "FCOM",
+       "code": "PRO-ABN-NAV",
+       "page": "P 1/124",
+       "pdf": 3826
+      }
+     ]
+    },
+    {
+     "kind": "action",
+     "item": "FLAPS (if CONF FULL)",
+     "setting": "SELECT CONF 3 AND MAINTAIN",
+     "text": "",
+     "level": 1,
+     "applies_to": [
+      "all"
+     ],
+     "refs": [
+      {
+       "book": "FCOM",
+       "code": "PRO-ABN-NAV",
+       "page": "P 1/124",
+       "pdf": 3826
+      }
+     ]
+    },
+    {
+     "kind": "action",
+     "item": "SPEEDBRAKES",
+     "setting": "CHECK RETRACTED",
+     "text": "",
+     "level": 1,
+     "applies_to": [
+      "all"
+     ],
+     "refs": [
+      {
+       "book": "FCOM",
+       "code": "PRO-ABN-NAV",
+       "page": "P 1/124",
+       "pdf": 3826
+      }
+     ]
+    },
+    {
+     "kind": "action",
+     "item": "L/G",
+     "setting": "UP",
+     "text": "",
+     "level": 1,
+     "applies_to": [
+      "all"
+     ],
+     "refs": [
+      {
+       "book": "FCOM",
+       "code": "PRO-ABN-NAV",
+       "page": "P 1/124",
+       "pdf": 3826
+      }
+     ]
+    },
+    {
+     "kind": "info",
+     "text": "When at, or above MSA or Circuit Altitude: Level off for troubleshooting.",
+     "level": 1,
+     "applies_to": [
+      "all"
+     ],
+     "refs": [
+      {
+       "book": "FCOM",
+       "code": "PRO-ABN-NAV",
+       "page": "P 1/124",
+       "pdf": 3826
+      }
+     ]
+    },
+    {
+     "kind": "condition",
+     "text": "To level off:",
+     "level": 0,
+     "applies_to": [
+      "all"
+     ],
+     "refs": [
+      {
+       "book": "FCOM",
+       "code": "PRO-ABN-NAV",
+       "page": "P 1/124",
+       "pdf": 3826
+      }
+     ]
+    },
+    {
+     "kind": "action",
+     "item": "PITCH/THRUST TABLE",
+     "setting": "APPLY",
+     "text": "",
+     "level": 1,
+     "applies_to": [
+      "all"
+     ],
+     "refs": [
+      {
+       "book": "FCOM",
+       "code": "PRO-ABN-NAV",
+       "page": "P 1/124",
+       "pdf": 3826
+      },
+      {
+       "book": "QRH",
+       "code": "26.02",
+       "page": "26.02C",
+       "pdf": 237
+      }
+     ]
+    },
+    {
+     "kind": "condition",
+     "text": "When flight path is stabilized:",
+     "level": 0,
+     "applies_to": [
+      "all"
+     ],
+     "refs": [
+      {
+       "book": "FCOM",
+       "code": "PRO-ABN-NAV",
+       "page": "P 2/124",
+       "pdf": 3827
+      }
+     ]
+    },
+    {
+     "kind": "action",
+     "item": "FLIGHT PATH",
+     "setting": "KEEP STABILIZED",
+     "text": "",
+     "level": 1,
+     "applies_to": [
+      "all"
+     ],
+     "refs": [
+      {
+       "book": "FCOM",
+       "code": "PRO-ABN-NAV",
+       "page": "P 2/124",
+       "pdf": 3827
+      }
+     ]
+    },
+    {
+     "kind": "info",
+     "text": "RESPECT STALL WARNING",
+     "level": 0,
+     "applies_to": [
+      "all"
+     ],
+     "refs": [
+      {
+       "book": "FCOM",
+       "code": "PRO-ABN-NAV",
+       "page": "P 2/124",
+       "pdf": 3827
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "title": "SEVERE TURBULENCE",
+   "source": "QRH 25.08",
+   "lines": [
+    {
+     "kind": "action",
+     "item": "SEAT BELTS",
+     "setting": "ON",
+     "text": "",
+     "level": 0,
+     "applies_to": [
+      "all"
+     ],
+     "refs": [
+      {
+       "book": "QRH",
+       "code": "25.08",
+       "page": "25.08A–B",
+       "pdf": 226
+      }
+     ]
+    },
+    {
+     "kind": "action",
+     "item": "SPEED AND THRUST",
+     "setting": "ADJUST",
+     "text": "Use the speed/Mach and N1 table.",
+     "level": 0,
+     "applies_to": [
+      "all"
+     ],
+     "refs": [
+      {
+       "book": "QRH",
+       "code": "25.08",
+       "page": "25.08A–B",
+       "pdf": 226
+      }
+     ]
+    },
+    {
+     "kind": "info",
+     "text": "KEEP AUTO PILOT ON",
+     "level": 0,
+     "applies_to": [
+      "all"
+     ],
+     "refs": [
+      {
+       "book": "QRH",
+       "code": "25.08",
+       "page": "25.08A–B",
+       "pdf": 226
+      }
+     ]
+    },
+    {
+     "kind": "condition",
+     "text": "If excessive thrust variations:",
+     "level": 0,
+     "applies_to": [
+      "all"
+     ],
+     "refs": [
+      {
+       "book": "QRH",
+       "code": "25.08",
+       "page": "25.08A–B",
+       "pdf": 226
+      }
+     ]
+    },
+    {
+     "kind": "action",
+     "item": "A/THR",
+     "setting": "DISCONNECT",
+     "text": "",
+     "level": 1,
+     "applies_to": [
+      "all"
+     ],
+     "refs": [
+      {
+       "book": "QRH",
+       "code": "25.08",
+       "page": "25.08A–B",
+       "pdf": 226
+      }
+     ]
+    },
+    {
+     "kind": "action",
+     "item": "DESCENT TO OR BELOW OPT FL",
+     "setting": "CONSIDER",
+     "text": "Increases the margin to buffet.",
+     "level": 0,
+     "applies_to": [
+      "all"
+     ],
+     "refs": [
+      {
+       "book": "QRH",
+       "code": "25.08",
+       "page": "25.08A–B",
+       "pdf": 226
+      }
+     ]
+    },
+    {
+     "kind": "condition",
+     "text": "For approach:",
+     "level": 0,
+     "applies_to": [
+      "all"
+     ],
+     "refs": [
+      {
+       "book": "QRH",
+       "code": "25.08",
+       "page": "25.08A–B",
+       "pdf": 226
+      }
+     ]
+    },
+    {
+     "kind": "action",
+     "item": "A/THR",
+     "setting": "ON",
+     "text": "",
+     "level": 1,
+     "applies_to": [
+      "all"
+     ],
+     "refs": [
+      {
+       "book": "QRH",
+       "code": "25.08",
+       "page": "25.08A–B",
+       "pdf": 226
+      }
+     ]
+    },
+    {
+     "kind": "info",
+     "text": "USE MANAGED SPEED",
+     "level": 1,
+     "applies_to": [
+      "all"
+     ],
+     "refs": [
+      {
+       "book": "QRH",
+       "code": "25.08",
+       "page": "25.08A–B",
+       "pdf": 226
+      }
+     ]
+    }
+   ]
+  }
+ ],
+ "status": null,
+ "qrh": [],
+ "tables": [
+  {
+   "title": "Unreliable speed — level flight, clean (thrust % N1, resultant speed)",
+   "caption": "Pitch 4° at or below FL 250 · 3° above FL 250.",
+   "columns": [
+    "FL",
+    "80 t",
+    "70 t",
+    "60 t",
+    "50 t"
+   ],
+   "rows": [
+    [
+     "100",
+     "64% (265 kt)",
+     "60% (245 kt)",
+     "56% (225 kt)",
+     "52% (205 kt)"
+    ],
+    [
+     "200",
+     "72% (260 kt)",
+     "68% (245 kt)",
+     "66% (225 kt)",
+     "60% (205 kt)"
+    ],
+    [
+     "300",
+     "78% (280 kt)",
+     "76% (265 kt)",
+     "74% (245 kt)",
+     "70% (225 kt)"
+    ],
+    [
+     "350",
+     "/",
+     "80% (255 kt)",
+     "76% (240 kt)",
+     "74% (225 kt)"
+    ],
+    [
+     "400",
+     "/",
+     "/",
+     "82% (235 kt)",
+     "78% (220 kt)"
+    ]
+   ],
+   "applies_to": [
+    "all"
+   ],
+   "refs": [
+    {
+     "book": "QRH",
+     "code": "26.02",
+     "page": "26.02C",
+     "pdf": 237
+    },
+    {
+     "book": "QRH",
+     "code": "26.02",
+     "page": "26.02D",
+     "pdf": 238
+    }
+   ]
+  },
+  {
+   "title": "Severe turbulence — target speed and N1 (%)",
+   "caption": "Selected weights shown; full table 44–76 t in QRH 25.08.",
+   "columns": [
+    "FL",
+    "SPD / Mach",
+    "52 t",
+    "60 t",
+    "68 t"
+   ],
+   "rows": [
+    [
+     "390",
+     ".76",
+     "77.1",
+     "—",
+     "—"
+    ],
+    [
+     "350",
+     ".76",
+     "75.3",
+     "76.7",
+     "78.5"
+    ],
+    [
+     "310",
+     "275",
+     "74.6",
+     "75.6",
+     "76.8"
+    ],
+    [
+     "250",
+     "275",
+     "71.8",
+     "72.6",
+     "73.8"
+    ],
+    [
+     "200",
+     "275",
+     "68.4",
+     "69.3",
+     "70.4"
+    ],
+    [
+     "150",
+     "250",
+     "61.8",
+     "63.2",
+     "65.0"
+    ],
+    [
+     "100",
+     "250",
+     "57.5",
+     "58.6",
+     "60.8"
+    ]
+   ],
+   "applies_to": [
+    "HS-TXG..TXU"
+   ],
+   "refs": [
+    {
+     "book": "QRH",
+     "code": "25.08",
+     "page": "25.08A–B",
+     "pdf": 226
+    }
+   ]
+  },
+  {
+   "title": "Severe turbulence — target speed and N1 (%)",
+   "caption": "Selected weights shown; full table 44–76 t in QRH 25.08.",
+   "columns": [
+    "FL",
+    "SPD / Mach",
+    "52 t",
+    "60 t",
+    "68 t"
+   ],
+   "rows": [
+    [
+     "390",
+     "0.76",
+     "77.7",
+     "—",
+     "—"
+    ],
+    [
+     "350",
+     "0.76",
+     "75.6",
+     "77.1",
+     "79.3"
+    ],
+    [
+     "310",
+     "275",
+     "74.7",
+     "75.8",
+     "77.1"
+    ],
+    [
+     "250",
+     "275",
+     "71.0",
+     "71.9",
+     "73.2"
+    ],
+    [
+     "200",
+     "275",
+     "67.4",
+     "68.4",
+     "69.8"
+    ],
+    [
+     "150",
+     "250",
+     "61.0",
+     "62.5",
+     "64.5"
+    ],
+    [
+     "100",
+     "250",
+     "57.2",
+     "58.5",
+     "60.3"
+    ]
+   ],
+   "applies_to": [
+    "HS-TXA..TXF"
+   ],
+   "refs": [
+    {
+     "book": "QRH",
+     "code": "25.08",
+     "page": "25.08B–C",
+     "pdf": 227
+    }
+   ]
+  }
+ ],
+ "background": [
+  {
+   "text": "Most likely cause: obstruction of pitot and/or static probes; probes rarely clog identically, so the first sign is usually a discrepancy between CAPT PFD, F/O PFD and STBY.",
+   "applies_to": [
+    "all"
+   ],
+   "refs": [
+    {
+     "book": "FCTM",
+     "code": "PR-AEP-NAV",
+     "page": "P 2/20",
+     "pdf": 479
+    }
+   ]
+  },
+  {
+   "text": "Systems vote across three ADRs; two consistent but wrong ADRs can out-vote the correct one (e.g. two pitots blocked the same way).",
+   "applies_to": [
+    "all"
+   ],
+   "refs": [
+    {
+     "book": "FCTM",
+     "code": "PR-AEP-NAV",
+     "page": "P 2/20",
+     "pdf": 479
+    },
+    {
+     "book": "FCTM",
+     "code": "PR-AEP-NAV",
+     "page": "P 3/20",
+     "pdf": 480
+    }
+   ]
+  },
+  {
+   "text": "Above FL 250 unreliable speed is mostly temporary (water/ice) and clears in minutes; at low altitude it is mostly permanent.",
+   "applies_to": [
+    "all"
+   ],
+   "refs": [
+    {
+     "book": "FCTM",
+     "code": "PR-AEP-NAV",
+     "page": "P 4/20",
+     "pdf": 481
+    }
+   ]
+  },
+  {
+   "text": "Erroneous barometric altitude affects FPV, V/S and the transponder — advise ATC.",
+   "applies_to": [
+    "all"
+   ],
+   "refs": [
+    {
+     "book": "FCTM",
+     "code": "PR-AEP-NAV",
+     "page": "P 4/20",
+     "pdf": 481
+    }
+   ]
+  }
+ ],
+ "technique": [
+  {
+   "text": "Two objectives: fly the aircraft, then identify and isolate the affected ADR(s).",
+   "applies_to": [
+    "all"
+   ],
+   "refs": [
+    {
+     "book": "FCTM",
+     "code": "PR-AEP-NAV",
+     "page": "P 14/20",
+     "pdf": 491
+    }
+   ]
+  },
+  {
+   "text": "Apply the memory items when in doubt about flying safely in the short term with current parameters.",
+   "applies_to": [
+    "all"
+   ],
+   "refs": [
+    {
+     "book": "FCTM",
+     "code": "PR-AEP-NAV",
+     "page": "P 16/20",
+     "pdf": 493
+    }
+   ]
+  },
+  {
+   "text": "Rely on the STALL warning — it is AOA-based and not affected by erroneous airspeed.",
+   "applies_to": [
+    "all"
+   ],
+   "refs": [
+    {
+     "book": "FCTM",
+     "code": "PR-AEP-NAV",
+     "page": "P 15/20",
+     "pdf": 492
+    }
+   ]
+  },
+  {
+   "text": "Do not instinctively reject an outlier ADR: two or even three ADRs can give identical but erroneous data.",
+   "applies_to": [
+    "all"
+   ],
+   "refs": [
+    {
+     "book": "FCTM",
+     "code": "PR-AEP-NAV",
+     "page": "P 17–18/20",
+     "pdf": 494
+    }
+   ]
+  },
+  {
+   "text": "Change one parameter at a time (speed, altitude or configuration); GPS altitude is on the MCDU GPS MONITOR page.",
+   "applies_to": [
+    "all"
+   ],
+   "refs": [
+    {
+     "book": "FCTM",
+     "code": "PR-AEP-NAV",
+     "page": "P 17–18/20",
+     "pdf": 494
+    }
+   ]
+  },
+  {
+   "text": "Approach: early stabilised approach; configure wings level using back-up speeds (VMAX = VFE/VMO, VMIN = VSW).",
+   "applies_to": [
+    "all"
+   ],
+   "refs": [
+    {
+     "book": "FCTM",
+     "code": "PR-AEP-NAV",
+     "page": "P 14/20",
+     "pdf": 491
+    }
+   ]
+  }
+ ],
+ "related": [
+  {
+   "title": "NAV ADR 1+2+3 FAULT",
+   "why": "All ADRs switched off below FL 250",
+   "key_actions": [
+    "Apply the ECAM procedure"
+   ],
+   "refs": [
+    {
+     "book": "FCOM",
+     "code": "PRO-ABN-NAV",
+     "page": "P 3/124",
+     "pdf": 3828
+    }
+   ]
+  }
+ ],
+ "differences": [
+  {
+   "topic": "Severe turbulence N1 table",
+   "values": {
+    "HS-TXA..TXF": "QRH 25.08B–C values (e.g. FL 350, 60 t: 77.1 %)",
+    "HS-TXG..TXU": "QRH 25.08A–B values (e.g. FL 350, 60 t: 76.7 %)"
+   },
+   "refs": [
+    {
+     "book": "QRH",
+     "code": "25.08",
+     "page": "25.08A–B",
+     "pdf": 226
+    },
+    {
+     "book": "QRH",
+     "code": "25.08",
+     "page": "25.08B–C",
+     "pdf": 227
+    }
+   ]
+  }
+ ],
+ "gaps": [
+  {
+   "text": "Full pitch/thrust and severe-turbulence tables are abridged here; read the QRH tables for the actual weight.",
+   "applies_to": [
+    "all"
+   ],
+   "refs": [
+    {
+     "book": "QRH",
+     "code": "26.02",
+     "page": "26.02C",
+     "pdf": 237
+    },
+    {
+     "book": "QRH",
+     "code": "25.08",
+     "page": "25.08A–B",
+     "pdf": 226
+    }
+   ]
+  },
+  {
+   "text": "HS-TO versions (A321 weights) omitted.",
+   "applies_to": [
+    "all"
+   ],
+   "refs": [
+    {
+     "book": "FCOM",
+     "code": "PRO-ABN-NAV",
+     "page": "P 5–8/124",
+     "pdf": 3830
+    }
+   ]
+  }
+ ],
+ "sources": [
+  {
+   "book": "FCOM",
+   "section": "PRO-ABN-NAV — [MEM] UNRELIABLE SPEED INDICATION",
+   "pages": "P 1–4/124",
+   "pdf": "3826–3829",
+   "rev": "26 MAY 26"
+  },
+  {
+   "book": "QRH",
+   "section": "26.02 UNRELIABLE SPEED INDICATION",
+   "pages": "26.02A–E",
+   "pdf": "235–239",
+   "rev": "26 MAY 26"
+  },
+  {
+   "book": "QRH",
+   "section": "25.08 SEVERE TURBULENCE",
+   "pages": "25.08A–C",
+   "pdf": "226–228",
+   "rev": "18 FEB 26"
+  },
+  {
+   "book": "FCTM",
+   "section": "PR-AEP-NAV — unreliable airspeed",
+   "pages": "P 2–4, 14–16/20",
+   "pdf": "479–481, 491–493",
+   "rev": "26 MAY 26"
+  },
+  {
+   "book": "PDP",
+   "section": "Unreliable speed indication (XFTDA6UNRASPD01)",
+   "pages": "Memory item, level off, flight path stabilized",
+   "pdf": "557–561",
+   "rev": "JUN 2023"
+  }
+ ],
+ "schema": "a320-ecam-abnormal/3",
+ "generated": "2026-10-14"
+}

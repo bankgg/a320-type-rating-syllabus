@@ -1,0 +1,1087 @@
+{
+ "slug": "emer-evac",
+ "title": "EMER EVAC",
+ "kind": "qrh",
+ "alert": {
+  "level": "qrh",
+  "land_asap": "none",
+  "memory_items": false,
+  "qrh_summary": false,
+  "trigger": "Applied when considering an emergency evacuation, or when required by the ECAM (e.g. ENG FIRE on ground: EMER EVAC PROC APPLY).",
+  "inhibited_phases": [],
+  "refs": [
+   {
+    "book": "FCOM",
+    "code": "PRO-ABN-MISC",
+    "page": "P 16/30",
+    "pdf": 3811
+   }
+  ]
+ },
+ "effectivity": {
+  "branches": [],
+  "note": "FCOM HS-TX version; QRH C2 applies to ALL."
+ },
+ "summary": "A QRH procedure. The F/O runs the actions up to the decision point while the Captain decides. The decision to evacuate is irreversible once ordered; until then it can be deferred or cancelled.",
+ "key_limits": [
+  {
+   "label": "ΔP",
+   "value": "zero (check only if MAN CAB PR used)",
+   "applies_to": [
+    "all"
+   ],
+   "refs": [
+    {
+     "book": "FCOM",
+     "code": "PRO-ABN-MISC",
+     "page": "P 16/30",
+     "pdf": 3811
+    }
+   ]
+  },
+  {
+   "label": "Engine agent 2",
+   "value": "not available",
+   "applies_to": [
+    "all"
+   ],
+   "refs": [
+    {
+     "book": "FCOM",
+     "code": "PRO-ABN-MISC",
+     "page": "P 16/30",
+     "pdf": 3811
+    }
+   ]
+  }
+ ],
+ "flow": [
+  {
+   "phase": "Stop and alert (aircraft stopped)",
+   "steps": [
+    {
+     "actor": "PF",
+     "items": [
+      {
+       "kind": "callout",
+       "text": "STOP",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "FCTM",
+         "code": "PR-AEP-MISC",
+         "page": "P 6/32",
+         "pdf": 451
+        }
+       ]
+      },
+      {
+       "kind": "note",
+       "text": "After an RTO; otherwise the Captain calls \"I HAVE CONTROL\"",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "FCTM",
+         "code": "PR-AEP-MISC",
+         "page": "P 6/32",
+         "pdf": 451
+        }
+       ]
+      },
+      {
+       "kind": "action",
+       "text": "CAPT: aircraft stopped, parking brake ON",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "FCTM",
+         "code": "PR-AEP-MISC",
+         "page": "P 6/32",
+         "pdf": 451
+        }
+       ]
+      },
+      {
+       "kind": "callout",
+       "text": "CABIN CREW, AT YOUR STATIONS",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "PDP",
+         "code": "Emergency evacuation",
+         "page": "XFTDA1EMREVAC01",
+         "pdf": 493
+        }
+       ]
+      },
+      {
+       "kind": "note",
+       "text": "PA",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "PDP",
+         "code": "Emergency evacuation",
+         "page": "XFTDA1EMREVAC01",
+         "pdf": 493
+        }
+       ]
+      },
+      {
+       "kind": "callout",
+       "text": "EMERGENCY EVACUATION PROCEDURE",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "PDP",
+         "code": "Emergency evacuation",
+         "page": "XFTDA1EMREVAC01",
+         "pdf": 493
+        },
+        {
+         "book": "PDP",
+         "code": "Management of abnormal operations",
+         "page": "XFTDN6ECAM00001",
+         "pdf": 427
+        }
+       ]
+      }
+     ]
+    },
+    {
+     "actor": "PM",
+     "items": [
+      {
+       "kind": "ecam",
+       "item": "EMER EVAC PROC",
+       "setting": "PERFORM",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "PDP",
+         "code": "Emergency evacuation",
+         "page": "XFTDA1EMREVAC01",
+         "pdf": 493
+        }
+       ]
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "phase": "QRH EMER EVAC (F/O reads and does)",
+   "steps": [
+    {
+     "actor": "PM",
+     "items": [
+      {
+       "kind": "ecam",
+       "item": "AIRCRAFT / PARKING BRK",
+       "setting": "STOP / ON",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "FCOM",
+         "code": "PRO-ABN-MISC",
+         "page": "P 16/30",
+         "pdf": 3811
+        },
+        {
+         "book": "QRH",
+         "code": "C2",
+         "page": "C2",
+         "pdf": 294
+        }
+       ]
+      },
+      {
+       "kind": "ecam",
+       "item": "ATC (VHF1)",
+       "setting": "NOTIFY",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "FCOM",
+         "code": "PRO-ABN-MISC",
+         "page": "P 16/30",
+         "pdf": 3811
+        }
+       ]
+      },
+      {
+       "kind": "ecam",
+       "item": "CABIN CREW (PA)",
+       "setting": "ALERT",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "FCOM",
+         "code": "PRO-ABN-MISC",
+         "page": "P 16/30",
+         "pdf": 3811
+        }
+       ]
+      },
+      {
+       "kind": "ecam",
+       "item": "ΔP (only if MAN CAB PR has been used)",
+       "setting": "CHECK ZERO",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "FCOM",
+         "code": "PRO-ABN-MISC",
+         "page": "P 16/30",
+         "pdf": 3811
+        }
+       ]
+      },
+      {
+       "kind": "condition",
+       "text": "If ΔP not at zero",
+       "children": [
+        {
+         "kind": "ecam",
+         "item": "CAB PR MODE SEL",
+         "setting": "MAN",
+         "applies_to": [
+          "all"
+         ],
+         "refs": [
+          {
+           "book": "FCOM",
+           "code": "PRO-ABN-MISC",
+           "page": "P 16/30",
+           "pdf": 3811
+          }
+         ]
+        },
+        {
+         "kind": "ecam",
+         "item": "V/S CTL",
+         "setting": "FULL UP",
+         "applies_to": [
+          "all"
+         ],
+         "refs": [
+          {
+           "book": "FCOM",
+           "code": "PRO-ABN-MISC",
+           "page": "P 16/30",
+           "pdf": 3811
+          }
+         ]
+        }
+       ],
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "FCOM",
+         "code": "PRO-ABN-MISC",
+         "page": "P 16/30",
+         "pdf": 3811
+        }
+       ]
+      },
+      {
+       "kind": "ecam",
+       "item": "ALL ENG MASTER",
+       "setting": "OFF",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "FCOM",
+         "code": "PRO-ABN-MISC",
+         "page": "P 16/30",
+         "pdf": 3811
+        }
+       ]
+      },
+      {
+       "kind": "ecam",
+       "item": "ALL FIRE pb (ENGs & APU)",
+       "setting": "PUSH",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "FCOM",
+         "code": "PRO-ABN-MISC",
+         "page": "P 16/30",
+         "pdf": 3811
+        }
+       ]
+      },
+      {
+       "kind": "ecam",
+       "item": "ALL AGENTS (ENGs & APU)",
+       "setting": "AS RQRD",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "FCOM",
+         "code": "PRO-ABN-MISC",
+         "page": "P 16/30",
+         "pdf": 3811
+        }
+       ]
+      },
+      {
+       "kind": "note",
+       "text": "F/O may set ENG MASTERs OFF and push FIRE pbs without Captain confirmation",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "FCTM",
+         "code": "PR-AEP-MISC",
+         "page": "P 7/32",
+         "pdf": 452
+        }
+       ]
+      }
+     ]
+    },
+    {
+     "actor": "PF",
+     "items": [
+      {
+       "kind": "action",
+       "text": "CAPT builds the evacuation decision from the circumstances",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "FCTM",
+         "code": "PR-AEP-MISC",
+         "page": "P 6/32",
+         "pdf": 451
+        }
+       ]
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "phase": "Decision (Captain)",
+   "steps": [
+    {
+     "actor": "PF",
+     "items": [
+      {
+       "kind": "condition",
+       "text": "If evacuation not required",
+       "children": [
+        {
+         "kind": "callout",
+         "text": "REMAIN SEATED, RESUME NORMAL DUTIES",
+         "applies_to": [
+          "all"
+         ],
+         "refs": [
+          {
+           "book": "PDP",
+           "code": "Emergency evacuation",
+           "page": "XFTDA1EMREVAC01",
+           "pdf": 493
+          },
+          {
+           "book": "FCOM",
+           "code": "PRO-ABN-ABN-00",
+           "page": "P 9/12",
+           "pdf": 2832
+          }
+         ]
+        },
+        {
+         "kind": "note",
+         "text": "PA; notify ATC",
+         "applies_to": [
+          "all"
+         ],
+         "refs": [
+          {
+           "book": "PDP",
+           "code": "Emergency evacuation",
+           "page": "XFTDA1EMREVAC01",
+           "pdf": 493
+          },
+          {
+           "book": "FCTM",
+           "code": "PR-AEP-MISC",
+           "page": "P 7/32",
+           "pdf": 452
+          }
+         ]
+        }
+       ],
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "FCOM",
+         "code": "PRO-ABN-MISC",
+         "page": "P 16/30",
+         "pdf": 3811
+        },
+        {
+         "book": "PDP",
+         "code": "Emergency evacuation",
+         "page": "XFTDA1EMREVAC01",
+         "pdf": 493
+        }
+       ]
+      },
+      {
+       "kind": "condition",
+       "text": "If evacuation required",
+       "children": [
+        {
+         "kind": "ecam",
+         "item": "EVACUATION",
+         "setting": "INITIATE",
+         "applies_to": [
+          "all"
+         ],
+         "refs": [
+          {
+           "book": "FCOM",
+           "code": "PRO-ABN-MISC",
+           "page": "P 16/30",
+           "pdf": 3811
+          },
+          {
+           "book": "PDP",
+           "code": "Emergency evacuation",
+           "page": "XFTDA1EMREVAC01",
+           "pdf": 493
+          }
+         ]
+        },
+        {
+         "kind": "callout",
+         "text": "EVACUATE, EVACUATE",
+         "applies_to": [
+          "all"
+         ],
+         "refs": [
+          {
+           "book": "PDP",
+           "code": "Emergency evacuation",
+           "page": "XFTDA1EMREVAC01",
+           "pdf": 493
+          },
+          {
+           "book": "FCOM",
+           "code": "PRO-ABN-ABN-00",
+           "page": "P 9/12",
+           "pdf": 2832
+          }
+         ]
+        },
+        {
+         "kind": "ecam",
+         "item": "EVAC COMMAND pb",
+         "setting": "PRESS",
+         "applies_to": [
+          "all"
+         ],
+         "refs": [
+          {
+           "book": "PDP",
+           "code": "Emergency evacuation",
+           "page": "XFTDA1EMREVAC01",
+           "pdf": 493
+          },
+          {
+           "book": "FCOM",
+           "code": "PRO-ABN-MISC",
+           "page": "P 16/30",
+           "pdf": 3811
+          }
+         ]
+        },
+        {
+         "kind": "note",
+         "text": "Advise ATC if required",
+         "applies_to": [
+          "all"
+         ],
+         "refs": [
+          {
+           "book": "FCTM",
+           "code": "PR-AEP-MISC",
+           "page": "P 7/32",
+           "pdf": 452
+          }
+         ]
+        }
+       ],
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "FCOM",
+         "code": "PRO-ABN-MISC",
+         "page": "P 16/30",
+         "pdf": 3811
+        },
+        {
+         "book": "PDP",
+         "code": "Emergency evacuation",
+         "page": "XFTDA1EMREVAC01",
+         "pdf": 493
+        }
+       ]
+      }
+     ]
+    },
+    {
+     "actor": "PM",
+     "items": [
+      {
+       "kind": "condition",
+       "text": "If evacuation required",
+       "children": [
+        {
+         "kind": "ecam",
+         "item": "EMER EVAC PROC",
+         "setting": "CONTINUE",
+         "applies_to": [
+          "all"
+         ],
+         "refs": [
+          {
+           "book": "PDP",
+           "code": "Emergency evacuation",
+           "page": "XFTDA1EMREVAC01",
+           "pdf": 493
+          }
+         ]
+        },
+        {
+         "kind": "callout",
+         "text": "EMERGENCY EVACUATION PROCEDURE COMPLETED",
+         "applies_to": [
+          "all"
+         ],
+         "refs": [
+          {
+           "book": "PDP",
+           "code": "Emergency evacuation",
+           "page": "XFTDA1EMREVAC01",
+           "pdf": 493
+          }
+         ]
+        }
+       ],
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "PDP",
+         "code": "Emergency evacuation",
+         "page": "XFTDA1EMREVAC01",
+         "pdf": 493
+        }
+       ]
+      }
+     ]
+    },
+    {
+     "actor": "BOTH",
+     "items": [
+      {
+       "kind": "note",
+       "text": "Then the flight crew evacuates",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "PDP",
+         "code": "Emergency evacuation",
+         "page": "XFTDA1EMREVAC01",
+         "pdf": 493
+        }
+       ]
+      }
+     ]
+    }
+   ]
+  }
+ ],
+ "procedures": [
+  {
+   "title": "QRH procedure",
+   "source": "FCOM PRO-ABN-MISC [QRH] / QRH C2",
+   "lines": [
+    {
+     "kind": "action",
+     "item": "AIRCRAFT / PARKING BRK",
+     "setting": "STOP / ON",
+     "text": "",
+     "level": 0,
+     "applies_to": [
+      "all"
+     ],
+     "refs": [
+      {
+       "book": "FCOM",
+       "code": "PRO-ABN-MISC",
+       "page": "P 16/30",
+       "pdf": 3811
+      },
+      {
+       "book": "QRH",
+       "code": "C2",
+       "page": "C2",
+       "pdf": 294
+      }
+     ]
+    },
+    {
+     "kind": "action",
+     "item": "ATC (VHF1)",
+     "setting": "NOTIFY",
+     "text": "Only VHF 1 is available on batteries.",
+     "level": 0,
+     "applies_to": [
+      "all"
+     ],
+     "refs": [
+      {
+       "book": "FCOM",
+       "code": "PRO-ABN-MISC",
+       "page": "P 16/30",
+       "pdf": 3811
+      }
+     ]
+    },
+    {
+     "kind": "action",
+     "item": "CABIN CREW (PA)",
+     "setting": "ALERT",
+     "text": "Short announcement: evacuation may be required.",
+     "level": 0,
+     "applies_to": [
+      "all"
+     ],
+     "refs": [
+      {
+       "book": "FCOM",
+       "code": "PRO-ABN-MISC",
+       "page": "P 16/30",
+       "pdf": 3811
+      }
+     ]
+    },
+    {
+     "kind": "action",
+     "item": "ΔP (only if MAN CAB PR has been used)",
+     "setting": "CHECK ZERO",
+     "text": "",
+     "level": 0,
+     "applies_to": [
+      "all"
+     ],
+     "refs": [
+      {
+       "book": "FCOM",
+       "code": "PRO-ABN-MISC",
+       "page": "P 16/30",
+       "pdf": 3811
+      }
+     ]
+    },
+    {
+     "kind": "condition",
+     "text": "If ΔP not at zero:",
+     "level": 0,
+     "applies_to": [
+      "all"
+     ],
+     "refs": [
+      {
+       "book": "FCOM",
+       "code": "PRO-ABN-MISC",
+       "page": "P 16/30",
+       "pdf": 3811
+      }
+     ]
+    },
+    {
+     "kind": "action",
+     "item": "CAB PR MODE SEL",
+     "setting": "MAN",
+     "text": "",
+     "level": 1,
+     "applies_to": [
+      "all"
+     ],
+     "refs": [
+      {
+       "book": "FCOM",
+       "code": "PRO-ABN-MISC",
+       "page": "P 16/30",
+       "pdf": 3811
+      }
+     ]
+    },
+    {
+     "kind": "action",
+     "item": "V/S CTL",
+     "setting": "FULL UP",
+     "text": "",
+     "level": 1,
+     "applies_to": [
+      "all"
+     ],
+     "refs": [
+      {
+       "book": "FCOM",
+       "code": "PRO-ABN-MISC",
+       "page": "P 16/30",
+       "pdf": 3811
+      }
+     ]
+    },
+    {
+     "kind": "action",
+     "item": "ALL ENG MASTER",
+     "setting": "OFF",
+     "text": "",
+     "level": 0,
+     "applies_to": [
+      "all"
+     ],
+     "refs": [
+      {
+       "book": "FCOM",
+       "code": "PRO-ABN-MISC",
+       "page": "P 16/30",
+       "pdf": 3811
+      }
+     ]
+    },
+    {
+     "kind": "action",
+     "item": "ALL FIRE pb (ENGs & APU)",
+     "setting": "PUSH",
+     "text": "",
+     "level": 0,
+     "applies_to": [
+      "all"
+     ],
+     "refs": [
+      {
+       "book": "FCOM",
+       "code": "PRO-ABN-MISC",
+       "page": "P 16/30",
+       "pdf": 3811
+      }
+     ]
+    },
+    {
+     "kind": "action",
+     "item": "ALL AGENTS (ENGs & APU)",
+     "setting": "AS RQRD",
+     "text": "Engine agent 2 not available; agents required if ENG or APU FIRE displayed.",
+     "level": 0,
+     "applies_to": [
+      "all"
+     ],
+     "refs": [
+      {
+       "book": "FCOM",
+       "code": "PRO-ABN-MISC",
+       "page": "P 16/30",
+       "pdf": 3811
+      }
+     ]
+    },
+    {
+     "kind": "condition",
+     "text": "If evacuation required:",
+     "level": 0,
+     "applies_to": [
+      "all"
+     ],
+     "refs": [
+      {
+       "book": "FCOM",
+       "code": "PRO-ABN-MISC",
+       "page": "P 16/30",
+       "pdf": 3811
+      }
+     ]
+    },
+    {
+     "kind": "action",
+     "item": "EVACUATION",
+     "setting": "INITIATE",
+     "text": "Announce the evacuation; press the EVAC COMMAND pb.",
+     "level": 1,
+     "applies_to": [
+      "all"
+     ],
+     "refs": [
+      {
+       "book": "FCOM",
+       "code": "PRO-ABN-MISC",
+       "page": "P 16/30",
+       "pdf": 3811
+      }
+     ]
+    },
+    {
+     "kind": "condition",
+     "text": "If evacuation not required:",
+     "level": 0,
+     "applies_to": [
+      "all"
+     ],
+     "refs": [
+      {
+       "book": "FCOM",
+       "code": "PRO-ABN-MISC",
+       "page": "P 16/30",
+       "pdf": 3811
+      }
+     ]
+    },
+    {
+     "kind": "action",
+     "item": "CABIN CREW AND PASSENGERS (PA)",
+     "setting": "NOTIFY",
+     "text": "",
+     "level": 1,
+     "applies_to": [
+      "all"
+     ],
+     "refs": [
+      {
+       "book": "FCOM",
+       "code": "PRO-ABN-MISC",
+       "page": "P 16/30",
+       "pdf": 3811
+      }
+     ]
+    }
+   ]
+  }
+ ],
+ "status": null,
+ "qrh": [],
+ "tables": [],
+ "background": [
+  {
+   "text": "Typical causes: uncontrollable fire, smoke/fumes — during taxi, after a rejected takeoff or after landing.",
+   "applies_to": [
+    "all"
+   ],
+   "refs": [
+    {
+     "book": "FCTM",
+     "code": "PR-AEP-MISC",
+     "page": "P 6/32",
+     "pdf": 451
+    }
+   ]
+  },
+  {
+   "text": "With engines stopped only the right dome light works; on batteries the crew seats must be moved mechanically.",
+   "applies_to": [
+    "all"
+   ],
+   "refs": [
+    {
+     "book": "FCTM",
+     "code": "PR-AEP-MISC",
+     "page": "P 6/32",
+     "pdf": 451
+    },
+    {
+     "book": "FCTM",
+     "code": "PR-AEP-MISC",
+     "page": "P 7/32",
+     "pdf": 452
+    }
+   ]
+  }
+ ],
+ "technique": [
+  {
+   "text": "\"CABIN CREW (PA)…ALERT\" tells the cabin the flight crew still controls the situation and prevents an unwanted cabin-initiated evacuation (done in the RTO flow).",
+   "applies_to": [
+    "all"
+   ],
+   "refs": [
+    {
+     "book": "FCTM",
+     "code": "PR-AEP-MISC",
+     "page": "P 7/32",
+     "pdf": 452
+    }
+   ]
+  },
+  {
+   "text": "ΔP check does not apply after an RTO: at least one automatic pressure system is required for departure.",
+   "applies_to": [
+    "all"
+   ],
+   "refs": [
+    {
+     "book": "FCTM",
+     "code": "PR-AEP-MISC",
+     "page": "P 7/32",
+     "pdf": 452
+    }
+   ]
+  },
+  {
+   "text": "\"EVACUATION…INITIATE\" = notify cabin crew, press EVAC COMMAND, advise ATC — preferably in this order.",
+   "applies_to": [
+    "all"
+   ],
+   "refs": [
+    {
+     "book": "FCTM",
+     "code": "PR-AEP-MISC",
+     "page": "P 7/32",
+     "pdf": 452
+    }
+   ]
+  },
+  {
+   "text": "Until the order is given the evacuation can be deferred or cancelled; once ordered it is irreversible.",
+   "applies_to": [
+    "all"
+   ],
+   "refs": [
+    {
+     "book": "FCTM",
+     "code": "PR-AEP-MISC",
+     "page": "P 7/32",
+     "pdf": 452
+    }
+   ]
+  }
+ ],
+ "related": [
+  {
+   "title": "ENG 1(2) FIRE (ON GROUND) · RTO",
+   "why": "Engine fire on ground not extinguished",
+   "key_actions": [
+    "AGENT 1+2 DISCH → EMER EVAC PROC APPLY"
+   ],
+   "refs": [
+    {
+     "book": "FCOM",
+     "code": "PRO-ABN-ENG",
+     "page": "P 93/226",
+     "pdf": 3340
+    }
+   ]
+  }
+ ],
+ "differences": [],
+ "gaps": [
+  {
+   "text": "Company (THAI) phraseology is used instead of the generic Airbus/FCOM wording: “CABIN CREW, AT YOUR STATIONS” (PDP/FCOM: “ATTENTION CREW AT STATIONS”) and “REMAIN SEATED, RESUME NORMAL DUTIES” (PDP/FCOM: “CABIN CREW and PASSENGERS REMAIN SEATED”).",
+   "applies_to": [
+    "all"
+   ],
+   "refs": [
+    {
+     "book": "FCOM",
+     "code": "PRO-ABN-ABN-00",
+     "page": "P 9/12",
+     "pdf": 2832
+    }
+   ]
+  },
+  {
+   "text": "HS-TO version omitted (FCOM PRO-ABN-MISC P 15/30).",
+   "applies_to": [
+    "all"
+   ],
+   "refs": [
+    {
+     "book": "FCOM",
+     "code": "PRO-ABN-MISC",
+     "page": "P 15/30",
+     "pdf": 3810
+    }
+   ]
+  }
+ ],
+ "sources": [
+  {
+   "book": "FCOM",
+   "section": "PRO-ABN-MISC — [QRH] EMER EVAC",
+   "pages": "P 16/30",
+   "pdf": "3811",
+   "rev": "18 FEB 26"
+  },
+  {
+   "book": "QRH",
+   "section": "C2 EMER EVAC",
+   "pages": "C2",
+   "pdf": "294–295",
+   "rev": "22 MAR 17"
+  },
+  {
+   "book": "FCTM",
+   "section": "PR-AEP-MISC — EMER EVAC",
+   "pages": "P 6–7/32",
+   "pdf": "451–452",
+   "rev": "26 MAY 26"
+  },
+  {
+   "book": "PDP",
+   "section": "Emergency evacuation (XFTDA1EMREVAC01)",
+   "pages": "CAPT / F/O task sharing",
+   "pdf": "492–493",
+   "rev": "JAN 2024"
+  }
+ ],
+ "schema": "a320-ecam-abnormal/3",
+ "generated": "2026-10-14"
+}

@@ -1,0 +1,416 @@
+{
+ "slug": "fws-sdac-1-2-fault",
+ "title": "FWS SDAC 1 + 2 FAULT",
+ "kind": "ecam",
+ "alert": {
+  "level": "caution",
+  "land_asap": "none",
+  "memory_items": false,
+  "qrh_summary": false,
+  "trigger": "Both SDAC 1 and SDAC 2 have failed.",
+  "inhibited_phases": [
+   4,
+   5,
+   7,
+   8
+  ],
+  "refs": [
+   {
+    "book": "FCOM",
+    "code": "PRO-ABN-FWS",
+    "page": "P 6/8",
+    "pdf": 3687
+   }
+  ]
+ },
+ "effectivity": {
+  "branches": [],
+  "note": "Applicable to ALL."
+ },
+ "summary": "Both system data acquisition concentrators are lost, so some amber cautions will not appear. Red warnings, engine and fuel parameters and slat/flap positions stay on the upper ECAM. Watch the overhead panel for local fault lights; only the ENG, FUEL, F/CTL and WHEEL (gear position) SD pages remain.",
+ "key_limits": [
+  {
+   "label": "Lost",
+   "value": "some amber cautions",
+   "applies_to": [
+    "all"
+   ],
+   "refs": [
+    {
+     "book": "FCOM",
+     "code": "PRO-ABN-FWS",
+     "page": "P 6/8",
+     "pdf": 3687
+    }
+   ]
+  },
+  {
+   "label": "SD pages left",
+   "value": "ENG · FUEL · F/CTL · WHEEL",
+   "applies_to": [
+    "all"
+   ],
+   "refs": [
+    {
+     "book": "FCOM",
+     "code": "PRO-ABN-FWS",
+     "page": "P 6/8",
+     "pdf": 3687
+    }
+   ]
+  }
+ ],
+ "flow": [
+  {
+   "phase": "Recognise",
+   "steps": [
+    {
+     "actor": "PM",
+     "items": [
+      {
+       "kind": "callout",
+       "text": "SDAC 1 + 2 FAULT",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "FCTM",
+         "code": "AOP-30-30",
+         "page": "P 2/6",
+         "pdf": 83
+        },
+        {
+         "book": "FCOM",
+         "code": "PRO-ABN-FWS",
+         "page": "P 6/8",
+         "pdf": 3687
+        }
+       ]
+      }
+     ]
+    },
+    {
+     "actor": "PF",
+     "items": [
+      {
+       "kind": "callout",
+       "text": "ECAM ACTION",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "FCOM",
+         "code": "PRO-ABN-ABN-00",
+         "page": "P 8/12",
+         "pdf": 2831
+        }
+       ]
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "phase": "Procedure",
+   "steps": [
+    {
+     "actor": "PM",
+     "items": [
+      {
+       "kind": "ecam",
+       "item": "MONITOR OVERHEAD PANEL",
+       "setting": "—",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "FCOM",
+         "code": "PRO-ABN-FWS",
+         "page": "P 6/8",
+         "pdf": 3687
+        }
+       ]
+      },
+      {
+       "kind": "note",
+       "text": "ECAM ENG FUEL F/CTL WHEEL (L/G POS IND) SYS PAGES AVAIL",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "FCOM",
+         "code": "PRO-ABN-FWS",
+         "page": "P 6/8",
+         "pdf": 3687
+        }
+       ]
+      }
+     ]
+    },
+    {
+     "actor": "PF",
+     "items": [
+      {
+       "kind": "action",
+       "text": "Red warnings, ENG/FUEL parameters and slat/flap position remain on the upper ECAM",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "FCOM",
+         "code": "PRO-ABN-FWS",
+         "page": "P 6/8",
+         "pdf": 3687
+        }
+       ]
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "phase": "STATUS",
+   "steps": [
+    {
+     "actor": "PM",
+     "items": [
+      {
+       "kind": "callout",
+       "text": "CLEAR FWS ?",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "FCOM",
+         "code": "PRO-ABN-ABN-00",
+         "page": "P 8/12",
+         "pdf": 2831
+        }
+       ]
+      }
+     ]
+    },
+    {
+     "actor": "PF",
+     "items": [
+      {
+       "kind": "callout",
+       "text": "CLEAR FWS",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "FCOM",
+         "code": "PRO-ABN-ABN-00",
+         "page": "P 8/12",
+         "pdf": 2831
+        }
+       ]
+      }
+     ]
+    },
+    {
+     "actor": "PM",
+     "items": [
+      {
+       "kind": "action",
+       "text": "INOP SYS: SDAC 1 + 2",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "FCOM",
+         "code": "PRO-ABN-FWS",
+         "page": "P 6/8",
+         "pdf": 3687
+        }
+       ]
+      }
+     ]
+    },
+    {
+     "actor": "PF",
+     "items": [
+      {
+       "kind": "callout",
+       "text": "REMOVE STATUS",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "FCOM",
+         "code": "PRO-ABN-ABN-00",
+         "page": "P 8/12",
+         "pdf": 2831
+        }
+       ]
+      }
+     ]
+    },
+    {
+     "actor": "PM",
+     "items": [
+      {
+       "kind": "callout",
+       "text": "ECAM ACTIONS COMPLETE",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "FCOM",
+         "code": "PRO-ABN-ABN-00",
+         "page": "P 8/12",
+         "pdf": 2831
+        }
+       ]
+      }
+     ]
+    }
+   ]
+  }
+ ],
+ "procedures": [
+  {
+   "title": "ECAM procedure",
+   "source": "FCOM PRO-ABN-FWS",
+   "lines": [
+    {
+     "kind": "action",
+     "item": "MONITOR OVERHEAD PANEL",
+     "setting": "—",
+     "text": "Some amber cautions are lost.",
+     "level": 0,
+     "applies_to": [
+      "all"
+     ],
+     "refs": [
+      {
+       "book": "FCOM",
+       "code": "PRO-ABN-FWS",
+       "page": "P 6/8",
+       "pdf": 3687
+      }
+     ]
+    },
+    {
+     "kind": "note",
+     "text": "All red warnings, engine and fuel parameters, and slat/flap positions are available on ECAM upper DU.",
+     "level": 0,
+     "applies_to": [
+      "all"
+     ],
+     "refs": [
+      {
+       "book": "FCOM",
+       "code": "PRO-ABN-FWS",
+       "page": "P 6/8",
+       "pdf": 3687
+      }
+     ]
+    },
+    {
+     "kind": "info",
+     "text": "ECAM ENG FUEL F/CTL WHEEL (L/G POS IND) SYS PAGES AVAIL.",
+     "level": 0,
+     "applies_to": [
+      "all"
+     ],
+     "refs": [
+      {
+       "book": "FCOM",
+       "code": "PRO-ABN-FWS",
+       "page": "P 6/8",
+       "pdf": 3687
+      }
+     ]
+    }
+   ]
+  }
+ ],
+ "status": {
+  "limitations": [],
+  "info": [],
+  "appr_proc": [],
+  "inop_sys": [
+   {
+    "text": "SDAC 1 + 2",
+    "applies_to": [
+     "all"
+    ],
+    "refs": [
+     {
+      "book": "FCOM",
+      "code": "PRO-ABN-FWS",
+      "page": "P 6/8",
+      "pdf": 3687
+     }
+    ]
+   }
+  ]
+ },
+ "qrh": [],
+ "tables": [],
+ "background": [],
+ "technique": [],
+ "related": [
+  {
+   "title": "FWS FWC 1 + 2 FAULT",
+   "why": "Related FWS failure",
+   "key_actions": [
+    "See the FWC brief"
+   ],
+   "refs": [
+    {
+     "book": "FCOM",
+     "code": "PRO-ABN-FWS",
+     "page": "P 3/8",
+     "pdf": 3684
+    }
+   ]
+  }
+ ],
+ "differences": [],
+ "gaps": [
+  {
+   "text": "No SDAC entry in the QRH system reset table and no FCTM technique for this alert in the supplied manuals; the syllabus \"reset\" is not described in books/.",
+   "applies_to": [
+    "all"
+   ],
+   "refs": [
+    {
+     "book": "FCOM",
+     "code": "PRO-ABN-FWS",
+     "page": "P 6/8",
+     "pdf": 3687
+    },
+    {
+     "book": "QRH",
+     "code": "02.01",
+     "page": "02.01A",
+     "pdf": 50
+    }
+   ]
+  }
+ ],
+ "sources": [
+  {
+   "book": "FCOM",
+   "section": "PRO-ABN-FWS — FWS SDAC 1 + 2 FAULT",
+   "pages": "P 6/8",
+   "pdf": "3687",
+   "rev": "26 MAY 26"
+  }
+ ],
+ "schema": "a320-ecam-abnormal/3",
+ "generated": "2026-10-14"
+}

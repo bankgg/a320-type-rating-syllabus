@@ -1,0 +1,541 @@
+{
+ "slug": "mechanical-backup",
+ "title": "MECHANICAL BACKUP",
+ "kind": "technique",
+ "alert": {
+  "level": "technique",
+  "land_asap": "none",
+  "memory_items": false,
+  "qrh_summary": false,
+  "trigger": "No ECAM alert of its own. The last level of flight control reconfiguration: it covers a temporary total electrical loss, the temporary loss of the five fly-by-wire computers, the loss of both elevators, or the total loss of ailerons and spoilers. The PFDs show MAN PITCH TRIM ONLY in red.",
+  "inhibited_phases": [],
+  "refs": [
+   {
+    "book": "FCOM",
+    "code": "DSC-27-20-20",
+    "page": "P 18/20",
+    "pdf": 1629
+   },
+   {
+    "book": "FCOM",
+    "code": "DSC-27-20-20",
+    "page": "P 19/20",
+    "pdf": 1630
+   },
+   {
+    "book": "FCTM",
+    "code": "AOP-10-30-20",
+    "page": "P 2/2",
+    "pdf": 63
+   }
+  ]
+ },
+ "effectivity": {
+  "branches": [],
+  "note": "Applicable to ALL (FCOM DSC and FCTM)."
+ },
+ "summary": "When the fly-by-wire control is lost, the aircraft is flown mechanically: pitch with the pitch trim wheel (THS), lateral with the rudder pedals. The aim is not accurate flying but a safe, stabilized attitude while the lost systems are restored. Move the trim wheel smoothly, because the THS is very powerful. Rudder makes the aircraft roll after a short delay, so apply some rudder, wait, and release early to level the wings.",
+ "key_limits": [
+  {
+   "label": "Pitch",
+   "value": "Pitch trim wheel (THS)",
+   "applies_to": [
+    "all"
+   ],
+   "refs": [
+    {
+     "book": "FCOM",
+     "code": "DSC-27-20-20",
+     "page": "P 19/20",
+     "pdf": 1630
+    },
+    {
+     "book": "FCTM",
+     "code": "AOP-10-30-20",
+     "page": "P 2/2",
+     "pdf": 63
+    }
+   ]
+  },
+  {
+   "label": "Lateral",
+   "value": "Rudder pedals",
+   "applies_to": [
+    "all"
+   ],
+   "refs": [
+    {
+     "book": "FCOM",
+     "code": "DSC-27-20-20",
+     "page": "P 19/20",
+     "pdf": 1630
+    },
+    {
+     "book": "FCTM",
+     "code": "AOP-10-30-20",
+     "page": "P 2/2",
+     "pdf": 63
+    }
+   ]
+  },
+  {
+   "label": "THS needs",
+   "value": "G or Y hydraulic",
+   "applies_to": [
+    "all"
+   ],
+   "refs": [
+    {
+     "book": "FCOM",
+     "code": "DSC-27-10-20",
+     "page": "P 3/16",
+     "pdf": 1568
+    }
+   ]
+  },
+  {
+   "label": "PFD",
+   "value": "MAN PITCH TRIM ONLY (red)",
+   "applies_to": [
+    "all"
+   ],
+   "refs": [
+    {
+     "book": "FCOM",
+     "code": "DSC-27-20-20",
+     "page": "P 19/20",
+     "pdf": 1630
+    }
+   ]
+  }
+ ],
+ "flow": [
+  {
+   "phase": "Recognise",
+   "steps": [
+    {
+     "actor": "BOTH",
+     "items": [
+      {
+       "kind": "action",
+       "text": "PFDs show MAN PITCH TRIM ONLY in red",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "FCOM",
+         "code": "DSC-27-20-20",
+         "page": "P 19/20",
+         "pdf": 1630
+        },
+        {
+         "book": "FCOM",
+         "code": "DSC-22_30-80-20",
+         "page": "P 26/36",
+         "pdf": 1251
+        }
+       ]
+      },
+      {
+       "kind": "note",
+       "text": "Objective: keep the aircraft attitude safe and stabilized, not accurate flying, to allow restoration of the lost systems",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "FCTM",
+         "code": "AOP-10-30-20",
+         "page": "P 2/2",
+         "pdf": 63
+        }
+       ]
+      }
+     ]
+    },
+    {
+     "actor": "PF",
+     "items": [
+      {
+       "kind": "action",
+       "text": "Fly the aircraft: pitch trim wheel for pitch, rudder pedals for lateral control",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "FCOM",
+         "code": "DSC-27-20-20",
+         "page": "P 19/20",
+         "pdf": 1630
+        },
+        {
+         "book": "FCTM",
+         "code": "AOP-10-30-20",
+         "page": "P 2/2",
+         "pdf": 63
+        }
+       ]
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "phase": "Pitch control",
+   "steps": [
+    {
+     "actor": "PF",
+     "items": [
+      {
+       "kind": "action",
+       "text": "Use the pitch trim wheel to control pitch; apply any action smoothly — the THS effect is significant due to its large size",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "FCTM",
+         "code": "AOP-10-30-20",
+         "page": "P 2/2",
+         "pdf": 63
+        }
+       ]
+      },
+      {
+       "kind": "note",
+       "text": "Mechanical THS control is available at any time if the green or yellow hydraulic system works; the trim wheel has priority over electrical control",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "FCOM",
+         "code": "DSC-27-10-20",
+         "page": "P 3/16",
+         "pdf": 1568
+        },
+        {
+         "book": "FCOM",
+         "code": "DSC-27-20-30",
+         "page": "P 2/22",
+         "pdf": 1633
+        }
+       ]
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "phase": "Lateral control",
+   "steps": [
+    {
+     "actor": "PF",
+     "items": [
+      {
+       "kind": "action",
+       "text": "Apply some rudder to turn and wait for the aircraft reaction — rudder induces a significant roll with a slight delay",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "FCTM",
+         "code": "AOP-10-30-20",
+         "page": "P 2/2",
+         "pdf": 63
+        }
+       ]
+      },
+      {
+       "kind": "action",
+       "text": "To stabilize and level the wings, anticipate by releasing the rudder pedals",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "FCTM",
+         "code": "AOP-10-30-20",
+         "page": "P 2/2",
+         "pdf": 63
+        }
+       ]
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "phase": "Restore",
+   "steps": [
+    {
+     "actor": "PM",
+     "items": [
+      {
+       "kind": "action",
+       "text": "Restore the lost systems with the ECAM / QRH procedures of the failure that caused the mechanical backup",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "FCTM",
+         "code": "AOP-10-30-20",
+         "page": "P 2/2",
+         "pdf": 63
+        },
+        {
+         "book": "FCTM",
+         "code": "AOP-30-30",
+         "page": "P 1/6",
+         "pdf": 82
+        }
+       ]
+      }
+     ]
+    },
+    {
+     "actor": "PF",
+     "items": [
+      {
+       "kind": "note",
+       "text": "Fly, navigate, communicate in this order",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "FCTM",
+         "code": "AOP-40",
+         "page": "P 1/4",
+         "pdf": 96
+        }
+       ]
+      }
+     ]
+    }
+   ]
+  }
+ ],
+ "procedures": [],
+ "status": null,
+ "background": [
+  {
+   "text": "Three levels of reconfiguration: alternate law, direct law, mechanical.",
+   "applies_to": [
+    "all"
+   ],
+   "refs": [
+    {
+     "book": "FCOM",
+     "code": "DSC-27-20-20",
+     "page": "P 1/20",
+     "pdf": 1612
+    }
+   ]
+  },
+  {
+   "text": "The purpose of the mechanical backup is to achieve all safety objectives in MMEL dispatch condition: to manage a temporary and total electrical loss, the temporary loss of five fly-by-wire computers, the loss of both elevators, or the total loss of ailerons and spoilers.",
+   "applies_to": [
+    "all"
+   ],
+   "refs": [
+    {
+     "book": "FCOM",
+     "code": "DSC-27-20-20",
+     "page": "P 18/20",
+     "pdf": 1629
+    }
+   ]
+  },
+  {
+   "text": "Pitch: the pilot manually applies trim to the THS; the PFDs display MAN PITCH TRIM ONLY in red. Lateral: the pilot uses the rudder pedals.",
+   "applies_to": [
+    "all"
+   ],
+   "refs": [
+    {
+     "book": "FCOM",
+     "code": "DSC-27-20-20",
+     "page": "P 19/20",
+     "pdf": 1630
+    }
+   ]
+  },
+  {
+   "text": "MAN PITCH TRIM ONLY is displayed on the FMA (line 3) in case of loss of L + R elevators.",
+   "applies_to": [
+    "all"
+   ],
+   "refs": [
+    {
+     "book": "FCOM",
+     "code": "DSC-22_30-80-20",
+     "page": "P 26/36",
+     "pdf": 1251
+    }
+   ]
+  },
+  {
+   "text": "The pilots can use conventional rudder pedals to control the rudder mechanically.",
+   "applies_to": [
+    "all"
+   ],
+   "refs": [
+    {
+     "book": "FCOM",
+     "code": "DSC-27-10-20",
+     "page": "P 13/16",
+     "pdf": 1578
+    }
+   ]
+  },
+  {
+   "text": "Pitch trim wheels: mechanical control of the THS, priority over electrical control; an action on the wheel disconnects the AP.",
+   "applies_to": [
+    "all"
+   ],
+   "refs": [
+    {
+     "book": "FCOM",
+     "code": "DSC-27-20-30",
+     "page": "P 2/22",
+     "pdf": 1633
+    }
+   ]
+  }
+ ],
+ "technique": [
+  {
+   "text": "The objective is not to fly the aircraft accurately, but to maintain the aircraft attitude safe and stabilized, in order to allow the restoration of lost systems.",
+   "applies_to": [
+    "all"
+   ],
+   "refs": [
+    {
+     "book": "FCTM",
+     "code": "AOP-10-30-20",
+     "page": "P 2/2",
+     "pdf": 63
+    }
+   ]
+  },
+  {
+   "text": "Pitch: pitch trim wheel, applied smoothly — the THS effect is significant due to its large size.",
+   "applies_to": [
+    "all"
+   ],
+   "refs": [
+    {
+     "book": "FCTM",
+     "code": "AOP-10-30-20",
+     "page": "P 2/2",
+     "pdf": 63
+    }
+   ]
+  },
+  {
+   "text": "Lateral: rudder gives a significant roll with a slight delay. Apply some rudder to turn and wait; release the pedals early to stabilize and level the wings.",
+   "applies_to": [
+    "all"
+   ],
+   "refs": [
+    {
+     "book": "FCTM",
+     "code": "AOP-10-30-20",
+     "page": "P 2/2",
+     "pdf": 63
+    }
+   ]
+  }
+ ],
+ "related": [],
+ "gaps": [
+  {
+   "text": "There is no ECAM or QRH procedure titled mechanical backup in the supplied manuals; the brief uses FCOM DSC-27 and FCTM AOP-10-30-20 only.",
+   "applies_to": [
+    "all"
+   ],
+   "refs": [
+    {
+     "book": "FCOM",
+     "code": "DSC-27-20-20",
+     "page": "P 18/20",
+     "pdf": 1629
+    },
+    {
+     "book": "FCTM",
+     "code": "AOP-10-30-20",
+     "page": "P 2/2",
+     "pdf": 63
+    }
+   ]
+  },
+  {
+   "text": "No PDP slide covers mechanical-backup handling, and no callouts or thrust technique are given for it.",
+   "applies_to": [
+    "all"
+   ],
+   "refs": [
+    {
+     "book": "FCTM",
+     "code": "AOP-10-30-20",
+     "page": "P 2/2",
+     "pdf": 63
+    }
+   ]
+  },
+  {
+   "text": "Which ECAM alerts accompany the mechanical backup depends on the causing failure (electrical, fly-by-wire computers, elevators); those procedures are not reproduced here.",
+   "applies_to": [
+    "all"
+   ],
+   "refs": [
+    {
+     "book": "FCOM",
+     "code": "DSC-27-20-20",
+     "page": "P 18/20",
+     "pdf": 1629
+    }
+   ]
+  }
+ ],
+ "sources": [
+  {
+   "book": "FCOM",
+   "section": "DSC-27-20-20 — reconfiguration, mechanical back-up",
+   "pages": "P 1/20, 18–19/20",
+   "pdf": "1612, 1629–1630",
+   "rev": "18 FEB 26"
+  },
+  {
+   "book": "FCOM",
+   "section": "DSC-27-10-20 / DSC-27-20-30 — THS mechanical control, rudder, pitch trim wheel",
+   "pages": "P 3/16, 13/16 · P 2/22",
+   "pdf": "1568, 1578, 1633",
+   "rev": "18 FEB 26"
+  },
+  {
+   "book": "FCOM",
+   "section": "DSC-22_30-80-20 — FMA MAN PITCH TRIM ONLY",
+   "pages": "P 26/36",
+   "pdf": "1251",
+   "rev": "26 MAY 26"
+  },
+  {
+   "book": "FCTM",
+   "section": "AOP-10-30-20 — mechanical backup",
+   "pages": "P 2/2",
+   "pdf": "63",
+   "rev": "25 FEB 25"
+  }
+ ],
+ "schema": "a320-ecam-abnormal/3",
+ "generated": "2026-10-14",
+ "qrh": [],
+ "tables": [],
+ "differences": []
+}

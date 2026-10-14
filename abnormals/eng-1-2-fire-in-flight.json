@@ -1,0 +1,1140 @@
+{
+ "slug": "eng-1-2-fire-in-flight",
+ "title": "ENG 1(2) FIRE (IN FLIGHT)",
+ "kind": "ecam",
+ "alert": {
+  "level": "warning",
+  "land_asap": "red",
+  "memory_items": false,
+  "qrh_summary": false,
+  "trigger": "Fire detected by both loops, or by one loop with the other faulty, or both loops ruptured within 5 s.",
+  "inhibited_phases": [],
+  "refs": [
+   {
+    "book": "FCOM",
+    "code": "PRO-ABN-ENG",
+    "page": "P 90/226",
+    "pdf": 3337
+   }
+  ]
+ },
+ "effectivity": {
+  "branches": [],
+  "note": "Applicable to ALL."
+ },
+ "summary": "A red engine-fire warning in flight. Once the path is safe the crew applies the fire procedure without delay: idle, master off, fire pb, agent 1 after 10 s, and agent 2 if the fire is still there 30 s later. When the fire is out, ENG 1(2) SHUT DOWN follows; LAND ASAP. In cruise, the engine-out drift-down strategy is flown around the drill.",
+ "key_limits": [
+  {
+   "label": "AGENT 1",
+   "value": "after 10 s",
+   "applies_to": [
+    "all"
+   ],
+   "refs": [
+    {
+     "book": "FCOM",
+     "code": "PRO-ABN-ENG",
+     "page": "P 91/226",
+     "pdf": 3338
+    }
+   ]
+  },
+  {
+   "label": "AGENT 2",
+   "value": "if fire after 30 s",
+   "applies_to": [
+    "all"
+   ],
+   "refs": [
+    {
+     "book": "FCOM",
+     "code": "PRO-ABN-ENG",
+     "page": "P 91/226",
+     "pdf": 3338
+    }
+   ]
+  },
+  {
+   "label": "LAND ASAP",
+   "value": "red",
+   "applies_to": [
+    "all"
+   ],
+   "refs": [
+    {
+     "book": "FCOM",
+     "code": "PRO-ABN-ENG",
+     "page": "P 91/226",
+     "pdf": 3338
+    }
+   ]
+  }
+ ],
+ "flow": [
+  {
+   "phase": "Recognise",
+   "steps": [
+    {
+     "actor": "BOTH",
+     "items": [
+      {
+       "kind": "action",
+       "text": "First to notice: MASTER WARNING reset",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "FCTM",
+         "code": "AOP-30-30",
+         "page": "P 2/6",
+         "pdf": 83
+        }
+       ]
+      }
+     ]
+    },
+    {
+     "actor": "PF",
+     "items": [
+      {
+       "kind": "action",
+       "text": "Fly the aircraft; at takeoff wait until 400 ft unless the path is safe",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "FCTM",
+         "code": "AOP-30-30",
+         "page": "P 1/6",
+         "pdf": 82
+        }
+       ]
+      }
+     ]
+    },
+    {
+     "actor": "PM",
+     "items": [
+      {
+       "kind": "callout",
+       "text": "ENG 1(2) FIRE",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "FCTM",
+         "code": "AOP-30-30",
+         "page": "P 2/6",
+         "pdf": 83
+        }
+       ]
+      },
+      {
+       "kind": "action",
+       "text": "Confirm with local warnings",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "FCTM",
+         "code": "PR-AEP-ENG",
+         "page": "P 18/26",
+         "pdf": 419
+        }
+       ]
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "phase": "Fire procedure",
+   "steps": [
+    {
+     "actor": "PF",
+     "items": [
+      {
+       "kind": "callout",
+       "text": "ECAM ACTIONS",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "FCOM",
+         "code": "PRO-ABN-ABN-00",
+         "page": "P 8/12",
+         "pdf": 2831
+        },
+        {
+         "book": "PDP",
+         "code": "Management of abnormal operations",
+         "page": "XFTDN6ECAM00001",
+         "pdf": 424
+        }
+       ]
+      }
+     ]
+    },
+    {
+     "actor": "PM",
+     "items": [
+      {
+       "kind": "ecam",
+       "item": "THR LEVER (AFFECTED)",
+       "setting": "IDLE",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "FCOM",
+         "code": "PRO-ABN-ENG",
+         "page": "P 91/226",
+         "pdf": 3338
+        }
+       ]
+      }
+     ]
+    },
+    {
+     "actor": "PF",
+     "items": [
+      {
+       "kind": "action",
+       "text": "Thrust lever (affected): PF retards to IDLE after PM confirms the lever",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "FCTM",
+         "code": "AOP-30-20",
+         "page": "P 1/2",
+         "pdf": 80
+        },
+        {
+         "book": "PDP",
+         "code": "Management of abnormal operations",
+         "page": "XFTDN6ECAM00001",
+         "pdf": 432
+        },
+        {
+         "book": "FCOM",
+         "code": "PRO-ABN-ENG",
+         "page": "P 91/226",
+         "pdf": 3338
+        }
+       ]
+      }
+     ]
+    },
+    {
+     "actor": "PM",
+     "items": [
+      {
+       "kind": "callout",
+       "text": "ENGINE MASTER 1 OFF — CONFIRM?",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "PDP",
+         "code": "Management of abnormal operations",
+         "page": "XFTDN6ECAM00001",
+         "pdf": 432
+        }
+       ]
+      }
+     ]
+    },
+    {
+     "actor": "PF",
+     "items": [
+      {
+       "kind": "callout",
+       "text": "CONFIRMED",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "PDP",
+         "code": "Management of abnormal operations",
+         "page": "XFTDN6ECAM00001",
+         "pdf": 432
+        }
+       ]
+      },
+      {
+       "kind": "note",
+       "text": "After checking each control the PM points to",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "PDP",
+         "code": "Management of abnormal operations",
+         "page": "XFTDN6ECAM00001",
+         "pdf": 432
+        }
+       ]
+      }
+     ]
+    },
+    {
+     "actor": "PM",
+     "items": [
+      {
+       "kind": "ecam",
+       "item": "ENG MASTER (AFFECTED)",
+       "setting": "OFF",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "FCOM",
+         "code": "PRO-ABN-ENG",
+         "page": "P 91/226",
+         "pdf": 3338
+        }
+       ]
+      },
+      {
+       "kind": "note",
+       "text": "Reads the ECAM line and points to the affected FIRE pb (guarded control)",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "PDP",
+         "code": "Management of abnormal operations",
+         "page": "XFTDN6ECAM00001",
+         "pdf": 432
+        },
+        {
+         "book": "FCTM",
+         "code": "AOP-30-20",
+         "page": "P 1/2",
+         "pdf": 80
+        }
+       ]
+      },
+      {
+       "kind": "callout",
+       "text": "CONFIRM?",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "PDP",
+         "code": "Management of abnormal operations",
+         "page": "XFTDN6ECAM00001",
+         "pdf": 432
+        }
+       ]
+      }
+     ]
+    },
+    {
+     "actor": "PF",
+     "items": [
+      {
+       "kind": "callout",
+       "text": "CONFIRMED",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "PDP",
+         "code": "Management of abnormal operations",
+         "page": "XFTDN6ECAM00001",
+         "pdf": 432
+        }
+       ]
+      }
+     ]
+    },
+    {
+     "actor": "PM",
+     "items": [
+      {
+       "kind": "ecam",
+       "item": "ENG FIRE P/B (AFFECTED)",
+       "setting": "PUSH",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "FCOM",
+         "code": "PRO-ABN-ENG",
+         "page": "P 91/226",
+         "pdf": 3338
+        }
+       ]
+      },
+      {
+       "kind": "ecam",
+       "item": "AGENT 1 AFTER 10 S",
+       "setting": "DISCH",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "FCOM",
+         "code": "PRO-ABN-ENG",
+         "page": "P 91/226",
+         "pdf": 3338
+        }
+       ]
+      },
+      {
+       "kind": "ecam",
+       "item": "ATC",
+       "setting": "NOTIFY",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "FCOM",
+         "code": "PRO-ABN-ENG",
+         "page": "P 91/226",
+         "pdf": 3338
+        }
+       ]
+      },
+      {
+       "kind": "condition",
+       "text": "IF FIRE AFTER 30 S",
+       "children": [
+        {
+         "kind": "ecam",
+         "item": "AGENT 2",
+         "setting": "DISCH",
+         "applies_to": [
+          "all"
+         ],
+         "refs": [
+          {
+           "book": "FCOM",
+           "code": "PRO-ABN-ENG",
+           "page": "P 91/226",
+           "pdf": 3338
+          }
+         ]
+        }
+       ],
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "FCOM",
+         "code": "PRO-ABN-ENG",
+         "page": "P 91/226",
+         "pdf": 3338
+        }
+       ]
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "phase": "Fire out → ENG SHUT DOWN",
+   "steps": [
+    {
+     "actor": "BOTH",
+     "items": [
+      {
+       "kind": "note",
+       "text": "Fire light and alert go out when extinguished; the procedure can then stop and the remaining ECAM continues",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "FCTM",
+         "code": "PR-AEP-ENG",
+         "page": "P 18/26",
+         "pdf": 419
+        }
+       ]
+      }
+     ]
+    },
+    {
+     "actor": "PM",
+     "items": [
+      {
+       "kind": "action",
+       "text": "Continue with ENG 1(2) SHUT DOWN — do not restart the engine",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "FCOM",
+         "code": "PRO-ABN-ENG",
+         "page": "P 91/226",
+         "pdf": 3338
+        }
+       ]
+      }
+     ]
+    },
+    {
+     "actor": "PF",
+     "items": [
+      {
+       "kind": "action",
+       "text": "Engine secured (fire out or AGENT 2 DISCH) before accelerating after takeoff",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "FCTM",
+         "code": "PR-AEP-ENG",
+         "page": "P 12/26",
+         "pdf": 413
+        }
+       ]
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "phase": "STOP ECAM · STATUS",
+   "steps": [
+    {
+     "actor": "PM",
+     "items": [
+      {
+       "kind": "callout",
+       "text": "CLEAR ENG ?",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "FCOM",
+         "code": "PRO-ABN-ABN-00",
+         "page": "P 8/12",
+         "pdf": 2831
+        },
+        {
+         "book": "FCTM",
+         "code": "AOP-30-30",
+         "page": "P 3/6",
+         "pdf": 84
+        },
+        {
+         "book": "PDP",
+         "code": "Management of abnormal operations",
+         "page": "XFTDN6ECAM00001",
+         "pdf": 424
+        }
+       ]
+      }
+     ]
+    },
+    {
+     "actor": "PF",
+     "items": [
+      {
+       "kind": "callout",
+       "text": "CLEAR ENG",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "FCOM",
+         "code": "PRO-ABN-ABN-00",
+         "page": "P 8/12",
+         "pdf": 2831
+        },
+        {
+         "book": "FCTM",
+         "code": "AOP-30-30",
+         "page": "P 3/6",
+         "pdf": 84
+        },
+        {
+         "book": "PDP",
+         "code": "Management of abnormal operations",
+         "page": "XFTDN6ECAM00001",
+         "pdf": 424
+        }
+       ]
+      }
+     ]
+    },
+    {
+     "actor": "PM",
+     "items": [
+      {
+       "kind": "callout",
+       "text": "STATUS",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "FCTM",
+         "code": "AOP-30-30",
+         "page": "P 3/6",
+         "pdf": 84
+        },
+        {
+         "book": "PDP",
+         "code": "Management of abnormal operations",
+         "page": "XFTDN6ECAM00001",
+         "pdf": 426
+        }
+       ]
+      }
+     ]
+    },
+    {
+     "actor": "PF",
+     "items": [
+      {
+       "kind": "callout",
+       "text": "STOP ECAM",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "FCTM",
+         "code": "AOP-30-30",
+         "page": "P 3/6",
+         "pdf": 84
+        },
+        {
+         "book": "PDP",
+         "code": "Management of abnormal operations",
+         "page": "XFTDN6ECAM00001",
+         "pdf": 426
+        }
+       ]
+      },
+      {
+       "kind": "action",
+       "text": "Normal C/L as applicable, resets only per QRH",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "FCTM",
+         "code": "AOP-30-30",
+         "page": "P 4/6",
+         "pdf": 85
+        },
+        {
+         "book": "PDP",
+         "code": "Management of abnormal operations",
+         "page": "XFTDN6ECAM00001",
+         "pdf": 426
+        }
+       ]
+      },
+      {
+       "kind": "callout",
+       "text": "CONTINUE ECAM",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "FCTM",
+         "code": "AOP-30-30",
+         "page": "P 3/6",
+         "pdf": 84
+        },
+        {
+         "book": "PDP",
+         "code": "Management of abnormal operations",
+         "page": "XFTDN6ECAM00001",
+         "pdf": 426
+        }
+       ]
+      }
+     ]
+    },
+    {
+     "actor": "PM",
+     "items": [
+      {
+       "kind": "action",
+       "text": "Read the whole STATUS page; preview APPR PROC workload",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "FCTM",
+         "code": "AOP-30-30",
+         "page": "P 3/6",
+         "pdf": 84
+        },
+        {
+         "book": "FCTM",
+         "code": "AOP-30-30",
+         "page": "P 4/6",
+         "pdf": 85
+        }
+       ]
+      },
+      {
+       "kind": "callout",
+       "text": "REMOVE STATUS ?",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "FCTM",
+         "code": "AOP-30-30",
+         "page": "P 3/6",
+         "pdf": 84
+        }
+       ]
+      }
+     ]
+    },
+    {
+     "actor": "PF",
+     "items": [
+      {
+       "kind": "callout",
+       "text": "REMOVE STATUS",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "FCOM",
+         "code": "PRO-ABN-ABN-00",
+         "page": "P 8/12",
+         "pdf": 2831
+        },
+        {
+         "book": "FCTM",
+         "code": "AOP-30-30",
+         "page": "P 3/6",
+         "pdf": 84
+        },
+        {
+         "book": "PDP",
+         "code": "Management of abnormal operations",
+         "page": "XFTDN6ECAM00001",
+         "pdf": 426
+        }
+       ]
+      }
+     ]
+    },
+    {
+     "actor": "PM",
+     "items": [
+      {
+       "kind": "callout",
+       "text": "ECAM ACTIONS COMPLETE",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "FCOM",
+         "code": "PRO-ABN-ABN-00",
+         "page": "P 8/12",
+         "pdf": 2831
+        },
+        {
+         "book": "FCTM",
+         "code": "AOP-30-30",
+         "page": "P 3/6",
+         "pdf": 84
+        }
+       ]
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "phase": "Decide",
+   "steps": [
+    {
+     "actor": "PF",
+     "items": [
+      {
+       "kind": "action",
+       "text": "Red LAND ASAP: nearest airport where a safe landing can be made",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "FCTM",
+         "code": "AOP-30-10",
+         "page": "P 2/2",
+         "pdf": 79
+        },
+        {
+         "book": "FCTM",
+         "code": "PR-AEP-ENG",
+         "page": "P 18/26",
+         "pdf": 419
+        }
+       ]
+      },
+      {
+       "kind": "action",
+       "text": "Inform ATC, cabin crew, passengers",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "FCTM",
+         "code": "AOP-30-30",
+         "page": "P 5/6",
+         "pdf": 86
+        }
+       ]
+      }
+     ]
+    }
+   ]
+  }
+ ],
+ "procedures": [
+  {
+   "title": "ECAM procedure",
+   "source": "FCOM PRO-ABN-ENG",
+   "lines": [
+    {
+     "kind": "land_asap",
+     "text": "LAND ASAP (red)",
+     "level": 0,
+     "applies_to": [
+      "all"
+     ],
+     "refs": [
+      {
+       "book": "FCOM",
+       "code": "PRO-ABN-ENG",
+       "page": "P 91/226",
+       "pdf": 3338
+      }
+     ]
+    },
+    {
+     "kind": "action",
+     "item": "THR LEVER (AFFECTED)",
+     "setting": "IDLE",
+     "text": "",
+     "level": 0,
+     "applies_to": [
+      "all"
+     ],
+     "refs": [
+      {
+       "book": "FCOM",
+       "code": "PRO-ABN-ENG",
+       "page": "P 91/226",
+       "pdf": 3338
+      }
+     ]
+    },
+    {
+     "kind": "action",
+     "item": "ENG MASTER (AFFECTED)",
+     "setting": "OFF",
+     "text": "LP and HP valves close.",
+     "level": 0,
+     "applies_to": [
+      "all"
+     ],
+     "refs": [
+      {
+       "book": "FCOM",
+       "code": "PRO-ABN-ENG",
+       "page": "P 91/226",
+       "pdf": 3338
+      }
+     ]
+    },
+    {
+     "kind": "action",
+     "item": "ENG FIRE P/B (AFFECTED)",
+     "setting": "PUSH",
+     "text": "Aural stops; light stays on until the fire is out; FADEC no longer supplied.",
+     "level": 0,
+     "applies_to": [
+      "all"
+     ],
+     "refs": [
+      {
+       "book": "FCOM",
+       "code": "PRO-ABN-ENG",
+       "page": "P 91/226",
+       "pdf": 3338
+      }
+     ]
+    },
+    {
+     "kind": "action",
+     "item": "AGENT 1 AFTER 10 S",
+     "setting": "DISCH",
+     "text": "Delay lets N1 decrease; automatic countdown on ECAM.",
+     "level": 0,
+     "applies_to": [
+      "all"
+     ],
+     "refs": [
+      {
+       "book": "FCOM",
+       "code": "PRO-ABN-ENG",
+       "page": "P 91/226",
+       "pdf": 3338
+      }
+     ]
+    },
+    {
+     "kind": "action",
+     "item": "ATC",
+     "setting": "NOTIFY",
+     "text": "",
+     "level": 0,
+     "applies_to": [
+      "all"
+     ],
+     "refs": [
+      {
+       "book": "FCOM",
+       "code": "PRO-ABN-ENG",
+       "page": "P 91/226",
+       "pdf": 3338
+      }
+     ]
+    },
+    {
+     "kind": "condition",
+     "text": "IF FIRE AFTER 30 S:",
+     "level": 0,
+     "applies_to": [
+      "all"
+     ],
+     "refs": [
+      {
+       "book": "FCOM",
+       "code": "PRO-ABN-ENG",
+       "page": "P 91/226",
+       "pdf": 3338
+      }
+     ]
+    },
+    {
+     "kind": "action",
+     "item": "AGENT 2",
+     "setting": "DISCH",
+     "text": "",
+     "level": 1,
+     "applies_to": [
+      "all"
+     ],
+     "refs": [
+      {
+       "book": "FCOM",
+       "code": "PRO-ABN-ENG",
+       "page": "P 91/226",
+       "pdf": 3338
+      }
+     ]
+    },
+    {
+     "kind": "info",
+     "text": "Associated: ENG 1(2) SHUT DOWN — do not attempt to restart the engine.",
+     "level": 0,
+     "applies_to": [
+      "all"
+     ],
+     "refs": [
+      {
+       "book": "FCOM",
+       "code": "PRO-ABN-ENG",
+       "page": "P 91/226",
+       "pdf": 3338
+      }
+     ]
+    }
+   ]
+  }
+ ],
+ "status": null,
+ "qrh": [],
+ "tables": [],
+ "background": [
+  {
+   "text": "Thrust and engine parameters can stay normal early in a fire — not a reason to delay the procedure.",
+   "applies_to": [
+    "all"
+   ],
+   "refs": [
+    {
+     "book": "FCTM",
+     "code": "PR-AEP-ENG",
+     "page": "P 18/26",
+     "pdf": 419
+    }
+   ]
+  },
+  {
+   "text": "Discharge agents while the alert and a local warning remain. The FIRE light stays on until the fire is out, even after agent 2.",
+   "applies_to": [
+    "all"
+   ],
+   "refs": [
+    {
+     "book": "FCTM",
+     "code": "PR-AEP-ENG",
+     "page": "P 18/26",
+     "pdf": 419
+    }
+   ]
+  }
+ ],
+ "technique": [
+  {
+   "text": "If the alert and local warnings disappear after agent 1 (or 1+2), the fire procedure can be stopped and the remaining ECAM done as usual.",
+   "applies_to": [
+    "all"
+   ],
+   "refs": [
+    {
+     "book": "FCTM",
+     "code": "PR-AEP-ENG",
+     "page": "P 18/26",
+     "pdf": 419
+    }
+   ]
+  },
+  {
+   "text": "Consider LAND ASAP: land at the nearest airport where a safe landing can be performed.",
+   "applies_to": [
+    "all"
+   ],
+   "refs": [
+    {
+     "book": "FCTM",
+     "code": "PR-AEP-ENG",
+     "page": "P 18/26",
+     "pdf": 419
+    }
+   ]
+  }
+ ],
+ "related": [
+  {
+   "title": "ENG 1(2) SHUT DOWN",
+   "why": "Associated procedure",
+   "key_actions": [
+    "X BLEED SHUT, WING ANTI ICE OFF, avoid icing (fire pb pushed)",
+    "TCAS TA",
+    "STATUS: CAT 3 SINGLE"
+   ],
+   "refs": [
+    {
+     "book": "FCOM",
+     "code": "PRO-ABN-ENG",
+     "page": "P 170/226",
+     "pdf": 3417
+    },
+    {
+     "book": "FCOM",
+     "code": "PRO-ABN-ENG",
+     "page": "P 172/226",
+     "pdf": 3419
+    }
+   ]
+  },
+  {
+   "title": "ENGINE FAILURE IN CRUISE — drift-down strategy",
+   "why": "Fire (or any engine failure) at cruise level",
+   "key_actions": [
+    "MCT, A/THR off",
+    "Standard strategy M.78/300 kt to the EO LRC ceiling",
+    "Never below green dot"
+   ],
+   "refs": [
+    {
+     "book": "FCTM",
+     "code": "PR-AEP-ENG",
+     "page": "P 15/26",
+     "pdf": 416
+    },
+    {
+     "book": "FCTM",
+     "code": "PR-AEP-ENG",
+     "page": "P 16/26",
+     "pdf": 417
+    }
+   ]
+  }
+ ],
+ "differences": [],
+ "gaps": [
+  {
+   "text": "STATUS of the fire case is that of ENG 1(2) SHUT DOWN (see the ENG 1(2) FAIL brief).",
+   "applies_to": [
+    "all"
+   ],
+   "refs": [
+    {
+     "book": "FCOM",
+     "code": "PRO-ABN-ENG",
+     "page": "P 172/226",
+     "pdf": 3419
+    }
+   ]
+  }
+ ],
+ "sources": [
+  {
+   "book": "FCOM",
+   "section": "PRO-ABN-ENG — ENG 1(2) FIRE (IN FLIGHT)",
+   "pages": "P 90–91/226",
+   "pdf": "3337–3338",
+   "rev": "26 MAY 26"
+  },
+  {
+   "book": "FCTM",
+   "section": "PR-AEP-ENG — Engine fire",
+   "pages": "P 18/26",
+   "pdf": "419",
+   "rev": "26 MAY 26"
+  }
+ ],
+ "schema": "a320-ecam-abnormal/3",
+ "generated": "2026-10-14"
+}

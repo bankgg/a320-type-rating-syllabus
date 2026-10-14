@@ -1,0 +1,11 @@
+# Refinement documentation
+
+Merged the user-approved Briefing matrix extension into `DESIGN.md`, `.impeccable/design.json` and the implementation paragraph of `PRODUCT.md`. Preserved the incumbent world name, native system type, equal trainee treatment and source constraints. Recorded the final Schedule label, dark schedule topic text, combined bullet-separated A/B failure/emergency summaries, omitted exercise-count captions and latest compact spacing.
+
+The normative frontmatter contains 21 source-backed colors, eight typography roles, actual radius/spacing scales and supported component tokens. The extension sidecar contains matching metadata, ten self-contained component previews, responsive layout, focus, modal shadow/backdrop and reduced-motion-aware transitions. Obsolete dropdown, snapshots, three-tab, anchor-offset, amber-difference and blanket no-shadow rules were removed.
+
+Validation passed: YAML/JSON parse; canonical section order; component property schema and token references; CSS palette/font/leading and responsive thresholds; source/rendered CSS equality; exact sidecar narrative/rule/bullet alignment; and current Schedule, summary, count and density decisions. Source totals remain 18 sessions, 311 exercise groups, 361 Trainee A topics and 355 Trainee B topics. The latest reconciliation records #ca8750 rectangular failure-row outlines with only outer side borders, omits redundant shared Schedule status labels, removes the status column from both all-shared FFS 8/10 schedules, and retains repeat notation and session progress without exercise-count captions.
+
+No UI, renderer, source JSON or unrelated files were changed by the documenter. Existing historical mockup/detector drift was not repaired or canonized; actual approved source values are recorded. Native system type is an explicitly approved incumbent choice. The parent owns final browser verification of the revised artifact.
+
+Final packaging reconciliation: the current standalone artifact is `index.html`; the original supplied HTML under `sessions/sources/` remains historical source evidence. Matrix and Schedule tables use separate borders with zero spacing, preserving first-row orange top outlines. Adjacent failure rows share one single-pixel divider by suppressing the following top edge. Component previews carry the same border behavior.

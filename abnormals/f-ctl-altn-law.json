@@ -1,0 +1,2019 @@
+{
+ "slug": "f-ctl-altn-law",
+ "title": "F/CTL ALTN LAW",
+ "kind": "ecam",
+ "alert": {
+  "level": "caution",
+  "land_asap": "none",
+  "memory_items": false,
+  "qrh_summary": false,
+  "trigger": "This alert triggers when alternate laws are active. Inhibited in flight phases 4, 5, 7 and 8.",
+  "inhibited_phases": [
+   4,
+   5,
+   7,
+   8
+  ],
+  "refs": [
+   {
+    "book": "FCOM",
+    "code": "PRO-ABN-F_CTL",
+    "page": "P 9/132",
+    "pdf": 3482
+   },
+   {
+    "book": "FCOM",
+    "code": "PRO-ABN-F_CTL",
+    "page": "P 11/132",
+    "pdf": 3484
+   }
+  ]
+ },
+ "effectivity": {
+  "branches": [
+   "HS-TXA..TXF",
+   "HS-TXG..TXU"
+  ],
+  "note": "Two FCOM units (HS-TXA..TXF, HS-TXG..TXU) with identical procedure and STATUS. The law reconfiguration after FAC / yaw damper failures differs (see HS-TX differences)."
+ },
+ "summary": "An amber caution: the flight controls are in alternate law (PROT LOST). Pitch handling stays like normal law, but all protections except the maneuver (load factor) protection are lost. Respect MAX SPEED 320 kt and maneuver with care; if an elevator has failed, do not use the speed brakes. Land in CONF 3 at VREF + 10 kt; when the gear goes down (and the AP is off) the law becomes DIRECT, so trim manually.",
+ "key_limits": [
+  {
+   "label": "MAX SPEED",
+   "value": "320 KT (320/.77 if dual HYD LO PR)",
+   "applies_to": [
+    "all"
+   ],
+   "refs": [
+    {
+     "book": "FCOM",
+     "code": "PRO-ABN-F_CTL",
+     "page": "P 9/132",
+     "pdf": 3482
+    },
+    {
+     "book": "FCOM",
+     "code": "PRO-ABN-F_CTL",
+     "page": "P 11/132",
+     "pdf": 3484
+    }
+   ]
+  },
+  {
+   "label": "SPD BRK",
+   "value": "DO NOT USE if L or R elevator fails",
+   "applies_to": [
+    "all"
+   ],
+   "refs": [
+    {
+     "book": "FCOM",
+     "code": "PRO-ABN-F_CTL",
+     "page": "P 9/132",
+     "pdf": 3482
+    },
+    {
+     "book": "FCOM",
+     "code": "PRO-ABN-F_CTL",
+     "page": "P 11/132",
+     "pdf": 3484
+    }
+   ]
+  },
+  {
+   "label": "FOR LDG",
+   "value": "FLAP LVR 3",
+   "applies_to": [
+    "all"
+   ],
+   "refs": [
+    {
+     "book": "FCOM",
+     "code": "PRO-ABN-F_CTL",
+     "page": "P 10/132",
+     "pdf": 3483
+    },
+    {
+     "book": "FCOM",
+     "code": "PRO-ABN-F_CTL",
+     "page": "P 12/132",
+     "pdf": 3485
+    }
+   ]
+  },
+  {
+   "label": "APPR SPD",
+   "value": "VREF + 10 KT",
+   "applies_to": [
+    "all"
+   ],
+   "refs": [
+    {
+     "book": "FCOM",
+     "code": "PRO-ABN-F_CTL",
+     "page": "P 10/132",
+     "pdf": 3483
+    },
+    {
+     "book": "FCOM",
+     "code": "PRO-ABN-F_CTL",
+     "page": "P 12/132",
+     "pdf": 3485
+    }
+   ]
+  },
+  {
+   "label": "Law at L/G DN",
+   "value": "DIRECT (with AP: when L/G DN and AP OFF)",
+   "applies_to": [
+    "all"
+   ],
+   "refs": [
+    {
+     "book": "FCOM",
+     "code": "PRO-ABN-F_CTL",
+     "page": "P 10/132",
+     "pdf": 3483
+    },
+    {
+     "book": "FCOM",
+     "code": "PRO-ABN-F_CTL",
+     "page": "P 12/132",
+     "pdf": 3485
+    }
+   ]
+  }
+ ],
+ "flow": [
+  {
+   "phase": "Detection",
+   "steps": [
+    {
+     "actor": "BOTH",
+     "items": [
+      {
+       "kind": "action",
+       "text": "First to notice: MASTER CAUTION reset",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "FCTM",
+         "code": "AOP-30-30",
+         "page": "P 2/6",
+         "pdf": 83
+        },
+        {
+         "book": "PDP",
+         "code": "Management of abnormal operations",
+         "page": "XFTDN6ECAM00001",
+         "pdf": 424
+        }
+       ]
+      },
+      {
+       "kind": "note",
+       "text": "PFD: amber X replace the green = protection symbols; the speed scale shows the black/red barber pole (stall warning)",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "FCOM",
+         "code": "DSC-27-20-20",
+         "page": "P 1/20",
+         "pdf": 1612
+        },
+        {
+         "book": "FCOM",
+         "code": "DSC-27-20-20",
+         "page": "P 12/20",
+         "pdf": 1623
+        },
+        {
+         "book": "PDP",
+         "code": "Reconfiguration laws",
+         "page": "EFTDN1RCFGLAW01",
+         "pdf": 512
+        }
+       ]
+      }
+     ]
+    },
+    {
+     "actor": "PM",
+     "items": [
+      {
+       "kind": "callout",
+       "text": "F/CTL ALTN LAW",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "FCTM",
+         "code": "AOP-30-30",
+         "page": "P 2/6",
+         "pdf": 83
+        },
+        {
+         "book": "FCOM",
+         "code": "PRO-ABN-F_CTL",
+         "page": "P 9/132",
+         "pdf": 3482
+        },
+        {
+         "book": "PDP",
+         "code": "Management of abnormal operations",
+         "page": "XFTDN6ECAM00001",
+         "pdf": 424
+        }
+       ]
+      },
+      {
+       "kind": "action",
+       "text": "Confirm on the F/CTL SD page and the PFD before acting",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "FCTM",
+         "code": "AOP-30-30",
+         "page": "P 2/6",
+         "pdf": 83
+        },
+        {
+         "book": "PDP",
+         "code": "Management of abnormal operations",
+         "page": "XFTDN6ECAM00001",
+         "pdf": 424
+        }
+       ]
+      }
+     ]
+    },
+    {
+     "actor": "PF",
+     "items": [
+      {
+       "kind": "callout",
+       "text": "ECAM ACTIONS",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "FCOM",
+         "code": "PRO-ABN-ABN-00",
+         "page": "P 8/12",
+         "pdf": 2831
+        },
+        {
+         "book": "FCTM",
+         "code": "AOP-30-30",
+         "page": "P 3/6",
+         "pdf": 84
+        },
+        {
+         "book": "PDP",
+         "code": "Management of abnormal operations",
+         "page": "XFTDN6ECAM00001",
+         "pdf": 424
+        }
+       ]
+      },
+      {
+       "kind": "note",
+       "text": "PF now flies, navigates and communicates",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "FCTM",
+         "code": "AOP-20",
+         "page": "P 1–2/10",
+         "pdf": 68
+        },
+        {
+         "book": "PDP",
+         "code": "Management of abnormal operations",
+         "page": "XFTDN6ECAM00001",
+         "pdf": 424
+        }
+       ]
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "phase": "ECAM actions",
+   "steps": [
+    {
+     "actor": "PM",
+     "items": [
+      {
+       "kind": "ecam",
+       "item": "(PROT LOST)",
+       "setting": "—",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "FCOM",
+         "code": "PRO-ABN-F_CTL",
+         "page": "P 9/132",
+         "pdf": 3482
+        },
+        {
+         "book": "FCOM",
+         "code": "PRO-ABN-F_CTL",
+         "page": "P 11/132",
+         "pdf": 3484
+        }
+       ]
+      },
+      {
+       "kind": "note",
+       "text": "Always respect stall warnings when applying the TAWS alerts procedures",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "FCOM",
+         "code": "PRO-ABN-F_CTL",
+         "page": "P 9/132",
+         "pdf": 3482
+        },
+        {
+         "book": "FCOM",
+         "code": "PRO-ABN-F_CTL",
+         "page": "P 11/132",
+         "pdf": 3484
+        }
+       ]
+      },
+      {
+       "kind": "ecam",
+       "item": "MAX SPEED",
+       "setting": "320 KT",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "FCOM",
+         "code": "PRO-ABN-F_CTL",
+         "page": "P 9/132",
+         "pdf": 3482
+        },
+        {
+         "book": "FCOM",
+         "code": "PRO-ABN-F_CTL",
+         "page": "P 11/132",
+         "pdf": 3484
+        }
+       ]
+      },
+      {
+       "kind": "note",
+       "text": "320/.77 if dual hydraulic system low pressure",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "FCOM",
+         "code": "PRO-ABN-F_CTL",
+         "page": "P 9/132",
+         "pdf": 3482
+        },
+        {
+         "book": "FCOM",
+         "code": "PRO-ABN-F_CTL",
+         "page": "P 11/132",
+         "pdf": 3484
+        }
+       ]
+      },
+      {
+       "kind": "ecam",
+       "item": "MANEUVER WITH CARE",
+       "setting": "—",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "FCOM",
+         "code": "PRO-ABN-F_CTL",
+         "page": "P 9/132",
+         "pdf": 3482
+        },
+        {
+         "book": "FCOM",
+         "code": "PRO-ABN-F_CTL",
+         "page": "P 11/132",
+         "pdf": 3484
+        }
+       ]
+      },
+      {
+       "kind": "note",
+       "text": "Displayed depending on the failure",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "FCOM",
+         "code": "PRO-ABN-F_CTL",
+         "page": "P 9/132",
+         "pdf": 3482
+        },
+        {
+         "book": "FCOM",
+         "code": "PRO-ABN-F_CTL",
+         "page": "P 11/132",
+         "pdf": 3484
+        }
+       ]
+      },
+      {
+       "kind": "condition",
+       "text": "If L or R elevator fails",
+       "children": [
+        {
+         "kind": "ecam",
+         "item": "SPD BRK",
+         "setting": "DO NOT USE",
+         "applies_to": [
+          "all"
+         ],
+         "refs": [
+          {
+           "book": "FCOM",
+           "code": "PRO-ABN-F_CTL",
+           "page": "P 9/132",
+           "pdf": 3482
+          },
+          {
+           "book": "FCOM",
+           "code": "PRO-ABN-F_CTL",
+           "page": "P 11/132",
+           "pdf": 3484
+          }
+         ]
+        }
+       ],
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "FCOM",
+         "code": "PRO-ABN-F_CTL",
+         "page": "P 9/132",
+         "pdf": 3482
+        },
+        {
+         "book": "FCOM",
+         "code": "PRO-ABN-F_CTL",
+         "page": "P 11/132",
+         "pdf": 3484
+        }
+       ]
+      }
+     ]
+    },
+    {
+     "actor": "PF",
+     "items": [
+      {
+       "kind": "action",
+       "text": "Respect MAX SPEED; at high speed maneuver with care using small control inputs",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "FCOM",
+         "code": "PRO-ABN-F_CTL",
+         "page": "P 9/132",
+         "pdf": 3482
+        },
+        {
+         "book": "FCOM",
+         "code": "PRO-ABN-F_CTL",
+         "page": "P 11/132",
+         "pdf": 3484
+        },
+        {
+         "book": "FCTM",
+         "code": "AOP-10-30-20",
+         "page": "P 1/2",
+         "pdf": 62
+        }
+       ]
+      },
+      {
+       "kind": "action",
+       "text": "At high altitude, descend to increase the buffet margin (about 4 000 ft below REC MAX ALT)",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "FCTM",
+         "code": "AOP-10-30-20",
+         "page": "P 1/2",
+         "pdf": 62
+        }
+       ]
+      },
+      {
+       "kind": "note",
+       "text": "Outside the normal flight envelope there is no protection: take the preventive actions of any non-protected aircraft",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "FCTM",
+         "code": "AOP-10-30-20",
+         "page": "P 1/2",
+         "pdf": 62
+        }
+       ]
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "phase": "STATUS",
+   "steps": [
+    {
+     "actor": "PM",
+     "items": [
+      {
+       "kind": "callout",
+       "text": "CLEAR FLIGHT CONTROL ?",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "FCOM",
+         "code": "PRO-ABN-ABN-00",
+         "page": "P 8/12",
+         "pdf": 2831
+        },
+        {
+         "book": "FCTM",
+         "code": "AOP-30-30",
+         "page": "P 3/6",
+         "pdf": 84
+        },
+        {
+         "book": "PDP",
+         "code": "Management of abnormal operations",
+         "page": "XFTDN6ECAM00001",
+         "pdf": 424
+        }
+       ]
+      }
+     ]
+    },
+    {
+     "actor": "PF",
+     "items": [
+      {
+       "kind": "callout",
+       "text": "CLEAR FLIGHT CONTROL",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "FCOM",
+         "code": "PRO-ABN-ABN-00",
+         "page": "P 8/12",
+         "pdf": 2831
+        },
+        {
+         "book": "FCTM",
+         "code": "AOP-30-30",
+         "page": "P 3/6",
+         "pdf": 84
+        },
+        {
+         "book": "PDP",
+         "code": "Management of abnormal operations",
+         "page": "XFTDN6ECAM00001",
+         "pdf": 424
+        }
+       ]
+      }
+     ]
+    },
+    {
+     "actor": "PM",
+     "items": [
+      {
+       "kind": "callout",
+       "text": "STATUS",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "FCTM",
+         "code": "AOP-30-30",
+         "page": "P 3/6",
+         "pdf": 84
+        },
+        {
+         "book": "PDP",
+         "code": "Management of abnormal operations",
+         "page": "XFTDN6ECAM00001",
+         "pdf": 426
+        }
+       ]
+      }
+     ]
+    },
+    {
+     "actor": "PF",
+     "items": [
+      {
+       "kind": "callout",
+       "text": "STOP ECAM",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "FCTM",
+         "code": "AOP-30-30",
+         "page": "P 3/6",
+         "pdf": 84
+        },
+        {
+         "book": "PDP",
+         "code": "Management of abnormal operations",
+         "page": "XFTDN6ECAM00001",
+         "pdf": 426
+        }
+       ]
+      }
+     ]
+    },
+    {
+     "actor": "PM",
+     "items": [
+      {
+       "kind": "ecam",
+       "item": "ECAM ACTIONS",
+       "setting": "STOP",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "PDP",
+         "code": "Management of abnormal operations",
+         "page": "XFTDN6ECAM00001",
+         "pdf": 426
+        }
+       ]
+      }
+     ]
+    },
+    {
+     "actor": "PF",
+     "items": [
+      {
+       "kind": "action",
+       "text": "Normal C/L as applicable; system resets only per QRH",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "FCTM",
+         "code": "AOP-30-30",
+         "page": "P 4/6",
+         "pdf": 85
+        },
+        {
+         "book": "PDP",
+         "code": "Management of abnormal operations",
+         "page": "XFTDN6ECAM00001",
+         "pdf": 426
+        }
+       ]
+      },
+      {
+       "kind": "callout",
+       "text": "CONTINUE ECAM",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "FCTM",
+         "code": "AOP-30-30",
+         "page": "P 3/6",
+         "pdf": 84
+        },
+        {
+         "book": "PDP",
+         "code": "Management of abnormal operations",
+         "page": "XFTDN6ECAM00001",
+         "pdf": 426
+        }
+       ]
+      }
+     ]
+    },
+    {
+     "actor": "PM",
+     "items": [
+      {
+       "kind": "action",
+       "text": "Read the whole STATUS page; preview APPR PROC workload",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "FCTM",
+         "code": "AOP-30-30",
+         "page": "P 3/6",
+         "pdf": 84
+        },
+        {
+         "book": "PDP",
+         "code": "Management of abnormal operations",
+         "page": "XFTDN6ECAM00001",
+         "pdf": 426
+        }
+       ]
+      },
+      {
+       "kind": "callout",
+       "text": "REMOVE STATUS ?",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "FCTM",
+         "code": "AOP-30-30",
+         "page": "P 3/6",
+         "pdf": 84
+        },
+        {
+         "book": "PDP",
+         "code": "Management of abnormal operations",
+         "page": "XFTDN6ECAM00001",
+         "pdf": 426
+        }
+       ]
+      }
+     ]
+    },
+    {
+     "actor": "PF",
+     "items": [
+      {
+       "kind": "callout",
+       "text": "REMOVE STATUS",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "FCOM",
+         "code": "PRO-ABN-ABN-00",
+         "page": "P 8/12",
+         "pdf": 2831
+        },
+        {
+         "book": "FCTM",
+         "code": "AOP-30-30",
+         "page": "P 3/6",
+         "pdf": 84
+        },
+        {
+         "book": "PDP",
+         "code": "Management of abnormal operations",
+         "page": "XFTDN6ECAM00001",
+         "pdf": 426
+        }
+       ]
+      }
+     ]
+    },
+    {
+     "actor": "PM",
+     "items": [
+      {
+       "kind": "callout",
+       "text": "ECAM ACTIONS COMPLETE",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "FCOM",
+         "code": "PRO-ABN-ABN-00",
+         "page": "P 8/12",
+         "pdf": 2831
+        },
+        {
+         "book": "PDP",
+         "code": "Management of abnormal operations",
+         "page": "XFTDN6ECAM00001",
+         "pdf": 426
+        }
+       ]
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "phase": "Approach and landing",
+   "steps": [
+    {
+     "actor": "PF",
+     "items": [
+      {
+       "kind": "action",
+       "text": "Brief: CONF 3 landing at VREF + 10 kt, landing distance with the LDG DIST PROC, law change to DIRECT at gear extension",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "FCOM",
+         "code": "PRO-ABN-F_CTL",
+         "page": "P 10/132",
+         "pdf": 3483
+        },
+        {
+         "book": "FCOM",
+         "code": "PRO-ABN-F_CTL",
+         "page": "P 12/132",
+         "pdf": 3485
+        }
+       ]
+      }
+     ]
+    },
+    {
+     "actor": "PM",
+     "items": [
+      {
+       "kind": "ecam",
+       "item": "FOR LDG",
+       "setting": "FLAP LVR 3",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "FCOM",
+         "code": "PRO-ABN-F_CTL",
+         "page": "P 10/132",
+         "pdf": 3483
+        },
+        {
+         "book": "FCOM",
+         "code": "PRO-ABN-F_CTL",
+         "page": "P 12/132",
+         "pdf": 3485
+        }
+       ]
+      },
+      {
+       "kind": "ecam",
+       "item": "GPWS LDG FLAP 3",
+       "setting": "ON",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "FCOM",
+         "code": "PRO-ABN-F_CTL",
+         "page": "P 10/132",
+         "pdf": 3483
+        },
+        {
+         "book": "FCOM",
+         "code": "PRO-ABN-F_CTL",
+         "page": "P 12/132",
+         "pdf": 3485
+        }
+       ]
+      },
+      {
+       "kind": "ecam",
+       "item": "APPR SPD",
+       "setting": "VREF + 10 KT",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "FCOM",
+         "code": "PRO-ABN-F_CTL",
+         "page": "P 10/132",
+         "pdf": 3483
+        },
+        {
+         "book": "FCOM",
+         "code": "PRO-ABN-F_CTL",
+         "page": "P 12/132",
+         "pdf": 3485
+        }
+       ]
+      },
+      {
+       "kind": "ecam",
+       "item": "LDG DIST PROC",
+       "setting": "APPLY",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "FCOM",
+         "code": "PRO-ABN-F_CTL",
+         "page": "P 10/132",
+         "pdf": 3483
+        },
+        {
+         "book": "FCOM",
+         "code": "PRO-ABN-F_CTL",
+         "page": "P 12/132",
+         "pdf": 3485
+        }
+       ]
+      }
+     ]
+    },
+    {
+     "actor": "PF",
+     "items": [
+      {
+       "kind": "condition",
+       "text": "If AP engaged",
+       "children": [
+        {
+         "kind": "action",
+         "text": "DIRECT LAW when L/G DN and AP OFF",
+         "applies_to": [
+          "all"
+         ],
+         "refs": [
+          {
+           "book": "FCOM",
+           "code": "PRO-ABN-F_CTL",
+           "page": "P 10/132",
+           "pdf": 3483
+          },
+          {
+           "book": "FCOM",
+           "code": "PRO-ABN-F_CTL",
+           "page": "P 12/132",
+           "pdf": 3485
+          }
+         ]
+        }
+       ],
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "FCOM",
+         "code": "PRO-ABN-F_CTL",
+         "page": "P 10/132",
+         "pdf": 3483
+        },
+        {
+         "book": "FCOM",
+         "code": "PRO-ABN-F_CTL",
+         "page": "P 12/132",
+         "pdf": 3485
+        }
+       ]
+      },
+      {
+       "kind": "condition",
+       "text": "If no AP engaged",
+       "children": [
+        {
+         "kind": "action",
+         "text": "DIRECT LAW when L/G DN",
+         "applies_to": [
+          "all"
+         ],
+         "refs": [
+          {
+           "book": "FCOM",
+           "code": "PRO-ABN-F_CTL",
+           "page": "P 10/132",
+           "pdf": 3483
+          },
+          {
+           "book": "FCOM",
+           "code": "PRO-ABN-F_CTL",
+           "page": "P 12/132",
+           "pdf": 3485
+          }
+         ]
+        }
+       ],
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "FCOM",
+         "code": "PRO-ABN-F_CTL",
+         "page": "P 10/132",
+         "pdf": 3483
+        },
+        {
+         "book": "FCOM",
+         "code": "PRO-ABN-F_CTL",
+         "page": "P 12/132",
+         "pdf": 3485
+        }
+       ]
+      },
+      {
+       "kind": "action",
+       "text": "In direct law USE MAN PITCH TRIM is displayed: trim manually with the pitch trim wheel",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "FCOM",
+         "code": "DSC-27-20-20",
+         "page": "P 17/20",
+         "pdf": 1628
+        },
+        {
+         "book": "FCOM",
+         "code": "PRO-ABN-F_CTL",
+         "page": "P 19/132",
+         "pdf": 3492
+        }
+       ]
+      },
+      {
+       "kind": "note",
+       "text": "In pitch alternate law the flight mode changes to flare mode (direct stick-to-elevator) when the gear is selected down",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "FCOM",
+         "code": "DSC-27-20-20",
+         "page": "P 12/20",
+         "pdf": 1623
+        },
+        {
+         "book": "FCOM",
+         "code": "DSC-27-20-20",
+         "page": "P 15/20",
+         "pdf": 1626
+        }
+       ]
+      }
+     ]
+    }
+   ]
+  }
+ ],
+ "procedures": [
+  {
+   "title": "F/CTL ALTN LAW",
+   "source": "FCOM PRO-ABN-F_CTL (HS-TXA..TXF and HS-TXG..TXU, identical)",
+   "lines": [
+    {
+     "kind": "info",
+     "text": "Refer to Reconfiguration Control Laws for flight characteristics. Depending on the failure, the AP may be available.",
+     "level": 0,
+     "applies_to": [
+      "all"
+     ],
+     "refs": [
+      {
+       "book": "FCOM",
+       "code": "PRO-ABN-F_CTL",
+       "page": "P 9/132",
+       "pdf": 3482
+      },
+      {
+       "book": "FCOM",
+       "code": "PRO-ABN-F_CTL",
+       "page": "P 11/132",
+       "pdf": 3484
+      }
+     ]
+    },
+    {
+     "kind": "info",
+     "text": "(PROT LOST)",
+     "level": 0,
+     "applies_to": [
+      "all"
+     ],
+     "refs": [
+      {
+       "book": "FCOM",
+       "code": "PRO-ABN-F_CTL",
+       "page": "P 9/132",
+       "pdf": 3482
+      },
+      {
+       "book": "FCOM",
+       "code": "PRO-ABN-F_CTL",
+       "page": "P 11/132",
+       "pdf": 3484
+      }
+     ]
+    },
+    {
+     "kind": "info",
+     "text": "All protections, except maneuver protections, are lost. Depending on the failure, static stability may be introduced.",
+     "level": 0,
+     "applies_to": [
+      "all"
+     ],
+     "refs": [
+      {
+       "book": "FCOM",
+       "code": "PRO-ABN-F_CTL",
+       "page": "P 9/132",
+       "pdf": 3482
+      },
+      {
+       "book": "FCOM",
+       "code": "PRO-ABN-F_CTL",
+       "page": "P 11/132",
+       "pdf": 3484
+      }
+     ]
+    },
+    {
+     "kind": "note",
+     "text": "Always respect stall warnings when applying the TAWS alerts procedures.",
+     "level": 0,
+     "applies_to": [
+      "all"
+     ],
+     "refs": [
+      {
+       "book": "FCOM",
+       "code": "PRO-ABN-F_CTL",
+       "page": "P 9/132",
+       "pdf": 3482
+      },
+      {
+       "book": "FCOM",
+       "code": "PRO-ABN-F_CTL",
+       "page": "P 11/132",
+       "pdf": 3484
+      }
+     ]
+    },
+    {
+     "kind": "action",
+     "item": "MAX SPEED",
+     "setting": "320 KT",
+     "text": "Maximum speed is 320/.77 if dual hydraulic system low pressure. This line is inhibited if DBUS is in use.",
+     "level": 0,
+     "applies_to": [
+      "all"
+     ],
+     "refs": [
+      {
+       "book": "FCOM",
+       "code": "PRO-ABN-F_CTL",
+       "page": "P 9/132",
+       "pdf": 3482
+      },
+      {
+       "book": "FCOM",
+       "code": "PRO-ABN-F_CTL",
+       "page": "P 11/132",
+       "pdf": 3484
+      }
+     ]
+    },
+    {
+     "kind": "action",
+     "item": "MANEUVER WITH CARE",
+     "setting": "—",
+     "text": "This line can be displayed depending on the failure.",
+     "level": 0,
+     "applies_to": [
+      "all"
+     ],
+     "refs": [
+      {
+       "book": "FCOM",
+       "code": "PRO-ABN-F_CTL",
+       "page": "P 9/132",
+       "pdf": 3482
+      },
+      {
+       "book": "FCOM",
+       "code": "PRO-ABN-F_CTL",
+       "page": "P 11/132",
+       "pdf": 3484
+      }
+     ]
+    },
+    {
+     "kind": "condition",
+     "text": "If L or R elevator fails:",
+     "level": 0,
+     "applies_to": [
+      "all"
+     ],
+     "refs": [
+      {
+       "book": "FCOM",
+       "code": "PRO-ABN-F_CTL",
+       "page": "P 9/132",
+       "pdf": 3482
+      },
+      {
+       "book": "FCOM",
+       "code": "PRO-ABN-F_CTL",
+       "page": "P 11/132",
+       "pdf": 3484
+      }
+     ]
+    },
+    {
+     "kind": "action",
+     "item": "SPD BRK",
+     "setting": "DO NOT USE",
+     "text": "",
+     "level": 1,
+     "applies_to": [
+      "all"
+     ],
+     "refs": [
+      {
+       "book": "FCOM",
+       "code": "PRO-ABN-F_CTL",
+       "page": "P 9/132",
+       "pdf": 3482
+      },
+      {
+       "book": "FCOM",
+       "code": "PRO-ABN-F_CTL",
+       "page": "P 11/132",
+       "pdf": 3484
+      }
+     ]
+    }
+   ]
+  }
+ ],
+ "status": {
+  "limitations": [
+   {
+    "text": "If dual hydraulic system low pressure: MAX SPEED …… 320/.77",
+    "applies_to": [
+     "all"
+    ],
+    "refs": [
+     {
+      "book": "FCOM",
+      "code": "PRO-ABN-F_CTL",
+      "page": "P 10/132",
+      "pdf": 3483
+     },
+     {
+      "book": "FCOM",
+      "code": "PRO-ABN-F_CTL",
+      "page": "P 12/132",
+      "pdf": 3485
+     }
+    ]
+   },
+   {
+    "text": "In all other cases: MAX SPEED …… 320 KT",
+    "applies_to": [
+     "all"
+    ],
+    "refs": [
+     {
+      "book": "FCOM",
+      "code": "PRO-ABN-F_CTL",
+      "page": "P 10/132",
+      "pdf": 3483
+     },
+     {
+      "book": "FCOM",
+      "code": "PRO-ABN-F_CTL",
+      "page": "P 12/132",
+      "pdf": 3485
+     }
+    ]
+   },
+   {
+    "text": "If L or R elevator fault: SPD BRK …… DO NOT USE",
+    "applies_to": [
+     "all"
+    ],
+    "refs": [
+     {
+      "book": "FCOM",
+      "code": "PRO-ABN-F_CTL",
+      "page": "P 10/132",
+      "pdf": 3483
+     },
+     {
+      "book": "FCOM",
+      "code": "PRO-ABN-F_CTL",
+      "page": "P 12/132",
+      "pdf": 3485
+     }
+    ]
+   }
+  ],
+  "info": [
+   {
+    "text": "ALTN LAW : PROT LOST",
+    "applies_to": [
+     "all"
+    ],
+    "refs": [
+     {
+      "book": "FCOM",
+      "code": "PRO-ABN-F_CTL",
+      "page": "P 10/132",
+      "pdf": 3483
+     },
+     {
+      "book": "FCOM",
+      "code": "PRO-ABN-F_CTL",
+      "page": "P 12/132",
+      "pdf": 3485
+     }
+    ]
+   },
+   {
+    "text": "If AP engaged: WHEN L/G DN AND AP OFF : DIRECT LAW",
+    "applies_to": [
+     "all"
+    ],
+    "refs": [
+     {
+      "book": "FCOM",
+      "code": "PRO-ABN-F_CTL",
+      "page": "P 10/132",
+      "pdf": 3483
+     },
+     {
+      "book": "FCOM",
+      "code": "PRO-ABN-F_CTL",
+      "page": "P 12/132",
+      "pdf": 3485
+     }
+    ]
+   },
+   {
+    "text": "If no AP engaged: WHEN L/G DN : DIRECT LAW",
+    "applies_to": [
+     "all"
+    ],
+    "refs": [
+     {
+      "book": "FCOM",
+      "code": "PRO-ABN-F_CTL",
+      "page": "P 10/132",
+      "pdf": 3483
+     },
+     {
+      "book": "FCOM",
+      "code": "PRO-ABN-F_CTL",
+      "page": "P 12/132",
+      "pdf": 3485
+     }
+    ]
+   },
+   {
+    "text": "At landing gear extension, flight control reverts to direct law in both pitch and roll (depending on aircraft configuration, the control remains in alternate law in the case of yaw damper loss or both FACs failure).",
+    "applies_to": [
+     "all"
+    ],
+    "refs": [
+     {
+      "book": "FCOM",
+      "code": "PRO-ABN-F_CTL",
+      "page": "P 10/132",
+      "pdf": 3483
+     },
+     {
+      "book": "FCOM",
+      "code": "PRO-ABN-F_CTL",
+      "page": "P 12/132",
+      "pdf": 3485
+     }
+    ]
+   }
+  ],
+  "appr_proc": [
+   {
+    "kind": "action",
+    "item": "FOR LDG",
+    "setting": "FLAP LVR 3",
+    "text": "Replaced by \"FOR LDG: FLAP LVR 3\" when CONF 3 is selected, as a reminder.",
+    "level": 0,
+    "applies_to": [
+     "all"
+    ],
+    "refs": [
+     {
+      "book": "FCOM",
+      "code": "PRO-ABN-F_CTL",
+      "page": "P 10/132",
+      "pdf": 3483
+     },
+     {
+      "book": "FCOM",
+      "code": "PRO-ABN-F_CTL",
+      "page": "P 12/132",
+      "pdf": 3485
+     }
+    ]
+   },
+   {
+    "kind": "action",
+    "item": "GPWS LDG FLAP 3",
+    "setting": "ON",
+    "text": "",
+    "level": 0,
+    "applies_to": [
+     "all"
+    ],
+    "refs": [
+     {
+      "book": "FCOM",
+      "code": "PRO-ABN-F_CTL",
+      "page": "P 10/132",
+      "pdf": 3483
+     },
+     {
+      "book": "FCOM",
+      "code": "PRO-ABN-F_CTL",
+      "page": "P 12/132",
+      "pdf": 3485
+     }
+    ]
+   },
+   {
+    "kind": "action",
+    "item": "APPR SPD",
+    "setting": "VREF + 10 KT",
+    "text": "",
+    "level": 0,
+    "applies_to": [
+     "all"
+    ],
+    "refs": [
+     {
+      "book": "FCOM",
+      "code": "PRO-ABN-F_CTL",
+      "page": "P 10/132",
+      "pdf": 3483
+     },
+     {
+      "book": "FCOM",
+      "code": "PRO-ABN-F_CTL",
+      "page": "P 12/132",
+      "pdf": 3485
+     }
+    ]
+   },
+   {
+    "kind": "action",
+    "item": "LDG DIST PROC",
+    "setting": "APPLY",
+    "text": "",
+    "level": 0,
+    "applies_to": [
+     "all"
+    ],
+    "refs": [
+     {
+      "book": "FCOM",
+      "code": "PRO-ABN-F_CTL",
+      "page": "P 10/132",
+      "pdf": 3483
+     },
+     {
+      "book": "FCOM",
+      "code": "PRO-ABN-F_CTL",
+      "page": "P 12/132",
+      "pdf": 3485
+     }
+    ]
+   }
+  ],
+  "inop_sys": [
+   {
+    "text": "F/CTL PROT",
+    "applies_to": [
+     "all"
+    ],
+    "refs": [
+     {
+      "book": "FCOM",
+      "code": "PRO-ABN-F_CTL",
+      "page": "P 10/132",
+      "pdf": 3483
+     },
+     {
+      "book": "FCOM",
+      "code": "PRO-ABN-F_CTL",
+      "page": "P 12/132",
+      "pdf": 3485
+     }
+    ]
+   },
+   {
+    "text": "STEEP APPR",
+    "applies_to": [
+     "all"
+    ],
+    "refs": [
+     {
+      "book": "FCOM",
+      "code": "PRO-ABN-F_CTL",
+      "page": "P 10/132",
+      "pdf": 3483
+     },
+     {
+      "book": "FCOM",
+      "code": "PRO-ABN-F_CTL",
+      "page": "P 12/132",
+      "pdf": 3485
+     }
+    ]
+   }
+  ]
+ },
+ "tables": [
+  {
+   "title": "Alternate law — what remains",
+   "caption": "FCOM DSC-27 alternate law with reduced protections.",
+   "columns": [
+    "Function",
+    "In alternate law"
+   ],
+   "rows": [
+    [
+     "Pitch (flight mode)",
+     "Load factor demand, like normal law"
+    ],
+    [
+     "Load factor limitation",
+     "Available (as normal law)"
+    ],
+    [
+     "Pitch attitude protection",
+     "None — amber X on PFD"
+    ],
+    [
+     "Low speed",
+     "Low speed stability (nose-down demand) replaces AoA protection; stall warning; α floor inoperative"
+    ],
+    [
+     "High speed",
+     "High speed stability above VMO/MMO (can be overridden); overspeed warning available"
+    ],
+    [
+     "Roll",
+     "Direct law"
+    ],
+    [
+     "Yaw",
+     "Alternate: yaw damping only (±5° rudder)"
+    ],
+    [
+     "Flare (L/G down)",
+     "Direct stick-to-elevator"
+    ]
+   ],
+   "applies_to": [
+    "all"
+   ],
+   "refs": [
+    {
+     "book": "FCOM",
+     "code": "DSC-27-20-20",
+     "page": "P 11/20",
+     "pdf": 1622
+    },
+    {
+     "book": "FCOM",
+     "code": "DSC-27-20-20",
+     "page": "P 12/20",
+     "pdf": 1623
+    },
+    {
+     "book": "FCOM",
+     "code": "DSC-27-20-20",
+     "page": "P 13/20",
+     "pdf": 1624
+    },
+    {
+     "book": "FCOM",
+     "code": "DSC-27-20-20",
+     "page": "P 14/20",
+     "pdf": 1625
+    },
+    {
+     "book": "FCOM",
+     "code": "DSC-27-20-20",
+     "page": "P 15/20",
+     "pdf": 1626
+    },
+    {
+     "book": "FCOM",
+     "code": "DSC-27-20-20",
+     "page": "P 16/20",
+     "pdf": 1627
+    }
+   ]
+  }
+ ],
+ "background": [
+  {
+   "text": "Three levels of reconfiguration: alternate law (with or without reduced protections), direct law, mechanical. The ECAM and PFD indicate any control law degradation.",
+   "applies_to": [
+    "all"
+   ],
+   "refs": [
+    {
+     "book": "FCOM",
+     "code": "DSC-27-20-20",
+     "page": "P 1/20",
+     "pdf": 1612
+    }
+   ]
+  },
+  {
+   "text": "In flight, pitch alternate law is based on load factor demand; the basic high speed protection, pitch attitude protection and angle-of-attack protection are not available.",
+   "applies_to": [
+    "all"
+   ],
+   "refs": [
+    {
+     "book": "FCOM",
+     "code": "DSC-27-20-20",
+     "page": "P 11/20",
+     "pdf": 1622
+    },
+    {
+     "book": "FCOM",
+     "code": "DSC-27-20-20",
+     "page": "P 14/20",
+     "pdf": 1625
+    }
+   ]
+  },
+  {
+   "text": "Alternate law without reduced protection: identical to alternate law but without the low-speed or high-speed stability — only the load factor limitation remains.",
+   "applies_to": [
+    "all"
+   ],
+   "refs": [
+    {
+     "book": "FCOM",
+     "code": "DSC-27-20-20",
+     "page": "P 17/20",
+     "pdf": 1628
+    }
+   ]
+  },
+  {
+   "text": "Low energy aural alert is lost in alternate law.",
+   "applies_to": [
+    "all"
+   ],
+   "refs": [
+    {
+     "book": "PDP",
+     "code": "Reconfiguration laws",
+     "page": "EFTDN1RCFGLAW01",
+     "pdf": 514
+    }
+   ]
+  },
+  {
+   "text": "The AP disconnects if the speed exceeds VMO/MMO or the bank angle exceeds 45°.",
+   "applies_to": [
+    "all"
+   ],
+   "refs": [
+    {
+     "book": "FCOM",
+     "code": "DSC-27-20-20",
+     "page": "P 13/20",
+     "pdf": 1624
+    },
+    {
+     "book": "FCOM",
+     "code": "DSC-27-20-20",
+     "page": "P 16/20",
+     "pdf": 1627
+    }
+   ]
+  },
+  {
+   "text": "If the aircraft goes far outside the normal envelope, the abnormal attitude law engages (F/CTL DIRECT LAW on ECAM); after recovery, alternate law without reduced protection remains for the rest of the flight (F/CTL ALTN LAW on ECAM).",
+   "applies_to": [
+    "all"
+   ],
+   "refs": [
+    {
+     "book": "FCOM",
+     "code": "DSC-27-20-20",
+     "page": "P 18/20",
+     "pdf": 1629
+    }
+   ]
+  }
+ ],
+ "technique": [
+  {
+   "text": "Within the normal flight envelope, alternate-law handling in pitch is identical to normal law. Outside it, the PF must take appropriate preventive actions to avoid losing control or high speed excursions.",
+   "applies_to": [
+    "all"
+   ],
+   "refs": [
+    {
+     "book": "FCTM",
+     "code": "AOP-10-30-20",
+     "page": "P 1/2",
+     "pdf": 62
+    }
+   ]
+  },
+  {
+   "text": "At high altitude, descend about 4 000 ft below REC MAX ALT to reduce stall warnings in turbulence. At high speed, maneuver with care using small inputs.",
+   "applies_to": [
+    "all"
+   ],
+   "refs": [
+    {
+     "book": "FCTM",
+     "code": "AOP-10-30-20",
+     "page": "P 1/2",
+     "pdf": 62
+    }
+   ]
+  },
+  {
+   "text": "Protections are not structural limits; the PF must not deliberately exceed the normal flight envelope.",
+   "applies_to": [
+    "all"
+   ],
+   "refs": [
+    {
+     "book": "FCTM",
+     "code": "AOP-10-30-10",
+     "page": "P 1/2",
+     "pdf": 60
+    }
+   ]
+  },
+  {
+   "text": "Direct law: be careful with large thrust changes or sudden speedbrake movements, particularly with an aft CG. Retract speedbrakes gently to give time to re-trim. At go-around, TOGA thrust gives a large pitch-up moment — apply nose-down trim to avoid excessive pitch-up or a transient stall warning.",
+   "applies_to": [
+    "all"
+   ],
+   "refs": [
+    {
+     "book": "FCTM",
+     "code": "AOP-10-30-20",
+     "page": "P 1/2",
+     "pdf": 62
+    }
+   ]
+  }
+ ],
+ "related": [
+  {
+   "title": "F/CTL DIRECT LAW",
+   "why": "Active from landing gear extension (with AP: when L/G down and AP off).",
+   "key_actions": [
+    "MAN PITCH TRIM USE",
+    "MAX SPEED 320/.77",
+    "Maneuver and use speed brakes with care"
+   ],
+   "refs": [
+    {
+     "book": "FCOM",
+     "code": "PRO-ABN-F_CTL",
+     "page": "P 10/132",
+     "pdf": 3483
+    },
+    {
+     "book": "FCOM",
+     "code": "PRO-ABN-F_CTL",
+     "page": "P 19/132",
+     "pdf": 3492
+    }
+   ]
+  }
+ ],
+ "differences": [
+  {
+   "topic": "2 FAC, yaw damper, FAC 1 + HYD Y or FAC 2 + HYD G failure",
+   "values": {
+    "HS-TXA..TXF": "Pitch ALTN (reduced protection), roll DIRECT, yaw MECH",
+    "HS-TXG..TXU": "Pitch and roll stay NORM, yaw MECH; ALTN LAW is indicated; no reversion to DIRECT LAW at L/G extension"
+   },
+   "refs": [
+    {
+     "book": "FCOM",
+     "code": "DSC-27-20-20",
+     "page": "P 2/20",
+     "pdf": 1613
+    },
+    {
+     "book": "FCOM",
+     "code": "DSC-27-20-20",
+     "page": "P 4/20",
+     "pdf": 1615
+    }
+   ]
+  },
+  {
+   "topic": "Bank angle above 45° in alternate law",
+   "values": {
+    "HS-TXA..TXF": "BANK BANK message on both PFDs and \"BANK BANK\" aural alert",
+    "HS-TXG..TXU": "HS-TXN..TXU: as HS-TXA..TXF. HS-TXG..TXM: bank angle protection not provided (no BANK BANK alert described)"
+   },
+   "refs": [
+    {
+     "book": "FCOM",
+     "code": "DSC-27-20-20",
+     "page": "P 13/20",
+     "pdf": 1624
+    },
+    {
+     "book": "FCOM",
+     "code": "DSC-27-20-20",
+     "page": "P 16/20",
+     "pdf": 1627
+    },
+    {
+     "book": "FCOM",
+     "code": "DSC-31-40",
+     "page": "P 50/54",
+     "pdf": 1941
+    }
+   ]
+  }
+ ],
+ "gaps": [
+  {
+   "text": "The two FCOM procedure units differ only by effectivity; their visible content (lines, STATUS, inhibition) is identical.",
+   "applies_to": [
+    "all"
+   ],
+   "refs": [
+    {
+     "book": "FCOM",
+     "code": "PRO-ABN-F_CTL",
+     "page": "P 9/132",
+     "pdf": 3482
+    },
+    {
+     "book": "FCOM",
+     "code": "PRO-ABN-F_CTL",
+     "page": "P 11/132",
+     "pdf": 3484
+    }
+   ]
+  },
+  {
+   "text": "The bank-angle alert splits the fleet differently (HS-TXA..TXF, HS-TXN..TXU vs HS-TXG..TXM) from the procedure units.",
+   "applies_to": [
+    "all"
+   ],
+   "refs": [
+    {
+     "book": "FCOM",
+     "code": "DSC-27-20-20",
+     "page": "P 13/20",
+     "pdf": 1624
+    },
+    {
+     "book": "FCOM",
+     "code": "DSC-27-20-20",
+     "page": "P 16/20",
+     "pdf": 1627
+    },
+    {
+     "book": "FCOM",
+     "code": "DSC-31-40",
+     "page": "P 50/54",
+     "pdf": 1941
+    }
+   ]
+  },
+  {
+   "text": "No FCTM abnormal-procedure chapter or PDP task-sharing module is specific to F/CTL ALTN LAW; the flow uses the generic ECAM handling, the FCTM reconfiguration-law technique and the PDP law slides.",
+   "applies_to": [
+    "all"
+   ],
+   "refs": [
+    {
+     "book": "FCTM",
+     "code": "AOP-10-30-20",
+     "page": "P 1/2",
+     "pdf": 62
+    },
+    {
+     "book": "PDP",
+     "code": "Reconfiguration laws",
+     "page": "EFTDN1RCFGLAW01",
+     "pdf": 512
+    }
+   ]
+  }
+ ],
+ "sources": [
+  {
+   "book": "FCOM",
+   "section": "PRO-ABN-F_CTL — F/CTL ALTN LAW (HS-TXA..TXF; HS-TXG..TXU)",
+   "pages": "P 9–12/132",
+   "pdf": "3482–3485",
+   "rev": "26 MAY 26"
+  },
+  {
+   "book": "FCOM",
+   "section": "DSC-27-20-20 — reconfiguration control laws",
+   "pages": "P 1–5/20, 11–18/20",
+   "pdf": "1612–1616, 1622–1629",
+   "rev": "18 FEB 26"
+  },
+  {
+   "book": "FCTM",
+   "section": "AOP-10-30 — fly-by-wire, flying in reconfiguration laws",
+   "pages": "AOP-10-30-10 P 1/2, AOP-10-30-20 P 1/2",
+   "pdf": "60, 62",
+   "rev": "25 FEB 25"
+  },
+  {
+   "book": "PDP",
+   "section": "Reconfiguration laws (EFTDN1RCFGLAW01)",
+   "pages": "Flight control laws, alternate, direct",
+   "pdf": "512–515",
+   "rev": "OCT 2018"
+  },
+  {
+   "book": "FCTM",
+   "section": "AOP-20 / AOP-30 — task sharing and ECAM handling",
+   "pages": "AOP-20 P 1–2/10, AOP-30-30 P 1–4/6",
+   "pdf": "68–69, 82–85",
+   "rev": "26 MAY 26"
+  },
+  {
+   "book": "PDP",
+   "section": "Management of abnormal operations (XFTDN6ECAM00001)",
+   "pages": "ECAM actions, STATUS",
+   "pdf": "424–426",
+   "rev": "JAN 2024"
+  }
+ ],
+ "schema": "a320-ecam-abnormal/3",
+ "generated": "2026-10-14",
+ "qrh": []
+}

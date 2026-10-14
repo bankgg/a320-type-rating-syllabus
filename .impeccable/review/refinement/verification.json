@@ -1,0 +1,406 @@
+{
+  "content": {
+    "sessions": 18,
+    "exercises": 311,
+    "topicsA": 361,
+    "topicsB": 355,
+    "reviewedJSONUnmodified": true
+  },
+  "modals": [
+    {
+      "session": "mftd-2",
+      "width": 1162,
+      "client": 689,
+      "scroll": 689,
+      "scrollWidth": 1162,
+      "viewportWidth": 1194
+    },
+    {
+      "session": "mftd-3",
+      "width": 1162,
+      "client": 689,
+      "scroll": 689,
+      "scrollWidth": 1162,
+      "viewportWidth": 1194
+    },
+    {
+      "session": "mftd-4",
+      "width": 1162,
+      "client": 689,
+      "scroll": 689,
+      "scrollWidth": 1162,
+      "viewportWidth": 1194
+    },
+    {
+      "session": "mftd-5",
+      "width": 1162,
+      "client": 689,
+      "scroll": 689,
+      "scrollWidth": 1162,
+      "viewportWidth": 1194
+    },
+    {
+      "session": "mftd-6",
+      "width": 1162,
+      "client": 689,
+      "scroll": 689,
+      "scrollWidth": 1162,
+      "viewportWidth": 1194
+    },
+    {
+      "session": "mftd-7",
+      "width": 1162,
+      "client": 689,
+      "scroll": 689,
+      "scrollWidth": 1162,
+      "viewportWidth": 1194
+    },
+    {
+      "session": "mftd-8",
+      "width": 1162,
+      "client": 689,
+      "scroll": 689,
+      "scrollWidth": 1162,
+      "viewportWidth": 1194
+    },
+    {
+      "session": "mftd-9",
+      "width": 1162,
+      "client": 749,
+      "scroll": 749,
+      "scrollWidth": 1162,
+      "viewportWidth": 1194
+    },
+    {
+      "session": "ffs-1",
+      "width": 1162,
+      "client": 689,
+      "scroll": 689,
+      "scrollWidth": 1162,
+      "viewportWidth": 1194
+    },
+    {
+      "session": "ffs-2",
+      "width": 1162,
+      "client": 689,
+      "scroll": 689,
+      "scrollWidth": 1162,
+      "viewportWidth": 1194
+    },
+    {
+      "session": "ffs-3",
+      "width": 1162,
+      "client": 689,
+      "scroll": 689,
+      "scrollWidth": 1162,
+      "viewportWidth": 1194
+    },
+    {
+      "session": "ffs-4",
+      "width": 1162,
+      "client": 689,
+      "scroll": 689,
+      "scrollWidth": 1162,
+      "viewportWidth": 1194
+    },
+    {
+      "session": "ffs-5",
+      "width": 1162,
+      "client": 689,
+      "scroll": 689,
+      "scrollWidth": 1162,
+      "viewportWidth": 1194
+    },
+    {
+      "session": "ffs-6",
+      "width": 1162,
+      "client": 689,
+      "scroll": 689,
+      "scrollWidth": 1162,
+      "viewportWidth": 1194
+    },
+    {
+      "session": "ffs-7",
+      "width": 1162,
+      "client": 749,
+      "scroll": 749,
+      "scrollWidth": 1162,
+      "viewportWidth": 1194
+    },
+    {
+      "session": "ffs-8",
+      "width": 1162,
+      "client": 689,
+      "scroll": 689,
+      "scrollWidth": 1162,
+      "viewportWidth": 1194
+    },
+    {
+      "session": "ffs-9",
+      "width": 1162,
+      "client": 693,
+      "scroll": 693,
+      "scrollWidth": 1162,
+      "viewportWidth": 1194
+    },
+    {
+      "session": "ffs-10",
+      "width": 1162,
+      "client": 689,
+      "scroll": 689,
+      "scrollWidth": 1162,
+      "viewportWidth": 1194
+    },
+    {
+      "session": "mftd-2",
+      "width": 1080,
+      "client": 689,
+      "scroll": 689,
+      "scrollWidth": 1080,
+      "viewportWidth": 1112
+    },
+    {
+      "session": "mftd-3",
+      "width": 1080,
+      "client": 689,
+      "scroll": 689,
+      "scrollWidth": 1080,
+      "viewportWidth": 1112
+    },
+    {
+      "session": "mftd-4",
+      "width": 1080,
+      "client": 689,
+      "scroll": 689,
+      "scrollWidth": 1080,
+      "viewportWidth": 1112
+    },
+    {
+      "session": "mftd-5",
+      "width": 1080,
+      "client": 689,
+      "scroll": 689,
+      "scrollWidth": 1080,
+      "viewportWidth": 1112
+    },
+    {
+      "session": "mftd-6",
+      "width": 1080,
+      "client": 689,
+      "scroll": 689,
+      "scrollWidth": 1080,
+      "viewportWidth": 1112
+    },
+    {
+      "session": "mftd-7",
+      "width": 1080,
+      "client": 689,
+      "scroll": 689,
+      "scrollWidth": 1080,
+      "viewportWidth": 1112
+    },
+    {
+      "session": "mftd-8",
+      "width": 1080,
+      "client": 689,
+      "scroll": 689,
+      "scrollWidth": 1080,
+      "viewportWidth": 1112
+    },
+    {
+      "session": "mftd-9",
+      "width": 1080,
+      "client": 770,
+      "scroll": 770,
+      "scrollWidth": 1080,
+      "viewportWidth": 1112
+    },
+    {
+      "session": "ffs-1",
+      "width": 1080,
+      "client": 689,
+      "scroll": 689,
+      "scrollWidth": 1080,
+      "viewportWidth": 1112
+    },
+    {
+      "session": "ffs-2",
+      "width": 1080,
+      "client": 689,
+      "scroll": 689,
+      "scrollWidth": 1080,
+      "viewportWidth": 1112
+    },
+    {
+      "session": "ffs-3",
+      "width": 1080,
+      "client": 689,
+      "scroll": 689,
+      "scrollWidth": 1080,
+      "viewportWidth": 1112
+    },
+    {
+      "session": "ffs-4",
+      "width": 1080,
+      "client": 689,
+      "scroll": 689,
+      "scrollWidth": 1080,
+      "viewportWidth": 1112
+    },
+    {
+      "session": "ffs-5",
+      "width": 1080,
+      "client": 689,
+      "scroll": 689,
+      "scrollWidth": 1080,
+      "viewportWidth": 1112
+    },
+    {
+      "session": "ffs-6",
+      "width": 1080,
+      "client": 689,
+      "scroll": 689,
+      "scrollWidth": 1080,
+      "viewportWidth": 1112
+    },
+    {
+      "session": "ffs-7",
+      "width": 1080,
+      "client": 770,
+      "scroll": 770,
+      "scrollWidth": 1080,
+      "viewportWidth": 1112
+    },
+    {
+      "session": "ffs-8",
+      "width": 1080,
+      "client": 689,
+      "scroll": 689,
+      "scrollWidth": 1080,
+      "viewportWidth": 1112
+    },
+    {
+      "session": "ffs-9",
+      "width": 1080,
+      "client": 714,
+      "scroll": 714,
+      "scrollWidth": 1080,
+      "viewportWidth": 1112
+    },
+    {
+      "session": "ffs-10",
+      "width": 1080,
+      "client": 689,
+      "scroll": 689,
+      "scrollWidth": 1080,
+      "viewportWidth": 1112
+    }
+  ],
+  "layouts": [
+    {
+      "name": "ipad-exercises",
+      "width": 1194,
+      "scrollWidth": 1194,
+      "minimumReading": 16,
+      "smallControls": [],
+      "overflow": []
+    },
+    {
+      "name": "ipad-topics",
+      "width": 1194,
+      "scrollWidth": 1194,
+      "minimumReading": 16,
+      "smallControls": [],
+      "overflow": []
+    },
+    {
+      "name": "ipad-setup",
+      "width": 1194,
+      "scrollWidth": 1194,
+      "minimumReading": 16,
+      "smallControls": [],
+      "overflow": []
+    },
+    {
+      "name": "compact-ipad-setup",
+      "width": 1112,
+      "scrollWidth": 1112,
+      "minimumReading": 16,
+      "smallControls": [],
+      "overflow": []
+    },
+    {
+      "name": "mobile-exercises",
+      "width": 390,
+      "scrollWidth": 390,
+      "minimumReading": 16,
+      "smallControls": [],
+      "overflow": []
+    },
+    {
+      "name": "mobile-topics",
+      "width": 390,
+      "scrollWidth": 390,
+      "minimumReading": 16,
+      "smallControls": [],
+      "overflow": []
+    },
+    {
+      "name": "mobile-setup",
+      "width": 390,
+      "scrollWidth": 390,
+      "minimumReading": 16,
+      "smallControls": [],
+      "overflow": []
+    },
+    {
+      "name": "small-mobile",
+      "width": 320,
+      "scrollWidth": 320,
+      "minimumReading": 16,
+      "smallControls": [],
+      "overflow": []
+    },
+    {
+      "name": "desktop",
+      "width": 1440,
+      "scrollWidth": 1440,
+      "minimumReading": 16,
+      "smallControls": [],
+      "overflow": []
+    },
+    {
+      "name": "overview",
+      "width": 1440,
+      "scrollWidth": 1440,
+      "minimumReading": 16,
+      "smallControls": [],
+      "overflow": []
+    }
+  ],
+  "navigation": [
+    "18 sessions and both tabs",
+    "previous/next and course boundary",
+    "preserved tab",
+    "back/forward",
+    "legacy bookmarks without anchor jumps",
+    "invalid URL fallback",
+    "keyboard tabs",
+    "dialog Escape, focus and close button"
+  ],
+  "errors": [],
+  "density": {
+    "visibleExerciseRows": 8,
+    "firstRowY": 465.96875
+  },
+  "noJavaScript": "All sessions, setups, topics and conditional branches readable",
+  "latestRefinements": [
+    "Combined failure-only summaries separated by bullet dots",
+    "No exercise-count captions",
+    "Schedule name and uniform dark topic text",
+    "Visible orange row boxes with single adjacent dividers",
+    "No redundant Both schedule labels and no shared-only status columns",
+    "index.html build and browser entrypoint"
+  ],
+  "additionalCapture": "shared-schedule.png"
+}

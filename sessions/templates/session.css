@@ -1,0 +1,77 @@
+@page {
+  size: A4;
+  margin: 12mm 12mm 14mm;
+  @top-left {
+    content: "A320 TYPE RATING · SIM PRACTICE";
+    color: #42596b;
+    font-size: 7pt;
+    font-weight: 700;
+    letter-spacing: .06em;
+  }
+  @bottom-right {
+    content: counter(page);
+    color: #42596b;
+    font-size: 7pt;
+  }
+}
+
+:root { --ink: #142a40; --muted: #607486; --line: #d5e1e9; --a: #08735d; --b: #65459a; }
+* { box-sizing: border-box; }
+html { font-family: "DejaVu Sans", sans-serif; color: var(--ink); font-size: 8.5pt; line-height: 1.28; }
+body { margin: 0; }
+section.scenario + section.scenario { break-before: page; }
+.scenario { --accent: var(--a); }
+.scenario.trainee-b { --accent: var(--b); }
+.scenario-heading { border-bottom: 2px solid var(--accent); padding-bottom: 2.5mm; margin-bottom: 3mm; break-after: avoid; break-inside: avoid; }
+.scenario-continuation { break-before: page; }
+.continued-note { color: var(--accent); font-size: 7pt; font-weight: 800; text-align: right; margin-top: 2mm; }
+.heading-top { display: flex; justify-content: space-between; align-items: center; color: var(--accent); font-size: 7.5pt; font-weight: 800; letter-spacing: .04em; }
+.track-badge { color: white; background: var(--accent); border-radius: 2mm; padding: 1mm 2.5mm; font-size: 6.8pt; }
+h1 { font-size: 18pt; line-height: 1.12; margin: 2mm 0 1mm; }
+.manual-titles { color: #536a7c; font-size: 7.6pt; font-weight: 700; line-height: 1.3; }
+.manual-titles div + div { margin-top: .5mm; }
+.flow-single { width: 112mm; margin: 2mm auto 0; }
+.flow-columns { display: flex; gap: 0; align-items: stretch; break-inside: avoid; }
+.flow-column { flex: 1; min-width: 0; position: relative; }
+.flow-node { position: relative; margin: 0 0 4.2mm; break-inside: avoid; }
+.flow-node::after { content: "↓"; position: absolute; left: 50%; bottom: -4.6mm; transform: translateX(-50%); color: var(--accent); font-size: 11pt; font-weight: 800; line-height: 1; }
+.flow-node.cue-node { margin-bottom: 0; break-after: avoid; }
+.flow-node.cue-node::after { content: none; }
+.flow-node.terminal { margin-bottom: 0; }
+.flow-node.terminal::after { content: none; }
+.flow-bridge { flex: 0 0 8mm; position: relative; color: var(--accent); }
+.bridge-up { position: absolute; left: 50%; top: 2.6mm; bottom: 2.6mm; border-left: 1.6px solid currentColor; }
+.bridge-top { position: absolute; left: 50%; right: 0; top: 0; height: 2.6mm; border-top: 1.6px solid currentColor; border-left: 1.6px solid currentColor; border-top-left-radius: 2.6mm; }
+.bridge-top::after { content: "▶"; position: absolute; right: -1mm; top: -2.3mm; color: var(--accent); font-size: 8pt; }
+.bridge-bottom { position: absolute; left: 0; width: 50%; bottom: 0; height: 2.6mm; border-bottom: 1.6px solid currentColor; border-right: 1.6px solid currentColor; border-bottom-right-radius: 2.6mm; }
+.flow-exit { position: relative; height: 5mm; }
+.flow-exit::before { content: ""; position: absolute; left: 50%; right: 0; top: 0; bottom: 0; border-left: 1.6px solid var(--accent); border-bottom: 1.6px solid var(--accent); border-bottom-left-radius: 4mm; }
+.flow-entry { position: relative; height: 6mm; }
+.flow-entry::before { content: ""; position: absolute; left: 0; width: 50%; top: 0; height: 4mm; border-top: 1.6px solid var(--accent); border-right: 1.6px solid var(--accent); border-top-right-radius: 4mm; }
+.flow-entry::after { content: "↓"; position: absolute; left: 50%; top: 2mm; transform: translateX(-50%); color: var(--accent); font-size: 11pt; font-weight: 800; }
+.stage { color: var(--accent); font-size: 7.2pt; font-weight: 800; text-transform: uppercase; letter-spacing: .04em; margin: 1.3mm 0 1mm; break-after: avoid; }
+.cue { background: #244d64; color: #fff; border-left: 3px solid #0c3149; border-radius: 1.2mm 1.2mm 0 0; padding: 1.4mm 2mm; font-size: 8.2pt; font-weight: 800; break-inside: avoid; break-after: avoid; }
+.flow-card { position: relative; border: 1px solid var(--line); border-left: 2.5px solid var(--accent); border-radius: 1.2mm; padding: 1.5mm 2mm; background: #fff; break-inside: avoid; }
+.procedure-row { display: flex; align-items: baseline; gap: 1mm; min-height: 4.5mm; font-size: 8pt; }
+.procedure-row + .procedure-row { margin-top: .15mm; }
+.procedure-item { font-weight: 700; }
+.leader { flex: 1; min-width: 2mm; border-bottom: 1px dotted #8098a8; transform: translateY(-.8mm); }
+.procedure-setting { font-weight: 800; text-align: right; }
+.row-actor { color: var(--accent); font-size: 6.6pt; font-weight: 800; border: 1px solid currentColor; border-radius: 1mm; padding: 0 .7mm; }
+.utterance { display: flex; align-items: baseline; gap: 2mm; color: #124d6f; font-size: 8.5pt; }
+.utterance + .utterance { margin-top: 1mm; }
+.utterance span { min-width: 13mm; color: #315f77; font-size: 7pt; font-weight: 800; }
+.kind-callout { background: #eaf4f9; border-left-color: #17688f; }
+.kind-caution { background: #fff4d9; border-left-color: #ba7b0a; }
+.kind-caution .flow-text { color: #754f0b; }
+.kind-resume { background: #e8f5ee; border-left-color: #1f7b55; }
+.kind-resume .flow-text { color: #176144; font-weight: 800; }
+.flow-text { font-size: 8.2pt; font-weight: 700; }
+.detail, .applicability { color: #425969; font-size: 7pt; line-height: 1.3; margin-top: 1mm; }
+.references { border-top: 1px solid var(--line); margin-top: 4mm; padding-top: 2mm; break-inside: avoid; }
+.layout-single .references { width: 112mm; margin-left: auto; margin-right: auto; }
+.layout-single .reference { width: 100%; }
+.references h2 { color: var(--muted); font-size: 7pt; text-transform: uppercase; letter-spacing: .06em; margin: 0 0 1.5mm; }
+.reference-list { display: flex; flex-wrap: wrap; gap: .8mm 4mm; }
+.reference { width: calc(50% - 2mm); color: #4d6374; font-size: 6.3pt; line-height: 1.2; }
+.reference strong { color: #375267; }

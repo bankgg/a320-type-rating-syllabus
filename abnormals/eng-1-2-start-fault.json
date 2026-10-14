@@ -1,0 +1,1970 @@
+{
+ "slug": "eng-1-2-start-fault",
+ "title": "ENG 1(2) START FAULT",
+ "kind": "ecam",
+ "alert": {
+  "level": "caution",
+  "land_asap": "none",
+  "memory_items": false,
+  "qrh_summary": false,
+  "trigger": "Start fault due to no light up, engine stall, engine overtemperature, hung start, no N1 rotation, low start air pressure, or thrust lever not at idle.",
+  "inhibited_phases": [
+   3,
+   4,
+   5,
+   6,
+   7,
+   8,
+   9
+  ],
+  "refs": [
+   {
+    "book": "FCOM",
+    "code": "PRO-ABN-ENG",
+    "page": "P 186/226",
+    "pdf": 3433
+   }
+  ]
+ },
+ "effectivity": {
+  "branches": [],
+  "note": "One procedure for HS-TXA..TXU (Ident PRO-ABN-ENG-AD-00017995.0002001)."
+ },
+ "summary": "A hot start shows as ENG 1(2) START FAULT with EGT OVERLIMIT: EGT goes above 635 °C during the start. In an automatic start on ground the FADEC aborts the start and dry-cranks the engine by itself; the crew waits for the dry crank to finish, sets the ENG MASTER to OFF and, after the starter cools, does a manual start or reports a no-start to maintenance.",
+ "key_limits": [
+  {
+   "label": "EGT limit · starting",
+   "value": "635 °C",
+   "applies_to": [
+    "all"
+   ],
+   "refs": [
+    {
+     "book": "FCOM",
+     "code": "LIM-ENG",
+     "page": "P 1/8",
+     "pdf": 4702
+    }
+   ]
+  },
+  {
+   "label": "Pause between start cycles (ground)",
+   "value": "15 s",
+   "applies_to": [
+    "all"
+   ],
+   "refs": [
+    {
+     "book": "FCOM",
+     "code": "LIM-ENG",
+     "page": "P 3/8",
+     "pdf": 4704
+    }
+   ]
+  },
+  {
+   "label": "Starter cooling",
+   "value": "30 min after 3 failed cycles, 4 min continuous or 5 min cumulated crank",
+   "applies_to": [
+    "all"
+   ],
+   "refs": [
+    {
+     "book": "FCOM",
+     "code": "LIM-ENG",
+     "page": "P 3/8",
+     "pdf": 4704
+    }
+   ]
+  },
+  {
+   "label": "Dry crank (to clear fuel vapours)",
+   "value": "30 s minimum",
+   "applies_to": [
+    "all"
+   ],
+   "refs": [
+    {
+     "book": "FCOM",
+     "code": "PRO-NOR-SUP-ENG",
+     "page": "P 17/18",
+     "pdf": 4402
+    },
+    {
+     "book": "FCOM",
+     "code": "PRO-ABN-ENG",
+     "page": "P 188/226",
+     "pdf": 3435
+    }
+   ]
+  },
+  {
+   "label": "Manual start: ENG MASTER ON",
+   "value": "N2 ≥ 16 % (max motoring) and 30 s after MAN START ON",
+   "applies_to": [
+    "all"
+   ],
+   "refs": [
+    {
+     "book": "FCOM",
+     "code": "PRO-NOR-SUP-ENG",
+     "page": "P 7/18",
+     "pdf": 4392
+    }
+   ]
+  },
+  {
+   "label": "Manual start max cycle",
+   "value": "2 min",
+   "applies_to": [
+    "all"
+   ],
+   "refs": [
+    {
+     "book": "FCOM",
+     "code": "LIM-ENG",
+     "page": "P 3/8",
+     "pdf": 4704
+    }
+   ]
+  }
+ ],
+ "flow": [
+  {
+   "phase": "Automatic start (normal SOP)",
+   "steps": [
+    {
+     "actor": "PF",
+     "items": [
+      {
+       "kind": "callout",
+       "text": "ENGINE 1 START",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "FCOM",
+         "code": "PRO-NOR-SOP-08",
+         "page": "P 1/6",
+         "pdf": 4136
+        }
+       ]
+      },
+      {
+       "kind": "ecam",
+       "item": "THRUST levers",
+       "setting": "IDLE",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "FCOM",
+         "code": "PRO-NOR-SOP-08",
+         "page": "P 1/6",
+         "pdf": 4136
+        }
+       ]
+      },
+      {
+       "kind": "ecam",
+       "item": "ENG MODE selector",
+       "setting": "IGN/START",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "FCOM",
+         "code": "PRO-NOR-SOP-08",
+         "page": "P 1/6",
+         "pdf": 4136
+        }
+       ]
+      },
+      {
+       "kind": "ecam",
+       "item": "ENG 1 MASTER lever",
+       "setting": "ON",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "FCOM",
+         "code": "PRO-NOR-SOP-08",
+         "page": "P 1/6",
+         "pdf": 4136
+        }
+       ]
+      },
+      {
+       "kind": "note",
+       "text": "Master ON only after the amber crosses (except N1 and N2) and messages have gone",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "FCOM",
+         "code": "PRO-NOR-SOP-08",
+         "page": "P 1/6",
+         "pdf": 4136
+        }
+       ]
+      }
+     ]
+    },
+    {
+     "actor": "BOTH",
+     "items": [
+      {
+       "kind": "action",
+       "text": "Watch the start: FF increases 30 s after master ON; EGT rises and N1 rises before 34 % N2 within 20 s of fuel on; igniters off at 43 % N2",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "FCOM",
+         "code": "PRO-NOR-SOP-08",
+         "page": "P 1/6",
+         "pdf": 4136
+        }
+       ]
+      },
+      {
+       "kind": "note",
+       "text": "An impending hot or hung start may be recovered by the FADEC without ECAM: dual ignition and fuel off then on within 0.5 s — no need to shut down",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "FCOM",
+         "code": "PRO-NOR-SOP-08",
+         "page": "P 1/6",
+         "pdf": 4136
+        }
+       ]
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "phase": "Detection",
+   "steps": [
+    {
+     "actor": "BOTH",
+     "items": [
+      {
+       "kind": "action",
+       "text": "First to notice: MASTER CAUTION reset",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "FCTM",
+         "code": "AOP-30-30",
+         "page": "P 2/6",
+         "pdf": 83
+        },
+        {
+         "book": "PDP",
+         "code": "Management of abnormal operations",
+         "page": "XFTDN6ECAM00001",
+         "pdf": 424
+        }
+       ]
+      }
+     ]
+    },
+    {
+     "actor": "PM",
+     "items": [
+      {
+       "kind": "callout",
+       "text": "ENG 1 START FAULT",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "FCTM",
+         "code": "AOP-30-30",
+         "page": "P 2/6",
+         "pdf": 83
+        },
+        {
+         "book": "PDP",
+         "code": "Management of abnormal operations",
+         "page": "XFTDN6ECAM00001",
+         "pdf": 424
+        },
+        {
+         "book": "FCOM",
+         "code": "PRO-ABN-ENG",
+         "page": "P 187/226",
+         "pdf": 3434
+        }
+       ]
+      },
+      {
+       "kind": "action",
+       "text": "Confirm on the EWD and ENG SD page: EGT OVERLIMIT is the hot-start case (EGT above 635 °C during start)",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "FCTM",
+         "code": "AOP-30-30",
+         "page": "P 2/6",
+         "pdf": 83
+        },
+        {
+         "book": "FCOM",
+         "code": "PRO-ABN-ENG",
+         "page": "P 127/226",
+         "pdf": 3374
+        },
+        {
+         "book": "FCOM",
+         "code": "PRO-ABN-ENG",
+         "page": "P 187/226",
+         "pdf": 3434
+        }
+       ]
+      }
+     ]
+    },
+    {
+     "actor": "PF",
+     "items": [
+      {
+       "kind": "callout",
+       "text": "ECAM ACTIONS",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "FCOM",
+         "code": "PRO-ABN-ABN-00",
+         "page": "P 8/12",
+         "pdf": 2831
+        },
+        {
+         "book": "FCTM",
+         "code": "AOP-30-30",
+         "page": "P 3/6",
+         "pdf": 84
+        },
+        {
+         "book": "PDP",
+         "code": "Management of abnormal operations",
+         "page": "XFTDN6ECAM00001",
+         "pdf": 424
+        }
+       ]
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "phase": "ECAM actions — on ground, auto start",
+   "steps": [
+    {
+     "actor": "BOTH",
+     "items": [
+      {
+       "kind": "note",
+       "text": "The FADEC has already shut off fuel and ignition and starts an automatic dry crank; ECAM shows AUTO CRANK IN PROGRESS",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "FCOM",
+         "code": "PRO-ABN-ENG",
+         "page": "P 187/226",
+         "pdf": 3434
+        },
+        {
+         "book": "FCOM",
+         "code": "DSC-70-80-40",
+         "page": "P 2/8",
+         "pdf": 2735
+        }
+       ]
+      }
+     ]
+    },
+    {
+     "actor": "PM",
+     "items": [
+      {
+       "kind": "ecam",
+       "item": "AUTO CRANK IN PROGRESS",
+       "setting": "(wait)",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "FCOM",
+         "code": "PRO-ABN-ENG",
+         "page": "P 187/226",
+         "pdf": 3434
+        }
+       ]
+      },
+      {
+       "kind": "condition",
+       "text": "When dry crank process is completed",
+       "children": [
+        {
+         "kind": "ecam",
+         "item": "ENG MASTER (AFFECTED)",
+         "setting": "OFF",
+         "applies_to": [
+          "all"
+         ],
+         "refs": [
+          {
+           "book": "FCOM",
+           "code": "PRO-ABN-ENG",
+           "page": "P 187/226",
+           "pdf": 3434
+          }
+         ]
+        },
+        {
+         "kind": "note",
+         "text": "Setting the master OFF confirms the automatic start abort",
+         "applies_to": [
+          "all"
+         ],
+         "refs": [
+          {
+           "book": "FCOM",
+           "code": "PRO-ABN-ENG",
+           "page": "P 187/226",
+           "pdf": 3434
+          }
+         ]
+        }
+       ],
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "FCOM",
+         "code": "PRO-ABN-ENG",
+         "page": "P 187/226",
+         "pdf": 3434
+        }
+       ]
+      },
+      {
+       "kind": "note",
+       "text": "On ground the ENG MASTER crosscheck (CONFIRM?/CONFIRMED) is not required",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "PDP",
+         "code": "Management of abnormal operations",
+         "page": "XFTDN6ECAM00001",
+         "pdf": 432
+        }
+       ]
+      }
+     ]
+    },
+    {
+     "actor": "PM",
+     "items": [
+      {
+       "kind": "callout",
+       "text": "CLEAR ENG ?",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "FCOM",
+         "code": "PRO-ABN-ABN-00",
+         "page": "P 8/12",
+         "pdf": 2831
+        },
+        {
+         "book": "FCTM",
+         "code": "AOP-30-30",
+         "page": "P 3/6",
+         "pdf": 84
+        },
+        {
+         "book": "PDP",
+         "code": "Management of abnormal operations",
+         "page": "XFTDN6ECAM00001",
+         "pdf": 424
+        }
+       ]
+      }
+     ]
+    },
+    {
+     "actor": "PF",
+     "items": [
+      {
+       "kind": "callout",
+       "text": "CLEAR ENG",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "FCOM",
+         "code": "PRO-ABN-ABN-00",
+         "page": "P 8/12",
+         "pdf": 2831
+        },
+        {
+         "book": "FCTM",
+         "code": "AOP-30-30",
+         "page": "P 3/6",
+         "pdf": 84
+        },
+        {
+         "book": "PDP",
+         "code": "Management of abnormal operations",
+         "page": "XFTDN6ECAM00001",
+         "pdf": 424
+        }
+       ]
+      }
+     ]
+    },
+    {
+     "actor": "PM",
+     "items": [
+      {
+       "kind": "callout",
+       "text": "ECAM ACTIONS COMPLETE",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "FCOM",
+         "code": "PRO-ABN-ABN-00",
+         "page": "P 8/12",
+         "pdf": 2831
+        },
+        {
+         "book": "PDP",
+         "code": "Management of abnormal operations",
+         "page": "XFTDN6ECAM00001",
+         "pdf": 426
+        }
+       ]
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "phase": "Decide",
+   "steps": [
+    {
+     "actor": "PF",
+     "items": [
+      {
+       "kind": "action",
+       "text": "After the starter cools, either do a manual start or report the “no start condition” to maintenance",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "FCOM",
+         "code": "PRO-ABN-ENG",
+         "page": "P 187/226",
+         "pdf": 3434
+        },
+        {
+         "book": "FCOM",
+         "code": "PRO-NOR-SUP-ENG",
+         "page": "P 1/18",
+         "pdf": 4386
+        }
+       ]
+      },
+      {
+       "kind": "note",
+       "text": "Manual start is recommended after a start aborted for stall, EGT overlimit, LO START AIR PRESS, no N1 rotation or hung start",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "FCOM",
+         "code": "PRO-NOR-SUP-ENG",
+         "page": "P 1/18",
+         "pdf": 4386
+        }
+       ]
+      },
+      {
+       "kind": "note",
+       "text": "Respect the starter limits: 15 s between cycles; 30 min cooling after 3 failed cycles",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "FCOM",
+         "code": "LIM-ENG",
+         "page": "P 3/8",
+         "pdf": 4704
+        }
+       ]
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "phase": "Manual start (SUP) — next attempt",
+   "steps": [
+    {
+     "actor": "BOTH",
+     "items": [
+      {
+       "kind": "action",
+       "text": "Read the whole procedure first; then the PM reads and the PF acts on the controls",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "FCTM",
+         "code": "AOP-20",
+         "page": "P 1/10",
+         "pdf": 68
+        }
+       ]
+      }
+     ]
+    },
+    {
+     "actor": "PF",
+     "items": [
+      {
+       "kind": "ecam",
+       "item": "THR LEVERS",
+       "setting": "IDLE",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "FCOM",
+         "code": "PRO-NOR-SUP-ENG",
+         "page": "P 6/18",
+         "pdf": 4391
+        }
+       ]
+      },
+      {
+       "kind": "ecam",
+       "item": "ENG MODE sel",
+       "setting": "NORM THEN IGN/START",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "FCOM",
+         "code": "PRO-NOR-SUP-ENG",
+         "page": "P 6/18",
+         "pdf": 4391
+        }
+       ]
+      },
+      {
+       "kind": "condition",
+       "text": "When all engine parameters (except N1 and N2) are available",
+       "children": [
+        {
+         "kind": "ecam",
+         "item": "ENG MAN START pb-sw",
+         "setting": "ON",
+         "applies_to": [
+          "all"
+         ],
+         "refs": [
+          {
+           "book": "FCOM",
+           "code": "PRO-NOR-SUP-ENG",
+           "page": "P 6/18",
+           "pdf": 4391
+          }
+         ]
+        },
+        {
+         "kind": "ecam",
+         "item": "START VALVE",
+         "setting": "CHECK IN-LINE",
+         "applies_to": [
+          "all"
+         ],
+         "refs": [
+          {
+           "book": "FCOM",
+           "code": "PRO-NOR-SUP-ENG",
+           "page": "P 6/18",
+           "pdf": 4391
+          }
+         ]
+        },
+        {
+         "kind": "ecam",
+         "item": "N2 INCREASE",
+         "setting": "CHECK",
+         "applies_to": [
+          "all"
+         ],
+         "refs": [
+          {
+           "book": "FCOM",
+           "code": "PRO-NOR-SUP-ENG",
+           "page": "P 6/18",
+           "pdf": 4391
+          }
+         ]
+        },
+        {
+         "kind": "ecam",
+         "item": "OIL PRESS INCREASE",
+         "setting": "CHECK",
+         "applies_to": [
+          "all"
+         ],
+         "refs": [
+          {
+           "book": "FCOM",
+           "code": "PRO-NOR-SUP-ENG",
+           "page": "P 7/18",
+           "pdf": 4392
+          }
+         ]
+        }
+       ],
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "FCOM",
+         "code": "PRO-NOR-SUP-ENG",
+         "page": "P 6/18",
+         "pdf": 4391
+        }
+       ]
+      },
+      {
+       "kind": "condition",
+       "text": "When N2 reaches max motoring (16 % minimum) and 30 s after MAN START ON",
+       "children": [
+        {
+         "kind": "ecam",
+         "item": "ENG MASTER",
+         "setting": "ON",
+         "applies_to": [
+          "all"
+         ],
+         "refs": [
+          {
+           "book": "FCOM",
+           "code": "PRO-NOR-SUP-ENG",
+           "page": "P 7/18",
+           "pdf": 4392
+          }
+         ]
+        }
+       ],
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "FCOM",
+         "code": "PRO-NOR-SUP-ENG",
+         "page": "P 7/18",
+         "pdf": 4392
+        }
+       ]
+      }
+     ]
+    },
+    {
+     "actor": "PM",
+     "items": [
+      {
+       "kind": "ecam",
+       "item": "CHRONO",
+       "setting": "START",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "FCOM",
+         "code": "PRO-NOR-SUP-ENG",
+         "page": "P 7/18",
+         "pdf": 4392
+        }
+       ]
+      },
+      {
+       "kind": "note",
+       "text": "Times the light-up",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "FCOM",
+         "code": "PRO-NOR-SUP-ENG",
+         "page": "P 7/18",
+         "pdf": 4392
+        }
+       ]
+      },
+      {
+       "kind": "ecam",
+       "item": "IGNITERS A AND B",
+       "setting": "CHECK ON",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "FCOM",
+         "code": "PRO-NOR-SUP-ENG",
+         "page": "P 7/18",
+         "pdf": 4392
+        }
+       ]
+      },
+      {
+       "kind": "ecam",
+       "item": "FUEL FLOW INCREASE",
+       "setting": "CHECK",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "FCOM",
+         "code": "PRO-NOR-SUP-ENG",
+         "page": "P 7/18",
+         "pdf": 4392
+        }
+       ]
+      }
+     ]
+    },
+    {
+     "actor": "BOTH",
+     "items": [
+      {
+       "kind": "condition",
+       "text": "20 s maximum after fuel flow increase",
+       "children": [
+        {
+         "kind": "ecam",
+         "item": "EGT INCREASE",
+         "setting": "CHECK",
+         "applies_to": [
+          "all"
+         ],
+         "refs": [
+          {
+           "book": "FCOM",
+           "code": "PRO-NOR-SUP-ENG",
+           "page": "P 8/18",
+           "pdf": 4393
+          }
+         ]
+        },
+        {
+         "kind": "ecam",
+         "item": "N1 INCREASE (before 34 % N2)",
+         "setting": "CHECK",
+         "applies_to": [
+          "all"
+         ],
+         "refs": [
+          {
+           "book": "FCOM",
+           "code": "PRO-NOR-SUP-ENG",
+           "page": "P 8/18",
+           "pdf": 4393
+          }
+         ]
+        }
+       ],
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "FCOM",
+         "code": "PRO-NOR-SUP-ENG",
+         "page": "P 8/18",
+         "pdf": 4393
+        }
+       ]
+      },
+      {
+       "kind": "condition",
+       "text": "When N2 reaches 43 %",
+       "children": [
+        {
+         "kind": "ecam",
+         "item": "IGNITERS A AND B (at 43 % N2)",
+         "setting": "CHECK OFF",
+         "applies_to": [
+          "all"
+         ],
+         "refs": [
+          {
+           "book": "FCOM",
+           "code": "PRO-NOR-SUP-ENG",
+           "page": "P 8/18",
+           "pdf": 4393
+          }
+         ]
+        },
+        {
+         "kind": "ecam",
+         "item": "START VALVE (slightly above 43 % N2)",
+         "setting": "CHECK CROSS LINE",
+         "applies_to": [
+          "all"
+         ],
+         "refs": [
+          {
+           "book": "FCOM",
+           "code": "PRO-NOR-SUP-ENG",
+           "page": "P 8/18",
+           "pdf": 4393
+          }
+         ]
+        },
+        {
+         "kind": "ecam",
+         "item": "MAIN / SECONDARY ENG PARAMETERS",
+         "setting": "CHECK NORMAL",
+         "applies_to": [
+          "all"
+         ],
+         "refs": [
+          {
+           "book": "FCOM",
+           "code": "PRO-NOR-SUP-ENG",
+           "page": "P 8/18",
+           "pdf": 4393
+          }
+         ]
+        }
+       ],
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "FCOM",
+         "code": "PRO-NOR-SUP-ENG",
+         "page": "P 8/18",
+         "pdf": 4393
+        }
+       ]
+      }
+     ]
+    },
+    {
+     "actor": "PF",
+     "items": [
+      {
+       "kind": "ecam",
+       "item": "ENG MAN START pb-sw",
+       "setting": "OFF",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "FCOM",
+         "code": "PRO-NOR-SUP-ENG",
+         "page": "P 8/18",
+         "pdf": 4393
+        }
+       ]
+      },
+      {
+       "kind": "ecam",
+       "item": "ENG MODE sel",
+       "setting": "NORM",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "FCOM",
+         "code": "PRO-NOR-SUP-ENG",
+         "page": "P 8/18",
+         "pdf": 4393
+        }
+       ]
+      },
+      {
+       "kind": "condition",
+       "text": "If a start malfunction is suspected or an engine ECAM alert triggers",
+       "children": [
+        {
+         "kind": "action",
+         "text": "Before master ON: ENG MAN START pb-sw OFF",
+         "applies_to": [
+          "all"
+         ],
+         "refs": [
+          {
+           "book": "FCOM",
+           "code": "PRO-NOR-SUP-ENG",
+           "page": "P 6/18",
+           "pdf": 4391
+          }
+         ]
+        },
+        {
+         "kind": "action",
+         "text": "After master ON: ENG MASTER OFF, then ENG MAN START pb-sw OFF; consider a dry crank before another attempt",
+         "applies_to": [
+          "all"
+         ],
+         "refs": [
+          {
+           "book": "FCOM",
+           "code": "PRO-NOR-SUP-ENG",
+           "page": "P 6/18",
+           "pdf": 4391
+          }
+         ]
+        },
+        {
+         "kind": "callout",
+         "text": "ECAM ACTIONS",
+         "applies_to": [
+          "all"
+         ],
+         "refs": [
+          {
+           "book": "FCOM",
+           "code": "PRO-NOR-SUP-ENG",
+           "page": "P 6/18",
+           "pdf": 4391
+          }
+         ]
+        }
+       ],
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "FCOM",
+         "code": "PRO-NOR-SUP-ENG",
+         "page": "P 6/18",
+         "pdf": 4391
+        }
+       ]
+      }
+     ]
+    }
+   ]
+  }
+ ],
+ "procedures": [
+  {
+   "title": "ECAM procedure",
+   "source": "FCOM PRO-ABN-ENG",
+   "lines": [
+    {
+     "kind": "condition",
+     "text": "ENG 1(2) IGNITION FAULT:",
+     "level": 0,
+     "applies_to": [
+      "all"
+     ],
+     "refs": [
+      {
+       "book": "FCOM",
+       "code": "PRO-ABN-ENG",
+       "page": "P 187/226",
+       "pdf": 3434
+      }
+     ]
+    },
+    {
+     "kind": "info",
+     "text": "The engine does not start within the 20 s (30 s in flight) that follow the ignition start.",
+     "level": 1,
+     "applies_to": [
+      "all"
+     ],
+     "refs": [
+      {
+       "book": "FCOM",
+       "code": "PRO-ABN-ENG",
+       "page": "P 187/226",
+       "pdf": 3434
+      }
+     ]
+    },
+    {
+     "kind": "condition",
+     "text": "NO N1 ROTATION: or STALL or EGT OVERLIMIT or HUNG START:",
+     "level": 0,
+     "applies_to": [
+      "all"
+     ],
+     "refs": [
+      {
+       "book": "FCOM",
+       "code": "PRO-ABN-ENG",
+       "page": "P 187/226",
+       "pdf": 3434
+      }
+     ]
+    },
+    {
+     "kind": "condition",
+     "text": "In flight:",
+     "level": 1,
+     "applies_to": [
+      "all"
+     ],
+     "refs": [
+      {
+       "book": "FCOM",
+       "code": "PRO-ABN-ENG",
+       "page": "P 187/226",
+       "pdf": 3434
+      }
+     ]
+    },
+    {
+     "kind": "action",
+     "item": "ENG MASTER (AFFECTED)",
+     "setting": "OFF",
+     "text": "Wait 30 s before attempting a new start (to drain the engine).",
+     "level": 2,
+     "applies_to": [
+      "all"
+     ],
+     "refs": [
+      {
+       "book": "FCOM",
+       "code": "PRO-ABN-ENG",
+       "page": "P 187/226",
+       "pdf": 3434
+      }
+     ]
+    },
+    {
+     "kind": "condition",
+     "text": "On ground (auto start):",
+     "level": 1,
+     "applies_to": [
+      "all"
+     ],
+     "refs": [
+      {
+       "book": "FCOM",
+       "code": "PRO-ABN-ENG",
+       "page": "P 187/226",
+       "pdf": 3434
+      }
+     ]
+    },
+    {
+     "kind": "info",
+     "text": "If the engine does not start or in case of detected stall, potential EGT overheat or hung start, the FADEC will immediately shut off fuel and turn off ignition. After any start attempt that is not successful, a dry crank automatically occurs. At the end of the dry crank sequence, the start valve is closed.",
+     "level": 2,
+     "applies_to": [
+      "all"
+     ],
+     "refs": [
+      {
+       "book": "FCOM",
+       "code": "PRO-ABN-ENG",
+       "page": "P 187/226",
+       "pdf": 3434
+      }
+     ]
+    },
+    {
+     "kind": "info",
+     "text": "AUTO CRANK IN PROGRESS.",
+     "level": 2,
+     "applies_to": [
+      "all"
+     ],
+     "refs": [
+      {
+       "book": "FCOM",
+       "code": "PRO-ABN-ENG",
+       "page": "P 187/226",
+       "pdf": 3434
+      }
+     ]
+    },
+    {
+     "kind": "condition",
+     "text": "When dry crank process is completed:",
+     "level": 2,
+     "applies_to": [
+      "all"
+     ],
+     "refs": [
+      {
+       "book": "FCOM",
+       "code": "PRO-ABN-ENG",
+       "page": "P 187/226",
+       "pdf": 3434
+      }
+     ]
+    },
+    {
+     "kind": "action",
+     "item": "ENG MASTER (AFFECTED)",
+     "setting": "OFF",
+     "text": "Confirms automatic start abort. After the starter cools, for any subsequent attempt the crew must perform a manual start, or must report the “no start condition” to maintenance.",
+     "level": 3,
+     "applies_to": [
+      "all"
+     ],
+     "refs": [
+      {
+       "book": "FCOM",
+       "code": "PRO-ABN-ENG",
+       "page": "P 187/226",
+       "pdf": 3434
+      }
+     ]
+    },
+    {
+     "kind": "note",
+     "text": "With engine above idle, if EGT limit is exceeded ECAM requires to set engine master lever at OFF.",
+     "level": 3,
+     "applies_to": [
+      "all"
+     ],
+     "refs": [
+      {
+       "book": "FCOM",
+       "code": "PRO-ABN-ENG",
+       "page": "P 187/226",
+       "pdf": 3434
+      }
+     ]
+    },
+    {
+     "kind": "condition",
+     "text": "On ground (manual start):",
+     "level": 1,
+     "applies_to": [
+      "all"
+     ],
+     "refs": [
+      {
+       "book": "FCOM",
+       "code": "PRO-ABN-ENG",
+       "page": "P 187/226",
+       "pdf": 3434
+      }
+     ]
+    },
+    {
+     "kind": "action",
+     "item": "ENG MASTER (AFFECTED)",
+     "setting": "OFF",
+     "text": "",
+     "level": 2,
+     "applies_to": [
+      "all"
+     ],
+     "refs": [
+      {
+       "book": "FCOM",
+       "code": "PRO-ABN-ENG",
+       "page": "P 187/226",
+       "pdf": 3434
+      }
+     ]
+    },
+    {
+     "kind": "action",
+     "item": "MAN START (AFFECTED)",
+     "setting": "OFF",
+     "text": "",
+     "level": 2,
+     "applies_to": [
+      "all"
+     ],
+     "refs": [
+      {
+       "book": "FCOM",
+       "code": "PRO-ABN-ENG",
+       "page": "P 187/226",
+       "pdf": 3434
+      }
+     ]
+    },
+    {
+     "kind": "action",
+     "item": "MODE SEL",
+     "setting": "CRANK",
+     "text": "",
+     "level": 2,
+     "applies_to": [
+      "all"
+     ],
+     "refs": [
+      {
+       "book": "FCOM",
+       "code": "PRO-ABN-ENG",
+       "page": "P 187/226",
+       "pdf": 3434
+      }
+     ]
+    },
+    {
+     "kind": "action",
+     "item": "MAN START (AFFECTED)",
+     "setting": "ON",
+     "text": "",
+     "level": 2,
+     "applies_to": [
+      "all"
+     ],
+     "refs": [
+      {
+       "book": "FCOM",
+       "code": "PRO-ABN-ENG",
+       "page": "P 187/226",
+       "pdf": 3434
+      }
+     ]
+    },
+    {
+     "kind": "note",
+     "text": "ECAM does not display the last two lines. Dry crank the engine for 30 s. The start valve automatically reopens when N2 is below 10 %. After the starter cools: manual start, or report the “no start condition” to maintenance.",
+     "level": 2,
+     "applies_to": [
+      "all"
+     ],
+     "refs": [
+      {
+       "book": "FCOM",
+       "code": "PRO-ABN-ENG",
+       "page": "P 188/226",
+       "pdf": 3435
+      }
+     ]
+    },
+    {
+     "kind": "condition",
+     "text": "LO START AIR PRESS:",
+     "level": 0,
+     "applies_to": [
+      "all"
+     ],
+     "refs": [
+      {
+       "book": "FCOM",
+       "code": "PRO-ABN-ENG",
+       "page": "P 188/226",
+       "pdf": 3435
+      }
+     ]
+    },
+    {
+     "kind": "action",
+     "item": "BLEED AIR SUPPLY",
+     "setting": "CHECK",
+     "text": "",
+     "level": 1,
+     "applies_to": [
+      "all"
+     ],
+     "refs": [
+      {
+       "book": "FCOM",
+       "code": "PRO-ABN-ENG",
+       "page": "P 188/226",
+       "pdf": 3435
+      }
+     ]
+    },
+    {
+     "kind": "condition",
+     "text": "THR LEVER NOT AT IDLE:",
+     "level": 0,
+     "applies_to": [
+      "all"
+     ],
+     "refs": [
+      {
+       "book": "FCOM",
+       "code": "PRO-ABN-ENG",
+       "page": "P 188/226",
+       "pdf": 3435
+      }
+     ]
+    },
+    {
+     "kind": "action",
+     "item": "THR LEVER",
+     "setting": "IDLE",
+     "text": "",
+     "level": 1,
+     "applies_to": [
+      "all"
+     ],
+     "refs": [
+      {
+       "book": "FCOM",
+       "code": "PRO-ABN-ENG",
+       "page": "P 188/226",
+       "pdf": 3435
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "title": "ENGINE VENTILATION (DRY CRANKING)",
+   "source": "FCOM PRO-NOR-SUP-ENG",
+   "lines": [
+    {
+     "kind": "info",
+     "text": "On ground, after an unsuccessful manual start, or an unsuccessful automatic start not followed by an automatic dry crank.",
+     "level": 0,
+     "applies_to": [
+      "all"
+     ],
+     "refs": [
+      {
+       "book": "FCOM",
+       "code": "PRO-NOR-SUP-ENG",
+       "page": "P 17/18",
+       "pdf": 4402
+      }
+     ]
+    },
+    {
+     "kind": "condition",
+     "text": "Before dry crank:",
+     "level": 0,
+     "applies_to": [
+      "all"
+     ],
+     "refs": [
+      {
+       "book": "FCOM",
+       "code": "PRO-NOR-SUP-ENG",
+       "page": "P 17/18",
+       "pdf": 4402
+      }
+     ]
+    },
+    {
+     "kind": "action",
+     "item": "ENG MASTER (affected engine)",
+     "setting": "CHECK OFF",
+     "text": "",
+     "level": 1,
+     "applies_to": [
+      "all"
+     ],
+     "refs": [
+      {
+       "book": "FCOM",
+       "code": "PRO-NOR-SUP-ENG",
+       "page": "P 17/18",
+       "pdf": 4402
+      }
+     ]
+    },
+    {
+     "kind": "action",
+     "item": "ENG MODE sel",
+     "setting": "CHECK NORM",
+     "text": "",
+     "level": 1,
+     "applies_to": [
+      "all"
+     ],
+     "refs": [
+      {
+       "book": "FCOM",
+       "code": "PRO-NOR-SUP-ENG",
+       "page": "P 17/18",
+       "pdf": 4402
+      }
+     ]
+    },
+    {
+     "kind": "action",
+     "item": "ENG MAN START pb-sw (affected engine)",
+     "setting": "CHECK OFF",
+     "text": "",
+     "level": 1,
+     "applies_to": [
+      "all"
+     ],
+     "refs": [
+      {
+       "book": "FCOM",
+       "code": "PRO-NOR-SUP-ENG",
+       "page": "P 17/18",
+       "pdf": 4402
+      }
+     ]
+    },
+    {
+     "kind": "condition",
+     "text": "Dry crank:",
+     "level": 0,
+     "applies_to": [
+      "all"
+     ],
+     "refs": [
+      {
+       "book": "FCOM",
+       "code": "PRO-NOR-SUP-ENG",
+       "page": "P 17/18",
+       "pdf": 4402
+      }
+     ]
+    },
+    {
+     "kind": "action",
+     "item": "ENG MODE sel",
+     "setting": "CRANK",
+     "text": "",
+     "level": 1,
+     "applies_to": [
+      "all"
+     ],
+     "refs": [
+      {
+       "book": "FCOM",
+       "code": "PRO-NOR-SUP-ENG",
+       "page": "P 17/18",
+       "pdf": 4402
+      }
+     ]
+    },
+    {
+     "kind": "action",
+     "item": "ENG MAN START pb-sw (affected engine)",
+     "setting": "ON",
+     "text": "",
+     "level": 1,
+     "applies_to": [
+      "all"
+     ],
+     "refs": [
+      {
+       "book": "FCOM",
+       "code": "PRO-NOR-SUP-ENG",
+       "page": "P 17/18",
+       "pdf": 4402
+      }
+     ]
+    },
+    {
+     "kind": "note",
+     "text": "To clear fuel vapors, a 30 seconds dry crank cycle is the minimum required.",
+     "level": 1,
+     "applies_to": [
+      "all"
+     ],
+     "refs": [
+      {
+       "book": "FCOM",
+       "code": "PRO-NOR-SUP-ENG",
+       "page": "P 17/18",
+       "pdf": 4402
+      }
+     ]
+    },
+    {
+     "kind": "condition",
+     "text": "When the dry crank is completed:",
+     "level": 0,
+     "applies_to": [
+      "all"
+     ],
+     "refs": [
+      {
+       "book": "FCOM",
+       "code": "PRO-NOR-SUP-ENG",
+       "page": "P 17/18",
+       "pdf": 4402
+      }
+     ]
+    },
+    {
+     "kind": "action",
+     "item": "ENG MAN START pb-sw (affected engine)",
+     "setting": "OFF",
+     "text": "",
+     "level": 1,
+     "applies_to": [
+      "all"
+     ],
+     "refs": [
+      {
+       "book": "FCOM",
+       "code": "PRO-NOR-SUP-ENG",
+       "page": "P 17/18",
+       "pdf": 4402
+      }
+     ]
+    },
+    {
+     "kind": "action",
+     "item": "ENG MODE sel",
+     "setting": "NORM",
+     "text": "",
+     "level": 1,
+     "applies_to": [
+      "all"
+     ],
+     "refs": [
+      {
+       "book": "FCOM",
+       "code": "PRO-NOR-SUP-ENG",
+       "page": "P 17/18",
+       "pdf": 4402
+      }
+     ]
+    }
+   ]
+  }
+ ],
+ "status": null,
+ "background": [
+  {
+   "text": "During engine start the ENG EGT OVER LIMIT alert is inhibited; if EGT goes above 635 °C the ENG 1(2) START FAULT [EGT OVERLIMIT] alert triggers instead.",
+   "applies_to": [
+    "all"
+   ],
+   "refs": [
+    {
+     "book": "FCOM",
+     "code": "PRO-ABN-ENG",
+     "page": "P 127/226",
+     "pdf": 3374
+    }
+   ]
+  },
+  {
+   "text": "The FADEC detects hot start, hung start, stall, failed light-up, low start air pressure and thrust lever not at idle; on ground with N2 below 50 % it closes the HP valve and start valve, turns off ignition and runs a 30 s dry crank to remove fuel vapours.",
+   "applies_to": [
+    "all"
+   ],
+   "refs": [
+    {
+     "book": "FCOM",
+     "code": "DSC-70-80-40",
+     "page": "P 2/8",
+     "pdf": 2735
+    }
+   ]
+  },
+  {
+   "text": "With residual EGT above 250 °C at start, an auto-crank function motors the engine until EGT is below 250 °C, with no crew message (very hot conditions or turn-arounds under 20 min).",
+   "applies_to": [
+    "all"
+   ],
+   "refs": [
+    {
+     "book": "FCOM",
+     "code": "DSC-70-80-40",
+     "page": "P 2/8",
+     "pdf": 2735
+    }
+   ]
+  },
+  {
+   "text": "Alert partly inhibited: phase 3 for no light-up, stall, overtemperature, hung start or low air pressure; phase 6 for thrust lever not at idle; phase 9 for no N1 rotation; fully inhibited in phases 4, 5, 7 and 8.",
+   "applies_to": [
+    "all"
+   ],
+   "refs": [
+    {
+     "book": "FCOM",
+     "code": "PRO-ABN-ENG",
+     "page": "P 186/226",
+     "pdf": 3433
+    }
+   ]
+  }
+ ],
+ "technique": [
+  {
+   "text": "Engine-start supplementary procedures: read the entire procedure first, then the PM reads the actions and the PF acts on the controls.",
+   "applies_to": [
+    "all"
+   ],
+   "refs": [
+    {
+     "book": "FCTM",
+     "code": "AOP-20",
+     "page": "P 1/10",
+     "pdf": 68
+    }
+   ]
+  },
+  {
+   "text": "Manual start is recommended after a start aborted for stall, EGT overlimit, LO START AIR PRESS, no N1 rotation or hung start, and when an abort is expected (hot or high airfields, reduced EGT margin, weak ground air, tailwind above 10 kt).",
+   "applies_to": [
+    "all"
+   ],
+   "refs": [
+    {
+     "book": "FCOM",
+     "code": "PRO-NOR-SUP-ENG",
+     "page": "P 1/18",
+     "pdf": 4386
+    }
+   ]
+  },
+  {
+   "text": "In hot weather (OAT ≥ 40 °C) with residual EGT above 100 °C, dry crank 2 min before a manual start; starting with residual EGT above 250 °C is not recommended.",
+   "applies_to": [
+    "all"
+   ],
+   "refs": [
+    {
+     "book": "FCOM",
+     "code": "PRO-NOR-SUP-ENG",
+     "page": "P 7/18",
+     "pdf": 4392
+    }
+   ]
+  }
+ ],
+ "related": [
+  {
+   "title": "MANUAL ENGINE START (SUP)",
+   "why": "Next start attempt after the auto start abort",
+   "key_actions": [
+    "THR LEVERS IDLE",
+    "MODE IGN/START, MAN START ON",
+    "ENG MASTER ON at N2 ≥ 16 % and 30 s",
+    "CHRONO, check light-up within 20 s",
+    "At 43 % N2: MAN START OFF, MODE NORM"
+   ],
+   "refs": [
+    {
+     "book": "FCOM",
+     "code": "PRO-NOR-SUP-ENG",
+     "page": "P 6/18",
+     "pdf": 4391
+    },
+    {
+     "book": "FCOM",
+     "code": "PRO-NOR-SUP-ENG",
+     "page": "P 7/18",
+     "pdf": 4392
+    },
+    {
+     "book": "FCOM",
+     "code": "PRO-NOR-SUP-ENG",
+     "page": "P 8/18",
+     "pdf": 4393
+    }
+   ]
+  },
+  {
+   "title": "[QRH] ENGINE TAILPIPE FIRE",
+   "why": "Internal fire can occur at start; EGT does not decrease after master OFF, or ground crew reports it",
+   "key_actions": [
+    "ENG MASTER OFF",
+    "Do not press the ENG FIRE pb (FADEC power needed for motoring)",
+    "Air bleed press established, BEACON ON",
+    "MODE CRANK, MAN START ON until fire stopped"
+   ],
+   "refs": [
+    {
+     "book": "FCOM",
+     "code": "PRO-ABN-ENG",
+     "page": "P 29/226",
+     "pdf": 3276
+    },
+    {
+     "book": "QRH",
+     "code": "19.08",
+     "page": "19.08A",
+     "pdf": 179
+    },
+    {
+     "book": "FCTM",
+     "code": "PR-AEP-ENG",
+     "page": "P 21/26",
+     "pdf": 422
+    },
+    {
+     "book": "FCTM",
+     "code": "PR-AEP-ENG",
+     "page": "P 22/26",
+     "pdf": 423
+    }
+   ]
+  }
+ ],
+ "differences": [],
+ "gaps": [
+  {
+   "text": "The HS-TX procedure has no separate HOT START heading (it exists only in the HS-TO variant, not used); a hot start appears as EGT OVERLIMIT.",
+   "applies_to": [
+    "all"
+   ],
+   "refs": [
+    {
+     "book": "FCOM",
+     "code": "PRO-ABN-ENG",
+     "page": "P 127/226",
+     "pdf": 3374
+    },
+    {
+     "book": "FCOM",
+     "code": "PRO-ABN-ENG",
+     "page": "P 192/226",
+     "pdf": 3439
+    }
+   ]
+  },
+  {
+   "text": "No FCTM technique or PDP slide covers the start-fault handling itself; the PF/PM split for the ECAM part follows the general AOP-20/AOP-30-30 rules.",
+   "applies_to": [
+    "all"
+   ],
+   "refs": [
+    {
+     "book": "FCTM",
+     "code": "AOP-20",
+     "page": "P 1–2/10",
+     "pdf": 68
+    },
+    {
+     "book": "FCTM",
+     "code": "AOP-30-30",
+     "page": "P 2/6",
+     "pdf": 83
+    }
+   ]
+  },
+  {
+   "text": "The SOP says “ENGINE 1 START” for engine 1; use the engine being started.",
+   "applies_to": [
+    "all"
+   ],
+   "refs": [
+    {
+     "book": "FCOM",
+     "code": "PRO-NOR-SOP-08",
+     "page": "P 1/6",
+     "pdf": 4136
+    }
+   ]
+  }
+ ],
+ "sources": [
+  {
+   "book": "FCOM",
+   "section": "PRO-ABN-ENG — ENG 1(2) START FAULT",
+   "pages": "P 186–188/226",
+   "pdf": "3433–3435",
+   "rev": "26 MAY 26"
+  },
+  {
+   "book": "FCOM",
+   "section": "PRO-ABN-ENG — ENG N1/N2/EGT OVER LIMIT (note 2)",
+   "pages": "P 127/226",
+   "pdf": "3374",
+   "rev": "26 MAY 26"
+  },
+  {
+   "book": "FCOM",
+   "section": "PRO-NOR-SOP-08 — Automatic engine start",
+   "pages": "P 1–2/6",
+   "pdf": "4136–4137",
+   "rev": "18 FEB 26"
+  },
+  {
+   "book": "FCOM",
+   "section": "PRO-NOR-SUP-ENG — Manual start, dry cranking",
+   "pages": "P 1, 6–8, 17/18",
+   "pdf": "4386, 4391–4393, 4402",
+   "rev": "26 MAY 26"
+  },
+  {
+   "book": "FCOM",
+   "section": "LIM-ENG — EGT, starter",
+   "pages": "P 1, 3/8",
+   "pdf": "4702, 4704",
+   "rev": "26 MAY 26"
+  },
+  {
+   "book": "FCOM",
+   "section": "DSC-70-80-40 — Engine starting system",
+   "pages": "P 2/8",
+   "pdf": "2735",
+   "rev": "18 FEB 26"
+  },
+  {
+   "book": "FCTM",
+   "section": "AOP-20 — Supplementary procedures task sharing",
+   "pages": "P 1/10",
+   "pdf": "68",
+   "rev": "26 MAY 26"
+  },
+  {
+   "book": "FCTM",
+   "section": "PR-AEP-ENG — Engine tailpipe fire",
+   "pages": "P 21–22/26",
+   "pdf": "422–423",
+   "rev": "26 MAY 26"
+  }
+ ],
+ "schema": "a320-ecam-abnormal/3",
+ "generated": "2026-10-14",
+ "qrh": [],
+ "tables": []
+}

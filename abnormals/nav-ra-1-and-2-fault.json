@@ -1,0 +1,1247 @@
+{
+ "slug": "nav-ra-1-and-2-fault",
+ "title": "NAV RA 1 AND 2 FAULT",
+ "kind": "ecam",
+ "alert": {
+  "level": "caution",
+  "land_asap": "none",
+  "memory_items": false,
+  "qrh_summary": false,
+  "trigger": "This alert triggers when both RAs are failed (dual RA failure). Inhibited in flight phases 3, 4, 5 and 8.",
+  "inhibited_phases": [
+   3,
+   4,
+   5,
+   8
+  ],
+  "refs": [
+   {
+    "book": "FCOM",
+    "code": "PRO-ABN-NAV",
+    "page": "P 113/124",
+    "pdf": 3938
+   }
+  ]
+ },
+ "effectivity": {
+  "branches": [],
+  "note": "One procedure for all HS-TX (the HS-TO version is not used)."
+ },
+ "summary": "An amber caution with no action line, crew awareness only. The effects matter for the approach: no G/S capture with the APPR pb (LOC is available with the LOC pb), CAT 1 limits only, no auto callouts or RETARD, no GPWS, reactive windshear detection or SPEED SPEED SPEED. When the gear goes down the flight controls revert to DIRECT LAW, the AP disconnects and USE MAN PITCH TRIM appears. Land in CONF 3 at VREF + 10 kt.",
+ "key_limits": [
+  {
+   "label": "Approach",
+   "value": "CAT 1 only · LOC pb (no G/S)",
+   "applies_to": [
+    "all"
+   ],
+   "refs": [
+    {
+     "book": "FCTM",
+     "code": "PR-AEP-NAV",
+     "page": "P 20/20",
+     "pdf": 497
+    },
+    {
+     "book": "FCOM",
+     "code": "PRO-ABN-NAV",
+     "page": "P 114/124",
+     "pdf": 3939
+    }
+   ]
+  },
+  {
+   "label": "FOR LDG",
+   "value": "FLAP LVR 3",
+   "applies_to": [
+    "all"
+   ],
+   "refs": [
+    {
+     "book": "FCOM",
+     "code": "PRO-ABN-NAV",
+     "page": "P 114/124",
+     "pdf": 3939
+    }
+   ]
+  },
+  {
+   "label": "APPR SPD",
+   "value": "VREF + 10 KT",
+   "applies_to": [
+    "all"
+   ],
+   "refs": [
+    {
+     "book": "FCOM",
+     "code": "PRO-ABN-NAV",
+     "page": "P 114/124",
+     "pdf": 3939
+    }
+   ]
+  },
+  {
+   "label": "Law at L/G DN",
+   "value": "DIRECT (AP off, man pitch trim)",
+   "applies_to": [
+    "all"
+   ],
+   "refs": [
+    {
+     "book": "FCOM",
+     "code": "PRO-ABN-NAV",
+     "page": "P 114/124",
+     "pdf": 3939
+    },
+    {
+     "book": "FCTM",
+     "code": "PR-AEP-NAV",
+     "page": "P 20/20",
+     "pdf": 497
+    }
+   ]
+  }
+ ],
+ "flow": [
+  {
+   "phase": "Detection",
+   "steps": [
+    {
+     "actor": "BOTH",
+     "items": [
+      {
+       "kind": "action",
+       "text": "First to notice: MASTER WARNING / CAUTION reset",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "FCTM",
+         "code": "AOP-30-30",
+         "page": "P 2/6",
+         "pdf": 83
+        },
+        {
+         "book": "PDP",
+         "code": "Management of abnormal operations",
+         "page": "XFTDN6ECAM00001",
+         "pdf": 424
+        }
+       ]
+      }
+     ]
+    },
+    {
+     "actor": "PM",
+     "items": [
+      {
+       "kind": "callout",
+       "text": "NAV RA 1 AND 2 FAULT",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "FCTM",
+         "code": "AOP-30-30",
+         "page": "P 2/6",
+         "pdf": 83
+        },
+        {
+         "book": "FCOM",
+         "code": "PRO-ABN-NAV",
+         "page": "P 113/124",
+         "pdf": 3938
+        },
+        {
+         "book": "PDP",
+         "code": "Management of abnormal operations",
+         "page": "XFTDN6ECAM00001",
+         "pdf": 424
+        }
+       ]
+      },
+      {
+       "kind": "action",
+       "text": "Confirm the failure on the SD page and overhead panel before acting",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "FCTM",
+         "code": "AOP-30-30",
+         "page": "P 2/6",
+         "pdf": 83
+        },
+        {
+         "book": "PDP",
+         "code": "Management of abnormal operations",
+         "page": "XFTDN6ECAM00001",
+         "pdf": 424
+        }
+       ]
+      }
+     ]
+    },
+    {
+     "actor": "PF",
+     "items": [
+      {
+       "kind": "callout",
+       "text": "ECAM ACTIONS",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "FCOM",
+         "code": "PRO-ABN-ABN-00",
+         "page": "P 8/12",
+         "pdf": 2831
+        },
+        {
+         "book": "FCTM",
+         "code": "AOP-30-30",
+         "page": "P 3/6",
+         "pdf": 84
+        },
+        {
+         "book": "PDP",
+         "code": "Management of abnormal operations",
+         "page": "XFTDN6ECAM00001",
+         "pdf": 424
+        }
+       ]
+      },
+      {
+       "kind": "note",
+       "text": "PF now flies, navigates and communicates",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "FCTM",
+         "code": "AOP-20",
+         "page": "P 1–2/10",
+         "pdf": 68
+        },
+        {
+         "book": "PDP",
+         "code": "Management of abnormal operations",
+         "page": "XFTDN6ECAM00001",
+         "pdf": 424
+        }
+       ]
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "phase": "Procedure",
+   "steps": [
+    {
+     "actor": "PM",
+     "items": [
+      {
+       "kind": "ecam",
+       "item": "Crew awareness",
+       "setting": "—",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "FCOM",
+         "code": "PRO-ABN-NAV",
+         "page": "P 113/124",
+         "pdf": 3938
+        }
+       ]
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "phase": "STATUS",
+   "steps": [
+    {
+     "actor": "PM",
+     "items": [
+      {
+       "kind": "callout",
+       "text": "CLEAR NAV ?",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "FCOM",
+         "code": "PRO-ABN-ABN-00",
+         "page": "P 8/12",
+         "pdf": 2831
+        },
+        {
+         "book": "FCTM",
+         "code": "AOP-30-30",
+         "page": "P 3/6",
+         "pdf": 84
+        },
+        {
+         "book": "PDP",
+         "code": "Management of abnormal operations",
+         "page": "XFTDN6ECAM00001",
+         "pdf": 424
+        }
+       ]
+      }
+     ]
+    },
+    {
+     "actor": "PF",
+     "items": [
+      {
+       "kind": "callout",
+       "text": "CLEAR NAV",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "FCOM",
+         "code": "PRO-ABN-ABN-00",
+         "page": "P 8/12",
+         "pdf": 2831
+        },
+        {
+         "book": "FCTM",
+         "code": "AOP-30-30",
+         "page": "P 3/6",
+         "pdf": 84
+        },
+        {
+         "book": "PDP",
+         "code": "Management of abnormal operations",
+         "page": "XFTDN6ECAM00001",
+         "pdf": 424
+        }
+       ]
+      }
+     ]
+    },
+    {
+     "actor": "PM",
+     "items": [
+      {
+       "kind": "callout",
+       "text": "STATUS",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "FCTM",
+         "code": "AOP-30-30",
+         "page": "P 3/6",
+         "pdf": 84
+        },
+        {
+         "book": "PDP",
+         "code": "Management of abnormal operations",
+         "page": "XFTDN6ECAM00001",
+         "pdf": 426
+        }
+       ]
+      }
+     ]
+    },
+    {
+     "actor": "PF",
+     "items": [
+      {
+       "kind": "callout",
+       "text": "STOP ECAM",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "FCTM",
+         "code": "AOP-30-30",
+         "page": "P 3/6",
+         "pdf": 84
+        },
+        {
+         "book": "PDP",
+         "code": "Management of abnormal operations",
+         "page": "XFTDN6ECAM00001",
+         "pdf": 426
+        }
+       ]
+      }
+     ]
+    },
+    {
+     "actor": "PM",
+     "items": [
+      {
+       "kind": "ecam",
+       "item": "ECAM ACTIONS",
+       "setting": "STOP",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "PDP",
+         "code": "Management of abnormal operations",
+         "page": "XFTDN6ECAM00001",
+         "pdf": 426
+        }
+       ]
+      }
+     ]
+    },
+    {
+     "actor": "PF",
+     "items": [
+      {
+       "kind": "action",
+       "text": "Normal C/L as applicable; system resets only per QRH",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "FCTM",
+         "code": "AOP-30-30",
+         "page": "P 4/6",
+         "pdf": 85
+        },
+        {
+         "book": "PDP",
+         "code": "Management of abnormal operations",
+         "page": "XFTDN6ECAM00001",
+         "pdf": 426
+        }
+       ]
+      },
+      {
+       "kind": "callout",
+       "text": "CONTINUE ECAM",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "FCTM",
+         "code": "AOP-30-30",
+         "page": "P 3/6",
+         "pdf": 84
+        },
+        {
+         "book": "PDP",
+         "code": "Management of abnormal operations",
+         "page": "XFTDN6ECAM00001",
+         "pdf": 426
+        }
+       ]
+      }
+     ]
+    },
+    {
+     "actor": "PM",
+     "items": [
+      {
+       "kind": "action",
+       "text": "Read the whole STATUS page; preview APPR PROC workload",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "FCTM",
+         "code": "AOP-30-30",
+         "page": "P 3/6",
+         "pdf": 84
+        },
+        {
+         "book": "PDP",
+         "code": "Management of abnormal operations",
+         "page": "XFTDN6ECAM00001",
+         "pdf": 426
+        }
+       ]
+      },
+      {
+       "kind": "callout",
+       "text": "REMOVE STATUS ?",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "FCTM",
+         "code": "AOP-30-30",
+         "page": "P 3/6",
+         "pdf": 84
+        },
+        {
+         "book": "PDP",
+         "code": "Management of abnormal operations",
+         "page": "XFTDN6ECAM00001",
+         "pdf": 426
+        }
+       ]
+      }
+     ]
+    },
+    {
+     "actor": "PF",
+     "items": [
+      {
+       "kind": "callout",
+       "text": "REMOVE STATUS",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "FCOM",
+         "code": "PRO-ABN-ABN-00",
+         "page": "P 8/12",
+         "pdf": 2831
+        },
+        {
+         "book": "FCTM",
+         "code": "AOP-30-30",
+         "page": "P 3/6",
+         "pdf": 84
+        },
+        {
+         "book": "PDP",
+         "code": "Management of abnormal operations",
+         "page": "XFTDN6ECAM00001",
+         "pdf": 426
+        }
+       ]
+      }
+     ]
+    },
+    {
+     "actor": "PM",
+     "items": [
+      {
+       "kind": "callout",
+       "text": "ECAM ACTIONS COMPLETE",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "FCOM",
+         "code": "PRO-ABN-ABN-00",
+         "page": "P 8/12",
+         "pdf": 2831
+        },
+        {
+         "book": "PDP",
+         "code": "Management of abnormal operations",
+         "page": "XFTDN6ECAM00001",
+         "pdf": 426
+        }
+       ]
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "phase": "Approach preparation",
+   "steps": [
+    {
+     "actor": "PF",
+     "items": [
+      {
+       "kind": "action",
+       "text": "Brief the effects: ILS/FLS/GLS cannot be captured with the APPR pb; capture the localizer with the LOC pb; G/S modes are not available; CAT 1 limits only",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "FCTM",
+         "code": "PR-AEP-NAV",
+         "page": "P 20/20",
+         "pdf": 497
+        },
+        {
+         "book": "FCOM",
+         "code": "PRO-ABN-NAV",
+         "page": "P 114/124",
+         "pdf": 3939
+        }
+       ]
+      },
+      {
+       "kind": "action",
+       "text": "Brief: final phases flown on raw data — AP/FD behaviour may not be reliable close to the ground",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "FCTM",
+         "code": "PR-AEP-NAV",
+         "page": "P 20/20",
+         "pdf": 497
+        }
+       ]
+      },
+      {
+       "kind": "action",
+       "text": "Brief: no auto callouts and no RETARD call; GPWS and SPEED SPEED SPEED inoperative — increased awareness of energy and terrain",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "FCTM",
+         "code": "PR-AEP-NAV",
+         "page": "P 20/20",
+         "pdf": 497
+        },
+        {
+         "book": "FCOM",
+         "code": "PRO-ABN-NAV",
+         "page": "P 114/124",
+         "pdf": 3939
+        }
+       ]
+      }
+     ]
+    },
+    {
+     "actor": "PM",
+     "items": [
+      {
+       "kind": "ecam",
+       "item": "FOR LDG",
+       "setting": "FLAP LVR 3",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "FCOM",
+         "code": "PRO-ABN-NAV",
+         "page": "P 114/124",
+         "pdf": 3939
+        }
+       ]
+      },
+      {
+       "kind": "ecam",
+       "item": "GPWS LDG FLAP 3",
+       "setting": "ON",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "FCOM",
+         "code": "PRO-ABN-NAV",
+         "page": "P 114/124",
+         "pdf": 3939
+        }
+       ]
+      },
+      {
+       "kind": "ecam",
+       "item": "APPR SPD",
+       "setting": "VREF+10 KT",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "FCOM",
+         "code": "PRO-ABN-NAV",
+         "page": "P 114/124",
+         "pdf": 3939
+        }
+       ]
+      },
+      {
+       "kind": "ecam",
+       "item": "LDG DIST PROC",
+       "setting": "APPLY",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "FCOM",
+         "code": "PRO-ABN-NAV",
+         "page": "P 114/124",
+         "pdf": 3939
+        }
+       ]
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "phase": "Approach and landing",
+   "steps": [
+    {
+     "actor": "PF",
+     "items": [
+      {
+       "kind": "condition",
+       "text": "At landing gear selection down",
+       "children": [
+        {
+         "kind": "action",
+         "text": "DIRECT LAW becomes active (LGCIU input replaces RA); the AP disconnects with the law reversion",
+         "applies_to": [
+          "all"
+         ],
+         "refs": [
+          {
+           "book": "FCTM",
+           "code": "PR-AEP-NAV",
+           "page": "P 20/20",
+           "pdf": 497
+          },
+          {
+           "book": "FCOM",
+           "code": "PRO-ABN-NAV",
+           "page": "P 114/124",
+           "pdf": 3939
+          }
+         ]
+        },
+        {
+         "kind": "action",
+         "text": "USE MAN PITCH TRIM is displayed: trim manually",
+         "applies_to": [
+          "all"
+         ],
+         "refs": [
+          {
+           "book": "FCTM",
+           "code": "PR-AEP-NAV",
+           "page": "P 20/20",
+           "pdf": 497
+          },
+          {
+           "book": "FCOM",
+           "code": "PRO-ABN-F_CTL",
+           "page": "P 19/132",
+           "pdf": 3492
+          }
+         ]
+        }
+       ],
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "FCTM",
+         "code": "PR-AEP-NAV",
+         "page": "P 20/20",
+         "pdf": 497
+        }
+       ]
+      },
+      {
+       "kind": "note",
+       "text": "After landing, ground law becomes active when the MLG is compressed and pitch attitude is below 2.5°",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "FCTM",
+         "code": "PR-AEP-NAV",
+         "page": "P 20/20",
+         "pdf": 497
+        }
+       ]
+      }
+     ]
+    }
+   ]
+  }
+ ],
+ "procedures": [
+  {
+   "title": "NAV RA 1 AND 2 FAULT (DUAL RA FAILURE)",
+   "source": "FCOM PRO-ABN-NAV (HS-TX)",
+   "lines": [
+    {
+     "kind": "info",
+     "text": "Crew awareness.",
+     "level": 0,
+     "applies_to": [
+      "all"
+     ],
+     "refs": [
+      {
+       "book": "FCOM",
+       "code": "PRO-ABN-NAV",
+       "page": "P 113/124",
+       "pdf": 3938
+      }
+     ]
+    }
+   ]
+  }
+ ],
+ "status": {
+  "limitations": [],
+  "info": [
+   {
+    "text": "WHEN L/G DN : DIRECT LAW",
+    "applies_to": [
+     "all"
+    ],
+    "refs": [
+     {
+      "book": "FCOM",
+      "code": "PRO-ABN-NAV",
+      "page": "P 114/124",
+      "pdf": 3939
+     }
+    ]
+   },
+   {
+    "text": "Note 1: at landing gear extension, flight controls revert to direct law in both pitch and roll (Refer to PRO-ABN-F_CTL F/CTL DIRECT LAW).",
+    "applies_to": [
+     "all"
+    ],
+    "refs": [
+     {
+      "book": "FCOM",
+      "code": "PRO-ABN-NAV",
+      "page": "P 114/124",
+      "pdf": 3939
+     }
+    ]
+   },
+   {
+    "text": "Note 2: LOC*, LOC, F-LOC* and F-LOC modes are available via the LOC pb. G/S*, G/S, F-G/S* and F-G/S modes are not available.",
+    "applies_to": [
+     "all"
+    ],
+    "refs": [
+     {
+      "book": "FCOM",
+      "code": "PRO-ABN-NAV",
+      "page": "P 114/124",
+      "pdf": 3939
+     }
+    ]
+   }
+  ],
+  "appr_proc": [
+   {
+    "kind": "action",
+    "item": "FOR LDG",
+    "setting": "FLAP LVR 3",
+    "text": "Replaced by \"FOR LDG: FLAP LVR 3\" when CONF 3 is selected, as a reminder.",
+    "level": 0,
+    "applies_to": [
+     "all"
+    ],
+    "refs": [
+     {
+      "book": "FCOM",
+      "code": "PRO-ABN-NAV",
+      "page": "P 114/124",
+      "pdf": 3939
+     }
+    ]
+   },
+   {
+    "kind": "action",
+    "item": "GPWS LDG FLAP 3",
+    "setting": "ON",
+    "text": "",
+    "level": 0,
+    "applies_to": [
+     "all"
+    ],
+    "refs": [
+     {
+      "book": "FCOM",
+      "code": "PRO-ABN-NAV",
+      "page": "P 114/124",
+      "pdf": 3939
+     }
+    ]
+   },
+   {
+    "kind": "action",
+    "item": "APPR SPD",
+    "setting": "VREF+10 KT",
+    "text": "",
+    "level": 0,
+    "applies_to": [
+     "all"
+    ],
+    "refs": [
+     {
+      "book": "FCOM",
+      "code": "PRO-ABN-NAV",
+      "page": "P 114/124",
+      "pdf": 3939
+     }
+    ]
+   },
+   {
+    "kind": "action",
+    "item": "LDG DIST PROC",
+    "setting": "APPLY",
+    "text": "",
+    "level": 0,
+    "applies_to": [
+     "all"
+    ],
+    "refs": [
+     {
+      "book": "FCOM",
+      "code": "PRO-ABN-NAV",
+      "page": "P 114/124",
+      "pdf": 3939
+     }
+    ]
+   }
+  ],
+  "inop_sys": [
+   {
+    "text": "RA 1+2",
+    "applies_to": [
+     "all"
+    ],
+    "refs": [
+     {
+      "book": "FCOM",
+      "code": "PRO-ABN-NAV",
+      "page": "P 114/124",
+      "pdf": 3939
+     }
+    ]
+   },
+   {
+    "text": "A/CALL OUT",
+    "applies_to": [
+     "all"
+    ],
+    "refs": [
+     {
+      "book": "FCOM",
+      "code": "PRO-ABN-NAV",
+      "page": "P 114/124",
+      "pdf": 3939
+     }
+    ]
+   },
+   {
+    "text": "GPWS",
+    "applies_to": [
+     "all"
+    ],
+    "refs": [
+     {
+      "book": "FCOM",
+      "code": "PRO-ABN-NAV",
+      "page": "P 114/124",
+      "pdf": 3939
+     }
+    ]
+   },
+   {
+    "text": "CAT 2",
+    "applies_to": [
+     "all"
+    ],
+    "refs": [
+     {
+      "book": "FCOM",
+      "code": "PRO-ABN-NAV",
+      "page": "P 114/124",
+      "pdf": 3939
+     }
+    ]
+   },
+   {
+    "text": "GLS AUTOLAND",
+    "applies_to": [
+     "all"
+    ],
+    "refs": [
+     {
+      "book": "FCOM",
+      "code": "PRO-ABN-NAV",
+      "page": "P 114/124",
+      "pdf": 3939
+     }
+    ]
+   },
+   {
+    "text": "REAC W/S DET",
+    "applies_to": [
+     "all"
+    ],
+    "refs": [
+     {
+      "book": "FCOM",
+      "code": "PRO-ABN-NAV",
+      "page": "P 114/124",
+      "pdf": 3939
+     }
+    ]
+   },
+   {
+    "text": "TCAS",
+    "applies_to": [
+     "all"
+    ],
+    "refs": [
+     {
+      "book": "FCOM",
+      "code": "PRO-ABN-NAV",
+      "page": "P 114/124",
+      "pdf": 3939
+     }
+    ]
+   },
+   {
+    "text": "ROW/ROP",
+    "applies_to": [
+     "all"
+    ],
+    "refs": [
+     {
+      "book": "FCOM",
+      "code": "PRO-ABN-NAV",
+      "page": "P 114/124",
+      "pdf": 3939
+     }
+    ]
+   }
+  ]
+ },
+ "background": [
+  {
+   "text": "The radio altimeters feed the GPWS and the FWC (auto callouts), the AP and A/THR modes, and the flight control law switching. With both RAs failed, the flight control system uses the LGCIU inputs instead for mode switching.",
+   "applies_to": [
+    "all"
+   ],
+   "refs": [
+    {
+     "book": "FCTM",
+     "code": "PR-AEP-NAV",
+     "page": "P 20/20",
+     "pdf": 497
+    }
+   ]
+  },
+  {
+   "text": "Law reconfiguration table: 2 radio altimeters at L/G extension (or CONF 2 if both LGCIUs faulty) — pitch DIRECT, no protection, roll DIRECT, yaw ALTN.",
+   "applies_to": [
+    "all"
+   ],
+   "refs": [
+    {
+     "book": "FCOM",
+     "code": "DSC-27-20-20",
+     "page": "P 3/20",
+     "pdf": 1614
+    },
+    {
+     "book": "FCOM",
+     "code": "DSC-27-20-20",
+     "page": "P 5/20",
+     "pdf": 1616
+    }
+   ]
+  }
+ ],
+ "technique": [
+  {
+   "text": "Although the ECAM procedure is straightforward, the effects of the failure on the aircraft operation require consideration.",
+   "applies_to": [
+    "all"
+   ],
+   "refs": [
+    {
+     "book": "FCTM",
+     "code": "PR-AEP-NAV",
+     "page": "P 20/20",
+     "pdf": 497
+    }
+   ]
+  },
+  {
+   "text": "Fly the final phases of the approach on raw data, to avoid possible excessive roll rates if LOC is still engaged.",
+   "applies_to": [
+    "all"
+   ],
+   "refs": [
+    {
+     "book": "FCTM",
+     "code": "PR-AEP-NAV",
+     "page": "P 20/20",
+     "pdf": 497
+    }
+   ]
+  },
+  {
+   "text": "Direct law: be careful with large thrust changes or sudden speedbrake movements; at go-around, TOGA thrust gives a large pitch-up moment — apply nose-down trim.",
+   "applies_to": [
+    "all"
+   ],
+   "refs": [
+    {
+     "book": "FCTM",
+     "code": "AOP-10-30-20",
+     "page": "P 1/2",
+     "pdf": 62
+    }
+   ]
+  }
+ ],
+ "related": [
+  {
+   "title": "F/CTL DIRECT LAW",
+   "why": "Active from landing gear extension.",
+   "key_actions": [
+    "MAN PITCH TRIM USE",
+    "MAX SPEED 320/.77",
+    "Maneuver and use speed brakes with care"
+   ],
+   "refs": [
+    {
+     "book": "FCOM",
+     "code": "PRO-ABN-NAV",
+     "page": "P 114/124",
+     "pdf": 3939
+    },
+    {
+     "book": "FCOM",
+     "code": "PRO-ABN-F_CTL",
+     "page": "P 19/132",
+     "pdf": 3492
+    }
+   ]
+  }
+ ],
+ "gaps": [
+  {
+   "text": "The FCOM procedure is titled NAV RA 1 AND 2 FAULT (DUAL RA FAILURE); the FCTM calls it dual radio altimeter failure. No PDP module covers it; the flow uses the generic ECAM handling.",
+   "applies_to": [
+    "all"
+   ],
+   "refs": [
+    {
+     "book": "FCOM",
+     "code": "PRO-ABN-NAV",
+     "page": "P 113/124",
+     "pdf": 3938
+    },
+    {
+     "book": "FCTM",
+     "code": "PR-AEP-NAV",
+     "page": "P 20/20",
+     "pdf": 497
+    }
+   ]
+  },
+  {
+   "text": "The manuals give no standard callouts to replace the missing auto callouts; none are invented here.",
+   "applies_to": [
+    "all"
+   ],
+   "refs": [
+    {
+     "book": "FCTM",
+     "code": "PR-AEP-NAV",
+     "page": "P 20/20",
+     "pdf": 497
+    }
+   ]
+  },
+  {
+   "text": "The HS-TO version (FCOM P 115–116/124) is not used.",
+   "applies_to": [
+    "all"
+   ],
+   "refs": [
+    {
+     "book": "FCOM",
+     "code": "PRO-ABN-NAV",
+     "page": "P 113/124",
+     "pdf": 3938
+    }
+   ]
+  }
+ ],
+ "sources": [
+  {
+   "book": "FCOM",
+   "section": "PRO-ABN-NAV — NAV RA 1 AND 2 FAULT (HS-TX)",
+   "pages": "P 113–114/124",
+   "pdf": "3938–3939",
+   "rev": "26 MAY 26"
+  },
+  {
+   "book": "FCTM",
+   "section": "PR-AEP-NAV — Dual radio altimeter failure",
+   "pages": "P 20/20",
+   "pdf": "497",
+   "rev": "26 MAY 26"
+  },
+  {
+   "book": "FCTM",
+   "section": "AOP-10-30-20 — flying in reconfiguration laws",
+   "pages": "P 1/2",
+   "pdf": "62",
+   "rev": "25 FEB 25"
+  },
+  {
+   "book": "FCOM",
+   "section": "DSC-27-20-20 — law reconfiguration table",
+   "pages": "P 3/20, P 5/20",
+   "pdf": "1614, 1616",
+   "rev": "18 FEB 26"
+  },
+  {
+   "book": "FCTM",
+   "section": "AOP-20 / AOP-30 — task sharing and ECAM handling",
+   "pages": "AOP-20 P 1–2/10, AOP-30-30 P 1–4/6",
+   "pdf": "68–69, 82–85",
+   "rev": "26 MAY 26"
+  },
+  {
+   "book": "PDP",
+   "section": "Management of abnormal operations (XFTDN6ECAM00001)",
+   "pages": "ECAM actions, STATUS, QRH, confirm",
+   "pdf": "424–432",
+   "rev": "JAN 2024"
+  }
+ ],
+ "schema": "a320-ecam-abnormal/3",
+ "generated": "2026-10-14",
+ "qrh": [],
+ "tables": [],
+ "differences": []
+}

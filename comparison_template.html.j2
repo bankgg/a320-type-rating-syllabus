@@ -1,0 +1,934 @@
+{% macro trainee(side) -%}<span class="trainee-label trainee-{{ side|lower }}"><span class="trainee-word">Trainee </span>{{ side }}</span>{%- endmacro %}
+{% macro comparison_row(row, mixed) -%}
+<tr{% if row.different %} class="different"{% endif %}>
+  <th scope="row">{{ row.label }}</th>
+  {% if row.different %}<td class="value">{{ row.a }}</td><td class="value">{{ row.b }}</td>
+  {% else %}<td class="value"{% if mixed %} colspan="2"{% endif %}>{% if mixed %}<span class="shared-label">Both · </span>{% endif %}{{ row.a }}</td>{% endif %}
+</tr>
+{%- endmacro %}
+{% macro included(exercise, side) -%}
+{% if exercise[side] %}
+  {% if exercise[side]|length > 1 %}<span class="repeat"><span class="sr-only">Included </span>×{{ exercise[side]|length }}</span>
+  {% else %}<svg class="included" viewBox="0 0 20 20" aria-hidden="true"><path d="m4 10 4 4 8-8"/></svg><span class="sr-only">Included</span>{% endif %}
+{% elif exercise.conditional_for == side %}<span class="conditional-label">If<span class="sr-only"> conditional branch applies; see the condition in this exercise row</span></span>
+{% else %}<span class="absent" aria-label="Not assigned">—</span>{% endif %}
+{%- endmacro %}
+{% macro icon(name, cls='icon') -%}
+<svg class="{{ cls }}" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">{% if name == 'previous' %}<path d="m14 6-6 6 6 6"/>{% elif name == 'next' %}<path d="m10 6 6 6-6 6"/>{% elif name == 'close' %}<path d="m6 6 12 12M18 6 6 18"/>{% elif name == 'setup' %}<path d="M4 6h16M4 12h16M4 18h16M8 3v6M16 9v6M10 15v6"/>{% elif name == 'warning' %}<path d="m12 3 10 18H2L12 3Z"/><path d="M12 9v5M12 17h.01"/>{% elif name == 'exercises' %}<path d="M9 6h11M9 12h11M9 18h11M3 6h.01M3 12h.01M3 18h.01"/>{% elif name == 'topics' %}<path d="M9 5h11M9 12h11M9 19h11M3 4h1v3M3 10h2l-2 3h2M3 17h2v3H3"/>{% elif name == 'chevron' %}<path d="m9 6 6 6-6 6"/>{% elif name == 'procedure' %}<path d="M8 4h11v16H5V7l3-3Z"/><path d="M8 4v3H5M9 11h6M9 15h6"/>{% elif name == 'speech' %}<path d="M4 5h16v11H11l-4.5 3.5V16H4z"/>{% elif name == 'flow' %}<circle cx="6" cy="5.5" r="2.2"/><circle cx="6" cy="18.5" r="2.2"/><path d="M6 7.7v8.6M11 5.5h9M11 12h6M11 18.5h9"/>{% elif name == 'book' %}<path d="M5 4.5A1.5 1.5 0 0 1 6.5 3H19v15H6.5A1.5 1.5 0 0 0 5 19.5v-15Z"/><path d="M5 19.5A1.5 1.5 0 0 0 6.5 21H19M9 7.5h6"/>{% elif name == 'table' %}<rect x="3.5" y="5" width="17" height="14" rx="1"/><path d="M3.5 10h17M9.5 5v14"/>{% elif name == 'info' %}<circle cx="12" cy="12" r="8.5"/><path d="M12 11v5.5M12 7.8h.01"/>{% elif name == 'check' %}<path d="m5 12.5 4.5 4.5L19 7.5"/>{% elif name == 'plane' %}<path d="m12 3 2 7 7 4v2l-7-2v5l2 2H8l2-2v-5l-7 2v-2l7-4 2-7Z"/>{% endif %}</svg>
+{%- endmacro %}
+{% macro trainee_short(side) -%}<span class="trainee-label trainee-{{ side|lower }}" title="Trainee {{ side }}"><span class="sr-only">Trainee </span>{{ side }}</span>{%- endmacro %}
+{% macro branch(obj) -%}{% if obj.applies_to and obj.applies_to != ['all'] %}<span class="branch-chip">{{ obj.applies_to|join(' · ') }}</span>{% endif %}{%- endmacro %}
+{% macro flow_item(it) -%}
+<li class="flow-item {{ it.kind }}">{{ branch(it) }}{% if it.kind == 'callout' %}<span class="callout-mark">{{ icon('speech', 'icon callout-icon') }}</span><q class="callout">{{ it.text }}</q>{% elif it.kind == 'ecam' %}<span class="ecam-line"><span class="ecam-item">{{ it['item'] }}</span><span class="leader" aria-hidden="true"></span><span class="ecam-setting">{{ it.setting }}</span></span>{% elif it.kind == 'condition' %}<span class="cond-label">{{ it.text }}</span>{% else %}{{ it.text }}{% endif %}{% if it.children %}<ul class="flow-children">{% for child in it.children %}{{ flow_item(child) }}{% endfor %}</ul>{% endif %}</li>
+{%- endmacro %}
+{% macro proc_line(ln) -%}
+<li class="proc-line {{ ln.kind }}" style="--level: {{ ln.level or 0 }}">{{ branch(ln) }}{% if ln.kind == 'action' %}<span class="ecam-line"><span class="ecam-item">{{ ln['item'] }}</span><span class="leader" aria-hidden="true"></span><span class="ecam-setting">{{ ln.setting }}</span></span>{% if ln.text %}<span class="proc-note">{{ ln.text }}</span>{% endif %}{% elif ln.kind == 'condition' %}<span class="cond-label">{{ ln.text }}</span>{% elif ln.kind == 'caution' %}<span class="caution-label">Caution</span> {{ ln.text }}{% elif ln.kind == 'land_asap' %}<span class="alert-chip {{ 'warning' if 'red' in ln.text else 'caution' }}">{{ ln.text }}</span>{% else %}<span class="proc-note">{{ ln.text }}</span>{% endif %}</li>
+{%- endmacro %}
+{% macro text_list(items, cls='plain-list') -%}<ul class="{{ cls }}">{% for t in items %}<li>{{ branch(t) }}{{ t.text }}</li>{% endfor %}</ul>{%- endmacro %}
+{% macro failure_mark() -%}<span class="failure-mark" title="Failure-related exercise or recovery">{{ icon('warning') }}<span class="sr-only">Failure-related exercise or recovery. </span></span>{%- endmacro %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="color-scheme" content="light">
+  <title>A320 SIM syllabus · Trainee A and B</title>
+  <style>
+
+    :root {
+      --canvas: #fff; --surface: #f1f4f8; --page: #f7f9fc;
+      --ink: #1b2735; --muted: #526171; --line: #dce2e8;
+      --blue: #175cd3; --blue-hover: #10459f; --blue-soft: #edf3ff;
+      --navy: #19364b; --trainee-a: #155e55; --trainee-b: #264ea5;
+      --difference: #edf3ff; --conditional: #79520b;
+      --failure: #9a3c08; --failure-soft: #fff3e7; --failure-line: #ca8750;
+      --warning: #b42318; --warning-soft: #fdeceb; --header: #e8eef6;
+      --font: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      font-family: var(--font); color: var(--ink); background: var(--page);
+      font-size: 16px; font-synthesis: none; scrollbar-color: #8997a6 var(--surface);
+    }
+    * { box-sizing: border-box; }
+    body { margin: 0; line-height: 1.35; }
+    [hidden] { display: none !important; }
+    ::selection { color: var(--ink); background: #cddfff; }
+    button { font: inherit; color: inherit; cursor: pointer; -webkit-tap-highlight-color: #cddfff; }
+    button:disabled { cursor: default; color: var(--muted); opacity: .55; }
+    :focus-visible { outline: 3px solid var(--blue); outline-offset: 3px; }
+    .dialog-heading h3:focus-visible, .section-title:focus-visible { outline: none; }
+    h1, h2, h3, h4, h5, h6, p { margin: 0; }
+    h2 { font-size: 1.75rem; line-height: 1.2; letter-spacing: -.025em; text-wrap: balance; }
+    h3 { font-size: 1.25rem; line-height: 1.3; }
+    h4 { font-size: 1rem; }
+    .sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; border: 0; }
+    .icon { width: 20px; height: 20px; flex: none; vertical-align: -.2em; }
+    .skip-button { position: fixed; left: 16px; top: -100px; z-index: 10; background: var(--canvas); padding: 12px 16px; border: 1px solid var(--blue); }
+    .skip-button:focus { top: 12px; }
+    .toolbar { position: sticky; top: 0; z-index: 5; background: var(--canvas); border-bottom: 1px solid var(--line); padding-top: env(safe-area-inset-top); }
+    .toolbar-inner { max-width: 1224px; margin-inline: auto; min-height: 60px; padding: 8px 24px; display: flex; align-items: center; justify-content: space-between; gap: 16px; }
+    .site-title { display: flex; align-items: center; gap: 10px; font-size: 1.125rem; font-weight: 700; letter-spacing: -.015em; }
+    .site-title .icon { width: 30px; height: 30px; padding: 4px; color: var(--blue); background: var(--blue-soft); border-radius: 6px; }
+    .toolbar-actions { display: flex; align-items: center; gap: 8px; }
+    .control { display: inline-flex; justify-content: center; align-items: center; gap: 6px; min-height: 44px; padding: 8px 12px; border: 1px solid var(--line); border-radius: 6px; background: var(--canvas); font-weight: 600; }
+    .control:hover:not(:disabled) { background: var(--blue-soft); border-color: var(--blue); color: var(--blue); }
+    .control[aria-current="page"] { background: var(--blue-soft); color: var(--blue); border-color: #c3d5f7; }
+    .control.primary { background: var(--blue); color: white; border-color: var(--blue); }
+    .control.primary:hover { background: var(--blue-hover); color: white; }
+    .session-nav { position: sticky; top: calc(60px + env(safe-area-inset-top)); z-index: 4; background: var(--surface); border-bottom: 1px solid var(--line); }
+    .session-nav-inner { max-width: 1224px; margin-inline: auto; padding: 6px 24px; display: flex; gap: 16px; }
+    .session-group { display: flex; align-items: center; gap: 8px; }
+    .group-label { font-weight: 700; color: var(--navy); white-space: nowrap; }
+    .session-buttons { display: flex; gap: 4px; flex-wrap: wrap; }
+    .session-button { width: 44px; min-height: 44px; border: 1px solid transparent; border-radius: 6px; background: var(--canvas); color: var(--muted); font-weight: 600; font-variant-numeric: tabular-nums; }
+    .session-button:hover { border-color: var(--blue); color: var(--blue); }
+    .session-button[aria-current="page"] { background: var(--blue); color: white; border-color: var(--blue); }
+    .main { max-width: 1224px; margin-inline: auto; padding: 16px 24px 40px; }
+    .session + .session { margin-top: 48px; border-top: 1px solid var(--line); padding-top: 24px; }
+    .enhanced .session { margin: 0; border: 0; padding: 0; }
+    .session-heading { display: flex; align-items: center; justify-content: space-between; gap: 16px; }
+    .session-number { color: var(--muted); font-variant-numeric: tabular-nums; white-space: nowrap; }
+    .session-summary { color: var(--muted); margin-top: 6px; }
+    .brief-strip { display: flex; align-items: center; justify-content: space-between; gap: 12px; margin: 10px 0; padding: 4px 12px; background: var(--canvas); border: 1px solid var(--line); border-radius: 8px; }
+    .brief-values { display: flex; flex-wrap: wrap; gap: 4px 20px; }
+    .brief-value { display: flex; gap: 6px; align-items: baseline; }
+    .brief-value dt { color: var(--muted); }
+    .brief-value dd { margin: 0; font-weight: 600; }
+    .brief-values { margin: 0; }
+    .tab-nav { display: inline-flex; gap: 4px; padding: 4px; background: #e8eef6; border-radius: 8px; margin-bottom: 10px; }
+    .tab-nav button { display: inline-flex; align-items: center; gap: 8px; border: 1px solid transparent; border-radius: 5px; background: transparent; min-height: 44px; padding: 8px 14px; color: var(--muted); }
+    .tab-nav button:hover { color: var(--blue); }
+    .tab-nav button[aria-selected="true"] { color: var(--blue); border-color: #c6d5ec; background: var(--canvas); font-weight: 600; }
+    .section-heading { display: flex; justify-content: space-between; align-items: baseline; gap: 16px; margin-bottom: 6px; }
+    .matrix-key { display: flex; align-items: center; flex-wrap: wrap; gap: 4px 12px; color: var(--muted); margin-bottom: 10px; }
+    .failure-key { display: inline-flex; align-items: center; gap: 5px; color: var(--failure); }
+    table { width: 100%; border-collapse: collapse; table-layout: fixed; font-variant-numeric: tabular-nums; background: var(--canvas); }
+    .matrix, .topic-table { border-collapse: separate; border-spacing: 0; }
+    th, td { text-align: left; padding: 6px 10px; vertical-align: top; overflow-wrap: anywhere; border-bottom: 1px solid var(--line); }
+    th { font-weight: 500; }
+    thead th { font-weight: 600; color: var(--muted); background: #e8eef6; }
+    .matrix .exercise-col { width: 76%; }
+    .matrix .assignment-col { width: 12%; }
+    .matrix thead th:not(:first-child), .matrix .assignment { text-align: center; }
+    .matrix .assignment { vertical-align: middle; }
+    .trainee-label { display: inline-block; padding: 2px 7px; border-radius: 4px; background: var(--blue-soft); color: var(--trainee-b); font-weight: 600; }
+    .trainee-label.trainee-a { background: #e6f3ef; color: var(--trainee-a); }
+    .matrix .category-row th { background: var(--surface); color: var(--navy); font-weight: 700; padding: 5px 10px; }
+    .exercise-title { display: inline; }
+    .exercise-note { display: block; color: var(--muted); margin-top: 2px; max-width: 75ch; }
+    .exercise-condition, .conditional-label { color: var(--conditional); }
+    .conditional-label { font-weight: 600; }
+    .included { width: 18px; height: 18px; vertical-align: -.15em; fill: none; stroke: currentColor; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+    .absent { color: var(--muted); }
+    .repeat { font-weight: 600; }
+    .failure { background: var(--failure-soft) !important; }
+    .failure td { border-top: 1px solid var(--failure-line); border-bottom: 1px solid var(--failure-line); }
+    .failure td:first-child { border-left: 1px solid var(--failure-line); }
+    .failure td:last-child { border-right: 1px solid var(--failure-line); }
+    .failure + .failure td { border-top: 0; }
+    .failure-mark { display: inline; color: var(--failure); margin-right: 4px; }
+    .failure-mark .icon { width: 17px; height: 17px; }
+    .session-section + .session-section { margin-top: 24px; }
+    .session-section > h3 { margin-bottom: 6px; }
+    .topic-grid, .condition-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+    .topic-block { min-width: 0; }
+    .topic-block > h4 { padding: 8px 10px; background: #e8eef6; }
+    .topic-block.a > h4 { background: #e6f3ef; color: var(--trainee-a); }
+    .topic-block.b > h4 { color: var(--trainee-b); }
+    .topic-table .number { width: 34px; color: var(--muted); padding-right: 0; }
+    .topic-table .status { width: 76px; }
+    .topic-table .unique, .topic-table .mixed { background: var(--difference); }
+    .topic-table .routine { color: var(--ink); }
+    .status-label { display: inline-block; font-size: 1rem; font-weight: 500; color: var(--trainee-b); white-space: nowrap; }
+    .a .status-label { color: var(--trainee-a); }
+    .condition-grid > div { background: var(--surface); padding: 12px; }
+    .condition-grid ol { margin: 8px 0 0; padding-left: 24px; }
+    .condition-grid li + li { margin-top: 4px; }
+    .overview-intro { color: var(--muted); margin-top: 8px; max-width: 70ch; }
+    .course-differences { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-top: 20px; padding: 16px; background: var(--canvas); border: 1px solid var(--line); border-radius: 8px; }
+    .course-differences p { margin-top: 6px; max-width: 70ch; color: var(--muted); }
+    .course-differences .shared { grid-column: 1 / -1; padding-top: 12px; border-top: 1px solid var(--line); }
+    .course-group { margin-top: 24px; }
+    .course-group > h3 { padding: 8px 12px; background: var(--navy); color: white; }
+    .overview-list { display: grid; grid-template-columns: 1fr 1fr; gap: 0 16px; }
+    .overview-card { display: block; width: 100%; padding: 12px; border: 0; border-bottom: 1px solid var(--line); background: var(--canvas); text-align: left; }
+    .overview-card:disabled { opacity: 1; }
+    .overview-card:hover:not(:disabled) { background: var(--blue-soft); }
+    .overview-card strong { display: block; color: var(--blue); font-size: 1.125rem; }
+    .overview-card span { display: block; margin-top: 4px; color: var(--muted); }
+    .setup-details { margin-block: 24px; }
+    .enhanced .setup-details { display: none; }
+    .setup-dialog { max-width: 1200px; width: calc(100% - 32px); max-height: calc(100dvh - 32px); margin: auto; padding: 20px; border: 0; border-radius: 12px; background: var(--canvas); color: var(--ink); box-shadow: 0 16px 64px #142c4540; overflow: auto; }
+    .setup-dialog::backdrop { background: #142c4573; }
+    .setup-dialog .setup-details { display: block; margin: 0; }
+    .dialog-heading { display: flex; align-items: center; justify-content: space-between; gap: 16px; margin-bottom: 4px; }
+    .setup-dialog { padding-top: 0; }
+    .setup-dialog .dialog-heading { position: sticky; top: 0; background: var(--canvas); z-index: 3; padding-top: 20px; padding-bottom: 6px; }
+    .dialog-subtitle { color: var(--muted); margin-bottom: 14px; }
+    .setup-grid { display: grid; grid-template-columns: 1.1fr 1fr 1fr; gap: 16px; }
+    .setup-block { min-width: 0; }
+    .setup-block > h4 { background: var(--navy); color: white; padding: 8px 10px; }
+    .comparison-table .field-col { width: 42%; }
+    .comparison-table tbody th { color: var(--muted); }
+    .comparison-table .different { background: var(--difference); }
+    .comparison-table .shared-label { color: var(--muted); }
+    .setup-grid th, .setup-grid td { padding: 5px 8px; }
+    .setup-grid .trainee-word { position: absolute; width: 1px; height: 1px; margin: -1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; }
+    .route-block { margin-top: 14px; }
+    .route-block > h4 { padding: 6px 0; }
+    .route-table .field-col { width: 10%; }
+    .route-table th, .route-table td { padding: 6px 8px; }
+    .summary-link { display: inline; padding: 4px 0; margin: 0; line-height: 1.35; border: 0; background: none; color: var(--blue); font-weight: 500; text-decoration: underline; text-decoration-color: #9db8ec; text-decoration-thickness: 1px; text-underline-offset: 3px; }
+    .summary-link:hover:not(:disabled) { color: var(--blue-hover); text-decoration-color: currentColor; }
+    .summary-link:disabled { color: var(--muted); opacity: 1; text-decoration: none; }
+    .brief-key { color: var(--muted); }
+    .brief-cell { padding: 0; }
+    .brief-open { display: flex; align-items: flex-start; gap: 0; width: 100%; min-height: 44px; padding: 6px 10px; border: 0; background: transparent; color: inherit; text-align: left; }
+    .brief-open:disabled { opacity: 1; color: inherit; }
+    .brief-open .exercise-title, .brief-open .topic-text { flex: 1; }
+    .brief-cue { display: inline-flex; align-items: center; gap: 2px; margin-left: 12px; color: var(--blue); font-weight: 600; white-space: nowrap; }
+    .brief-cue .icon { width: 18px; height: 18px; }
+    .brief-open:disabled .brief-cue { display: none; }
+    .brief-open:hover:not(:disabled) { background: #ffe9d4; }
+    .brief-open:hover:not(:disabled) .exercise-title, .brief-open:hover:not(:disabled) .topic-text { text-decoration: underline; text-decoration-color: var(--failure-line); text-underline-offset: 3px; }
+    .brief-cell .exercise-note { padding: 0 10px 8px; margin-top: 0; }
+    .procedure-briefs { margin-top: 32px; }
+    .enhanced .procedure-briefs { display: none; }
+    .procedures-heading { margin-bottom: 12px; }
+    .brief-group + .brief-group { margin-top: 32px; padding-top: 24px; border-top: 1px solid var(--line); }
+    .brief-heading h3 { min-width: 0; }
+    .brief-session { color: var(--muted); font-weight: 500; white-space: nowrap; }
+    .brief-heading { align-items: center; }
+    .brief-heading-actions { display: flex; align-items: center; gap: 12px; flex: none; }
+    .jump-bar { display: flex; gap: 2px; padding: 2px; background: var(--header); border-radius: 8px; }
+    .jump { min-height: 44px; min-width: 44px; padding: 6px 12px; border: 0; border-radius: 6px; background: transparent; color: var(--navy); font-weight: 600; }
+    .jump:hover { background: var(--canvas); color: var(--blue); }
+    .brief-switch { margin: 6px 0 2px; }
+    .switch-lead { color: var(--muted); margin-bottom: 8px; }
+    .brief-tabs { display: grid; grid-template-columns: repeat(auto-fit, minmax(230px, 1fr)); gap: 10px; }
+    .brief-tab { display: flex; align-items: center; gap: 12px; min-height: 64px; padding: 10px 14px; border: 1px solid #b9c5d3; border-radius: 8px; background: var(--canvas); color: var(--ink); text-align: left; box-shadow: 0 1px 2px #142c4514; }
+    .brief-tab:hover { border-color: var(--blue); background: #f7faff; }
+    .brief-tab[aria-selected="true"] { border-color: var(--blue); background: var(--blue-soft); box-shadow: inset 0 0 0 1px var(--blue); }
+    .tab-mark { flex: none; width: 12px; height: 12px; border-radius: 4px; background: var(--navy); }
+    .tab-mark.warning { background: var(--warning); }
+    .tab-mark.caution { background: var(--failure); }
+    .tab-mark.memory { background: var(--ink); }
+    .tab-text { flex: 1; min-width: 0; display: flex; flex-direction: column; }
+    .tab-name { font-weight: 700; }
+    .brief-tab[aria-selected="true"] .tab-name { color: var(--blue-hover); }
+    .tab-sub { color: var(--muted); }
+    .tab-trainees { display: flex; gap: 4px; flex: none; }
+    .tab-trainees .trainee-label { min-width: 28px; text-align: center; }
+    .tab-state { flex: none; display: grid; place-items: center; width: 24px; color: var(--muted); }
+    .tab-check { display: none; color: var(--blue); }
+    .brief-tab[aria-selected="true"] .tab-check { display: block; }
+    .brief-tab[aria-selected="true"] .tab-chevron { display: none; }
+    .flow-head { position: sticky; top: var(--dialog-head, 0px); z-index: 2; }
+    .brief + .brief { margin-top: 32px; }
+    .enhanced .brief + .brief { margin-top: 0; }
+    .brief-title { font-size: 1.125rem; margin-top: 16px; }
+    .brief-plate { margin-top: 12px; padding: 16px; background: var(--surface); border-radius: 8px; }
+    .brief-plate .trainee-label { background: var(--canvas); }
+    .brief-meta { display: flex; flex-wrap: wrap; align-items: center; gap: 6px 8px; }
+    .alert-chip { display: inline-block; padding: 2px 8px; border-radius: 4px; font-weight: 600; white-space: nowrap; }
+    .alert-chip.warning { color: var(--warning); background: var(--warning-soft); }
+    .alert-chip.caution { color: var(--failure); background: var(--failure-soft); }
+    .alert-chip.qrh { color: var(--navy); background: var(--surface); }
+    .alert-chip.memory { color: var(--ink); background: var(--header); }
+    .alert-chip.technique { color: var(--navy); background: var(--canvas); box-shadow: inset 0 0 0 1px var(--line); }
+    .session-note { max-width: 75ch; margin: -4px 0 14px; padding: 8px 12px; background: var(--canvas); border: 1px solid var(--line); border-radius: 6px; }
+    .session-note strong { color: var(--navy); margin-right: 6px; }
+    .brief-trainees { color: var(--muted); margin-left: 4px; }
+    .brief-summary { max-width: 75ch; margin: 10px 0 14px; line-height: 1.45; }
+    .key-limits { display: grid; grid-template-columns: repeat(auto-fit, minmax(170px, 1fr)); margin: 0; background: var(--canvas); border: 1px solid var(--line); border-radius: 8px; overflow: hidden; }
+    .key-limits > div { padding: 8px 12px; border-left: 1px solid var(--line); margin-left: -1px; }
+    .key-limits dt { color: var(--muted); }
+    .key-limits dt, .key-limits dd { text-wrap: balance; }
+    .key-limits dd { margin: 2px 0 0; font-size: 1.125rem; font-weight: 700; font-variant-numeric: tabular-nums; }
+    .branch-chip { display: inline-block; margin-right: 6px; padding: 0 6px; border-radius: 4px; background: var(--header); color: var(--navy); font-weight: 600; white-space: nowrap; }
+    .key-limits dt .branch-chip { margin: 0 0 0 6px; }
+    .brief-section { margin-top: 28px; padding-top: 20px; border-top: 1px solid var(--line); }
+    .section-head { display: flex; flex-wrap: wrap; align-items: baseline; gap: 2px 12px; margin-bottom: 12px; }
+    .section-title { display: flex; align-items: center; gap: 8px; font-size: 1.25rem; line-height: 1.3; color: var(--ink); }
+    .section-icon { width: 24px; height: 24px; padding: 3px; color: var(--navy); background: var(--header); border-radius: 6px; }
+    .section-note { color: var(--muted); }
+    .flow { border: 1px solid var(--line); border-radius: 8px; overflow: clip; background: var(--canvas); }
+    .flow-head, .flow-phase { display: grid; grid-template-columns: 11rem 1fr; }
+    .flow-head { grid-template-columns: 11rem 1fr 1fr; background: var(--header); color: var(--muted); font-weight: 600; }
+    .flow-head span { padding: 6px 10px; }
+    .flow-head span + span { border-left: 1px solid var(--line); }
+    .flow-phase { border-top: 1px solid var(--line); }
+    .phase-name { position: relative; display: flex; align-items: flex-start; gap: 10px; padding: 12px 12px 12px 14px; background: var(--surface); color: var(--navy); font-size: 1rem; line-height: 1.3; }
+    .phase-name::before { content: ""; position: absolute; left: 26px; top: 0; bottom: 0; width: 2px; background: #c5d0dc; }
+    .flow-phase.first .phase-name::before { top: 26px; }
+    .flow-phase.last .phase-name::before { bottom: calc(100% - 26px); }
+    .flow-phase.first.last .phase-name::before { display: none; }
+    .phase-num { position: relative; z-index: 1; flex: none; display: grid; place-items: center; width: 26px; height: 26px; margin-top: -2px; border-radius: 50%; background: var(--navy); color: white; font-weight: 700; font-variant-numeric: tabular-nums; box-shadow: 0 0 0 3px var(--surface); }
+    .turns { list-style: none; margin: 0; padding: 0; min-width: 0; }
+    .turn { display: grid; grid-template-columns: 1fr 1fr; background: linear-gradient(var(--line), var(--line)) 50% 0 / 1px 100% no-repeat; }
+    .turn + .turn { border-top: 1px dashed var(--line); }
+    .turn-body { display: flex; align-items: baseline; gap: 10px; min-width: 0; padding: 10px 14px; border-left: 1px solid var(--line); }
+    .turn-pf .turn-body { grid-column: 1; }
+    .turn-pm .turn-body { grid-column: 2; }
+    .turn-both { background: #fbfcfd; }
+    .turn-both .turn-body { grid-column: 1 / -1; }
+    .turn-body > ul { flex: 1; min-width: 0; }
+    .turn-no { flex: none; min-width: 2.4em; color: var(--muted); font-weight: 600; font-variant-numeric: tabular-nums; }
+    .lane-tag { display: none; }
+    .turn-both .lane-tag { display: inline-block; flex: none; color: var(--navy); font-weight: 700; }
+    .flow ul, .proc-lines, .flow-children { list-style: none; margin: 0; padding: 0; }
+    .flow-item + .flow-item { margin-top: 8px; }
+    .flow-item.callout { display: flex; align-items: baseline; gap: 6px; }
+    .callout-mark { flex: none; color: var(--navy); }
+    .callout-icon { width: 18px; height: 18px; vertical-align: -.2em; }
+    .flow-item.callout .callout { color: var(--navy); }
+    .flow-item.ecam { padding: 3px 8px; background: #f3f6fa; border-radius: 4px; }
+    .flow-item.ecam + .flow-item.ecam { margin-top: 2px; }
+    .flow-item.condition { padding-top: 2px; }
+    .flow .flow-children { margin-top: 4px; padding-left: 12px; border-left: 1px solid #d9b56a; }
+    .flow-item.note { color: var(--muted); }
+    .callout { font-weight: 700; quotes: "\201C" "\201D"; }
+    .ecam-line { display: flex; align-items: baseline; gap: 6px; }
+    .ecam-item { min-width: 0; }
+    .leader { flex: 1 1 12px; min-width: 12px; border-bottom: 1px dotted #9aa7b4; transform: translateY(-4px); }
+    .ecam-setting { flex: none; max-width: 55%; font-weight: 700; text-align: right; }
+    .cond-label { color: var(--conditional); font-weight: 700; }
+    .verbatim-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; align-items: start; }
+    .verbatim-grid.single { grid-template-columns: minmax(0, 1fr); max-width: 760px; }
+    .verbatim-col { min-width: 0; }
+    .verbatim { background: var(--canvas); border: 1px solid var(--line); border-radius: 8px; overflow: hidden; }
+    .verbatim + .verbatim { margin-top: 16px; }
+    .block-title { padding: 9px 12px; background: var(--navy); color: white; font-size: 1rem; }
+    .block-title .branch-chip { margin-left: 6px; }
+    .block-sub { margin: 4px 0 0; padding: 6px 12px; background: var(--surface); color: var(--navy); font-size: 1rem; font-weight: 700; }
+    .proc-lines { padding: 10px 12px 8px; }
+    .proc-line { padding-left: calc(var(--level, 0) * 1.25rem); }
+    .proc-line + .proc-line { margin-top: 4px; }
+    .proc-note { display: block; color: var(--muted); }
+    .proc-line.note .proc-note, .proc-line.info .proc-note { display: inline; }
+    .proc-line.info .proc-note { color: var(--ink); }
+    .caution-label { font-weight: 700; color: var(--failure); text-transform: uppercase; }
+    .ref-line { padding: 8px 12px 10px; border-top: 1px solid var(--line); color: var(--muted); }
+    .plain-list { margin: 6px 0 10px; padding: 0 12px 0 32px; }
+    .plain-list li + li { margin-top: 4px; }
+    .inop-list { display: flex; flex-wrap: wrap; gap: 2px 16px; list-style: none; margin: 0; padding: 8px 12px 12px; }
+    .brief-table + .brief-table { margin-top: 16px; }
+    .table-caption { color: var(--muted); padding: 8px 12px; background: var(--canvas); }
+    .table-scroll { overflow-x: auto; }
+    .brief-table table th[scope="row"] { font-weight: 600; }
+    .brief-more { border: 1px solid var(--line); border-radius: 8px; overflow: hidden; background: var(--canvas); }
+    .brief-more details + details { border-top: 1px solid var(--line); }
+    .brief-more details[open] > summary { background: var(--surface); }
+    .brief-more summary { display: flex; align-items: center; justify-content: space-between; gap: 12px; min-height: 48px; padding: 0 14px; font-weight: 600; cursor: pointer; list-style: none; }
+    .brief-more summary::-webkit-details-marker { display: none; }
+    .brief-more summary:hover { color: var(--blue); }
+    .summary-icon { color: var(--muted); }
+    .brief-more details[open] > summary .summary-icon { transform: rotate(90deg); }
+    .details-body { padding: 12px 14px 16px; max-width: 85ch; }
+    .details-body > p + p, .details-body > p + ul { margin-top: 6px; }
+    .details-body .plain-list { padding-left: 20px; }
+    .muted-note { color: var(--muted); margin-top: 8px; }
+    .sources-table { min-width: 560px; }
+    .brief-footnote { color: var(--muted); margin-top: 16px; }
+    .setup-dialog .brief-group { margin: 0; padding: 0; border: 0; }
+    .modal-open body { position: fixed; width: 100%; top: var(--locked-top); left: 0; }
+    .nojs-notice { padding: 12px; background: var(--blue-soft); margin-top: 12px; }
+    @media (max-width: 1160px) {
+      .session-nav-inner { flex-direction: column; gap: 4px; }
+      .group-label { min-width: 96px; }
+    }
+    @media (max-width: 760px) {
+      .toolbar-inner, .session-nav-inner { padding-inline: max(16px, env(safe-area-inset-left)); }
+      .toolbar-inner { min-height: 60px; }
+      .main { padding: 16px max(16px, env(safe-area-inset-left)) 32px; }
+      .session-nav { position: static; }
+      .session-group { align-items: flex-start; }
+      .group-label { min-width: 90px; padding-top: 12px; }
+      .toolbar-actions { gap: 4px; }
+      .step-button { width: 44px; padding: 8px; }
+      .step-label { display: none; }
+      .brief-strip { align-items: flex-start; flex-direction: column; gap: 8px; }
+      .brief-strip .control { width: 100%; }
+      .brief-values { gap: 6px 12px; }
+      .topic-grid, .condition-grid, .course-differences, .overview-list, .setup-grid { grid-template-columns: 1fr; }
+      .course-differences .shared { grid-column: auto; }
+      .matrix .exercise-col { width: 68%; }
+      .matrix .assignment-col { width: 16%; }
+      .trainee-word { position: absolute; width: 1px; height: 1px; margin: -1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; }
+      .setup-dialog { padding: 0 14px 14px; width: calc(100% - 16px); max-height: calc(100dvh - 16px); }
+      .setup-dialog .dialog-heading { padding-top: 14px; }
+      .route-table .field-col { width: 18%; }
+      .flow-head { display: none; }
+      .brief-plate { padding: 12px; }
+      .phase-name::before { display: none; }
+        .flow-phase { grid-template-columns: minmax(0, 1fr); }
+      .turn { grid-template-columns: minmax(0, 1fr); background: none; }
+      .turn-body, .turn-pm .turn-body, .turn-both .turn-body { grid-column: 1; flex-wrap: wrap; row-gap: 4px; border-left: 0; }
+      .turn-body > ul { flex-basis: 100%; }
+      .turn-pm { background: #fbfcfd; }
+      .lane-tag, .turn-both .lane-tag { display: inline-block; padding: 0 6px; border-radius: 4px; background: var(--header); color: var(--navy); font-weight: 700; }
+      .verbatim-grid { grid-template-columns: minmax(0, 1fr); }
+      .cue-word { display: none; }
+    }
+    @media (max-width: 520px) {
+      .toolbar-inner { flex-wrap: wrap; gap: 6px; padding-block: 6px; }
+      .site-title { font-size: 1rem; gap: 6px; }
+      .site-title .icon { width: 24px; height: 24px; }
+      .overview-control { padding-inline: 8px; }
+      .toolbar-actions { margin-left: auto; }
+      .session-heading { align-items: flex-start; flex-direction: column; gap: 4px; }
+      .session-number { white-space: normal; }
+      .session-summary { margin-top: 8px; }
+      .tab-nav { display: flex; }
+      .tab-nav button { flex: 1; justify-content: center; padding-inline: 6px; }
+      .section-heading { flex-wrap: wrap; gap: 4px 12px; }
+      th, td { padding-inline: 6px; }
+      .matrix .category-row th { padding-inline: 6px; }
+      .topic-table .status { width: 68px; }
+      .group-label { min-width: 82px; }
+      .dialog-heading h3 { font-size: 1.125rem; }
+      .jump-bar { display: none; }
+      .brief-open { padding-inline: 6px; }
+      .brief-cell .exercise-note { padding-inline: 6px; }
+      .key-limits { grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); }
+    }
+    @media (prefers-reduced-motion: no-preference) {
+      .tab-nav button, .control, .session-button { transition: background-color 160ms ease-out, color 160ms ease-out, border-color 160ms ease-out; }
+      .setup-dialog[open] { animation: dialog-in 260ms cubic-bezier(.16, 1, .3, 1); }
+      .setup-dialog[open]::backdrop { animation: backdrop-in 220ms ease-out; }
+      .setup-dialog.closing { animation: dialog-out 160ms cubic-bezier(.4, 0, 1, 1) forwards; }
+      .setup-dialog.closing::backdrop { animation: backdrop-out 160ms ease-in forwards; }
+      @keyframes dialog-out { 0% { opacity: 1; transform: none; } 30% { opacity: 1; } 100% { opacity: 0; transform: translateY(6px) scale(.995); } }
+      @keyframes backdrop-in { from { opacity: 0; } }
+      @keyframes backdrop-out { to { opacity: 0; } }
+      .summary-icon { transition: transform 160ms cubic-bezier(.16, 1, .3, 1); }
+      .brief-open, .summary-link { transition: background-color 160ms ease-out, color 160ms ease-out; }
+      @keyframes dialog-in { 0% { opacity: 0; transform: translateY(12px) scale(.99); } 35% { opacity: 1; } 100% { opacity: 1; transform: none; } }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      .setup-dialog[open], .setup-dialog[open]::backdrop { animation: fade-in 140ms ease-out; }
+      .setup-dialog.closing, .setup-dialog.closing::backdrop { animation: fade-out 120ms ease-in forwards; }
+      @keyframes fade-in { from { opacity: 0; } }
+      @keyframes fade-out { to { opacity: 0; } }
+    }
+    @media print {
+      .toolbar, .session-nav, .skip-button, .tab-nav, .open-setup, .close-setup { display: none !important; }
+      .main { max-width: none; padding: 0; }
+      .main > [hidden], .tab-panel[hidden], .enhanced .setup-details, .enhanced .procedure-briefs, .brief[hidden] { display: block !important; }
+      .brief-more details > .details-body { display: block; }
+      .session { break-before: page; }
+      tr { break-inside: avoid; }
+      thead { display: table-header-group; }
+    }
+  </style>
+</head>
+<body>
+  <button class="skip-button" type="button" hidden>Skip to syllabus</button>
+  <header class="toolbar">
+    <div class="toolbar-inner">
+      <h1 class="site-title">{{ icon('plane') }}A320 SIM syllabus</h1>
+      <div class="toolbar-actions" hidden>
+        <button class="control overview-control" type="button" data-session="overview">Overview</button>
+        <button class="control step-button" type="button" id="previous-session" aria-label="Previous session" disabled>{{ icon('previous') }}<span class="step-label">Previous</span></button>
+        <button class="control step-button" type="button" id="next-session" aria-label="Next session" disabled><span class="step-label">Next</span>{{ icon('next') }}</button>
+      </div>
+    </div>
+  </header>
+  <nav class="session-nav" aria-label="Session navigation" hidden>
+    <div class="session-nav-inner">
+    {% for label, group in [('MFTD/FBS', sessions[:8]), ('FFS', sessions[8:])] %}
+      <div class="session-group"><span class="group-label">{{ label }}</span><div class="session-buttons">
+        {% for session in group %}<button class="session-button" type="button" data-session="{{ session.id }}" aria-label="{{ session.name }}">{{ session.id.split('-')[-1] }}</button>{% endfor %}
+      </div></div>
+    {% endfor %}
+    </div>
+  </nav>
+  <main class="main" id="main-content" tabindex="-1">
+    <section class="overview" id="overview" aria-labelledby="overview-title">
+      <h2 id="overview-title">Course overview</h2>
+      <p class="overview-intro">18 sessions · MFTD/FBS 2–9 and FFS 1–10. Choose a session to compare exercises, flight setup and the session schedule for both trainees.</p>
+      <noscript><p class="nojs-notice">JavaScript is disabled. All sessions, exercises, setup values and ordered topics are available below in course order.</p></noscript>
+      <div class="course-differences">
+        <div><h3>Trainee A emphasis</h3><p>Managed climb and FMGC work, APU MEL and crossbleed starts, fuel-feed and IDG faults, ADR/IR faults, dual-engine failure, overweight approaches, and severe engine damage.</p></div>
+        <div><h3>Trainee B emphasis</h3><p>Ground-speed mini and braking, start-valve and smoke events, FMGC resets, sidestick priority, emergency electrical configuration, contaminated-runway and gear work, and gravity gear extension.</p></div>
+        <div class="shared"><h3>Common ground</h3><p>Both cover takeoffs, approaches, landings, stalls, UPRT and one-engine-inoperative handling. FFS 8 has the same UPRT exercise sequence; FFS 10 has the same skill-test exercise sequence, with different weather.</p></div>
+      </div>
+      {% for name, group in [('MFTD / FBS', sessions[:8]), ('FFS', sessions[8:])] %}
+      <section class="course-group" aria-label="{{ name }} sessions">
+        <h3>{{ name }}</h3>
+        <div class="overview-list">{% for session in group %}<button class="overview-card" type="button" data-session="{{ session.id }}" disabled><strong>{{ session.name }}</strong><span>{{ session.failure_summary }}</span></button>{% endfor %}</div>
+      </section>
+      {% endfor %}
+    </section>
+    {% for session in sessions %}
+    <article class="session" id="{{ session.id }}" aria-labelledby="{{ session.id }}-title">
+      <header class="session-header">
+        <div class="session-heading"><h2 id="{{ session.id }}-title">{{ session.name }}</h2><span class="session-number">Session {{ loop.index }} of 18</span></div>
+        <p class="session-summary">{% if session.procedure_groups %}{% for item in session.summary_items %}{% if item.group %}<button class="summary-link" type="button" data-group="{{ item.group.id }}" data-brief="{{ item.group.briefs[0].slug }}" aria-haspopup="dialog" disabled>{{ item.label }}</button>{% else %}{{ item.label }}{% endif %}{% if not loop.last %}&nbsp;• {% endif %}{% endfor %}{% else %}{{ session.failure_summary }}{% endif %}</p>
+      </header>
+      <div class="brief-strip" aria-label="Session flight summary">
+        <dl class="brief-values">
+        {% for row in session.brief_setup[:2] %}<div class="brief-value"><dt>{{ row.label }}</dt><dd>{% if row.different %}A: {{ row.a }} · B: {{ row.b }}{% else %}{{ row.a }}{% endif %}</dd></div>{% endfor %}
+        </dl>
+        <button class="control primary open-setup" type="button" aria-haspopup="dialog" hidden>{{ icon('setup') }}Setup &amp; conditions</button>
+      </div>
+      <div class="tab-nav" role="tablist" aria-label="{{ session.name }} details" hidden>
+        <button type="button" role="tab" id="{{ session.id }}-tab-exercises" aria-controls="{{ session.id }}-panel-exercises" aria-selected="true" tabindex="0" data-tab="exercises">{{ icon('exercises') }}Exercises</button>
+        <button type="button" role="tab" id="{{ session.id }}-tab-topics" aria-controls="{{ session.id }}-panel-topics" aria-selected="false" tabindex="-1" data-tab="topics">{{ icon('topics') }}Schedule</button>
+      </div>
+      <div class="tab-panel" id="{{ session.id }}-panel-exercises" data-panel="exercises" tabindex="-1">
+        <section class="session-section" aria-labelledby="{{ session.id }}-exercise-title">
+          <div class="section-heading"><h3 id="{{ session.id }}-exercise-title">Combined exercises</h3></div>
+          <p class="matrix-key"><svg class="included" viewBox="0 0 20 20" aria-hidden="true"><path d="m4 10 4 4 8-8"/></svg> Included · ×2 repeated · — not assigned{% if session.conditional %} · If conditional branch applies{% endif %}<span class="failure-key">{{ icon('warning') }}Failure / recovery</span>{% if session.procedure_groups %}<span class="brief-key">Tap a failure for its procedure</span>{% endif %}</p>
+          <table class="matrix"><colgroup><col class="exercise-col"><col class="assignment-col"><col class="assignment-col"></colgroup>
+            <thead><tr><th scope="col">Exercise</th><th scope="col">{{ trainee('A') }}</th><th scope="col">{{ trainee('B') }}</th></tr></thead>
+            {% for group in session.exercise_categories %}<tbody>
+              <tr class="category-row"><th colspan="3" scope="rowgroup">{{ group.name }}</th></tr>
+              {% for exercise in group['items'] %}<tr class="exercise-item{% if exercise.failure_related %} failure{% endif %}" id="{{ exercise.id }}">
+                <td{% if exercise.brief %} class="brief-cell"{% endif %}>{% if exercise.brief %}<button class="brief-open" type="button" data-group="{{ exercise.brief_group }}" data-brief="{{ exercise.brief }}" aria-haspopup="dialog" disabled>{{ failure_mark() }}<span class="exercise-title">{{ exercise.title }}</span><span class="brief-cue"><span class="cue-word">Procedure</span>{{ icon('chevron') }}</span></button>{% else %}{% if exercise.failure_related %}{{ failure_mark() }}{% endif %}<span class="exercise-title">{{ exercise.title }}</span>{% endif %}{% if exercise.note %}<span class="exercise-note">{{ exercise.note }}</span>{% endif %}{% if exercise.condition %}<span class="exercise-note exercise-condition" id="{{ exercise.id }}-condition">{{ exercise.condition }}</span>{% endif %}</td>
+                <td class="assignment">{{ included(exercise, 'A') }}</td><td class="assignment">{{ included(exercise, 'B') }}</td>
+              </tr>{% endfor %}
+            </tbody>{% endfor %}
+          </table>
+        </section>
+      </div>
+      <section class="setup-details" aria-labelledby="{{ session.id }}-modal-title">
+        <div class="dialog-heading"><h3 id="{{ session.id }}-modal-title" tabindex="-1">{{ session.name }} · Setup &amp; conditions</h3><button class="control close-setup" type="button" aria-label="Close setup and conditions" hidden>{{ icon('close') }}</button></div>
+        <p class="dialog-subtitle">{% if session.difference_count %}{{ session.difference_count }} setup / weather {{ 'value differs' if session.difference_count == 1 else 'values differ' }} · Blue rows compare A and B.{% else %}Same setup and weather for both trainees.{% endif %}</p>
+        <div class="setup-grid">
+          <section class="setup-block" aria-labelledby="{{ session.id }}-setup-title">
+            <h4 id="{{ session.id }}-setup-title">Flight setup</h4>
+            <table class="comparison-table setup-table"><colgroup><col class="field-col"><col>{% if not session.setup_shared %}<col>{% endif %}</colgroup>
+              <thead><tr><th scope="col">Field</th>{% if session.setup_shared %}<th scope="col">Both trainees</th>{% else %}<th scope="col">{{ trainee('A') }}</th><th scope="col">{{ trainee('B') }}</th>{% endif %}</tr></thead>
+              <tbody>{% for row in session.setup_fields %}{{ comparison_row(row, not session.setup_shared) }}{% endfor %}</tbody>
+            </table>
+          </section>
+          {% for phase in session.weather_phases %}<section class="setup-block" aria-label="{{ phase.name }} weather">
+            <h4{% if loop.first %} id="{{ session.id }}-weather-title"{% endif %}>{{ phase.name }} weather</h4>
+            <table class="comparison-table weather-table"><colgroup><col class="field-col"><col>{% if not phase.shared %}<col>{% endif %}</colgroup>
+              <thead><tr><th scope="col">Field</th>{% if phase.shared %}<th scope="col">Both trainees</th>{% else %}<th scope="col">{{ trainee('A') }}</th><th scope="col">{{ trainee('B') }}</th>{% endif %}</tr></thead>
+              <tbody>{% for row in phase.rows %}{{ comparison_row(row, not phase.shared) }}{% endfor %}</tbody>
+            </table>
+          </section>{% endfor %}
+        </div>
+        <section class="route-block" aria-label="Full flight route">
+          <h4>Route</h4>
+          <table class="comparison-table route-table"><colgroup><col class="field-col"><col></colgroup><tbody>
+          {% if session.route_row.different %}<tr class="different"><th scope="row">Trainee A</th><td>{{ session.route_row.a }}</td></tr><tr class="different"><th scope="row">Trainee B</th><td>{{ session.route_row.b }}</td></tr>
+          {% else %}<tr><th scope="row">Both</th><td>{{ session.route_row.a }}</td></tr>{% endif %}
+          </tbody></table>
+        </section>
+      </section>
+      <div class="tab-panel" id="{{ session.id }}-panel-topics" data-panel="topics" tabindex="-1">
+        <section class="session-section" aria-labelledby="{{ session.id }}-topics-title">
+          <h3 id="{{ session.id }}-topics-title">Session schedule</h3>
+          <p class="matrix-key">Published sequence for each trainee. Blue rows identify differences; orange marks failure / recovery.</p>
+          <div class="topic-grid">{% for side in ('A','B') %}<div class="topic-block {{ side|lower }}">
+            <h4>Trainee {{ side }}</h4>
+            <table class="topic-table"><colgroup><col class="number"><col>{% if session.topics_different %}<col class="status">{% endif %}</colgroup>
+              <thead><tr><th scope="col">#</th><th scope="col">Topic</th>{% if session.topics_different %}<th scope="col">A/B</th>{% endif %}</tr></thead>
+              <tbody>{% for row in session.topics[side] %}<tr class="{{ row.kind }} {{ row.status }}{% if row.failure_related %} failure{% endif %}">
+                <td class="number">{{ row.n }}</td><td{% if row.brief %} class="brief-cell"{% endif %}>{% if row.brief %}<button class="brief-open" type="button" data-group="{{ row.brief_group }}" data-brief="{{ row.brief }}" aria-haspopup="dialog" disabled>{{ failure_mark() }}<span class="topic-text">{{ row.text }}</span><span class="brief-cue">{{ icon('chevron') }}<span class="sr-only">Open procedure</span></span></button>{% else %}{% if row.failure_related %}{{ failure_mark() }}{% endif %}<span class="topic-text">{{ row.text }}</span>{% endif %}</td>
+                {% if session.topics_different %}<td class="status">{% if row.status == 'unique' %}<span class="status-label">{{ side }} only</span>{% elif row.status == 'mixed' %}<span class="status-label">{{ side }} adds</span>{% endif %}</td>{% endif %}
+              </tr>{% endfor %}</tbody>
+            </table>
+          </div>{% endfor %}</div>
+        </section>
+        {% if session.conditional %}<section class="session-section conditional-section" aria-labelledby="{{ session.id }}-conditional-title">
+          <h3 id="{{ session.id }}-conditional-title">Conditional alternate</h3>
+          <div class="condition-grid">{% for side in ('A','B') %}<div>
+            <h4>Trainee {{ side }} · {% if side == 'A' %}both co-pilots{% else %}both captains{% endif %}</h4>
+            <ol>{% for topic in session.conditional[side] %}<li>{{ topic }}</li>{% endfor %}</ol>
+          </div>{% endfor %}</div>
+        </section>{% endif %}
+      </div>
+      {% if session.procedure_groups %}<section class="procedure-briefs" aria-labelledby="{{ session.id }}-procedures-title">
+        <h3 id="{{ session.id }}-procedures-title" class="procedures-heading">Failure procedures</h3>
+        {% for group in session.procedure_groups %}<section class="brief-group" id="{{ group.id }}" aria-labelledby="{{ group.id }}-title">
+          <div class="dialog-heading brief-heading">
+            <h3 id="{{ group.id }}-title" tabindex="-1">{% if group.briefs|length > 1 %}{{ group.label }}{% else %}{{ group.briefs[0].title }}{% endif %}<span class="brief-session"> · {{ session.name }}</span></h3>
+            <div class="brief-heading-actions">
+              <nav class="jump-bar" aria-label="Jump to section" hidden>{% for key, label in (('flow', 'Flow'), ('manuals', 'Manuals'), ('more', 'Detail')) %}<button type="button" class="jump" data-jump="{{ key }}">{{ label }}</button>{% endfor %}</nav>
+              <button class="control close-brief" type="button" aria-label="Close procedure" hidden>{{ icon('close') }}</button>
+            </div>
+          </div>
+          {% if group.briefs|length > 1 %}<div class="brief-switch" hidden>
+            <p class="switch-lead" id="{{ group.id }}-switch-lead">{{ group.briefs|length }} procedures in this group — choose one</p>
+            <div class="brief-tabs" role="tablist" aria-labelledby="{{ group.id }}-switch-lead">{% for brief in group.briefs %}<button type="button" role="tab" class="brief-tab" id="{{ group.id }}-tab-{{ brief.slug }}" aria-controls="{{ group.id }}-{{ brief.slug }}" aria-selected="{{ 'true' if loop.first else 'false' }}" tabindex="{{ 0 if loop.first else -1 }}" data-brief="{{ brief.slug }}">
+              <span class="tab-mark {{ brief.alert.level }}" aria-hidden="true"></span>
+              <span class="tab-text"><span class="tab-name">{{ brief.tab_label }}</span><span class="tab-sub">{{ brief.alert_label }}</span></span>
+              <span class="tab-trainees">{% for side in brief.trainees %}{{ trainee_short(side) }}{% endfor %}</span>
+              <span class="tab-state" aria-hidden="true">{{ icon('check', 'icon tab-check') }}{{ icon('chevron', 'icon tab-chevron') }}</span>
+            </button>{% endfor %}</div>
+          </div>{% endif %}
+          {% for brief in group.briefs %}{% set hl = 5 if group.briefs|length > 1 else 4 %}{% set sub = 'h' ~ (hl + 2) if hl + 2 <= 6 else 'p' %}<article class="brief" id="{{ group.id }}-{{ brief.slug }}" data-brief="{{ brief.slug }}" aria-label="{{ brief.title }}">
+            {% if group.briefs|length > 1 %}<h4 class="brief-title">{{ brief.title }}</h4>{% endif %}
+            <div class="brief-plate">
+              <div class="brief-meta">
+                <span class="alert-chip {{ brief.alert.level }}">{{ brief.alert_label }}</span>{% if brief.alert.land_asap != 'none' %}<span class="alert-chip {{ 'warning' if brief.alert.land_asap == 'red' else 'caution' }}">LAND ASAP ({{ brief.alert.land_asap }})</span>{% endif %}{% if brief.alert.memory_items and brief.alert.level != 'memory' %}<span class="alert-chip memory">Memory items</span>{% endif %}
+                <span class="brief-trainees">Practised by {% for side in brief.trainees %}{{ trainee(side) }}{% if not loop.last %} {% endif %}{% endfor %}</span>
+              </div>
+              <p class="brief-summary">{{ brief.summary }}</p>
+              {% if brief.session_note %}<p class="session-note"><strong>In {{ session.name }}</strong> {{ brief.session_note }}</p>{% endif %}
+              {% if brief.key_limits %}<dl class="key-limits" aria-label="Key limits">{% for k in brief.key_limits %}<div><dt>{{ k.label }}{{ branch(k) }}</dt><dd>{{ k.value }}</dd></div>{% endfor %}</dl>{% endif %}
+            </div>
+            <section class="brief-section" aria-labelledby="{{ group.id }}-{{ brief.slug }}-flow">
+              <div class="section-head"><h{{ hl }} class="section-title" tabindex="-1" id="{{ group.id }}-{{ brief.slug }}-flow">{{ icon('flow', 'icon section-icon') }}Handling flow</h{{ hl }}><p class="section-note">Who does what, phase by phase</p></div>
+              <div class="flow">
+                <div class="flow-head" aria-hidden="true"><span>Phase</span><span>PF · flies, navigates, communicates</span><span>PM · reads and does</span></div>
+                {% for ph in brief.flow %}{% set phase_no = loop.index %}<div class="flow-phase{% if loop.first %} first{% endif %}{% if loop.last %} last{% endif %}">
+                  <h{{ hl + 1 }} class="phase-name"><span class="phase-num" aria-hidden="true">{{ phase_no }}</span><span>{{ ph.phase }}</span></h{{ hl + 1 }}>
+                  <ol class="turns">
+                    {% for step in ph.steps %}{% set who = {'PF': 'Pilot flying', 'PM': 'Pilot monitoring', 'BOTH': 'Both pilots'}[step.actor] %}<li class="turn turn-{{ step.actor|lower }}">
+                      <div class="turn-body">
+                        <span class="turn-no" aria-hidden="true">{{ phase_no }}.{{ loop.index }}</span>
+                        <span class="lane-tag">{{ 'PF + PM' if step.actor == 'BOTH' else step.actor }}</span>
+                        <ul aria-label="Step {{ phase_no }}.{{ loop.index }}, {{ who }}">{% for it in step['items'] %}{{ flow_item(it) }}{% endfor %}</ul>
+                      </div>
+                    </li>{% endfor %}
+                  </ol>
+                </div>{% endfor %}
+              </div>
+            </section>
+            <section class="brief-section" aria-labelledby="{{ group.id }}-{{ brief.slug }}-manuals">
+              <div class="section-head"><h{{ hl }} class="section-title" tabindex="-1" id="{{ group.id }}-{{ brief.slug }}-manuals">{{ icon('book', 'icon section-icon') }}From the manuals</h{{ hl }}><p class="section-note">Verbatim procedure{% if brief.status %}, STATUS{% endif %}{% if brief.qrh %} and QRH{% endif %}</p></div>
+              <div class="verbatim-grid{% if not brief.status and not brief.qrh %} single{% endif %}">
+                <div class="verbatim-col">{% for proc in brief.procedures %}<section class="verbatim">
+                  <h{{ hl + 1 }} class="block-title">{{ proc.title }}</h{{ hl + 1 }}>
+                  <ol class="proc-lines">{% for ln in proc.lines %}{{ proc_line(ln) }}{% endfor %}</ol>
+                  <p class="ref-line">{{ brief.procedure_refs[loop.index0]|join(' · ') }}</p>
+                </section>{% endfor %}</div>
+                {% if brief.status or brief.qrh %}<div class="verbatim-col">
+                  {% if brief.status %}<section class="verbatim status">
+                    <h{{ hl + 1 }} class="block-title">STATUS</h{{ hl + 1 }}>
+                    {% if brief.status.limitations %}<{{ sub }} class="block-sub">Limitations</{{ sub }}><ol class="proc-lines">{% for ln in brief.status_limits %}{{ proc_line(ln) }}{% endfor %}</ol>{% endif %}
+                    {% if brief.status.appr_proc %}<{{ sub }} class="block-sub">APPR PROC</{{ sub }}><ol class="proc-lines">{% for ln in brief.status.appr_proc %}{{ proc_line(ln) }}{% endfor %}</ol>{% endif %}
+                    {% if brief.status.info %}<{{ sub }} class="block-sub">Information</{{ sub }}>{{ text_list(brief.status.info) }}{% endif %}
+                    {% if brief.status.inop_sys %}<{{ sub }} class="block-sub">INOP SYS</{{ sub }}><ul class="inop-list">{% for t in brief.status.inop_sys %}<li>{{ t.text }}{{ branch(t) }}</li>{% endfor %}</ul>{% endif %}
+                  </section>{% endif %}
+                  {% for q in brief.qrh %}<section class="verbatim qrh">
+                    <h{{ hl + 1 }} class="block-title">{{ q.title }}</h{{ hl + 1 }}>
+                    {% for sec in q.sections %}<{{ sub }} class="block-sub">{{ sec.name }}</{{ sub }}>{{ text_list(sec.lines) }}{% endfor %}
+                  </section>{% endfor %}
+                </div>{% endif %}
+              </div>
+            </section>
+            {% if brief.tables %}<section class="brief-section" aria-labelledby="{{ group.id }}-{{ brief.slug }}-tables">
+              <div class="section-head"><h{{ hl }} class="section-title" tabindex="-1" id="{{ group.id }}-{{ brief.slug }}-tables">{{ icon('table', 'icon section-icon') }}Reference tables</h{{ hl }}><p class="section-note">Values copied from the QRH</p></div>
+              {% for t in brief.tables %}<section class="verbatim brief-table">
+                <h{{ hl + 1 }} class="block-title">{{ t.title }} {{ branch(t) }}</h{{ hl + 1 }}>{% if t.caption %}<p class="table-caption">{{ t.caption }}</p>{% endif %}
+                <div class="table-scroll"><table><thead><tr>{% for c in t.columns %}<th scope="col">{{ c }}</th>{% endfor %}</tr></thead>
+                <tbody>{% for r in t.rows %}<tr>{% for v in r %}{% if loop.first %}<th scope="row">{{ v }}</th>{% else %}<td>{{ v }}</td>{% endif %}{% endfor %}</tr>{% endfor %}</tbody></table></div>
+              </section>{% endfor %}
+            </section>{% endif %}
+            <section class="brief-section" aria-labelledby="{{ group.id }}-{{ brief.slug }}-more">
+              <div class="section-head"><h{{ hl }} class="section-title" tabindex="-1" id="{{ group.id }}-{{ brief.slug }}-more">{{ icon('info', 'icon section-icon') }}More detail</h{{ hl }}><p class="section-note">Background, technique and sources</p></div>
+              <div class="brief-more">
+                <details><summary>What it is{{ icon('chevron', 'icon summary-icon') }}</summary><div class="details-body">
+                  {% if brief.alert.trigger %}<p><strong>Trigger.</strong> {{ brief.alert.trigger }}</p>{% endif %}
+                  <p><strong>Flight phase inhibition.</strong> {% if brief.alert.inhibited_phases %}Inhibited in phases {{ brief.alert.inhibited_phases|join(', ') }}.{% else %}Not inhibited in any phase.{% endif %}</p>
+                  {% if brief.background %}{{ text_list(brief.background) }}{% endif %}
+                </div></details>
+                {% if brief.technique %}<details><summary>FCTM technique{{ icon('chevron', 'icon summary-icon') }}</summary><div class="details-body">{{ text_list(brief.technique) }}</div></details>{% endif %}
+                {% if brief.related %}<details><summary>Related procedures{{ icon('chevron', 'icon summary-icon') }}</summary><div class="details-body"><ul class="plain-list">{% for r in brief.related %}<li><strong>{{ r.title }}</strong> — {{ r.why }}. {{ r.key_actions|join('; ') }}.</li>{% endfor %}</ul></div></details>{% endif %}
+                {% if brief.differences %}<details><summary>HS-TX differences{{ icon('chevron', 'icon summary-icon') }}</summary><div class="details-body"><div class="table-scroll"><table><thead><tr><th scope="col">Topic</th>{% for b in brief.effectivity.branches %}<th scope="col">{{ b }}</th>{% endfor %}</tr></thead><tbody>{% for x in brief.differences %}<tr><th scope="row">{{ x.topic }}</th>{% for b in brief.effectivity.branches %}<td>{{ x['values'].get(b, '—') }}</td>{% endfor %}</tr>{% endfor %}</tbody></table></div>{% if brief.effectivity.note %}<p class="muted-note">{{ brief.effectivity.note }}</p>{% endif %}</div></details>{% endif %}
+                {% if brief.gaps %}<details><summary>Gaps and omissions{{ icon('chevron', 'icon summary-icon') }}</summary><div class="details-body">{{ text_list(brief.gaps) }}</div></details>{% endif %}
+                <details><summary>Sources ({{ brief.source_count }} references){{ icon('chevron', 'icon summary-icon') }}</summary><div class="details-body"><div class="table-scroll"><table class="sources-table"><thead><tr><th scope="col">Book</th><th scope="col">Section</th><th scope="col">Pages</th><th scope="col">PDF</th><th scope="col">Rev</th></tr></thead><tbody>{% for src in brief.sources %}<tr><td>{{ src.book }}</td><td>{{ src.section }}</td><td>{{ src.pages }}</td><td>{{ src.pdf }}</td><td>{{ src.rev }}</td></tr>{% endfor %}</tbody></table></div></div></details>
+              </div>
+            </section>
+            <p class="brief-footnote">Study aid from uncontrolled THA A320/A321 FCOM, FCTM and QRH copies (14 JUL 26) and the Airbus PDP tutorials (Jan 2024), HS-TX registrations only. Not for operational use.</p>
+          </article>{% endfor %}
+        </section>{% endfor %}
+      </section>{% endif %}
+    </article>
+    {% endfor %}
+  </main>
+  <script>
+
+    (() => {
+      const main = document.getElementById('main-content');
+      const views = Array.from(main.children);
+      const sessions = Array.from(document.querySelectorAll('.session'));
+      const ids = sessions.map(session => session.id);
+      const previous = document.getElementById('previous-session');
+      const next = document.getElementById('next-session');
+      const dialog = document.createElement('dialog');
+      dialog.className = 'setup-dialog';
+      dialog.id = 'setup-dialog';
+      document.body.append(dialog);
+      let selected = 'overview';
+      let activeTab = 'exercises';
+      let panel = null;          // element currently shown in the dialog
+      let panelHome = null;      // [parent, nextSibling] to restore it
+      let opener = null;
+      let savedScroll = 0;
+      let openBriefSlug = null;
+      let briefPushed = false;
+
+      let closingTimer = null;
+      const finishClose = () => {
+        clearTimeout(closingTimer);
+        closingTimer = null;
+        dialog.classList.remove('closing');
+        if (!dialog.open) return;
+        dialog.close();
+        if (panel && panelHome) panelHome[0].insertBefore(panel, panelHome[1]);
+        document.documentElement.classList.remove('modal-open');
+        document.documentElement.style.removeProperty('--locked-top');
+        window.scrollTo(0, savedScroll);
+        if (opener && opener.isConnected) opener.focus({preventScroll: true});
+        panel = null;
+        panelHome = null;
+        openBriefSlug = null;
+      };
+      // Exit is shorter than the entrance; a second close request or a new
+      // open finishes it immediately so state never lags behind the UI.
+      const closePanel = (instant = false) => {
+        if (!dialog.open) return;
+        if (instant || closingTimer) { finishClose(); return; }
+        dialog.classList.add('closing');
+        closingTimer = setTimeout(finishClose, matchMedia('(prefers-reduced-motion: reduce)').matches ? 130 : 170);
+      };
+      const openPanel = (element, labelId, source) => {
+        closePanel(true);
+        if (!element) return;
+        panel = element;
+        panelHome = [element.parentNode, element.nextSibling];
+        opener = source;
+        savedScroll = window.scrollY;
+        dialog.append(element);
+        dialog.setAttribute('aria-labelledby', labelId);
+        document.documentElement.style.setProperty('--locked-top', -savedScroll + 'px');
+        document.documentElement.classList.add('modal-open');
+        dialog.showModal();
+        dialog.scrollTop = 0;
+        syncHeading();
+        document.getElementById(labelId).focus({preventScroll: true});
+      };
+      const syncHeading = () => {
+        const heading = panel && panel.querySelector('.dialog-heading');
+        dialog.style.setProperty('--dialog-head', heading ? heading.offsetHeight + 'px' : '0px');
+      };
+      window.addEventListener('resize', () => { if (dialog.open) syncHeading(); });
+      const openSetup = session => openPanel(session.querySelector('.setup-details'), session.id + '-modal-title', session.querySelector('.open-setup'));
+      const closeSetup = closePanel;
+
+      const showBrief = (group, slug) => {
+        const briefs = Array.from(group.querySelectorAll('.brief'));
+        const target = briefs.find(brief => brief.dataset.brief === slug) || briefs[0];
+        briefs.forEach(brief => { brief.hidden = brief !== target; });
+        group.querySelectorAll('.brief-tabs [role="tab"]').forEach(tab => {
+          const current = tab.dataset.brief === target.dataset.brief;
+          tab.setAttribute('aria-selected', current);
+          tab.tabIndex = current ? 0 : -1;
+        });
+        openBriefSlug = target.dataset.brief;
+        return target.dataset.brief;
+      };
+      const briefLocation = slug => {
+        const scope = document.getElementById(selected) || document;  // sessions can share a brief
+        const brief = scope.querySelector('.brief[data-brief="' + CSS.escape(slug) + '"]');
+        return brief ? brief.closest('.brief-group') : null;
+      };
+      const openBrief = (slug, source = null, push = true) => {
+        const group = briefLocation(slug);
+        if (!group) return;
+        const shown = showBrief(group, slug);
+        openPanel(group, group.id + '-title', source);
+        if (push) {
+          const url = new URL(location.href);
+          url.searchParams.set('brief', shown);
+          history.pushState({brief: shown}, '', url);
+          briefPushed = true;
+        }
+      };
+      const closeBrief = () => {
+        if (briefPushed) { briefPushed = false; history.back(); return; }
+        const url = new URL(location.href);
+        if (url.searchParams.has('brief')) { url.searchParams.delete('brief'); history.replaceState(null, '', url); }
+        closePanel();
+      };
+      const dismiss = () => (openBriefSlug ? closeBrief() : closePanel());
+      dialog.addEventListener('cancel', event => { event.preventDefault(); dismiss(); });
+      dialog.addEventListener('keydown', event => {
+        if (event.key !== 'Tab') return;
+        const controls = Array.from(dialog.querySelectorAll('button:not(:disabled), [href], input, select, textarea, [tabindex="0"]')).filter(element => element.getClientRects().length);
+        const first = controls[0];
+        const last = controls[controls.length - 1];
+        if (event.shiftKey && (document.activeElement === first || !controls.includes(document.activeElement))) {
+          event.preventDefault();
+          last.focus();
+        } else if (!event.shiftKey && document.activeElement === last) {
+          event.preventDefault();
+          first.focus();
+        }
+      });
+      let backdropStart = false;
+      const outsideDialog = event => {
+        const bounds = dialog.getBoundingClientRect();
+        return event.clientX < bounds.left || event.clientX > bounds.right || event.clientY < bounds.top || event.clientY > bounds.bottom;
+      };
+      dialog.addEventListener('pointerdown', event => { backdropStart = event.target === dialog && outsideDialog(event); });
+      dialog.addEventListener('click', event => { if (backdropStart && event.target === dialog && outsideDialog(event)) dismiss(); backdropStart = false; });
+
+      const selectTab = (session, name) => {
+        session.querySelectorAll(':scope > .tab-nav [role="tab"]').forEach(tab => {
+          const current = tab.dataset.tab === name;
+          tab.setAttribute('aria-selected', current);
+          tab.tabIndex = current ? 0 : -1;
+        });
+        session.querySelectorAll('[data-panel]').forEach(panel => { panel.hidden = panel.dataset.panel !== name; });
+      };
+      const display = (id, tab, focus = false, resetScroll = false) => {
+        closeSetup();
+        selected = ids.includes(id) ? id : 'overview';
+        activeTab = tab === 'topics' ? 'topics' : 'exercises';
+        views.forEach(view => { view.hidden = view.id !== selected; });
+        const session = document.getElementById(selected);
+        if (selected !== 'overview') selectTab(session, activeTab);
+        document.querySelectorAll('[data-session]').forEach(button => {
+          if (button.dataset.session === selected) button.setAttribute('aria-current', 'page');
+          else button.removeAttribute('aria-current');
+        });
+        const index = ids.indexOf(selected);
+        previous.disabled = index <= 0;
+        next.disabled = index < 0 || index === ids.length - 1;
+        if (resetScroll) window.scrollTo({top: 0, behavior: 'instant'});
+        if (focus) { const heading = session.querySelector('h2'); heading.tabIndex = -1; heading.focus({preventScroll: true}); }
+      };
+      const updateURL = (id, tab, replace = false) => {
+        const url = new URL(location.href);
+        url.hash = '';
+        if (id === 'overview') { url.searchParams.delete('session'); url.searchParams.delete('view'); }
+        else { url.searchParams.set('session', id); url.searchParams.set('view', tab); }
+        url.searchParams.delete('brief');
+        if (url.href !== location.href) history[replace ? 'replaceState' : 'pushState'](null, '', url);
+      };
+      const navigate = (id, tab = activeTab, focus = false) => {
+        const changedSession = id !== selected;
+        updateURL(id, tab);
+        display(id, tab, focus, changedSession);
+      };
+      const route = (initial = false) => {
+        const query = new URLSearchParams(location.search);
+        let id = query.get('session') || 'overview';
+        let tab = query.get('view') === 'topics' ? 'topics' : 'exercises';
+        let legacySetup = false;
+        if (location.hash) {
+          let fragment = '';
+          try { fragment = decodeURIComponent(location.hash.slice(1)); } catch {}
+          const match = fragment.match(/^(mftd-\d+|ffs-\d+)(?:-|$)/);
+          if (match && ids.includes(match[1])) {
+            id = match[1];
+            tab = /topics|conditional-title/.test(fragment) ? 'topics' : 'exercises';
+            legacySetup = /setup|weather|conditions/.test(fragment);
+          }
+          updateURL(ids.includes(id) ? id : 'overview', tab, true);
+        }
+        const priorScroll = window.scrollY;
+        display(id, tab, false, !initial && id !== selected);
+        if (legacySetup && selected !== 'overview') openSetup(document.getElementById(selected));
+        const brief = query.get('brief');
+        briefPushed = false;
+        if (brief && selected !== 'overview') {
+          const group = briefLocation(brief);
+          if (group && document.getElementById(selected).contains(group)) {
+            if (!initial) window.scrollTo(0, priorScroll);
+            openBrief(brief, null, false);
+          }
+        }
+      };
+      sessions.forEach(session => {
+        const tabs = Array.from(session.querySelectorAll(':scope > .tab-nav [role="tab"]'));
+        session.querySelector(':scope > .tab-nav').hidden = false;
+        session.querySelector('.open-setup').hidden = false;
+        session.querySelector('.close-setup').hidden = false;
+        session.querySelector('.open-setup').addEventListener('click', () => openSetup(session));
+        session.querySelector('.close-setup').addEventListener('click', closeSetup);
+        session.querySelectorAll('.brief-open, .summary-link').forEach(button => {
+          button.disabled = false;
+          button.addEventListener('click', () => openBrief(button.dataset.brief, button));
+        });
+        session.querySelectorAll('.close-brief').forEach(button => {
+          button.hidden = false;
+          button.addEventListener('click', closeBrief);
+        });
+        session.querySelectorAll('.jump-bar').forEach(bar => {
+          bar.hidden = false;
+          const group = bar.closest('.brief-group');
+          bar.querySelectorAll('.jump').forEach(button => button.addEventListener('click', () => {
+            const brief = group.querySelector('.brief:not([hidden])');
+            const target = brief && document.getElementById(brief.id + '-' + button.dataset.jump);
+            if (!target) return;
+            const head = group.querySelector('.dialog-heading').offsetHeight;
+            const top = dialog.scrollTop + target.getBoundingClientRect().top - dialog.getBoundingClientRect().top - head - 20;
+            dialog.scrollTo({top, behavior: matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth'});
+            target.focus({preventScroll: true});
+          }));
+        });
+        session.querySelectorAll('.brief-tabs').forEach(tablist => {
+          tablist.closest('.brief-switch').hidden = false;
+          const group = tablist.closest('.brief-group');
+          const tabs = Array.from(tablist.querySelectorAll('[role="tab"]'));
+          tabs.forEach(tab => tab.setAttribute('aria-controls', group.id + '-' + tab.dataset.brief));
+          group.querySelectorAll('.brief').forEach(brief => {
+            brief.setAttribute('role', 'tabpanel');
+            brief.setAttribute('aria-labelledby', group.id + '-tab-' + brief.dataset.brief);
+          });
+          const choose = tab => {
+            const slug = showBrief(group, tab.dataset.brief);
+            const url = new URL(location.href);
+            url.searchParams.set('brief', slug);
+            history.replaceState(history.state, '', url);
+            dialog.scrollTop = 0;
+          };
+          tabs.forEach((tab, index) => {
+            tab.addEventListener('click', () => choose(tab));
+            tab.addEventListener('keydown', event => {
+              let destination;
+              if (event.key === 'ArrowRight') destination = (index + 1) % tabs.length;
+              else if (event.key === 'ArrowLeft') destination = (index + tabs.length - 1) % tabs.length;
+              else if (event.key === 'Home') destination = 0;
+              else if (event.key === 'End') destination = tabs.length - 1;
+              else return;
+              event.preventDefault();
+              choose(tabs[destination]);
+              tabs[destination].focus({preventScroll: true});
+            });
+          });
+        });
+        session.querySelectorAll('[data-panel]').forEach(panel => {
+          panel.setAttribute('role', 'tabpanel');
+          panel.setAttribute('aria-labelledby', session.id + '-tab-' + panel.dataset.panel);
+        });
+        tabs.forEach((tab, index) => {
+          tab.addEventListener('click', () => navigate(session.id, tab.dataset.tab));
+          tab.addEventListener('keydown', event => {
+            let destination;
+            if (event.key === 'ArrowRight') destination = (index + 1) % tabs.length;
+            else if (event.key === 'ArrowLeft') destination = (index + tabs.length - 1) % tabs.length;
+            else if (event.key === 'Home') destination = 0;
+            else if (event.key === 'End') destination = tabs.length - 1;
+            else return;
+            event.preventDefault();
+            navigate(session.id, tabs[destination].dataset.tab);
+            tabs[destination].focus({preventScroll: true});
+          });
+        });
+      });
+      document.querySelectorAll('[data-session]').forEach(button => {
+        button.disabled = false;
+        button.addEventListener('click', () => navigate(button.dataset.session, activeTab, true));
+      });
+      previous.addEventListener('click', () => navigate(ids[ids.indexOf(selected) - 1], activeTab, true));
+      next.addEventListener('click', () => navigate(ids[ids.indexOf(selected) + 1], activeTab, true));
+      document.querySelector('.skip-button').hidden = false;
+      document.querySelector('.skip-button').addEventListener('click', () => main.focus());
+      document.querySelector('.toolbar-actions').hidden = false;
+      document.querySelector('.session-nav').hidden = false;
+      document.documentElement.classList.add('enhanced');
+      window.addEventListener('popstate', () => route());
+      window.addEventListener('hashchange', () => route());
+      route(true);
+    })();
+  </script>
+</body>
+</html>

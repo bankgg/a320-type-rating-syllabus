@@ -1,0 +1,294 @@
+{
+  "modalFits": [
+    {
+      "session": "mftd-2",
+      "viewportWidth": 1194,
+      "height": 689,
+      "scrollHeight": 689,
+      "width": 1162,
+      "scrollWidth": 1162
+    },
+    {
+      "session": "mftd-3",
+      "viewportWidth": 1194,
+      "height": 689,
+      "scrollHeight": 689,
+      "width": 1162,
+      "scrollWidth": 1162
+    },
+    {
+      "session": "mftd-4",
+      "viewportWidth": 1194,
+      "height": 689,
+      "scrollHeight": 689,
+      "width": 1162,
+      "scrollWidth": 1162
+    },
+    {
+      "session": "mftd-5",
+      "viewportWidth": 1194,
+      "height": 689,
+      "scrollHeight": 689,
+      "width": 1162,
+      "scrollWidth": 1162
+    },
+    {
+      "session": "mftd-6",
+      "viewportWidth": 1194,
+      "height": 689,
+      "scrollHeight": 689,
+      "width": 1162,
+      "scrollWidth": 1162
+    },
+    {
+      "session": "mftd-7",
+      "viewportWidth": 1194,
+      "height": 689,
+      "scrollHeight": 689,
+      "width": 1162,
+      "scrollWidth": 1162
+    },
+    {
+      "session": "mftd-8",
+      "viewportWidth": 1194,
+      "height": 689,
+      "scrollHeight": 689,
+      "width": 1162,
+      "scrollWidth": 1162
+    },
+    {
+      "session": "mftd-9",
+      "viewportWidth": 1194,
+      "height": 749,
+      "scrollHeight": 749,
+      "width": 1162,
+      "scrollWidth": 1162
+    },
+    {
+      "session": "ffs-1",
+      "viewportWidth": 1194,
+      "height": 689,
+      "scrollHeight": 689,
+      "width": 1162,
+      "scrollWidth": 1162
+    },
+    {
+      "session": "ffs-2",
+      "viewportWidth": 1194,
+      "height": 689,
+      "scrollHeight": 689,
+      "width": 1162,
+      "scrollWidth": 1162
+    },
+    {
+      "session": "ffs-3",
+      "viewportWidth": 1194,
+      "height": 689,
+      "scrollHeight": 689,
+      "width": 1162,
+      "scrollWidth": 1162
+    },
+    {
+      "session": "ffs-4",
+      "viewportWidth": 1194,
+      "height": 689,
+      "scrollHeight": 689,
+      "width": 1162,
+      "scrollWidth": 1162
+    },
+    {
+      "session": "ffs-5",
+      "viewportWidth": 1194,
+      "height": 689,
+      "scrollHeight": 689,
+      "width": 1162,
+      "scrollWidth": 1162
+    },
+    {
+      "session": "ffs-6",
+      "viewportWidth": 1194,
+      "height": 689,
+      "scrollHeight": 689,
+      "width": 1162,
+      "scrollWidth": 1162
+    },
+    {
+      "session": "ffs-7",
+      "viewportWidth": 1194,
+      "height": 749,
+      "scrollHeight": 749,
+      "width": 1162,
+      "scrollWidth": 1162
+    },
+    {
+      "session": "ffs-8",
+      "viewportWidth": 1194,
+      "height": 689,
+      "scrollHeight": 689,
+      "width": 1162,
+      "scrollWidth": 1162
+    },
+    {
+      "session": "ffs-9",
+      "viewportWidth": 1194,
+      "height": 693,
+      "scrollHeight": 693,
+      "width": 1162,
+      "scrollWidth": 1162
+    },
+    {
+      "session": "ffs-10",
+      "viewportWidth": 1194,
+      "height": 689,
+      "scrollHeight": 689,
+      "width": 1162,
+      "scrollWidth": 1162
+    },
+    {
+      "session": "mftd-2",
+      "viewportWidth": 1112,
+      "height": 689,
+      "scrollHeight": 689,
+      "width": 1080,
+      "scrollWidth": 1080
+    },
+    {
+      "session": "mftd-3",
+      "viewportWidth": 1112,
+      "height": 689,
+      "scrollHeight": 689,
+      "width": 1080,
+      "scrollWidth": 1080
+    },
+    {
+      "session": "mftd-4",
+      "viewportWidth": 1112,
+      "height": 689,
+      "scrollHeight": 689,
+      "width": 1080,
+      "scrollWidth": 1080
+    },
+    {
+      "session": "mftd-5",
+      "viewportWidth": 1112,
+      "height": 689,
+      "scrollHeight": 689,
+      "width": 1080,
+      "scrollWidth": 1080
+    },
+    {
+      "session": "mftd-6",
+      "viewportWidth": 1112,
+      "height": 689,
+      "scrollHeight": 689,
+      "width": 1080,
+      "scrollWidth": 1080
+    },
+    {
+      "session": "mftd-7",
+      "viewportWidth": 1112,
+      "height": 689,
+      "scrollHeight": 689,
+      "width": 1080,
+      "scrollWidth": 1080
+    },
+    {
+      "session": "mftd-8",
+      "viewportWidth": 1112,
+      "height": 689,
+      "scrollHeight": 689,
+      "width": 1080,
+      "scrollWidth": 1080
+    },
+    {
+      "session": "mftd-9",
+      "viewportWidth": 1112,
+      "height": 770,
+      "scrollHeight": 770,
+      "width": 1080,
+      "scrollWidth": 1080
+    },
+    {
+      "session": "ffs-1",
+      "viewportWidth": 1112,
+      "height": 689,
+      "scrollHeight": 689,
+      "width": 1080,
+      "scrollWidth": 1080
+    },
+    {
+      "session": "ffs-2",
+      "viewportWidth": 1112,
+      "height": 689,
+      "scrollHeight": 689,
+      "width": 1080,
+      "scrollWidth": 1080
+    },
+    {
+      "session": "ffs-3",
+      "viewportWidth": 1112,
+      "height": 689,
+      "scrollHeight": 689,
+      "width": 1080,
+      "scrollWidth": 1080
+    },
+    {
+      "session": "ffs-4",
+      "viewportWidth": 1112,
+      "height": 689,
+      "scrollHeight": 689,
+      "width": 1080,
+      "scrollWidth": 1080
+    },
+    {
+      "session": "ffs-5",
+      "viewportWidth": 1112,
+      "height": 689,
+      "scrollHeight": 689,
+      "width": 1080,
+      "scrollWidth": 1080
+    },
+    {
+      "session": "ffs-6",
+      "viewportWidth": 1112,
+      "height": 689,
+      "scrollHeight": 689,
+      "width": 1080,
+      "scrollWidth": 1080
+    },
+    {
+      "session": "ffs-7",
+      "viewportWidth": 1112,
+      "height": 770,
+      "scrollHeight": 770,
+      "width": 1080,
+      "scrollWidth": 1080
+    },
+    {
+      "session": "ffs-8",
+      "viewportWidth": 1112,
+      "height": 689,
+      "scrollHeight": 689,
+      "width": 1080,
+      "scrollWidth": 1080
+    },
+    {
+      "session": "ffs-9",
+      "viewportWidth": 1112,
+      "height": 714,
+      "scrollHeight": 714,
+      "width": 1080,
+      "scrollWidth": 1080
+    },
+    {
+      "session": "ffs-10",
+      "viewportWidth": 1112,
+      "height": 689,
+      "scrollHeight": 689,
+      "width": 1080,
+      "scrollWidth": 1080
+    }
+  ],
+  "fullAccessibleLabels": true,
+  "errors": []
+}

@@ -1,0 +1,1470 @@
+{
+  "content": {
+    "sessions": 18,
+    "exerciseGroups": 311,
+    "topicsA": 361,
+    "topicsB": 355,
+    "exactSourceMatch": true,
+    "idsUnique": true
+  },
+  "viewports": [
+    {
+      "name": "ipad-landscape",
+      "tab": "exercises",
+      "width": 1194,
+      "scrollWidth": 1194,
+      "overflow": [],
+      "controls": [
+        {
+          "text": "Course overview\n          MFTD/FBS 2MFTD/FBS 3MFTD/FBS 4MFTD/FBS 5MFTD/FBS 6MFTD/FBS 7MFTD/FBS 8MFTD/FBS 9\n          FFS 1FFS 2FFS 3FFS 4FFS 5FFS 6FFS 7FFS 8FFS 9FFS 10",
+          "x": 918,
+          "y": 16,
+          "width": 244,
+          "height": 44
+        },
+        {
+          "text": "View full setup & conditions",
+          "x": 32,
+          "y": 461.96875,
+          "width": 222.515625,
+          "height": 44
+        },
+        {
+          "text": "Exercises",
+          "x": 32,
+          "y": 521.96875,
+          "width": 84.859375,
+          "height": 52
+        },
+        {
+          "text": "Setup & conditions",
+          "x": 140.859375,
+          "y": 521.96875,
+          "width": 151.53125,
+          "height": 52
+        },
+        {
+          "text": "Ordered topics",
+          "x": 316.390625,
+          "y": 521.96875,
+          "width": 118,
+          "height": 52
+        },
+        {
+          "text": "Back to session briefing",
+          "x": 32,
+          "y": 1894.96875,
+          "width": 190.796875,
+          "height": 44
+        }
+      ],
+      "minimumReading": 16,
+      "toolbar": {
+        "x": 0,
+        "y": 0,
+        "width": 1194,
+        "height": 77
+      }
+    },
+    {
+      "name": "ipad-landscape",
+      "tab": "setup",
+      "width": 1194,
+      "scrollWidth": 1194,
+      "overflow": [],
+      "controls": [
+        {
+          "text": "Course overview\n          MFTD/FBS 2MFTD/FBS 3MFTD/FBS 4MFTD/FBS 5MFTD/FBS 6MFTD/FBS 7MFTD/FBS 8MFTD/FBS 9\n          FFS 1FFS 2FFS 3FFS 4FFS 5FFS 6FFS 7FFS 8FFS 9FFS 10",
+          "x": 918,
+          "y": 16,
+          "width": 244,
+          "height": 44
+        },
+        {
+          "text": "View full setup & conditions",
+          "x": 32,
+          "y": 461.96875,
+          "width": 222.515625,
+          "height": 44
+        },
+        {
+          "text": "Exercises",
+          "x": 32,
+          "y": 521.96875,
+          "width": 74.921875,
+          "height": 52
+        },
+        {
+          "text": "Setup & conditions",
+          "x": 130.921875,
+          "y": 521.96875,
+          "width": 171.8125,
+          "height": 52
+        },
+        {
+          "text": "Ordered topics",
+          "x": 326.734375,
+          "y": 521.96875,
+          "width": 118,
+          "height": 52
+        },
+        {
+          "text": "Back to session briefing",
+          "x": 32,
+          "y": 1875.96875,
+          "width": 190.796875,
+          "height": 44
+        }
+      ],
+      "minimumReading": 16,
+      "toolbar": {
+        "x": 0,
+        "y": 0,
+        "width": 1194,
+        "height": 77
+      }
+    },
+    {
+      "name": "ipad-landscape",
+      "tab": "topics",
+      "width": 1194,
+      "scrollWidth": 1194,
+      "overflow": [],
+      "controls": [
+        {
+          "text": "Course overview\n          MFTD/FBS 2MFTD/FBS 3MFTD/FBS 4MFTD/FBS 5MFTD/FBS 6MFTD/FBS 7MFTD/FBS 8MFTD/FBS 9\n          FFS 1FFS 2FFS 3FFS 4FFS 5FFS 6FFS 7FFS 8FFS 9FFS 10",
+          "x": 918,
+          "y": 16,
+          "width": 244,
+          "height": 44
+        },
+        {
+          "text": "View full setup & conditions",
+          "x": 32,
+          "y": 461.96875,
+          "width": 222.515625,
+          "height": 44
+        },
+        {
+          "text": "Exercises",
+          "x": 32,
+          "y": 521.96875,
+          "width": 74.921875,
+          "height": 52
+        },
+        {
+          "text": "Setup & conditions",
+          "x": 130.921875,
+          "y": 521.96875,
+          "width": 151.53125,
+          "height": 52
+        },
+        {
+          "text": "Ordered topics",
+          "x": 306.453125,
+          "y": 521.96875,
+          "width": 134.15625,
+          "height": 52
+        },
+        {
+          "text": "Back to session briefing",
+          "x": 32,
+          "y": 1968.96875,
+          "width": 190.796875,
+          "height": 44
+        }
+      ],
+      "minimumReading": 16,
+      "toolbar": {
+        "x": 0,
+        "y": 0,
+        "width": 1194,
+        "height": 77
+      }
+    },
+    {
+      "name": "compact-ipad",
+      "tab": "exercises",
+      "width": 1112,
+      "scrollWidth": 1112,
+      "overflow": [],
+      "controls": [
+        {
+          "text": "Course overview\n          MFTD/FBS 2MFTD/FBS 3MFTD/FBS 4MFTD/FBS 5MFTD/FBS 6MFTD/FBS 7MFTD/FBS 8MFTD/FBS 9\n          FFS 1FFS 2FFS 3FFS 4FFS 5FFS 6FFS 7FFS 8FFS 9FFS 10",
+          "x": 836,
+          "y": 16,
+          "width": 244,
+          "height": 44
+        },
+        {
+          "text": "View full setup & conditions",
+          "x": 32,
+          "y": 483.03125,
+          "width": 222.515625,
+          "height": 44
+        },
+        {
+          "text": "Exercises",
+          "x": 32,
+          "y": 543.03125,
+          "width": 84.859375,
+          "height": 52
+        },
+        {
+          "text": "Setup & conditions",
+          "x": 140.859375,
+          "y": 543.03125,
+          "width": 151.53125,
+          "height": 52
+        },
+        {
+          "text": "Ordered topics",
+          "x": 316.390625,
+          "y": 543.03125,
+          "width": 118,
+          "height": 52
+        },
+        {
+          "text": "Back to session briefing",
+          "x": 32,
+          "y": 1916.03125,
+          "width": 190.796875,
+          "height": 44
+        }
+      ],
+      "minimumReading": 16,
+      "toolbar": {
+        "x": 0,
+        "y": 0,
+        "width": 1112,
+        "height": 77
+      }
+    },
+    {
+      "name": "compact-ipad",
+      "tab": "setup",
+      "width": 1112,
+      "scrollWidth": 1112,
+      "overflow": [],
+      "controls": [
+        {
+          "text": "Course overview\n          MFTD/FBS 2MFTD/FBS 3MFTD/FBS 4MFTD/FBS 5MFTD/FBS 6MFTD/FBS 7MFTD/FBS 8MFTD/FBS 9\n          FFS 1FFS 2FFS 3FFS 4FFS 5FFS 6FFS 7FFS 8FFS 9FFS 10",
+          "x": 836,
+          "y": 16,
+          "width": 244,
+          "height": 44
+        },
+        {
+          "text": "View full setup & conditions",
+          "x": 32,
+          "y": 483.03125,
+          "width": 222.515625,
+          "height": 44
+        },
+        {
+          "text": "Exercises",
+          "x": 32,
+          "y": 543.03125,
+          "width": 74.921875,
+          "height": 52
+        },
+        {
+          "text": "Setup & conditions",
+          "x": 130.921875,
+          "y": 543.03125,
+          "width": 171.8125,
+          "height": 52
+        },
+        {
+          "text": "Ordered topics",
+          "x": 326.734375,
+          "y": 543.03125,
+          "width": 118,
+          "height": 52
+        },
+        {
+          "text": "Back to session briefing",
+          "x": 32,
+          "y": 1897.03125,
+          "width": 190.796875,
+          "height": 44
+        }
+      ],
+      "minimumReading": 16,
+      "toolbar": {
+        "x": 0,
+        "y": 0,
+        "width": 1112,
+        "height": 77
+      }
+    },
+    {
+      "name": "compact-ipad",
+      "tab": "topics",
+      "width": 1112,
+      "scrollWidth": 1112,
+      "overflow": [],
+      "controls": [
+        {
+          "text": "Course overview\n          MFTD/FBS 2MFTD/FBS 3MFTD/FBS 4MFTD/FBS 5MFTD/FBS 6MFTD/FBS 7MFTD/FBS 8MFTD/FBS 9\n          FFS 1FFS 2FFS 3FFS 4FFS 5FFS 6FFS 7FFS 8FFS 9FFS 10",
+          "x": 836,
+          "y": 16,
+          "width": 244,
+          "height": 44
+        },
+        {
+          "text": "View full setup & conditions",
+          "x": 32,
+          "y": 483.03125,
+          "width": 222.515625,
+          "height": 44
+        },
+        {
+          "text": "Exercises",
+          "x": 32,
+          "y": 543.03125,
+          "width": 74.921875,
+          "height": 52
+        },
+        {
+          "text": "Setup & conditions",
+          "x": 130.921875,
+          "y": 543.03125,
+          "width": 151.53125,
+          "height": 52
+        },
+        {
+          "text": "Ordered topics",
+          "x": 306.453125,
+          "y": 543.03125,
+          "width": 134.15625,
+          "height": 52
+        },
+        {
+          "text": "Back to session briefing",
+          "x": 32,
+          "y": 2038.03125,
+          "width": 190.796875,
+          "height": 44
+        }
+      ],
+      "minimumReading": 16,
+      "toolbar": {
+        "x": 0,
+        "y": 0,
+        "width": 1112,
+        "height": 77
+      }
+    },
+    {
+      "name": "ipad-portrait",
+      "tab": "exercises",
+      "width": 834,
+      "scrollWidth": 834,
+      "overflow": [],
+      "controls": [
+        {
+          "text": "Course overview\n          MFTD/FBS 2MFTD/FBS 3MFTD/FBS 4MFTD/FBS 5MFTD/FBS 6MFTD/FBS 7MFTD/FBS 8MFTD/FBS 9\n          FFS 1FFS 2FFS 3FFS 4FFS 5FFS 6FFS 7FFS 8FFS 9FFS 10",
+          "x": 558,
+          "y": 16,
+          "width": 244,
+          "height": 44
+        },
+        {
+          "text": "View full setup & conditions",
+          "x": 32,
+          "y": 524.59375,
+          "width": 222.515625,
+          "height": 44
+        },
+        {
+          "text": "Exercises",
+          "x": 32,
+          "y": 584.59375,
+          "width": 84.859375,
+          "height": 52
+        },
+        {
+          "text": "Setup & conditions",
+          "x": 140.859375,
+          "y": 584.59375,
+          "width": 151.53125,
+          "height": 52
+        },
+        {
+          "text": "Ordered topics",
+          "x": 316.390625,
+          "y": 584.59375,
+          "width": 118,
+          "height": 52
+        },
+        {
+          "text": "Back to session briefing",
+          "x": 32,
+          "y": 1999.59375,
+          "width": 190.796875,
+          "height": 44
+        }
+      ],
+      "minimumReading": 16,
+      "toolbar": {
+        "x": 0,
+        "y": 0,
+        "width": 834,
+        "height": 77
+      }
+    },
+    {
+      "name": "ipad-portrait",
+      "tab": "setup",
+      "width": 834,
+      "scrollWidth": 834,
+      "overflow": [],
+      "controls": [
+        {
+          "text": "Course overview\n          MFTD/FBS 2MFTD/FBS 3MFTD/FBS 4MFTD/FBS 5MFTD/FBS 6MFTD/FBS 7MFTD/FBS 8MFTD/FBS 9\n          FFS 1FFS 2FFS 3FFS 4FFS 5FFS 6FFS 7FFS 8FFS 9FFS 10",
+          "x": 558,
+          "y": 16,
+          "width": 244,
+          "height": 44
+        },
+        {
+          "text": "View full setup & conditions",
+          "x": 32,
+          "y": 524.59375,
+          "width": 222.515625,
+          "height": 44
+        },
+        {
+          "text": "Exercises",
+          "x": 32,
+          "y": 584.59375,
+          "width": 74.921875,
+          "height": 52
+        },
+        {
+          "text": "Setup & conditions",
+          "x": 130.921875,
+          "y": 584.59375,
+          "width": 171.8125,
+          "height": 52
+        },
+        {
+          "text": "Ordered topics",
+          "x": 326.734375,
+          "y": 584.59375,
+          "width": 118,
+          "height": 52
+        },
+        {
+          "text": "Back to session briefing",
+          "x": 32,
+          "y": 1938.59375,
+          "width": 190.796875,
+          "height": 44
+        }
+      ],
+      "minimumReading": 16,
+      "toolbar": {
+        "x": 0,
+        "y": 0,
+        "width": 834,
+        "height": 77
+      }
+    },
+    {
+      "name": "ipad-portrait",
+      "tab": "topics",
+      "width": 834,
+      "scrollWidth": 834,
+      "overflow": [],
+      "controls": [
+        {
+          "text": "Course overview\n          MFTD/FBS 2MFTD/FBS 3MFTD/FBS 4MFTD/FBS 5MFTD/FBS 6MFTD/FBS 7MFTD/FBS 8MFTD/FBS 9\n          FFS 1FFS 2FFS 3FFS 4FFS 5FFS 6FFS 7FFS 8FFS 9FFS 10",
+          "x": 558,
+          "y": 16,
+          "width": 244,
+          "height": 44
+        },
+        {
+          "text": "View full setup & conditions",
+          "x": 32,
+          "y": 524.59375,
+          "width": 222.515625,
+          "height": 44
+        },
+        {
+          "text": "Exercises",
+          "x": 32,
+          "y": 584.59375,
+          "width": 74.921875,
+          "height": 52
+        },
+        {
+          "text": "Setup & conditions",
+          "x": 130.921875,
+          "y": 584.59375,
+          "width": 151.53125,
+          "height": 52
+        },
+        {
+          "text": "Ordered topics",
+          "x": 306.453125,
+          "y": 584.59375,
+          "width": 134.15625,
+          "height": 52
+        },
+        {
+          "text": "Back to session briefing",
+          "x": 32,
+          "y": 2247.59375,
+          "width": 190.796875,
+          "height": 44
+        }
+      ],
+      "minimumReading": 16,
+      "toolbar": {
+        "x": 0,
+        "y": 0,
+        "width": 834,
+        "height": 77
+      }
+    },
+    {
+      "name": "mobile",
+      "tab": "exercises",
+      "width": 390,
+      "scrollWidth": 390,
+      "overflow": [],
+      "controls": [
+        {
+          "text": "Course overview\n          MFTD/FBS 2MFTD/FBS 3MFTD/FBS 4MFTD/FBS 5MFTD/FBS 6MFTD/FBS 7MFTD/FBS 8MFTD/FBS 9\n          FFS 1FFS 2FFS 3FFS 4FFS 5FFS 6FFS 7FFS 8FFS 9FFS 10",
+          "x": 110,
+          "y": 40.796875,
+          "width": 260,
+          "height": 44
+        },
+        {
+          "text": "View full setup & conditions",
+          "x": 20,
+          "y": 362.390625,
+          "width": 222.515625,
+          "height": 44
+        },
+        {
+          "text": "Exercises",
+          "x": 20,
+          "y": 446.390625,
+          "width": 108.65625,
+          "height": 68.59375
+        },
+        {
+          "text": "Setup & conditions",
+          "x": 140.65625,
+          "y": 446.390625,
+          "width": 108.671875,
+          "height": 68.59375
+        },
+        {
+          "text": "Ordered topics",
+          "x": 261.328125,
+          "y": 446.390625,
+          "width": 108.671875,
+          "height": 68.59375
+        },
+        {
+          "text": "Back to session briefing",
+          "x": 20,
+          "y": 2085.984375,
+          "width": 190.796875,
+          "height": 44
+        }
+      ],
+      "minimumReading": 16,
+      "toolbar": {
+        "x": 0,
+        "y": 0,
+        "width": 390,
+        "height": 97.796875
+      }
+    },
+    {
+      "name": "mobile",
+      "tab": "setup",
+      "width": 390,
+      "scrollWidth": 390,
+      "overflow": [],
+      "controls": [
+        {
+          "text": "Course overview\n          MFTD/FBS 2MFTD/FBS 3MFTD/FBS 4MFTD/FBS 5MFTD/FBS 6MFTD/FBS 7MFTD/FBS 8MFTD/FBS 9\n          FFS 1FFS 2FFS 3FFS 4FFS 5FFS 6FFS 7FFS 8FFS 9FFS 10",
+          "x": 110,
+          "y": 40.796875,
+          "width": 260,
+          "height": 44
+        },
+        {
+          "text": "View full setup & conditions",
+          "x": 20,
+          "y": 362.390625,
+          "width": 222.515625,
+          "height": 44
+        },
+        {
+          "text": "Exercises",
+          "x": 20,
+          "y": 446.390625,
+          "width": 108.65625,
+          "height": 68.59375
+        },
+        {
+          "text": "Setup & conditions",
+          "x": 140.65625,
+          "y": 446.390625,
+          "width": 108.671875,
+          "height": 68.59375
+        },
+        {
+          "text": "Ordered topics",
+          "x": 261.328125,
+          "y": 446.390625,
+          "width": 108.671875,
+          "height": 68.59375
+        },
+        {
+          "text": "Back to session briefing",
+          "x": 20,
+          "y": 2502.984375,
+          "width": 190.796875,
+          "height": 44
+        }
+      ],
+      "minimumReading": 16,
+      "toolbar": {
+        "x": 0,
+        "y": 0,
+        "width": 390,
+        "height": 97.796875
+      }
+    },
+    {
+      "name": "mobile",
+      "tab": "topics",
+      "width": 390,
+      "scrollWidth": 390,
+      "overflow": [],
+      "controls": [
+        {
+          "text": "Course overview\n          MFTD/FBS 2MFTD/FBS 3MFTD/FBS 4MFTD/FBS 5MFTD/FBS 6MFTD/FBS 7MFTD/FBS 8MFTD/FBS 9\n          FFS 1FFS 2FFS 3FFS 4FFS 5FFS 6FFS 7FFS 8FFS 9FFS 10",
+          "x": 110,
+          "y": 40.796875,
+          "width": 260,
+          "height": 44
+        },
+        {
+          "text": "View full setup & conditions",
+          "x": 20,
+          "y": 362.390625,
+          "width": 222.515625,
+          "height": 44
+        },
+        {
+          "text": "Exercises",
+          "x": 20,
+          "y": 446.390625,
+          "width": 108.65625,
+          "height": 68.59375
+        },
+        {
+          "text": "Setup & conditions",
+          "x": 140.65625,
+          "y": 446.390625,
+          "width": 108.671875,
+          "height": 68.59375
+        },
+        {
+          "text": "Ordered topics",
+          "x": 261.328125,
+          "y": 446.390625,
+          "width": 108.671875,
+          "height": 68.59375
+        },
+        {
+          "text": "Back to session briefing",
+          "x": 20,
+          "y": 3405.984375,
+          "width": 190.796875,
+          "height": 44
+        }
+      ],
+      "minimumReading": 16,
+      "toolbar": {
+        "x": 0,
+        "y": 0,
+        "width": 390,
+        "height": 97.796875
+      }
+    },
+    {
+      "name": "small-mobile",
+      "tab": "exercises",
+      "width": 320,
+      "scrollWidth": 320,
+      "overflow": [],
+      "controls": [
+        {
+          "text": "Course overview\n          MFTD/FBS 2MFTD/FBS 3MFTD/FBS 4MFTD/FBS 5MFTD/FBS 6MFTD/FBS 7MFTD/FBS 8MFTD/FBS 9\n          FFS 1FFS 2FFS 3FFS 4FFS 5FFS 6FFS 7FFS 8FFS 9FFS 10",
+          "x": 93.046875,
+          "y": 40.796875,
+          "width": 206.953125,
+          "height": 44
+        },
+        {
+          "text": "View full setup & conditions",
+          "x": 20,
+          "y": 260.390625,
+          "width": 222.515625,
+          "height": 44
+        },
+        {
+          "text": "Exercises",
+          "x": 20,
+          "y": 344.390625,
+          "width": 85.328125,
+          "height": 68.59375
+        },
+        {
+          "text": "Setup & conditions",
+          "x": 117.328125,
+          "y": 344.390625,
+          "width": 85.34375,
+          "height": 68.59375
+        },
+        {
+          "text": "Ordered topics",
+          "x": 214.671875,
+          "y": 344.390625,
+          "width": 85.328125,
+          "height": 68.59375
+        },
+        {
+          "text": "Back to session briefing",
+          "x": 20,
+          "y": 2253.984375,
+          "width": 190.796875,
+          "height": 44
+        }
+      ],
+      "minimumReading": 16,
+      "toolbar": {
+        "x": 0,
+        "y": 0,
+        "width": 320,
+        "height": 97.796875
+      }
+    },
+    {
+      "name": "small-mobile",
+      "tab": "setup",
+      "width": 320,
+      "scrollWidth": 320,
+      "overflow": [],
+      "controls": [
+        {
+          "text": "Course overview\n          MFTD/FBS 2MFTD/FBS 3MFTD/FBS 4MFTD/FBS 5MFTD/FBS 6MFTD/FBS 7MFTD/FBS 8MFTD/FBS 9\n          FFS 1FFS 2FFS 3FFS 4FFS 5FFS 6FFS 7FFS 8FFS 9FFS 10",
+          "x": 93.046875,
+          "y": 40.796875,
+          "width": 206.953125,
+          "height": 44
+        },
+        {
+          "text": "View full setup & conditions",
+          "x": 20,
+          "y": 260.390625,
+          "width": 222.515625,
+          "height": 44
+        },
+        {
+          "text": "Exercises",
+          "x": 20,
+          "y": 344.390625,
+          "width": 81.078125,
+          "height": 68.59375
+        },
+        {
+          "text": "Setup & conditions",
+          "x": 113.078125,
+          "y": 344.390625,
+          "width": 93.84375,
+          "height": 68.59375
+        },
+        {
+          "text": "Ordered topics",
+          "x": 218.921875,
+          "y": 344.390625,
+          "width": 81.078125,
+          "height": 68.59375
+        },
+        {
+          "text": "Back to session briefing",
+          "x": 20,
+          "y": 2496.984375,
+          "width": 190.796875,
+          "height": 44
+        }
+      ],
+      "minimumReading": 16,
+      "toolbar": {
+        "x": 0,
+        "y": 0,
+        "width": 320,
+        "height": 97.796875
+      }
+    },
+    {
+      "name": "small-mobile",
+      "tab": "topics",
+      "width": 320,
+      "scrollWidth": 320,
+      "overflow": [],
+      "controls": [
+        {
+          "text": "Course overview\n          MFTD/FBS 2MFTD/FBS 3MFTD/FBS 4MFTD/FBS 5MFTD/FBS 6MFTD/FBS 7MFTD/FBS 8MFTD/FBS 9\n          FFS 1FFS 2FFS 3FFS 4FFS 5FFS 6FFS 7FFS 8FFS 9FFS 10",
+          "x": 93.046875,
+          "y": 40.796875,
+          "width": 206.953125,
+          "height": 44
+        },
+        {
+          "text": "View full setup & conditions",
+          "x": 20,
+          "y": 260.390625,
+          "width": 222.515625,
+          "height": 44
+        },
+        {
+          "text": "Exercises",
+          "x": 20,
+          "y": 344.390625,
+          "width": 85.328125,
+          "height": 68.59375
+        },
+        {
+          "text": "Setup & conditions",
+          "x": 117.328125,
+          "y": 344.390625,
+          "width": 85.34375,
+          "height": 68.59375
+        },
+        {
+          "text": "Ordered topics",
+          "x": 214.671875,
+          "y": 344.390625,
+          "width": 85.328125,
+          "height": 68.59375
+        },
+        {
+          "text": "Back to session briefing",
+          "x": 20,
+          "y": 4479.984375,
+          "width": 190.796875,
+          "height": 44
+        }
+      ],
+      "minimumReading": 16,
+      "toolbar": {
+        "x": 0,
+        "y": 0,
+        "width": 320,
+        "height": 97.796875
+      }
+    },
+    {
+      "name": "phone-landscape",
+      "tab": "exercises",
+      "width": 844,
+      "scrollWidth": 844,
+      "overflow": [],
+      "controls": [
+        {
+          "text": "Course overview\n          MFTD/FBS 2MFTD/FBS 3MFTD/FBS 4MFTD/FBS 5MFTD/FBS 6MFTD/FBS 7MFTD/FBS 8MFTD/FBS 9\n          FFS 1FFS 2FFS 3FFS 4FFS 5FFS 6FFS 7FFS 8FFS 9FFS 10",
+          "x": 568,
+          "y": 16,
+          "width": 244,
+          "height": 44
+        },
+        {
+          "text": "View full setup & conditions",
+          "x": 32,
+          "y": 157.59375,
+          "width": 222.515625,
+          "height": 44
+        },
+        {
+          "text": "Exercises",
+          "x": 32,
+          "y": 217.59375,
+          "width": 84.859375,
+          "height": 52
+        },
+        {
+          "text": "Setup & conditions",
+          "x": 140.859375,
+          "y": 217.59375,
+          "width": 151.53125,
+          "height": 52
+        },
+        {
+          "text": "Ordered topics",
+          "x": 316.390625,
+          "y": 217.59375,
+          "width": 118,
+          "height": 52
+        },
+        {
+          "text": "Back to session briefing",
+          "x": 32,
+          "y": 1608.59375,
+          "width": 190.796875,
+          "height": 44
+        }
+      ],
+      "minimumReading": 16,
+      "toolbar": {
+        "x": 0,
+        "y": 0,
+        "width": 844,
+        "height": 77
+      }
+    },
+    {
+      "name": "phone-landscape",
+      "tab": "setup",
+      "width": 844,
+      "scrollWidth": 844,
+      "overflow": [],
+      "controls": [
+        {
+          "text": "Course overview\n          MFTD/FBS 2MFTD/FBS 3MFTD/FBS 4MFTD/FBS 5MFTD/FBS 6MFTD/FBS 7MFTD/FBS 8MFTD/FBS 9\n          FFS 1FFS 2FFS 3FFS 4FFS 5FFS 6FFS 7FFS 8FFS 9FFS 10",
+          "x": 568,
+          "y": 16,
+          "width": 244,
+          "height": 44
+        },
+        {
+          "text": "View full setup & conditions",
+          "x": 32,
+          "y": 157.59375,
+          "width": 222.515625,
+          "height": 44
+        },
+        {
+          "text": "Exercises",
+          "x": 32,
+          "y": 217.59375,
+          "width": 74.921875,
+          "height": 52
+        },
+        {
+          "text": "Setup & conditions",
+          "x": 130.921875,
+          "y": 217.59375,
+          "width": 171.8125,
+          "height": 52
+        },
+        {
+          "text": "Ordered topics",
+          "x": 326.734375,
+          "y": 217.59375,
+          "width": 118,
+          "height": 52
+        },
+        {
+          "text": "Back to session briefing",
+          "x": 32,
+          "y": 1571.59375,
+          "width": 190.796875,
+          "height": 44
+        }
+      ],
+      "minimumReading": 16,
+      "toolbar": {
+        "x": 0,
+        "y": 0,
+        "width": 844,
+        "height": 77
+      }
+    },
+    {
+      "name": "phone-landscape",
+      "tab": "topics",
+      "width": 844,
+      "scrollWidth": 844,
+      "overflow": [],
+      "controls": [
+        {
+          "text": "Course overview\n          MFTD/FBS 2MFTD/FBS 3MFTD/FBS 4MFTD/FBS 5MFTD/FBS 6MFTD/FBS 7MFTD/FBS 8MFTD/FBS 9\n          FFS 1FFS 2FFS 3FFS 4FFS 5FFS 6FFS 7FFS 8FFS 9FFS 10",
+          "x": 568,
+          "y": 16,
+          "width": 244,
+          "height": 44
+        },
+        {
+          "text": "View full setup & conditions",
+          "x": 32,
+          "y": 157.59375,
+          "width": 222.515625,
+          "height": 44
+        },
+        {
+          "text": "Exercises",
+          "x": 32,
+          "y": 217.59375,
+          "width": 74.921875,
+          "height": 52
+        },
+        {
+          "text": "Setup & conditions",
+          "x": 130.921875,
+          "y": 217.59375,
+          "width": 151.53125,
+          "height": 52
+        },
+        {
+          "text": "Ordered topics",
+          "x": 306.453125,
+          "y": 217.59375,
+          "width": 134.15625,
+          "height": 52
+        },
+        {
+          "text": "Back to session briefing",
+          "x": 32,
+          "y": 1880.59375,
+          "width": 190.796875,
+          "height": 44
+        }
+      ],
+      "minimumReading": 16,
+      "toolbar": {
+        "x": 0,
+        "y": 0,
+        "width": 844,
+        "height": 77
+      }
+    },
+    {
+      "name": "desktop",
+      "tab": "exercises",
+      "width": 1440,
+      "scrollWidth": 1440,
+      "overflow": [],
+      "controls": [
+        {
+          "text": "Course overview\n          MFTD/FBS 2MFTD/FBS 3MFTD/FBS 4MFTD/FBS 5MFTD/FBS 6MFTD/FBS 7MFTD/FBS 8MFTD/FBS 9\n          FFS 1FFS 2FFS 3FFS 4FFS 5FFS 6FFS 7FFS 8FFS 9FFS 10",
+          "x": 1056,
+          "y": 16,
+          "width": 244,
+          "height": 44
+        },
+        {
+          "text": "View full setup & conditions",
+          "x": 140,
+          "y": 462.1875,
+          "width": 222.515625,
+          "height": 44
+        },
+        {
+          "text": "Exercises",
+          "x": 140,
+          "y": 522.1875,
+          "width": 84.859375,
+          "height": 52
+        },
+        {
+          "text": "Setup & conditions",
+          "x": 248.859375,
+          "y": 522.1875,
+          "width": 151.53125,
+          "height": 52
+        },
+        {
+          "text": "Ordered topics",
+          "x": 424.390625,
+          "y": 522.1875,
+          "width": 118,
+          "height": 52
+        },
+        {
+          "text": "Back to session briefing",
+          "x": 140,
+          "y": 1895.1875,
+          "width": 190.796875,
+          "height": 44
+        }
+      ],
+      "minimumReading": 16,
+      "toolbar": {
+        "x": 0,
+        "y": 0,
+        "width": 1440,
+        "height": 77
+      }
+    },
+    {
+      "name": "desktop",
+      "tab": "setup",
+      "width": 1440,
+      "scrollWidth": 1440,
+      "overflow": [],
+      "controls": [
+        {
+          "text": "Course overview\n          MFTD/FBS 2MFTD/FBS 3MFTD/FBS 4MFTD/FBS 5MFTD/FBS 6MFTD/FBS 7MFTD/FBS 8MFTD/FBS 9\n          FFS 1FFS 2FFS 3FFS 4FFS 5FFS 6FFS 7FFS 8FFS 9FFS 10",
+          "x": 1056,
+          "y": 16,
+          "width": 244,
+          "height": 44
+        },
+        {
+          "text": "View full setup & conditions",
+          "x": 140,
+          "y": 462.1875,
+          "width": 222.515625,
+          "height": 44
+        },
+        {
+          "text": "Exercises",
+          "x": 140,
+          "y": 522.1875,
+          "width": 74.921875,
+          "height": 52
+        },
+        {
+          "text": "Setup & conditions",
+          "x": 238.921875,
+          "y": 522.1875,
+          "width": 171.8125,
+          "height": 52
+        },
+        {
+          "text": "Ordered topics",
+          "x": 434.734375,
+          "y": 522.1875,
+          "width": 118,
+          "height": 52
+        },
+        {
+          "text": "Back to session briefing",
+          "x": 140,
+          "y": 1876.1875,
+          "width": 190.796875,
+          "height": 44
+        }
+      ],
+      "minimumReading": 16,
+      "toolbar": {
+        "x": 0,
+        "y": 0,
+        "width": 1440,
+        "height": 77
+      }
+    },
+    {
+      "name": "desktop",
+      "tab": "topics",
+      "width": 1440,
+      "scrollWidth": 1440,
+      "overflow": [],
+      "controls": [
+        {
+          "text": "Course overview\n          MFTD/FBS 2MFTD/FBS 3MFTD/FBS 4MFTD/FBS 5MFTD/FBS 6MFTD/FBS 7MFTD/FBS 8MFTD/FBS 9\n          FFS 1FFS 2FFS 3FFS 4FFS 5FFS 6FFS 7FFS 8FFS 9FFS 10",
+          "x": 1056,
+          "y": 16,
+          "width": 244,
+          "height": 44
+        },
+        {
+          "text": "View full setup & conditions",
+          "x": 140,
+          "y": 462.1875,
+          "width": 222.515625,
+          "height": 44
+        },
+        {
+          "text": "Exercises",
+          "x": 140,
+          "y": 522.1875,
+          "width": 74.921875,
+          "height": 52
+        },
+        {
+          "text": "Setup & conditions",
+          "x": 238.921875,
+          "y": 522.1875,
+          "width": 151.53125,
+          "height": 52
+        },
+        {
+          "text": "Ordered topics",
+          "x": 414.453125,
+          "y": 522.1875,
+          "width": 134.15625,
+          "height": 52
+        },
+        {
+          "text": "Back to session briefing",
+          "x": 140,
+          "y": 1945.1875,
+          "width": 190.796875,
+          "height": 44
+        }
+      ],
+      "minimumReading": 16,
+      "toolbar": {
+        "x": 0,
+        "y": 0,
+        "width": 1440,
+        "height": 77
+      }
+    },
+    {
+      "name": "wide-desktop",
+      "tab": "exercises",
+      "width": 2560,
+      "scrollWidth": 2560,
+      "overflow": [],
+      "controls": [
+        {
+          "text": "Course overview\n          MFTD/FBS 2MFTD/FBS 3MFTD/FBS 4MFTD/FBS 5MFTD/FBS 6MFTD/FBS 7MFTD/FBS 8MFTD/FBS 9\n          FFS 1FFS 2FFS 3FFS 4FFS 5FFS 6FFS 7FFS 8FFS 9FFS 10",
+          "x": 1616,
+          "y": 16,
+          "width": 244,
+          "height": 44
+        },
+        {
+          "text": "View full setup & conditions",
+          "x": 700,
+          "y": 462.1875,
+          "width": 222.515625,
+          "height": 44
+        },
+        {
+          "text": "Exercises",
+          "x": 700,
+          "y": 522.1875,
+          "width": 84.859375,
+          "height": 52
+        },
+        {
+          "text": "Setup & conditions",
+          "x": 808.859375,
+          "y": 522.1875,
+          "width": 151.53125,
+          "height": 52
+        },
+        {
+          "text": "Ordered topics",
+          "x": 984.390625,
+          "y": 522.1875,
+          "width": 118,
+          "height": 52
+        },
+        {
+          "text": "Back to session briefing",
+          "x": 700,
+          "y": 1895.1875,
+          "width": 190.796875,
+          "height": 44
+        }
+      ],
+      "minimumReading": 16,
+      "toolbar": {
+        "x": 0,
+        "y": 0,
+        "width": 2560,
+        "height": 77
+      }
+    },
+    {
+      "name": "wide-desktop",
+      "tab": "setup",
+      "width": 2560,
+      "scrollWidth": 2560,
+      "overflow": [],
+      "controls": [
+        {
+          "text": "Course overview\n          MFTD/FBS 2MFTD/FBS 3MFTD/FBS 4MFTD/FBS 5MFTD/FBS 6MFTD/FBS 7MFTD/FBS 8MFTD/FBS 9\n          FFS 1FFS 2FFS 3FFS 4FFS 5FFS 6FFS 7FFS 8FFS 9FFS 10",
+          "x": 1616,
+          "y": 16,
+          "width": 244,
+          "height": 44
+        },
+        {
+          "text": "View full setup & conditions",
+          "x": 700,
+          "y": 462.1875,
+          "width": 222.515625,
+          "height": 44
+        },
+        {
+          "text": "Exercises",
+          "x": 700,
+          "y": 522.1875,
+          "width": 74.921875,
+          "height": 52
+        },
+        {
+          "text": "Setup & conditions",
+          "x": 798.921875,
+          "y": 522.1875,
+          "width": 171.8125,
+          "height": 52
+        },
+        {
+          "text": "Ordered topics",
+          "x": 994.734375,
+          "y": 522.1875,
+          "width": 118,
+          "height": 52
+        },
+        {
+          "text": "Back to session briefing",
+          "x": 700,
+          "y": 1876.1875,
+          "width": 190.796875,
+          "height": 44
+        }
+      ],
+      "minimumReading": 16,
+      "toolbar": {
+        "x": 0,
+        "y": 0,
+        "width": 2560,
+        "height": 77
+      }
+    },
+    {
+      "name": "wide-desktop",
+      "tab": "topics",
+      "width": 2560,
+      "scrollWidth": 2560,
+      "overflow": [],
+      "controls": [
+        {
+          "text": "Course overview\n          MFTD/FBS 2MFTD/FBS 3MFTD/FBS 4MFTD/FBS 5MFTD/FBS 6MFTD/FBS 7MFTD/FBS 8MFTD/FBS 9\n          FFS 1FFS 2FFS 3FFS 4FFS 5FFS 6FFS 7FFS 8FFS 9FFS 10",
+          "x": 1616,
+          "y": 16,
+          "width": 244,
+          "height": 44
+        },
+        {
+          "text": "View full setup & conditions",
+          "x": 700,
+          "y": 462.1875,
+          "width": 222.515625,
+          "height": 44
+        },
+        {
+          "text": "Exercises",
+          "x": 700,
+          "y": 522.1875,
+          "width": 74.921875,
+          "height": 52
+        },
+        {
+          "text": "Setup & conditions",
+          "x": 798.921875,
+          "y": 522.1875,
+          "width": 151.53125,
+          "height": 52
+        },
+        {
+          "text": "Ordered topics",
+          "x": 974.453125,
+          "y": 522.1875,
+          "width": 134.15625,
+          "height": 52
+        },
+        {
+          "text": "Back to session briefing",
+          "x": 700,
+          "y": 1945.1875,
+          "width": 190.796875,
+          "height": 44
+        }
+      ],
+      "minimumReading": 16,
+      "toolbar": {
+        "x": 0,
+        "y": 0,
+        "width": 2560,
+        "height": 77
+      }
+    },
+    {
+      "name": "small-mobile-long-route",
+      "tab": "setup",
+      "width": 320,
+      "scrollWidth": 320,
+      "overflow": [],
+      "controls": [
+        {
+          "text": "Course overview\n          MFTD/FBS 2MFTD/FBS 3MFTD/FBS 4MFTD/FBS 5MFTD/FBS 6MFTD/FBS 7MFTD/FBS 8MFTD/FBS 9\n          FFS 1FFS 2FFS 3FFS 4FFS 5FFS 6FFS 7FFS 8FFS 9FFS 10",
+          "x": 93.046875,
+          "y": 40.796875,
+          "width": 206.953125,
+          "height": 44
+        },
+        {
+          "text": "View full setup & conditions",
+          "x": 20,
+          "y": -79.609375,
+          "width": 222.515625,
+          "height": 44
+        },
+        {
+          "text": "Exercises",
+          "x": 20,
+          "y": 28.390625,
+          "width": 81.078125,
+          "height": 68.59375
+        },
+        {
+          "text": "Setup & conditions",
+          "x": 113.078125,
+          "y": 28.390625,
+          "width": 93.84375,
+          "height": 68.59375
+        },
+        {
+          "text": "Ordered topics",
+          "x": 218.921875,
+          "y": 28.390625,
+          "width": 81.078125,
+          "height": 68.59375
+        },
+        {
+          "text": "Back to session briefing",
+          "x": 20,
+          "y": 2276.984375,
+          "width": 190.796875,
+          "height": 44
+        }
+      ],
+      "minimumReading": 16,
+      "toolbar": {
+        "x": 0,
+        "y": 0,
+        "width": 320,
+        "height": 97.796875
+      }
+    }
+  ],
+  "navigation": [
+    "all 18 sessions and three tabs",
+    "exercise, setup, weather, topics and conditional deep links",
+    "arrow/Home/End keys and back/forward restore session and tab",
+    "no-JavaScript full syllabus and anchor navigation"
+  ],
+  "errors": [],
+  "issues": []
+}

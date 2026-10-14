@@ -1,0 +1,105 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>{{ session.title }} · A320 procedure workflow</title>
+  <link rel="stylesheet" href="templates/session.css">
+</head>
+<body>
+  {% macro render_step(step, terminal=false) %}
+    <div class="flow-node{% if step.kind == 'condition' %} cue-node{% endif %}{% if terminal %} terminal{% endif %}">
+    {% if step.stage is defined %}<div class="stage">{{ step.stage }}</div>{% endif %}
+    {% if step.kind == 'condition' %}
+      <div class="cue">{{ step.text }}</div>
+    {% else %}
+      <div class="flow-card kind-{{ step.kind }}">
+        {% if step.kind == 'action' and step.procedure is defined %}
+          {% for row in step.procedure %}
+          <div class="procedure-row">
+            {% if row.actor is defined %}<span class="row-actor">{{ row.actor }}</span>{% endif %}
+            <span class="procedure-item">{{ row.item }}</span><span class="leader"></span><strong class="procedure-setting">{{ row.setting }}</strong>
+          </div>
+          {% endfor %}
+        {% elif step.kind == 'callout' and step.utterances is defined %}
+          {% for utterance in step.utterances %}
+          <div class="utterance"><span>{{ utterance.speaker }}</span><strong>“{{ utterance.words }}”</strong></div>
+          {% endfor %}
+        {% elif step.kind == 'callout' %}
+          <div class="utterance"><span>{{ step.actor }}</span><strong>“{{ step.text }}”</strong></div>
+        {% else %}
+          <div class="flow-text">{{ step.text }}</div>
+        {% endif %}
+        {% if step.detail is defined %}<div class="detail">{{ step.detail }}</div>{% endif %}
+        {% if step.branch_label is defined %}
+          <div class="applicability">{{ step.branch_label }}</div>
+        {% elif step.applies_to is defined and step.applies_to != 'all HS-TX' %}
+          <div class="applicability">Applies to {{ step.applies_to | join(', ') }}</div>
+        {% endif %}
+      </div>
+    {% endif %}
+    </div>
+  {% endmacro %}
+
+  {% macro render_columns(left_steps, right_steps) %}
+    <div class="flow-columns">
+      <div class="flow-column flow-left">
+        {% for step in left_steps %}{{ render_step(step) }}{% endfor %}
+        <div class="flow-exit"></div>
+      </div>
+      <div class="flow-bridge">
+        <span class="bridge-up"></span><span class="bridge-top"></span><span class="bridge-bottom"></span>
+      </div>
+      <div class="flow-column flow-right">
+        <div class="flow-entry"></div>
+        {% for step in right_steps %}{{ render_step(step, loop.last) }}{% endfor %}
+      </div>
+    </div>
+  {% endmacro %}
+
+  <main>
+    {% for scenario in scenarios %}
+    <section class="scenario trainee-{{ scenario.trainee | lower }} layout-{{ scenario.layout }}" id="{{ scenario.id }}">
+      <header class="scenario-heading">
+        <div class="heading-top">
+          <span>{{ session.title }} · A320</span>
+          <span class="track-badge">TRAINEE {{ scenario.trainee }}{% if scenario.conditional | default(false) %} · IF SIMULATED{% endif %}</span>
+        </div>
+        <h1>{{ scenario.title }}</h1>
+        <div class="manual-titles">{% for title in scenario.manual_titles %}<div>{{ title }}</div>{% endfor %}</div>
+      </header>
+
+      {% if scenario.layout == 'single' %}
+      <div class="flow-single">
+        {% for step in scenario.steps %}{{ render_step(step, loop.last) }}{% endfor %}
+      </div>
+      {% elif scenario.page_break_at is defined %}
+      {{ render_columns(scenario.steps[:scenario.flow_break_at], scenario.steps[scenario.flow_break_at:scenario.page_break_at]) }}
+      <div class="continued-note">Continued on next page →</div>
+      <div class="scenario-continuation">
+        <header class="scenario-heading continuation-heading">
+          <div class="heading-top">
+            <span>{{ session.title }} · A320</span>
+            <span class="track-badge">TRAINEE {{ scenario.trainee }} · CONTINUED</span>
+          </div>
+          <h1>{{ scenario.title }}</h1>
+          <div class="manual-titles">{% for title in scenario.manual_titles %}<div>{{ title }}</div>{% endfor %}</div>
+        </header>
+        {{ render_columns(scenario.steps[scenario.page_break_at:scenario.continuation_flow_break_at], scenario.steps[scenario.continuation_flow_break_at:]) }}
+      </div>
+      {% else %}
+      {{ render_columns(scenario.steps[:scenario.flow_break_at], scenario.steps[scenario.flow_break_at:]) }}
+      {% endif %}
+
+      <div class="references">
+        <h2>Manual references</h2>
+        <div class="reference-list">
+          {% for ref in scenario.display_refs %}
+          <div class="reference"><strong>{{ sources[ref].title }}</strong> · {{ sources[ref].locator }}</div>
+          {% endfor %}
+        </div>
+      </div>
+    </section>
+    {% endfor %}
+  </main>
+</body>
+</html>

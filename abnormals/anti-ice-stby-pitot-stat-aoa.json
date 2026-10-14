@@ -1,0 +1,512 @@
+{
+ "slug": "anti-ice-stby-pitot-stat-aoa",
+ "title": "ANTI ICE STBY PITOT or L(R) STAT or AOA",
+ "kind": "ecam",
+ "alert": {
+  "level": "caution",
+  "land_asap": "none",
+  "memory_items": false,
+  "qrh_summary": false,
+  "trigger": "The heating system of the corresponding standby probe has failed.",
+  "inhibited_phases": [
+   3,
+   4,
+   5,
+   7,
+   8
+  ],
+  "refs": [
+   {
+    "book": "FCOM",
+    "code": "PRO-ABN-A-ICE",
+    "page": "P 39/42",
+    "pdf": 2886
+   }
+  ]
+ },
+ "effectivity": {
+  "branches": [],
+  "note": "One version for all HS-TX."
+ },
+ "summary": "An amber caution: one standby probe (pitot, left or right static, or AOA) has lost its heating. There is no action line — it is crew awareness. If the standby instruments are being used, monitor the air data closely, because an unheated probe can ice up.",
+ "key_limits": [
+  {
+   "label": "Action",
+   "value": "Crew awareness",
+   "applies_to": [
+    "all"
+   ],
+   "refs": [
+    {
+     "book": "FCOM",
+     "code": "PRO-ABN-A-ICE",
+     "page": "P 39/42",
+     "pdf": 2886
+    }
+   ]
+  },
+  {
+   "label": "Inhibited",
+   "value": "phases 3, 4, 5, 7, 8",
+   "applies_to": [
+    "all"
+   ],
+   "refs": [
+    {
+     "book": "FCOM",
+     "code": "PRO-ABN-A-ICE",
+     "page": "P 39/42",
+     "pdf": 2886
+    }
+   ]
+  }
+ ],
+ "flow": [
+  {
+   "phase": "Recognise",
+   "steps": [
+    {
+     "actor": "PM",
+     "items": [
+      {
+       "kind": "callout",
+       "text": "ANTI ICE STBY PITOT",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "FCTM",
+         "code": "AOP-30-30",
+         "page": "P 2/6",
+         "pdf": 83
+        },
+        {
+         "book": "FCOM",
+         "code": "PRO-ABN-A-ICE",
+         "page": "P 39/42",
+         "pdf": 2886
+        }
+       ]
+      },
+      {
+       "kind": "note",
+       "text": "Or STBY L(R) STAT / STBY AOA — announce the title shown",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "FCOM",
+         "code": "PRO-ABN-A-ICE",
+         "page": "P 39/42",
+         "pdf": 2886
+        }
+       ]
+      }
+     ]
+    },
+    {
+     "actor": "PF",
+     "items": [
+      {
+       "kind": "callout",
+       "text": "ECAM ACTION",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "FCOM",
+         "code": "PRO-ABN-ABN-00",
+         "page": "P 8/12",
+         "pdf": 2831
+        }
+       ]
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "phase": "Procedure",
+   "steps": [
+    {
+     "actor": "PM",
+     "items": [
+      {
+       "kind": "ecam",
+       "item": "Crew awareness",
+       "setting": "—",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "FCOM",
+         "code": "PRO-ABN-A-ICE",
+         "page": "P 39/42",
+         "pdf": 2886
+        }
+       ]
+      },
+      {
+       "kind": "note",
+       "text": "If standby instruments are used, monitor air data information",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "FCOM",
+         "code": "PRO-ABN-A-ICE",
+         "page": "P 39/42",
+         "pdf": 2886
+        }
+       ]
+      }
+     ]
+    },
+    {
+     "actor": "PF",
+     "items": [
+      {
+       "kind": "action",
+       "text": "Fly as usual; be alert to standby airspeed/altitude discrepancies",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "FCOM",
+         "code": "PRO-ABN-A-ICE",
+         "page": "P 39/42",
+         "pdf": 2886
+        }
+       ]
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "phase": "STATUS",
+   "steps": [
+    {
+     "actor": "PM",
+     "items": [
+      {
+       "kind": "callout",
+       "text": "CLEAR ANTI ICE ?",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "FCOM",
+         "code": "PRO-ABN-ABN-00",
+         "page": "P 8/12",
+         "pdf": 2831
+        }
+       ]
+      }
+     ]
+    },
+    {
+     "actor": "PF",
+     "items": [
+      {
+       "kind": "callout",
+       "text": "CLEAR ANTI ICE",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "FCOM",
+         "code": "PRO-ABN-ABN-00",
+         "page": "P 8/12",
+         "pdf": 2831
+        }
+       ]
+      }
+     ]
+    },
+    {
+     "actor": "PM",
+     "items": [
+      {
+       "kind": "action",
+       "text": "INOP SYS: STBY PITOT · STBY L(R) STAT · STBY AOA",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "FCOM",
+         "code": "PRO-ABN-A-ICE",
+         "page": "P 39/42",
+         "pdf": 2886
+        }
+       ]
+      }
+     ]
+    },
+    {
+     "actor": "PF",
+     "items": [
+      {
+       "kind": "callout",
+       "text": "REMOVE STATUS",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "FCOM",
+         "code": "PRO-ABN-ABN-00",
+         "page": "P 8/12",
+         "pdf": 2831
+        }
+       ]
+      }
+     ]
+    },
+    {
+     "actor": "PM",
+     "items": [
+      {
+       "kind": "callout",
+       "text": "ECAM ACTIONS COMPLETE",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "FCOM",
+         "code": "PRO-ABN-ABN-00",
+         "page": "P 8/12",
+         "pdf": 2831
+        }
+       ]
+      }
+     ]
+    }
+   ]
+  }
+ ],
+ "procedures": [
+  {
+   "title": "ECAM procedure",
+   "source": "FCOM PRO-ABN-A-ICE",
+   "lines": [
+    {
+     "kind": "info",
+     "text": "Crew awareness.",
+     "level": 0,
+     "applies_to": [
+      "all"
+     ],
+     "refs": [
+      {
+       "book": "FCOM",
+       "code": "PRO-ABN-A-ICE",
+       "page": "P 39/42",
+       "pdf": 2886
+      }
+     ]
+    },
+    {
+     "kind": "note",
+     "text": "If standby instruments are used, monitor air data information.",
+     "level": 0,
+     "applies_to": [
+      "all"
+     ],
+     "refs": [
+      {
+       "book": "FCOM",
+       "code": "PRO-ABN-A-ICE",
+       "page": "P 39/42",
+       "pdf": 2886
+      }
+     ]
+    }
+   ]
+  }
+ ],
+ "status": {
+  "limitations": [],
+  "info": [],
+  "appr_proc": [],
+  "inop_sys": [
+   {
+    "text": "STBY PITOT",
+    "applies_to": [
+     "all"
+    ],
+    "refs": [
+     {
+      "book": "FCOM",
+      "code": "PRO-ABN-A-ICE",
+      "page": "P 39/42",
+      "pdf": 2886
+     }
+    ]
+   },
+   {
+    "text": "STBY L(R) STAT",
+    "applies_to": [
+     "all"
+    ],
+    "refs": [
+     {
+      "book": "FCOM",
+      "code": "PRO-ABN-A-ICE",
+      "page": "P 39/42",
+      "pdf": 2886
+     }
+    ]
+   },
+   {
+    "text": "STBY AOA",
+    "applies_to": [
+     "all"
+    ],
+    "refs": [
+     {
+      "book": "FCOM",
+      "code": "PRO-ABN-A-ICE",
+      "page": "P 39/42",
+      "pdf": 2886
+     }
+    ]
+   }
+  ]
+ },
+ "qrh": [],
+ "tables": [],
+ "background": [
+  {
+   "text": "Electrical heating protects pitot probes, static ports, AOA probes and TAT probes. Three independent Probe Heat Computers control the Captain, F/O and STBY probes.",
+   "applies_to": [
+    "all"
+   ],
+   "refs": [
+    {
+     "book": "FCOM",
+     "code": "DSC-30-50-10",
+     "page": "P 1/2",
+     "pdf": 1786
+    }
+   ]
+  },
+  {
+   "text": "Probes are heated automatically in flight or with one engine running, or manually with PROBE/WINDOW HEAT ON.",
+   "applies_to": [
+    "all"
+   ],
+   "refs": [
+    {
+     "book": "FCOM",
+     "code": "DSC-30-50-10",
+     "page": "P 1/2",
+     "pdf": 1786
+    },
+    {
+     "book": "FCOM",
+     "code": "DSC-30-50-20",
+     "page": "P 1/2",
+     "pdf": 1788
+    }
+   ]
+  },
+  {
+   "text": "ADR 3 and the standby speed use the same probe; STBY SPD UNCERTAIN appears when ADR 3 speed is declared faulty.",
+   "applies_to": [
+    "all"
+   ],
+   "refs": [
+    {
+     "book": "FCOM",
+     "code": "PRO-ABN-NAV",
+     "page": "P 3/124",
+     "pdf": 3828
+    },
+    {
+     "book": "FCOM",
+     "code": "DSC-34-NAV-10-30-20",
+     "page": "P 3/8",
+     "pdf": 2112
+    }
+   ]
+  }
+ ],
+ "technique": [],
+ "related": [
+  {
+   "title": "[MEM] UNRELIABLE SPEED INDICATION",
+   "why": "If standby/ADR 3 speed becomes erroneous",
+   "key_actions": [
+    "See the Unreliable speed brief"
+   ],
+   "refs": [
+    {
+     "book": "FCOM",
+     "code": "PRO-ABN-NAV",
+     "page": "P 1/124",
+     "pdf": 3826
+    }
+   ]
+  }
+ ],
+ "differences": [],
+ "gaps": [
+  {
+   "text": "No FCTM technique for this caution in the supplied FCTM.",
+   "applies_to": [
+    "all"
+   ],
+   "refs": [
+    {
+     "book": "FCOM",
+     "code": "PRO-ABN-A-ICE",
+     "page": "P 39/42",
+     "pdf": 2886
+    }
+   ]
+  },
+  {
+   "text": "HS-TO version omitted (FCOM P 40/42).",
+   "applies_to": [
+    "all"
+   ],
+   "refs": [
+    {
+     "book": "FCOM",
+     "code": "PRO-ABN-A-ICE",
+     "page": "P 40/42",
+     "pdf": 2887
+    }
+   ]
+  }
+ ],
+ "sources": [
+  {
+   "book": "FCOM",
+   "section": "PRO-ABN-A-ICE — ANTI ICE STBY PITOT or L(R) STAT or AOA",
+   "pages": "P 39/42",
+   "pdf": "2886",
+   "rev": "18 FEB 26"
+  },
+  {
+   "book": "FCOM",
+   "section": "DSC-30-50 Probes heat",
+   "pages": "P 1/2",
+   "pdf": "1786, 1788",
+   "rev": "22 MAR 16"
+  }
+ ],
+ "schema": "a320-ecam-abnormal/3",
+ "generated": "2026-10-14"
+}

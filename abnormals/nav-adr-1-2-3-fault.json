@@ -1,0 +1,1282 @@
+{
+ "slug": "nav-adr-1-2-3-fault",
+ "title": "NAV ADR 1(2)(3) FAULT",
+ "kind": "ecam",
+ "alert": {
+  "level": "caution",
+  "land_asap": "none",
+  "memory_items": false,
+  "qrh_summary": false,
+  "trigger": "This alert triggers when the ADR 1(2)(3) is failed. Inhibited in flight phases 1, 3, 4, 5, 7, 8 and 10 — NAV ADR 1(2) FAULT is not inhibited in phases 3, 5 and 7; NAV ADR 3 FAULT is not inhibited in phase 3 while the ADR 3 is in use.",
+  "inhibited_phases": [
+   1,
+   3,
+   4,
+   5,
+   7,
+   8,
+   10
+  ],
+  "refs": [
+   {
+    "book": "FCOM",
+    "code": "PRO-ABN-NAV",
+    "page": "P 21/124",
+    "pdf": 3846
+   }
+  ]
+ },
+ "effectivity": {
+  "branches": [],
+  "note": "One procedure for all HS-TX (the HS-TO version is not used)."
+ },
+ "summary": "An amber caution: one air data reference has failed, so one side loses speed and altitude data. Switch AIR DATA to CAPT 3 (ADR 1) or F/O 3 (ADR 2) and turn the failed ADR pb OFF; for ADR 2 also check the baro reference. Approach capability drops to CAT 3 SINGLE.",
+ "key_limits": [
+  {
+   "label": "ADR 1 FAULT",
+   "value": "AIR DATA CAPT 3 · ADR 1 OFF",
+   "applies_to": [
+    "all"
+   ],
+   "refs": [
+    {
+     "book": "FCOM",
+     "code": "PRO-ABN-NAV",
+     "page": "P 22/124",
+     "pdf": 3847
+    }
+   ]
+  },
+  {
+   "label": "ADR 2 FAULT",
+   "value": "AIR DATA F/O 3 · ADR 2 OFF · BARO REF CHECK",
+   "applies_to": [
+    "all"
+   ],
+   "refs": [
+    {
+     "book": "FCOM",
+     "code": "PRO-ABN-NAV",
+     "page": "P 22/124",
+     "pdf": 3847
+    }
+   ]
+  },
+  {
+   "label": "ADR 3 FAULT",
+   "value": "ADR 3 OFF · AIR DATA NORM if ADR 3 in use",
+   "applies_to": [
+    "all"
+   ],
+   "refs": [
+    {
+     "book": "FCOM",
+     "code": "PRO-ABN-NAV",
+     "page": "P 22/124",
+     "pdf": 3847
+    }
+   ]
+  },
+  {
+   "label": "Approach capability",
+   "value": "CAT 3 SINGLE ONLY",
+   "applies_to": [
+    "all"
+   ],
+   "refs": [
+    {
+     "book": "FCOM",
+     "code": "PRO-ABN-NAV",
+     "page": "P 22/124",
+     "pdf": 3847
+    }
+   ]
+  }
+ ],
+ "flow": [
+  {
+   "phase": "Detection",
+   "steps": [
+    {
+     "actor": "BOTH",
+     "items": [
+      {
+       "kind": "action",
+       "text": "First to notice: MASTER CAUTION reset",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "FCTM",
+         "code": "AOP-30-30",
+         "page": "P 2/6",
+         "pdf": 83
+        },
+        {
+         "book": "PDP",
+         "code": "Management of abnormal operations",
+         "page": "XFTDN6ECAM00001",
+         "pdf": 424
+        }
+       ]
+      }
+     ]
+    },
+    {
+     "actor": "PM",
+     "items": [
+      {
+       "kind": "callout",
+       "text": "NAV ADR 1 FAULT",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "FCTM",
+         "code": "AOP-30-30",
+         "page": "P 2/6",
+         "pdf": 83
+        },
+        {
+         "book": "FCOM",
+         "code": "PRO-ABN-NAV",
+         "page": "P 21/124",
+         "pdf": 3846
+        },
+        {
+         "book": "PDP",
+         "code": "Management of abnormal operations",
+         "page": "XFTDN6ECAM00001",
+         "pdf": 424
+        }
+       ]
+      },
+      {
+       "kind": "note",
+       "text": "Announce the ADR shown (1, 2 or 3)",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "FCOM",
+         "code": "PRO-ABN-NAV",
+         "page": "P 21/124",
+         "pdf": 3846
+        }
+       ]
+      },
+      {
+       "kind": "action",
+       "text": "Confirm on the overhead ADIRS panel: ADR FAULT light on",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "FCTM",
+         "code": "AOP-30-30",
+         "page": "P 2/6",
+         "pdf": 83
+        },
+        {
+         "book": "FCOM",
+         "code": "DSC-34-NAV-10-20",
+         "page": "P 3/6",
+         "pdf": 2102
+        }
+       ]
+      }
+     ]
+    },
+    {
+     "actor": "PF",
+     "items": [
+      {
+       "kind": "callout",
+       "text": "ECAM ACTIONS",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "FCOM",
+         "code": "PRO-ABN-ABN-00",
+         "page": "P 8/12",
+         "pdf": 2831
+        },
+        {
+         "book": "FCTM",
+         "code": "AOP-30-30",
+         "page": "P 3/6",
+         "pdf": 84
+        },
+        {
+         "book": "PDP",
+         "code": "Management of abnormal operations",
+         "page": "XFTDN6ECAM00001",
+         "pdf": 424
+        }
+       ]
+      },
+      {
+       "kind": "note",
+       "text": "PF now flies, navigates and communicates",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "FCTM",
+         "code": "AOP-20",
+         "page": "P 1–2/10",
+         "pdf": 68
+        },
+        {
+         "book": "PDP",
+         "code": "Management of abnormal operations",
+         "page": "XFTDN6ECAM00001",
+         "pdf": 424
+        }
+       ]
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "phase": "ECAM actions",
+   "steps": [
+    {
+     "actor": "PM",
+     "items": [
+      {
+       "kind": "note",
+       "text": "If ADR and IR of the same ADIRU fail together, do this ADR procedure before the IR procedure",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "FCOM",
+         "code": "PRO-ABN-NAV",
+         "page": "P 22/124",
+         "pdf": 3847
+        }
+       ]
+      },
+      {
+       "kind": "condition",
+       "text": "NAV ADR 1 FAULT",
+       "children": [
+        {
+         "kind": "ecam",
+         "item": "AIR DATA SWTG",
+         "setting": "CAPT 3",
+         "applies_to": [
+          "all"
+         ],
+         "refs": [
+          {
+           "book": "FCOM",
+           "code": "PRO-ABN-NAV",
+           "page": "P 22/124",
+           "pdf": 3847
+          }
+         ]
+        },
+        {
+         "kind": "action",
+         "text": "Point to the ADR 1 pb, announce system – control – action, then press it",
+         "applies_to": [
+          "all"
+         ],
+         "refs": [
+          {
+           "book": "FCTM",
+           "code": "AOP-30-20",
+           "page": "P 1/2",
+           "pdf": 80
+          }
+         ]
+        },
+        {
+         "kind": "ecam",
+         "item": "ADR 1 P/B",
+         "setting": "OFF",
+         "applies_to": [
+          "all"
+         ],
+         "refs": [
+          {
+           "book": "FCOM",
+           "code": "PRO-ABN-NAV",
+           "page": "P 22/124",
+           "pdf": 3847
+          }
+         ]
+        }
+       ],
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "FCOM",
+         "code": "PRO-ABN-NAV",
+         "page": "P 22/124",
+         "pdf": 3847
+        }
+       ]
+      },
+      {
+       "kind": "condition",
+       "text": "NAV ADR 2 FAULT",
+       "children": [
+        {
+         "kind": "ecam",
+         "item": "AIR DATA SWTG",
+         "setting": "F/O 3",
+         "applies_to": [
+          "all"
+         ],
+         "refs": [
+          {
+           "book": "FCOM",
+           "code": "PRO-ABN-NAV",
+           "page": "P 22/124",
+           "pdf": 3847
+          }
+         ]
+        },
+        {
+         "kind": "action",
+         "text": "Point to the ADR 2 pb, announce system – control – action, then press it",
+         "applies_to": [
+          "all"
+         ],
+         "refs": [
+          {
+           "book": "FCTM",
+           "code": "AOP-30-20",
+           "page": "P 1/2",
+           "pdf": 80
+          }
+         ]
+        },
+        {
+         "kind": "ecam",
+         "item": "ADR 2 P/B",
+         "setting": "OFF",
+         "applies_to": [
+          "all"
+         ],
+         "refs": [
+          {
+           "book": "FCOM",
+           "code": "PRO-ABN-NAV",
+           "page": "P 22/124",
+           "pdf": 3847
+          }
+         ]
+        },
+        {
+         "kind": "ecam",
+         "item": "BARO REF",
+         "setting": "CHECK",
+         "applies_to": [
+          "all"
+         ],
+         "refs": [
+          {
+           "book": "FCOM",
+           "code": "PRO-ABN-NAV",
+           "page": "P 22/124",
+           "pdf": 3847
+          }
+         ]
+        },
+        {
+         "kind": "note",
+         "text": "Both baro reference channels are now driven by the same FCU channel",
+         "applies_to": [
+          "all"
+         ],
+         "refs": [
+          {
+           "book": "FCOM",
+           "code": "PRO-ABN-NAV",
+           "page": "P 22/124",
+           "pdf": 3847
+          }
+         ]
+        }
+       ],
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "FCOM",
+         "code": "PRO-ABN-NAV",
+         "page": "P 22/124",
+         "pdf": 3847
+        }
+       ]
+      },
+      {
+       "kind": "condition",
+       "text": "NAV ADR 3 FAULT",
+       "children": [
+        {
+         "kind": "ecam",
+         "item": "ADR 3 P/B",
+         "setting": "OFF",
+         "applies_to": [
+          "all"
+         ],
+         "refs": [
+          {
+           "book": "FCOM",
+           "code": "PRO-ABN-NAV",
+           "page": "P 22/124",
+           "pdf": 3847
+          }
+         ]
+        },
+        {
+         "kind": "condition",
+         "text": "If ADR 3 in use",
+         "children": [
+          {
+           "kind": "ecam",
+           "item": "AIR DATA SWTG",
+           "setting": "NORM",
+           "applies_to": [
+            "all"
+           ],
+           "refs": [
+            {
+             "book": "FCOM",
+             "code": "PRO-ABN-NAV",
+             "page": "P 22/124",
+             "pdf": 3847
+            }
+           ]
+          }
+         ],
+         "applies_to": [
+          "all"
+         ],
+         "refs": [
+          {
+           "book": "FCOM",
+           "code": "PRO-ABN-NAV",
+           "page": "P 22/124",
+           "pdf": 3847
+          }
+         ]
+        }
+       ],
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "FCOM",
+         "code": "PRO-ABN-NAV",
+         "page": "P 22/124",
+         "pdf": 3847
+        }
+       ]
+      },
+      {
+       "kind": "condition",
+       "text": "If the GPWS TERR FAULT and GPWS SYS FAULT lights come on (ADR 1)",
+       "children": [
+        {
+         "kind": "action",
+         "text": "Switch off the GPWS TERR pb-sw and the GPWS SYS pb-sw",
+         "applies_to": [
+          "all"
+         ],
+         "refs": [
+          {
+           "book": "FCOM",
+           "code": "PRO-ABN-NAV",
+           "page": "P 22/124",
+           "pdf": 3847
+          }
+         ]
+        }
+       ],
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "FCOM",
+         "code": "PRO-ABN-NAV",
+         "page": "P 22/124",
+         "pdf": 3847
+        }
+       ]
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "phase": "STATUS",
+   "steps": [
+    {
+     "actor": "PM",
+     "items": [
+      {
+       "kind": "callout",
+       "text": "CLEAR NAV ?",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "FCOM",
+         "code": "PRO-ABN-ABN-00",
+         "page": "P 8/12",
+         "pdf": 2831
+        },
+        {
+         "book": "FCTM",
+         "code": "AOP-30-30",
+         "page": "P 3/6",
+         "pdf": 84
+        },
+        {
+         "book": "PDP",
+         "code": "Management of abnormal operations",
+         "page": "XFTDN6ECAM00001",
+         "pdf": 424
+        }
+       ]
+      }
+     ]
+    },
+    {
+     "actor": "PF",
+     "items": [
+      {
+       "kind": "callout",
+       "text": "CLEAR NAV",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "FCOM",
+         "code": "PRO-ABN-ABN-00",
+         "page": "P 8/12",
+         "pdf": 2831
+        },
+        {
+         "book": "FCTM",
+         "code": "AOP-30-30",
+         "page": "P 3/6",
+         "pdf": 84
+        },
+        {
+         "book": "PDP",
+         "code": "Management of abnormal operations",
+         "page": "XFTDN6ECAM00001",
+         "pdf": 424
+        }
+       ]
+      }
+     ]
+    },
+    {
+     "actor": "PM",
+     "items": [
+      {
+       "kind": "callout",
+       "text": "STATUS",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "FCTM",
+         "code": "AOP-30-30",
+         "page": "P 3/6",
+         "pdf": 84
+        },
+        {
+         "book": "PDP",
+         "code": "Management of abnormal operations",
+         "page": "XFTDN6ECAM00001",
+         "pdf": 426
+        }
+       ]
+      }
+     ]
+    },
+    {
+     "actor": "PF",
+     "items": [
+      {
+       "kind": "callout",
+       "text": "STOP ECAM",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "FCTM",
+         "code": "AOP-30-30",
+         "page": "P 3/6",
+         "pdf": 84
+        },
+        {
+         "book": "PDP",
+         "code": "Management of abnormal operations",
+         "page": "XFTDN6ECAM00001",
+         "pdf": 426
+        }
+       ]
+      }
+     ]
+    },
+    {
+     "actor": "PM",
+     "items": [
+      {
+       "kind": "ecam",
+       "item": "ECAM ACTIONS",
+       "setting": "STOP",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "PDP",
+         "code": "Management of abnormal operations",
+         "page": "XFTDN6ECAM00001",
+         "pdf": 426
+        }
+       ]
+      }
+     ]
+    },
+    {
+     "actor": "PF",
+     "items": [
+      {
+       "kind": "action",
+       "text": "Normal C/L as applicable; system resets only per QRH",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "FCTM",
+         "code": "AOP-30-30",
+         "page": "P 4/6",
+         "pdf": 85
+        },
+        {
+         "book": "PDP",
+         "code": "Management of abnormal operations",
+         "page": "XFTDN6ECAM00001",
+         "pdf": 426
+        }
+       ]
+      },
+      {
+       "kind": "callout",
+       "text": "CONTINUE ECAM",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "FCTM",
+         "code": "AOP-30-30",
+         "page": "P 3/6",
+         "pdf": 84
+        },
+        {
+         "book": "PDP",
+         "code": "Management of abnormal operations",
+         "page": "XFTDN6ECAM00001",
+         "pdf": 426
+        }
+       ]
+      }
+     ]
+    },
+    {
+     "actor": "PM",
+     "items": [
+      {
+       "kind": "action",
+       "text": "Read the whole STATUS page; preview APPR PROC workload",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "FCTM",
+         "code": "AOP-30-30",
+         "page": "P 3/6",
+         "pdf": 84
+        },
+        {
+         "book": "PDP",
+         "code": "Management of abnormal operations",
+         "page": "XFTDN6ECAM00001",
+         "pdf": 426
+        }
+       ]
+      },
+      {
+       "kind": "callout",
+       "text": "REMOVE STATUS ?",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "FCTM",
+         "code": "AOP-30-30",
+         "page": "P 3/6",
+         "pdf": 84
+        },
+        {
+         "book": "PDP",
+         "code": "Management of abnormal operations",
+         "page": "XFTDN6ECAM00001",
+         "pdf": 426
+        }
+       ]
+      }
+     ]
+    },
+    {
+     "actor": "PF",
+     "items": [
+      {
+       "kind": "callout",
+       "text": "REMOVE STATUS",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "FCOM",
+         "code": "PRO-ABN-ABN-00",
+         "page": "P 8/12",
+         "pdf": 2831
+        },
+        {
+         "book": "FCTM",
+         "code": "AOP-30-30",
+         "page": "P 3/6",
+         "pdf": 84
+        },
+        {
+         "book": "PDP",
+         "code": "Management of abnormal operations",
+         "page": "XFTDN6ECAM00001",
+         "pdf": 426
+        }
+       ]
+      }
+     ]
+    },
+    {
+     "actor": "PM",
+     "items": [
+      {
+       "kind": "callout",
+       "text": "ECAM ACTIONS COMPLETE",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "FCOM",
+         "code": "PRO-ABN-ABN-00",
+         "page": "P 8/12",
+         "pdf": 2831
+        },
+        {
+         "book": "PDP",
+         "code": "Management of abnormal operations",
+         "page": "XFTDN6ECAM00001",
+         "pdf": 426
+        }
+       ]
+      }
+     ]
+    }
+   ]
+  }
+ ],
+ "procedures": [
+  {
+   "title": "NAV ADR 1(2)(3) FAULT",
+   "source": "FCOM PRO-ABN-NAV (HS-TX)",
+   "lines": [
+    {
+     "kind": "note",
+     "text": "In case of simultaneous failure of ADR and IR (same ADIRU), apply ADR FAULT procedure before IR FAULT procedure.",
+     "level": 0,
+     "applies_to": [
+      "all"
+     ],
+     "refs": [
+      {
+       "book": "FCOM",
+       "code": "PRO-ABN-NAV",
+       "page": "P 22/124",
+       "pdf": 3847
+      }
+     ]
+    },
+    {
+     "kind": "condition",
+     "text": "NAV ADR 1 FAULT:",
+     "level": 0,
+     "applies_to": [
+      "all"
+     ],
+     "refs": [
+      {
+       "book": "FCOM",
+       "code": "PRO-ABN-NAV",
+       "page": "P 22/124",
+       "pdf": 3847
+      }
+     ]
+    },
+    {
+     "kind": "action",
+     "item": "AIR DATA SWTG",
+     "setting": "CAPT 3",
+     "text": "Select ADR 3 to captain side.",
+     "level": 1,
+     "applies_to": [
+      "all"
+     ],
+     "refs": [
+      {
+       "book": "FCOM",
+       "code": "PRO-ABN-NAV",
+       "page": "P 22/124",
+       "pdf": 3847
+      }
+     ]
+    },
+    {
+     "kind": "action",
+     "item": "ADR 1 P/B",
+     "setting": "OFF",
+     "text": "",
+     "level": 1,
+     "applies_to": [
+      "all"
+     ],
+     "refs": [
+      {
+       "book": "FCOM",
+       "code": "PRO-ABN-NAV",
+       "page": "P 22/124",
+       "pdf": 3847
+      }
+     ]
+    },
+    {
+     "kind": "info",
+     "text": "The GPWS TERR FAULT and GPWS SYS FAULT lights come on (enhanced/predictive GPWS functions inhibited). If this occurs, switch off the GPWS TERR pb-sw and the GPWS SYS pb-sw.",
+     "level": 1,
+     "applies_to": [
+      "all"
+     ],
+     "refs": [
+      {
+       "book": "FCOM",
+       "code": "PRO-ABN-NAV",
+       "page": "P 22/124",
+       "pdf": 3847
+      }
+     ]
+    },
+    {
+     "kind": "condition",
+     "text": "NAV ADR 2 FAULT:",
+     "level": 0,
+     "applies_to": [
+      "all"
+     ],
+     "refs": [
+      {
+       "book": "FCOM",
+       "code": "PRO-ABN-NAV",
+       "page": "P 22/124",
+       "pdf": 3847
+      }
+     ]
+    },
+    {
+     "kind": "action",
+     "item": "AIR DATA SWTG",
+     "setting": "F/O 3",
+     "text": "Select ADR 3 to first officer side.",
+     "level": 1,
+     "applies_to": [
+      "all"
+     ],
+     "refs": [
+      {
+       "book": "FCOM",
+       "code": "PRO-ABN-NAV",
+       "page": "P 22/124",
+       "pdf": 3847
+      }
+     ]
+    },
+    {
+     "kind": "action",
+     "item": "ADR 2 P/B",
+     "setting": "OFF",
+     "text": "",
+     "level": 1,
+     "applies_to": [
+      "all"
+     ],
+     "refs": [
+      {
+       "book": "FCOM",
+       "code": "PRO-ABN-NAV",
+       "page": "P 22/124",
+       "pdf": 3847
+      }
+     ]
+    },
+    {
+     "kind": "action",
+     "item": "BARO REF",
+     "setting": "CHECK",
+     "text": "If ADR 2 fails, both baro reference channels are driven by the same FCU channel. Consequently the baro reference displays must be checked.",
+     "level": 1,
+     "applies_to": [
+      "all"
+     ],
+     "refs": [
+      {
+       "book": "FCOM",
+       "code": "PRO-ABN-NAV",
+       "page": "P 22/124",
+       "pdf": 3847
+      }
+     ]
+    },
+    {
+     "kind": "condition",
+     "text": "NAV ADR 3 FAULT:",
+     "level": 0,
+     "applies_to": [
+      "all"
+     ],
+     "refs": [
+      {
+       "book": "FCOM",
+       "code": "PRO-ABN-NAV",
+       "page": "P 22/124",
+       "pdf": 3847
+      }
+     ]
+    },
+    {
+     "kind": "action",
+     "item": "ADR 3 P/B",
+     "setting": "OFF",
+     "text": "",
+     "level": 1,
+     "applies_to": [
+      "all"
+     ],
+     "refs": [
+      {
+       "book": "FCOM",
+       "code": "PRO-ABN-NAV",
+       "page": "P 22/124",
+       "pdf": 3847
+      }
+     ]
+    },
+    {
+     "kind": "condition",
+     "text": "If ADR 3 in use:",
+     "level": 1,
+     "applies_to": [
+      "all"
+     ],
+     "refs": [
+      {
+       "book": "FCOM",
+       "code": "PRO-ABN-NAV",
+       "page": "P 22/124",
+       "pdf": 3847
+      }
+     ]
+    },
+    {
+     "kind": "action",
+     "item": "AIR DATA SWTG",
+     "setting": "NORM",
+     "text": "",
+     "level": 2,
+     "applies_to": [
+      "all"
+     ],
+     "refs": [
+      {
+       "book": "FCOM",
+       "code": "PRO-ABN-NAV",
+       "page": "P 22/124",
+       "pdf": 3847
+      }
+     ]
+    }
+   ]
+  }
+ ],
+ "status": {
+  "limitations": [],
+  "info": [
+   {
+    "text": "CAT 3 SINGLE ONLY",
+    "applies_to": [
+     "all"
+    ],
+    "refs": [
+     {
+      "book": "FCOM",
+      "code": "PRO-ABN-NAV",
+      "page": "P 22/124",
+      "pdf": 3847
+     }
+    ]
+   }
+  ],
+  "appr_proc": [],
+  "inop_sys": [
+   {
+    "text": "ADR 1(2)(3)",
+    "applies_to": [
+     "all"
+    ],
+    "refs": [
+     {
+      "book": "FCOM",
+      "code": "PRO-ABN-NAV",
+      "page": "P 22/124",
+      "pdf": 3847
+     }
+    ]
+   },
+   {
+    "text": "CAT 3 DUAL",
+    "applies_to": [
+     "all"
+    ],
+    "refs": [
+     {
+      "book": "FCOM",
+      "code": "PRO-ABN-NAV",
+      "page": "P 22/124",
+      "pdf": 3847
+     }
+    ]
+   },
+   {
+    "text": "GPWS (in case of ADR 1 FAULT only)",
+    "applies_to": [
+     "all"
+    ],
+    "refs": [
+     {
+      "book": "FCOM",
+      "code": "PRO-ABN-NAV",
+      "page": "P 22/124",
+      "pdf": 3847
+     }
+    ]
+   }
+  ]
+ },
+ "background": [
+  {
+   "text": "Each ADIRS has two parts (ADR and IRS) that may fail independently. A single NAV ADR FAULT only requires action on the switching panel as indicated by the ECAM.",
+   "applies_to": [
+    "all"
+   ],
+   "refs": [
+    {
+     "book": "FCTM",
+     "code": "PR-AEP-NAV",
+     "page": "P 1/20",
+     "pdf": 478
+    }
+   ]
+  },
+  {
+   "text": "AIR DATA selector: NORM — ADIRU 1 to the captain side, ADIRU 2 to the F/O side. CAPT 3 — ADR 3 replaces ADR 1. F/O 3 — ADR 3 replaces ADR 2.",
+   "applies_to": [
+    "all"
+   ],
+   "refs": [
+    {
+     "book": "FCOM",
+     "code": "DSC-34-NAV-10-20",
+     "page": "P 3/6",
+     "pdf": 2102
+    }
+   ]
+  },
+  {
+   "text": "ADR pb-sw FAULT light: ADR failed (NAV ADR FAULT alert). Pressing it turns the ADR off and the FAULT light goes off.",
+   "applies_to": [
+    "all"
+   ],
+   "refs": [
+    {
+     "book": "FCOM",
+     "code": "DSC-34-NAV-10-20",
+     "page": "P 3/6",
+     "pdf": 2102
+    }
+   ]
+  }
+ ],
+ "technique": [
+  {
+   "text": "Overhead actions: the PM points to the control and announces system – control – action, then checks the result.",
+   "applies_to": [
+    "all"
+   ],
+   "refs": [
+    {
+     "book": "FCTM",
+     "code": "AOP-30-20",
+     "page": "P 1/2",
+     "pdf": 80
+    }
+   ]
+  }
+ ],
+ "related": [
+  {
+   "title": "NAV IR 1(2)(3) FAULT",
+   "why": "If the IR of the same ADIRU has also failed, apply it after this ADR procedure.",
+   "key_actions": [
+    "ATT HDG SWTG to the side of the failed IR",
+    "ATC/XPDR to the other system"
+   ],
+   "refs": [
+    {
+     "book": "FCOM",
+     "code": "PRO-ABN-NAV",
+     "page": "P 22/124",
+     "pdf": 3847
+    },
+    {
+     "book": "FCOM",
+     "code": "PRO-ABN-NAV",
+     "page": "P 88/124",
+     "pdf": 3913
+    }
+   ]
+  }
+ ],
+ "gaps": [
+  {
+   "text": "No ADR-specific FCTM technique beyond the ADR/IRS FAULT paragraph, and no PDP module; the flow uses the generic ECAM handling. No callout is given for the switching itself.",
+   "applies_to": [
+    "all"
+   ],
+   "refs": [
+    {
+     "book": "FCTM",
+     "code": "PR-AEP-NAV",
+     "page": "P 1/20",
+     "pdf": 478
+    },
+    {
+     "book": "PDP",
+     "code": "Management of abnormal operations",
+     "page": "XFTDN6ECAM00001",
+     "pdf": 424
+    }
+   ]
+  },
+  {
+   "text": "The HS-TO version of the procedure (FCOM P 23–25/124) is not used.",
+   "applies_to": [
+    "all"
+   ],
+   "refs": [
+    {
+     "book": "FCOM",
+     "code": "PRO-ABN-NAV",
+     "page": "P 22/124",
+     "pdf": 3847
+    }
+   ]
+  }
+ ],
+ "sources": [
+  {
+   "book": "FCOM",
+   "section": "PRO-ABN-NAV — NAV ADR 1(2)(3) FAULT (HS-TX)",
+   "pages": "P 21–22/124",
+   "pdf": "3846–3847",
+   "rev": "26 MAY 26"
+  },
+  {
+   "book": "FCTM",
+   "section": "PR-AEP-NAV — ADR/IRS FAULT",
+   "pages": "P 1/20",
+   "pdf": "478",
+   "rev": "26 MAY 26"
+  },
+  {
+   "book": "FCOM",
+   "section": "DSC-34-NAV-10-20 — ADIRS controls",
+   "pages": "P 3/6",
+   "pdf": "2102",
+   "rev": "18 FEB 26"
+  },
+  {
+   "book": "FCTM",
+   "section": "AOP-20 / AOP-30 — task sharing and ECAM handling",
+   "pages": "AOP-20 P 1–2/10, AOP-30-30 P 1–4/6",
+   "pdf": "68–69, 82–85",
+   "rev": "26 MAY 26"
+  },
+  {
+   "book": "PDP",
+   "section": "Management of abnormal operations (XFTDN6ECAM00001)",
+   "pages": "ECAM actions, STATUS, QRH, confirm",
+   "pdf": "424–432",
+   "rev": "JAN 2024"
+  }
+ ],
+ "schema": "a320-ecam-abnormal/3",
+ "generated": "2026-10-14",
+ "qrh": [],
+ "tables": [],
+ "differences": []
+}

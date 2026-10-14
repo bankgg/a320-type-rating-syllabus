@@ -1,0 +1,1445 @@
+{
+ "slug": "f-ctl-direct-law",
+ "title": "F/CTL DIRECT LAW",
+ "kind": "ecam",
+ "alert": {
+  "level": "caution",
+  "land_asap": "none",
+  "memory_items": false,
+  "qrh_summary": false,
+  "trigger": "This alert triggers when direct law is active. Inhibited in flight phases 4, 5, 7 and 8.",
+  "inhibited_phases": [
+   4,
+   5,
+   7,
+   8
+  ],
+  "refs": [
+   {
+    "book": "FCOM",
+    "code": "PRO-ABN-F_CTL",
+    "page": "P 18/132",
+    "pdf": 3491
+   }
+  ]
+ },
+ "effectivity": {
+  "branches": [],
+  "note": "One procedure for all HS-TX (the HS-TO version is not used)."
+ },
+ "summary": "An amber caution: the flight controls are in direct law. Sidestick deflection moves the surfaces directly, there is no automatic trim (USE MAN PITCH TRIM on the PFD) and no protection. Overspeed and stall warnings remain. Keep below 320 kt / M .77, trim manually, use small inputs at high speed, prefer manual thrust and avoid large thrust changes. Land in CONF 3 at VREF + 10 kt.",
+ "key_limits": [
+  {
+   "label": "MAX SPEED",
+   "value": "320 KT / M .77",
+   "applies_to": [
+    "all"
+   ],
+   "refs": [
+    {
+     "book": "FCOM",
+     "code": "PRO-ABN-F_CTL",
+     "page": "P 19/132",
+     "pdf": 3492
+    }
+   ]
+  },
+  {
+   "label": "Pitch trim",
+   "value": "MAN PITCH TRIM — USE",
+   "applies_to": [
+    "all"
+   ],
+   "refs": [
+    {
+     "book": "FCOM",
+     "code": "PRO-ABN-F_CTL",
+     "page": "P 19/132",
+     "pdf": 3492
+    }
+   ]
+  },
+  {
+   "label": "FOR LDG",
+   "value": "FLAPS LVR 3",
+   "applies_to": [
+    "all"
+   ],
+   "refs": [
+    {
+     "book": "FCOM",
+     "code": "PRO-ABN-F_CTL",
+     "page": "P 20/132",
+     "pdf": 3493
+    }
+   ]
+  },
+  {
+   "label": "APPR SPD",
+   "value": "VREF + 10 KT",
+   "applies_to": [
+    "all"
+   ],
+   "refs": [
+    {
+     "book": "FCOM",
+     "code": "PRO-ABN-F_CTL",
+     "page": "P 20/132",
+     "pdf": 3493
+    }
+   ]
+  }
+ ],
+ "flow": [
+  {
+   "phase": "Detection",
+   "steps": [
+    {
+     "actor": "BOTH",
+     "items": [
+      {
+       "kind": "action",
+       "text": "First to notice: MASTER CAUTION reset",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "FCTM",
+         "code": "AOP-30-30",
+         "page": "P 2/6",
+         "pdf": 83
+        },
+        {
+         "book": "PDP",
+         "code": "Management of abnormal operations",
+         "page": "XFTDN6ECAM00001",
+         "pdf": 424
+        }
+       ]
+      },
+      {
+       "kind": "note",
+       "text": "PFD: amber USE MAN PITCH TRIM below the FMA; amber X instead of the green protection symbols",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "FCOM",
+         "code": "PRO-ABN-F_CTL",
+         "page": "P 19/132",
+         "pdf": 3492
+        },
+        {
+         "book": "FCOM",
+         "code": "DSC-27-20-20",
+         "page": "P 1/20",
+         "pdf": 1612
+        },
+        {
+         "book": "PDP",
+         "code": "Reconfiguration laws",
+         "page": "EFTDN1RCFGLAW01",
+         "pdf": 515
+        }
+       ]
+      }
+     ]
+    },
+    {
+     "actor": "PM",
+     "items": [
+      {
+       "kind": "callout",
+       "text": "F/CTL DIRECT LAW",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "FCTM",
+         "code": "AOP-30-30",
+         "page": "P 2/6",
+         "pdf": 83
+        },
+        {
+         "book": "FCOM",
+         "code": "PRO-ABN-F_CTL",
+         "page": "P 18/132",
+         "pdf": 3491
+        },
+        {
+         "book": "PDP",
+         "code": "Management of abnormal operations",
+         "page": "XFTDN6ECAM00001",
+         "pdf": 424
+        }
+       ]
+      },
+      {
+       "kind": "action",
+       "text": "Confirm on the F/CTL SD page and the PFD before acting",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "FCTM",
+         "code": "AOP-30-30",
+         "page": "P 2/6",
+         "pdf": 83
+        },
+        {
+         "book": "PDP",
+         "code": "Management of abnormal operations",
+         "page": "XFTDN6ECAM00001",
+         "pdf": 424
+        }
+       ]
+      }
+     ]
+    },
+    {
+     "actor": "PF",
+     "items": [
+      {
+       "kind": "callout",
+       "text": "ECAM ACTIONS",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "FCOM",
+         "code": "PRO-ABN-ABN-00",
+         "page": "P 8/12",
+         "pdf": 2831
+        },
+        {
+         "book": "FCTM",
+         "code": "AOP-30-30",
+         "page": "P 3/6",
+         "pdf": 84
+        },
+        {
+         "book": "PDP",
+         "code": "Management of abnormal operations",
+         "page": "XFTDN6ECAM00001",
+         "pdf": 424
+        }
+       ]
+      },
+      {
+       "kind": "note",
+       "text": "PF now flies, navigates and communicates",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "FCTM",
+         "code": "AOP-20",
+         "page": "P 1–2/10",
+         "pdf": 68
+        },
+        {
+         "book": "PDP",
+         "code": "Management of abnormal operations",
+         "page": "XFTDN6ECAM00001",
+         "pdf": 424
+        }
+       ]
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "phase": "ECAM actions",
+   "steps": [
+    {
+     "actor": "PM",
+     "items": [
+      {
+       "kind": "note",
+       "text": "With GPWS alerts, protections are lost: respect the stall warning when applying the GPWS procedure",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "FCOM",
+         "code": "PRO-ABN-F_CTL",
+         "page": "P 19/132",
+         "pdf": 3492
+        }
+       ]
+      },
+      {
+       "kind": "ecam",
+       "item": "MAX SPEED",
+       "setting": "320/.77",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "FCOM",
+         "code": "PRO-ABN-F_CTL",
+         "page": "P 19/132",
+         "pdf": 3492
+        }
+       ]
+      }
+     ]
+    },
+    {
+     "actor": "PF",
+     "items": [
+      {
+       "kind": "action",
+       "text": "Keep below 320 kt / M .77 (high speed protection lost)",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "FCOM",
+         "code": "PRO-ABN-F_CTL",
+         "page": "P 19/132",
+         "pdf": 3492
+        }
+       ]
+      }
+     ]
+    },
+    {
+     "actor": "PM",
+     "items": [
+      {
+       "kind": "ecam",
+       "item": "MAN PITCH TRIM",
+       "setting": "USE",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "FCOM",
+         "code": "PRO-ABN-F_CTL",
+         "page": "P 19/132",
+         "pdf": 3492
+        }
+       ]
+      }
+     ]
+    },
+    {
+     "actor": "PF",
+     "items": [
+      {
+       "kind": "action",
+       "text": "Trim manually with the pitch trim wheel — automatic trim is inoperative",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "FCOM",
+         "code": "PRO-ABN-F_CTL",
+         "page": "P 19/132",
+         "pdf": 3492
+        },
+        {
+         "book": "FCOM",
+         "code": "DSC-27-20-30",
+         "page": "P 2/22",
+         "pdf": 1633
+        }
+       ]
+      }
+     ]
+    },
+    {
+     "actor": "PM",
+     "items": [
+      {
+       "kind": "ecam",
+       "item": "MANEUVER WITH CARE",
+       "setting": "—",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "FCOM",
+         "code": "PRO-ABN-F_CTL",
+         "page": "P 19/132",
+         "pdf": 3492
+        }
+       ]
+      },
+      {
+       "kind": "ecam",
+       "item": "USE SPD BRK WITH CARE",
+       "setting": "—",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "FCOM",
+         "code": "PRO-ABN-F_CTL",
+         "page": "P 19/132",
+         "pdf": 3492
+        }
+       ]
+      }
+     ]
+    },
+    {
+     "actor": "PF",
+     "items": [
+      {
+       "kind": "action",
+       "text": "Small control inputs at high speed (controls are powerful); manual thrust recommended; avoid large thrust changes",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "FCOM",
+         "code": "PRO-ABN-F_CTL",
+         "page": "P 19/132",
+         "pdf": 3492
+        }
+       ]
+      },
+      {
+       "kind": "action",
+       "text": "At high Mach, use speed brakes with care to avoid strong nose-up changes",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "FCOM",
+         "code": "PRO-ABN-F_CTL",
+         "page": "P 19/132",
+         "pdf": 3492
+        }
+       ]
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "phase": "STATUS",
+   "steps": [
+    {
+     "actor": "PM",
+     "items": [
+      {
+       "kind": "callout",
+       "text": "CLEAR FLIGHT CONTROL ?",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "FCOM",
+         "code": "PRO-ABN-ABN-00",
+         "page": "P 8/12",
+         "pdf": 2831
+        },
+        {
+         "book": "FCTM",
+         "code": "AOP-30-30",
+         "page": "P 3/6",
+         "pdf": 84
+        },
+        {
+         "book": "PDP",
+         "code": "Management of abnormal operations",
+         "page": "XFTDN6ECAM00001",
+         "pdf": 424
+        }
+       ]
+      }
+     ]
+    },
+    {
+     "actor": "PF",
+     "items": [
+      {
+       "kind": "callout",
+       "text": "CLEAR FLIGHT CONTROL",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "FCOM",
+         "code": "PRO-ABN-ABN-00",
+         "page": "P 8/12",
+         "pdf": 2831
+        },
+        {
+         "book": "FCTM",
+         "code": "AOP-30-30",
+         "page": "P 3/6",
+         "pdf": 84
+        },
+        {
+         "book": "PDP",
+         "code": "Management of abnormal operations",
+         "page": "XFTDN6ECAM00001",
+         "pdf": 424
+        }
+       ]
+      }
+     ]
+    },
+    {
+     "actor": "PM",
+     "items": [
+      {
+       "kind": "callout",
+       "text": "STATUS",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "FCTM",
+         "code": "AOP-30-30",
+         "page": "P 3/6",
+         "pdf": 84
+        },
+        {
+         "book": "PDP",
+         "code": "Management of abnormal operations",
+         "page": "XFTDN6ECAM00001",
+         "pdf": 426
+        }
+       ]
+      }
+     ]
+    },
+    {
+     "actor": "PF",
+     "items": [
+      {
+       "kind": "callout",
+       "text": "STOP ECAM",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "FCTM",
+         "code": "AOP-30-30",
+         "page": "P 3/6",
+         "pdf": 84
+        },
+        {
+         "book": "PDP",
+         "code": "Management of abnormal operations",
+         "page": "XFTDN6ECAM00001",
+         "pdf": 426
+        }
+       ]
+      }
+     ]
+    },
+    {
+     "actor": "PM",
+     "items": [
+      {
+       "kind": "ecam",
+       "item": "ECAM ACTIONS",
+       "setting": "STOP",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "PDP",
+         "code": "Management of abnormal operations",
+         "page": "XFTDN6ECAM00001",
+         "pdf": 426
+        }
+       ]
+      }
+     ]
+    },
+    {
+     "actor": "PF",
+     "items": [
+      {
+       "kind": "action",
+       "text": "Normal C/L as applicable; system resets only per QRH",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "FCTM",
+         "code": "AOP-30-30",
+         "page": "P 4/6",
+         "pdf": 85
+        },
+        {
+         "book": "PDP",
+         "code": "Management of abnormal operations",
+         "page": "XFTDN6ECAM00001",
+         "pdf": 426
+        }
+       ]
+      },
+      {
+       "kind": "callout",
+       "text": "CONTINUE ECAM",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "FCTM",
+         "code": "AOP-30-30",
+         "page": "P 3/6",
+         "pdf": 84
+        },
+        {
+         "book": "PDP",
+         "code": "Management of abnormal operations",
+         "page": "XFTDN6ECAM00001",
+         "pdf": 426
+        }
+       ]
+      }
+     ]
+    },
+    {
+     "actor": "PM",
+     "items": [
+      {
+       "kind": "action",
+       "text": "Read the whole STATUS page; preview APPR PROC workload",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "FCTM",
+         "code": "AOP-30-30",
+         "page": "P 3/6",
+         "pdf": 84
+        },
+        {
+         "book": "PDP",
+         "code": "Management of abnormal operations",
+         "page": "XFTDN6ECAM00001",
+         "pdf": 426
+        }
+       ]
+      },
+      {
+       "kind": "callout",
+       "text": "REMOVE STATUS ?",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "FCTM",
+         "code": "AOP-30-30",
+         "page": "P 3/6",
+         "pdf": 84
+        },
+        {
+         "book": "PDP",
+         "code": "Management of abnormal operations",
+         "page": "XFTDN6ECAM00001",
+         "pdf": 426
+        }
+       ]
+      }
+     ]
+    },
+    {
+     "actor": "PF",
+     "items": [
+      {
+       "kind": "callout",
+       "text": "REMOVE STATUS",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "FCOM",
+         "code": "PRO-ABN-ABN-00",
+         "page": "P 8/12",
+         "pdf": 2831
+        },
+        {
+         "book": "FCTM",
+         "code": "AOP-30-30",
+         "page": "P 3/6",
+         "pdf": 84
+        },
+        {
+         "book": "PDP",
+         "code": "Management of abnormal operations",
+         "page": "XFTDN6ECAM00001",
+         "pdf": 426
+        }
+       ]
+      }
+     ]
+    },
+    {
+     "actor": "PM",
+     "items": [
+      {
+       "kind": "callout",
+       "text": "ECAM ACTIONS COMPLETE",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "FCOM",
+         "code": "PRO-ABN-ABN-00",
+         "page": "P 8/12",
+         "pdf": 2831
+        },
+        {
+         "book": "PDP",
+         "code": "Management of abnormal operations",
+         "page": "XFTDN6ECAM00001",
+         "pdf": 426
+        }
+       ]
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "phase": "Approach and landing",
+   "steps": [
+    {
+     "actor": "PF",
+     "items": [
+      {
+       "kind": "action",
+       "text": "Brief: CONF 3 landing at VREF + 10 kt, manual pitch trim through configuration and thrust changes, landing distance with the LDG DIST PROC",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "FCOM",
+         "code": "PRO-ABN-F_CTL",
+         "page": "P 20/132",
+         "pdf": 3493
+        }
+       ]
+      }
+     ]
+    },
+    {
+     "actor": "PM",
+     "items": [
+      {
+       "kind": "ecam",
+       "item": "FOR LDG",
+       "setting": "FLAPS LVR 3",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "FCOM",
+         "code": "PRO-ABN-F_CTL",
+         "page": "P 20/132",
+         "pdf": 3493
+        }
+       ]
+      },
+      {
+       "kind": "ecam",
+       "item": "GPWS LDG FLAP 3",
+       "setting": "ON",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "FCOM",
+         "code": "PRO-ABN-F_CTL",
+         "page": "P 20/132",
+         "pdf": 3493
+        }
+       ]
+      },
+      {
+       "kind": "ecam",
+       "item": "MAN PITCH TRIM",
+       "setting": "USE",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "FCOM",
+         "code": "PRO-ABN-F_CTL",
+         "page": "P 20/132",
+         "pdf": 3493
+        }
+       ]
+      },
+      {
+       "kind": "ecam",
+       "item": "APPR SPD",
+       "setting": "VREF + 10 KT",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "FCOM",
+         "code": "PRO-ABN-F_CTL",
+         "page": "P 20/132",
+         "pdf": 3493
+        }
+       ]
+      },
+      {
+       "kind": "ecam",
+       "item": "LDG DIST PROC",
+       "setting": "APPLY",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "FCOM",
+         "code": "PRO-ABN-F_CTL",
+         "page": "P 20/132",
+         "pdf": 3493
+        }
+       ]
+      }
+     ]
+    },
+    {
+     "actor": "PF",
+     "items": [
+      {
+       "kind": "action",
+       "text": "Re-trim after each speed, configuration or thrust change; retract speedbrakes gently",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "FCTM",
+         "code": "AOP-10-30-20",
+         "page": "P 1/2",
+         "pdf": 62
+        },
+        {
+         "book": "FCOM",
+         "code": "DSC-27-20-20",
+         "page": "P 17/20",
+         "pdf": 1628
+        }
+       ]
+      },
+      {
+       "kind": "condition",
+       "text": "If go-around",
+       "children": [
+        {
+         "kind": "action",
+         "text": "TOGA gives a large pitch-up moment: apply nose-down trim to avoid excessive pitch-up or a transient stall warning",
+         "applies_to": [
+          "all"
+         ],
+         "refs": [
+          {
+           "book": "FCTM",
+           "code": "AOP-10-30-20",
+           "page": "P 1/2",
+           "pdf": 62
+          }
+         ]
+        }
+       ],
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "FCTM",
+         "code": "AOP-10-30-20",
+         "page": "P 1/2",
+         "pdf": 62
+        }
+       ]
+      }
+     ]
+    }
+   ]
+  }
+ ],
+ "procedures": [
+  {
+   "title": "F/CTL DIRECT LAW",
+   "source": "FCOM PRO-ABN-F_CTL (HS-TX)",
+   "lines": [
+    {
+     "kind": "info",
+     "text": "The PFD displays USE MAN PITCH TRIM.",
+     "level": 0,
+     "applies_to": [
+      "all"
+     ],
+     "refs": [
+      {
+       "book": "FCOM",
+       "code": "PRO-ABN-F_CTL",
+       "page": "P 19/132",
+       "pdf": 3492
+      }
+     ]
+    },
+    {
+     "kind": "note",
+     "text": "In the case of GPWS (EGPWS) alerts, since protections are lost, respect stall warning when applying the GPWS (EGPWS) procedure.",
+     "level": 0,
+     "applies_to": [
+      "all"
+     ],
+     "refs": [
+      {
+       "book": "FCOM",
+       "code": "PRO-ABN-F_CTL",
+       "page": "P 19/132",
+       "pdf": 3492
+      }
+     ]
+    },
+    {
+     "kind": "action",
+     "item": "MAX SPEED",
+     "setting": "320/.77",
+     "text": "Speed is limited, due to the loss of high-speed protection. Do not exceed M 0.77, so as not to degrade handling qualities.",
+     "level": 0,
+     "applies_to": [
+      "all"
+     ],
+     "refs": [
+      {
+       "book": "FCOM",
+       "code": "PRO-ABN-F_CTL",
+       "page": "P 19/132",
+       "pdf": 3492
+      }
+     ]
+    },
+    {
+     "kind": "action",
+     "item": "MAN PITCH TRIM",
+     "setting": "USE",
+     "text": "Automatic trim is inoperative in direct law.",
+     "level": 0,
+     "applies_to": [
+      "all"
+     ],
+     "refs": [
+      {
+       "book": "FCOM",
+       "code": "PRO-ABN-F_CTL",
+       "page": "P 19/132",
+       "pdf": 3492
+      }
+     ]
+    },
+    {
+     "kind": "action",
+     "item": "MANEUVER WITH CARE",
+     "setting": "—",
+     "text": "Use small control inputs at high speed, since in direct law the controls are powerful. Use of manual thrust is recommended. Avoid large thrust changes.",
+     "level": 0,
+     "applies_to": [
+      "all"
+     ],
+     "refs": [
+      {
+       "book": "FCOM",
+       "code": "PRO-ABN-F_CTL",
+       "page": "P 19/132",
+       "pdf": 3492
+      }
+     ]
+    },
+    {
+     "kind": "action",
+     "item": "USE SPD BRK WITH CARE",
+     "setting": "—",
+     "text": "At high Mach numbers, use speed brakes with care to avoid too strong nose up changes.",
+     "level": 0,
+     "applies_to": [
+      "all"
+     ],
+     "refs": [
+      {
+       "book": "FCOM",
+       "code": "PRO-ABN-F_CTL",
+       "page": "P 19/132",
+       "pdf": 3492
+      }
+     ]
+    }
+   ]
+  }
+ ],
+ "status": {
+  "limitations": [
+   {
+    "text": "MAX SPEED …… 320/.77",
+    "applies_to": [
+     "all"
+    ],
+    "refs": [
+     {
+      "book": "FCOM",
+      "code": "PRO-ABN-F_CTL",
+      "page": "P 20/132",
+      "pdf": 3493
+     }
+    ]
+   },
+   {
+    "text": "MANEUVER WITH CARE",
+    "applies_to": [
+     "all"
+    ],
+    "refs": [
+     {
+      "book": "FCOM",
+      "code": "PRO-ABN-F_CTL",
+      "page": "P 20/132",
+      "pdf": 3493
+     }
+    ]
+   },
+   {
+    "text": "USE SPD BRK WITH CARE",
+    "applies_to": [
+     "all"
+    ],
+    "refs": [
+     {
+      "book": "FCOM",
+      "code": "PRO-ABN-F_CTL",
+      "page": "P 20/132",
+      "pdf": 3493
+     }
+    ]
+   }
+  ],
+  "info": [
+   {
+    "text": "DIRECT LAW",
+    "applies_to": [
+     "all"
+    ],
+    "refs": [
+     {
+      "book": "FCOM",
+      "code": "PRO-ABN-F_CTL",
+      "page": "P 20/132",
+      "pdf": 3493
+     }
+    ]
+   }
+  ],
+  "appr_proc": [
+   {
+    "kind": "action",
+    "item": "FOR LDG",
+    "setting": "FLAPS LVR 3",
+    "text": "Replaced by \"FOR LDG : FLAP LVR 3\" when CONF 3 is selected, as a reminder.",
+    "level": 0,
+    "applies_to": [
+     "all"
+    ],
+    "refs": [
+     {
+      "book": "FCOM",
+      "code": "PRO-ABN-F_CTL",
+      "page": "P 20/132",
+      "pdf": 3493
+     }
+    ]
+   },
+   {
+    "kind": "action",
+    "item": "GPWS LDG FLAP 3",
+    "setting": "ON",
+    "text": "Displayed when flaps are in CONF 3.",
+    "level": 0,
+    "applies_to": [
+     "all"
+    ],
+    "refs": [
+     {
+      "book": "FCOM",
+      "code": "PRO-ABN-F_CTL",
+      "page": "P 20/132",
+      "pdf": 3493
+     }
+    ]
+   },
+   {
+    "kind": "action",
+    "item": "MAN PITCH TRIM",
+    "setting": "USE",
+    "text": "",
+    "level": 0,
+    "applies_to": [
+     "all"
+    ],
+    "refs": [
+     {
+      "book": "FCOM",
+      "code": "PRO-ABN-F_CTL",
+      "page": "P 20/132",
+      "pdf": 3493
+     }
+    ]
+   },
+   {
+    "kind": "action",
+    "item": "APPR SPD",
+    "setting": "VREF + 10 KT",
+    "text": "",
+    "level": 0,
+    "applies_to": [
+     "all"
+    ],
+    "refs": [
+     {
+      "book": "FCOM",
+      "code": "PRO-ABN-F_CTL",
+      "page": "P 20/132",
+      "pdf": 3493
+     }
+    ]
+   },
+   {
+    "kind": "action",
+    "item": "LDG DIST PROC",
+    "setting": "APPLY",
+    "text": "",
+    "level": 0,
+    "applies_to": [
+     "all"
+    ],
+    "refs": [
+     {
+      "book": "FCOM",
+      "code": "PRO-ABN-F_CTL",
+      "page": "P 20/132",
+      "pdf": 3493
+     }
+    ]
+   }
+  ],
+  "inop_sys": [
+   {
+    "text": "F/CTL PROT",
+    "applies_to": [
+     "all"
+    ],
+    "refs": [
+     {
+      "book": "FCOM",
+      "code": "PRO-ABN-F_CTL",
+      "page": "P 20/132",
+      "pdf": 3493
+     }
+    ]
+   },
+   {
+    "text": "STEEP APPR",
+    "applies_to": [
+     "all"
+    ],
+    "refs": [
+     {
+      "book": "FCOM",
+      "code": "PRO-ABN-F_CTL",
+      "page": "P 20/132",
+      "pdf": 3493
+     }
+    ]
+   }
+  ]
+ },
+ "tables": [
+  {
+   "title": "Direct law — handling",
+   "caption": "FCOM DSC-27 direct law.",
+   "columns": [
+    "Axis",
+    "In direct law"
+   ],
+   "rows": [
+    [
+     "Pitch",
+     "Direct stick-to-elevator; max elevator deflection varies with CG; no automatic trim"
+    ],
+    [
+     "Roll",
+     "Direct stick-to-surface; about 30°/s clean, 25°/s with slats extended"
+    ],
+    [
+     "Yaw",
+     "Mechanical (rudder pedals); yaw damping and turn coordination lost"
+    ],
+    [
+     "Protections",
+     "None; α floor inoperative; overspeed and stall warnings available"
+    ]
+   ],
+   "applies_to": [
+    "all"
+   ],
+   "refs": [
+    {
+     "book": "FCOM",
+     "code": "DSC-27-20-20",
+     "page": "P 17/20",
+     "pdf": 1628
+    }
+   ]
+  }
+ ],
+ "background": [
+  {
+   "text": "The pitch direct law is a direct stick-to-elevator relationship. Maximum elevator deflection is a compromise between controllability with a forward CG and a not-too-sensitive control with an aft CG.",
+   "applies_to": [
+    "all"
+   ],
+   "refs": [
+    {
+     "book": "FCOM",
+     "code": "DSC-27-20-20",
+     "page": "P 17/20",
+     "pdf": 1628
+    }
+   ]
+  },
+  {
+   "text": "The roll direct law uses only the ailerons and spoilers 4 and 5 to limit roll rate (spoiler 3 replaces a failed spoiler 4; all roll spoilers if the ailerons have failed).",
+   "applies_to": [
+    "all"
+   ],
+   "refs": [
+    {
+     "book": "FCOM",
+     "code": "DSC-27-20-20",
+     "page": "P 17/20",
+     "pdf": 1628
+    }
+   ]
+  },
+  {
+   "text": "Both pitch trim wheels give mechanical control of the THS and have priority over electrical control. A pilot action on the pitch trim wheel disconnects the autopilot.",
+   "applies_to": [
+    "all"
+   ],
+   "refs": [
+    {
+     "book": "FCOM",
+     "code": "DSC-27-20-30",
+     "page": "P 2/22",
+     "pdf": 1633
+    }
+   ]
+  },
+  {
+   "text": "The abnormal attitude law also shows F/CTL DIRECT LAW on the ECAM and USE MAN PITCH TRIM on the PFDs.",
+   "applies_to": [
+    "all"
+   ],
+   "refs": [
+    {
+     "book": "FCOM",
+     "code": "DSC-27-20-20",
+     "page": "P 18/20",
+     "pdf": 1629
+    }
+   ]
+  }
+ ],
+ "technique": [
+  {
+   "text": "Direct law: be careful with large thrust changes or sudden speedbrake movements, particularly with an aft CG. Retract speedbrakes gently to give time to re-trim. At go-around, TOGA thrust gives a large pitch-up moment — apply nose-down trim to avoid excessive pitch-up or a transient stall warning.",
+   "applies_to": [
+    "all"
+   ],
+   "refs": [
+    {
+     "book": "FCTM",
+     "code": "AOP-10-30-20",
+     "page": "P 1/2",
+     "pdf": 62
+    }
+   ]
+  }
+ ],
+ "related": [
+  {
+   "title": "F/CTL ALTN LAW",
+   "why": "Alternate law reverts to direct law at landing gear extension.",
+   "key_actions": [
+    "MAX SPEED 320 KT",
+    "FOR LDG FLAP LVR 3, VREF + 10 KT"
+   ],
+   "refs": [
+    {
+     "book": "FCOM",
+     "code": "PRO-ABN-F_CTL",
+     "page": "P 10/132",
+     "pdf": 3483
+    },
+    {
+     "book": "FCOM",
+     "code": "PRO-ABN-F_CTL",
+     "page": "P 12/132",
+     "pdf": 3485
+    }
+   ]
+  }
+ ],
+ "gaps": [
+  {
+   "text": "Conflict on yaw in direct law: FCOM DSC-27 says yaw damping and turn coordination are lost (mechanical yaw); the PDP slide says \"Turn coordination reduced\". FCOM is followed.",
+   "applies_to": [
+    "all"
+   ],
+   "refs": [
+    {
+     "book": "FCOM",
+     "code": "DSC-27-20-20",
+     "page": "P 17/20",
+     "pdf": 1628
+    },
+    {
+     "book": "PDP",
+     "code": "Reconfiguration laws",
+     "page": "EFTDN1RCFGLAW01",
+     "pdf": 515
+    }
+   ]
+  },
+  {
+   "text": "The HS-TO version (FCOM P 21–24/132) is not used.",
+   "applies_to": [
+    "all"
+   ],
+   "refs": [
+    {
+     "book": "FCOM",
+     "code": "PRO-ABN-F_CTL",
+     "page": "P 18/132",
+     "pdf": 3491
+    }
+   ]
+  },
+  {
+   "text": "No PDP task-sharing module is specific to F/CTL DIRECT LAW; the flow uses the generic ECAM handling, the FCTM reconfiguration-law technique and the PDP law slides.",
+   "applies_to": [
+    "all"
+   ],
+   "refs": [
+    {
+     "book": "FCTM",
+     "code": "AOP-10-30-20",
+     "page": "P 1/2",
+     "pdf": 62
+    },
+    {
+     "book": "PDP",
+     "code": "Reconfiguration laws",
+     "page": "EFTDN1RCFGLAW01",
+     "pdf": 515
+    }
+   ]
+  }
+ ],
+ "sources": [
+  {
+   "book": "FCOM",
+   "section": "PRO-ABN-F_CTL — F/CTL DIRECT LAW (HS-TX)",
+   "pages": "P 18–20/132",
+   "pdf": "3491–3493",
+   "rev": "26 MAY 26"
+  },
+  {
+   "book": "FCOM",
+   "section": "DSC-27-20-20 — direct law, abnormal attitude laws",
+   "pages": "P 1/20, 17–18/20",
+   "pdf": "1612, 1628–1629",
+   "rev": "18 FEB 26"
+  },
+  {
+   "book": "FCOM",
+   "section": "DSC-27-20-30 — pitch trim wheel",
+   "pages": "P 2/22",
+   "pdf": "1633",
+   "rev": "18 FEB 26"
+  },
+  {
+   "book": "FCTM",
+   "section": "AOP-10-30-20 — flying in reconfiguration laws",
+   "pages": "P 1/2",
+   "pdf": "62",
+   "rev": "25 FEB 25"
+  },
+  {
+   "book": "PDP",
+   "section": "Reconfiguration laws (EFTDN1RCFGLAW01)",
+   "pages": "Flight control laws, alternate, direct",
+   "pdf": "512–515",
+   "rev": "OCT 2018"
+  },
+  {
+   "book": "FCTM",
+   "section": "AOP-20 / AOP-30 — task sharing and ECAM handling",
+   "pages": "AOP-20 P 1–2/10, AOP-30-30 P 1–4/6",
+   "pdf": "68–69, 82–85",
+   "rev": "26 MAY 26"
+  },
+  {
+   "book": "PDP",
+   "section": "Management of abnormal operations (XFTDN6ECAM00001)",
+   "pages": "ECAM actions, STATUS",
+   "pdf": "424–426",
+   "rev": "JAN 2024"
+  }
+ ],
+ "schema": "a320-ecam-abnormal/3",
+ "generated": "2026-10-14",
+ "qrh": [],
+ "differences": []
+}

@@ -1,0 +1,134 @@
+{
+  "minimumContrast": 5.810227232657501,
+  "pairs": [
+    {
+      "foreground": "rgb(23, 92, 211)",
+      "background": [
+        255,
+        255,
+        255
+      ],
+      "ratio": 5.986453723270191
+    },
+    {
+      "foreground": "rgb(27, 39, 53)",
+      "background": [
+        255,
+        255,
+        255
+      ],
+      "ratio": 15.127304649612777
+    },
+    {
+      "foreground": "rgb(82, 97, 113)",
+      "background": [
+        255,
+        255,
+        255
+      ],
+      "ratio": 6.349981566683702
+    },
+    {
+      "foreground": "rgb(82, 97, 113)",
+      "background": [
+        243,
+        245,
+        247
+      ],
+      "ratio": 5.810227232657501
+    },
+    {
+      "foreground": "rgb(82, 97, 113)",
+      "background": [
+        255,
+        245,
+        227
+      ],
+      "ratio": 5.872878233160158
+    },
+    {
+      "foreground": "rgb(27, 39, 53)",
+      "background": [
+        255,
+        245,
+        227
+      ],
+      "ratio": 13.990720645428697
+    },
+    {
+      "foreground": "rgb(21, 94, 85)",
+      "background": [
+        243,
+        245,
+        247
+      ],
+      "ratio": 6.9515152193545475
+    },
+    {
+      "foreground": "rgb(38, 78, 165)",
+      "background": [
+        243,
+        245,
+        247
+      ],
+      "ratio": 7.076058584424651
+    },
+    {
+      "foreground": "rgb(27, 39, 53)",
+      "background": [
+        243,
+        245,
+        247
+      ],
+      "ratio": 13.841469697019772
+    },
+    {
+      "foreground": "rgb(21, 94, 85)",
+      "background": [
+        255,
+        255,
+        255
+      ],
+      "ratio": 7.597292108527876
+    },
+    {
+      "foreground": "rgb(121, 82, 11)",
+      "background": [
+        255,
+        245,
+        227
+      ],
+      "ratio": 6.421106600395533
+    },
+    {
+      "foreground": "rgb(38, 78, 165)",
+      "background": [
+        255,
+        255,
+        255
+      ],
+      "ratio": 7.733405214053732
+    },
+    {
+      "foreground": "rgb(121, 82, 11)",
+      "background": [
+        255,
+        255,
+        255
+      ],
+      "ratio": 6.942747138873083
+    }
+  ],
+  "firstViewport": {
+    "toolbar": 77,
+    "firstExercise": 756.46875,
+    "viewport": 834,
+    "tabHeight": 52
+  },
+  "anchor": {
+    "y": 154.96875,
+    "toolbar": 77,
+    "atBottom": true
+  },
+  "Safari": "WebKit launcher cannot reliably create a page in this Linux environment; Safari remains unverified."
+}

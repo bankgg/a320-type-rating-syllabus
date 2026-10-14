@@ -1,0 +1,2661 @@
+{
+ "slug": "cab-pr-excess-cab-alt",
+ "title": "CAB PR EXCESS CAB ALT · EMER DESCENT",
+ "kind": "ecam",
+ "alert": {
+  "level": "memory",
+  "land_asap": "none",
+  "memory_items": true,
+  "qrh_summary": false,
+  "trigger": "Climb or descent: cabin altitude above the higher of 9 550 ft or airfield pressure altitude + 1 000 ft. Cruise: cabin altitude above 9 550 ft.",
+  "inhibited_phases": [
+   1,
+   2,
+   3,
+   4,
+   5,
+   7,
+   8,
+   9,
+   10
+  ],
+  "refs": [
+   {
+    "book": "FCOM",
+    "code": "PRO-ABN-CAB_PR",
+    "page": "P 2/14",
+    "pdf": 3049
+   }
+  ]
+ },
+ "effectivity": {
+  "branches": [
+   "HS-TXA..TXF",
+   "HS-TXG..TXU"
+  ],
+  "note": "The ECAM, memory items and QRH are the same for every HS-TX (Applicable to ALL). Only OEB 61 differs: it applies to HS-TXA..TXF."
+ },
+ "summary": "A red warning that the cabin altitude is too high. Above FL 160 the crew first does the EMER DESCENT memory items: oxygen masks, signs, descent with AP and A/THR, speed brakes. Then they do the ECAM read-and-do. Without structural damage they descend at maximum speed to FL 100 or MEA/MORA. Below FL 160 they apply the ECAM and start a normal descent.",
+ "key_limits": [
+  {
+   "label": "Alert (cruise)",
+   "value": "CAB ALT > 9 550 ft",
+   "applies_to": [
+    "all"
+   ],
+   "refs": [
+    {
+     "book": "FCOM",
+     "code": "PRO-ABN-CAB_PR",
+     "page": "P 2/14",
+     "pdf": 3049
+    }
+   ]
+  },
+  {
+   "label": "Crew oxygen masks",
+   "value": "above FL 100",
+   "applies_to": [
+    "all"
+   ],
+   "refs": [
+    {
+     "book": "FCOM",
+     "code": "PRO-ABN-CAB_PR",
+     "page": "P 3/14",
+     "pdf": 3050
+    }
+   ]
+  },
+  {
+   "label": "Memory items first",
+   "value": "above FL 160",
+   "applies_to": [
+    "all"
+   ],
+   "refs": [
+    {
+     "book": "FCOM",
+     "code": "PRO-ABN-CAB_PR",
+     "page": "P 3/14",
+     "pdf": 3050
+    },
+    {
+     "book": "FCTM",
+     "code": "PR-AEP-CAB_PR",
+     "page": "P 1/2",
+     "pdf": 398
+    }
+   ]
+  },
+  {
+   "label": "PAX OXY MASKS MAN ON",
+   "value": "CAB ALT > 14 000 ft",
+   "applies_to": [
+    "all"
+   ],
+   "refs": [
+    {
+     "book": "FCOM",
+     "code": "PRO-ABN-CAB_PR",
+     "page": "P 4/14",
+     "pdf": 3051
+    },
+    {
+     "book": "FCOM",
+     "code": "PRO-ABN-MISC",
+     "page": "P 1/30",
+     "pdf": 3796
+    }
+   ]
+  },
+  {
+   "label": "MAX FL",
+   "value": "100 / MEA-MORA",
+   "applies_to": [
+    "all"
+   ],
+   "refs": [
+    {
+     "book": "FCOM",
+     "code": "PRO-ABN-CAB_PR",
+     "page": "P 4/14",
+     "pdf": 3051
+    },
+    {
+     "book": "FCOM",
+     "code": "PRO-ABN-MISC",
+     "page": "P 1/30",
+     "pdf": 3796
+    }
+   ]
+  },
+  {
+   "label": "Rate below FL 100",
+   "value": "≈ 1 000 ft/min (except approach)",
+   "applies_to": [
+    "all"
+   ],
+   "refs": [
+    {
+     "book": "FCTM",
+     "code": "PR-AEP-MISC",
+     "page": "P 4/32",
+     "pdf": 449
+    },
+    {
+     "book": "PDP",
+     "code": "Emergency descent",
+     "page": "XFTDA7EMERDES01",
+     "pdf": 490
+    }
+   ]
+  }
+ ],
+ "flow": [
+  {
+   "phase": "Recognise",
+   "steps": [
+    {
+     "actor": "BOTH",
+     "items": [
+      {
+       "kind": "action",
+       "text": "First to notice: MASTER WARNING reset",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "FCTM",
+         "code": "AOP-30-30",
+         "page": "P 2/6",
+         "pdf": 83
+        },
+        {
+         "book": "PDP",
+         "code": "Management of abnormal operations",
+         "page": "XFTDN6ECAM00001",
+         "pdf": 424
+        }
+       ]
+      },
+      {
+       "kind": "action",
+       "text": "Confirm on the CAB PRESS SD page: cabin altitude and V/S excessive and uncontrollable",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "FCTM",
+         "code": "PR-AEP-MISC",
+         "page": "P 3/32",
+         "pdf": 448
+        },
+        {
+         "book": "PDP",
+         "code": "Emergency descent",
+         "page": "XFTDA7EMERDES01",
+         "pdf": 483
+        }
+       ]
+      }
+     ]
+    },
+    {
+     "actor": "BOTH",
+     "items": [
+      {
+       "kind": "note",
+       "text": "Apply the ECAM even if the SD page does not confirm it: an internal CPC failure can show a false normal cabin altitude",
+       "applies_to": [
+        "HS-TXA..TXF"
+       ],
+       "refs": [
+        {
+         "book": "QRH",
+         "code": "61.01",
+         "page": "61.01A",
+         "pdf": 290
+        },
+        {
+         "book": "QRH",
+         "code": "61.02",
+         "page": "61.02A",
+         "pdf": 291
+        }
+       ]
+      }
+     ]
+    },
+    {
+     "actor": "PF",
+     "items": [
+      {
+       "kind": "callout",
+       "text": "EMERGENCY DESCENT",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "PDP",
+         "code": "Emergency descent",
+         "page": "XFTDA7EMERDES01",
+         "pdf": 484
+        },
+        {
+         "book": "FCOM",
+         "code": "PRO-ABN-ABN-00",
+         "page": "P 10/12",
+         "pdf": 2833
+        }
+       ]
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "phase": "Protect (memory items)",
+   "steps": [
+    {
+     "actor": "BOTH",
+     "items": [
+      {
+       "kind": "ecam",
+       "item": "CREW OXY MASK",
+       "setting": "USE",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "PDP",
+         "code": "Emergency descent",
+         "page": "XFTDA7EMERDES01",
+         "pdf": 484
+        },
+        {
+         "book": "FCOM",
+         "code": "PRO-ABN-MISC",
+         "page": "P 1/30",
+         "pdf": 3796
+        }
+       ]
+      },
+      {
+       "kind": "ecam",
+       "item": "COMMUNICATION",
+       "setting": "ESTABLISH",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "PDP",
+         "code": "Emergency descent",
+         "page": "XFTDA7EMERDES01",
+         "pdf": 484
+        }
+       ]
+      },
+      {
+       "kind": "note",
+       "text": "Interphone on (INT/RAD to INT); avoid continuous interphone use",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "PDP",
+         "code": "Emergency descent",
+         "page": "XFTDA7EMERDES01",
+         "pdf": 484
+        },
+        {
+         "book": "PDP",
+         "code": "Emergency descent",
+         "page": "XFTDA7EMERDES01",
+         "pdf": 491
+        },
+        {
+         "book": "FCOM",
+         "code": "PRO-ABN-MISC",
+         "page": "P 1/30",
+         "pdf": 3796
+        }
+       ]
+      }
+     ]
+    },
+    {
+     "actor": "PM",
+     "items": [
+      {
+       "kind": "ecam",
+       "item": "ALL SIGNS",
+       "setting": "ON",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "PDP",
+         "code": "Emergency descent",
+         "page": "XFTDA7EMERDES01",
+         "pdf": 484
+        },
+        {
+         "book": "PDP",
+         "code": "Emergency descent",
+         "page": "XFTDA7EMERDES01",
+         "pdf": 491
+        },
+        {
+         "book": "FCOM",
+         "code": "PRO-ABN-MISC",
+         "page": "P 1/30",
+         "pdf": 3796
+        }
+       ]
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "phase": "Initiate descent (memory items)",
+   "steps": [
+    {
+     "actor": "PF",
+     "items": [
+      {
+       "kind": "ecam",
+       "item": "EMER DESCENT",
+       "setting": "INITIATE",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "PDP",
+         "code": "Emergency descent",
+         "page": "XFTDA7EMERDES01",
+         "pdf": 485
+        },
+        {
+         "book": "FCOM",
+         "code": "PRO-ABN-MISC",
+         "page": "P 1/30",
+         "pdf": 3796
+        }
+       ]
+      },
+      {
+       "kind": "action",
+       "text": "ALT knob TURN then PULL (pull first and it will not descend)",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "PDP",
+         "code": "Emergency descent",
+         "page": "XFTDA7EMERDES01",
+         "pdf": 485
+        }
+       ]
+      },
+      {
+       "kind": "action",
+       "text": "HDG knob TURN off the airway then PULL",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "PDP",
+         "code": "Emergency descent",
+         "page": "XFTDA7EMERDES01",
+         "pdf": 485
+        }
+       ]
+      },
+      {
+       "kind": "action",
+       "text": "SPEED knob PULL",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "PDP",
+         "code": "Emergency descent",
+         "page": "XFTDA7EMERDES01",
+         "pdf": 485
+        }
+       ]
+      },
+      {
+       "kind": "note",
+       "text": "AP and A/THR highly recommended for the descent",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "FCTM",
+         "code": "PR-AEP-MISC",
+         "page": "P 3/32",
+         "pdf": 448
+        }
+       ]
+      },
+      {
+       "kind": "callout",
+       "text": "THRUST IDLE, OPEN DESCENT, HEADING, ALT BLUE",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "PDP",
+         "code": "Emergency descent",
+         "page": "XFTDA7EMERDES01",
+         "pdf": 485
+        }
+       ]
+      }
+     ]
+    },
+    {
+     "actor": "PM",
+     "items": [
+      {
+       "kind": "callout",
+       "text": "CHECKED",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "PDP",
+         "code": "Emergency descent",
+         "page": "XFTDA7EMERDES01",
+         "pdf": 485
+        }
+       ]
+      },
+      {
+       "kind": "note",
+       "text": "PM watches the FMA to make sure the PF set up the descent correctly",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "FCTM",
+         "code": "PR-AEP-MISC",
+         "page": "P 3/32",
+         "pdf": 448
+        }
+       ]
+      }
+     ]
+    },
+    {
+     "actor": "PF",
+     "items": [
+      {
+       "kind": "condition",
+       "text": "If A/THR is not active",
+       "children": [
+        {
+         "kind": "ecam",
+         "item": "THR LEVERS",
+         "setting": "IDLE",
+         "applies_to": [
+          "all"
+         ],
+         "refs": [
+          {
+           "book": "PDP",
+           "code": "Emergency descent",
+           "page": "XFTDA7EMERDES01",
+           "pdf": 485
+          },
+          {
+           "book": "FCOM",
+           "code": "PRO-ABN-MISC",
+           "page": "P 1/30",
+           "pdf": 3796
+          }
+         ]
+        }
+       ],
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "PDP",
+         "code": "Emergency descent",
+         "page": "XFTDA7EMERDES01",
+         "pdf": 485
+        },
+        {
+         "book": "FCOM",
+         "code": "PRO-ABN-MISC",
+         "page": "P 1/30",
+         "pdf": 3796
+        }
+       ]
+      },
+      {
+       "kind": "condition",
+       "text": "When the aircraft is correctly established in descent",
+       "children": [
+        {
+         "kind": "ecam",
+         "item": "SPEED BRK LEVER",
+         "setting": "FULL",
+         "applies_to": [
+          "all"
+         ],
+         "refs": [
+          {
+           "book": "PDP",
+           "code": "Emergency descent",
+           "page": "XFTDA7EMERDES01",
+           "pdf": 485
+          },
+          {
+           "book": "FCOM",
+           "code": "PRO-ABN-MISC",
+           "page": "P 1/30",
+           "pdf": 3796
+          }
+         ]
+        },
+        {
+         "kind": "note",
+         "text": "Make sure the aircraft is descending first; watch VLS — AoA protection can retract the speed brakes and disconnect the AP",
+         "applies_to": [
+          "all"
+         ],
+         "refs": [
+          {
+           "book": "PDP",
+           "code": "Emergency descent",
+           "page": "XFTDA7EMERDES01",
+           "pdf": 485
+          },
+          {
+           "book": "FCTM",
+           "code": "PR-AEP-MISC",
+           "page": "P 3/32",
+           "pdf": 448
+          },
+          {
+           "book": "FCOM",
+           "code": "PRO-ABN-CAB_PR",
+           "page": "P 3/14",
+           "pdf": 3050
+          }
+         ]
+        }
+       ],
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "PDP",
+         "code": "Emergency descent",
+         "page": "XFTDA7EMERDES01",
+         "pdf": 485
+        }
+       ]
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "phase": "ECAM read & do (descent established)",
+   "steps": [
+    {
+     "actor": "BOTH",
+     "items": [
+      {
+       "kind": "note",
+       "text": "Read & do starts when the memory items are done and the aircraft is established in descent; the first ECAM lines recall the memory items",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "PDP",
+         "code": "Emergency descent",
+         "page": "XFTDA7EMERDES01",
+         "pdf": 487
+        },
+        {
+         "book": "FCTM",
+         "code": "PR-AEP-CAB_PR",
+         "page": "P 1/2",
+         "pdf": 398
+        }
+       ]
+      }
+     ]
+    },
+    {
+     "actor": "PF",
+     "items": [
+      {
+       "kind": "callout",
+       "text": "ECAM ACTIONS",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "FCOM",
+         "code": "PRO-ABN-ABN-00",
+         "page": "P 8/12",
+         "pdf": 2831
+        },
+        {
+         "book": "FCTM",
+         "code": "AOP-30-30",
+         "page": "P 3/6",
+         "pdf": 84
+        },
+        {
+         "book": "PDP",
+         "code": "Management of abnormal operations",
+         "page": "XFTDN6ECAM00001",
+         "pdf": 424
+        }
+       ]
+      },
+      {
+       "kind": "ecam",
+       "item": "SPEED",
+       "setting": "MAX / APPROPRIATE",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "PDP",
+         "code": "Emergency descent",
+         "page": "XFTDA7EMERDES01",
+         "pdf": 486
+        },
+        {
+         "book": "FCOM",
+         "code": "PRO-ABN-MISC",
+         "page": "P 1/30",
+         "pdf": 3796
+        }
+       ]
+      },
+      {
+       "kind": "note",
+       "text": "No structural damage: set MMO/VMO. If damage suspected: SPD/MACH pb to SPEED and reduce speed; use speed brakes with care",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "PDP",
+         "code": "Emergency descent",
+         "page": "XFTDA7EMERDES01",
+         "pdf": 488
+        },
+        {
+         "book": "FCTM",
+         "code": "PR-AEP-MISC",
+         "page": "P 3/32",
+         "pdf": 448
+        }
+       ]
+      },
+      {
+       "kind": "ecam",
+       "item": "CONSIDER",
+       "setting": "L/G EXTENSION",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "PDP",
+         "code": "Emergency descent",
+         "page": "XFTDA7EMERDES01",
+         "pdf": 486
+        },
+        {
+         "book": "FCOM",
+         "code": "PRO-ABN-MISC",
+         "page": "P 1/30",
+         "pdf": 3796
+        }
+       ]
+      }
+     ]
+    },
+    {
+     "actor": "PM",
+     "items": [
+      {
+       "kind": "ecam",
+       "item": "ENG MODE SEL",
+       "setting": "IGN",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "PDP",
+         "code": "Emergency descent",
+         "page": "XFTDA7EMERDES01",
+         "pdf": 486
+        },
+        {
+         "book": "FCOM",
+         "code": "PRO-ABN-CAB_PR",
+         "page": "P 3/14",
+         "pdf": 3050
+        }
+       ]
+      }
+     ]
+    },
+    {
+     "actor": "PF",
+     "items": [
+      {
+       "kind": "ecam",
+       "item": "ATC",
+       "setting": "NOTIFY",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "PDP",
+         "code": "Emergency descent",
+         "page": "XFTDA7EMERDES01",
+         "pdf": 486
+        },
+        {
+         "book": "FCOM",
+         "code": "PRO-ABN-CAB_PR",
+         "page": "P 3/14",
+         "pdf": 3050
+        }
+       ]
+      },
+      {
+       "kind": "note",
+       "text": "Nature of the emergency and intentions; CPDLC if voice is poor",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "FCOM",
+         "code": "PRO-ABN-CAB_PR",
+         "page": "P 3/14",
+         "pdf": 3050
+        }
+       ]
+      }
+     ]
+    },
+    {
+     "actor": "BOTH",
+     "items": [
+      {
+       "kind": "callout",
+       "text": "EMERGENCY DESCENT",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "PDP",
+         "code": "Emergency descent",
+         "page": "XFTDA7EMERDES01",
+         "pdf": 486
+        },
+        {
+         "book": "PDP",
+         "code": "Emergency descent",
+         "page": "XFTDA7EMERDES01",
+         "pdf": 489
+        }
+       ]
+      },
+      {
+       "kind": "note",
+       "text": "PA to the cabin (EMER DESCENT (PA) … ANNOUNCE)",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "FCOM",
+         "code": "PRO-ABN-CAB_PR",
+         "page": "P 3/14",
+         "pdf": 3050
+        }
+       ]
+      }
+     ]
+    },
+    {
+     "actor": "PM",
+     "items": [
+      {
+       "kind": "ecam",
+       "item": "ATC XPDR",
+       "setting": "7700",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "PDP",
+         "code": "Emergency descent",
+         "page": "XFTDA7EMERDES01",
+         "pdf": 486
+        },
+        {
+         "book": "FCOM",
+         "code": "PRO-ABN-CAB_PR",
+         "page": "P 3/14",
+         "pdf": 3050
+        }
+       ]
+      }
+     ]
+    },
+    {
+     "actor": "BOTH",
+     "items": [
+      {
+       "kind": "ecam",
+       "item": "CREW OXYGEN MASK DILUTION",
+       "setting": "NORM",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "PDP",
+         "code": "Emergency descent",
+         "page": "XFTDA7EMERDES01",
+         "pdf": 486
+        },
+        {
+         "book": "FCOM",
+         "code": "PRO-ABN-MISC",
+         "page": "P 1/30",
+         "pdf": 3796
+        }
+       ]
+      },
+      {
+       "kind": "note",
+       "text": "Diluter to N saves oxygen; at 100 % it may not last the whole descent",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "FCOM",
+         "code": "PRO-ABN-CAB_PR",
+         "page": "P 3/14",
+         "pdf": 3050
+        },
+        {
+         "book": "FCOM",
+         "code": "PRO-ABN-CAB_PR",
+         "page": "P 4/14",
+         "pdf": 3051
+        }
+       ]
+      }
+     ]
+    },
+    {
+     "actor": "PF",
+     "items": [
+      {
+       "kind": "ecam",
+       "item": "MAX FL",
+       "setting": "100 or MEA – MORA",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "PDP",
+         "code": "Emergency descent",
+         "page": "XFTDA7EMERDES01",
+         "pdf": 486
+        },
+        {
+         "book": "FCOM",
+         "code": "PRO-ABN-CAB_PR",
+         "page": "P 4/14",
+         "pdf": 3051
+        }
+       ]
+      },
+      {
+       "kind": "note",
+       "text": "ND MORA is the highest within 40 NM (shown with CSTR and range ≥ 40 NM)",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "FCTM",
+         "code": "PR-AEP-MISC",
+         "page": "P 3/32",
+         "pdf": 448
+        },
+        {
+         "book": "PDP",
+         "code": "Emergency descent",
+         "page": "XFTDA7EMERDES01",
+         "pdf": 486
+        }
+       ]
+      }
+     ]
+    },
+    {
+     "actor": "PM",
+     "items": [
+      {
+       "kind": "condition",
+       "text": "If CAB ALT above 14 000 ft",
+       "children": [
+        {
+         "kind": "ecam",
+         "item": "OXYGEN PAX MASK MAN ON",
+         "setting": "PRESS",
+         "applies_to": [
+          "all"
+         ],
+         "refs": [
+          {
+           "book": "PDP",
+           "code": "Emergency descent",
+           "page": "XFTDA7EMERDES01",
+           "pdf": 486
+          },
+          {
+           "book": "FCOM",
+           "code": "PRO-ABN-CAB_PR",
+           "page": "P 4/14",
+           "pdf": 3051
+          }
+         ]
+        }
+       ],
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "PDP",
+         "code": "Emergency descent",
+         "page": "XFTDA7EMERDES01",
+         "pdf": 486
+        },
+        {
+         "book": "FCOM",
+         "code": "PRO-ABN-CAB_PR",
+         "page": "P 4/14",
+         "pdf": 3051
+        }
+       ]
+      },
+      {
+       "kind": "note",
+       "text": "Press it earlier if it is obvious the cabin will pass 14 000 ft",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "FCTM",
+         "code": "PR-AEP-MISC",
+         "page": "P 4/32",
+         "pdf": 449
+        }
+       ]
+      },
+      {
+       "kind": "condition",
+       "text": "When descent is established, if time permits",
+       "children": [
+        {
+         "kind": "action",
+         "text": "CAB PRESS SD: outflow valve closed? If not and ΔP positive, select the other CPC; still open → MODE SEL MAN and V/S CTL per table",
+         "applies_to": [
+          "all"
+         ],
+         "refs": [
+          {
+           "book": "FCOM",
+           "code": "PRO-ABN-CAB_PR",
+           "page": "P 4/14",
+           "pdf": 3051
+          }
+         ]
+        }
+       ],
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "FCOM",
+         "code": "PRO-ABN-CAB_PR",
+         "page": "P 4/14",
+         "pdf": 3051
+        }
+       ]
+      }
+     ]
+    },
+    {
+     "actor": "PM",
+     "items": [
+      {
+       "kind": "callout",
+       "text": "CLEAR CAB PR ?",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "FCOM",
+         "code": "PRO-ABN-ABN-00",
+         "page": "P 8/12",
+         "pdf": 2831
+        },
+        {
+         "book": "FCTM",
+         "code": "AOP-30-30",
+         "page": "P 3/6",
+         "pdf": 84
+        },
+        {
+         "book": "PDP",
+         "code": "Management of abnormal operations",
+         "page": "XFTDN6ECAM00001",
+         "pdf": 424
+        }
+       ]
+      }
+     ]
+    },
+    {
+     "actor": "PF",
+     "items": [
+      {
+       "kind": "callout",
+       "text": "CLEAR CAB PR",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "FCOM",
+         "code": "PRO-ABN-ABN-00",
+         "page": "P 8/12",
+         "pdf": 2831
+        },
+        {
+         "book": "FCTM",
+         "code": "AOP-30-30",
+         "page": "P 3/6",
+         "pdf": 84
+        },
+        {
+         "book": "PDP",
+         "code": "Management of abnormal operations",
+         "page": "XFTDN6ECAM00001",
+         "pdf": 424
+        }
+       ]
+      }
+     ]
+    },
+    {
+     "actor": "PM",
+     "items": [
+      {
+       "kind": "callout",
+       "text": "STATUS",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "FCTM",
+         "code": "AOP-30-30",
+         "page": "P 3/6",
+         "pdf": 84
+        },
+        {
+         "book": "PDP",
+         "code": "Management of abnormal operations",
+         "page": "XFTDN6ECAM00001",
+         "pdf": 426
+        }
+       ]
+      },
+      {
+       "kind": "action",
+       "text": "STATUS: MAX FL 100/MEA-MORA",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "FCOM",
+         "code": "PRO-ABN-CAB_PR",
+         "page": "P 4/14",
+         "pdf": 3051
+        }
+       ]
+      }
+     ]
+    },
+    {
+     "actor": "PF",
+     "items": [
+      {
+       "kind": "callout",
+       "text": "REMOVE STATUS",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "FCOM",
+         "code": "PRO-ABN-ABN-00",
+         "page": "P 8/12",
+         "pdf": 2831
+        },
+        {
+         "book": "PDP",
+         "code": "Management of abnormal operations",
+         "page": "XFTDN6ECAM00001",
+         "pdf": 426
+        }
+       ]
+      }
+     ]
+    },
+    {
+     "actor": "PM",
+     "items": [
+      {
+       "kind": "callout",
+       "text": "ECAM ACTIONS COMPLETE",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "FCOM",
+         "code": "PRO-ABN-ABN-00",
+         "page": "P 8/12",
+         "pdf": 2831
+        },
+        {
+         "book": "PDP",
+         "code": "Management of abnormal operations",
+         "page": "XFTDN6ECAM00001",
+         "pdf": 426
+        }
+       ]
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "phase": "Reaching FL 100 / MEA or MORA",
+   "steps": [
+    {
+     "actor": "PF",
+     "items": [
+      {
+       "kind": "condition",
+       "text": "When ALT* engages",
+       "children": [
+        {
+         "kind": "ecam",
+         "item": "SPEED BRAKES",
+         "setting": "RETRACT",
+         "applies_to": [
+          "all"
+         ],
+         "refs": [
+          {
+           "book": "PDP",
+           "code": "Emergency descent",
+           "page": "XFTDA7EMERDES01",
+           "pdf": 490
+          }
+         ]
+        },
+        {
+         "kind": "ecam",
+         "item": "SPEED",
+         "setting": "MANAGE",
+         "applies_to": [
+          "all"
+         ],
+         "refs": [
+          {
+           "book": "PDP",
+           "code": "Emergency descent",
+           "page": "XFTDA7EMERDES01",
+           "pdf": 490
+          }
+         ]
+        }
+       ],
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "PDP",
+         "code": "Emergency descent",
+         "page": "XFTDA7EMERDES01",
+         "pdf": 490
+        }
+       ]
+      }
+     ]
+    },
+    {
+     "actor": "BOTH",
+     "items": [
+      {
+       "kind": "note",
+       "text": "TCAS stays TA/RA; collision avoidance has priority over the descent",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "FCTM",
+         "code": "PR-AEP-MISC",
+         "page": "P 4/32",
+         "pdf": 449
+        }
+       ]
+      },
+      {
+       "kind": "condition",
+       "text": "Once oxygen masks are removed",
+       "children": [
+        {
+         "kind": "ecam",
+         "item": "MASK STOWAGE BOX",
+         "setting": "CLOSE",
+         "applies_to": [
+          "all"
+         ],
+         "refs": [
+          {
+           "book": "PDP",
+           "code": "Emergency descent",
+           "page": "XFTDA7EMERDES01",
+           "pdf": 490
+          },
+          {
+           "book": "FCTM",
+           "code": "PR-AEP-MISC",
+           "page": "P 4/32",
+           "pdf": 449
+          }
+         ]
+        },
+        {
+         "kind": "ecam",
+         "item": "PRESS TO TEST AND RESET pb",
+         "setting": "PRESS",
+         "applies_to": [
+          "all"
+         ],
+         "refs": [
+          {
+           "book": "PDP",
+           "code": "Emergency descent",
+           "page": "XFTDA7EMERDES01",
+           "pdf": 490
+          },
+          {
+           "book": "FCTM",
+           "code": "PR-AEP-MISC",
+           "page": "P 4/32",
+           "pdf": 449
+          }
+         ]
+        }
+       ],
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "PDP",
+         "code": "Emergency descent",
+         "page": "XFTDA7EMERDES01",
+         "pdf": 490
+        }
+       ]
+      },
+      {
+       "kind": "action",
+       "text": "Notify the cabin crew at a safe flight level and when cabin oxygen is no longer needed",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "FCOM",
+         "code": "PRO-ABN-MISC",
+         "page": "P 2/30",
+         "pdf": 3797
+        },
+        {
+         "book": "PDP",
+         "code": "Emergency descent",
+         "page": "XFTDA7EMERDES01",
+         "pdf": 490
+        }
+       ]
+      }
+     ]
+    },
+    {
+     "actor": "PF",
+     "items": [
+      {
+       "kind": "action",
+       "text": "Assess and decide: fuel at low level, diversion; inform ATC, cabin, company",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "PDP",
+         "code": "Management of abnormal operations",
+         "page": "XFTDN6ECAM00001",
+         "pdf": 428
+        },
+        {
+         "book": "FCTM",
+         "code": "AOP-30-30",
+         "page": "P 5/6",
+         "pdf": 86
+        }
+       ]
+      }
+     ]
+    }
+   ]
+  }
+ ],
+ "procedures": [
+  {
+   "title": "[MEM] EMER DESCENT",
+   "source": "FCOM PRO-ABN-MISC / QRH 25.02A",
+   "lines": [
+    {
+     "kind": "action",
+     "item": "CREW OXY MASKS",
+     "setting": "USE",
+     "text": "",
+     "level": 0,
+     "applies_to": [
+      "all"
+     ],
+     "refs": [
+      {
+       "book": "FCOM",
+       "code": "PRO-ABN-MISC",
+       "page": "P 1/30",
+       "pdf": 3796
+      },
+      {
+       "book": "QRH",
+       "code": "25.02",
+       "page": "25.02A",
+       "pdf": 219
+      }
+     ]
+    },
+    {
+     "kind": "action",
+     "item": "SIGNS",
+     "setting": "ON",
+     "text": "",
+     "level": 0,
+     "applies_to": [
+      "all"
+     ],
+     "refs": [
+      {
+       "book": "FCOM",
+       "code": "PRO-ABN-MISC",
+       "page": "P 1/30",
+       "pdf": 3796
+      },
+      {
+       "book": "QRH",
+       "code": "25.02",
+       "page": "25.02A",
+       "pdf": 219
+      }
+     ]
+    },
+    {
+     "kind": "action",
+     "item": "EMER DESCENT",
+     "setting": "INITIATE",
+     "text": "",
+     "level": 0,
+     "applies_to": [
+      "all"
+     ],
+     "refs": [
+      {
+       "book": "FCOM",
+       "code": "PRO-ABN-MISC",
+       "page": "P 1/30",
+       "pdf": 3796
+      },
+      {
+       "book": "QRH",
+       "code": "25.02",
+       "page": "25.02A",
+       "pdf": 219
+      }
+     ]
+    },
+    {
+     "kind": "condition",
+     "text": "If A/THR not active:",
+     "level": 0,
+     "applies_to": [
+      "all"
+     ],
+     "refs": [
+      {
+       "book": "FCOM",
+       "code": "PRO-ABN-MISC",
+       "page": "P 1/30",
+       "pdf": 3796
+      },
+      {
+       "book": "QRH",
+       "code": "25.02",
+       "page": "25.02A",
+       "pdf": 219
+      }
+     ]
+    },
+    {
+     "kind": "action",
+     "item": "THR LEVERS",
+     "setting": "IDLE",
+     "text": "",
+     "level": 1,
+     "applies_to": [
+      "all"
+     ],
+     "refs": [
+      {
+       "book": "FCOM",
+       "code": "PRO-ABN-MISC",
+       "page": "P 1/30",
+       "pdf": 3796
+      },
+      {
+       "book": "QRH",
+       "code": "25.02",
+       "page": "25.02A",
+       "pdf": 219
+      }
+     ]
+    },
+    {
+     "kind": "action",
+     "item": "SPD BRK",
+     "setting": "FULL",
+     "text": "",
+     "level": 0,
+     "applies_to": [
+      "all"
+     ],
+     "refs": [
+      {
+       "book": "FCOM",
+       "code": "PRO-ABN-MISC",
+       "page": "P 1/30",
+       "pdf": 3796
+      },
+      {
+       "book": "QRH",
+       "code": "25.02",
+       "page": "25.02A",
+       "pdf": 219
+      }
+     ]
+    },
+    {
+     "kind": "condition",
+     "text": "When descent established:",
+     "level": 0,
+     "applies_to": [
+      "all"
+     ],
+     "refs": [
+      {
+       "book": "FCOM",
+       "code": "PRO-ABN-MISC",
+       "page": "P 1/30",
+       "pdf": 3796
+      },
+      {
+       "book": "QRH",
+       "code": "25.02",
+       "page": "25.02A",
+       "pdf": 219
+      }
+     ]
+    },
+    {
+     "kind": "action",
+     "item": "SPEED",
+     "setting": "MAX/APPROPRIATE",
+     "text": "",
+     "level": 1,
+     "applies_to": [
+      "all"
+     ],
+     "refs": [
+      {
+       "book": "FCOM",
+       "code": "PRO-ABN-MISC",
+       "page": "P 1/30",
+       "pdf": 3796
+      },
+      {
+       "book": "QRH",
+       "code": "25.02",
+       "page": "25.02A",
+       "pdf": 219
+      }
+     ]
+    },
+    {
+     "kind": "info",
+     "text": "If structural damage suspected: MANEUVER WITH CARE",
+     "level": 1,
+     "applies_to": [
+      "all"
+     ],
+     "refs": [
+      {
+       "book": "FCOM",
+       "code": "PRO-ABN-MISC",
+       "page": "P 1/30",
+       "pdf": 3796
+      },
+      {
+       "book": "QRH",
+       "code": "25.02",
+       "page": "25.02A",
+       "pdf": 219
+      }
+     ]
+    },
+    {
+     "kind": "info",
+     "text": "CONSIDER L/G EXTENSION",
+     "level": 1,
+     "applies_to": [
+      "all"
+     ],
+     "refs": [
+      {
+       "book": "FCOM",
+       "code": "PRO-ABN-MISC",
+       "page": "P 1/30",
+       "pdf": 3796
+      },
+      {
+       "book": "QRH",
+       "code": "25.02",
+       "page": "25.02A",
+       "pdf": 219
+      }
+     ]
+    },
+    {
+     "kind": "action",
+     "item": "ENG MODE SEL",
+     "setting": "IGN",
+     "text": "",
+     "level": 1,
+     "applies_to": [
+      "all"
+     ],
+     "refs": [
+      {
+       "book": "FCOM",
+       "code": "PRO-ABN-MISC",
+       "page": "P 1/30",
+       "pdf": 3796
+      },
+      {
+       "book": "QRH",
+       "code": "25.02",
+       "page": "25.02A",
+       "pdf": 219
+      }
+     ]
+    },
+    {
+     "kind": "action",
+     "item": "ATC",
+     "setting": "NOTIFY",
+     "text": "",
+     "level": 1,
+     "applies_to": [
+      "all"
+     ],
+     "refs": [
+      {
+       "book": "FCOM",
+       "code": "PRO-ABN-MISC",
+       "page": "P 1/30",
+       "pdf": 3796
+      },
+      {
+       "book": "QRH",
+       "code": "25.02",
+       "page": "25.02A",
+       "pdf": 219
+      }
+     ]
+    },
+    {
+     "kind": "action",
+     "item": "EMER DESCENT (PA)",
+     "setting": "ANNOUNCE",
+     "text": "",
+     "level": 1,
+     "applies_to": [
+      "all"
+     ],
+     "refs": [
+      {
+       "book": "FCOM",
+       "code": "PRO-ABN-MISC",
+       "page": "P 1/30",
+       "pdf": 3796
+      },
+      {
+       "book": "QRH",
+       "code": "25.02",
+       "page": "25.02A",
+       "pdf": 219
+      }
+     ]
+    },
+    {
+     "kind": "action",
+     "item": "ATC XPDR 7700",
+     "setting": "CONSIDER",
+     "text": "",
+     "level": 1,
+     "applies_to": [
+      "all"
+     ],
+     "refs": [
+      {
+       "book": "FCOM",
+       "code": "PRO-ABN-MISC",
+       "page": "P 1/30",
+       "pdf": 3796
+      },
+      {
+       "book": "QRH",
+       "code": "25.02",
+       "page": "25.02A",
+       "pdf": 219
+      }
+     ]
+    },
+    {
+     "kind": "action",
+     "item": "CREW OXY MASKS DILUTION",
+     "setting": "NORM",
+     "text": "",
+     "level": 1,
+     "applies_to": [
+      "all"
+     ],
+     "refs": [
+      {
+       "book": "FCOM",
+       "code": "PRO-ABN-MISC",
+       "page": "P 1/30",
+       "pdf": 3796
+      },
+      {
+       "book": "QRH",
+       "code": "25.02",
+       "page": "25.02A",
+       "pdf": 219
+      }
+     ]
+    },
+    {
+     "kind": "info",
+     "text": "MAX FL: 100/MEA-MORA",
+     "level": 1,
+     "applies_to": [
+      "all"
+     ],
+     "refs": [
+      {
+       "book": "FCOM",
+       "code": "PRO-ABN-MISC",
+       "page": "P 1/30",
+       "pdf": 3796
+      },
+      {
+       "book": "QRH",
+       "code": "25.02",
+       "page": "25.02A",
+       "pdf": 219
+      }
+     ]
+    },
+    {
+     "kind": "condition",
+     "text": "If CAB ALT above 14 000 ft:",
+     "level": 1,
+     "applies_to": [
+      "all"
+     ],
+     "refs": [
+      {
+       "book": "FCOM",
+       "code": "PRO-ABN-MISC",
+       "page": "P 1/30",
+       "pdf": 3796
+      },
+      {
+       "book": "QRH",
+       "code": "25.02",
+       "page": "25.02A",
+       "pdf": 219
+      }
+     ]
+    },
+    {
+     "kind": "action",
+     "item": "OXYGEN PAX MASK MAN ON",
+     "setting": "PRESS",
+     "text": "",
+     "level": 2,
+     "applies_to": [
+      "all"
+     ],
+     "refs": [
+      {
+       "book": "FCOM",
+       "code": "PRO-ABN-MISC",
+       "page": "P 1/30",
+       "pdf": 3796
+      },
+      {
+       "book": "QRH",
+       "code": "25.02",
+       "page": "25.02A",
+       "pdf": 219
+      }
+     ]
+    },
+    {
+     "kind": "note",
+     "text": "Notify the cabin crew, when the aircraft reaches a safe flight level, and when cabin oxygen is no more necessary.",
+     "level": 0,
+     "applies_to": [
+      "all"
+     ],
+     "refs": [
+      {
+       "book": "FCOM",
+       "code": "PRO-ABN-MISC",
+       "page": "P 2/30",
+       "pdf": 3797
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "title": "CAB PR EXCESS CAB ALT — ECAM procedure",
+   "source": "FCOM PRO-ABN-CAB_PR",
+   "lines": [
+    {
+     "kind": "condition",
+     "text": "If above FL 100:",
+     "level": 0,
+     "applies_to": [
+      "all"
+     ],
+     "refs": [
+      {
+       "book": "FCOM",
+       "code": "PRO-ABN-CAB_PR",
+       "page": "P 3/14",
+       "pdf": 3050
+      }
+     ]
+    },
+    {
+     "kind": "action",
+     "item": "CREW OXY MASKS",
+     "setting": "USE",
+     "text": "",
+     "level": 1,
+     "applies_to": [
+      "all"
+     ],
+     "refs": [
+      {
+       "book": "FCOM",
+       "code": "PRO-ABN-CAB_PR",
+       "page": "P 3/14",
+       "pdf": 3050
+      }
+     ]
+    },
+    {
+     "kind": "condition",
+     "text": "If below FL 160:",
+     "level": 1,
+     "applies_to": [
+      "all"
+     ],
+     "refs": [
+      {
+       "book": "FCOM",
+       "code": "PRO-ABN-CAB_PR",
+       "page": "P 3/14",
+       "pdf": 3050
+      }
+     ]
+    },
+    {
+     "kind": "action",
+     "item": "DESCENT",
+     "setting": "INITIATE",
+     "text": "",
+     "level": 2,
+     "applies_to": [
+      "all"
+     ],
+     "refs": [
+      {
+       "book": "FCOM",
+       "code": "PRO-ABN-CAB_PR",
+       "page": "P 3/14",
+       "pdf": 3050
+      }
+     ]
+    },
+    {
+     "kind": "action",
+     "item": "CABIN CREW",
+     "setting": "ADVISE",
+     "text": "",
+     "level": 2,
+     "applies_to": [
+      "all"
+     ],
+     "refs": [
+      {
+       "book": "FCOM",
+       "code": "PRO-ABN-CAB_PR",
+       "page": "P 3/14",
+       "pdf": 3050
+      }
+     ]
+    },
+    {
+     "kind": "action",
+     "item": "MAX FL",
+     "setting": "100/MEA-MORA",
+     "text": "",
+     "level": 2,
+     "applies_to": [
+      "all"
+     ],
+     "refs": [
+      {
+       "book": "FCOM",
+       "code": "PRO-ABN-CAB_PR",
+       "page": "P 3/14",
+       "pdf": 3050
+      }
+     ]
+    },
+    {
+     "kind": "condition",
+     "text": "If above FL 160:",
+     "level": 1,
+     "applies_to": [
+      "all"
+     ],
+     "refs": [
+      {
+       "book": "FCOM",
+       "code": "PRO-ABN-CAB_PR",
+       "page": "P 3/14",
+       "pdf": 3050
+      }
+     ]
+    },
+    {
+     "kind": "action",
+     "item": "SIGNS",
+     "setting": "ON",
+     "text": "",
+     "level": 2,
+     "applies_to": [
+      "all"
+     ],
+     "refs": [
+      {
+       "book": "FCOM",
+       "code": "PRO-ABN-CAB_PR",
+       "page": "P 3/14",
+       "pdf": 3050
+      }
+     ]
+    },
+    {
+     "kind": "info",
+     "text": "EMER DESCENT:",
+     "level": 2,
+     "applies_to": [
+      "all"
+     ],
+     "refs": [
+      {
+       "book": "FCOM",
+       "code": "PRO-ABN-CAB_PR",
+       "page": "P 3/14",
+       "pdf": 3050
+      }
+     ]
+    },
+    {
+     "kind": "action",
+     "item": "DESCENT",
+     "setting": "INITIATE",
+     "text": "",
+     "level": 2,
+     "applies_to": [
+      "all"
+     ],
+     "refs": [
+      {
+       "book": "FCOM",
+       "code": "PRO-ABN-CAB_PR",
+       "page": "P 3/14",
+       "pdf": 3050
+      }
+     ]
+    },
+    {
+     "kind": "condition",
+     "text": "If A/THR is not active:",
+     "level": 2,
+     "applies_to": [
+      "all"
+     ],
+     "refs": [
+      {
+       "book": "FCOM",
+       "code": "PRO-ABN-CAB_PR",
+       "page": "P 3/14",
+       "pdf": 3050
+      }
+     ]
+    },
+    {
+     "kind": "action",
+     "item": "THR LEVERS",
+     "setting": "IDLE",
+     "text": "",
+     "level": 3,
+     "applies_to": [
+      "all"
+     ],
+     "refs": [
+      {
+       "book": "FCOM",
+       "code": "PRO-ABN-CAB_PR",
+       "page": "P 3/14",
+       "pdf": 3050
+      }
+     ]
+    },
+    {
+     "kind": "action",
+     "item": "SPD BRK",
+     "setting": "FULL",
+     "text": "Significantly increases VLS; let speed increase before using speed brakes to avoid AP disconnection and speed-brake retraction by AoA protection.",
+     "level": 2,
+     "applies_to": [
+      "all"
+     ],
+     "refs": [
+      {
+       "book": "FCOM",
+       "code": "PRO-ABN-CAB_PR",
+       "page": "P 3/14",
+       "pdf": 3050
+      }
+     ]
+    },
+    {
+     "kind": "action",
+     "item": "SPD",
+     "setting": "MAX/APPROPRIATE",
+     "text": "If structural damage is suspected, use the flight controls with care and reduce speed; with L/G extended, reduce to VLO/VLE.",
+     "level": 2,
+     "applies_to": [
+      "all"
+     ],
+     "refs": [
+      {
+       "book": "FCOM",
+       "code": "PRO-ABN-CAB_PR",
+       "page": "P 3/14",
+       "pdf": 3050
+      }
+     ]
+    },
+    {
+     "kind": "action",
+     "item": "ENG MODE SEL",
+     "setting": "IGN",
+     "text": "",
+     "level": 2,
+     "applies_to": [
+      "all"
+     ],
+     "refs": [
+      {
+       "book": "FCOM",
+       "code": "PRO-ABN-CAB_PR",
+       "page": "P 3/14",
+       "pdf": 3050
+      }
+     ]
+    },
+    {
+     "kind": "action",
+     "item": "ATC",
+     "setting": "NOTIFY",
+     "text": "",
+     "level": 2,
+     "applies_to": [
+      "all"
+     ],
+     "refs": [
+      {
+       "book": "FCOM",
+       "code": "PRO-ABN-CAB_PR",
+       "page": "P 3/14",
+       "pdf": 3050
+      }
+     ]
+    },
+    {
+     "kind": "action",
+     "item": "EMER DESCENT (PA)",
+     "setting": "ANNOUNCE",
+     "text": "",
+     "level": 2,
+     "applies_to": [
+      "all"
+     ],
+     "refs": [
+      {
+       "book": "FCOM",
+       "code": "PRO-ABN-CAB_PR",
+       "page": "P 3/14",
+       "pdf": 3050
+      }
+     ]
+    },
+    {
+     "kind": "action",
+     "item": "XPDR 7700",
+     "setting": "CONSIDER",
+     "text": "Squawk 7700 unless otherwise specified by ATC.",
+     "level": 2,
+     "applies_to": [
+      "all"
+     ],
+     "refs": [
+      {
+       "book": "FCOM",
+       "code": "PRO-ABN-CAB_PR",
+       "page": "P 3/14",
+       "pdf": 3050
+      }
+     ]
+    },
+    {
+     "kind": "note",
+     "text": "To save oxygen, set the oxygen diluter selector to N position. With the oxygen diluter left to 100 %, oxygen quantity may not be sufficient for the entire descent profile.",
+     "level": 2,
+     "applies_to": [
+      "all"
+     ],
+     "refs": [
+      {
+       "book": "FCOM",
+       "code": "PRO-ABN-CAB_PR",
+       "page": "P 3/14",
+       "pdf": 3050
+      },
+      {
+       "book": "FCOM",
+       "code": "PRO-ABN-CAB_PR",
+       "page": "P 4/14",
+       "pdf": 3051
+      }
+     ]
+    },
+    {
+     "kind": "action",
+     "item": "MAX FL",
+     "setting": "100/MEA-MORA",
+     "text": "",
+     "level": 2,
+     "applies_to": [
+      "all"
+     ],
+     "refs": [
+      {
+       "book": "FCOM",
+       "code": "PRO-ABN-CAB_PR",
+       "page": "P 4/14",
+       "pdf": 3051
+      }
+     ]
+    },
+    {
+     "kind": "condition",
+     "text": "IF CAB ALT > 14 000 FT:",
+     "level": 0,
+     "applies_to": [
+      "all"
+     ],
+     "refs": [
+      {
+       "book": "FCOM",
+       "code": "PRO-ABN-CAB_PR",
+       "page": "P 4/14",
+       "pdf": 3051
+      }
+     ]
+    },
+    {
+     "kind": "action",
+     "item": "PAX OXY MASKS",
+     "setting": "MAN ON",
+     "text": "Confirms that the passenger oxygen masks are released.",
+     "level": 1,
+     "applies_to": [
+      "all"
+     ],
+     "refs": [
+      {
+       "book": "FCOM",
+       "code": "PRO-ABN-CAB_PR",
+       "page": "P 4/14",
+       "pdf": 3051
+      }
+     ]
+    },
+    {
+     "kind": "note",
+     "text": "When descent is established, and if time permits, check that the OUTFLOW VALVES are closed on the CAB PRESS SD page. If they are not closed and ΔP is positive, select the other CPC. If the OUTFLOW VALVE is still not closing, set the cabin pressure MODE SEL pb to MAN and adjust the V/S CTL sw, according to the table.",
+     "level": 0,
+     "applies_to": [
+      "all"
+     ],
+     "refs": [
+      {
+       "book": "FCOM",
+       "code": "PRO-ABN-CAB_PR",
+       "page": "P 4/14",
+       "pdf": 3051
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "title": "OEB 61 — CAB PR EXCESS CAB ALT",
+   "source": "QRH 61.01A",
+   "lines": [
+    {
+     "kind": "info",
+     "text": "Apply the CAB PR EXCESS CAB ALT ECAM procedure, even if not confirmed on the CAB PRESS SD page.",
+     "level": 0,
+     "applies_to": [
+      "HS-TXA..TXF"
+     ],
+     "refs": [
+      {
+       "book": "QRH",
+       "code": "61.01",
+       "page": "61.01A",
+       "pdf": 290
+      }
+     ]
+    }
+   ]
+  }
+ ],
+ "status": {
+  "limitations": [
+   {
+    "text": "MAX FL 100/MEA-MORA",
+    "applies_to": [
+     "all"
+    ],
+    "refs": [
+     {
+      "book": "FCOM",
+      "code": "PRO-ABN-CAB_PR",
+      "page": "P 4/14",
+      "pdf": 3051
+     }
+    ]
+   }
+  ],
+  "info": [],
+  "appr_proc": [],
+  "inop_sys": []
+ },
+ "tables": [
+  {
+   "title": "Manual cabin pressure targets",
+   "caption": "TGT V/S: CLIMB 500 ft/min, DESC 300 ft/min (if MODE SEL MAN is needed).",
+   "columns": [
+    "A/C FL",
+    "CAB ALT TGT"
+   ],
+   "rows": [
+    [
+     "390",
+     "8 000"
+    ],
+    [
+     "350",
+     "7 000"
+    ],
+    [
+     "300",
+     "5 500"
+    ],
+    [
+     "250",
+     "3 000"
+    ],
+    [
+     "< 200",
+     "0"
+    ]
+   ],
+   "applies_to": [
+    "all"
+   ],
+   "refs": [
+    {
+     "book": "FCOM",
+     "code": "PRO-ABN-CAB_PR",
+     "page": "P 4/14",
+     "pdf": 3051
+    }
+   ]
+  }
+ ],
+ "background": [
+  {
+   "text": "Depressurization is identified by excessive and uncontrollable cabin altitude and rate of climb, the CAB PR EXCESS CAB ALT alert, or all cabin oxygen masks dropping (independent pressure switch).",
+   "applies_to": [
+    "all"
+   ],
+   "refs": [
+    {
+     "book": "FCTM",
+     "code": "PR-AEP-MISC",
+     "page": "P 3/32",
+     "pdf": 448
+    }
+   ]
+  },
+  {
+   "text": "At idle, high speed and speed brakes out, the descent rate is about 7 000 ft/min: FL 390 to FL 100 takes about 4 min and 40 NM.",
+   "applies_to": [
+    "all"
+   ],
+   "refs": [
+    {
+     "book": "FCTM",
+     "code": "PR-AEP-MISC",
+     "page": "P 3/32",
+     "pdf": 448
+    }
+   ]
+  },
+  {
+   "text": "Suspect structural damage after a loud bang or a high cabin V/S.",
+   "applies_to": [
+    "all"
+   ],
+   "refs": [
+    {
+     "book": "FCTM",
+     "code": "PR-AEP-MISC",
+     "page": "P 3/32",
+     "pdf": 448
+    },
+    {
+     "book": "PDP",
+     "code": "Emergency descent",
+     "page": "XFTDA7EMERDES01",
+     "pdf": 488
+    }
+   ]
+  },
+  {
+   "text": "OEB 61 root cause: the active CPC can show a wrong but normal-looking cabin altitude; the standby CPC triggers the alert. The crew may wrongly disregard the alert or delay the descent.",
+   "applies_to": [
+    "HS-TXA..TXF"
+   ],
+   "refs": [
+    {
+     "book": "QRH",
+     "code": "61.02",
+     "page": "61.02A",
+     "pdf": 291
+    }
+   ]
+  }
+ ],
+ "technique": [
+  {
+   "text": "Above FL 160: EMER DESCENT memory items first, then the ECAM. Below FL 160: ECAM procedure and a normal descent.",
+   "applies_to": [
+    "all"
+   ],
+   "refs": [
+    {
+     "book": "FCTM",
+     "code": "PR-AEP-CAB_PR",
+     "page": "P 1/2",
+     "pdf": 398
+    }
+   ]
+  },
+  {
+   "text": "Two steps: memory items (PM monitors the FMA), then read & do (PF adjusts the settings).",
+   "applies_to": [
+    "all"
+   ],
+   "refs": [
+    {
+     "book": "FCTM",
+     "code": "PR-AEP-MISC",
+     "page": "P 3/32",
+     "pdf": 448
+    }
+   ]
+  },
+  {
+   "text": "At high levels, extend speed brakes while monitoring VLS so AoA protection does not retract them or disconnect the AP.",
+   "applies_to": [
+    "all"
+   ],
+   "refs": [
+    {
+     "book": "FCTM",
+     "code": "PR-AEP-MISC",
+     "page": "P 3/32",
+     "pdf": 448
+    }
+   ]
+  },
+  {
+   "text": "Structural damage suspected: SPEED/MACH pb to SPEED to stop the IAS increasing or to reduce speed; use speed brakes carefully.",
+   "applies_to": [
+    "all"
+   ],
+   "refs": [
+    {
+     "book": "FCTM",
+     "code": "PR-AEP-MISC",
+     "page": "P 3/32",
+     "pdf": 448
+    },
+    {
+     "book": "PDP",
+     "code": "Emergency descent",
+     "page": "XFTDA7EMERDES01",
+     "pdf": 488
+    }
+   ]
+  },
+  {
+   "text": "Below FL 100 limit the descent rate to about 1 000 ft/min (PDP adds 500 ft/min for passenger comfort), except on approach.",
+   "applies_to": [
+    "all"
+   ],
+   "refs": [
+    {
+     "book": "FCTM",
+     "code": "PR-AEP-MISC",
+     "page": "P 4/32",
+     "pdf": 449
+    },
+    {
+     "book": "PDP",
+     "code": "Emergency descent",
+     "page": "XFTDA7EMERDES01",
+     "pdf": 490
+    }
+   ]
+  }
+ ],
+ "related": [
+  {
+   "title": "CAB PR SYS 1+2 FAULT",
+   "why": "Both CPCs failed — a common lead-in to the excess cabin altitude",
+   "key_actions": [
+    "MODE SEL MAN",
+    "MAN V/S CTL AS RQRD; keep aircraft altitude at or above cabin altitude",
+    "Final approach: V/S CTL FULL UP; ΔP zero before opening doors"
+   ],
+   "refs": [
+    {
+     "book": "FCOM",
+     "code": "PRO-ABN-CAB_PR",
+     "page": "P 12/14",
+     "pdf": 3059
+    },
+    {
+     "book": "FCOM",
+     "code": "PRO-ABN-CAB_PR",
+     "page": "P 13/14",
+     "pdf": 3060
+    }
+   ]
+  }
+ ],
+ "differences": [
+  {
+   "topic": "OEB 61 (CAB PR EXCESS CAB ALT)",
+   "values": {
+    "HS-TXA..TXF": "Applies: do the ECAM even if the CAB PRESS SD page looks normal",
+    "HS-TXG..TXU": "Not applicable"
+   },
+   "refs": [
+    {
+     "book": "QRH",
+     "code": "61.01",
+     "page": "61.01A",
+     "pdf": 290
+    }
+   ]
+  }
+ ],
+ "gaps": [
+  {
+   "text": "The ECAM has no explicit LAND ASAP for this alert; the diversion decision follows the general assess/decide step.",
+   "applies_to": [
+    "all"
+   ],
+   "refs": [
+    {
+     "book": "FCOM",
+     "code": "PRO-ABN-CAB_PR",
+     "page": "P 3/14",
+     "pdf": 3050
+    },
+    {
+     "book": "PDP",
+     "code": "Management of abnormal operations",
+     "page": "XFTDN6ECAM00001",
+     "pdf": 428
+    }
+   ]
+  },
+  {
+   "text": "Callout wording comes from the PDP; the FCOM memory-item callout is “EMERGENCY DESCENT”.",
+   "applies_to": [
+    "all"
+   ],
+   "refs": [
+    {
+     "book": "FCOM",
+     "code": "PRO-ABN-ABN-00",
+     "page": "P 10/12",
+     "pdf": 2833
+    },
+    {
+     "book": "PDP",
+     "code": "Emergency descent",
+     "page": "XFTDA7EMERDES01",
+     "pdf": 484
+    }
+   ]
+  },
+  {
+   "text": "The PDP says the EMER DESCENT (PA) line may not show on the ECAM on some aircraft; it is in the HS-TX FCOM procedure.",
+   "applies_to": [
+    "all"
+   ],
+   "refs": [
+    {
+     "book": "PDP",
+     "code": "Emergency descent",
+     "page": "XFTDA7EMERDES01",
+     "pdf": 489
+    },
+    {
+     "book": "FCOM",
+     "code": "PRO-ABN-CAB_PR",
+     "page": "P 3/14",
+     "pdf": 3050
+    }
+   ]
+  }
+ ],
+ "sources": [
+  {
+   "book": "FCOM",
+   "section": "PRO-ABN-CAB_PR — CAB PR EXCESS CAB ALT; CAB PR SYS 1+2 FAULT",
+   "pages": "P 2–4, 12–13/14",
+   "pdf": "3049–3051, 3059–3060",
+   "rev": "24 NOV 25"
+  },
+  {
+   "book": "FCOM",
+   "section": "PRO-ABN-MISC — [MEM] EMER DESCENT",
+   "pages": "P 1–2/30",
+   "pdf": "3796–3797",
+   "rev": "18 FEB 26"
+  },
+  {
+   "book": "QRH",
+   "section": "25 — EMER DESCENT; 61 — OEB CAB PR EXCESS CAB ALT",
+   "pages": "25.02A, 61.01A–61.02A",
+   "pdf": "219, 290–291",
+   "rev": "18 FEB 26 / 25 APR 24"
+  },
+  {
+   "book": "FCTM",
+   "section": "PR-AEP-CAB_PR; PR-AEP-MISC — EMER DESCENT",
+   "pages": "P 1/2; P 3–4/32",
+   "pdf": "398; 448–449",
+   "rev": "21 FEB 24 / 26 MAY 26"
+  },
+  {
+   "book": "PDP",
+   "section": "Emergency descent (XFTDA7EMERDES01)",
+   "pages": "—",
+   "pdf": "483–491",
+   "rev": "JAN 2024"
+  }
+ ],
+ "schema": "a320-ecam-abnormal/3",
+ "generated": "2026-10-14",
+ "qrh": []
+}

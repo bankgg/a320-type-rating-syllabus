@@ -1,0 +1,2212 @@
+{
+ "slug": "nav-ir-1-2-1-3-2-3-fault",
+ "title": "NAV IR 1+2(1+3)(2+3) FAULT",
+ "kind": "ecam",
+ "alert": {
+  "level": "caution",
+  "land_asap": "none",
+  "memory_items": false,
+  "qrh_summary": false,
+  "trigger": "This alert triggers when IR 1+2(1+3)(2+3) are failed. Inhibited in flight phases 4 and 8.",
+  "inhibited_phases": [
+   4,
+   8
+  ],
+  "refs": [
+   {
+    "book": "FCOM",
+    "code": "PRO-ABN-NAV",
+    "page": "P 89/124",
+    "pdf": 3914
+   }
+  ]
+ },
+ "effectivity": {
+  "branches": [],
+  "note": "One procedure for all HS-TX."
+ },
+ "summary": "An amber caution: two inertial references have failed. AP, FD and A/THR are lost, the flight controls revert to alternate law (protections lost) and one PFD loses attitude unless IR 3 can replace it. With IR 1+2 failed, set ATT HDG to CAPT 3: the captain keeps attitude and the F/O PFD has none. Land in CONF 3 at VREF + 10 kt; the law becomes DIRECT when the gear goes down.",
+ "key_limits": [
+  {
+   "label": "MAX SPEED",
+   "value": "320 KT",
+   "applies_to": [
+    "all"
+   ],
+   "refs": [
+    {
+     "book": "FCOM",
+     "code": "PRO-ABN-NAV",
+     "page": "P 91/124",
+     "pdf": 3916
+    }
+   ]
+  },
+  {
+   "label": "IR 1+2 FAULT",
+   "value": "ATT HDG CAPT 3",
+   "applies_to": [
+    "all"
+   ],
+   "refs": [
+    {
+     "book": "FCOM",
+     "code": "PRO-ABN-NAV",
+     "page": "P 90/124",
+     "pdf": 3915
+    }
+   ]
+  },
+  {
+   "label": "FOR LDG",
+   "value": "FLAP LVR 3",
+   "applies_to": [
+    "all"
+   ],
+   "refs": [
+    {
+     "book": "FCOM",
+     "code": "PRO-ABN-NAV",
+     "page": "P 91/124",
+     "pdf": 3916
+    }
+   ]
+  },
+  {
+   "label": "APPR SPD",
+   "value": "VREF + 10 KT",
+   "applies_to": [
+    "all"
+   ],
+   "refs": [
+    {
+     "book": "FCOM",
+     "code": "PRO-ABN-NAV",
+     "page": "P 91/124",
+     "pdf": 3916
+    }
+   ]
+  },
+  {
+   "label": "Law",
+   "value": "ALTN (PROT LOST) · DIRECT at L/G DN",
+   "applies_to": [
+    "all"
+   ],
+   "refs": [
+    {
+     "book": "FCOM",
+     "code": "PRO-ABN-NAV",
+     "page": "P 91/124",
+     "pdf": 3916
+    }
+   ]
+  }
+ ],
+ "flow": [
+  {
+   "phase": "Detection",
+   "steps": [
+    {
+     "actor": "BOTH",
+     "items": [
+      {
+       "kind": "action",
+       "text": "First to notice: MASTER CAUTION reset",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "FCTM",
+         "code": "AOP-30-30",
+         "page": "P 2/6",
+         "pdf": 83
+        },
+        {
+         "book": "PDP",
+         "code": "Management of abnormal operations",
+         "page": "XFTDN6ECAM00001",
+         "pdf": 424
+        }
+       ]
+      },
+      {
+       "kind": "note",
+       "text": "AP, FD and A/THR are lost and the flight controls revert to alternate law",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "FCTM",
+         "code": "PR-AEP-NAV",
+         "page": "P 1/20",
+         "pdf": 478
+        }
+       ]
+      }
+     ]
+    },
+    {
+     "actor": "PF",
+     "items": [
+      {
+       "kind": "action",
+       "text": "Fly manually with manual thrust; keep a safe flight path first",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "FCTM",
+         "code": "AOP-30-30",
+         "page": "P 1/6",
+         "pdf": 82
+        },
+        {
+         "book": "FCOM",
+         "code": "PRO-ABN-NAV",
+         "page": "P 91/124",
+         "pdf": 3916
+        }
+       ]
+      }
+     ]
+    },
+    {
+     "actor": "PM",
+     "items": [
+      {
+       "kind": "callout",
+       "text": "NAV IR 1+2 FAULT",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "FCTM",
+         "code": "AOP-30-30",
+         "page": "P 2/6",
+         "pdf": 83
+        },
+        {
+         "book": "FCOM",
+         "code": "PRO-ABN-NAV",
+         "page": "P 89/124",
+         "pdf": 3914
+        },
+        {
+         "book": "PDP",
+         "code": "Management of abnormal operations",
+         "page": "XFTDN6ECAM00001",
+         "pdf": 424
+        }
+       ]
+      },
+      {
+       "kind": "note",
+       "text": "Announce the pair shown (1+2, 1+3 or 2+3)",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "FCOM",
+         "code": "PRO-ABN-NAV",
+         "page": "P 89/124",
+         "pdf": 3914
+        }
+       ]
+      },
+      {
+       "kind": "action",
+       "text": "Confirm on the overhead ADIRS panel (IR FAULT lights) and on the PFD/ND flags",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "FCTM",
+         "code": "AOP-30-30",
+         "page": "P 2/6",
+         "pdf": 83
+        },
+        {
+         "book": "FCOM",
+         "code": "DSC-34-NAV-10-20",
+         "page": "P 2/6",
+         "pdf": 2101
+        },
+        {
+         "book": "FCOM",
+         "code": "DSC-34-NAV-20",
+         "page": "P 8/10",
+         "pdf": 2131
+        }
+       ]
+      }
+     ]
+    },
+    {
+     "actor": "PF",
+     "items": [
+      {
+       "kind": "condition",
+       "text": "If attitude is lost on the PF's PFD",
+       "children": [
+        {
+         "kind": "action",
+         "text": "The FLY task is affected — the captain may re-allocate the PF role",
+         "applies_to": [
+          "all"
+         ],
+         "refs": [
+          {
+           "book": "FCTM",
+           "code": "AOP-30-30",
+           "page": "P 1/6",
+           "pdf": 82
+          }
+         ]
+        },
+        {
+         "kind": "note",
+         "text": "The pilot taking control announces \"I have control\" and presses the sidestick pb",
+         "applies_to": [
+          "all"
+         ],
+         "refs": [
+          {
+           "book": "FCTM",
+           "code": "AOP-10-30-20",
+           "page": "P 1/2",
+           "pdf": 62
+          }
+         ]
+        }
+       ],
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "FCTM",
+         "code": "AOP-30-30",
+         "page": "P 1/6",
+         "pdf": 82
+        }
+       ]
+      },
+      {
+       "kind": "callout",
+       "text": "ECAM ACTIONS",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "FCOM",
+         "code": "PRO-ABN-ABN-00",
+         "page": "P 8/12",
+         "pdf": 2831
+        },
+        {
+         "book": "FCTM",
+         "code": "AOP-30-30",
+         "page": "P 3/6",
+         "pdf": 84
+        },
+        {
+         "book": "PDP",
+         "code": "Management of abnormal operations",
+         "page": "XFTDN6ECAM00001",
+         "pdf": 424
+        }
+       ]
+      },
+      {
+       "kind": "note",
+       "text": "PF now flies, navigates and communicates",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "FCTM",
+         "code": "AOP-20",
+         "page": "P 1–2/10",
+         "pdf": 68
+        },
+        {
+         "book": "PDP",
+         "code": "Management of abnormal operations",
+         "page": "XFTDN6ECAM00001",
+         "pdf": 424
+        }
+       ]
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "phase": "ECAM actions",
+   "steps": [
+    {
+     "actor": "PM",
+     "items": [
+      {
+       "kind": "note",
+       "text": "If ADR and IR of the same ADIRU fail together, do the ADR FAULT procedure first",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "FCOM",
+         "code": "PRO-ABN-NAV",
+         "page": "P 90/124",
+         "pdf": 3915
+        }
+       ]
+      },
+      {
+       "kind": "condition",
+       "text": "If NAV IR 1+2 FAULT",
+       "children": [
+        {
+         "kind": "ecam",
+         "item": "ATT HDG SWTG",
+         "setting": "CAPT 3",
+         "applies_to": [
+          "all"
+         ],
+         "refs": [
+          {
+           "book": "FCOM",
+           "code": "PRO-ABN-NAV",
+           "page": "P 90/124",
+           "pdf": 3915
+          }
+         ]
+        },
+        {
+         "kind": "note",
+         "text": "IR 3 (if available) on the CAPT side. Attitude information is lost on the F/O PFD",
+         "applies_to": [
+          "all"
+         ],
+         "refs": [
+          {
+           "book": "FCOM",
+           "code": "PRO-ABN-NAV",
+           "page": "P 90/124",
+           "pdf": 3915
+          }
+         ]
+        }
+       ],
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "FCOM",
+         "code": "PRO-ABN-NAV",
+         "page": "P 90/124",
+         "pdf": 3915
+        }
+       ]
+      },
+      {
+       "kind": "condition",
+       "text": "If NAV IR 1+3(2+3) FAULT",
+       "children": [
+        {
+         "kind": "ecam",
+         "item": "ATT HDG SWTG",
+         "setting": "NORM",
+         "applies_to": [
+          "all"
+         ],
+         "refs": [
+          {
+           "book": "FCOM",
+           "code": "PRO-ABN-NAV",
+           "page": "P 90/124",
+           "pdf": 3915
+          }
+         ]
+        },
+        {
+         "kind": "note",
+         "text": "Attitude information is lost on one side (CAPT or F/O)",
+         "applies_to": [
+          "all"
+         ],
+         "refs": [
+          {
+           "book": "FCOM",
+           "code": "PRO-ABN-NAV",
+           "page": "P 90/124",
+           "pdf": 3915
+          }
+         ]
+        }
+       ],
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "FCOM",
+         "code": "PRO-ABN-NAV",
+         "page": "P 90/124",
+         "pdf": 3915
+        }
+       ]
+      }
+     ]
+    },
+    {
+     "actor": "PM",
+     "items": [
+      {
+       "kind": "callout",
+       "text": "F/CTL ALTN LAW",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "FCOM",
+         "code": "PRO-ABN-NAV",
+         "page": "P 90/124",
+         "pdf": 3915
+        },
+        {
+         "book": "FCTM",
+         "code": "AOP-30-30",
+         "page": "P 2/6",
+         "pdf": 83
+        }
+       ]
+      },
+      {
+       "kind": "note",
+       "text": "Associated procedure F/CTL ALTN LAW (PROT LOST): MAX SPEED 320 KT, maneuver with care — see the F/CTL ALTN LAW brief",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "FCOM",
+         "code": "PRO-ABN-NAV",
+         "page": "P 90/124",
+         "pdf": 3915
+        },
+        {
+         "book": "FCOM",
+         "code": "PRO-ABN-F_CTL",
+         "page": "P 9/132",
+         "pdf": 3482
+        }
+       ]
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "phase": "STATUS",
+   "steps": [
+    {
+     "actor": "PM",
+     "items": [
+      {
+       "kind": "callout",
+       "text": "CLEAR NAV ?",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "FCOM",
+         "code": "PRO-ABN-ABN-00",
+         "page": "P 8/12",
+         "pdf": 2831
+        },
+        {
+         "book": "FCTM",
+         "code": "AOP-30-30",
+         "page": "P 3/6",
+         "pdf": 84
+        },
+        {
+         "book": "PDP",
+         "code": "Management of abnormal operations",
+         "page": "XFTDN6ECAM00001",
+         "pdf": 424
+        }
+       ]
+      }
+     ]
+    },
+    {
+     "actor": "PF",
+     "items": [
+      {
+       "kind": "callout",
+       "text": "CLEAR NAV",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "FCOM",
+         "code": "PRO-ABN-ABN-00",
+         "page": "P 8/12",
+         "pdf": 2831
+        },
+        {
+         "book": "FCTM",
+         "code": "AOP-30-30",
+         "page": "P 3/6",
+         "pdf": 84
+        },
+        {
+         "book": "PDP",
+         "code": "Management of abnormal operations",
+         "page": "XFTDN6ECAM00001",
+         "pdf": 424
+        }
+       ]
+      }
+     ]
+    },
+    {
+     "actor": "PM",
+     "items": [
+      {
+       "kind": "callout",
+       "text": "STATUS",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "FCTM",
+         "code": "AOP-30-30",
+         "page": "P 3/6",
+         "pdf": 84
+        },
+        {
+         "book": "PDP",
+         "code": "Management of abnormal operations",
+         "page": "XFTDN6ECAM00001",
+         "pdf": 426
+        }
+       ]
+      }
+     ]
+    },
+    {
+     "actor": "PF",
+     "items": [
+      {
+       "kind": "callout",
+       "text": "STOP ECAM",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "FCTM",
+         "code": "AOP-30-30",
+         "page": "P 3/6",
+         "pdf": 84
+        },
+        {
+         "book": "PDP",
+         "code": "Management of abnormal operations",
+         "page": "XFTDN6ECAM00001",
+         "pdf": 426
+        }
+       ]
+      }
+     ]
+    },
+    {
+     "actor": "PM",
+     "items": [
+      {
+       "kind": "ecam",
+       "item": "ECAM ACTIONS",
+       "setting": "STOP",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "PDP",
+         "code": "Management of abnormal operations",
+         "page": "XFTDN6ECAM00001",
+         "pdf": 426
+        }
+       ]
+      }
+     ]
+    },
+    {
+     "actor": "PF",
+     "items": [
+      {
+       "kind": "action",
+       "text": "Normal C/L as applicable; system resets only per QRH",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "FCTM",
+         "code": "AOP-30-30",
+         "page": "P 4/6",
+         "pdf": 85
+        },
+        {
+         "book": "PDP",
+         "code": "Management of abnormal operations",
+         "page": "XFTDN6ECAM00001",
+         "pdf": 426
+        }
+       ]
+      },
+      {
+       "kind": "callout",
+       "text": "CONTINUE ECAM",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "FCTM",
+         "code": "AOP-30-30",
+         "page": "P 3/6",
+         "pdf": 84
+        },
+        {
+         "book": "PDP",
+         "code": "Management of abnormal operations",
+         "page": "XFTDN6ECAM00001",
+         "pdf": 426
+        }
+       ]
+      }
+     ]
+    },
+    {
+     "actor": "PM",
+     "items": [
+      {
+       "kind": "action",
+       "text": "Read the whole STATUS page; preview APPR PROC workload",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "FCTM",
+         "code": "AOP-30-30",
+         "page": "P 3/6",
+         "pdf": 84
+        },
+        {
+         "book": "PDP",
+         "code": "Management of abnormal operations",
+         "page": "XFTDN6ECAM00001",
+         "pdf": 426
+        }
+       ]
+      },
+      {
+       "kind": "callout",
+       "text": "REMOVE STATUS ?",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "FCTM",
+         "code": "AOP-30-30",
+         "page": "P 3/6",
+         "pdf": 84
+        },
+        {
+         "book": "PDP",
+         "code": "Management of abnormal operations",
+         "page": "XFTDN6ECAM00001",
+         "pdf": 426
+        }
+       ]
+      }
+     ]
+    },
+    {
+     "actor": "PF",
+     "items": [
+      {
+       "kind": "callout",
+       "text": "REMOVE STATUS",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "FCOM",
+         "code": "PRO-ABN-ABN-00",
+         "page": "P 8/12",
+         "pdf": 2831
+        },
+        {
+         "book": "FCTM",
+         "code": "AOP-30-30",
+         "page": "P 3/6",
+         "pdf": 84
+        },
+        {
+         "book": "PDP",
+         "code": "Management of abnormal operations",
+         "page": "XFTDN6ECAM00001",
+         "pdf": 426
+        }
+       ]
+      }
+     ]
+    },
+    {
+     "actor": "PM",
+     "items": [
+      {
+       "kind": "callout",
+       "text": "ECAM ACTIONS COMPLETE",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "FCOM",
+         "code": "PRO-ABN-ABN-00",
+         "page": "P 8/12",
+         "pdf": 2831
+        },
+        {
+         "book": "PDP",
+         "code": "Management of abnormal operations",
+         "page": "XFTDN6ECAM00001",
+         "pdf": 426
+        }
+       ]
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "phase": "IR in ATT mode (if available)",
+   "steps": [
+    {
+     "actor": "PF",
+     "items": [
+      {
+       "kind": "condition",
+       "text": "If the IR FAULT light flashes (attitude and heading may be recovered in ATT mode)",
+       "children": [
+        {
+         "kind": "callout",
+         "text": "IR ALIGNMENT IN ATT MODE PROCEDURE",
+         "applies_to": [
+          "all"
+         ],
+         "refs": [
+          {
+           "book": "PDP",
+           "code": "Management of abnormal operations",
+           "page": "XFTDN6ECAM00001",
+           "pdf": 427
+          },
+          {
+           "book": "QRH",
+           "code": "26.04",
+           "page": "26.04A",
+           "pdf": 243
+          }
+         ]
+        }
+       ],
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "FCOM",
+         "code": "DSC-34-NAV-10-20",
+         "page": "P 2/6",
+         "pdf": 2101
+        },
+        {
+         "book": "PDP",
+         "code": "Management of abnormal operations",
+         "page": "XFTDN6ECAM00001",
+         "pdf": 427
+        }
+       ]
+      }
+     ]
+    },
+    {
+     "actor": "PM",
+     "items": [
+      {
+       "kind": "ecam",
+       "item": "IR (AFFECTED) MODE SEL",
+       "setting": "ATT",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "QRH",
+         "code": "26.04",
+         "page": "26.04A",
+         "pdf": 243
+        },
+        {
+         "book": "FCOM",
+         "code": "PRO-ABN-NAV",
+         "page": "P 15/124",
+         "pdf": 3840
+        }
+       ]
+      },
+      {
+       "kind": "callout",
+       "text": "CONFIRM?",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "PDP",
+         "code": "Management of abnormal operations",
+         "page": "XFTDN6ECAM00001",
+         "pdf": 432
+        },
+        {
+         "book": "FCTM",
+         "code": "AOP-30-20",
+         "page": "P 1/2",
+         "pdf": 80
+        }
+       ]
+      }
+     ]
+    },
+    {
+     "actor": "PF",
+     "items": [
+      {
+       "kind": "callout",
+       "text": "CONFIRMED",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "PDP",
+         "code": "Management of abnormal operations",
+         "page": "XFTDN6ECAM00001",
+         "pdf": 432
+        }
+       ]
+      },
+      {
+       "kind": "note",
+       "text": "IR MODE selector: crosscheck before acting in flight",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "FCTM",
+         "code": "AOP-30-20",
+         "page": "P 1/2",
+         "pdf": 80
+        },
+        {
+         "book": "PDP",
+         "code": "Management of abnormal operations",
+         "page": "XFTDN6ECAM00001",
+         "pdf": 432
+        }
+       ]
+      }
+     ]
+    },
+    {
+     "actor": "PM",
+     "items": [
+      {
+       "kind": "action",
+       "text": "Set the IR mode selector to ATT",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "QRH",
+         "code": "26.04",
+         "page": "26.04A",
+         "pdf": 243
+        }
+       ]
+      }
+     ]
+    },
+    {
+     "actor": "PF",
+     "items": [
+      {
+       "kind": "ecam",
+       "item": "KEEP SPEED, HEADING, AND FL CONSTANT FOR 30 s",
+       "setting": "—",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "QRH",
+         "code": "26.04",
+         "page": "26.04A",
+         "pdf": 243
+        }
+       ]
+      }
+     ]
+    },
+    {
+     "actor": "PM",
+     "items": [
+      {
+       "kind": "ecam",
+       "item": "FMS DATA page",
+       "setting": "SELECT",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "QRH",
+         "code": "26.04",
+         "page": "26.04A",
+         "pdf": 243
+        }
+       ]
+      },
+      {
+       "kind": "ecam",
+       "item": "IRS MONITOR key",
+       "setting": "PRESS",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "QRH",
+         "code": "26.04",
+         "page": "26.04A",
+         "pdf": 243
+        }
+       ]
+      },
+      {
+       "kind": "ecam",
+       "item": "[SET HDG key] A/C HDG",
+       "setting": "ENTER",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "QRH",
+         "code": "26.04",
+         "page": "26.04A",
+         "pdf": 243
+        }
+       ]
+      },
+      {
+       "kind": "ecam",
+       "item": "CROSSCHECK HEADING REGULARLY WITH STBY COMPASS AND UPDATE AS REQUIRED",
+       "setting": "—",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "QRH",
+         "code": "26.04",
+         "page": "26.04A",
+         "pdf": 243
+        }
+       ]
+      },
+      {
+       "kind": "note",
+       "text": "In ATT mode the heading must be reset about every 10 min",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "FCOM",
+         "code": "DSC-34-NAV-10-20",
+         "page": "P 2/6",
+         "pdf": 2101
+        }
+       ]
+      },
+      {
+       "kind": "callout",
+       "text": "IR ALIGNMENT IN ATT MODE PROCEDURE COMPLETED",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "PDP",
+         "code": "Management of abnormal operations",
+         "page": "XFTDN6ECAM00001",
+         "pdf": 427
+        }
+       ]
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "phase": "Approach and landing",
+   "steps": [
+    {
+     "actor": "PF",
+     "items": [
+      {
+       "kind": "action",
+       "text": "Brief: CONF 3 landing, VREF + 10 kt, landing distance with the LDG DIST PROC; FLS limited to F-APP + RAW",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "FCOM",
+         "code": "PRO-ABN-NAV",
+         "page": "P 91/124",
+         "pdf": 3916
+        }
+       ]
+      }
+     ]
+    },
+    {
+     "actor": "PM",
+     "items": [
+      {
+       "kind": "ecam",
+       "item": "FOR LDG",
+       "setting": "FLAP LVR 3",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "FCOM",
+         "code": "PRO-ABN-NAV",
+         "page": "P 91/124",
+         "pdf": 3916
+        }
+       ]
+      },
+      {
+       "kind": "ecam",
+       "item": "GPWS LDG FLAP 3",
+       "setting": "ON",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "FCOM",
+         "code": "PRO-ABN-NAV",
+         "page": "P 91/124",
+         "pdf": 3916
+        }
+       ]
+      },
+      {
+       "kind": "ecam",
+       "item": "APPR SPD",
+       "setting": "VREF + 10 KT",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "FCOM",
+         "code": "PRO-ABN-NAV",
+         "page": "P 91/124",
+         "pdf": 3916
+        }
+       ]
+      },
+      {
+       "kind": "ecam",
+       "item": "LDG DIST PROC",
+       "setting": "APPLY",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "FCOM",
+         "code": "PRO-ABN-NAV",
+         "page": "P 91/124",
+         "pdf": 3916
+        }
+       ]
+      }
+     ]
+    },
+    {
+     "actor": "PF",
+     "items": [
+      {
+       "kind": "condition",
+       "text": "At landing gear extension",
+       "children": [
+        {
+         "kind": "action",
+         "text": "Control reverts to DIRECT LAW in pitch and roll: USE MAN PITCH TRIM",
+         "applies_to": [
+          "all"
+         ],
+         "refs": [
+          {
+           "book": "FCOM",
+           "code": "PRO-ABN-NAV",
+           "page": "P 91/124",
+           "pdf": 3916
+          },
+          {
+           "book": "FCOM",
+           "code": "PRO-ABN-F_CTL",
+           "page": "P 19/132",
+           "pdf": 3492
+          }
+         ]
+        }
+       ],
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "FCOM",
+         "code": "PRO-ABN-NAV",
+         "page": "P 91/124",
+         "pdf": 3916
+        }
+       ]
+      }
+     ]
+    }
+   ]
+  }
+ ],
+ "procedures": [
+  {
+   "title": "NAV IR 1+2(1+3)(2+3) FAULT",
+   "source": "FCOM PRO-ABN-NAV",
+   "lines": [
+    {
+     "kind": "note",
+     "text": "In the case of a simultaneous ADR and IR (same ADIRU) failure, apply the ADR FAULT procedure prior to the IR FAULT procedure.",
+     "level": 0,
+     "applies_to": [
+      "all"
+     ],
+     "refs": [
+      {
+       "book": "FCOM",
+       "code": "PRO-ABN-NAV",
+       "page": "P 90/124",
+       "pdf": 3915
+      }
+     ]
+    },
+    {
+     "kind": "condition",
+     "text": "If NAV IR 1+2 FAULT:",
+     "level": 0,
+     "applies_to": [
+      "all"
+     ],
+     "refs": [
+      {
+       "book": "FCOM",
+       "code": "PRO-ABN-NAV",
+       "page": "P 90/124",
+       "pdf": 3915
+      }
+     ]
+    },
+    {
+     "kind": "action",
+     "item": "ATT HDG SWTG",
+     "setting": "CAPT 3",
+     "text": "",
+     "level": 1,
+     "applies_to": [
+      "all"
+     ],
+     "refs": [
+      {
+       "book": "FCOM",
+       "code": "PRO-ABN-NAV",
+       "page": "P 90/124",
+       "pdf": 3915
+      }
+     ]
+    },
+    {
+     "kind": "info",
+     "text": "Set IR 3 (if available) on the CAPT side. Attitude information is lost on the FO PFD.",
+     "level": 1,
+     "applies_to": [
+      "all"
+     ],
+     "refs": [
+      {
+       "book": "FCOM",
+       "code": "PRO-ABN-NAV",
+       "page": "P 90/124",
+       "pdf": 3915
+      }
+     ]
+    },
+    {
+     "kind": "condition",
+     "text": "If NAV IR 1+3(2+3) FAULT:",
+     "level": 0,
+     "applies_to": [
+      "all"
+     ],
+     "refs": [
+      {
+       "book": "FCOM",
+       "code": "PRO-ABN-NAV",
+       "page": "P 90/124",
+       "pdf": 3915
+      }
+     ]
+    },
+    {
+     "kind": "action",
+     "item": "ATT HDG SWTG",
+     "setting": "NORM",
+     "text": "",
+     "level": 1,
+     "applies_to": [
+      "all"
+     ],
+     "refs": [
+      {
+       "book": "FCOM",
+       "code": "PRO-ABN-NAV",
+       "page": "P 90/124",
+       "pdf": 3915
+      }
+     ]
+    },
+    {
+     "kind": "info",
+     "text": "Attitude information is lost on one side (CAPT or FO).",
+     "level": 1,
+     "applies_to": [
+      "all"
+     ],
+     "refs": [
+      {
+       "book": "FCOM",
+       "code": "PRO-ABN-NAV",
+       "page": "P 90/124",
+       "pdf": 3915
+      }
+     ]
+    },
+    {
+     "kind": "info",
+     "text": "ASSOCIATED PROCEDURES: F/CTL ALTN LAW (PROT LOST) — Refer to PRO-ABN-F_CTL F/CTL ALTN LAW",
+     "level": 0,
+     "applies_to": [
+      "all"
+     ],
+     "refs": [
+      {
+       "book": "FCOM",
+       "code": "PRO-ABN-NAV",
+       "page": "P 90/124",
+       "pdf": 3915
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "title": "[QRH] IR ALIGNMENT IN ATT MODE",
+   "source": "QRH 26.04A (HS-TX version)",
+   "lines": [
+    {
+     "kind": "action",
+     "item": "IR (affected) MODE SEL",
+     "setting": "ATT",
+     "text": "",
+     "level": 0,
+     "applies_to": [
+      "all"
+     ],
+     "refs": [
+      {
+       "book": "QRH",
+       "code": "26.04",
+       "page": "26.04A",
+       "pdf": 243
+      }
+     ]
+    },
+    {
+     "kind": "info",
+     "text": "KEEP SPEED, HEADING, AND FL CONSTANT FOR 30 s",
+     "level": 0,
+     "applies_to": [
+      "all"
+     ],
+     "refs": [
+      {
+       "book": "QRH",
+       "code": "26.04",
+       "page": "26.04A",
+       "pdf": 243
+      }
+     ]
+    },
+    {
+     "kind": "action",
+     "item": "FMS DATA page",
+     "setting": "SELECT",
+     "text": "",
+     "level": 0,
+     "applies_to": [
+      "all"
+     ],
+     "refs": [
+      {
+       "book": "QRH",
+       "code": "26.04",
+       "page": "26.04A",
+       "pdf": 243
+      }
+     ]
+    },
+    {
+     "kind": "action",
+     "item": "IRS MONITOR key",
+     "setting": "PRESS",
+     "text": "",
+     "level": 0,
+     "applies_to": [
+      "all"
+     ],
+     "refs": [
+      {
+       "book": "QRH",
+       "code": "26.04",
+       "page": "26.04A",
+       "pdf": 243
+      }
+     ]
+    },
+    {
+     "kind": "action",
+     "item": "[SET HDG key] A/C HDG",
+     "setting": "ENTER",
+     "text": "",
+     "level": 0,
+     "applies_to": [
+      "all"
+     ],
+     "refs": [
+      {
+       "book": "QRH",
+       "code": "26.04",
+       "page": "26.04A",
+       "pdf": 243
+      }
+     ]
+    },
+    {
+     "kind": "info",
+     "text": "CROSSCHECK HEADING REGULARLY WITH STBY COMPASS AND UPDATE AS REQUIRED",
+     "level": 0,
+     "applies_to": [
+      "all"
+     ],
+     "refs": [
+      {
+       "book": "QRH",
+       "code": "26.04",
+       "page": "26.04A",
+       "pdf": 243
+      }
+     ]
+    }
+   ]
+  }
+ ],
+ "status": {
+  "limitations": [
+   {
+    "text": "MAX SPEED …… 320 KT",
+    "applies_to": [
+     "all"
+    ],
+    "refs": [
+     {
+      "book": "FCOM",
+      "code": "PRO-ABN-NAV",
+      "page": "P 91/124",
+      "pdf": 3916
+     }
+    ]
+   }
+  ],
+  "info": [
+   {
+    "text": "ALTN LAW : PROT LOST",
+    "applies_to": [
+     "all"
+    ],
+    "refs": [
+     {
+      "book": "FCOM",
+      "code": "PRO-ABN-NAV",
+      "page": "P 91/124",
+      "pdf": 3916
+     }
+    ]
+   },
+   {
+    "text": "WHEN L/G DN : DIRECT LAW — at landing gear extension, control reverts to direct law in pitch as well as in roll.",
+    "applies_to": [
+     "all"
+    ],
+    "refs": [
+     {
+      "book": "FCOM",
+      "code": "PRO-ABN-NAV",
+      "page": "P 91/124",
+      "pdf": 3916
+     }
+    ]
+   },
+   {
+    "text": "IR (AFFECTED) MAY BE AVAIL IN ATT — Refer to [QRH] IR ALIGNMENT IN ATT MODE",
+    "applies_to": [
+     "all"
+    ],
+    "refs": [
+     {
+      "book": "FCOM",
+      "code": "PRO-ABN-NAV",
+      "page": "P 91/124",
+      "pdf": 3916
+     }
+    ]
+   },
+   {
+    "text": "FLS LIMITED TO F–APP + RAW",
+    "applies_to": [
+     "all"
+    ],
+    "refs": [
+     {
+      "book": "FCOM",
+      "code": "PRO-ABN-NAV",
+      "page": "P 91/124",
+      "pdf": 3916
+     }
+    ]
+   },
+   {
+    "text": "If IR 1 fails, the TCAS may be inoperative (depending on the TCAS manufacturer). If IR 1 is available in ATT mode, the TCAS can be recovered by entering the aircraft magnetic heading into the CDU.",
+    "applies_to": [
+     "all"
+    ],
+    "refs": [
+     {
+      "book": "FCOM",
+      "code": "PRO-ABN-NAV",
+      "page": "P 91/124",
+      "pdf": 3916
+     }
+    ]
+   }
+  ],
+  "appr_proc": [
+   {
+    "kind": "action",
+    "item": "FOR LDG",
+    "setting": "FLAP LVR 3",
+    "text": "Replaced by \"FOR LDG: FLAP LVR 3\" when CONF 3 is selected, as a reminder.",
+    "level": 0,
+    "applies_to": [
+     "all"
+    ],
+    "refs": [
+     {
+      "book": "FCOM",
+      "code": "PRO-ABN-NAV",
+      "page": "P 91/124",
+      "pdf": 3916
+     }
+    ]
+   },
+   {
+    "kind": "action",
+    "item": "GPWS LDG FLAP 3",
+    "setting": "ON",
+    "text": "Displayed when flaps are in CONF 3.",
+    "level": 0,
+    "applies_to": [
+     "all"
+    ],
+    "refs": [
+     {
+      "book": "FCOM",
+      "code": "PRO-ABN-NAV",
+      "page": "P 91/124",
+      "pdf": 3916
+     }
+    ]
+   },
+   {
+    "kind": "action",
+    "item": "APPR SPD",
+    "setting": "VREF + 10 KT",
+    "text": "",
+    "level": 0,
+    "applies_to": [
+     "all"
+    ],
+    "refs": [
+     {
+      "book": "FCOM",
+      "code": "PRO-ABN-NAV",
+      "page": "P 91/124",
+      "pdf": 3916
+     }
+    ]
+   },
+   {
+    "kind": "action",
+    "item": "LDG DIST PROC",
+    "setting": "APPLY",
+    "text": "",
+    "level": 0,
+    "applies_to": [
+     "all"
+    ],
+    "refs": [
+     {
+      "book": "FCOM",
+      "code": "PRO-ABN-NAV",
+      "page": "P 91/124",
+      "pdf": 3916
+     }
+    ]
+   }
+  ],
+  "inop_sys": [
+   {
+    "text": "F/CTL PROT",
+    "applies_to": [
+     "all"
+    ],
+    "refs": [
+     {
+      "book": "FCOM",
+      "code": "PRO-ABN-NAV",
+      "page": "P 91/124",
+      "pdf": 3916
+     }
+    ]
+   },
+   {
+    "text": "IR 1+2(1+3)(2+3)",
+    "applies_to": [
+     "all"
+    ],
+    "refs": [
+     {
+      "book": "FCOM",
+      "code": "PRO-ABN-NAV",
+      "page": "P 91/124",
+      "pdf": 3916
+     }
+    ]
+   },
+   {
+    "text": "AP 1+2",
+    "applies_to": [
+     "all"
+    ],
+    "refs": [
+     {
+      "book": "FCOM",
+      "code": "PRO-ABN-NAV",
+      "page": "P 91/124",
+      "pdf": 3916
+     }
+    ]
+   },
+   {
+    "text": "A/THR",
+    "applies_to": [
+     "all"
+    ],
+    "refs": [
+     {
+      "book": "FCOM",
+      "code": "PRO-ABN-NAV",
+      "page": "P 91/124",
+      "pdf": 3916
+     }
+    ]
+   },
+   {
+    "text": "YAW DAMPER 1 (if NAV IR 1+3 FAULT)",
+    "applies_to": [
+     "all"
+    ],
+    "refs": [
+     {
+      "book": "FCOM",
+      "code": "PRO-ABN-NAV",
+      "page": "P 91/124",
+      "pdf": 3916
+     }
+    ]
+   },
+   {
+    "text": "YAW DAMPER 2 (if NAV IR 2+3 FAULT)",
+    "applies_to": [
+     "all"
+    ],
+    "refs": [
+     {
+      "book": "FCOM",
+      "code": "PRO-ABN-NAV",
+      "page": "P 91/124",
+      "pdf": 3916
+     }
+    ]
+   },
+   {
+    "text": "GPWS TERR (if IR 1 fails)",
+    "applies_to": [
+     "all"
+    ],
+    "refs": [
+     {
+      "book": "FCOM",
+      "code": "PRO-ABN-NAV",
+      "page": "P 91/124",
+      "pdf": 3916
+     }
+    ]
+   },
+   {
+    "text": "TCAS",
+    "applies_to": [
+     "all"
+    ],
+    "refs": [
+     {
+      "book": "FCOM",
+      "code": "PRO-ABN-NAV",
+      "page": "P 91/124",
+      "pdf": 3916
+     }
+    ]
+   },
+   {
+    "text": "CAT 2",
+    "applies_to": [
+     "all"
+    ],
+    "refs": [
+     {
+      "book": "FCOM",
+      "code": "PRO-ABN-NAV",
+      "page": "P 91/124",
+      "pdf": 3916
+     }
+    ]
+   },
+   {
+    "text": "GLS AUTOLAND",
+    "applies_to": [
+     "all"
+    ],
+    "refs": [
+     {
+      "book": "FCOM",
+      "code": "PRO-ABN-NAV",
+      "page": "P 91/124",
+      "pdf": 3916
+     }
+    ]
+   },
+   {
+    "text": "STEEP APPR",
+    "applies_to": [
+     "all"
+    ],
+    "refs": [
+     {
+      "book": "FCOM",
+      "code": "PRO-ABN-NAV",
+      "page": "P 91/124",
+      "pdf": 3916
+     }
+    ]
+   },
+   {
+    "text": "ROW/ROP",
+    "applies_to": [
+     "all"
+    ],
+    "refs": [
+     {
+      "book": "FCOM",
+      "code": "PRO-ABN-NAV",
+      "page": "P 91/124",
+      "pdf": 3916
+     }
+    ]
+   }
+  ]
+ },
+ "tables": [
+  {
+   "title": "Law reconfiguration — dual IR",
+   "caption": "FCOM flight controls law reconfiguration table (NAV rows), same values for HS-TXA..TXF and HS-TXG..TXU.",
+   "columns": [
+    "Failure",
+    "Pitch law",
+    "Protection",
+    "Roll",
+    "Yaw"
+   ],
+   "rows": [
+    [
+     "2 ADR or 2 IR (2nd self detected failed)",
+     "ALTN",
+     "REDUCED",
+     "DIRECT",
+     "ALTN"
+    ],
+    [
+     "2 IR (2nd not self detected failed)",
+     "DIRECT → ALTN (3)",
+     "NO → REDUCED (3)",
+     "DIRECT",
+     "MECH → ALTN (3)"
+    ],
+    [
+     "3 IR",
+     "DIRECT",
+     "NO",
+     "DIRECT",
+     "MECH"
+    ]
+   ],
+   "applies_to": [
+    "all"
+   ],
+   "refs": [
+    {
+     "book": "FCOM",
+     "code": "DSC-27-20-20",
+     "page": "P 3/20",
+     "pdf": 1614
+    },
+    {
+     "book": "FCOM",
+     "code": "DSC-27-20-20",
+     "page": "P 5/20",
+     "pdf": 1616
+    }
+   ]
+  }
+ ],
+ "background": [
+  {
+   "text": "Dual NAV IRS failures cause the loss of AP, FD and A/THR, and the flight controls revert to ALTN law.",
+   "applies_to": [
+    "all"
+   ],
+   "refs": [
+    {
+     "book": "FCTM",
+     "code": "PR-AEP-NAV",
+     "page": "P 1/20",
+     "pdf": 478
+    }
+   ]
+  },
+  {
+   "text": "(3) in the table: after the faulty IR is set to OFF and ELAC 1 and 2 are reset.",
+   "applies_to": [
+    "all"
+   ],
+   "refs": [
+    {
+     "book": "FCOM",
+     "code": "DSC-27-20-20",
+     "page": "P 3/20",
+     "pdf": 1614
+    },
+    {
+     "book": "FCOM",
+     "code": "DSC-27-20-20",
+     "page": "P 5/20",
+     "pdf": 1616
+    }
+   ]
+  },
+  {
+   "text": "There is no procedure for IRS 1 + 2 + 3 failure; the ECAM STATUS shows the approach procedure and INOP systems, and the standby instruments are the only attitude, altitude, speed and heading references.",
+   "applies_to": [
+    "all"
+   ],
+   "refs": [
+    {
+     "book": "FCTM",
+     "code": "PR-AEP-NAV",
+     "page": "P 1/20",
+     "pdf": 478
+    }
+   ]
+  },
+  {
+   "text": "ATT HDG selector: CAPT 3 — IR 3 replaces IR 1; F/O 3 — IR 3 replaces IR 2.",
+   "applies_to": [
+    "all"
+   ],
+   "refs": [
+    {
+     "book": "FCOM",
+     "code": "DSC-34-NAV-10-20",
+     "page": "P 3/6",
+     "pdf": 2102
+    }
+   ]
+  },
+  {
+   "text": "IR FAULT light flashing: attitude and heading may be recovered in ATT mode. Steady: the IR is lost.",
+   "applies_to": [
+    "all"
+   ],
+   "refs": [
+    {
+     "book": "FCOM",
+     "code": "DSC-34-NAV-10-20",
+     "page": "P 2/6",
+     "pdf": 2101
+    }
+   ]
+  },
+  {
+   "text": "In ATT mode the IR gives only attitude and heading (heading entered on the MCDU, reset about every 10 min). Once an IR is set from NAV to ATT or OFF in flight, NAV mode is lost for the rest of the flight; it is recovered only on ground by a complete alignment.",
+   "applies_to": [
+    "all"
+   ],
+   "refs": [
+    {
+     "book": "FCOM",
+     "code": "DSC-34-NAV-10-20",
+     "page": "P 2/6",
+     "pdf": 2101
+    }
+   ]
+  }
+ ],
+ "technique": [
+  {
+   "text": "The PF usually remains PF, unless the captain re-allocates tasks or a failure impacts the PF's FLY task (e.g. loss of attitude on the PF side).",
+   "applies_to": [
+    "all"
+   ],
+   "refs": [
+    {
+     "book": "FCTM",
+     "code": "AOP-30-30",
+     "page": "P 1/6",
+     "pdf": 82
+    }
+   ]
+  },
+  {
+   "text": "To take control, the pilot clearly announces \"I have control\" and presses and holds the sidestick pb.",
+   "applies_to": [
+    "all"
+   ],
+   "refs": [
+    {
+     "book": "FCTM",
+     "code": "AOP-10-30-20",
+     "page": "P 1/2",
+     "pdf": 62
+    }
+   ]
+  },
+  {
+   "text": "Reconfiguration law: at high altitude descend to increase the buffet margin (about 4 000 ft below REC MAX ALT); at high speed maneuver with care using small inputs.",
+   "applies_to": [
+    "all"
+   ],
+   "refs": [
+    {
+     "book": "FCTM",
+     "code": "AOP-10-30-20",
+     "page": "P 1/2",
+     "pdf": 62
+    }
+   ]
+  }
+ ],
+ "related": [
+  {
+   "title": "F/CTL ALTN LAW (PROT LOST)",
+   "why": "Associated procedure of the dual IR fault.",
+   "key_actions": [
+    "MAX SPEED 320 KT",
+    "MANEUVER WITH CARE (if displayed)",
+    "Respect stall warnings with TAWS alerts"
+   ],
+   "refs": [
+    {
+     "book": "FCOM",
+     "code": "PRO-ABN-NAV",
+     "page": "P 90/124",
+     "pdf": 3915
+    },
+    {
+     "book": "FCOM",
+     "code": "PRO-ABN-F_CTL",
+     "page": "P 9/132",
+     "pdf": 3482
+    },
+    {
+     "book": "FCOM",
+     "code": "PRO-ABN-F_CTL",
+     "page": "P 10/132",
+     "pdf": 3483
+    }
+   ]
+  },
+  {
+   "title": "F/CTL DIRECT LAW",
+   "why": "Active once the landing gear is down.",
+   "key_actions": [
+    "MAN PITCH TRIM USE",
+    "MAX SPEED 320/.77",
+    "Maneuver and use speed brakes with care"
+   ],
+   "refs": [
+    {
+     "book": "FCOM",
+     "code": "PRO-ABN-NAV",
+     "page": "P 91/124",
+     "pdf": 3916
+    },
+    {
+     "book": "FCOM",
+     "code": "PRO-ABN-F_CTL",
+     "page": "P 19/132",
+     "pdf": 3492
+    }
+   ]
+  },
+  {
+   "title": "[QRH] IR ALIGNMENT IN ATT MODE",
+   "why": "STATUS shows IR MAY BE AVAIL IN ATT; apply when the IR FAULT light flashes.",
+   "key_actions": [
+    "IR (affected) MODE SEL ATT (crosscheck first)",
+    "Keep speed, heading and FL constant for 30 s",
+    "MCDU DATA → IRS MONITOR → SET HDG: enter A/C HDG",
+    "Crosscheck heading with STBY compass; update about every 10 min"
+   ],
+   "refs": [
+    {
+     "book": "QRH",
+     "code": "26.04",
+     "page": "26.04A",
+     "pdf": 243
+    },
+    {
+     "book": "FCOM",
+     "code": "PRO-ABN-NAV",
+     "page": "P 15/124",
+     "pdf": 3840
+    },
+    {
+     "book": "FCOM",
+     "code": "DSC-34-NAV-10-20",
+     "page": "P 2/6",
+     "pdf": 2101
+    }
+   ]
+  }
+ ],
+ "gaps": [
+  {
+   "text": "FD loss is stated by the FCTM; the FCOM STATUS INOP SYS lists AP 1+2 and A/THR but not FD.",
+   "applies_to": [
+    "all"
+   ],
+   "refs": [
+    {
+     "book": "FCTM",
+     "code": "PR-AEP-NAV",
+     "page": "P 1/20",
+     "pdf": 478
+    },
+    {
+     "book": "FCOM",
+     "code": "PRO-ABN-NAV",
+     "page": "P 91/124",
+     "pdf": 3916
+    }
+   ]
+  },
+  {
+   "text": "No IR-specific PDP module or callouts; the flow uses the generic ECAM handling. The F/CTL ALTN LAW callout is the ECAM title announced by the PM.",
+   "applies_to": [
+    "all"
+   ],
+   "refs": [
+    {
+     "book": "PDP",
+     "code": "Management of abnormal operations",
+     "page": "XFTDN6ECAM00001",
+     "pdf": 424
+    }
+   ]
+  },
+  {
+   "text": "GLS AUTOLAND, STEEP APPR, ROW/ROP and FLS items carry option marks (equipment-dependent).",
+   "applies_to": [
+    "all"
+   ],
+   "refs": [
+    {
+     "book": "FCOM",
+     "code": "PRO-ABN-NAV",
+     "page": "P 91/124",
+     "pdf": 3916
+    }
+   ]
+  },
+  {
+   "text": "The HS-TO version of IR ALIGNMENT IN ATT MODE (extra \"On ground: T.O SURV pb OFF\" line) is not used.",
+   "applies_to": [
+    "all"
+   ],
+   "refs": [
+    {
+     "book": "QRH",
+     "code": "26.04",
+     "page": "26.04A",
+     "pdf": 243
+    }
+   ]
+  }
+ ],
+ "sources": [
+  {
+   "book": "FCOM",
+   "section": "PRO-ABN-NAV — NAV IR 1+2(1+3)(2+3) FAULT (HS-TX)",
+   "pages": "P 89–91/124",
+   "pdf": "3914–3916",
+   "rev": "26 MAY 26"
+  },
+  {
+   "book": "QRH",
+   "section": "26.04 IR ALIGNMENT IN ATT MODE",
+   "pages": "26.04A",
+   "pdf": "243",
+   "rev": "26 MAY 26"
+  },
+  {
+   "book": "FCTM",
+   "section": "PR-AEP-NAV — ADR/IRS FAULT · AOP-10-30-20 reconfiguration laws",
+   "pages": "P 1/20 · P 1/2",
+   "pdf": "478 · 62",
+   "rev": "26 MAY 26"
+  },
+  {
+   "book": "FCOM",
+   "section": "DSC-27-20-20 — law reconfiguration table",
+   "pages": "P 3/20, P 5/20",
+   "pdf": "1614, 1616",
+   "rev": "18 FEB 26"
+  },
+  {
+   "book": "FCOM",
+   "section": "DSC-34-NAV-10-20 — ADIRS controls",
+   "pages": "P 2–3/6",
+   "pdf": "2101–2102",
+   "rev": "18 FEB 26"
+  },
+  {
+   "book": "FCTM",
+   "section": "AOP-20 / AOP-30 — task sharing and ECAM handling",
+   "pages": "AOP-20 P 1–2/10, AOP-30-30 P 1–4/6",
+   "pdf": "68–69, 82–85",
+   "rev": "26 MAY 26"
+  },
+  {
+   "book": "PDP",
+   "section": "Management of abnormal operations (XFTDN6ECAM00001)",
+   "pages": "ECAM actions, STATUS, QRH, confirm",
+   "pdf": "424–432",
+   "rev": "JAN 2024"
+  }
+ ],
+ "schema": "a320-ecam-abnormal/3",
+ "generated": "2026-10-14",
+ "qrh": [],
+ "differences": []
+}

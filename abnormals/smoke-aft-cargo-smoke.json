@@ -1,0 +1,1834 @@
+{
+ "slug": "smoke-aft-cargo-smoke",
+ "title": "SMOKE AFT CARGO SMOKE",
+ "kind": "ecam",
+ "alert": {
+  "level": "warning",
+  "land_asap": "red",
+  "memory_items": false,
+  "qrh_summary": false,
+  "trigger": "This alert triggers when smoke in the AFT cargo compartment is detected. Inhibited in flight phases 4, 5, 7 and 8.",
+  "inhibited_phases": [
+   4,
+   5,
+   7,
+   8
+  ],
+  "refs": [
+   {
+    "book": "FCOM",
+    "code": "PRO-ABN-SMOKE",
+    "page": "P 31/50",
+    "pdf": 3988
+   }
+  ]
+ },
+ "effectivity": {
+  "branches": [],
+  "note": "One procedure for all HS-TX (the HS-TO version is not used)."
+ },
+ "summary": "A red warning with red LAND ASAP. Smoke is detected in the aft cargo hold, which is built to contain a fire, so the smoke is not felt in the cockpit; only the SMOKE light on the CARGO SMOKE panel confirms it. Close the aft isolation valve if it did not close by itself, cabin fans OFF, discharge AGENT 1 (guarded pb, crosscheck first) and AGENT 2 after 60 min, and divert. Expect the warning to stay after discharge. On the ground, the passengers disembark before any cargo door is opened.",
+ "key_limits": [
+  {
+   "label": "LAND ASAP",
+   "value": "Red — nearest airport with a safe landing",
+   "applies_to": [
+    "all"
+   ],
+   "refs": [
+    {
+     "book": "FCOM",
+     "code": "PRO-ABN-SMOKE",
+     "page": "P 32/50",
+     "pdf": 3989
+    },
+    {
+     "book": "FCTM",
+     "code": "AOP-30-10",
+     "page": "P 2/2",
+     "pdf": 79
+    }
+   ]
+  },
+  {
+   "label": "AGENT 1",
+   "value": "DISCH (bottle 1 empties in about 60 s)",
+   "applies_to": [
+    "all"
+   ],
+   "refs": [
+    {
+     "book": "FCOM",
+     "code": "PRO-ABN-SMOKE",
+     "page": "P 32/50",
+     "pdf": 3989
+    },
+    {
+     "book": "FCOM",
+     "code": "DSC-26-50-10",
+     "page": "P 5/8",
+     "pdf": 1548
+    }
+   ]
+  },
+  {
+   "label": "AGENT 2",
+   "value": "DISCH after 60 min",
+   "applies_to": [
+    "all"
+   ],
+   "refs": [
+    {
+     "book": "FCOM",
+     "code": "PRO-ABN-SMOKE",
+     "page": "P 32/50",
+     "pdf": 3989
+    },
+    {
+     "book": "FCOM",
+     "code": "PRO-ABN-SMOKE",
+     "page": "P 38/50",
+     "pdf": 3995
+    },
+    {
+     "book": "FCOM",
+     "code": "DSC-26-50-20",
+     "page": "P 3/4",
+     "pdf": 1554
+    }
+   ]
+  },
+  {
+   "label": "Cargo doors",
+   "value": "Not opened before PAX DISEMBARK",
+   "applies_to": [
+    "all"
+   ],
+   "refs": [
+    {
+     "book": "FCOM",
+     "code": "PRO-ABN-SMOKE",
+     "page": "P 32/50",
+     "pdf": 3989
+    },
+    {
+     "book": "FCTM",
+     "code": "PR-AEP-SMOKE",
+     "page": "P 9/10",
+     "pdf": 506
+    }
+   ]
+  }
+ ],
+ "flow": [
+  {
+   "phase": "Detection",
+   "steps": [
+    {
+     "actor": "BOTH",
+     "items": [
+      {
+       "kind": "action",
+       "text": "First to notice: MASTER WARNING reset",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "FCTM",
+         "code": "AOP-30-30",
+         "page": "P 2/6",
+         "pdf": 83
+        },
+        {
+         "book": "PDP",
+         "code": "Management of abnormal operations",
+         "page": "XFTDN6ECAM00001",
+         "pdf": 424
+        }
+       ]
+      }
+     ]
+    },
+    {
+     "actor": "PM",
+     "items": [
+      {
+       "kind": "callout",
+       "text": "SMOKE AFT CARGO SMOKE",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "FCTM",
+         "code": "AOP-30-30",
+         "page": "P 2/6",
+         "pdf": 83
+        },
+        {
+         "book": "FCOM",
+         "code": "PRO-ABN-SMOKE",
+         "page": "P 31/50",
+         "pdf": 3988
+        },
+        {
+         "book": "PDP",
+         "code": "Management of abnormal operations",
+         "page": "XFTDN6ECAM00001",
+         "pdf": 424
+        }
+       ]
+      },
+      {
+       "kind": "action",
+       "text": "Confirm with the AFT SMOKE light on the CARGO SMOKE panel — cargo smoke is not perceptible from the cockpit or cabin",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "FCTM",
+         "code": "PR-AEP-SMOKE",
+         "page": "P 9/10",
+         "pdf": 506
+        },
+        {
+         "book": "FCTM",
+         "code": "AOP-30-30",
+         "page": "P 2/6",
+         "pdf": 83
+        }
+       ]
+      }
+     ]
+    },
+    {
+     "actor": "PF",
+     "items": [
+      {
+       "kind": "callout",
+       "text": "ECAM ACTIONS",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "FCOM",
+         "code": "PRO-ABN-ABN-00",
+         "page": "P 8/12",
+         "pdf": 2831
+        },
+        {
+         "book": "FCTM",
+         "code": "AOP-30-30",
+         "page": "P 3/6",
+         "pdf": 84
+        },
+        {
+         "book": "PDP",
+         "code": "Management of abnormal operations",
+         "page": "XFTDN6ECAM00001",
+         "pdf": 424
+        }
+       ]
+      },
+      {
+       "kind": "note",
+       "text": "PF now flies, navigates and communicates",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "FCTM",
+         "code": "AOP-20",
+         "page": "P 1–2/10",
+         "pdf": 68
+        },
+        {
+         "book": "PDP",
+         "code": "Management of abnormal operations",
+         "page": "XFTDN6ECAM00001",
+         "pdf": 424
+        }
+       ]
+      },
+      {
+       "kind": "action",
+       "text": "LAND ASAP (red): land as soon as possible at the nearest airport where a safe landing can be made — anticipate the diversion",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "FCOM",
+         "code": "PRO-ABN-SMOKE",
+         "page": "P 32/50",
+         "pdf": 3989
+        },
+        {
+         "book": "FCTM",
+         "code": "AOP-30-10",
+         "page": "P 2/2",
+         "pdf": 79
+        },
+        {
+         "book": "FCTM",
+         "code": "PR-AEP-SMOKE",
+         "page": "P 1/10",
+         "pdf": 498
+        }
+       ]
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "phase": "ECAM actions (in flight)",
+   "steps": [
+    {
+     "actor": "PM",
+     "items": [
+      {
+       "kind": "ecam",
+       "item": "AFT ISOL VALVE",
+       "setting": "OFF",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "FCOM",
+         "code": "PRO-ABN-SMOKE",
+         "page": "P 32/50",
+         "pdf": 3989
+        }
+       ]
+      },
+      {
+       "kind": "note",
+       "text": "If the AFT ISOL VALVE is not automatically closed",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "FCOM",
+         "code": "PRO-ABN-SMOKE",
+         "page": "P 32/50",
+         "pdf": 3989
+        },
+        {
+         "book": "FCOM",
+         "code": "DSC-26-50-10",
+         "page": "P 3/8",
+         "pdf": 1546
+        }
+       ]
+      },
+      {
+       "kind": "ecam",
+       "item": "CAB FANS",
+       "setting": "OFF",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "FCOM",
+         "code": "PRO-ABN-SMOKE",
+         "page": "P 32/50",
+         "pdf": 3989
+        }
+       ]
+      },
+      {
+       "kind": "ecam",
+       "item": "AGENT 1",
+       "setting": "DISCH",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "FCOM",
+         "code": "PRO-ABN-SMOKE",
+         "page": "P 32/50",
+         "pdf": 3989
+        }
+       ]
+      }
+     ]
+    },
+    {
+     "actor": "PM",
+     "items": [
+      {
+       "kind": "callout",
+       "text": "CONFIRM?",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "PDP",
+         "code": "Management of abnormal operations",
+         "page": "XFTDN6ECAM00001",
+         "pdf": 432
+        },
+        {
+         "book": "FCTM",
+         "code": "AOP-30-20",
+         "page": "P 1/2",
+         "pdf": 80
+        }
+       ]
+      },
+      {
+       "kind": "note",
+       "text": "Guarded DISCH sw: point to it and ask confirmation",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "FCOM",
+         "code": "DSC-26-50-20",
+         "page": "P 3/4",
+         "pdf": 1554
+        },
+        {
+         "book": "FCTM",
+         "code": "AOP-30-20",
+         "page": "P 1/2",
+         "pdf": 80
+        }
+       ]
+      }
+     ]
+    },
+    {
+     "actor": "PF",
+     "items": [
+      {
+       "kind": "callout",
+       "text": "CONFIRMED",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "PDP",
+         "code": "Management of abnormal operations",
+         "page": "XFTDN6ECAM00001",
+         "pdf": 432
+        }
+       ]
+      }
+     ]
+    },
+    {
+     "actor": "PM",
+     "items": [
+      {
+       "kind": "action",
+       "text": "Press the AFT DISCH pb (AGENT 1) — the amber DISCH light comes on within 60 s when the bottle is fully discharged",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "FCOM",
+         "code": "DSC-26-50-20",
+         "page": "P 3/4",
+         "pdf": 1554
+        },
+        {
+         "book": "FCOM",
+         "code": "DSC-26-50-10",
+         "page": "P 5/8",
+         "pdf": 1548
+        }
+       ]
+      },
+      {
+       "kind": "condition",
+       "text": "AFT 60MIN",
+       "children": [
+        {
+         "kind": "ecam",
+         "item": "AGENT 2",
+         "setting": "DISCH",
+         "applies_to": [
+          "all"
+         ],
+         "refs": [
+          {
+           "book": "FCOM",
+           "code": "PRO-ABN-SMOKE",
+           "page": "P 32/50",
+           "pdf": 3989
+          }
+         ]
+        },
+        {
+         "kind": "note",
+         "text": "The DISCH AGENT 2 light comes on amber 60 min after AGENT 1; the SMOKE DISCH AGENT 2 alert triggers at 60 min if the cargo smoke alert is no longer displayed",
+         "applies_to": [
+          "all"
+         ],
+         "refs": [
+          {
+           "book": "FCOM",
+           "code": "DSC-26-50-20",
+           "page": "P 3/4",
+           "pdf": 1554
+          },
+          {
+           "book": "FCOM",
+           "code": "PRO-ABN-SMOKE",
+           "page": "P 38/50",
+           "pdf": 3995
+          }
+         ]
+        }
+       ],
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "FCOM",
+         "code": "PRO-ABN-SMOKE",
+         "page": "P 32/50",
+         "pdf": 3989
+        }
+       ]
+      },
+      {
+       "kind": "note",
+       "text": "Expect the SMOKE AFT CARGO SMOKE alert to remain after agent discharge, even if the smoke source is extinguished. Gases from the smoke source still remain, and smoke detectors are also sensitive to the extinguishing agent.",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "FCOM",
+         "code": "PRO-ABN-SMOKE",
+         "page": "P 32/50",
+         "pdf": 3989
+        },
+        {
+         "book": "FCTM",
+         "code": "PR-AEP-SMOKE",
+         "page": "P 9/10",
+         "pdf": 506
+        }
+       ]
+      },
+      {
+       "kind": "condition",
+       "text": "WHEN ON GROUND BEFORE OPEN CRG DOORS",
+       "children": [
+        {
+         "kind": "ecam",
+         "item": "PAX",
+         "setting": "DISEMBARK",
+         "applies_to": [
+          "all"
+         ],
+         "refs": [
+          {
+           "book": "FCOM",
+           "code": "PRO-ABN-SMOKE",
+           "page": "P 32/50",
+           "pdf": 3989
+          }
+         ]
+        }
+       ],
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "FCOM",
+         "code": "PRO-ABN-SMOKE",
+         "page": "P 32/50",
+         "pdf": 3989
+        }
+       ]
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "phase": "STATUS",
+   "steps": [
+    {
+     "actor": "PM",
+     "items": [
+      {
+       "kind": "callout",
+       "text": "CLEAR SMOKE ?",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "FCOM",
+         "code": "PRO-ABN-ABN-00",
+         "page": "P 8/12",
+         "pdf": 2831
+        },
+        {
+         "book": "FCTM",
+         "code": "AOP-30-30",
+         "page": "P 3/6",
+         "pdf": 84
+        },
+        {
+         "book": "PDP",
+         "code": "Management of abnormal operations",
+         "page": "XFTDN6ECAM00001",
+         "pdf": 424
+        }
+       ]
+      }
+     ]
+    },
+    {
+     "actor": "PF",
+     "items": [
+      {
+       "kind": "callout",
+       "text": "CLEAR SMOKE",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "FCOM",
+         "code": "PRO-ABN-ABN-00",
+         "page": "P 8/12",
+         "pdf": 2831
+        },
+        {
+         "book": "FCTM",
+         "code": "AOP-30-30",
+         "page": "P 3/6",
+         "pdf": 84
+        },
+        {
+         "book": "PDP",
+         "code": "Management of abnormal operations",
+         "page": "XFTDN6ECAM00001",
+         "pdf": 424
+        }
+       ]
+      }
+     ]
+    },
+    {
+     "actor": "PM",
+     "items": [
+      {
+       "kind": "callout",
+       "text": "STATUS",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "FCTM",
+         "code": "AOP-30-30",
+         "page": "P 3/6",
+         "pdf": 84
+        },
+        {
+         "book": "PDP",
+         "code": "Management of abnormal operations",
+         "page": "XFTDN6ECAM00001",
+         "pdf": 426
+        }
+       ]
+      }
+     ]
+    },
+    {
+     "actor": "PF",
+     "items": [
+      {
+       "kind": "callout",
+       "text": "STOP ECAM",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "FCTM",
+         "code": "AOP-30-30",
+         "page": "P 3/6",
+         "pdf": 84
+        },
+        {
+         "book": "PDP",
+         "code": "Management of abnormal operations",
+         "page": "XFTDN6ECAM00001",
+         "pdf": 426
+        }
+       ]
+      }
+     ]
+    },
+    {
+     "actor": "PM",
+     "items": [
+      {
+       "kind": "ecam",
+       "item": "ECAM ACTIONS",
+       "setting": "STOP",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "PDP",
+         "code": "Management of abnormal operations",
+         "page": "XFTDN6ECAM00001",
+         "pdf": 426
+        }
+       ]
+      }
+     ]
+    },
+    {
+     "actor": "PF",
+     "items": [
+      {
+       "kind": "action",
+       "text": "Normal C/L as applicable; system resets only per QRH",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "FCTM",
+         "code": "AOP-30-30",
+         "page": "P 4/6",
+         "pdf": 85
+        },
+        {
+         "book": "PDP",
+         "code": "Management of abnormal operations",
+         "page": "XFTDN6ECAM00001",
+         "pdf": 426
+        }
+       ]
+      },
+      {
+       "kind": "callout",
+       "text": "CONTINUE ECAM",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "FCTM",
+         "code": "AOP-30-30",
+         "page": "P 3/6",
+         "pdf": 84
+        },
+        {
+         "book": "PDP",
+         "code": "Management of abnormal operations",
+         "page": "XFTDN6ECAM00001",
+         "pdf": 426
+        }
+       ]
+      }
+     ]
+    },
+    {
+     "actor": "PM",
+     "items": [
+      {
+       "kind": "action",
+       "text": "Read the whole STATUS page; preview APPR PROC workload",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "FCTM",
+         "code": "AOP-30-30",
+         "page": "P 3/6",
+         "pdf": 84
+        },
+        {
+         "book": "PDP",
+         "code": "Management of abnormal operations",
+         "page": "XFTDN6ECAM00001",
+         "pdf": 426
+        }
+       ]
+      },
+      {
+       "kind": "callout",
+       "text": "REMOVE STATUS ?",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "FCTM",
+         "code": "AOP-30-30",
+         "page": "P 3/6",
+         "pdf": 84
+        },
+        {
+         "book": "PDP",
+         "code": "Management of abnormal operations",
+         "page": "XFTDN6ECAM00001",
+         "pdf": 426
+        }
+       ]
+      }
+     ]
+    },
+    {
+     "actor": "PF",
+     "items": [
+      {
+       "kind": "callout",
+       "text": "REMOVE STATUS",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "FCOM",
+         "code": "PRO-ABN-ABN-00",
+         "page": "P 8/12",
+         "pdf": 2831
+        },
+        {
+         "book": "FCTM",
+         "code": "AOP-30-30",
+         "page": "P 3/6",
+         "pdf": 84
+        },
+        {
+         "book": "PDP",
+         "code": "Management of abnormal operations",
+         "page": "XFTDN6ECAM00001",
+         "pdf": 426
+        }
+       ]
+      }
+     ]
+    },
+    {
+     "actor": "PM",
+     "items": [
+      {
+       "kind": "callout",
+       "text": "ECAM ACTIONS COMPLETE",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "FCOM",
+         "code": "PRO-ABN-ABN-00",
+         "page": "P 8/12",
+         "pdf": 2831
+        },
+        {
+         "book": "PDP",
+         "code": "Management of abnormal operations",
+         "page": "XFTDN6ECAM00001",
+         "pdf": 426
+        }
+       ]
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "phase": "Diversion",
+   "steps": [
+    {
+     "actor": "PF",
+     "items": [
+      {
+       "kind": "action",
+       "text": "Inform ATC, cabin crew and passengers; divert to the nearest suitable airport",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "PDP",
+         "code": "Management of abnormal operations",
+         "page": "XFTDN6ECAM00001",
+         "pdf": 428
+        },
+        {
+         "book": "FCTM",
+         "code": "AOP-30-10",
+         "page": "P 2/2",
+         "pdf": 79
+        }
+       ]
+      },
+      {
+       "kind": "note",
+       "text": "Cargo temperature is unreliable once the isolation valves are closed (no cargo ventilation)",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "FCTM",
+         "code": "PR-AEP-SMOKE",
+         "page": "P 9/10",
+         "pdf": 506
+        }
+       ]
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "phase": "On ground",
+   "steps": [
+    {
+     "actor": "PF",
+     "items": [
+      {
+       "kind": "action",
+       "text": "Order the ground crew not to open the door of the affected cargo compartment until the passengers have disembarked and fire services are present",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "FCOM",
+         "code": "PRO-ABN-SMOKE",
+         "page": "P 32/50",
+         "pdf": 3989
+        },
+        {
+         "book": "FCTM",
+         "code": "PR-AEP-SMOKE",
+         "page": "P 9/10",
+         "pdf": 506
+        }
+       ]
+      }
+     ]
+    },
+    {
+     "actor": "PM",
+     "items": [
+      {
+       "kind": "condition",
+       "text": "If the alert appears on ground with AFT CRG CLOSED",
+       "children": [
+        {
+         "kind": "note",
+         "text": "Ensure the cargo door is closed before discharging",
+         "applies_to": [
+          "all"
+         ],
+         "refs": [
+          {
+           "book": "FCOM",
+           "code": "PRO-ABN-SMOKE",
+           "page": "P 32/50",
+           "pdf": 3989
+          }
+         ]
+        },
+        {
+         "kind": "ecam",
+         "item": "AGENT 1",
+         "setting": "DISCH",
+         "applies_to": [
+          "all"
+         ],
+         "refs": [
+          {
+           "book": "FCOM",
+           "code": "PRO-ABN-SMOKE",
+           "page": "P 32/50",
+           "pdf": 3989
+          }
+         ]
+        },
+        {
+         "kind": "condition",
+         "text": "AFT 60MIN",
+         "children": [
+          {
+           "kind": "ecam",
+           "item": "AGENT 2",
+           "setting": "DISCH",
+           "applies_to": [
+            "all"
+           ],
+           "refs": [
+            {
+             "book": "FCOM",
+             "code": "PRO-ABN-SMOKE",
+             "page": "P 32/50",
+             "pdf": 3989
+            }
+           ]
+          }
+         ],
+         "applies_to": [
+          "all"
+         ],
+         "refs": [
+          {
+           "book": "FCOM",
+           "code": "PRO-ABN-SMOKE",
+           "page": "P 32/50",
+           "pdf": 3989
+          }
+         ]
+        },
+        {
+         "kind": "condition",
+         "text": "BEFORE OPEN CRG DOORS",
+         "children": [
+          {
+           "kind": "ecam",
+           "item": "PAX",
+           "setting": "DISEMBARK",
+           "applies_to": [
+            "all"
+           ],
+           "refs": [
+            {
+             "book": "FCOM",
+             "code": "PRO-ABN-SMOKE",
+             "page": "P 32/50",
+             "pdf": 3989
+            }
+           ]
+          }
+         ],
+         "applies_to": [
+          "all"
+         ],
+         "refs": [
+          {
+           "book": "FCOM",
+           "code": "PRO-ABN-SMOKE",
+           "page": "P 32/50",
+           "pdf": 3989
+          }
+         ]
+        }
+       ],
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "FCOM",
+         "code": "PRO-ABN-SMOKE",
+         "page": "P 32/50",
+         "pdf": 3989
+        }
+       ]
+      },
+      {
+       "kind": "condition",
+       "text": "If the alert appears on ground with the cargo door open",
+       "children": [
+        {
+         "kind": "action",
+         "text": "Do not initiate an AGENT DISCHARGE; ask the ground crew to investigate and eliminate the smoke source",
+         "applies_to": [
+          "all"
+         ],
+         "refs": [
+          {
+           "book": "FCTM",
+           "code": "PR-AEP-SMOKE",
+           "page": "P 9/10",
+           "pdf": 506
+          }
+         ]
+        }
+       ],
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "FCTM",
+         "code": "PR-AEP-SMOKE",
+         "page": "P 9/10",
+         "pdf": 506
+        }
+       ]
+      }
+     ]
+    }
+   ]
+  }
+ ],
+ "procedures": [
+  {
+   "title": "SMOKE AFT CARGO SMOKE",
+   "source": "FCOM PRO-ABN-SMOKE (HS-TX)",
+   "lines": [
+    {
+     "kind": "land_asap",
+     "text": "LAND ASAP (red)",
+     "level": 0,
+     "applies_to": [
+      "all"
+     ],
+     "refs": [
+      {
+       "book": "FCOM",
+       "code": "PRO-ABN-SMOKE",
+       "page": "P 32/50",
+       "pdf": 3989
+      }
+     ]
+    },
+    {
+     "kind": "action",
+     "item": "AFT ISOL VALVE",
+     "setting": "OFF",
+     "text": "If AFT ISOL VALVE is not automatically closed.",
+     "level": 0,
+     "applies_to": [
+      "all"
+     ],
+     "refs": [
+      {
+       "book": "FCOM",
+       "code": "PRO-ABN-SMOKE",
+       "page": "P 32/50",
+       "pdf": 3989
+      }
+     ]
+    },
+    {
+     "kind": "action",
+     "item": "CAB FANS",
+     "setting": "OFF",
+     "text": "",
+     "level": 0,
+     "applies_to": [
+      "all"
+     ],
+     "refs": [
+      {
+       "book": "FCOM",
+       "code": "PRO-ABN-SMOKE",
+       "page": "P 32/50",
+       "pdf": 3989
+      }
+     ]
+    },
+    {
+     "kind": "condition",
+     "text": "On ground:",
+     "level": 0,
+     "applies_to": [
+      "all"
+     ],
+     "refs": [
+      {
+       "book": "FCOM",
+       "code": "PRO-ABN-SMOKE",
+       "page": "P 32/50",
+       "pdf": 3989
+      }
+     ]
+    },
+    {
+     "kind": "condition",
+     "text": "IF AFT CRG CLOSED:",
+     "level": 1,
+     "applies_to": [
+      "all"
+     ],
+     "refs": [
+      {
+       "book": "FCOM",
+       "code": "PRO-ABN-SMOKE",
+       "page": "P 32/50",
+       "pdf": 3989
+      }
+     ]
+    },
+    {
+     "kind": "info",
+     "text": "Order the ground crew not to open the door of the affected cargo compartment, unless the passengers have disembarked and fire services are present. Also ensure that the cargo door is closed before discharging the extinguishing agent.",
+     "level": 2,
+     "applies_to": [
+      "all"
+     ],
+     "refs": [
+      {
+       "book": "FCOM",
+       "code": "PRO-ABN-SMOKE",
+       "page": "P 32/50",
+       "pdf": 3989
+      }
+     ]
+    },
+    {
+     "kind": "action",
+     "item": "AGENT 1",
+     "setting": "DISCH",
+     "text": "",
+     "level": 2,
+     "applies_to": [
+      "all"
+     ],
+     "refs": [
+      {
+       "book": "FCOM",
+       "code": "PRO-ABN-SMOKE",
+       "page": "P 32/50",
+       "pdf": 3989
+      }
+     ]
+    },
+    {
+     "kind": "condition",
+     "text": "AFT 60MIN:",
+     "level": 2,
+     "applies_to": [
+      "all"
+     ],
+     "refs": [
+      {
+       "book": "FCOM",
+       "code": "PRO-ABN-SMOKE",
+       "page": "P 32/50",
+       "pdf": 3989
+      }
+     ]
+    },
+    {
+     "kind": "action",
+     "item": "AGENT 2",
+     "setting": "DISCH",
+     "text": "",
+     "level": 3,
+     "applies_to": [
+      "all"
+     ],
+     "refs": [
+      {
+       "book": "FCOM",
+       "code": "PRO-ABN-SMOKE",
+       "page": "P 32/50",
+       "pdf": 3989
+      }
+     ]
+    },
+    {
+     "kind": "note",
+     "text": "Expect the SMOKE AFT CARGO SMOKE alert to remain after agent discharge, even if the smoke source is extinguished. Gases from the smoke source still remain, and smoke detectors are also sensitive to the extinguishing agent.",
+     "level": 3,
+     "applies_to": [
+      "all"
+     ],
+     "refs": [
+      {
+       "book": "FCOM",
+       "code": "PRO-ABN-SMOKE",
+       "page": "P 32/50",
+       "pdf": 3989
+      }
+     ]
+    },
+    {
+     "kind": "condition",
+     "text": "BEFORE OPEN CRG DOORS:",
+     "level": 2,
+     "applies_to": [
+      "all"
+     ],
+     "refs": [
+      {
+       "book": "FCOM",
+       "code": "PRO-ABN-SMOKE",
+       "page": "P 32/50",
+       "pdf": 3989
+      }
+     ]
+    },
+    {
+     "kind": "action",
+     "item": "PAX",
+     "setting": "DISEMBARK",
+     "text": "",
+     "level": 3,
+     "applies_to": [
+      "all"
+     ],
+     "refs": [
+      {
+       "book": "FCOM",
+       "code": "PRO-ABN-SMOKE",
+       "page": "P 32/50",
+       "pdf": 3989
+      }
+     ]
+    },
+    {
+     "kind": "condition",
+     "text": "In flight:",
+     "level": 0,
+     "applies_to": [
+      "all"
+     ],
+     "refs": [
+      {
+       "book": "FCOM",
+       "code": "PRO-ABN-SMOKE",
+       "page": "P 32/50",
+       "pdf": 3989
+      }
+     ]
+    },
+    {
+     "kind": "action",
+     "item": "AGENT 1",
+     "setting": "DISCH",
+     "text": "",
+     "level": 1,
+     "applies_to": [
+      "all"
+     ],
+     "refs": [
+      {
+       "book": "FCOM",
+       "code": "PRO-ABN-SMOKE",
+       "page": "P 32/50",
+       "pdf": 3989
+      }
+     ]
+    },
+    {
+     "kind": "condition",
+     "text": "AFT 60MIN:",
+     "level": 1,
+     "applies_to": [
+      "all"
+     ],
+     "refs": [
+      {
+       "book": "FCOM",
+       "code": "PRO-ABN-SMOKE",
+       "page": "P 32/50",
+       "pdf": 3989
+      }
+     ]
+    },
+    {
+     "kind": "action",
+     "item": "AGENT 2",
+     "setting": "DISCH",
+     "text": "",
+     "level": 2,
+     "applies_to": [
+      "all"
+     ],
+     "refs": [
+      {
+       "book": "FCOM",
+       "code": "PRO-ABN-SMOKE",
+       "page": "P 32/50",
+       "pdf": 3989
+      }
+     ]
+    },
+    {
+     "kind": "note",
+     "text": "Expect the SMOKE AFT CARGO SMOKE alert to remain after agent discharge, even if the smoke source is extinguished. Gases from the smoke source still remain, and smoke detectors are also sensitive to the extinguishing agent.",
+     "level": 2,
+     "applies_to": [
+      "all"
+     ],
+     "refs": [
+      {
+       "book": "FCOM",
+       "code": "PRO-ABN-SMOKE",
+       "page": "P 32/50",
+       "pdf": 3989
+      }
+     ]
+    },
+    {
+     "kind": "condition",
+     "text": "WHEN ON GROUND BEFORE OPEN CRG DOORS:",
+     "level": 1,
+     "applies_to": [
+      "all"
+     ],
+     "refs": [
+      {
+       "book": "FCOM",
+       "code": "PRO-ABN-SMOKE",
+       "page": "P 32/50",
+       "pdf": 3989
+      }
+     ]
+    },
+    {
+     "kind": "action",
+     "item": "PAX",
+     "setting": "DISEMBARK",
+     "text": "",
+     "level": 2,
+     "applies_to": [
+      "all"
+     ],
+     "refs": [
+      {
+       "book": "FCOM",
+       "code": "PRO-ABN-SMOKE",
+       "page": "P 32/50",
+       "pdf": 3989
+      }
+     ]
+    },
+    {
+     "kind": "note",
+     "text": "On ground, the warning may be triggered due to a high level of humidity or insecticide spraying. If the smoke is not visually confirmed and the warning is no more displayed: deactivate the smoke detection system (SDCU C/Bs), reset the cargo ventilation system (AIR COND/AFT CARGO/VENT/CTL & MONG C/B), and at cargo doors closure reactivate SDCU 1 and 2.",
+     "level": 0,
+     "applies_to": [
+      "all"
+     ],
+     "refs": [
+      {
+       "book": "FCOM",
+       "code": "PRO-ABN-SMOKE",
+       "page": "P 33/50",
+       "pdf": 3990
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "title": "SMOKE DISCH AGENT 2",
+   "source": "FCOM PRO-ABN-SMOKE (HS-TX)",
+   "lines": [
+    {
+     "kind": "info",
+     "text": "This alert triggers 60 minutes after discharging the first extinguisher bottle in case the SMOKE FWD(AFT) CARGO SMOKE alerts are not triggered.",
+     "level": 0,
+     "applies_to": [
+      "all"
+     ],
+     "refs": [
+      {
+       "book": "FCOM",
+       "code": "PRO-ABN-SMOKE",
+       "page": "P 38/50",
+       "pdf": 3995
+      }
+     ]
+    },
+    {
+     "kind": "action",
+     "item": "AGENT 2",
+     "setting": "DISCH",
+     "text": "",
+     "level": 0,
+     "applies_to": [
+      "all"
+     ],
+     "refs": [
+      {
+       "book": "FCOM",
+       "code": "PRO-ABN-SMOKE",
+       "page": "P 38/50",
+       "pdf": 3995
+      }
+     ]
+    }
+   ]
+  }
+ ],
+ "status": {
+  "limitations": [],
+  "info": [
+   {
+    "text": "In flight: WHEN ON GROUND BEFORE OPEN CRG DOORS: PAX …… DISEMBARK",
+    "applies_to": [
+     "all"
+    ],
+    "refs": [
+     {
+      "book": "FCOM",
+      "code": "PRO-ABN-SMOKE",
+      "page": "P 33/50",
+      "pdf": 3990
+     }
+    ]
+   },
+   {
+    "text": "On ground: BEFORE OPEN CRG DOORS: PAX …… DISEMBARK",
+    "applies_to": [
+     "all"
+    ],
+    "refs": [
+     {
+      "book": "FCOM",
+      "code": "PRO-ABN-SMOKE",
+      "page": "P 33/50",
+      "pdf": 3990
+     }
+    ]
+   }
+  ],
+  "appr_proc": [],
+  "inop_sys": [
+   {
+    "text": "L+R CAB FAN",
+    "applies_to": [
+     "all"
+    ],
+    "refs": [
+     {
+      "book": "FCOM",
+      "code": "PRO-ABN-SMOKE",
+      "page": "P 33/50",
+      "pdf": 3990
+     }
+    ]
+   },
+   {
+    "text": "AFT CRG VENT",
+    "applies_to": [
+     "all"
+    ],
+    "refs": [
+     {
+      "book": "FCOM",
+      "code": "PRO-ABN-SMOKE",
+      "page": "P 33/50",
+      "pdf": 3990
+     }
+    ]
+   },
+   {
+    "text": "AFT CRG HEAT",
+    "applies_to": [
+     "all"
+    ],
+    "refs": [
+     {
+      "book": "FCOM",
+      "code": "PRO-ABN-SMOKE",
+      "page": "P 33/50",
+      "pdf": 3990
+     }
+    ]
+   }
+  ]
+ },
+ "background": [
+  {
+   "text": "The cargo compartments are designed to be air-tight and fireproof to contain a fire, and the cargo ventilation prevents cargo smoke from reaching the cockpit/cabin. The crew can only confirm the alert with the SMOKE light on the CARGO SMOKE panel.",
+   "applies_to": [
+    "all"
+   ],
+   "refs": [
+    {
+     "book": "FCTM",
+     "code": "PR-AEP-SMOKE",
+     "page": "P 9/10",
+     "pdf": 506
+    }
+   ]
+  },
+  {
+   "text": "The aft compartment has four smoke detectors on two loops. The warning needs both detectors of a cavity (or one, if the other is inoperative). The isolation valves close and the extraction fan stops automatically.",
+   "applies_to": [
+    "all"
+   ],
+   "refs": [
+    {
+     "book": "FCOM",
+     "code": "DSC-26-50-10",
+     "page": "P 3/8",
+     "pdf": 1546
+    }
+   ]
+  },
+  {
+   "text": "The DISCH pb fires the squibs of the fire bottles: bottle 1 discharges in about 60 s; a flow metering system controls bottle 2 for at least 135 min. BTL 1(2) light amber when empty.",
+   "applies_to": [
+    "all"
+   ],
+   "refs": [
+    {
+     "book": "FCOM",
+     "code": "DSC-26-50-10",
+     "page": "P 5/8",
+     "pdf": 1548
+    }
+   ]
+  },
+  {
+   "text": "The DISCH sw is guarded. The DISCH AGENT 2 light comes on amber 60 min after AGENT 1 and goes off when the AGENT 2 squib is ignited.",
+   "applies_to": [
+    "all"
+   ],
+   "refs": [
+    {
+     "book": "FCOM",
+     "code": "DSC-26-50-20",
+     "page": "P 3/4",
+     "pdf": 1554
+    }
+   ]
+  }
+ ],
+ "technique": [
+  {
+   "text": "An immediate diversion should be considered as soon as smoke/fumes are detected. If the source is not immediately obvious, accessible and extinguishable, divert without delay.",
+   "applies_to": [
+    "all"
+   ],
+   "refs": [
+    {
+     "book": "FCTM",
+     "code": "PR-AEP-SMOKE",
+     "page": "P 1/10",
+     "pdf": 498
+    }
+   ]
+  },
+  {
+   "text": "Guarded controls are crosschecked by both pilots before acting in flight.",
+   "applies_to": [
+    "all"
+   ],
+   "refs": [
+    {
+     "book": "FCTM",
+     "code": "AOP-30-20",
+     "page": "P 1/2",
+     "pdf": 80
+    },
+    {
+     "book": "PDP",
+     "code": "Management of abnormal operations",
+     "page": "XFTDN6ECAM00001",
+     "pdf": 432
+    }
+   ]
+  },
+  {
+   "text": "If smoke/fumes become perceptible in the cockpit or cabin, or any doubt exists about the smoke origin, apply the [QRH] SMOKE / FUMES / AVNCS SMOKE procedure.",
+   "applies_to": [
+    "all"
+   ],
+   "refs": [
+    {
+     "book": "FCTM",
+     "code": "PR-AEP-SMOKE",
+     "page": "P 1/10",
+     "pdf": 498
+    },
+    {
+     "book": "PDP",
+     "code": "Smoke",
+     "page": "XFTDA1SMOKE0001",
+     "pdf": 535
+    }
+   ]
+  }
+ ],
+ "related": [
+  {
+   "title": "[QRH] SMOKE / FUMES / AVNCS SMOKE",
+   "why": "If any doubt exists about the smoke origin, or smoke/fumes are perceptible.",
+   "key_actions": [
+    "LAND ASAP; immediate actions",
+    "Diversion and descent to FL 100 / MEA-MORA if the source is not isolated",
+    "Boxed items at any time: REMOVAL OF SMOKE / FUMES, ELEC EMER CONFIG, immediate landing"
+   ],
+   "refs": [
+    {
+     "book": "FCTM",
+     "code": "PR-AEP-SMOKE",
+     "page": "P 3/10",
+     "pdf": 500
+    },
+    {
+     "book": "PDP",
+     "code": "Smoke",
+     "page": "XFTDA1SMOKE0001",
+     "pdf": 535
+    },
+    {
+     "book": "PDP",
+     "code": "Smoke",
+     "page": "XFTDA1SMOKE0001",
+     "pdf": 538
+    }
+   ]
+  },
+  {
+   "title": "SMOKE DISCH AGENT 2",
+   "why": "Reminder 60 min after AGENT 1 when the cargo smoke alert has stopped.",
+   "key_actions": [
+    "AGENT 2 DISCH"
+   ],
+   "refs": [
+    {
+     "book": "FCOM",
+     "code": "PRO-ABN-SMOKE",
+     "page": "P 38/50",
+     "pdf": 3995
+    }
+   ]
+  }
+ ],
+ "gaps": [
+  {
+   "text": "\"AFT/BULK CRG SMOKE\" is not an HS-TX alert title; the THA FCOM gives SMOKE AFT CARGO SMOKE for all HS-TX.",
+   "applies_to": [
+    "all"
+   ],
+   "refs": [
+    {
+     "book": "FCOM",
+     "code": "PRO-ABN-SMOKE",
+     "page": "P 31/50",
+     "pdf": 3988
+    }
+   ]
+  },
+  {
+   "text": "The procedure does not call for an evacuation; it requires PAX DISEMBARK before opening the cargo doors.",
+   "applies_to": [
+    "all"
+   ],
+   "refs": [
+    {
+     "book": "FCOM",
+     "code": "PRO-ABN-SMOKE",
+     "page": "P 32/50",
+     "pdf": 3989
+    }
+   ]
+  },
+  {
+   "text": "FCOM note 1 (recovering aft cargo ventilation for livestock) applies only to aircraft with the AFT cargo ventilation option and is not used here.",
+   "applies_to": [
+    "all"
+   ],
+   "refs": [
+    {
+     "book": "FCOM",
+     "code": "PRO-ABN-SMOKE",
+     "page": "P 32/50",
+     "pdf": 3989
+    }
+   ]
+  },
+  {
+   "text": "No PDP module covers cargo smoke; the flow uses the generic ECAM handling.",
+   "applies_to": [
+    "all"
+   ],
+   "refs": [
+    {
+     "book": "PDP",
+     "code": "Management of abnormal operations",
+     "page": "XFTDN6ECAM00001",
+     "pdf": 424
+    }
+   ]
+  },
+  {
+   "text": "The HS-TO version (FCOM P 34–36/50) is not used.",
+   "applies_to": [
+    "all"
+   ],
+   "refs": [
+    {
+     "book": "FCOM",
+     "code": "PRO-ABN-SMOKE",
+     "page": "P 31/50",
+     "pdf": 3988
+    }
+   ]
+  }
+ ],
+ "sources": [
+  {
+   "book": "FCOM",
+   "section": "PRO-ABN-SMOKE — SMOKE AFT CARGO SMOKE, SMOKE DISCH AGENT 2 (HS-TX)",
+   "pages": "P 31–33/50, 38/50",
+   "pdf": "3988–3990, 3995",
+   "rev": "14 JUL 26"
+  },
+  {
+   "book": "FCTM",
+   "section": "PR-AEP-SMOKE — introduction, cargo smoke",
+   "pages": "P 1/10, 9/10",
+   "pdf": "498, 506",
+   "rev": "24 NOV 25"
+  },
+  {
+   "book": "FCOM",
+   "section": "DSC-26-50 — cargo smoke detection, extinguishing, panel",
+   "pages": "DSC-26-50-10 P 3/8, 5/8; DSC-26-50-20 P 3/4",
+   "pdf": "1546, 1548, 1554",
+   "rev": "18 FEB 26"
+  },
+  {
+   "book": "PDP",
+   "section": "Smoke (XFTDA1SMOKE0001)",
+   "pages": "SMOKE ECAM alerts",
+   "pdf": "535",
+   "rev": "JAN 2024"
+  },
+  {
+   "book": "FCTM",
+   "section": "AOP-20 / AOP-30 — task sharing and ECAM handling",
+   "pages": "AOP-20 P 1–2/10, AOP-30 P 1–6/6",
+   "pdf": "68–69, 79–86",
+   "rev": "26 MAY 26"
+  },
+  {
+   "book": "PDP",
+   "section": "Management of abnormal operations (XFTDN6ECAM00001)",
+   "pages": "ECAM actions, STATUS, QRH, confirm",
+   "pdf": "424–432",
+   "rev": "JAN 2024"
+  }
+ ],
+ "schema": "a320-ecam-abnormal/3",
+ "generated": "2026-10-14",
+ "qrh": [],
+ "tables": [],
+ "differences": []
+}

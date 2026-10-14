@@ -1,0 +1,642 @@
+session:
+  id: mftd-5
+  title: MFTD/FBS 5
+  focus: Abnormal and emergency procedure practice
+  effectivity: HS-TX
+  syllabus_ref: S1
+
+sources:
+  S1:
+    title: A320 Trainee A vs B Syllabus Comparison
+    path: sources/A320_Trainee_A_vs_B_Syllabus_Comparison.html
+    locator: MFTD/FBS 5 · exercise IDs e01–e17 and ordered A/B topics
+    applicability: syllabus
+  F1:
+    title: FCOM · Abnormal and emergency callouts
+    path: sources/A320FAM_FCOM_14JUL26_compressed.pdf
+    issue: 14 JUL 2026
+    effective: 07 SEP 2026
+    locator: PRO-ABN-ABN-00 p. 8/12 · PDF p. 2831
+    applicability: ALL
+  F2:
+    title: FCOM · ENG 1(2) START FAULT
+    path: sources/A320FAM_FCOM_14JUL26_compressed.pdf
+    issue: 14 JUL 2026
+    effective: 07 SEP 2026
+    locator: PRO-ABN-ENG pp. 186–188/226 · PDF pp. 3433–3435
+    applicability: HS-TX
+  F3:
+    title: FCOM · Automatic Engine Start
+    path: sources/A320FAM_FCOM_14JUL26_compressed.pdf
+    issue: 14 JUL 2026
+    effective: 07 SEP 2026
+    locator: PRO-NOR-SOP-08 pp. 1–2/6 · PDF pp. 4136–4137
+    applicability: HS-TX
+  F4:
+    title: FCOM · Manual Engine Start
+    path: sources/A320FAM_FCOM_14JUL26_compressed.pdf
+    issue: 14 JUL 2026
+    effective: 07 SEP 2026
+    locator: PRO-NOR-SUP-ENG pp. 6–8/18 · PDF pp. 4391–4393
+    applicability: HS-TX
+  F5:
+    title: FCOM · After Start SOP
+    path: sources/A320FAM_FCOM_14JUL26_compressed.pdf
+    issue: 14 JUL 2026
+    effective: 07 SEP 2026
+    locator: PRO-NOR-SOP-09 p. 1/12 · PDF p. 4142
+    applicability: ALL
+  F6:
+    title: FCOM · F/CTL SLATS FAULT/LOCKED · HS-TXA–O
+    path: sources/A320FAM_FCOM_14JUL26_compressed.pdf
+    issue: 14 JUL 2026
+    effective: 07 SEP 2026
+    locator: PRO-ABN-F_CTL pp. 99–101/132 · PDF pp. 3572–3574
+    applicability: HS-TX
+  F7:
+    title: FCOM · F/CTL SLATS FAULT/LOCKED · HS-TXP–U
+    path: sources/A320FAM_FCOM_14JUL26_compressed.pdf
+    issue: 14 JUL 2026
+    effective: 07 SEP 2026
+    locator: PRO-ABN-F_CTL pp. 102–104/132 · PDF pp. 3575–3577
+    applicability: HS-TX
+  F8:
+    title: FCOM · F/CTL FLAPS/SLATS FAULT/LOCKED · speed tables
+    path: sources/A320FAM_FCOM_14JUL26_compressed.pdf
+    issue: 14 JUL 2026
+    effective: 07 SEP 2026
+    locator: PRO-ABN-F_CTL p. 59/132 · PDF p. 3532
+    applicability: HS-TX
+  Q1:
+    title: QRH · Landing with Slats or Flaps Jammed
+    path: sources/A320FAM_QRH_14JUL26.pdf
+    issue: 14 JUL 2026
+    effective: 07 SEP 2026
+    locator: ABN-20 pp. 20.02B–D · PDF pp. 188–190
+    applicability: HS-TX
+  F9:
+    title: FCOM · SMOKE AFT CARGO SMOKE
+    path: sources/A320FAM_FCOM_14JUL26_compressed.pdf
+    issue: 14 JUL 2026
+    effective: 07 SEP 2026
+    locator: PRO-ABN-SMOKE pp. 31–33/50 · PDF pp. 3988–3990
+    applicability: HS-TX
+  F10:
+    title: FCOM · [QRH] EMER EVAC
+    path: sources/A320FAM_FCOM_14JUL26_compressed.pdf
+    issue: 14 JUL 2026
+    effective: 07 SEP 2026
+    locator: PRO-ABN-MISC p. 16/30 · PDF p. 3811
+    applicability: HS-TX
+  Q2:
+    title: QRH · EMER EVAC
+    path: sources/A320FAM_QRH_14JUL26.pdf
+    issue: 14 JUL 2026
+    effective: 07 SEP 2026
+    locator: C2 · PDF pp. 294–295
+    applicability: ALL
+  T1:
+    title: FCTM · EMER EVAC
+    path: sources/A320FAM_FCTM_14JUL26.pdf
+    issue: 14 JUL 2026
+    effective: 07 SEP 2026
+    locator: PR-AEP-MISC pp. 6–7/32 · PDF pp. 451–452
+    applicability: ALL
+  F11:
+    title: FCOM · ENG 1(2) FAIL
+    path: sources/A320FAM_FCOM_14JUL26_compressed.pdf
+    issue: 14 JUL 2026
+    effective: 07 SEP 2026
+    locator: PRO-ABN-ENG pp. 84–86/226 · PDF pp. 3331–3333
+    applicability: HS-TX
+  Q3:
+    title: QRH · ENG RELIGHT IN FLIGHT
+    path: sources/A320FAM_QRH_14JUL26.pdf
+    issue: 14 JUL 2026
+    effective: 07 SEP 2026
+    locator: ABN-19 pp. 19.06B–C · PDF pp. 175–176
+    applicability: HS-TX
+  F12:
+    title: FCOM · HYD Y RSVR LO LVL
+    path: sources/A320FAM_FCOM_14JUL26_compressed.pdf
+    issue: 14 JUL 2026
+    effective: 07 SEP 2026
+    locator: PRO-ABN-HYD pp. 33–35/76 · PDF pp. 3722–3724
+    applicability: ALL
+  F13:
+    title: FCOM · [MEM] LOSS OF BRAKING
+    path: sources/A320FAM_FCOM_14JUL26_compressed.pdf
+    issue: 14 JUL 2026
+    effective: 07 SEP 2026
+    locator: PRO-ABN-BRAKES p. 1/22 · PDF p. 3024
+    applicability: ALL
+  F14:
+    title: FCOM · Memory-item callout
+    path: sources/A320FAM_FCOM_14JUL26_compressed.pdf
+    issue: 14 JUL 2026
+    effective: 07 SEP 2026
+    locator: PRO-ABN-ABN-00 p. 10/12 · PDF p. 2833
+    applicability: ALL
+  F15:
+    title: FCOM · Initial Approach SOP
+    path: sources/A320FAM_FCOM_14JUL26_compressed.pdf
+    issue: 14 JUL 2026
+    effective: 07 SEP 2026
+    locator: PRO-NOR-SOP-18-B p. 1/12 · PDF p. 4224
+    applicability: ALL
+  F16:
+    title: FCOM · After Landing SOP
+    path: sources/A320FAM_FCOM_14JUL26_compressed.pdf
+    issue: 14 JUL 2026
+    effective: 07 SEP 2026
+    locator: PRO-NOR-SOP-21 p. 1/8 · PDF p. 4288
+    applicability: ALL
+  F17:
+    title: FCOM · Parking SOP
+    path: sources/A320FAM_FCOM_14JUL26_compressed.pdf
+    issue: 14 JUL 2026
+    effective: 07 SEP 2026
+    locator: PRO-NOR-SOP-22 p. 1/8 · PDF p. 4298
+    applicability: ALL
+  F18:
+    title: FCOM · Cruise SOP
+    path: sources/A320FAM_FCOM_14JUL26_compressed.pdf
+    issue: 14 JUL 2026
+    effective: 07 SEP 2026
+    locator: PRO-NOR-SOP-15 p. 1/4 · PDF p. 4198
+    applicability: ALL
+
+scenarios:
+  - id: hot-start-fault
+    trainee: A
+    title: Hot start · automatic start fault
+    manual_titles:
+      - FCOM · ENG 1(2) START FAULT
+      - FCOM · AUTOMATIC ENGINE START → MANUAL ENGINE START
+    exercise_ids: [mftd-5-e01]
+    refs: [S1]
+    layout: single
+    steps:
+      - kind: condition
+        text: 'On ground during automatic start: ENG 1(2) START FAULT — EGT OVERLIMIT:'
+        refs: [F2, F3]
+      - kind: callout
+        actor: PF
+        text: ECAM ACTION
+        refs: [F1, F2]
+      - kind: action
+        text: Monitor the FADEC automatic start abort and dry crank; ECAM displays AUTO CRANK IN PROGRESS.
+        refs: [F2]
+      - kind: condition
+        text: 'When dry crank is completed:'
+        refs: [F2]
+      - kind: action
+        procedure:
+          - {item: ENG MASTER (AFFECTED), setting: 'OFF'}
+        detail: Confirms automatic start abort.
+        refs: [F2]
+      - kind: action
+        text: After starter cooling, use Manual Engine Start for any new attempt, or report the no-start condition to maintenance.
+        refs: [F2, F4]
+      - kind: callout
+        actor: PM
+        text: ECAM ACTIONS COMPLETE
+        refs: [F1, F2]
+      - kind: resume
+        text: If a subsequent start succeeds, resume After Start SOP.
+        refs: [F4, F5]
+
+  - id: slats-fault-locked-below-one
+    trainee: Both
+    title: Slats fault or locked · slats below 1
+    manual_titles:
+      - FCOM · F/CTL SLATS FAULT/LOCKED
+      - FCOM · F/CTL FLAPS/SLATS FAULT/LOCKED
+      - QRH · LANDING WITH SLATS OR FLAPS JAMMED
+    exercise_ids: [mftd-5-e06]
+    refs: [S1]
+    layout: two-column
+    flow_break_at: 13
+    steps:
+      - kind: condition
+        text: 'F/CTL SLATS FAULT or SLATS LOCKED before extension; check actual slat position:'
+        refs: [F6, F7]
+      - kind: callout
+        actor: PF
+        text: ECAM ACTION
+        refs: [F1, F6, F7]
+      - kind: condition
+        text: 'If slats locked:'
+        refs: [F6, F7]
+      - kind: action
+        procedure:
+          - {item: MAX SPEED, setting: REFER}
+        detail: Use the HS-TX FCOM speed table for actual slat/flap position; limited to VFE for next slat position.
+        refs: [F6, F7, F8]
+      - kind: condition
+        text: 'If slats not locked, when speed is below VFE:'
+        refs: [F6, F7]
+      - kind: action
+        procedure:
+          - {item: FLAPS LEVER, setting: RECYCLE}
+        detail: Return to previous selection, then back to desired position.
+        refs: [F6, F7]
+      - kind: condition
+        text: 'HS-TXA–O, if slats are not at zero:'
+        refs: [F6]
+      - kind: action
+        branch_label: HS-TXA–O · slats not at zero
+        applies_to: &txao [HS-TXA, HS-TXB, HS-TXC, HS-TXD, HS-TXE, HS-TXF, HS-TXG, HS-TXH, HS-TXJ, HS-TXK, HS-TXL, HS-TXM, HS-TXN, HS-TXO]
+        procedure:
+          - {item: FUEL MODE SEL, setting: MAN}
+          - {item: CTR TK PUMPS, setting: AS RQRD}
+        detail: Set center pumps OFF when the center tank is empty or during approach.
+        refs: [F6]
+      - kind: condition
+        text: 'If slats extended:'
+        refs: [F6, F7]
+      - kind: caution
+        text: Fuel consumption increases and FMS fuel predictions are unreliable.
+        refs: [F6, F7, F8]
+      - kind: condition
+        text: 'If recovery is unsuccessful:'
+        refs: [F6, F7]
+      - kind: action
+        text: Apply QRH LANDING WITH SLATS OR FLAPS JAMMED; determine the landing flap lever position and landing distance.
+        refs: [F6, F7, Q1]
+      - kind: action
+        procedure:
+          - {item: LDG DIST PROC, setting: APPLY}
+          - {item: SPD SEL, setting: VFE NEXT − 5 kt}
+        detail: At VFE NEXT, select FLAPS lever one step down; repeat until landing configuration.
+        refs: [Q1]
+      - kind: condition
+        text: 'In landing configuration and final approach:'
+        refs: [Q1]
+      - kind: action
+        procedure:
+          - {item: SPEED, setting: CALCULATED VAPP}
+          - {item: AP BELOW 500 ft AGL, setting: DO NOT USE}
+        refs: [Q1]
+      - kind: callout
+        utterances:
+          - {speaker: PM, words: 'CLEAR FLIGHT CONTROLS ?'}
+          - {speaker: PF, words: CLEAR FLIGHT CONTROLS}
+        refs: [F1, F6, F7]
+      - kind: action
+        branch_label: HS-TXA–O · STATUS
+        applies_to: *txao
+        procedure:
+          - {item: S/F JAMMED PROC, setting: APPLY}
+          - {item: FOR LDG, setting: FLAP LVR 3}
+          - {item: CTR TK PUMPS, setting: 'OFF'}
+          - {item: GPWS LDG FLAP 3 (IN CONF 3), setting: 'ON'}
+          - {item: APPR SPD, setting: REFER}
+          - {item: LDG DIST PROC, setting: APPLY}
+        detail: Use the actual slat/flap position for the FCOM approach-speed table.
+        refs: [F6, F8]
+      - kind: action
+        branch_label: HS-TXP–U · STATUS
+        applies_to: [HS-TXP, HS-TXQ, HS-TXR, HS-TXS, HS-TXT, HS-TXU]
+        procedure:
+          - {item: S/F JAMMED PROC, setting: APPLY}
+          - {item: FOR LDG, setting: FLAP LVR 3}
+          - {item: GPWS LDG FLAP 3 (IN CONF 3), setting: 'ON'}
+          - {item: APPR SPD, setting: REFER}
+          - {item: LDG DIST PROC, setting: APPLY}
+        detail: Use the actual slat/flap position for the FCOM approach-speed table.
+        refs: [F7, F8]
+      - kind: callout
+        utterances:
+          - {speaker: PF, words: REMOVE STATUS}
+          - {speaker: PM, words: ECAM ACTIONS COMPLETE}
+        refs: [F1, F6, F7]
+      - kind: resume
+        text: Resume the applicable Initial Approach SOP with the jammed-slats landing configuration.
+        refs: [F15, Q1]
+
+  - id: aft-cargo-smoke
+    trainee: A
+    title: Aft cargo smoke
+    syllabus_title: AFT/BULK CRG SMOKE
+    manual_titles:
+      - FCOM · SMOKE AFT CARGO SMOKE
+    exercise_ids: [mftd-5-e10]
+    refs: [S1]
+    layout: two-column
+    flow_break_at: 10
+    steps:
+      - kind: condition
+        text: 'SMOKE AFT CARGO SMOKE in flight:'
+        refs: [F9]
+      - kind: callout
+        actor: PF
+        text: ECAM ACTION
+        refs: [F1, F9]
+      - kind: action
+        procedure:
+          - {item: LAND ASAP, setting: APPLY}
+        refs: [F9]
+      - kind: condition
+        text: 'If the aft isolation valve has not closed automatically:'
+        refs: [F9]
+      - kind: action
+        procedure:
+          - {item: AFT ISOL VALVE, setting: 'OFF'}
+        refs: [F9]
+      - kind: action
+        procedure:
+          - {item: CAB FANS, setting: 'OFF'}
+          - {item: AGENT 1, setting: DISCH}
+        refs: [F9]
+      - kind: condition
+        text: 'After 60 min:'
+        refs: [F9]
+      - kind: action
+        procedure:
+          - {item: AGENT 2, setting: DISCH}
+        refs: [F9]
+      - kind: caution
+        text: The smoke warning may remain after agent discharge even if the source is extinguished.
+        refs: [F9]
+      - kind: callout
+        utterances:
+          - {speaker: PM, words: 'CLEAR SMOKE ?'}
+          - {speaker: PF, words: CLEAR SMOKE}
+        refs: [F1, F9]
+      - kind: action
+        text: 'Review STATUS: before opening cargo doors on ground, passengers disembark.'
+        refs: [F9]
+      - kind: callout
+        utterances:
+          - {speaker: PF, words: REMOVE STATUS}
+          - {speaker: PM, words: ECAM ACTIONS COMPLETE}
+        refs: [F1, F9]
+      - kind: condition
+        text: 'On ground, before opening the affected cargo door:'
+        refs: [F9]
+      - kind: action
+        procedure:
+          - {item: PAX, setting: DISEMBARK}
+        detail: Keep the affected cargo door closed until passengers disembark and fire services are present.
+        refs: [F9]
+      - kind: resume
+        text: When the aircraft is secured, resume the applicable After Landing SOP and fire-service coordination.
+        refs: [F9, F16]
+
+  - id: emergency-evacuation
+    trainee: A
+    title: Emergency evacuation · decision and action
+    manual_titles:
+      - FCOM / QRH · EMER EVAC
+      - FCTM · EMER EVAC task sharing
+    exercise_ids: [mftd-5-e09, mftd-5-e13]
+    refs: [S1]
+    layout: two-column
+    flow_break_at: 9
+    steps:
+      - kind: condition
+        text: 'After landing, when considering an emergency evacuation:'
+        refs: [F10, Q2, T1]
+      - kind: callout
+        actor: Captain
+        text: I HAVE CONTROL
+        refs: [T1]
+      - kind: action
+        procedure:
+          - {item: AIRCRAFT / PARKING BRK, setting: STOP / ON, actor: F/O}
+          - {item: ATC (VHF1), setting: NOTIFY, actor: F/O}
+        detail: State the emergency and intentions.
+        refs: [F10, Q2, T1]
+      - kind: action
+        procedure:
+          - {item: CABIN CREW (PA), setting: ALERT, actor: Captain}
+        detail: Warn that evacuation may be required.
+        refs: [F10, Q2, T1]
+      - kind: condition
+        text: 'Only if MAN CAB PR was used:'
+        refs: [F10, Q2, T1]
+      - kind: action
+        procedure:
+          - {item: ΔP, setting: CHECK ZERO, actor: F/O}
+        refs: [F10, Q2, T1]
+      - kind: condition
+        text: 'If ΔP is not zero:'
+        refs: [F10, Q2]
+      - kind: action
+        procedure:
+          - {item: CAB PR MODE SEL, setting: MAN, actor: F/O}
+          - {item: V/S CTL, setting: FULL UP, actor: F/O}
+        refs: [F10, Q2]
+      - kind: action
+        procedure:
+          - {item: ALL ENG MASTERS, setting: 'OFF', actor: F/O}
+          - {item: ALL FIRE pb (ENGs & APU), setting: PUSH, actor: F/O}
+          - {item: ALL AGENTS (ENGs & APU), setting: AS RQRD, actor: F/O}
+        detail: Use agents when ENG FIRE or APU FIRE is displayed; Engine Agent 2 is unavailable.
+        refs: [F10, Q2, T1]
+      - kind: condition
+        text: 'Captain decides evacuation is required:'
+        refs: [F10, Q2, T1]
+      - kind: action
+        procedure:
+          - {item: EVACUATION, setting: INITIATE, actor: Captain}
+        detail: Order evacuation over PA, press EVAC COMMAND, and advise ATC if required.
+        refs: [F10, Q2, T1]
+      - kind: condition
+        text: 'If evacuation is not required:'
+        refs: [F10, Q2, T1]
+      - kind: action
+        procedure:
+          - {item: CABIN CREW AND PASSENGERS (PA), setting: NOTIFY, actor: Captain}
+        refs: [F10, Q2, T1]
+      - kind: resume
+        text: If evacuation was not initiated, resume the applicable Parking SOP; otherwise continue evacuation response.
+        refs: [F17, T1]
+
+  - id: engine-failure-successful-relight
+    trainee: B
+    title: Engine failure · successful in-flight relight
+    manual_titles:
+      - FCOM · ENG 1(2) FAIL
+      - QRH · ENG RELIGHT IN FLIGHT
+    exercise_ids: [mftd-5-e14, mftd-5-e15]
+    refs: [S1]
+    layout: two-column
+    flow_break_at: 8
+    steps:
+      - kind: condition
+        text: 'ENG 1(2) FAIL in flight, with no damage:'
+        refs: [F11]
+      - kind: callout
+        actor: PF
+        text: ECAM ACTION
+        refs: [F1, F11]
+      - kind: action
+        procedure:
+          - {item: LAND ASAP, setting: APPLY}
+          - {item: ENG MODE SEL, setting: IGN}
+          - {item: THR LEVER (AFFECTED ENGINE), setting: IDLE}
+        refs: [F11]
+      - kind: condition
+        text: 'If no engine relight after 30 s from alert:'
+        refs: [F11]
+      - kind: action
+        procedure:
+          - {item: ENG MASTER (AFFECTED ENGINE), setting: 'OFF'}
+        refs: [F11]
+      - kind: condition
+        text: 'If no damage and no relight:'
+        refs: [F11]
+      - kind: action
+        text: Check the QRH engine-relight envelope for current altitude and airspeed.
+        refs: [F11, Q3]
+      - kind: action
+        procedure:
+          - {item: ENG MASTER (AFFECTED ENGINE), setting: 'OFF'}
+          - {item: THR LEVER (AFFECTED ENGINE), setting: IDLE}
+          - {item: ENG MODE selector, setting: IGN}
+          - {item: X BLEED, setting: OPEN}
+        refs: [Q3]
+      - kind: condition
+        text: 'For starter-assisted relight:'
+        refs: [Q3]
+      - kind: action
+        procedure:
+          - {item: WING ANTI-ICE, setting: 'OFF'}
+        refs: [Q3]
+      - kind: action
+        procedure:
+          - {item: ENG MASTER (AFFECTED ENGINE), setting: 'ON'}
+          - {item: 'ENG PARAMETERS (N2, EGT)', setting: MONITOR}
+        detail: Light-up should occur within 30 s after fuel flow increases; automatic start abort is unavailable.
+        refs: [Q3]
+      - kind: condition
+        text: 'When idle is reached (ENG AVAIL):'
+        refs: [Q3]
+      - kind: action
+        procedure:
+          - {item: ENG MODE selector, setting: NORM}
+          - {item: TCAS MODE selector, setting: TA/RA}
+          - {item: X BLEED, setting: AUTO}
+          - {item: Affected SYS, setting: RESTORE}
+        refs: [Q3]
+      - kind: callout
+        actor: PM
+        text: ECAM ACTIONS COMPLETE
+        refs: [F1, F11, Q3]
+      - kind: resume
+        text: Resume the applicable Cruise or Initial Approach SOP; monitor the engine and flight path.
+        refs: [F18, F15]
+
+  - id: yellow-hydraulic-reservoir-low-level
+    trainee: B
+    title: Yellow hydraulic reservoir low level
+    manual_titles:
+      - FCOM · HYD Y RSVR LO LVL
+    exercise_ids: [mftd-5-e16]
+    refs: [S1]
+    layout: single
+    steps:
+      - kind: condition
+        text: 'HYD Y RSVR LO LVL:'
+        refs: [F12]
+      - kind: callout
+        actor: PF
+        text: ECAM ACTION
+        refs: [F1, F12]
+      - kind: action
+        procedure:
+          - {item: PTU, setting: 'OFF'}
+          - {item: YELLOW ENG 2 PUMP, setting: 'OFF'}
+          - {item: YELLOW ELEC PUMP, setting: 'OFF'}
+          - {item: BRK Y ACCU PR, setting: MONITOR}
+        refs: [F12]
+      - kind: condition
+        text: 'If yellow brake accumulator pressure is lost:'
+        refs: [F12]
+      - kind: caution
+        text: Only green-pressure normal braking remains; do not use the unavailable parking brake. Chocks must be in place before engine 1 shutdown.
+        refs: [F12, F17]
+      - kind: callout
+        utterances:
+          - {speaker: PM, words: 'CLEAR HYDRAULIC ?'}
+          - {speaker: PF, words: CLEAR HYDRAULIC}
+        refs: [F1, F12]
+      - kind: action
+        text: 'Review STATUS: apply landing distance procedure; note YELLOW HYD, spoilers 2 + 4, nosewheel steering, and reverser 2 inoperative.'
+        refs: [F12]
+      - kind: callout
+        utterances:
+          - {speaker: PF, words: REMOVE STATUS}
+          - {speaker: PM, words: ECAM ACTIONS COMPLETE}
+        refs: [F1, F12]
+      - kind: resume
+        text: Resume Initial Approach SOP with the applicable landing distance and braking plan.
+        refs: [F12, F15]
+
+  - id: loss-of-braking
+    trainee: B
+    title: Loss of braking
+    manual_titles:
+      - FCOM · [MEM] LOSS OF BRAKING
+    exercise_ids: [mftd-5-e17]
+    refs: [S1]
+    layout: single
+    steps:
+      - kind: condition
+        text: 'If no braking:'
+        refs: [F13]
+      - kind: callout
+        actor: Crew
+        text: LOSS OF BRAKING
+        refs: [F14]
+      - kind: action
+        procedure:
+          - {item: REV, setting: MAX}
+          - {item: BRAKE PEDALS, setting: RELEASE, actor: PF}
+        refs: [F13]
+      - kind: callout
+        actor: PF
+        text: A/SKID OFF
+        refs: [F13]
+      - kind: action
+        procedure:
+          - {item: A/SKID & N/W STRG, setting: 'OFF', actor: PM}
+          - {item: BRAKE PEDALS, setting: PRESS}
+          - {item: MAX BRK PR, setting: 1 000 PSI}
+        refs: [F13]
+      - kind: condition
+        text: 'If still no braking:'
+        refs: [F13]
+      - kind: action
+        procedure:
+          - {item: PARK BRAKE, setting: USE}
+        detail: Use short successive applications until stopped.
+        refs: [F13]
+      - kind: resume
+        text: When stopped and runway vacated, resume After Landing SOP.
+        refs: [F16]
+
+excluded_items: [mftd-5-e02, mftd-5-e03, mftd-5-e04, mftd-5-e05, mftd-5-e07, mftd-5-e08, mftd-5-e11, mftd-5-e12]
+
+# Ordered topic numbers are from each trainee's list in S1; none says "if applicable".
+# This audit is deliberately absent from the practice PDF.
+syllabus_audit:
+  - {id: mftd-5-e01, trainee: A, a_topics: [2], b_topics: [], title: 'START FAULT, hot start', if_applicable: false}
+  - {id: mftd-5-e02, trainee: Both, a_topics: [5], b_topics: [3], title: 'Take-off - instrument', if_applicable: false}
+  - {id: mftd-5-e03, trainee: Both, a_topics: [8, 12], b_topics: [6, 10], title: 'Approach - 2D LOC, down to MDH/A, using LOC/FPA', if_applicable: false}
+  - {id: mftd-5-e04, trainee: Both, a_topics: [9], b_topics: [7], title: 'Go-around during instrument approach', if_applicable: false}
+  - {id: mftd-5-e05, trainee: A, a_topics: [10], b_topics: [], title: 'Holding procedures for LOC/DME approach', if_applicable: false}
+  - {id: mftd-5-e06, trainee: Both, a_topics: [11], b_topics: [8], title: 'SLATS FAULT/LOCKED before extension, SLATS <1', if_applicable: false}
+  - {id: mftd-5-e07, trainee: Both, a_topics: [13], b_topics: [11], title: 'Go-around during instrument approach at 500 ft AGL', if_applicable: false}
+  - {id: mftd-5-e08, trainee: Both, a_topics: [14], b_topics: [12], title: 'Holding procedures; restore malfunction after missed approach altitude', if_applicable: false}
+  - {id: mftd-5-e09, trainee: A, a_topics: [15], b_topics: [], title: 'Emergency evacuation procedure review', if_applicable: false}
+  - {id: mftd-5-e10, trainee: A, a_topics: [16], b_topics: [], title: 'AFT/BULK CRG SMOKE', if_applicable: false}
+  - {id: mftd-5-e11, trainee: Both, a_topics: [17], b_topics: [17], title: 'Approach - ILS, with AP', if_applicable: false}
+  - {id: mftd-5-e12, trainee: Both, a_topics: [18], b_topics: [18], title: 'Landing - normal, autoland', if_applicable: false}
+  - {id: mftd-5-e13, trainee: A, a_topics: [19], b_topics: [], title: 'Emergency evacuation', if_applicable: false}
+  - {id: mftd-5-e14, trainee: B, a_topics: [], b_topics: [13], title: 'ENG 1(2) FAIL, no damage', if_applicable: false}
+  - {id: mftd-5-e15, trainee: B, a_topics: [], b_topics: [14], title: 'Engine relight in flight, successful relight', if_applicable: false}
+  - {id: mftd-5-e16, trainee: B, a_topics: [], b_topics: [16], title: 'HYD Y RSVR LO LVL', if_applicable: false}
+  - {id: mftd-5-e17, trainee: B, a_topics: [], b_topics: [19], title: 'LOSS OF BRAKING, discuss', if_applicable: false}

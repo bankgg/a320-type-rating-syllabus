@@ -1,0 +1,882 @@
+{
+  "schemaVersion": 2,
+  "generatedAt": "2026-10-14T04:32:38.787845+00:00",
+  "title": "Design System: A320 SIM syllabus",
+  "extensions": {
+    "colorMeta": {
+      "canvas": {
+        "role": "neutral",
+        "displayName": "Canvas",
+        "tonalRamp": [
+          "oklch(15% 0.0000 89.9)",
+          "oklch(27% 0.0000 89.9)",
+          "oklch(39% 0.0000 89.9)",
+          "oklch(51% 0.0000 89.9)",
+          "oklch(63% 0.0000 89.9)",
+          "oklch(75% 0.0000 89.9)",
+          "oklch(87% 0.0000 89.9)",
+          "oklch(95% 0.0000 89.9)"
+        ]
+      },
+      "surface": {
+        "role": "neutral",
+        "displayName": "Surface",
+        "tonalRamp": [
+          "oklch(15% 0.0062 255.5)",
+          "oklch(27% 0.0062 255.5)",
+          "oklch(39% 0.0062 255.5)",
+          "oklch(51% 0.0062 255.5)",
+          "oklch(63% 0.0062 255.5)",
+          "oklch(75% 0.0062 255.5)",
+          "oklch(87% 0.0062 255.5)",
+          "oklch(95% 0.0062 255.5)"
+        ]
+      },
+      "page": {
+        "role": "neutral",
+        "displayName": "Page",
+        "tonalRamp": [
+          "oklch(15% 0.0045 258.3)",
+          "oklch(27% 0.0045 258.3)",
+          "oklch(39% 0.0045 258.3)",
+          "oklch(51% 0.0045 258.3)",
+          "oklch(63% 0.0045 258.3)",
+          "oklch(75% 0.0045 258.3)",
+          "oklch(87% 0.0045 258.3)",
+          "oklch(95% 0.0045 258.3)"
+        ]
+      },
+      "ink": {
+        "role": "neutral",
+        "displayName": "Ink",
+        "tonalRamp": [
+          "oklch(15% 0.0312 252.8)",
+          "oklch(27% 0.0312 252.8)",
+          "oklch(39% 0.0312 252.8)",
+          "oklch(51% 0.0312 252.8)",
+          "oklch(63% 0.0312 252.8)",
+          "oklch(75% 0.0312 252.8)",
+          "oklch(87% 0.0312 252.8)",
+          "oklch(95% 0.0312 252.8)"
+        ]
+      },
+      "muted": {
+        "role": "neutral",
+        "displayName": "Muted",
+        "tonalRamp": [
+          "oklch(15% 0.0317 250.2)",
+          "oklch(27% 0.0317 250.2)",
+          "oklch(39% 0.0317 250.2)",
+          "oklch(51% 0.0317 250.2)",
+          "oklch(63% 0.0317 250.2)",
+          "oklch(75% 0.0317 250.2)",
+          "oklch(87% 0.0317 250.2)",
+          "oklch(95% 0.0317 250.2)"
+        ]
+      },
+      "line": {
+        "role": "neutral",
+        "displayName": "Line",
+        "tonalRamp": [
+          "oklch(15% 0.0104 247.9)",
+          "oklch(27% 0.0104 247.9)",
+          "oklch(39% 0.0104 247.9)",
+          "oklch(51% 0.0104 247.9)",
+          "oklch(63% 0.0104 247.9)",
+          "oklch(75% 0.0104 247.9)",
+          "oklch(87% 0.0104 247.9)",
+          "oklch(95% 0.0104 247.9)"
+        ]
+      },
+      "blue": {
+        "role": "primary",
+        "displayName": "Blue",
+        "tonalRamp": [
+          "oklch(15% 0.1955 260.9)",
+          "oklch(27% 0.1955 260.9)",
+          "oklch(39% 0.1955 260.9)",
+          "oklch(51% 0.1955 260.9)",
+          "oklch(63% 0.1955 260.9)",
+          "oklch(75% 0.1955 260.9)",
+          "oklch(87% 0.1955 260.9)",
+          "oklch(95% 0.1955 260.9)"
+        ]
+      },
+      "blue-hover": {
+        "role": "primary",
+        "displayName": "Blue hover",
+        "tonalRamp": [
+          "oklch(15% 0.1562 260.7)",
+          "oklch(27% 0.1562 260.7)",
+          "oklch(39% 0.1562 260.7)",
+          "oklch(51% 0.1562 260.7)",
+          "oklch(63% 0.1562 260.7)",
+          "oklch(75% 0.1562 260.7)",
+          "oklch(87% 0.1562 260.7)",
+          "oklch(95% 0.1562 260.7)"
+        ]
+      },
+      "blue-soft": {
+        "role": "primary",
+        "displayName": "Blue soft",
+        "tonalRamp": [
+          "oklch(15% 0.0173 264.5)",
+          "oklch(27% 0.0173 264.5)",
+          "oklch(39% 0.0173 264.5)",
+          "oklch(51% 0.0173 264.5)",
+          "oklch(63% 0.0173 264.5)",
+          "oklch(75% 0.0173 264.5)",
+          "oklch(87% 0.0173 264.5)",
+          "oklch(95% 0.0173 264.5)"
+        ]
+      },
+      "navy": {
+        "role": "primary",
+        "displayName": "Navy",
+        "tonalRamp": [
+          "oklch(15% 0.0514 242.2)",
+          "oklch(27% 0.0514 242.2)",
+          "oklch(39% 0.0514 242.2)",
+          "oklch(51% 0.0514 242.2)",
+          "oklch(63% 0.0514 242.2)",
+          "oklch(75% 0.0514 242.2)",
+          "oklch(87% 0.0514 242.2)",
+          "oklch(95% 0.0514 242.2)"
+        ]
+      },
+      "trainee-a": {
+        "role": "secondary",
+        "displayName": "Trainee a",
+        "tonalRamp": [
+          "oklch(15% 0.0704 182.9)",
+          "oklch(27% 0.0704 182.9)",
+          "oklch(39% 0.0704 182.9)",
+          "oklch(51% 0.0704 182.9)",
+          "oklch(63% 0.0704 182.9)",
+          "oklch(75% 0.0704 182.9)",
+          "oklch(87% 0.0704 182.9)",
+          "oklch(95% 0.0704 182.9)"
+        ]
+      },
+      "trainee-b": {
+        "role": "secondary",
+        "displayName": "Trainee b",
+        "tonalRamp": [
+          "oklch(15% 0.1479 263.2)",
+          "oklch(27% 0.1479 263.2)",
+          "oklch(39% 0.1479 263.2)",
+          "oklch(51% 0.1479 263.2)",
+          "oklch(63% 0.1479 263.2)",
+          "oklch(75% 0.1479 263.2)",
+          "oklch(87% 0.1479 263.2)",
+          "oklch(95% 0.1479 263.2)"
+        ]
+      },
+      "difference": {
+        "role": "tertiary",
+        "displayName": "Difference",
+        "tonalRamp": [
+          "oklch(15% 0.0173 264.5)",
+          "oklch(27% 0.0173 264.5)",
+          "oklch(39% 0.0173 264.5)",
+          "oklch(51% 0.0173 264.5)",
+          "oklch(63% 0.0173 264.5)",
+          "oklch(75% 0.0173 264.5)",
+          "oklch(87% 0.0173 264.5)",
+          "oklch(95% 0.0173 264.5)"
+        ]
+      },
+      "conditional": {
+        "role": "tertiary",
+        "displayName": "Conditional",
+        "tonalRamp": [
+          "oklch(15% 0.0944 75.5)",
+          "oklch(27% 0.0944 75.5)",
+          "oklch(39% 0.0944 75.5)",
+          "oklch(51% 0.0944 75.5)",
+          "oklch(63% 0.0944 75.5)",
+          "oklch(75% 0.0944 75.5)",
+          "oklch(87% 0.0944 75.5)",
+          "oklch(95% 0.0944 75.5)"
+        ]
+      },
+      "failure": {
+        "role": "tertiary",
+        "displayName": "Failure",
+        "tonalRamp": [
+          "oklch(15% 0.1376 43.0)",
+          "oklch(27% 0.1376 43.0)",
+          "oklch(39% 0.1376 43.0)",
+          "oklch(51% 0.1376 43.0)",
+          "oklch(63% 0.1376 43.0)",
+          "oklch(75% 0.1376 43.0)",
+          "oklch(87% 0.1376 43.0)",
+          "oklch(95% 0.1376 43.0)"
+        ]
+      },
+      "failure-soft": {
+        "role": "tertiary",
+        "displayName": "Failure soft",
+        "tonalRamp": [
+          "oklch(15% 0.0205 67.6)",
+          "oklch(27% 0.0205 67.6)",
+          "oklch(39% 0.0205 67.6)",
+          "oklch(51% 0.0205 67.6)",
+          "oklch(63% 0.0205 67.6)",
+          "oklch(75% 0.0205 67.6)",
+          "oklch(87% 0.0205 67.6)",
+          "oklch(95% 0.0205 67.6)"
+        ]
+      },
+      "failure-line": {
+        "role": "tertiary",
+        "displayName": "Failure line",
+        "tonalRamp": [
+          "oklch(15% 0.1088 58.9)",
+          "oklch(27% 0.1088 58.9)",
+          "oklch(39% 0.1088 58.9)",
+          "oklch(51% 0.1088 58.9)",
+          "oklch(63% 0.1088 58.9)",
+          "oklch(75% 0.1088 58.9)",
+          "oklch(87% 0.1088 58.9)",
+          "oklch(95% 0.1088 58.9)"
+        ]
+      },
+      "header": {
+        "role": "neutral",
+        "displayName": "Header",
+        "tonalRamp": [
+          "oklch(15% 0.0126 255.5)",
+          "oklch(27% 0.0126 255.5)",
+          "oklch(39% 0.0126 255.5)",
+          "oklch(51% 0.0126 255.5)",
+          "oklch(63% 0.0126 255.5)",
+          "oklch(75% 0.0126 255.5)",
+          "oklch(87% 0.0126 255.5)",
+          "oklch(95% 0.0126 255.5)"
+        ]
+      },
+      "trainee-a-soft": {
+        "role": "secondary",
+        "displayName": "Trainee a soft",
+        "tonalRamp": [
+          "oklch(15% 0.0147 175.7)",
+          "oklch(27% 0.0147 175.7)",
+          "oklch(39% 0.0147 175.7)",
+          "oklch(51% 0.0147 175.7)",
+          "oklch(63% 0.0147 175.7)",
+          "oklch(75% 0.0147 175.7)",
+          "oklch(87% 0.0147 175.7)",
+          "oklch(95% 0.0147 175.7)"
+        ]
+      },
+      "control-selected-line": {
+        "role": "primary",
+        "displayName": "Control selected line",
+        "tonalRamp": [
+          "oklch(15% 0.0511 263.2)",
+          "oklch(27% 0.0511 263.2)",
+          "oklch(39% 0.0511 263.2)",
+          "oklch(51% 0.0511 263.2)",
+          "oklch(63% 0.0511 263.2)",
+          "oklch(75% 0.0511 263.2)",
+          "oklch(87% 0.0511 263.2)",
+          "oklch(95% 0.0511 263.2)"
+        ]
+      },
+      "tab-selected-line": {
+        "role": "primary",
+        "displayName": "Tab selected line",
+        "tonalRamp": [
+          "oklch(15% 0.0358 258.9)",
+          "oklch(27% 0.0358 258.9)",
+          "oklch(39% 0.0358 258.9)",
+          "oklch(51% 0.0358 258.9)",
+          "oklch(63% 0.0358 258.9)",
+          "oklch(75% 0.0358 258.9)",
+          "oklch(87% 0.0358 258.9)",
+          "oklch(95% 0.0358 258.9)"
+        ]
+      },
+      "warning": {
+        "role": "tertiary",
+        "displayName": "Warning",
+        "tonalRamp": [
+          "oklch(15% 0.1821 29.5)",
+          "oklch(27% 0.1821 29.5)",
+          "oklch(39% 0.1821 29.5)",
+          "oklch(51% 0.1821 29.5)",
+          "oklch(63% 0.1821 29.5)",
+          "oklch(75% 0.1821 29.5)",
+          "oklch(87% 0.1821 29.5)",
+          "oklch(95% 0.1821 29.5)"
+        ]
+      },
+      "warning-soft": {
+        "role": "tertiary",
+        "displayName": "Warning soft",
+        "tonalRamp": [
+          "oklch(15% 0.0186 21.6)",
+          "oklch(27% 0.0186 21.6)",
+          "oklch(39% 0.0186 21.6)",
+          "oklch(51% 0.0186 21.6)",
+          "oklch(63% 0.0186 21.6)",
+          "oklch(75% 0.0186 21.6)",
+          "oklch(87% 0.0186 21.6)",
+          "oklch(95% 0.0186 21.6)"
+        ]
+      },
+      "condition-rule": {
+        "role": "tertiary",
+        "displayName": "Condition rule",
+        "tonalRamp": [
+          "oklch(15% 0.1028 84.4)",
+          "oklch(27% 0.1028 84.4)",
+          "oklch(39% 0.1028 84.4)",
+          "oklch(51% 0.1028 84.4)",
+          "oklch(63% 0.1028 84.4)",
+          "oklch(75% 0.1028 84.4)",
+          "oklch(87% 0.1028 84.4)",
+          "oklch(95% 0.1028 84.4)"
+        ]
+      },
+      "leader": {
+        "role": "neutral",
+        "displayName": "Leader",
+        "tonalRamp": [
+          "oklch(15% 0.024 248.2)",
+          "oklch(27% 0.024 248.2)",
+          "oklch(39% 0.024 248.2)",
+          "oklch(51% 0.024 248.2)",
+          "oklch(63% 0.024 248.2)",
+          "oklch(75% 0.024 248.2)",
+          "oklch(87% 0.024 248.2)",
+          "oklch(95% 0.024 248.2)"
+        ]
+      },
+      "summary-link-underline": {
+        "role": "primary",
+        "displayName": "Summary-link underline",
+        "tonalRamp": [
+          "oklch(15% 0.0804 263.3)",
+          "oklch(27% 0.0804 263.3)",
+          "oklch(39% 0.0804 263.3)",
+          "oklch(51% 0.0804 263.3)",
+          "oklch(63% 0.0804 263.3)",
+          "oklch(75% 0.0804 263.3)",
+          "oklch(87% 0.0804 263.3)",
+          "oklch(95% 0.0804 263.3)"
+        ]
+      },
+      "brief-row-hover": {
+        "role": "tertiary",
+        "displayName": "Brief-row hover",
+        "tonalRamp": [
+          "oklch(15% 0.0368 66.0)",
+          "oklch(27% 0.0368 66.0)",
+          "oklch(39% 0.0368 66.0)",
+          "oklch(51% 0.0368 66.0)",
+          "oklch(63% 0.0368 66.0)",
+          "oklch(75% 0.0368 66.0)",
+          "oklch(87% 0.0368 66.0)",
+          "oklch(95% 0.0368 66.0)"
+        ]
+      },
+      "timeline-rail": {
+        "role": "neutral",
+        "displayName": "Timeline rail",
+        "purpose": "2px rail joining the numbered phase nodes of the PF/PM swimlane."
+      },
+      "checklist-band": {
+        "role": "neutral",
+        "displayName": "Checklist band",
+        "purpose": "Pale band behind ECAM/QRH lines in the swimlane and its legend."
+      }
+    },
+    "typographyMeta": {
+      "headline": {
+        "displayName": "Headline",
+        "purpose": "Session and course headings."
+      },
+      "title": {
+        "displayName": "Title",
+        "purpose": "Section headings."
+      },
+      "heading-small": {
+        "displayName": "Heading small",
+        "purpose": "Phase, trainee and conditional headings."
+      },
+      "site-title": {
+        "displayName": "Site title",
+        "purpose": "Toolbar identity; reading size at compact breakpoint."
+      },
+      "link-title": {
+        "displayName": "Link title",
+        "purpose": "Session titles in overview button rows."
+      },
+      "body": {
+        "displayName": "Body",
+        "purpose": "Reading text, table values and notes."
+      },
+      "field-label": {
+        "displayName": "Field label",
+        "purpose": "Comparison field labels and trainee-specific statuses."
+      },
+      "label": {
+        "displayName": "Label",
+        "purpose": "Controls, table headings, selected tabs and trainee badges."
+      },
+      "key-limit": {
+        "displayName": "Key limit",
+        "purpose": "Bold, slightly enlarged tabular values in the procedure key-limits strip; balanced wrapping."
+      }
+    },
+    "shadows": [
+      {
+        "name": "setup-dialog",
+        "value": "0 16px 64px #142c4540",
+        "purpose": "Diffuse separation for the shared modal dialog only (Setup & conditions and failure procedures)."
+      }
+    ],
+    "elevation": {
+      "model": "flat-document-modal-layer",
+      "separation": "Fine rules and semantic bands in the document; diffuse dialog shadow with #142c4573 backdrop."
+    },
+    "motion": [
+      {
+        "name": "control-state-transition",
+        "value": "background-color 160ms ease-out, color 160ms ease-out, border-color 160ms ease-out",
+        "mediaQuery": "(prefers-reduced-motion: no-preference)",
+        "purpose": "Controls, numbered session buttons and detail tabs."
+      },
+      {
+        "name": "dialog-reveal",
+        "value": "dialog-in 180ms cubic-bezier(.16, 1, .3, 1)",
+        "mediaQuery": "(prefers-reduced-motion: no-preference)",
+        "keyframes": {
+          "from": "clip-path: inset(0 0 8% 0 round 12px)",
+          "to": "clip-path: inset(0 round 12px)"
+        },
+        "purpose": "Short clip reveal; no authored motion for reduced-motion preference."
+      },
+      {
+        "name": "procedure-entry-transition",
+        "value": "background-color 160ms ease-out, color 160ms ease-out",
+        "mediaQuery": "(prefers-reduced-motion: no-preference)",
+        "purpose": "Procedure entry rows and summary links."
+      },
+      {
+        "name": "disclosure-chevron",
+        "value": "transform 160ms cubic-bezier(.16, 1, .3, 1)",
+        "mediaQuery": "(prefers-reduced-motion: no-preference)",
+        "purpose": "Disclosure chevron rotates 90deg when open."
+      }
+    ],
+    "breakpoints": [
+      {
+        "name": "navigation-wrap",
+        "value": "1160px",
+        "mediaQuery": "(max-width: 1160px)"
+      },
+      {
+        "name": "stacked",
+        "value": "760px",
+        "mediaQuery": "(max-width: 760px)"
+      },
+      {
+        "name": "compact",
+        "value": "520px",
+        "mediaQuery": "(max-width: 520px)"
+      }
+    ],
+    "focus": {
+      "outline": "3px solid var(--blue)",
+      "outlineOffset": "3px",
+      "programmaticHeadingFocus": "Dialog headings (.dialog-heading h3) suppress the focus-visible outline when focused programmatically on open; all other focus rings remain."
+    },
+    "selection": {
+      "background": "#cddfff",
+      "color": "var(--ink)",
+      "tapHighlight": "#cddfff"
+    },
+    "scrollbar": {
+      "thumb": "#8997a6",
+      "track": "var(--surface)"
+    },
+    "borders": [
+      {
+        "name": "document-rule",
+        "value": "1px solid var(--line)",
+        "purpose": "Table rows, sections, containers and navigation."
+      },
+      {
+        "name": "failure-rule",
+        "value": "1px solid var(--failure-line)",
+        "purpose": "Rectangular failure/recovery row outline: top and bottom borders on all cells, left edge on the first cell, right edge on the last; no added internal vertical dividers. Exercise/Schedule tables use separate borders with zero spacing; adjacent failure rows suppress the later top edge and share one divider."
+      },
+      {
+        "name": "selected-tab",
+        "value": "1px solid #c6d5ec",
+        "purpose": "Selected tab outline."
+      },
+      {
+        "name": "condition-rule",
+        "value": "1px solid #d9b56a",
+        "purpose": "Left rule indenting nested swimlane steps beneath a condition. No colored side stripe exceeds 1px."
+      },
+      {
+        "name": "ecam-leader",
+        "value": "1px dotted #9aa7b4",
+        "purpose": "Drawn leader between an ECAM item and its setting (flex, min 12px, raised 4px)."
+      },
+      {
+        "name": "summary-link-underline",
+        "value": "underline 1px #9db8ec, offset 3px",
+        "purpose": "Session-summary procedure links; hover uses currentColor."
+      },
+      {
+        "name": "timeline-rail",
+        "value": "2px solid #c5d0dc",
+        "purpose": "Vertical rail joining swimlane phase numbers (hidden on phones)."
+      }
+    ],
+    "layout": {
+      "containerMaxWidth": "1224px",
+      "wideHorizontalPadding": "24px",
+      "mainPadding": "16px 24px 40px",
+      "stackedMainPadding": "16px max(16px, env(safe-area-inset-left)) 32px",
+      "toolbarMinHeight": "60px",
+      "toolbarLayer": 5,
+      "sessionNavigationLayer": 4,
+      "skipButtonLayer": 10,
+      "gridGap": "16px",
+      "readingWidths": {
+        "overview": "70ch",
+        "sessionSummary": "85ch",
+        "exerciseNotes": "75ch"
+      },
+      "assignmentColumns": {
+        "wide": "76% 12% 12%",
+        "stacked": "68% 16% 16%"
+      },
+      "comparisonFieldColumn": "42%",
+      "topicNumberWidth": "34px",
+      "topicStatusWidth": {
+        "wide": "76px",
+        "compact": "68px"
+      },
+      "minimumTouchTarget": "44px",
+      "minimumTabHeight": "44px",
+      "tableCellPadding": "6px 10px",
+      "setupCellPadding": "5px 8px",
+      "routeCellPadding": "6px 8px",
+      "dialog": {
+        "maxWidth": "1200px",
+        "width": "calc(100% - 32px)",
+        "maxHeight": "calc(100dvh - 32px)",
+        "grid": "1.1fr 1fr 1fr",
+        "backdrop": "#142c4573",
+        "compactWidth": "calc(100% - 16px)",
+        "compactMaxHeight": "calc(100dvh - 16px)",
+        "compactPadding": "14px",
+        "stickyHeading": true,
+        "verifiedNoScrollViewports": [
+          "1194×834",
+          "1112×834"
+        ]
+      },
+      "briefStrip": {
+        "padding": "4px 12px",
+        "margin": "10px 0"
+      },
+      "tabRailMarginBottom": "10px",
+      "failureTableBorders": {
+        "collapse": "separate",
+        "spacing": "0",
+        "adjacentFailureTopBorder": "0",
+        "isolatedFailureOutline": "1px",
+        "innerVerticalDividers": false
+      },
+      "procedureDialog": {
+        "sharesSetupDialog": true,
+        "order": [
+          "sticky heading: title · session name (nowrap) + close",
+          "optional brief switcher (detail-tab rail with trainee badges)",
+          "alert chips + Practised by trainee badges",
+          "summary (max 75ch)",
+          "key-limits strip",
+          "PF/PM swimlane",
+          "verbatim ECAM/QRH and STATUS blocks",
+          "optional numeric tables (horizontal scroll)",
+          "details disclosures",
+          "muted disclaimer footnote"
+        ],
+        "keyLimits": "repeat(auto-fit, minmax(170px, 1fr)); 140px minimum at <=520px",
+        "verbatimGrid": "1fr 1fr, 16px gap; single column max 760px; stacks at <=760px",
+        "procLineIndent": "1.25rem per level",
+        "briefSummaryMaxWidth": "75ch",
+        "detailsBodyMaxWidth": "85ch",
+        "disclosureSummaryMinHeight": "44px",
+        "headingLevels": "group h3; brief title, phase and block titles h4 (single brief) or h5 (multiple); block subheadings one deeper",
+        "deepLink": "?brief=<slug>; Back, Escape and close restore opener focus",
+        "noJs": "All briefs (11) render in document order under \"Failure procedures\""
+      },
+      "swimlane": {
+        "columns": "9.5rem 1fr 1fr",
+        "phaseCell": "Surface field, Navy text, 8px 10px",
+        "laneRule": "1px solid var(--line)",
+        "sharedItems": "PF + PM span both lanes",
+        "compact": "<=760px: one column, header row hidden, PF/PM tags on Header, empty lanes hidden"
+      },
+      "procedureEntry": {
+        "summaryLink": "inline, padding 4px 0, Blue medium weight",
+        "briefOpen": "full-width title button, min-height 44px, padding 6px 10px (6px inline at <=520px); cue word hidden at <=760px; schedule rows chevron only",
+        "disabledUntilEnhanced": true
+      }
+    },
+    "tonalRampProvenance": "Eight panel-only OKLCH steps synthesized from each source color hue and chroma. These are preview metadata, not additional shipping tokens.",
+    "sourceEvidence": [
+      "comparison_template.html.j2",
+      "index.html",
+      ".impeccable/surfaces/comparison-template-html-j2.md",
+      "build_comparison.py"
+    ],
+    "presentation": {
+      "summary": "Combined A/B actual failure/emergency subjects; bullet-dot separators; no trainee attribution; ordinary/recovery variants omitted; No failure exercises. when empty.",
+      "exerciseCategoryCounts": false,
+      "overallExerciseGroupCount": false,
+      "topicTextColor": "var(--ink)",
+      "scheduleViewIdentifier": "topics",
+      "sharedScheduleStatusLabels": false,
+      "omitAllSharedScheduleStatusColumn": true,
+      "preserveSeparateSharedSchedules": true,
+      "retainRepeatNotation": true,
+      "retainSessionProgress": true
+    },
+    "verification": {
+      "engine": "Playwright Chromium",
+      "viewports": [
+        "1194x834",
+        "390x844"
+      ],
+      "facts": [
+        "no horizontal overflow",
+        "text >=16px",
+        "targets >=44px",
+        "Escape and Back close dialog with focus restored",
+        "tab switching keeps dialog open",
+        "no-JS shows all 11 briefs"
+      ],
+      "unverified": [
+        "Safari"
+      ]
+    }
+  },
+  "components": [
+    {
+      "name": "Secondary control",
+      "kind": "button",
+      "refersTo": "control",
+      "description": "Overview, Previous/Next and dialog close control treatment.",
+      "html": "<button type=\"button\" class=\"ds-control\">Overview</button>",
+      "css": ".ds-control{font-family:var(--font,-apple-system,BlinkMacSystemFont,\"Segoe UI\",sans-serif);font-size:1rem;line-height:1.35;color:var(--ink,#1b2735);display:inline-flex;align-items:center;justify-content:center;gap:6px;min-height:44px;padding:8px 12px;border:1px solid var(--line,#dce2e8);border-radius:6px;background:var(--canvas,#fff);font-weight:600;cursor:pointer;}.ds-control:hover{background:var(--blue-soft,#edf3ff);border-color:var(--blue,#175cd3);color:var(--blue,#175cd3);}.ds-control:focus-visible{outline:3px solid var(--blue,#175cd3);outline-offset:3px;}@media(prefers-reduced-motion:no-preference){.ds-control{transition:background-color 160ms ease-out,color 160ms ease-out,border-color 160ms ease-out;}}"
+    },
+    {
+      "name": "Primary setup control",
+      "kind": "button",
+      "refersTo": "control-primary",
+      "description": "The complete setup task, opened from the airport/runway strip.",
+      "html": "<button type=\"button\" class=\"ds-control ds-primary\"><svg width=\"20\" height=\"20\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.8\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-hidden=\"true\"><path d=\"M4 6h16M4 12h16M4 18h16M8 3v6M16 9v6M10 15v6\"/></svg>Setup &amp; conditions</button>",
+      "css": ".ds-control{font-family:var(--font,-apple-system,BlinkMacSystemFont,\"Segoe UI\",sans-serif);font-size:1rem;line-height:1.35;color:var(--ink,#1b2735);display:inline-flex;align-items:center;justify-content:center;gap:6px;min-height:44px;padding:8px 12px;border:1px solid var(--line,#dce2e8);border-radius:6px;background:var(--canvas,#fff);font-weight:600;cursor:pointer;}.ds-control:hover{background:var(--blue-soft,#edf3ff);border-color:var(--blue,#175cd3);color:var(--blue,#175cd3);}.ds-control:focus-visible{outline:3px solid var(--blue,#175cd3);outline-offset:3px;}@media(prefers-reduced-motion:no-preference){.ds-control{transition:background-color 160ms ease-out,color 160ms ease-out,border-color 160ms ease-out;}}.ds-primary{background:var(--blue,#175cd3);color:white;border-color:var(--blue,#175cd3);}.ds-primary:hover{background:var(--blue-hover,#10459f);color:white;}"
+    },
+    {
+      "name": "Numbered session navigation",
+      "kind": "nav",
+      "refersTo": "session-button",
+      "description": "Direct numbered selection within named syllabus groups.",
+      "html": "<nav class=\"ds-session-nav\" aria-label=\"Session navigation\"><strong>MFTD/FBS</strong><button class=\"ds-session\" aria-label=\"MFTD/FBS 4\">4</button><button class=\"ds-session\" aria-label=\"MFTD/FBS 5\" aria-current=\"page\">5</button><button class=\"ds-session\" aria-label=\"MFTD/FBS 6\">6</button></nav>",
+      "css": ".ds-session-nav{font-family:var(--font,-apple-system,BlinkMacSystemFont,\"Segoe UI\",sans-serif);font-size:1rem;line-height:1.35;color:var(--ink,#1b2735);display:flex;align-items:center;gap:4px;padding:6px;background:var(--surface,#f1f4f8);}.ds-session-nav strong{color:var(--navy,#19364b);margin-right:8px;}.ds-session{font:inherit;font-weight:600;font-variant-numeric:tabular-nums;width:44px;min-height:44px;border:1px solid transparent;border-radius:6px;background:var(--canvas,#fff);color:var(--muted,#526171);cursor:pointer;}.ds-session:hover{border-color:var(--blue,#175cd3);color:var(--blue,#175cd3);}.ds-session[aria-current=\"page\"]{background:var(--blue,#175cd3);color:white;border-color:var(--blue,#175cd3);}.ds-session:focus-visible{outline:3px solid var(--blue,#175cd3);outline-offset:3px;}@media(prefers-reduced-motion:no-preference){.ds-session{transition:background-color 160ms ease-out,color 160ms ease-out,border-color 160ms ease-out;}}"
+    },
+    {
+      "name": "Two detail tabs",
+      "kind": "nav",
+      "refersTo": "detail-tab",
+      "description": "Exercises and Schedule retain the chosen view between sessions.",
+      "html": "<div class=\"ds-tabs\" role=\"tablist\" aria-label=\"Session details\"><button class=\"ds-tab\" role=\"tab\" aria-selected=\"true\">Exercises</button><button class=\"ds-tab\" role=\"tab\" aria-selected=\"false\" tabindex=\"-1\">Schedule</button></div>",
+      "css": ".ds-tabs{font-family:var(--font,-apple-system,BlinkMacSystemFont,\"Segoe UI\",sans-serif);font-size:1rem;line-height:1.35;color:var(--ink,#1b2735);display:inline-flex;gap:4px;padding:4px;background:#e8eef6;border-radius:8px;margin-bottom:10px;}.ds-tab{font:inherit;display:inline-flex;align-items:center;gap:8px;min-height:44px;padding:8px 14px;border:1px solid transparent;border-radius:5px;background:transparent;color:var(--muted,#526171);cursor:pointer;}.ds-tab:hover{color:var(--blue,#175cd3);}.ds-tab[aria-selected=\"true\"]{color:var(--blue,#175cd3);border-color:#c6d5ec;background:var(--canvas,#fff);font-weight:600;}.ds-tab:focus-visible{outline:3px solid var(--blue,#175cd3);outline-offset:3px;}@media(prefers-reduced-motion:no-preference){.ds-tab{transition:background-color 160ms ease-out,color 160ms ease-out,border-color 160ms ease-out;}}@media(max-width:520px){.ds-tabs{display:flex;}.ds-tab{flex:1;justify-content:center;padding-inline:6px;}}"
+    },
+    {
+      "name": "Equal trainee badges",
+      "kind": "chip",
+      "refersTo": "exercise-row",
+      "description": "Parallel trainee identity labels with equal type and geometry.",
+      "html": "<span class=\"ds-badge ds-a\">Trainee A</span> <span class=\"ds-badge\">Trainee B</span>",
+      "css": ".ds-badge{font-family:var(--font,-apple-system,BlinkMacSystemFont,\"Segoe UI\",sans-serif);font-size:1rem;line-height:1.35;color:var(--ink,#1b2735);display:inline-block;padding:2px 7px;border-radius:4px;background:var(--blue-soft,#edf3ff);color:var(--trainee-b,#264ea5);font-weight:600;}.ds-badge.ds-a{background:#e6f3ef;color:var(--trainee-a,#155e55);}"
+    },
+    {
+      "name": "Course overview row",
+      "kind": "card",
+      "refersTo": "overview-row",
+      "description": "A ruled session button with a combined A/B failure/emergency synopsis and blue hover.",
+      "html": "<button class=\"ds-overview\" type=\"button\"><strong>MFTD/FBS 5</strong><span>Hot start • Slats fault/locked • Cargo smoke • Emergency evacuation • Engine failure • Hydraulic reservoir low level • Loss of braking</span></button>",
+      "css": ".ds-overview{font-family:var(--font,-apple-system,BlinkMacSystemFont,\"Segoe UI\",sans-serif);font-size:1rem;line-height:1.35;color:var(--ink,#1b2735);display:block;width:100%;padding:12px;border:0;border-bottom:1px solid var(--line,#dce2e8);background:var(--canvas,#fff);text-align:left;cursor:pointer;}.ds-overview strong{display:block;color:var(--blue,#175cd3);font-size:1.125rem;}.ds-overview span{display:block;margin-top:4px;color:var(--muted,#526171);}.ds-overview:hover{background:var(--blue-soft,#edf3ff);}.ds-overview:focus-visible{outline:3px solid var(--blue,#175cd3);outline-offset:3px;}"
+    },
+    {
+      "name": "Airport/runway strip",
+      "kind": "card",
+      "refersTo": "brief-strip",
+      "description": "Compact session facts beside the setup action.",
+      "html": "<div class=\"ds-brief\"><dl><div><dt>Airport</dt><dd>Session airport</dd></div><div><dt>Runway</dt><dd>Session runway</dd></div></dl><button type=\"button\" class=\"ds-control ds-primary\"><svg width=\"20\" height=\"20\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.8\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-hidden=\"true\"><path d=\"M4 6h16M4 12h16M4 18h16M8 3v6M16 9v6M10 15v6\"/></svg>Setup &amp; conditions</button></div>",
+      "css": ".ds-control{font-family:var(--font,-apple-system,BlinkMacSystemFont,\"Segoe UI\",sans-serif);font-size:1rem;line-height:1.35;color:var(--ink,#1b2735);display:inline-flex;align-items:center;justify-content:center;gap:6px;min-height:44px;padding:8px 12px;border:1px solid var(--line,#dce2e8);border-radius:6px;background:var(--canvas,#fff);font-weight:600;cursor:pointer;}.ds-control:hover{background:var(--blue-soft,#edf3ff);border-color:var(--blue,#175cd3);color:var(--blue,#175cd3);}.ds-control:focus-visible{outline:3px solid var(--blue,#175cd3);outline-offset:3px;}@media(prefers-reduced-motion:no-preference){.ds-control{transition:background-color 160ms ease-out,color 160ms ease-out,border-color 160ms ease-out;}}.ds-primary{background:var(--blue,#175cd3);color:white;border-color:var(--blue,#175cd3);}.ds-primary:hover{background:var(--blue-hover,#10459f);color:white;}.ds-brief{font-family:var(--font,-apple-system,BlinkMacSystemFont,\"Segoe UI\",sans-serif);font-size:1rem;line-height:1.35;color:var(--ink,#1b2735);display:flex;align-items:center;justify-content:space-between;gap:12px;margin:10px 0;padding:4px 12px;background:var(--canvas,#fff);border:1px solid var(--line,#dce2e8);border-radius:8px;}.ds-brief dl{display:flex;flex-wrap:wrap;gap:4px 20px;margin:0;}.ds-brief dl div{display:flex;gap:6px;align-items:baseline;}.ds-brief dt{color:var(--muted,#526171);}.ds-brief dd{margin:0;font-weight:600;}@media(max-width:760px){.ds-brief{align-items:flex-start;flex-direction:column;gap:8px;}.ds-brief .ds-control{width:100%;}}"
+    },
+    {
+      "name": "Exercise assignment matrix",
+      "kind": "custom",
+      "refersTo": "exercise-row",
+      "description": "Equal A/B assignments and cross-category failure/recovery classification.",
+      "html": "<table class=\"ds-table ds-matrix\"><colgroup><col style=\"width:76%\"><col style=\"width:12%\"><col style=\"width:12%\"></colgroup><thead><tr><th>Exercise</th><th>A</th><th>B</th></tr></thead><tbody><tr class=\"ds-category\"><th colspan=\"3\">Takeoff &amp; departure</th></tr><tr class=\"ds-failure\"><td><span class=\"ds-warning\"><svg width=\"17\" height=\"17\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.8\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-hidden=\"true\"><path d=\"m12 3 10 18H2L12 3Z\"/><path d=\"M12 9v5M12 17h.01\"/></svg></span>START FAULT, hot start</td><td><svg width=\"18\" height=\"18\" viewBox=\"0 0 20 20\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-label=\"Included\"><path d=\"m4 10 4 4 8-8\"/></svg></td><td aria-label=\"Not assigned\">—</td></tr><tr><td>Take-off - instrument</td><td><svg width=\"18\" height=\"18\" viewBox=\"0 0 20 20\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-label=\"Included\"><path d=\"m4 10 4 4 8-8\"/></svg></td><td><svg width=\"18\" height=\"18\" viewBox=\"0 0 20 20\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-label=\"Included\"><path d=\"m4 10 4 4 8-8\"/></svg></td></tr></tbody></table>",
+      "css": ".ds-table{font-family:var(--font,-apple-system,BlinkMacSystemFont,\"Segoe UI\",sans-serif);font-size:1rem;line-height:1.35;color:var(--ink,#1b2735);width:100%;border-collapse:separate;border-spacing:0;table-layout:fixed;font-variant-numeric:tabular-nums;background:var(--canvas,#fff);}.ds-table th,.ds-table td{text-align:left;padding:6px 10px;vertical-align:top;overflow-wrap:anywhere;border-bottom:1px solid var(--line,#dce2e8);}.ds-table th{font-weight:500;}.ds-table thead th{font-weight:600;color:var(--muted,#526171);background:#e8eef6;}.ds-warning{display:inline;color:var(--failure,#9a3c08);margin-right:4px;}.ds-failure{background:var(--failure-soft,#fff3e7)!important;}.ds-failure td{border-top:1px solid var(--failure-line,#ca8750);border-bottom:1px solid var(--failure-line,#ca8750);}.ds-failure td:first-child{border-left:1px solid var(--failure-line,#ca8750);}.ds-failure td:last-child{border-right:1px solid var(--failure-line,#ca8750);}.ds-different{background:var(--difference,#edf3ff);}.ds-matrix th:not(:first-child),.ds-matrix td:not(:first-child){text-align:center;vertical-align:middle;}.ds-matrix .ds-category th{background:var(--surface,#f1f4f8);color:var(--navy,#19364b);font-weight:700;padding:5px 10px;}.ds-failure+.ds-failure td{border-top:0;}"
+    },
+    {
+      "name": "Schedule topic difference",
+      "kind": "custom",
+      "refersTo": "exercise-row",
+      "description": "Unique/mixed status remains explicit; shared rows have empty status cells and all-shared schedules omit the column.",
+      "html": "<table class=\"ds-table\"><thead><tr><th>#</th><th>Topic</th><th>A/B</th></tr></thead><tbody><tr class=\"ds-different\"><td>1</td><td>Published trainee topic</td><td class=\"ds-status\">A only</td></tr><tr class=\"ds-different ds-failure\"><td>2</td><td><span class=\"ds-warning\"><svg width=\"17\" height=\"17\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.8\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-hidden=\"true\"><path d=\"m12 3 10 18H2L12 3Z\"/><path d=\"M12 9v5M12 17h.01\"/></svg></span>Failure / recovery topic</td><td class=\"ds-status\">A adds</td></tr><tr><td>3</td><td>Shared published topic</td><td></td></tr></tbody></table><table class=\"ds-table ds-shared-schedule\"><thead><tr><th>#</th><th>Topic</th></tr></thead><tbody><tr><td>1</td><td>Shared published sequence</td></tr></tbody></table>",
+      "css": ".ds-table{font-family:var(--font,-apple-system,BlinkMacSystemFont,\"Segoe UI\",sans-serif);font-size:1rem;line-height:1.35;color:var(--ink,#1b2735);width:100%;border-collapse:separate;border-spacing:0;table-layout:fixed;font-variant-numeric:tabular-nums;background:var(--canvas,#fff);}.ds-table th,.ds-table td{text-align:left;padding:6px 10px;vertical-align:top;overflow-wrap:anywhere;border-bottom:1px solid var(--line,#dce2e8);}.ds-table th{font-weight:500;}.ds-table thead th{font-weight:600;color:var(--muted,#526171);background:#e8eef6;}.ds-warning{display:inline;color:var(--failure,#9a3c08);margin-right:4px;}.ds-failure{background:var(--failure-soft,#fff3e7)!important;}.ds-failure td{border-top:1px solid var(--failure-line,#ca8750);border-bottom:1px solid var(--failure-line,#ca8750);}.ds-failure td:first-child{border-left:1px solid var(--failure-line,#ca8750);}.ds-failure td:last-child{border-right:1px solid var(--failure-line,#ca8750);}.ds-different{background:var(--difference,#edf3ff);}.ds-table th:first-child,.ds-table td:first-child{width:34px;padding-right:0;color:var(--muted,#526171);}.ds-table th:last-child,.ds-table td:last-child{width:76px;}.ds-status{font-weight:500;color:var(--trainee-a,#155e55);white-space:nowrap;}.ds-shared-schedule{margin-top:16px;}.ds-shared-schedule th:last-child,.ds-shared-schedule td:last-child{width:auto;}.ds-failure+.ds-failure td{border-top:0;}"
+    },
+    {
+      "name": "Complete setup dialog plane",
+      "kind": "custom",
+      "refersTo": "setup-dialog",
+      "description": "Three briefing sections and a spanning route; modal shadow is isolated to this layer. The failure-procedure briefs share this dialog.",
+      "html": "<section class=\"ds-dialog\" role=\"dialog\" aria-label=\"Setup and conditions\"><div class=\"ds-heading\"><h3>Setup &amp; conditions</h3><button class=\"ds-control\" aria-label=\"Close setup and conditions\">Close</button></div><div class=\"ds-grid\"><section><h4>Flight setup</h4><p>Complete session setup</p></section><section><h4>Departure weather</h4><p>Complete departure values</p></section><section><h4>Arrival weather</h4><p>Complete arrival values</p></section></div><section class=\"ds-route\"><h4>Route</h4><p>Full session route</p></section></section>",
+      "css": ".ds-control{font-family:var(--font,-apple-system,BlinkMacSystemFont,\"Segoe UI\",sans-serif);font-size:1rem;line-height:1.35;color:var(--ink,#1b2735);display:inline-flex;align-items:center;justify-content:center;gap:6px;min-height:44px;padding:8px 12px;border:1px solid var(--line,#dce2e8);border-radius:6px;background:var(--canvas,#fff);font-weight:600;cursor:pointer;}.ds-control:hover{background:var(--blue-soft,#edf3ff);border-color:var(--blue,#175cd3);color:var(--blue,#175cd3);}.ds-control:focus-visible{outline:3px solid var(--blue,#175cd3);outline-offset:3px;}@media(prefers-reduced-motion:no-preference){.ds-control{transition:background-color 160ms ease-out,color 160ms ease-out,border-color 160ms ease-out;}}.ds-dialog{font-family:var(--font,-apple-system,BlinkMacSystemFont,\"Segoe UI\",sans-serif);font-size:1rem;line-height:1.35;color:var(--ink,#1b2735);max-width:1200px;padding:20px;border:0;border-radius:12px;background:var(--canvas,#fff);box-shadow:0 16px 64px #142c4540;overflow:auto;}.ds-heading{display:flex;align-items:center;justify-content:space-between;gap:16px;margin-bottom:4px;position:sticky;top:0;background:var(--canvas,#fff);}.ds-heading h3{margin:0;font-size:1.25rem;line-height:1.3;}.ds-grid{display:grid;grid-template-columns:1.1fr 1fr 1fr;gap:16px;}.ds-grid h4{margin:0;padding:8px 10px;background:var(--navy,#19364b);color:white;font-size:1rem;}.ds-grid p{margin:0;padding:5px 8px;}.ds-route{margin-top:14px;}.ds-route h4{margin:0;padding:6px 0;font-size:1rem;}.ds-route p{margin:0;}@media(max-width:760px){.ds-grid{grid-template-columns:1fr;}.ds-dialog{padding:14px;}}"
+    },
+    {
+      "name": "Procedure entry row",
+      "kind": "custom",
+      "refersTo": "brief-open",
+      "description": "Orange failure row whose title opens its procedure brief; rows without a brief stay plain.",
+      "html": "<table class=\"ds-matrix\"><tbody><tr class=\"ds-fail\"><td class=\"ds-cell\"><button class=\"ds-brief-open\" type=\"button\"><svg class=\"ds-ic ds-warn\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.8\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-hidden=\"true\"><path d=\"m12 3 10 18H2L12 3Z\"/><path d=\"M12 9v5M12 17h.01\"/></svg><span class=\"ds-title\">Engine fire after V1</span><span class=\"ds-cue\">Procedure<svg class=\"ds-ic\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.8\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-hidden=\"true\"><path d=\"m9 6 6 6-6 6\"/></svg></span></button></td></tr></tbody></table>",
+      "css": ".ds-matrix{border-collapse:separate;border-spacing:0;width:100%;font-family:var(--font,-apple-system,BlinkMacSystemFont,\"Segoe UI\",sans-serif);font-size:1rem;line-height:1.35;color:var(--ink,#1b2735);}.ds-fail .ds-cell{padding:0;background:var(--failure-soft,#fff3e7);border:1px solid var(--failure-line,#ca8750);}.ds-brief-open{display:flex;align-items:flex-start;width:100%;min-height:44px;padding:6px 10px;border:0;background:transparent;color:inherit;font:inherit;text-align:left;cursor:pointer;}.ds-brief-open:hover{background:#ffe9d4;}.ds-brief-open:hover .ds-title{text-decoration:underline;text-decoration-color:var(--failure-line,#ca8750);text-underline-offset:3px;}.ds-brief-open:focus-visible{outline:3px solid var(--blue,#175cd3);outline-offset:3px;}.ds-title{flex:1;}.ds-warn{color:var(--failure,#9a3c08);margin-right:6px;}.ds-ic{width:18px;height:18px;flex:none;}.ds-cue{display:inline-flex;align-items:center;gap:2px;margin-left:12px;color:var(--blue,#175cd3);font-weight:600;white-space:nowrap;}@media(prefers-reduced-motion:no-preference){.ds-brief-open{transition:background-color 160ms ease-out,color 160ms ease-out;}}"
+    },
+    {
+      "name": "Summary procedure link",
+      "kind": "button",
+      "refersTo": "summary-link",
+      "description": "Inline link-style button for failure subjects with a brief in session summaries.",
+      "html": "<p class=\"ds-summary\"><button class=\"ds-summary-link\" type=\"button\">Engine fire</button>&nbsp;• Hydraulic G+Y failure&nbsp;• <button class=\"ds-summary-link\" type=\"button\">Emergency descent</button></p>",
+      "css": ".ds-summary{font-family:var(--font,-apple-system,BlinkMacSystemFont,\"Segoe UI\",sans-serif);font-size:1rem;line-height:1.35;color:var(--muted,#526171);max-width:85ch;}.ds-summary-link{display:inline;padding:4px 0;margin:0;border:0;background:none;font:inherit;line-height:1.35;color:var(--blue,#175cd3);font-weight:500;text-decoration:underline;text-decoration-color:#9db8ec;text-decoration-thickness:1px;text-underline-offset:3px;cursor:pointer;}.ds-summary-link:hover{color:var(--blue-hover,#10459f);text-decoration-color:currentColor;}.ds-summary-link:focus-visible{outline:3px solid var(--blue,#175cd3);outline-offset:3px;}"
+    },
+    {
+      "name": "Procedure alert chips",
+      "kind": "chip",
+      "refersTo": "alert-chip-warning",
+      "description": "Labelled alert chips; red only for ECAM red warnings and red LAND ASAP.",
+      "html": "<div class=\"ds-meta\"><span class=\"ds-chip ds-warning\">Red warning</span><span class=\"ds-chip ds-warning\">LAND ASAP (red)</span><span class=\"ds-chip ds-caution\">Amber caution</span><span class=\"ds-chip ds-qrh\">QRH procedure</span><span class=\"ds-chip ds-memory\">Memory items</span><span class=\"ds-chip ds-branch\">HS-TXP..TXU</span></div>",
+      "css": ".ds-meta{display:flex;flex-wrap:wrap;gap:6px 8px;font-family:var(--font,-apple-system,BlinkMacSystemFont,\"Segoe UI\",sans-serif);font-size:1rem;line-height:1.35;}.ds-chip{display:inline-block;padding:2px 8px;border-radius:4px;font-weight:600;white-space:nowrap;}.ds-warning{color:var(--warning,#b42318);background:var(--warning-soft,#fdeceb);}.ds-caution{color:var(--failure,#9a3c08);background:var(--failure-soft,#fff3e7);}.ds-qrh{color:var(--navy,#19364b);background:var(--surface,#f1f4f8);}.ds-memory{color:var(--ink,#1b2735);background:var(--header,#e8eef6);}.ds-branch{padding:0 6px;color:var(--navy,#19364b);background:var(--header,#e8eef6);}"
+    },
+    {
+      "name": "Key-limits strip",
+      "kind": "custom",
+      "refersTo": "key-limits",
+      "description": "Ruled definition list of procedure limits; auto-fit 170px columns, tabular bold values.",
+      "html": "<dl class=\"ds-limits\"><div><dt>Max speed</dt><dd>250 kt</dd></div><div><dt>Max altitude</dt><dd>FL 100</dd></div><div><dt>Landing distance factor</dt><dd>×1.8</dd></div></dl>",
+      "css": ".ds-limits{display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));margin:0;font-family:var(--font,-apple-system,BlinkMacSystemFont,\"Segoe UI\",sans-serif);font-size:1rem;line-height:1.35;color:var(--ink,#1b2735);background:var(--canvas,#fff);border:1px solid var(--line,#dce2e8);border-radius:8px;overflow:hidden;}.ds-limits>div{padding:8px 12px;border-left:1px solid var(--line,#dce2e8);margin-left:-1px;}.ds-limits dt{color:var(--muted,#526171);text-wrap:balance;}.ds-limits dd{margin:2px 0 0;font-size:1.125rem;font-weight:700;font-variant-numeric:tabular-nums;text-wrap:balance;}"
+    },
+    {
+      "name": "PF/PM swimlane",
+      "kind": "custom",
+      "refersTo": "swimlane-phase",
+      "description": "Neutral navy phase column and two equal pilot lanes; shared items span both.",
+      "html": "<section class=\"ds-flow\"><div class=\"ds-head\"><span></span><span>PF · flies, navigates, communicates</span><span>PM · reads and does</span></div><div class=\"ds-phase\"><h4 class=\"ds-pname\">Immediate</h4><div class=\"ds-lanes\"><div class=\"ds-lane\"><ul><li><q class=\"ds-callout\">Engine fire</q></li><li>Maintain flight path</li></ul></div><div class=\"ds-lane\"><ul><li><span class=\"ds-cond\">If fire persists</span><ul class=\"ds-kids\"><li class=\"ds-note\">After 30 s</li></ul></li></ul></div><div class=\"ds-lane ds-both\"><span class=\"ds-tag\">PF + PM</span><ul><li>Confirm before action</li></ul></div></div></div></section>",
+      "css": ".ds-flow{border:1px solid var(--line,#dce2e8);background:var(--canvas,#fff);font-family:var(--font,-apple-system,BlinkMacSystemFont,\"Segoe UI\",sans-serif);font-size:1rem;line-height:1.35;color:var(--ink,#1b2735);}.ds-head{display:grid;grid-template-columns:9.5rem 1fr 1fr;background:var(--header,#e8eef6);color:var(--muted,#526171);font-weight:600;}.ds-head span{padding:6px 10px;}.ds-head span+span{border-left:1px solid var(--line,#dce2e8);}.ds-phase{display:grid;grid-template-columns:9.5rem 1fr;border-top:1px solid var(--line,#dce2e8);}.ds-pname{margin:0;padding:8px 10px;background:var(--surface,#f1f4f8);color:var(--navy,#19364b);font-size:1rem;line-height:1.3;}.ds-lanes{display:grid;grid-template-columns:1fr 1fr;min-width:0;}.ds-lane{min-width:0;padding:8px 10px;border-left:1px solid var(--line,#dce2e8);}.ds-lane ul{list-style:none;margin:0;padding:0;}.ds-lane li+li{margin-top:6px;}.ds-both{grid-column:1/-1;border-top:1px solid var(--line,#dce2e8);display:flex;gap:10px;align-items:baseline;}.ds-tag{flex:none;color:var(--navy,#19364b);font-weight:700;}.ds-callout{font-weight:700;quotes:\"\\201C\" \"\\201D\";}.ds-cond{color:var(--conditional,#79520b);font-weight:700;}.ds-lane .ds-kids{margin-top:4px;padding-left:12px;border-left:1px solid #d9b56a;}.ds-note{color:var(--muted,#526171);}"
+    },
+    {
+      "name": "Verbatim ECAM block",
+      "kind": "custom",
+      "refersTo": "verbatim-block-title",
+      "description": "Navy band heading with drawn dotted leaders; amber conditions indent by level.",
+      "html": "<section class=\"ds-verbatim\"><h4 class=\"ds-band\">ENG 1 FIRE</h4><ol class=\"ds-lines\"><li><span class=\"ds-ecam\"><span>THR LEVER 1</span><span class=\"ds-leader\" aria-hidden=\"true\"></span><b>IDLE</b></span></li><li><span class=\"ds-cond\">IF FIRE AFTER 30 S:</span></li><li style=\"--level:1\"><span class=\"ds-ecam\"><span>AGENT 2</span><span class=\"ds-leader\" aria-hidden=\"true\"></span><b>DISCH</b></span></li></ol></section>",
+      "css": ".ds-verbatim{background:var(--canvas,#fff);border-bottom:1px solid var(--line,#dce2e8);font-family:var(--font,-apple-system,BlinkMacSystemFont,\"Segoe UI\",sans-serif);font-size:1rem;line-height:1.35;color:var(--ink,#1b2735);}.ds-band{margin:0;padding:8px 10px;background:var(--navy,#19364b);color:#fff;font-size:1rem;}.ds-lines{list-style:none;margin:0;padding:8px 10px 6px;}.ds-lines li{padding-left:calc(var(--level,0)*1.25rem);}.ds-lines li+li{margin-top:4px;}.ds-ecam{display:flex;align-items:baseline;gap:6px;}.ds-leader{flex:1 1 12px;min-width:12px;border-bottom:1px dotted #9aa7b4;transform:translateY(-4px);}.ds-ecam b{flex:none;max-width:55%;text-align:right;}.ds-cond{color:var(--conditional,#79520b);font-weight:700;}"
+    }
+  ],
+  "narrative": {
+    "northStar": "Briefing matrix",
+    "overview": "The Briefing matrix presents training information as a precise, calm document for comprehension in normal daylight. White tables on a cool daylight canvas, charcoal native system type, aligned columns and fine rules make dense comparisons comfortable to scan. Density comes from compact rows and clear hierarchy while reading text stays at 16px.\n\nBlue identifies actions, selection and A/B difference fields. Teal Trainee A and blue Trainee B labels carry equal emphasis. Orange identifies failure-related exercises and recovery across categories and ordered topics; amber text retains conditional qualifiers. Red appears only for ECAM red warnings. Briefing planes remain flat, while one native modal dialog, shared by Setup & conditions and the failure-procedure briefs, uses a single diffuse shadow and a dim backdrop to establish its temporary layer.",
+    "keyCharacteristics": [
+      "White tables, cool daylight canvas and navy grouping bands.",
+      "Native system typography with a distinct title, heading and reading hierarchy.",
+      "Equal trainee emphasis and explicit text or notation for applicability.",
+      "Fine ruled rows, compact comparisons and generous touch targets.",
+      "Landscape iPad first, with stacked reading groups and a scrolling setup dialog on phones.",
+      "Failure procedures open from their matrix rows into the shared dialog as a ruled briefing: alert chips, key limits, a neutral PF/PM swimlane and verbatim ECAM/QRH text."
+    ],
+    "rules": [
+      {
+        "name": "The Equal Emphasis Rule",
+        "body": "Give Trainee A and Trainee B matching type, parallel labels and equal assignment-column widths. Their colors identify the trainee without establishing a visual ranking.",
+        "section": "colors"
+      },
+      {
+        "name": "The Meaning Before Color Rule",
+        "body": "Pair color with labels, assignment notation or explanatory text. A difference, failure or conditional branch must remain understandable without its tint.",
+        "section": "colors"
+      },
+      {
+        "name": "The Reserved Alarm Rule",
+        "body": "Orange stays reserved for failure marking: failure rows, their warning icons and entry hover, and the amber caution chips and CAUTION labels of failure procedures. Red is used only for ECAM red warnings and red LAND ASAP chips. Amber text marks procedure conditions, consistent with Conditional's meaning. None of these hues decorates anything else.",
+        "section": "colors"
+      },
+      {
+        "name": "The Neutral Lanes Rule",
+        "body": "PF/PM swimlanes are neutral navy, header gray and white. They never borrow the Trainee A teal or Trainee B blue, because pilot roles are not trainees.",
+        "section": "colors"
+      },
+      {
+        "name": "The Reading First Rule",
+        "body": "Keep body copy, notes, table values and control labels at 16px or larger. Use the title and heading roles to establish hierarchy instead of shrinking supporting facts.",
+        "section": "typography"
+      },
+      {
+        "name": "The Sequential Heading Rule",
+        "body": "Heading levels follow structure, not size. A procedure group title is h3; brief titles, phase names and block titles are h4 when the group holds one brief and h5 when it holds several, with block subheadings one level deeper.",
+        "section": "typography"
+      },
+      {
+        "name": "The Ruled Plane Rule",
+        "body": "Separate briefing information with fine dividers and semantic bands. Keep document surfaces flat; reserve the diffuse shadow and dim backdrop for the shared modal dialog.",
+        "section": "elevation"
+      },
+      {
+        "name": "The Hairline Edge Rule",
+        "body": "No colored side stripe is thicker than 1px. Failure-row edges and the amber condition rule are hairlines like every other divider.",
+        "section": "shapes"
+      }
+    ],
+    "dos": [
+      "Do use the existing semantic color names and assignments from the frontmatter.",
+      "Do keep both trainees equally prominent and label shared values explicitly when they span an A/B comparison.",
+      "Do preserve 16px reading text, touch controls of at least 44px and a visible keyboard focus outline.",
+      "Do use fine rules, cool gray fields and navy grouping bands to organize dense information.",
+      "Do stack related reading groups on phones while retaining clear trainee headings and assignment columns.",
+      "Do preserve explicit qualifiers, source terminology and unspecified values when they affect the comparison.",
+      "Do keep setup complete, restore opener focus and preserve document scroll when the dialog closes.",
+      "Do open failure procedures in the shared dialog from their orange rows and summary subjects, and render every brief in document order without JavaScript.",
+      "Do pair every red, amber caution, QRH or memory-items chip with its text label.",
+      "Do keep verbatim ECAM/QRH wording and its source capitalization, with drawn leaders and amber condition labels indented by level."
+    ],
+    "donts": [
+      "Don't use trainee colors as a substitute for text labels or accessible assignment meaning.",
+      "Don't use orange or amber as general decoration; retain their failure/recovery and conditional meanings.",
+      "Don't add shadows, imagery or ornamental backgrounds to the briefing planes.",
+      "Don't replace the approved native system font stack without an approved design-system change.",
+      "Don't turn ruled comparison rows into an ornamental card grid or add decorative labels above headings.",
+      "Don't use red for anything other than ECAM red warnings and red LAND ASAP, or orange for anything other than failure marking.",
+      "Don't color PF/PM lanes with the trainee teal or blue.",
+      "Don't add colored side stripes thicker than 1px.",
+      "Don't make rows without a brief look actionable."
+    ]
+  }
+}

@@ -1,0 +1,1660 @@
+{
+ "slug": "removal-of-smoke-fumes",
+ "title": "REMOVAL OF SMOKE / FUMES",
+ "kind": "qrh",
+ "alert": {
+  "level": "qrh",
+  "land_asap": "none",
+  "memory_items": false,
+  "qrh_summary": false,
+  "trigger": "QRH procedure. Apply it if smoke/fumes become the greatest threat when applying the [QRH] SMOKE / FUMES / AVNCS SMOKE procedure — a boxed item that may be applied at any time of that procedure, but not before its immediate actions.",
+  "inhibited_phases": [],
+  "refs": [
+   {
+    "book": "FCOM",
+    "code": "PRO-ABN-SMOKE",
+    "page": "P 28/50",
+    "pdf": 3985
+   },
+   {
+    "book": "FCTM",
+    "code": "PR-AEP-SMOKE",
+    "page": "P 8/10",
+    "pdf": 505
+   }
+  ]
+ },
+ "effectivity": {
+  "branches": [],
+  "note": "Applicable to ALL (QRH 27.02, FCOM [QRH] procedure)."
+ },
+ "summary": "Used when dense smoke or fumes become the greatest threat. Keep the air flowing (CAB FANS OFF and PACK FLOW HI, unless there are fuel vapours), raise the landing elevation to 10 000 ft / MEA-MORA and start a descent to FL 100 / MEA-MORA. Then go back to the SMOKE / FUMES / AVNCS SMOKE procedure during the descent. At FL 100 the cabin is depressurised and RAM AIR is used. If smoke persists: max 200 kt, cockpit door open, and open the PM sliding window.",
+ "key_limits": [
+  {
+   "label": "LDG ELEV",
+   "value": "10 000 FT / MEA-MORA",
+   "applies_to": [
+    "all"
+   ],
+   "refs": [
+    {
+     "book": "QRH",
+     "code": "27.02",
+     "page": "27.02A",
+     "pdf": 249
+    }
+   ]
+  },
+  {
+   "label": "Descent",
+   "value": "FL 100 / MEA-MORA",
+   "applies_to": [
+    "all"
+   ],
+   "refs": [
+    {
+     "book": "QRH",
+     "code": "27.02",
+     "page": "27.02A",
+     "pdf": 249
+    }
+   ]
+  },
+  {
+   "label": "RAM AIR",
+   "value": "Open when ΔP ≤ 1 PSI",
+   "applies_to": [
+    "all"
+   ],
+   "refs": [
+    {
+     "book": "FCOM",
+     "code": "PRO-ABN-SMOKE",
+     "page": "P 29/50",
+     "pdf": 3986
+    }
+   ]
+  },
+  {
+   "label": "Window open",
+   "value": "MAX SPEED 200 kt",
+   "applies_to": [
+    "all"
+   ],
+   "refs": [
+    {
+     "book": "QRH",
+     "code": "27.02",
+     "page": "27.02B",
+     "pdf": 250
+    }
+   ]
+  }
+ ],
+ "flow": [
+  {
+   "phase": "Order",
+   "steps": [
+    {
+     "actor": "PF",
+     "items": [
+      {
+       "kind": "note",
+       "text": "Smoke is dense and becomes the greatest threat",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "PDP",
+         "code": "Smoke",
+         "page": "XFTDA1SMOKE0001",
+         "pdf": 539
+        },
+        {
+         "book": "FCOM",
+         "code": "PRO-ABN-SMOKE",
+         "page": "P 28/50",
+         "pdf": 3985
+        }
+       ]
+      },
+      {
+       "kind": "callout",
+       "text": "REMOVAL OF SMOKE / FUMES PROCEDURE",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "PDP",
+         "code": "Smoke",
+         "page": "XFTDA1SMOKE0001",
+         "pdf": 539
+        },
+        {
+         "book": "PDP",
+         "code": "Management of abnormal operations",
+         "page": "XFTDN6ECAM00001",
+         "pdf": 427
+        }
+       ]
+      }
+     ]
+    },
+    {
+     "actor": "PM",
+     "items": [
+      {
+       "kind": "ecam",
+       "item": "REMOVAL OF SMOKE / FUMES",
+       "setting": "APPLY",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "PDP",
+         "code": "Smoke",
+         "page": "XFTDA1SMOKE0001",
+         "pdf": 539
+        }
+       ]
+      },
+      {
+       "kind": "action",
+       "text": "READ AND DO the QRH lines aloud",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "PDP",
+         "code": "Management of abnormal operations",
+         "page": "XFTDN6ECAM00001",
+         "pdf": 427
+        },
+        {
+         "book": "FCTM",
+         "code": "AOP-30-30",
+         "page": "P 5/6",
+         "pdf": 86
+        }
+       ]
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "phase": "First steps",
+   "steps": [
+    {
+     "actor": "PM",
+     "items": [
+      {
+       "kind": "ecam",
+       "item": "EMER EXIT LIGHT",
+       "setting": "ON",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "QRH",
+         "code": "27.02",
+         "page": "27.02A",
+         "pdf": 249
+        }
+       ]
+      },
+      {
+       "kind": "condition",
+       "text": "If fuel vapors",
+       "children": [
+        {
+         "kind": "ecam",
+         "item": "CAB FANS",
+         "setting": "ON",
+         "applies_to": [
+          "all"
+         ],
+         "refs": [
+          {
+           "book": "QRH",
+           "code": "27.02",
+           "page": "27.02A",
+           "pdf": 249
+          }
+         ]
+        },
+        {
+         "kind": "ecam",
+         "item": "PACK 1",
+         "setting": "OFF",
+         "applies_to": [
+          "all"
+         ],
+         "refs": [
+          {
+           "book": "QRH",
+           "code": "27.02",
+           "page": "27.02A",
+           "pdf": 249
+          }
+         ]
+        },
+        {
+         "kind": "ecam",
+         "item": "PACK 2",
+         "setting": "OFF",
+         "applies_to": [
+          "all"
+         ],
+         "refs": [
+          {
+           "book": "QRH",
+           "code": "27.02",
+           "page": "27.02A",
+           "pdf": 249
+          }
+         ]
+        },
+        {
+         "kind": "note",
+         "text": "Recirculated air ventilates the mixer bay and fuselage, preventing fuel vapour accumulation",
+         "applies_to": [
+          "all"
+         ],
+         "refs": [
+          {
+           "book": "FCOM",
+           "code": "PRO-ABN-SMOKE",
+           "page": "P 28/50",
+           "pdf": 3985
+          }
+         ]
+        }
+       ],
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "QRH",
+         "code": "27.02",
+         "page": "27.02A",
+         "pdf": 249
+        }
+       ]
+      },
+      {
+       "kind": "condition",
+       "text": "If no fuel vapors",
+       "children": [
+        {
+         "kind": "ecam",
+         "item": "CAB FANS",
+         "setting": "OFF",
+         "applies_to": [
+          "all"
+         ],
+         "refs": [
+          {
+           "book": "QRH",
+           "code": "27.02",
+           "page": "27.02A",
+           "pdf": 249
+          }
+         ]
+        },
+        {
+         "kind": "ecam",
+         "item": "PACK FLOW",
+         "setting": "HI",
+         "applies_to": [
+          "all"
+         ],
+         "refs": [
+          {
+           "book": "QRH",
+           "code": "27.02",
+           "page": "27.02A",
+           "pdf": 249
+          }
+         ]
+        },
+        {
+         "kind": "note",
+         "text": "Do not shut down the packs or reduce ventilation to smother the fire",
+         "applies_to": [
+          "all"
+         ],
+         "refs": [
+          {
+           "book": "FCOM",
+           "code": "PRO-ABN-SMOKE",
+           "page": "P 28/50",
+           "pdf": 3985
+          }
+         ]
+        }
+       ],
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "QRH",
+         "code": "27.02",
+         "page": "27.02A",
+         "pdf": 249
+        }
+       ]
+      },
+      {
+       "kind": "ecam",
+       "item": "LDG ELEV",
+       "setting": "10 000 FT / MEA-MORA",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "QRH",
+         "code": "27.02",
+         "page": "27.02A",
+         "pdf": 249
+        }
+       ]
+      }
+     ]
+    },
+    {
+     "actor": "PF",
+     "items": [
+      {
+       "kind": "ecam",
+       "item": "DESCENT TO FL 100 / MEA-MORA",
+       "setting": "INITIATE",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "QRH",
+         "code": "27.02",
+         "page": "27.02A",
+         "pdf": 249
+        }
+       ]
+      },
+      {
+       "kind": "note",
+       "text": "Cabin depressurization starts when the descent is initiated",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "FCOM",
+         "code": "PRO-ABN-SMOKE",
+         "page": "P 28/50",
+         "pdf": 3985
+        }
+       ]
+      },
+      {
+       "kind": "ecam",
+       "item": "ATC",
+       "setting": "NOTIFY",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "QRH",
+         "code": "27.02",
+         "page": "27.02A",
+         "pdf": 249
+        },
+        {
+         "book": "FCTM",
+         "code": "AOP-20",
+         "page": "P 1–2/10",
+         "pdf": 68
+        }
+       ]
+      }
+     ]
+    },
+    {
+     "actor": "PM",
+     "items": [
+      {
+       "kind": "ecam",
+       "item": "SMOKE / FUMES / AVNCS SMOKE PROC",
+       "setting": "CONTINUE",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "QRH",
+         "code": "27.02",
+         "page": "27.02A",
+         "pdf": 249
+        },
+        {
+         "book": "PDP",
+         "code": "Smoke",
+         "page": "XFTDA1SMOKE0001",
+         "pdf": 539
+        }
+       ]
+      },
+      {
+       "kind": "note",
+       "text": "Return to the SMOKE / FUMES / AVNCS SMOKE procedure for the remaining steps while descending; resume this procedure at FL 100 / MEA-MORA",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "PDP",
+         "code": "Smoke",
+         "page": "XFTDA1SMOKE0001",
+         "pdf": 539
+        },
+        {
+         "book": "FCTM",
+         "code": "PR-AEP-SMOKE",
+         "page": "P 8/10",
+         "pdf": 505
+        }
+       ]
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "phase": "At FL 100 or MEA-MORA",
+   "steps": [
+    {
+     "actor": "PM",
+     "items": [
+      {
+       "kind": "condition",
+       "text": "If in ELEC EMER CONFIG",
+       "children": [
+        {
+         "kind": "ecam",
+         "item": "APU MASTER sw",
+         "setting": "ON",
+         "applies_to": [
+          "all"
+         ],
+         "refs": [
+          {
+           "book": "QRH",
+           "code": "27.02",
+           "page": "27.02A",
+           "pdf": 249
+          }
+         ]
+        },
+        {
+         "kind": "note",
+         "text": "Battery contactors close for a maximum of 3 min, so the outflow valve (DC BAT BUS) can be controlled manually",
+         "applies_to": [
+          "all"
+         ],
+         "refs": [
+          {
+           "book": "FCOM",
+           "code": "PRO-ABN-SMOKE",
+           "page": "P 29/50",
+           "pdf": 3986
+          }
+         ]
+        }
+       ],
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "QRH",
+         "code": "27.02",
+         "page": "27.02A",
+         "pdf": 249
+        }
+       ]
+      },
+      {
+       "kind": "ecam",
+       "item": "PACK 1",
+       "setting": "OFF",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "QRH",
+         "code": "27.02",
+         "page": "27.02A",
+         "pdf": 249
+        }
+       ]
+      },
+      {
+       "kind": "ecam",
+       "item": "PACK 2",
+       "setting": "OFF",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "QRH",
+         "code": "27.02",
+         "page": "27.02A",
+         "pdf": 249
+        }
+       ]
+      },
+      {
+       "kind": "ecam",
+       "item": "CABIN PRESS MODE SEL",
+       "setting": "MAN",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "QRH",
+         "code": "27.02",
+         "page": "27.02A",
+         "pdf": 249
+        }
+       ]
+      },
+      {
+       "kind": "ecam",
+       "item": "MAN V/S CTL",
+       "setting": "FULL UP",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "QRH",
+         "code": "27.02",
+         "page": "27.02A",
+         "pdf": 249
+        }
+       ]
+      },
+      {
+       "kind": "note",
+       "text": "The outflow valve must be fully open to prevent repressurization when the RAM AIR valve is open",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "QRH",
+         "code": "27.02",
+         "page": "27.02A",
+         "pdf": 249
+        }
+       ]
+      },
+      {
+       "kind": "ecam",
+       "item": "RAM AIR",
+       "setting": "ON",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "QRH",
+         "code": "27.02",
+         "page": "27.02A",
+         "pdf": 249
+        }
+       ]
+      },
+      {
+       "kind": "note",
+       "text": "Possible when ΔP is 1 PSI or below; RAM AIR enables flying with both packs OFF",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "FCOM",
+         "code": "PRO-ABN-SMOKE",
+         "page": "P 29/50",
+         "pdf": 3986
+        }
+       ]
+      },
+      {
+       "kind": "ecam",
+       "item": "APU MASTER sw",
+       "setting": "OFF",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "QRH",
+         "code": "27.02",
+         "page": "27.02A",
+         "pdf": 249
+        }
+       ]
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "phase": "If smoke/fumes persist",
+   "steps": [
+    {
+     "actor": "PF",
+     "items": [
+      {
+       "kind": "ecam",
+       "item": "MAX SPEED",
+       "setting": "200 kt",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "QRH",
+         "code": "27.02",
+         "page": "27.02B",
+         "pdf": 250
+        }
+       ]
+      }
+     ]
+    },
+    {
+     "actor": "PM",
+     "items": [
+      {
+       "kind": "ecam",
+       "item": "COCKPIT DOOR",
+       "setting": "OPEN",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "QRH",
+         "code": "27.02",
+         "page": "27.02B",
+         "pdf": 250
+        }
+       ]
+      },
+      {
+       "kind": "ecam",
+       "item": "HEADSETS",
+       "setting": "ON",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "QRH",
+         "code": "27.02",
+         "page": "27.02B",
+         "pdf": 250
+        }
+       ]
+      },
+      {
+       "kind": "ecam",
+       "item": "PM SLIDING WINDOW",
+       "setting": "OPEN",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "QRH",
+         "code": "27.02",
+         "page": "27.02B",
+         "pdf": 250
+        }
+       ]
+      },
+      {
+       "kind": "condition",
+       "text": "When window open",
+       "children": [
+        {
+         "kind": "ecam",
+         "item": "NON-AFFECTED PACK(s)",
+         "setting": "ON",
+         "applies_to": [
+          "all"
+         ],
+         "refs": [
+          {
+           "book": "QRH",
+           "code": "27.02",
+           "page": "27.02B",
+           "pdf": 250
+          }
+         ]
+        },
+        {
+         "kind": "ecam",
+         "item": "VISUAL WARNINGS (noisy CKPT)",
+         "setting": "MONITOR",
+         "applies_to": [
+          "all"
+         ],
+         "refs": [
+          {
+           "book": "QRH",
+           "code": "27.02",
+           "page": "27.02B",
+           "pdf": 250
+          }
+         ]
+        },
+        {
+         "kind": "ecam",
+         "item": "SMOKE / FUMES / AVNCS SMOKE PROC",
+         "setting": "CONTINUE",
+         "applies_to": [
+          "all"
+         ],
+         "refs": [
+          {
+           "book": "QRH",
+           "code": "27.02",
+           "page": "27.02B",
+           "pdf": 250
+          }
+         ]
+        }
+       ],
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "QRH",
+         "code": "27.02",
+         "page": "27.02B",
+         "pdf": 250
+        }
+       ]
+      },
+      {
+       "kind": "callout",
+       "text": "REMOVAL OF SMOKE / FUMES PROCEDURE COMPLETED",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "PDP",
+         "code": "Management of abnormal operations",
+         "page": "XFTDN6ECAM00001",
+         "pdf": 427
+        }
+       ]
+      }
+     ]
+    }
+   ]
+  }
+ ],
+ "procedures": [
+  {
+   "title": "REMOVAL OF SMOKE / FUMES",
+   "source": "QRH 27.02A–B",
+   "lines": [
+    {
+     "kind": "action",
+     "item": "EMER EXIT LIGHT",
+     "setting": "ON",
+     "text": "",
+     "level": 0,
+     "applies_to": [
+      "all"
+     ],
+     "refs": [
+      {
+       "book": "QRH",
+       "code": "27.02",
+       "page": "27.02A",
+       "pdf": 249
+      }
+     ]
+    },
+    {
+     "kind": "condition",
+     "text": "If fuel vapors:",
+     "level": 0,
+     "applies_to": [
+      "all"
+     ],
+     "refs": [
+      {
+       "book": "QRH",
+       "code": "27.02",
+       "page": "27.02A",
+       "pdf": 249
+      }
+     ]
+    },
+    {
+     "kind": "action",
+     "item": "CAB FANS",
+     "setting": "ON",
+     "text": "",
+     "level": 1,
+     "applies_to": [
+      "all"
+     ],
+     "refs": [
+      {
+       "book": "QRH",
+       "code": "27.02",
+       "page": "27.02A",
+       "pdf": 249
+      }
+     ]
+    },
+    {
+     "kind": "action",
+     "item": "PACK 1",
+     "setting": "OFF",
+     "text": "",
+     "level": 1,
+     "applies_to": [
+      "all"
+     ],
+     "refs": [
+      {
+       "book": "QRH",
+       "code": "27.02",
+       "page": "27.02A",
+       "pdf": 249
+      }
+     ]
+    },
+    {
+     "kind": "action",
+     "item": "PACK 2",
+     "setting": "OFF",
+     "text": "",
+     "level": 1,
+     "applies_to": [
+      "all"
+     ],
+     "refs": [
+      {
+       "book": "QRH",
+       "code": "27.02",
+       "page": "27.02A",
+       "pdf": 249
+      }
+     ]
+    },
+    {
+     "kind": "condition",
+     "text": "If no fuel vapors:",
+     "level": 0,
+     "applies_to": [
+      "all"
+     ],
+     "refs": [
+      {
+       "book": "QRH",
+       "code": "27.02",
+       "page": "27.02A",
+       "pdf": 249
+      }
+     ]
+    },
+    {
+     "kind": "action",
+     "item": "CAB FANS",
+     "setting": "OFF",
+     "text": "",
+     "level": 1,
+     "applies_to": [
+      "all"
+     ],
+     "refs": [
+      {
+       "book": "QRH",
+       "code": "27.02",
+       "page": "27.02A",
+       "pdf": 249
+      }
+     ]
+    },
+    {
+     "kind": "action",
+     "item": "PACK FLOW",
+     "setting": "HI",
+     "text": "",
+     "level": 1,
+     "applies_to": [
+      "all"
+     ],
+     "refs": [
+      {
+       "book": "QRH",
+       "code": "27.02",
+       "page": "27.02A",
+       "pdf": 249
+      }
+     ]
+    },
+    {
+     "kind": "action",
+     "item": "LDG ELEV",
+     "setting": "10 000 FT / MEA-MORA",
+     "text": "",
+     "level": 0,
+     "applies_to": [
+      "all"
+     ],
+     "refs": [
+      {
+       "book": "QRH",
+       "code": "27.02",
+       "page": "27.02A",
+       "pdf": 249
+      }
+     ]
+    },
+    {
+     "kind": "action",
+     "item": "DESCENT TO FL 100 / MEA-MORA",
+     "setting": "INITIATE",
+     "text": "",
+     "level": 0,
+     "applies_to": [
+      "all"
+     ],
+     "refs": [
+      {
+       "book": "QRH",
+       "code": "27.02",
+       "page": "27.02A",
+       "pdf": 249
+      }
+     ]
+    },
+    {
+     "kind": "action",
+     "item": "ATC",
+     "setting": "NOTIFY",
+     "text": "",
+     "level": 0,
+     "applies_to": [
+      "all"
+     ],
+     "refs": [
+      {
+       "book": "QRH",
+       "code": "27.02",
+       "page": "27.02A",
+       "pdf": 249
+      }
+     ]
+    },
+    {
+     "kind": "action",
+     "item": "SMOKE / FUMES / AVNCS SMOKE PROC",
+     "setting": "CONTINUE",
+     "text": "Refer to ABN-27 Smoke / Fumes / AVNCS Smoke",
+     "level": 0,
+     "applies_to": [
+      "all"
+     ],
+     "refs": [
+      {
+       "book": "QRH",
+       "code": "27.02",
+       "page": "27.02A",
+       "pdf": 249
+      }
+     ]
+    },
+    {
+     "kind": "condition",
+     "text": "At FL 100 or MEA-MORA:",
+     "level": 0,
+     "applies_to": [
+      "all"
+     ],
+     "refs": [
+      {
+       "book": "QRH",
+       "code": "27.02",
+       "page": "27.02A",
+       "pdf": 249
+      }
+     ]
+    },
+    {
+     "kind": "condition",
+     "text": "If in ELEC EMER CONFIG:",
+     "level": 1,
+     "applies_to": [
+      "all"
+     ],
+     "refs": [
+      {
+       "book": "QRH",
+       "code": "27.02",
+       "page": "27.02A",
+       "pdf": 249
+      }
+     ]
+    },
+    {
+     "kind": "action",
+     "item": "APU MASTER sw",
+     "setting": "ON",
+     "text": "",
+     "level": 2,
+     "applies_to": [
+      "all"
+     ],
+     "refs": [
+      {
+       "book": "QRH",
+       "code": "27.02",
+       "page": "27.02A",
+       "pdf": 249
+      }
+     ]
+    },
+    {
+     "kind": "action",
+     "item": "PACK 1",
+     "setting": "OFF",
+     "text": "",
+     "level": 1,
+     "applies_to": [
+      "all"
+     ],
+     "refs": [
+      {
+       "book": "QRH",
+       "code": "27.02",
+       "page": "27.02A",
+       "pdf": 249
+      }
+     ]
+    },
+    {
+     "kind": "action",
+     "item": "PACK 2",
+     "setting": "OFF",
+     "text": "",
+     "level": 1,
+     "applies_to": [
+      "all"
+     ],
+     "refs": [
+      {
+       "book": "QRH",
+       "code": "27.02",
+       "page": "27.02A",
+       "pdf": 249
+      }
+     ]
+    },
+    {
+     "kind": "action",
+     "item": "CABIN PRESS MODE SEL",
+     "setting": "MAN",
+     "text": "",
+     "level": 1,
+     "applies_to": [
+      "all"
+     ],
+     "refs": [
+      {
+       "book": "QRH",
+       "code": "27.02",
+       "page": "27.02A",
+       "pdf": 249
+      }
+     ]
+    },
+    {
+     "kind": "action",
+     "item": "MAN V/S CTL",
+     "setting": "FULL UP",
+     "text": "",
+     "level": 1,
+     "applies_to": [
+      "all"
+     ],
+     "refs": [
+      {
+       "book": "QRH",
+       "code": "27.02",
+       "page": "27.02A",
+       "pdf": 249
+      }
+     ]
+    },
+    {
+     "kind": "note",
+     "text": "The outflow valve must be fully open to prevent repressurization when the RAM AIR valve is open.",
+     "level": 1,
+     "applies_to": [
+      "all"
+     ],
+     "refs": [
+      {
+       "book": "QRH",
+       "code": "27.02",
+       "page": "27.02A",
+       "pdf": 249
+      }
+     ]
+    },
+    {
+     "kind": "action",
+     "item": "RAM AIR",
+     "setting": "ON",
+     "text": "",
+     "level": 1,
+     "applies_to": [
+      "all"
+     ],
+     "refs": [
+      {
+       "book": "QRH",
+       "code": "27.02",
+       "page": "27.02A",
+       "pdf": 249
+      }
+     ]
+    },
+    {
+     "kind": "action",
+     "item": "APU MASTER sw",
+     "setting": "OFF",
+     "text": "",
+     "level": 1,
+     "applies_to": [
+      "all"
+     ],
+     "refs": [
+      {
+       "book": "QRH",
+       "code": "27.02",
+       "page": "27.02A",
+       "pdf": 249
+      }
+     ]
+    },
+    {
+     "kind": "condition",
+     "text": "If smoke/fumes persist:",
+     "level": 1,
+     "applies_to": [
+      "all"
+     ],
+     "refs": [
+      {
+       "book": "QRH",
+       "code": "27.02",
+       "page": "27.02B",
+       "pdf": 250
+      }
+     ]
+    },
+    {
+     "kind": "info",
+     "text": "MAX SPEED: 200 kt",
+     "level": 2,
+     "applies_to": [
+      "all"
+     ],
+     "refs": [
+      {
+       "book": "QRH",
+       "code": "27.02",
+       "page": "27.02B",
+       "pdf": 250
+      }
+     ]
+    },
+    {
+     "kind": "action",
+     "item": "COCKPIT DOOR",
+     "setting": "OPEN",
+     "text": "",
+     "level": 2,
+     "applies_to": [
+      "all"
+     ],
+     "refs": [
+      {
+       "book": "QRH",
+       "code": "27.02",
+       "page": "27.02B",
+       "pdf": 250
+      }
+     ]
+    },
+    {
+     "kind": "action",
+     "item": "HEADSETS",
+     "setting": "ON",
+     "text": "",
+     "level": 2,
+     "applies_to": [
+      "all"
+     ],
+     "refs": [
+      {
+       "book": "QRH",
+       "code": "27.02",
+       "page": "27.02B",
+       "pdf": 250
+      }
+     ]
+    },
+    {
+     "kind": "action",
+     "item": "PM SLIDING WINDOW",
+     "setting": "OPEN",
+     "text": "",
+     "level": 2,
+     "applies_to": [
+      "all"
+     ],
+     "refs": [
+      {
+       "book": "QRH",
+       "code": "27.02",
+       "page": "27.02B",
+       "pdf": 250
+      }
+     ]
+    },
+    {
+     "kind": "condition",
+     "text": "When window open:",
+     "level": 2,
+     "applies_to": [
+      "all"
+     ],
+     "refs": [
+      {
+       "book": "QRH",
+       "code": "27.02",
+       "page": "27.02B",
+       "pdf": 250
+      }
+     ]
+    },
+    {
+     "kind": "action",
+     "item": "NON-AFFECTED PACK(s)",
+     "setting": "ON",
+     "text": "",
+     "level": 3,
+     "applies_to": [
+      "all"
+     ],
+     "refs": [
+      {
+       "book": "QRH",
+       "code": "27.02",
+       "page": "27.02B",
+       "pdf": 250
+      }
+     ]
+    },
+    {
+     "kind": "action",
+     "item": "VISUAL WARNINGS (noisy CKPT)",
+     "setting": "MONITOR",
+     "text": "",
+     "level": 3,
+     "applies_to": [
+      "all"
+     ],
+     "refs": [
+      {
+       "book": "QRH",
+       "code": "27.02",
+       "page": "27.02B",
+       "pdf": 250
+      }
+     ]
+    },
+    {
+     "kind": "action",
+     "item": "SMOKE / FUMES / AVNCS SMOKE PROC",
+     "setting": "CONTINUE",
+     "text": "Refer to ABN-27 Smoke / Fumes / AVNCS Smoke",
+     "level": 3,
+     "applies_to": [
+      "all"
+     ],
+     "refs": [
+      {
+       "book": "QRH",
+       "code": "27.02",
+       "page": "27.02B",
+       "pdf": 250
+      }
+     ]
+    }
+   ]
+  }
+ ],
+ "status": null,
+ "background": [
+  {
+   "text": "The most effective means of smoke/fumes removal is ram air: descend to FL 100 or MEA-MORA while the cabin altitude is raised to 10 000 ft or MEA-MORA. The higher cabin altitude also reduces, at least temporarily, the smoke/fumes concentration.",
+   "applies_to": [
+    "all"
+   ],
+   "refs": [
+    {
+     "book": "FCOM",
+     "code": "PRO-ABN-SMOKE",
+     "page": "P 28/50",
+     "pdf": 3985
+    }
+   ]
+  },
+  {
+   "text": "With fuel vapours, CAB FANS ON: recirculated air ventilates the air mixer bay and other fuselage areas, preventing fuel vapour accumulation and the risk of explosion; passenger health is not affected.",
+   "applies_to": [
+    "all"
+   ],
+   "refs": [
+    {
+     "book": "FCOM",
+     "code": "PRO-ABN-SMOKE",
+     "page": "P 28/50",
+     "pdf": 3985
+    }
+   ]
+  },
+  {
+   "text": "Without fuel vapours, CAB FANS OFF prevents smoke/fumes from entering the cockpit and cabin; PACK FLOW HI gives maximum airflow. Do not shut down the packs or reduce ventilation to smother the fire. Do not deploy oxygen masks if fire is suspected in the cabin.",
+   "applies_to": [
+    "all"
+   ],
+   "refs": [
+    {
+     "book": "FCOM",
+     "code": "PRO-ABN-SMOKE",
+     "page": "P 28/50",
+     "pdf": 3985
+    }
+   ]
+  },
+  {
+   "text": "In ELEC EMER CONFIG, APU MASTER ON closes the battery contactors for a maximum of 3 min, so the crew can manually control the outflow valve powered by the DC BAT BUS.",
+   "applies_to": [
+    "all"
+   ],
+   "refs": [
+    {
+     "book": "FCOM",
+     "code": "PRO-ABN-SMOKE",
+     "page": "P 29/50",
+     "pdf": 3986
+    }
+   ]
+  },
+  {
+   "text": "If there is smoke/fumes in the cockpit, open the cockpit window to evacuate it. Due to the increased noise level, pay particular attention to visual warnings.",
+   "applies_to": [
+    "all"
+   ],
+   "refs": [
+    {
+     "book": "FCOM",
+     "code": "PRO-ABN-SMOKE",
+     "page": "P 29/50",
+     "pdf": 3986
+    }
+   ]
+  }
+ ],
+ "technique": [
+  {
+   "text": "The [QRH] SMOKE / FUMES / AVNCS SMOKE procedure: diversion anticipated (LAND ASAP), immediate actions, then — if the source is not immediately isolated — diversion and descent, origin identification and fighting. Boxed items (REMOVAL OF SMOKE / FUMES, ELEC EMER CONFIG, immediate landing) may be applied at any time, but not before the immediate actions.",
+   "applies_to": [
+    "all"
+   ],
+   "refs": [
+    {
+     "book": "FCTM",
+     "code": "PR-AEP-SMOKE",
+     "page": "P 3/10",
+     "pdf": 500
+    },
+    {
+     "book": "FCTM",
+     "code": "PR-AEP-SMOKE",
+     "page": "P 8/10",
+     "pdf": 505
+    },
+    {
+     "book": "PDP",
+     "code": "Smoke",
+     "page": "XFTDA1SMOKE0001",
+     "pdf": 538
+    }
+   ]
+  },
+  {
+   "text": "Once the first steps of REMOVAL OF SMOKE / FUMES are applied, return to the SMOKE / FUMES / AVNCS SMOKE procedure for the steps for the suspected source while descending to FL 100; reaching FL 100, complete REMOVAL OF SMOKE / FUMES.",
+   "applies_to": [
+    "all"
+   ],
+   "refs": [
+    {
+     "book": "FCTM",
+     "code": "PR-AEP-SMOKE",
+     "page": "P 8/10",
+     "pdf": 505
+    },
+    {
+     "book": "PDP",
+     "code": "Smoke",
+     "page": "XFTDA1SMOKE0001",
+     "pdf": 539
+    }
+   ]
+  },
+  {
+   "text": "QRH procedures: read the notes before performing the action they relate to.",
+   "applies_to": [
+    "all"
+   ],
+   "refs": [
+    {
+     "book": "FCTM",
+     "code": "AOP-30-30",
+     "page": "P 5/6",
+     "pdf": 86
+    }
+   ]
+  }
+ ],
+ "related": [
+  {
+   "title": "[QRH] SMOKE / FUMES / AVNCS SMOKE",
+   "why": "Parent procedure: REMOVAL OF SMOKE / FUMES is one of its boxed items.",
+   "key_actions": [
+    "LAND ASAP; immediate actions (crew protection, avoid further contamination, cabin crew communication)",
+    "If source not immediately isolated: DIVERSION and DESCENT TO FL 100 / MEA-MORA INITIATE",
+    "Identify and fight: AIR COND, CAB EQPT, or AVNCS/ELECTRICAL (or source unknown and persisting)"
+   ],
+   "refs": [
+    {
+     "book": "QRH",
+     "code": "27.01",
+     "page": "27.01D",
+     "pdf": 247
+    },
+    {
+     "book": "FCTM",
+     "code": "PR-AEP-SMOKE",
+     "page": "P 3/10",
+     "pdf": 500
+    },
+    {
+     "book": "PDP",
+     "code": "Smoke",
+     "page": "XFTDA1SMOKE0001",
+     "pdf": 537
+    },
+    {
+     "book": "PDP",
+     "code": "Smoke",
+     "page": "XFTDA1SMOKE0001",
+     "pdf": 538
+    }
+   ]
+  },
+  {
+   "title": "ELEC EMER CONFIG (as a smoke boxed item)",
+   "why": "Dense smoke still the greatest threat, or all specific actions unsuccessful.",
+   "key_actions": [
+    "Shed as much electrical equipment as possible to isolate the source",
+    "Remain in ELEC EMER CONFIG until a late stage; restore generation a few minutes before landing"
+   ],
+   "refs": [
+    {
+     "book": "FCTM",
+     "code": "PR-AEP-SMOKE",
+     "page": "P 8/10",
+     "pdf": 505
+    },
+    {
+     "book": "PDP",
+     "code": "Smoke",
+     "page": "XFTDA1SMOKE0001",
+     "pdf": 540
+    }
+   ]
+  }
+ ],
+ "gaps": [
+  {
+   "text": "The parent [QRH] SMOKE / FUMES / AVNCS SMOKE procedure (two HS-TX FCOM variants, HS-TXA..TXO and HS-TXP..TXU) is summarised only, not reproduced.",
+   "applies_to": [
+    "all"
+   ],
+   "refs": [
+    {
+     "book": "QRH",
+     "code": "27.01",
+     "page": "27.01D",
+     "pdf": 247
+    },
+    {
+     "book": "FCOM",
+     "code": "PRO-ABN-SMOKE",
+     "page": "P 28/50",
+     "pdf": 3985
+    }
+   ]
+  },
+  {
+   "text": "The PDP gives only the order callout (\"REMOVAL OF SMOKE / FUMES PROCEDURE\"); the split of the QRH lines between PF and PM is not given beyond read & do by the PM. The PF descent, ATC and speed items follow the FCTM task sharing.",
+   "applies_to": [
+    "all"
+   ],
+   "refs": [
+    {
+     "book": "PDP",
+     "code": "Smoke",
+     "page": "XFTDA1SMOKE0001",
+     "pdf": 539
+    },
+    {
+     "book": "FCTM",
+     "code": "AOP-20",
+     "page": "P 1–2/10",
+     "pdf": 68
+    }
+   ]
+  }
+ ],
+ "sources": [
+  {
+   "book": "QRH",
+   "section": "27.02 REMOVAL OF SMOKE / FUMES",
+   "pages": "27.02A–B",
+   "pdf": "249–250",
+   "rev": "14 JUL 26"
+  },
+  {
+   "book": "FCOM",
+   "section": "PRO-ABN-SMOKE — [QRH] REMOVAL OF SMOKE / FUMES",
+   "pages": "P 28–29/50",
+   "pdf": "3985–3986",
+   "rev": "14 JUL 26"
+  },
+  {
+   "book": "FCTM",
+   "section": "PR-AEP-SMOKE — smoke/fumes procedure, boxed items",
+   "pages": "P 1/10, 3/10, 8/10",
+   "pdf": "498, 500, 505",
+   "rev": "24 NOV 25"
+  },
+  {
+   "book": "PDP",
+   "section": "Smoke (XFTDA1SMOKE0001)",
+   "pages": "Immediate actions, procedure, removal of smoke",
+   "pdf": "537–540",
+   "rev": "JAN 2024"
+  },
+  {
+   "book": "FCTM",
+   "section": "AOP-20 / AOP-30 — task sharing and ECAM handling",
+   "pages": "AOP-20 P 1–2/10, AOP-30 P 1–6/6",
+   "pdf": "68–69, 79–86",
+   "rev": "26 MAY 26"
+  },
+  {
+   "book": "PDP",
+   "section": "Management of abnormal operations (XFTDN6ECAM00001)",
+   "pages": "ECAM actions, STATUS, QRH, confirm",
+   "pdf": "424–432",
+   "rev": "JAN 2024"
+  }
+ ],
+ "schema": "a320-ecam-abnormal/3",
+ "generated": "2026-10-14",
+ "qrh": [],
+ "tables": [],
+ "differences": []
+}

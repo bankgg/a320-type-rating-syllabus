@@ -1,0 +1,484 @@
+session:
+  id: mftd-4
+  title: MFTD/FBS 4
+  focus: Abnormal and unusual procedure practice
+  effectivity: HS-TX
+  syllabus_ref: S1
+
+sources:
+  S1:
+    title: A320 Trainee A vs B Syllabus Comparison
+    path: sources/A320_Trainee_A_vs_B_Syllabus_Comparison.html
+    locator: MFTD/FBS 4 · exercise IDs e01–e19 and ordered A/B topics
+    applicability: syllabus
+  F1:
+    title: FCOM · ECAM abnormal callouts
+    path: sources/A320FAM_FCOM_14JUL26_compressed.pdf
+    issue: 14 JUL 2026
+    effective: 07 SEP 2026
+    locator: PRO-ABN-ABN-00 p. 8/12 · PDF p. 2831
+    applicability: ALL
+  F2:
+    title: FCOM · FUEL L (R) TK PUMP 1(2) LO PR
+    path: sources/A320FAM_FCOM_14JUL26_compressed.pdf
+    issue: 14 JUL 2026
+    effective: 07 SEP 2026
+    locator: PRO-ABN-FUEL p. 53/76 · PDF p. 3658
+    applicability: ALL
+  F3:
+    title: FCOM · FUEL L (R) TK PUMP 1 + 2 LO PR
+    path: sources/A320FAM_FCOM_14JUL26_compressed.pdf
+    issue: 14 JUL 2026
+    effective: 07 SEP 2026
+    locator: PRO-ABN-FUEL pp. 54–55/76 · PDF pp. 3659–3660
+    applicability: HS-TX
+  F4:
+    title: FCOM · FUEL L (R) TK PUMP 1 + 2 LO PR · center tank empty
+    path: sources/A320FAM_FCOM_14JUL26_compressed.pdf
+    issue: 14 JUL 2026
+    effective: 07 SEP 2026
+    locator: PRO-ABN-FUEL pp. 56–57/76 · PDF pp. 3661–3662
+    applicability: HS-TX
+  F5:
+    title: FCOM · FUEL L (R) TK PUMP 1 + 2 LO PR · center tank not empty
+    path: sources/A320FAM_FCOM_14JUL26_compressed.pdf
+    issue: 14 JUL 2026
+    effective: 07 SEP 2026
+    locator: PRO-ABN-FUEL pp. 58–59/76 · PDF pp. 3663–3664
+    applicability: HS-TX
+  Q1:
+    title: QRH · Gravity Fuel Feeding
+    path: sources/A320FAM_QRH_14JUL26.pdf
+    issue: 14 JUL 2026
+    effective: 07 SEP 2026
+    locator: ABN-21 pp. 21.10A–B · PDF pp. 206–207
+    applicability: HS-TX
+  F6:
+    title: FCOM · ENG 1(2) FAIL
+    path: sources/A320FAM_FCOM_14JUL26_compressed.pdf
+    issue: 14 JUL 2026
+    effective: 07 SEP 2026
+    locator: PRO-ABN-ENG pp. 84–86/226 · PDF pp. 3331–3333
+    applicability: HS-TX
+  Q2:
+    title: QRH · ENG RELIGHT IN FLIGHT
+    path: sources/A320FAM_QRH_14JUL26.pdf
+    issue: 14 JUL 2026
+    effective: 07 SEP 2026
+    locator: ABN-19 pp. 19.06B–C · PDF pp. 175–176
+    applicability: HS-TX
+  F7:
+    title: FCOM · ELEC IDG 1(2) OIL LO PR/OVHT
+    path: sources/A320FAM_FCOM_14JUL26_compressed.pdf
+    issue: 14 JUL 2026
+    effective: 07 SEP 2026
+    locator: PRO-ABN-ELEC pp. 117–118/122 · PDF pp. 3242–3243
+    applicability: HS-TX
+  F8:
+    title: FCOM · Manual Engine Start - Procedure
+    path: sources/A320FAM_FCOM_14JUL26_compressed.pdf
+    issue: 14 JUL 2026
+    effective: 07 SEP 2026
+    locator: PRO-NOR-SUP-ENG pp. 6–8/18 · PDF pp. 4391–4393
+    applicability: HS-TX
+  F9:
+    title: FCOM · Engine-start ground callouts
+    path: sources/A320FAM_FCOM_14JUL26_compressed.pdf
+    issue: 14 JUL 2026
+    effective: 07 SEP 2026
+    locator: PRO-NOR-SCO p. 6/10 · PDF p. 4315
+    applicability: ALL
+  F10:
+    title: FCOM · CAB PR SYS 1(2) FAULT
+    path: sources/A320FAM_FCOM_14JUL26_compressed.pdf
+    issue: 14 JUL 2026
+    effective: 07 SEP 2026
+    locator: PRO-ABN-CAB_PR p. 11/14 · PDF p. 3058
+    applicability: ALL
+  F11:
+    title: FCOM · Cruise SOP
+    path: sources/A320FAM_FCOM_14JUL26_compressed.pdf
+    issue: 14 JUL 2026
+    effective: 07 SEP 2026
+    locator: PRO-NOR-SOP-15 p. 1/4 · PDF p. 4198
+    applicability: ALL
+  F12:
+    title: FCOM · Initial Approach SOP
+    path: sources/A320FAM_FCOM_14JUL26_compressed.pdf
+    issue: 14 JUL 2026
+    effective: 07 SEP 2026
+    locator: PRO-NOR-SOP-18-B p. 1/12 · PDF p. 4224
+    applicability: ALL
+
+scenarios:
+  - id: wing-pump-failure-gravity-feed
+    trainee: A
+    title: Wing tank pump failures · gravity feed
+    manual_titles:
+      - FCOM · FUEL L (R) TK PUMP 1(2) LO PR → FUEL L (R) TK PUMP 1 + 2 LO PR
+      - QRH · GRAVITY FUEL FEEDING
+    exercise_ids: [mftd-4-e04, mftd-4-e05, mftd-4-e06]
+    refs: [S1]
+    layout: two-column
+    flow_break_at: 8
+    page_break_at: 14
+    continuation_flow_break_at: 22
+    steps:
+      - kind: condition
+        stage: One affected wing tank pump
+        text: 'FUEL L (R) TK PUMP 1(2) LO PR:'
+        refs: [F2]
+      - kind: callout
+        actor: PF
+        text: ECAM ACTION
+        refs: [F1, F2]
+      - kind: action
+        procedure:
+          - {item: TK PUMP (AFFECTED), setting: 'OFF'}
+        refs: [F2]
+      - kind: callout
+        utterances:
+          - {speaker: PM, words: 'CLEAR FUEL ?'}
+          - {speaker: PF, words: CLEAR FUEL}
+        refs: [F1, F2]
+      - kind: action
+        text: 'Review STATUS: INOP SYS TK PUMP (affected).'
+        refs: [F2]
+      - kind: callout
+        utterances:
+          - {speaker: PF, words: REMOVE STATUS}
+          - {speaker: PM, words: ECAM ACTIONS COMPLETE}
+        refs: [F1, F2]
+      - kind: condition
+        stage: Both pumps on the same wing tank
+        text: 'FUEL L (R) TK PUMP 1 + 2 LO PR:'
+        refs: [F3, F4, F5]
+      - kind: callout
+        actor: PF
+        text: ECAM ACTION
+        refs: [F1, F3, F4, F5]
+      - kind: condition
+        text: 'HS-TXA–O, center tank not empty:'
+        refs: [F5]
+      - kind: action
+        branch_label: HS-TXA–O · center tank not empty
+        applies_to: &txao [HS-TXA, HS-TXB, HS-TXC, HS-TXD, HS-TXE, HS-TXF, HS-TXG, HS-TXH, HS-TXJ, HS-TXK, HS-TXL, HS-TXM, HS-TXN, HS-TXO]
+        procedure:
+          - {item: FUEL MODE SEL (IF CTR TK NOT FEEDING), setting: MAN}
+          - {item: TK PUMP 1 (AFFECTED), setting: 'OFF'}
+          - {item: TK PUMP 2 (AFFECTED), setting: 'OFF'}
+        refs: [F5]
+      - kind: condition
+        text: 'HS-TXA–O with center tank empty, or HS-TXP–U: if no fuel leak:'
+        refs: [F3, F4]
+      - kind: action
+        branch_label: HS-TXA–O empty · HS-TXP–U
+        applies_to: [HS-TXA, HS-TXB, HS-TXC, HS-TXD, HS-TXE, HS-TXF, HS-TXG, HS-TXH, HS-TXJ, HS-TXK, HS-TXL, HS-TXM, HS-TXN, HS-TXO, HS-TXP, HS-TXQ, HS-TXR, HS-TXS, HS-TXT, HS-TXU]
+        procedure:
+          - {item: FUEL X FEED (IF ABOVE FL150), setting: 'ON'}
+          - {item: ENG MODE selector, setting: IGN}
+          - {item: TK PUMP 1 (AFFECTED), setting: 'OFF'}
+          - {item: TK PUMP 2 (AFFECTED), setting: 'OFF'}
+        refs: [F3, F4]
+      - kind: condition
+        text: 'When affected tank fuel is required:'
+        refs: [F3, F4, F5]
+      - kind: action
+        procedure:
+          - {item: TK (AFFECTED) FEED, setting: GRVTY ONLY}
+        refs: [F3, F4, F5]
+      - kind: condition
+        stage: QRH · gravity fuel feeding
+        text: 'On gravity feed:'
+        refs: [Q1]
+      - kind: action
+        procedure:
+          - {item: ENG MODE SEL, setting: IGN}
+          - {item: NEGATIVE G FACTOR, setting: AVOID}
+        refs: [Q1]
+      - kind: condition
+        text: 'HS-TXA–T gravity-feed ceiling:'
+        refs: [Q1]
+      - kind: action
+        branch_label: HS-TXA–T
+        applies_to: &txat [HS-TXA, HS-TXB, HS-TXC, HS-TXD, HS-TXE, HS-TXF, HS-TXG, HS-TXH, HS-TXJ, HS-TXK, HS-TXL, HS-TXM, HS-TXN, HS-TXO, HS-TXP, HS-TXQ, HS-TXR, HS-TXS, HS-TXT]
+        procedure:
+          - {item: '>30 min above FL300', setting: CURRENT FL}
+          - {item: '<30 min above FL300', setting: FL300}
+          - {item: FL300 never exceeded, setting: 'HIGHER: FL150 or T/O airport +7 000 ft'}
+          - {item: JET B fuel, setting: FL100}
+        refs: [Q1]
+      - kind: condition
+        text: 'HS-TXU gravity-feed ceiling:'
+        refs: [Q1]
+      - kind: action
+        branch_label: HS-TXU
+        applies_to: [HS-TXU]
+        procedure:
+          - {item: '>30 min above FL300', setting: FL360}
+          - {item: '<30 min above FL300', setting: FL260}
+          - {item: FL300 never exceeded, setting: 'HIGHER: FL150 or T/O airport +7 000 ft'}
+        refs: [Q1]
+      - kind: condition
+        text: 'When reaching gravity-feed ceiling:'
+        refs: [Q1]
+      - kind: action
+        procedure:
+          - {item: FUEL X FEED, setting: 'OFF'}
+        refs: [Q1]
+      - kind: condition
+        text: 'HS-TXA–O empty, or HS-TXP–U: if below FL150:'
+        refs: [F3, F4]
+      - kind: action
+        branch_label: HS-TXA–O empty · HS-TXP–U
+        applies_to: [HS-TXA, HS-TXB, HS-TXC, HS-TXD, HS-TXE, HS-TXF, HS-TXG, HS-TXH, HS-TXJ, HS-TXK, HS-TXL, HS-TXM, HS-TXN, HS-TXO, HS-TXP, HS-TXQ, HS-TXR, HS-TXS, HS-TXT, HS-TXU]
+        procedure:
+          - {item: FUEL X FEED, setting: 'OFF'}
+        refs: [F3, F4]
+      - kind: callout
+        utterances:
+          - {speaker: PM, words: 'CLEAR FUEL ?'}
+          - {speaker: PF, words: CLEAR FUEL}
+        refs: [F1, F3, F4, F5]
+      - kind: action
+        text: 'Review STATUS: affected pumps inoperative; gravity feed only. Center tank feed MAN only where applicable.'
+        refs: [F3, F4, F5]
+      - kind: callout
+        utterances:
+          - {speaker: PF, words: REMOVE STATUS}
+          - {speaker: PM, words: ECAM ACTIONS COMPLETE}
+        refs: [F1, F3, F4, F5]
+      - kind: resume
+        text: Resume the applicable Cruise or Initial Approach SOP · monitor fuel and flight path.
+        refs: [F11, F12]
+
+  - id: engine-failure-successful-relight
+    trainee: A
+    title: Engine failure · successful in-flight relight
+    manual_titles:
+      - FCOM · ENG 1(2) FAIL
+      - QRH · ENG RELIGHT IN FLIGHT
+    exercise_ids: [mftd-4-e07, mftd-4-e08]
+    refs: [S1]
+    layout: two-column
+    flow_break_at: 8
+    steps:
+      - kind: condition
+        text: 'ENG 1(2) FAIL in flight, with no damage:'
+        refs: [F6]
+      - kind: callout
+        actor: PF
+        text: ECAM ACTION
+        refs: [F1, F6]
+      - kind: action
+        procedure:
+          - {item: ENG MODE SEL, setting: IGN}
+          - {item: THR LEVER (AFFECTED ENGINE), setting: IDLE}
+        refs: [F6]
+      - kind: condition
+        text: 'If no engine relight after 30 s from alert:'
+        refs: [F6]
+      - kind: action
+        procedure:
+          - {item: ENG MASTER (AFFECTED ENGINE), setting: 'OFF'}
+        refs: [F6]
+      - kind: condition
+        text: 'If no damage and no relight:'
+        refs: [F6]
+      - kind: action
+        text: Apply QRH ENG RELIGHT IN FLIGHT; check the QRH engine-relight envelope for current altitude and airspeed.
+        refs: [F6, Q2]
+      - kind: action
+        procedure:
+          - {item: ENG MASTER (AFFECTED ENGINE), setting: 'OFF'}
+          - {item: THR LEVER (AFFECTED ENGINE), setting: IDLE}
+          - {item: ENG MODE selector, setting: IGN}
+          - {item: X BLEED, setting: OPEN}
+        refs: [Q2]
+      - kind: condition
+        text: 'For starter-assisted relight:'
+        refs: [Q2]
+      - kind: action
+        procedure:
+          - {item: WING ANTI-ICE, setting: 'OFF'}
+        refs: [Q2]
+      - kind: action
+        procedure:
+          - {item: ENG MASTER (AFFECTED ENGINE), setting: 'ON'}
+          - {item: 'ENG PARAMETERS (N2, EGT)', setting: MONITOR}
+        detail: Light-up should occur within 30 s after fuel flow increases. Automatic start abort is unavailable.
+        refs: [Q2]
+      - kind: condition
+        text: 'When idle is reached (ENG AVAIL):'
+        refs: [Q2]
+      - kind: action
+        procedure:
+          - {item: ENG MODE selector, setting: NORM}
+          - {item: TCAS MODE selector, setting: TA/RA}
+          - {item: X BLEED, setting: AUTO}
+          - {item: Affected SYS, setting: RESTORE}
+        refs: [Q2]
+      - kind: callout
+        actor: PM
+        text: ECAM ACTIONS COMPLETE
+        refs: [F1, F6, Q2]
+      - kind: resume
+        text: Resume the applicable Cruise or Initial Approach SOP · review engine and flight path.
+        refs: [F11, F12]
+
+  - id: idg-oil-fault
+    trainee: A
+    title: IDG oil low pressure or overheat
+    manual_titles:
+      - FCOM · ELEC IDG 1(2) OIL LO PR/OVHT
+    exercise_ids: [mftd-4-e09]
+    refs: [S1]
+    layout: single
+    steps:
+      - kind: condition
+        text: 'ELEC IDG 1(2) OIL LO PR/OVHT:'
+        refs: [F7]
+      - kind: callout
+        actor: PF
+        text: ECAM ACTION
+        refs: [F1, F7]
+      - kind: action
+        procedure:
+          - {item: IDG (AFFECTED), setting: 'OFF'}
+        detail: Engine at or above idle. Hold IDG pb until GEN FAULT; do not exceed 3 s.
+        refs: [F7]
+      - kind: callout
+        utterances:
+          - {speaker: PM, words: 'CLEAR ELEC ?'}
+          - {speaker: PF, words: CLEAR ELEC}
+        refs: [F1, F7]
+      - kind: action
+        text: 'Review STATUS: GEN 1(2) inoperative; CAT 3 SINGLE ONLY. APU GEN may be used if available.'
+        refs: [F7]
+      - kind: callout
+        utterances:
+          - {speaker: PF, words: REMOVE STATUS}
+          - {speaker: PM, words: ECAM ACTIONS COMPLETE}
+        refs: [F1, F7]
+      - kind: resume
+        text: Resume Initial Approach SOP · monitor flight path and approach phase.
+        refs: [F12]
+
+  - id: manual-engine-start
+    trainee: B
+    title: Manual engine start
+    manual_titles:
+      - FCOM · MANUAL ENGINE START - PROCEDURE
+    exercise_ids: [mftd-4-e15]
+    refs: [S1]
+    layout: two-column
+    flow_break_at: 9
+    steps:
+      - kind: condition
+        text: 'For a manual engine start:'
+        refs: [F8]
+      - kind: action
+        procedure:
+          - {item: THR LEVERS, setting: IDLE}
+          - {item: ENG MODE sel, setting: NORM THEN IGN/START}
+        refs: [F8]
+      - kind: caution
+        text: Engine start occurs regardless of thrust-lever position; a non-idle setting can cause hazardous thrust.
+        refs: [F8]
+      - kind: condition
+        text: 'When ready and cleared to start:'
+        refs: [F9]
+      - kind: callout
+        utterances:
+          - {speaker: Captain, words: 'CLEAR TO START ?'}
+          - {speaker: GND, words: CLEAR TO START}
+          - {speaker: Captain, words: 'STARTING ENG(S)__'}
+        refs: [F9]
+      - kind: condition
+        text: 'When all engine parameters except N1/N2 are available, with no amber crosses:'
+        refs: [F8]
+      - kind: action
+        procedure:
+          - {item: ENG MAN START pb-sw, setting: 'ON'}
+          - {item: START VALVE, setting: CHECK IN-LINE}
+          - {item: N2 INCREASE, setting: CHECK}
+          - {item: OIL PRESS INCREASE, setting: CHECK}
+        refs: [F8]
+      - kind: condition
+        text: 'At maximum motoring speed (N2 ≥16 %) and 30 s after MAN START ON:'
+        refs: [F8]
+      - kind: action
+        procedure:
+          - {item: ENG MASTER, setting: 'ON'}
+          - {item: CHRONO, setting: START, actor: PM}
+          - {item: IGNITERS A AND B, setting: CHECK ON}
+          - {item: FUEL FLOW INCREASE, setting: CHECK}
+        refs: [F8]
+      - kind: condition
+        text: 'Within 20 s after fuel flow increases:'
+        refs: [F8]
+      - kind: action
+        procedure:
+          - {item: EGT INCREASE, setting: CHECK}
+          - {item: N1 INCREASE (BEFORE 34 % N2), setting: CHECK}
+        refs: [F8]
+      - kind: condition
+        text: 'At N2 43 % / slightly above:'
+        refs: [F8]
+      - kind: action
+        procedure:
+          - {item: IGNITERS A AND B (AT 43 % N2), setting: CHECK OFF}
+          - {item: START VALVE (SLIGHTLY ABOVE 43 % N2), setting: CHECK CROSS LINE}
+          - {item: MAIN ENG PARAMETERS, setting: CHECK NORMAL}
+          - {item: SECONDARY ENG PARAMETERS, setting: CHECK NORMAL}
+          - {item: ENG MAN START pb-sw, setting: 'OFF'}
+          - {item: ENG MODE sel, setting: NORM}
+        refs: [F8]
+      - kind: condition
+        text: 'When no other engine requires manual start:'
+        refs: [F8]
+      - kind: action
+        procedure:
+          - {item: SHEDDED SYSTEMS, setting: RESTORE}
+        refs: [F8]
+      - kind: resume
+        text: SOP – ENGINE START · RESUME
+        refs: [F8]
+
+  - id: cabin-pressure-controller-fault
+    trainee: B
+    title: Cabin pressure controller fault
+    manual_titles:
+      - FCOM · CAB PR SYS 1(2) FAULT
+    exercise_ids: [mftd-4-e18]
+    refs: [S1]
+    layout: single
+    steps:
+      - kind: condition
+        text: 'CAB PR SYS 1(2) FAULT:'
+        refs: [F10]
+      - kind: callout
+        actor: PF
+        text: ECAM ACTION
+        refs: [F1, F10]
+      - kind: action
+        text: 'Crew awareness: cabin pressure controller 1(2) failed.'
+        refs: [F10]
+      - kind: callout
+        utterances:
+          - {speaker: PM, words: 'CLEAR CAB PR ?'}
+          - {speaker: PF, words: CLEAR CAB PR}
+        refs: [F1, F10]
+      - kind: action
+        text: 'Review STATUS: INOP SYS CAB PR 1(2).'
+        refs: [F10]
+      - kind: callout
+        utterances:
+          - {speaker: PF, words: REMOVE STATUS}
+          - {speaker: PM, words: ECAM ACTIONS COMPLETE}
+        refs: [F1, F10]
+      - kind: resume
+        text: Resume Initial Approach SOP · monitor flight path and approach phase.
+        refs: [F12]
+
+excluded_items: [mftd-4-e01, mftd-4-e02, mftd-4-e03, mftd-4-e10, mftd-4-e11, mftd-4-e12, mftd-4-e13, mftd-4-e14, mftd-4-e16, mftd-4-e17, mftd-4-e19]

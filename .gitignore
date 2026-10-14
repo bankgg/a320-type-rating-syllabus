@@ -1,0 +1,8 @@
+# Company manuals (uncontrolled copies; FCOM exceeds GitHub's 100 MB limit)
+books/
+sessions/sources/
+*:Zone.Identifier
+
+# Generated caches
+__pycache__/
+.claude/skills/*/cache/

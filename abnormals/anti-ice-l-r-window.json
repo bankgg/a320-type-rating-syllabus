@@ -1,0 +1,1439 @@
+{
+ "slug": "anti-ice-l-r-window",
+ "title": "ANTI ICE L(R) WINDOW",
+ "kind": "ecam",
+ "alert": {
+  "level": "caution",
+  "land_asap": "none",
+  "memory_items": false,
+  "qrh_summary": false,
+  "trigger": "This alert triggers when the heating system of the left(right) cockpit window is failed.",
+  "inhibited_phases": [
+   3,
+   4,
+   5,
+   7,
+   8
+  ],
+  "refs": [
+   {
+    "book": "FCOM",
+    "code": "PRO-ABN-A-ICE",
+    "page": "P 37/42",
+    "pdf": 2884
+   }
+  ]
+ },
+ "effectivity": {
+  "branches": [],
+  "note": "One version for all HS-TX."
+ },
+ "summary": "An amber caution: the heating of the left or right cockpit side window has failed. There is no action line, only crew awareness, and STATUS shows L(R) WNDW HEAT as INOP SYS. A reset is allowed only on the ground, from the QRH reset table, when a spurious alert is likely (packs OFF with the OAT above 40 °C, or the windshield in direct sunlight). It is not authorized in flight.",
+ "key_limits": [
+  {
+   "label": "Action",
+   "value": "Crew awareness",
+   "applies_to": [
+    "all"
+   ],
+   "refs": [
+    {
+     "book": "FCOM",
+     "code": "PRO-ABN-A-ICE",
+     "page": "P 37/42",
+     "pdf": 2884
+    }
+   ]
+  },
+  {
+   "label": "Inhibited",
+   "value": "phases 3, 4, 5, 7, 8",
+   "applies_to": [
+    "all"
+   ],
+   "refs": [
+    {
+     "book": "FCOM",
+     "code": "PRO-ABN-A-ICE",
+     "page": "P 37/42",
+     "pdf": 2884
+    }
+   ]
+  },
+  {
+   "label": "Reset in flight",
+   "value": "Not authorized",
+   "applies_to": [
+    "all"
+   ],
+   "refs": [
+    {
+     "book": "QRH",
+     "code": "02.09",
+     "page": "02.09A",
+     "pdf": 62
+    }
+   ]
+  },
+  {
+   "label": "Ground reset",
+   "value": "PACK 1+2 ON, wait 5 min, then C/B pull · 5 s · push",
+   "applies_to": [
+    "all"
+   ],
+   "refs": [
+    {
+     "book": "QRH",
+     "code": "02.09",
+     "page": "02.09A",
+     "pdf": 62
+    }
+   ]
+  }
+ ],
+ "flow": [
+  {
+   "phase": "Recognise",
+   "steps": [
+    {
+     "actor": "BOTH",
+     "items": [
+      {
+       "kind": "action",
+       "text": "First to notice: MASTER CAUTION reset",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "FCTM",
+         "code": "AOP-30-30",
+         "page": "P 2/6",
+         "pdf": 83
+        },
+        {
+         "book": "PDP",
+         "code": "Management of abnormal operations",
+         "page": "XFTDN6ECAM00001",
+         "pdf": 424
+        }
+       ]
+      }
+     ]
+    },
+    {
+     "actor": "PM",
+     "items": [
+      {
+       "kind": "callout",
+       "text": "ANTI ICE L WINDOW",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "FCTM",
+         "code": "AOP-30-30",
+         "page": "P 2/6",
+         "pdf": 83
+        },
+        {
+         "book": "FCOM",
+         "code": "PRO-ABN-A-ICE",
+         "page": "P 37/42",
+         "pdf": 2884
+        },
+        {
+         "book": "PDP",
+         "code": "Management of abnormal operations",
+         "page": "XFTDN6ECAM00001",
+         "pdf": 424
+        }
+       ]
+      },
+      {
+       "kind": "note",
+       "text": "Or ANTI ICE R WINDOW — announce the title shown",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "FCOM",
+         "code": "PRO-ABN-A-ICE",
+         "page": "P 37/42",
+         "pdf": 2884
+        }
+       ]
+      },
+      {
+       "kind": "action",
+       "text": "ECAM — confirm the failure before any action",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "FCTM",
+         "code": "AOP-30-30",
+         "page": "P 2/6",
+         "pdf": 83
+        },
+        {
+         "book": "PDP",
+         "code": "Management of abnormal operations",
+         "page": "XFTDN6ECAM00001",
+         "pdf": 424
+        }
+       ]
+      }
+     ]
+    },
+    {
+     "actor": "PF",
+     "items": [
+      {
+       "kind": "callout",
+       "text": "ECAM ACTION",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "FCOM",
+         "code": "PRO-ABN-ABN-00",
+         "page": "P 8/12",
+         "pdf": 2831
+        }
+       ]
+      },
+      {
+       "kind": "note",
+       "text": "PF now flies, navigates and communicates",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "FCTM",
+         "code": "AOP-20",
+         "page": "P 1–2/10",
+         "pdf": 68
+        },
+        {
+         "book": "PDP",
+         "code": "Management of abnormal operations",
+         "page": "XFTDN6ECAM00001",
+         "pdf": 424
+        }
+       ]
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "phase": "Procedure",
+   "steps": [
+    {
+     "actor": "PM",
+     "items": [
+      {
+       "kind": "ecam",
+       "item": "Crew awareness",
+       "setting": "—",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "FCOM",
+         "code": "PRO-ABN-A-ICE",
+         "page": "P 37/42",
+         "pdf": 2884
+        }
+       ]
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "phase": "STATUS",
+   "steps": [
+    {
+     "actor": "PM",
+     "items": [
+      {
+       "kind": "callout",
+       "text": "CLEAR ANTI ICE ?",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "FCOM",
+         "code": "PRO-ABN-ABN-00",
+         "page": "P 8/12",
+         "pdf": 2831
+        },
+        {
+         "book": "FCTM",
+         "code": "AOP-30-30",
+         "page": "P 3/6",
+         "pdf": 84
+        },
+        {
+         "book": "PDP",
+         "code": "Management of abnormal operations",
+         "page": "XFTDN6ECAM00001",
+         "pdf": 424
+        }
+       ]
+      }
+     ]
+    },
+    {
+     "actor": "PF",
+     "items": [
+      {
+       "kind": "callout",
+       "text": "CLEAR ANTI ICE",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "FCOM",
+         "code": "PRO-ABN-ABN-00",
+         "page": "P 8/12",
+         "pdf": 2831
+        },
+        {
+         "book": "FCTM",
+         "code": "AOP-30-30",
+         "page": "P 3/6",
+         "pdf": 84
+        },
+        {
+         "book": "PDP",
+         "code": "Management of abnormal operations",
+         "page": "XFTDN6ECAM00001",
+         "pdf": 424
+        }
+       ]
+      }
+     ]
+    },
+    {
+     "actor": "PM",
+     "items": [
+      {
+       "kind": "callout",
+       "text": "STATUS",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "FCTM",
+         "code": "AOP-30-30",
+         "page": "P 3/6",
+         "pdf": 84
+        },
+        {
+         "book": "PDP",
+         "code": "Management of abnormal operations",
+         "page": "XFTDN6ECAM00001",
+         "pdf": 426
+        }
+       ]
+      }
+     ]
+    },
+    {
+     "actor": "PF",
+     "items": [
+      {
+       "kind": "callout",
+       "text": "STOP ECAM",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "FCTM",
+         "code": "AOP-30-30",
+         "page": "P 3/6",
+         "pdf": 84
+        },
+        {
+         "book": "PDP",
+         "code": "Management of abnormal operations",
+         "page": "XFTDN6ECAM00001",
+         "pdf": 426
+        }
+       ]
+      }
+     ]
+    },
+    {
+     "actor": "PM",
+     "items": [
+      {
+       "kind": "ecam",
+       "item": "ECAM ACTIONS",
+       "setting": "STOP",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "PDP",
+         "code": "Management of abnormal operations",
+         "page": "XFTDN6ECAM00001",
+         "pdf": 426
+        }
+       ]
+      }
+     ]
+    },
+    {
+     "actor": "PF",
+     "items": [
+      {
+       "kind": "action",
+       "text": "Normal C/L as applicable; system resets only per QRH",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "FCTM",
+         "code": "AOP-30-30",
+         "page": "P 4/6",
+         "pdf": 85
+        },
+        {
+         "book": "PDP",
+         "code": "Management of abnormal operations",
+         "page": "XFTDN6ECAM00001",
+         "pdf": 426
+        }
+       ]
+      },
+      {
+       "kind": "action",
+       "text": "Consider a system reset: QRH System Reset table lists ANTI ICE L(R) WINDSHIELD (WINDOW) → WHC",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "QRH",
+         "code": "02.02",
+         "page": "02.02A",
+         "pdf": 51
+        },
+        {
+         "book": "FCTM",
+         "code": "AOP-30-30",
+         "page": "P 4/6",
+         "pdf": 85
+        }
+       ]
+      },
+      {
+       "kind": "condition",
+       "text": "In flight",
+       "children": [
+        {
+         "kind": "note",
+         "text": "Reset not authorized",
+         "applies_to": [
+          "all"
+         ],
+         "refs": [
+          {
+           "book": "QRH",
+           "code": "02.09",
+           "page": "02.09A",
+           "pdf": 62
+          }
+         ]
+        }
+       ],
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "QRH",
+         "code": "02.09",
+         "page": "02.09A",
+         "pdf": 62
+        }
+       ]
+      },
+      {
+       "kind": "callout",
+       "text": "CONTINUE ECAM",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "FCTM",
+         "code": "AOP-30-30",
+         "page": "P 3/6",
+         "pdf": 84
+        },
+        {
+         "book": "PDP",
+         "code": "Management of abnormal operations",
+         "page": "XFTDN6ECAM00001",
+         "pdf": 426
+        }
+       ]
+      }
+     ]
+    },
+    {
+     "actor": "PM",
+     "items": [
+      {
+       "kind": "action",
+       "text": "Read the whole STATUS page; preview APPR PROC workload",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "FCTM",
+         "code": "AOP-30-30",
+         "page": "P 3/6",
+         "pdf": 84
+        },
+        {
+         "book": "PDP",
+         "code": "Management of abnormal operations",
+         "page": "XFTDN6ECAM00001",
+         "pdf": 426
+        }
+       ]
+      },
+      {
+       "kind": "callout",
+       "text": "REMOVE STATUS ?",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "FCTM",
+         "code": "AOP-30-30",
+         "page": "P 3/6",
+         "pdf": 84
+        },
+        {
+         "book": "PDP",
+         "code": "Management of abnormal operations",
+         "page": "XFTDN6ECAM00001",
+         "pdf": 426
+        }
+       ]
+      }
+     ]
+    },
+    {
+     "actor": "PF",
+     "items": [
+      {
+       "kind": "callout",
+       "text": "REMOVE STATUS",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "FCOM",
+         "code": "PRO-ABN-ABN-00",
+         "page": "P 8/12",
+         "pdf": 2831
+        },
+        {
+         "book": "FCTM",
+         "code": "AOP-30-30",
+         "page": "P 3/6",
+         "pdf": 84
+        },
+        {
+         "book": "PDP",
+         "code": "Management of abnormal operations",
+         "page": "XFTDN6ECAM00001",
+         "pdf": 426
+        }
+       ]
+      }
+     ]
+    },
+    {
+     "actor": "PM",
+     "items": [
+      {
+       "kind": "callout",
+       "text": "ECAM ACTIONS COMPLETE",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "FCOM",
+         "code": "PRO-ABN-ABN-00",
+         "page": "P 8/12",
+         "pdf": 2831
+        },
+        {
+         "book": "PDP",
+         "code": "Management of abnormal operations",
+         "page": "XFTDN6ECAM00001",
+         "pdf": 426
+        }
+       ]
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "phase": "On ground: QRH reset (spurious alert)",
+   "steps": [
+    {
+     "actor": "PF",
+     "items": [
+      {
+       "kind": "callout",
+       "text": "ANTI ICE L(R) WINDSHIELD (WINDOW) PROCEDURE",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "PDP",
+         "code": "Management of abnormal operations",
+         "page": "XFTDN6ECAM00001",
+         "pdf": 427
+        },
+        {
+         "book": "QRH",
+         "code": "02.09",
+         "page": "02.09A",
+         "pdf": 62
+        }
+       ]
+      },
+      {
+       "kind": "note",
+       "text": "Found from the QRH System Reset table (02.02A)",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "QRH",
+         "code": "02.02",
+         "page": "02.02A",
+         "pdf": 51
+        }
+       ]
+      }
+     ]
+    },
+    {
+     "actor": "PM",
+     "items": [
+      {
+       "kind": "condition",
+       "text": "If the packs are OFF with the OAT above 40 °C, and/or the windshield is under direct sunlight",
+       "children": [
+        {
+         "kind": "ecam",
+         "item": "PACK 1+2",
+         "setting": "ON",
+         "applies_to": [
+          "all"
+         ],
+         "refs": [
+          {
+           "book": "QRH",
+           "code": "02.09",
+           "page": "02.09A",
+           "pdf": 62
+          }
+         ]
+        },
+        {
+         "kind": "ecam",
+         "item": "Wait",
+         "setting": "5 min",
+         "applies_to": [
+          "all"
+         ],
+         "refs": [
+          {
+           "book": "QRH",
+           "code": "02.09",
+           "page": "02.09A",
+           "pdf": 62
+          }
+         ]
+        },
+        {
+         "kind": "note",
+         "text": "On 122VU:",
+         "applies_to": [
+          "all"
+         ],
+         "refs": [
+          {
+           "book": "QRH",
+           "code": "02.09",
+           "page": "02.09A",
+           "pdf": 62
+          }
+         ]
+        },
+        {
+         "kind": "condition",
+         "text": "If ANTI ICE L WINDSHIELD",
+         "children": [
+          {
+           "kind": "ecam",
+           "item": "C/B X13 (ANTI ICE / WHC / 1)",
+           "setting": "PULL — wait 5 s — PUSH",
+           "applies_to": [
+            "all"
+           ],
+           "refs": [
+            {
+             "book": "QRH",
+             "code": "02.09",
+             "page": "02.09A",
+             "pdf": 62
+            }
+           ]
+          }
+         ],
+         "applies_to": [
+          "all"
+         ],
+         "refs": [
+          {
+           "book": "QRH",
+           "code": "02.09",
+           "page": "02.09A",
+           "pdf": 62
+          }
+         ]
+        },
+        {
+         "kind": "condition",
+         "text": "If ANTI ICE R WINDSHIELD",
+         "children": [
+          {
+           "kind": "ecam",
+           "item": "C/B W13 (ANTI ICE / WHC / 2)",
+           "setting": "PULL — wait 5 s — PUSH",
+           "applies_to": [
+            "all"
+           ],
+           "refs": [
+            {
+             "book": "QRH",
+             "code": "02.09",
+             "page": "02.09A",
+             "pdf": 62
+            }
+           ]
+          }
+         ],
+         "applies_to": [
+          "all"
+         ],
+         "refs": [
+          {
+           "book": "QRH",
+           "code": "02.09",
+           "page": "02.09A",
+           "pdf": 62
+          }
+         ]
+        }
+       ],
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "QRH",
+         "code": "02.09",
+         "page": "02.09A",
+         "pdf": 62
+        }
+       ]
+      },
+      {
+       "kind": "callout",
+       "text": "ANTI ICE L(R) WINDSHIELD (WINDOW) PROCEDURE COMPLETED",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "PDP",
+         "code": "Management of abnormal operations",
+         "page": "XFTDN6ECAM00001",
+         "pdf": 427
+        }
+       ]
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "phase": "Assess and decide",
+   "steps": [
+    {
+     "actor": "BOTH",
+     "items": [
+      {
+       "kind": "action",
+       "text": "Assess: recall STATUS, approach capability, operational and maintenance aspects; decide; inform as required",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "FCTM",
+         "code": "AOP-30-30",
+         "page": "P 5/6",
+         "pdf": 86
+        },
+        {
+         "book": "PDP",
+         "code": "Management of abnormal operations",
+         "page": "XFTDN6ECAM00001",
+         "pdf": 428
+        }
+       ]
+      },
+      {
+       "kind": "note",
+       "text": "QRH CAT 2/CAT 3 equipment list: WINDSHIELD HEAT (L or R windshield) 1 for PF; side window heat is not listed",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "QRH",
+         "code": "OPS.08",
+         "page": "OPS.08D",
+         "pdf": 285
+        }
+       ]
+      }
+     ]
+    }
+   ]
+  }
+ ],
+ "procedures": [
+  {
+   "title": "ECAM procedure",
+   "source": "FCOM PRO-ABN-A-ICE",
+   "lines": [
+    {
+     "kind": "info",
+     "text": "Crew awareness.",
+     "level": 0,
+     "applies_to": [
+      "all"
+     ],
+     "refs": [
+      {
+       "book": "FCOM",
+       "code": "PRO-ABN-A-ICE",
+       "page": "P 37/42",
+       "pdf": 2884
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "title": "ANTI ICE L(R) WINDSHIELD (WINDOW) — system reset",
+   "source": "QRH 02.09A",
+   "lines": [
+    {
+     "kind": "condition",
+     "text": "In flight:",
+     "level": 0,
+     "applies_to": [
+      "all"
+     ],
+     "refs": [
+      {
+       "book": "QRH",
+       "code": "02.09",
+       "page": "02.09A",
+       "pdf": 62
+      }
+     ]
+    },
+    {
+     "kind": "info",
+     "text": "Not authorized.",
+     "level": 1,
+     "applies_to": [
+      "all"
+     ],
+     "refs": [
+      {
+       "book": "QRH",
+       "code": "02.09",
+       "page": "02.09A",
+       "pdf": 62
+      }
+     ]
+    },
+    {
+     "kind": "condition",
+     "text": "On ground:",
+     "level": 0,
+     "applies_to": [
+      "all"
+     ],
+     "refs": [
+      {
+       "book": "QRH",
+       "code": "02.09",
+       "page": "02.09A",
+       "pdf": 62
+      }
+     ]
+    },
+    {
+     "kind": "info",
+     "text": "If the air conditioning packs are OFF with the OAT above 40 °C, and/or the windshield is under direct sunlight, a spurious ANTI ICE L(R) WINDSHIELD (WINDOW) alert may trigger. In this case, apply the following reset procedure:",
+     "level": 1,
+     "applies_to": [
+      "all"
+     ],
+     "refs": [
+      {
+       "book": "QRH",
+       "code": "02.09",
+       "page": "02.09A",
+       "pdf": 62
+      }
+     ]
+    },
+    {
+     "kind": "action",
+     "item": "PACK 1+2",
+     "setting": "ON",
+     "text": "",
+     "level": 1,
+     "applies_to": [
+      "all"
+     ],
+     "refs": [
+      {
+       "book": "QRH",
+       "code": "02.09",
+       "page": "02.09A",
+       "pdf": 62
+      }
+     ]
+    },
+    {
+     "kind": "info",
+     "text": "Wait 5 min",
+     "level": 1,
+     "applies_to": [
+      "all"
+     ],
+     "refs": [
+      {
+       "book": "QRH",
+       "code": "02.09",
+       "page": "02.09A",
+       "pdf": 62
+      }
+     ]
+    },
+    {
+     "kind": "info",
+     "text": "On 122VU:",
+     "level": 1,
+     "applies_to": [
+      "all"
+     ],
+     "refs": [
+      {
+       "book": "QRH",
+       "code": "02.09",
+       "page": "02.09A",
+       "pdf": 62
+      }
+     ]
+    },
+    {
+     "kind": "condition",
+     "text": "If ANTI ICE L WINDSHIELD:",
+     "level": 1,
+     "applies_to": [
+      "all"
+     ],
+     "refs": [
+      {
+       "book": "QRH",
+       "code": "02.09",
+       "page": "02.09A",
+       "pdf": 62
+      }
+     ]
+    },
+    {
+     "kind": "action",
+     "item": "C/B X13 (ANTI ICE / WHC / 1)",
+     "setting": "PULL",
+     "text": "",
+     "level": 2,
+     "applies_to": [
+      "all"
+     ],
+     "refs": [
+      {
+       "book": "QRH",
+       "code": "02.09",
+       "page": "02.09A",
+       "pdf": 62
+      }
+     ]
+    },
+    {
+     "kind": "info",
+     "text": "Wait 5 s",
+     "level": 2,
+     "applies_to": [
+      "all"
+     ],
+     "refs": [
+      {
+       "book": "QRH",
+       "code": "02.09",
+       "page": "02.09A",
+       "pdf": 62
+      }
+     ]
+    },
+    {
+     "kind": "action",
+     "item": "C/B X13 (ANTI ICE / WHC / 1)",
+     "setting": "PUSH",
+     "text": "",
+     "level": 2,
+     "applies_to": [
+      "all"
+     ],
+     "refs": [
+      {
+       "book": "QRH",
+       "code": "02.09",
+       "page": "02.09A",
+       "pdf": 62
+      }
+     ]
+    },
+    {
+     "kind": "condition",
+     "text": "If ANTI ICE R WINDSHIELD:",
+     "level": 1,
+     "applies_to": [
+      "all"
+     ],
+     "refs": [
+      {
+       "book": "QRH",
+       "code": "02.09",
+       "page": "02.09A",
+       "pdf": 62
+      }
+     ]
+    },
+    {
+     "kind": "action",
+     "item": "C/B W13 (ANTI ICE / WHC / 2)",
+     "setting": "PULL",
+     "text": "",
+     "level": 2,
+     "applies_to": [
+      "all"
+     ],
+     "refs": [
+      {
+       "book": "QRH",
+       "code": "02.09",
+       "page": "02.09A",
+       "pdf": 62
+      }
+     ]
+    },
+    {
+     "kind": "info",
+     "text": "Wait 5 s",
+     "level": 2,
+     "applies_to": [
+      "all"
+     ],
+     "refs": [
+      {
+       "book": "QRH",
+       "code": "02.09",
+       "page": "02.09A",
+       "pdf": 62
+      }
+     ]
+    },
+    {
+     "kind": "action",
+     "item": "C/B W13 (ANTI ICE / WHC / 2)",
+     "setting": "PUSH",
+     "text": "",
+     "level": 2,
+     "applies_to": [
+      "all"
+     ],
+     "refs": [
+      {
+       "book": "QRH",
+       "code": "02.09",
+       "page": "02.09A",
+       "pdf": 62
+      }
+     ]
+    }
+   ]
+  }
+ ],
+ "status": {
+  "limitations": [],
+  "info": [],
+  "appr_proc": [],
+  "inop_sys": [
+   {
+    "text": "L(R) WNDW HEAT",
+    "applies_to": [
+     "all"
+    ],
+    "refs": [
+     {
+      "book": "FCOM",
+      "code": "PRO-ABN-A-ICE",
+      "page": "P 37/42",
+      "pdf": 2884
+     }
+    ]
+   }
+  ]
+ },
+ "qrh": [],
+ "tables": [],
+ "background": [
+  {
+   "text": "Electrical heating protects the flight compartment windows (hot air protects slats and engine intakes).",
+   "applies_to": [
+    "all"
+   ],
+   "refs": [
+    {
+     "book": "FCOM",
+     "code": "DSC-30-10-10",
+     "page": "P 1/2",
+     "pdf": 1766
+    }
+   ]
+  },
+  {
+   "text": "Electrical heating anti-ices each windshield and defogs the cockpit side windows. Two independent WHCs, one on each side, regulate the system, protect it against overheating and indicate faults.",
+   "applies_to": [
+    "all"
+   ],
+   "refs": [
+    {
+     "book": "FCOM",
+     "code": "DSC-30-40-10",
+     "page": "P 1/2",
+     "pdf": 1782
+    }
+   ]
+  },
+  {
+   "text": "Window heating comes ON automatically when at least one engine is running or in flight, and manually before engine start when PROBE/WINDOW HEAT is switched ON.",
+   "applies_to": [
+    "all"
+   ],
+   "refs": [
+    {
+     "book": "FCOM",
+     "code": "DSC-30-40-10",
+     "page": "P 1/2",
+     "pdf": 1782
+    }
+   ]
+  },
+  {
+   "text": "The windshield heats at low power on ground and normal power in flight; the windows have only one heating level.",
+   "applies_to": [
+    "all"
+   ],
+   "refs": [
+    {
+     "book": "FCOM",
+     "code": "DSC-30-40-10",
+     "page": "P 1/2",
+     "pdf": 1782
+    }
+   ]
+  },
+  {
+   "text": "PROBE/WINDOW HEAT pb: AUTO = heated in flight, or on ground with one engine running (except TAT probes). ON = blue light, probes and windows heated permanently. Ensure the probe covers are removed before selecting ON.",
+   "applies_to": [
+    "all"
+   ],
+   "refs": [
+    {
+     "book": "FCOM",
+     "code": "DSC-30-50-20",
+     "page": "P 1/2",
+     "pdf": 1788
+    }
+   ]
+  },
+  {
+   "text": "Two different C/B sets: the reset uses the WHC C/Bs X13 / W13 (ANTI ICE / WHC / 1 / 2); the arcing procedure pulls the heating C/Bs ANTI ICE/WINDOWS L X14 / R W14 (122VU) or L/R WSHLD AF10 / AF03 (123VU).",
+   "applies_to": [
+    "all"
+   ],
+   "refs": [
+    {
+     "book": "QRH",
+     "code": "02.09",
+     "page": "02.09A",
+     "pdf": 62
+    },
+    {
+     "book": "QRH",
+     "code": "25.05",
+     "page": "25.05A",
+     "pdf": 223
+    }
+   ]
+  }
+ ],
+ "technique": [],
+ "related": [
+  {
+   "title": "Ground operations in cold weather (FCOM supplementary)",
+   "why": "Cold-weather preflight selects PROBE/WINDOW HEAT ON, so window heat runs before engine start; this alert is not inhibited in that phase",
+   "key_actions": [
+    "WINDSHIELD AND UPPER COCKPIT FUSELAGE — ICE/SNOW REMOVED (caution: melted ice or snow could re-freeze on the forward fuselage near the probes)",
+    "PROBE COVERS — CHECK REMOVED",
+    "PROBE/WINDOW HEAT — ON",
+    "After first engine start: PROBE/WINDOW HEAT — AUTO"
+   ],
+   "refs": [
+    {
+     "book": "FCOM",
+     "code": "PRO-NOR-SUP-ADVWXR",
+     "page": "P 4/24",
+     "pdf": 4365
+    },
+    {
+     "book": "FCOM",
+     "code": "PRO-NOR-SUP-ADVWXR",
+     "page": "P 6/24",
+     "pdf": 4367
+    },
+    {
+     "book": "FCOM",
+     "code": "DSC-30-40-10",
+     "page": "P 1/2",
+     "pdf": 1782
+    },
+    {
+     "book": "FCOM",
+     "code": "PRO-ABN-A-ICE",
+     "page": "P 37/42",
+     "pdf": 2884
+    },
+    {
+     "book": "FCTM",
+     "code": "PR-NP-SP-10-10-1",
+     "page": "P 1/8",
+     "pdf": 350
+    }
+   ]
+  },
+  {
+   "title": "COCKPIT WINDSHIELD / WINDOW ARCING",
+   "why": "Electrical arcing of a windshield/window, or burning smell or smoke from the bottom corner of a windshield",
+   "key_actions": [
+    "Affected WINDOW/WINDSHIELD ANTI ICE C/B — PULL",
+    "ANTI ICE/WINDOWS L C/B X14 · R C/B W14 [122VU]",
+    "ANTI ICE L WSHLD C/B AF10 · R WSHLD C/B AF03 [123VU]"
+   ],
+   "refs": [
+    {
+     "book": "QRH",
+     "code": "25.05",
+     "page": "25.05A",
+     "pdf": 223
+    },
+    {
+     "book": "FCOM",
+     "code": "PRO-ABN-MISC",
+     "page": "P 10/30",
+     "pdf": 3805
+    }
+   ]
+  }
+ ],
+ "differences": [],
+ "gaps": [
+  {
+   "text": "No FCTM technique and no PDP module for this caution; the flow uses the generic ECAM and QRH task sharing (FCTM AOP-30-30, PDP abnormal operations).",
+   "applies_to": [
+    "all"
+   ],
+   "refs": [
+    {
+     "book": "FCTM",
+     "code": "AOP-30-30",
+     "page": "P 2/6",
+     "pdf": 83
+    },
+    {
+     "book": "PDP",
+     "code": "Management of abnormal operations",
+     "page": "XFTDN6ECAM00001",
+     "pdf": 424
+    }
+   ]
+  },
+  {
+   "text": "The QRH reset title covers WINDSHIELD (WINDOW), but its steps name only “If ANTI ICE L WINDSHIELD” / “If ANTI ICE R WINDSHIELD”. No separate step is given for the L(R) WINDOW alert.",
+   "applies_to": [
+    "all"
+   ],
+   "refs": [
+    {
+     "book": "QRH",
+     "code": "02.09",
+     "page": "02.09A",
+     "pdf": 62
+    }
+   ]
+  },
+  {
+   "text": "Dispatch with window heat inoperative (MEL) is not covered by the supplied manuals.",
+   "applies_to": [
+    "all"
+   ],
+   "refs": [
+    {
+     "book": "FCOM",
+     "code": "PRO-ABN-A-ICE",
+     "page": "P 37/42",
+     "pdf": 2884
+    }
+   ]
+  },
+  {
+   "text": "HS-TO cold-weather AFTER START version omitted.",
+   "applies_to": [
+    "all"
+   ],
+   "refs": [
+    {
+     "book": "FCOM",
+     "code": "PRO-NOR-SUP-ADVWXR",
+     "page": "P 5–6/24",
+     "pdf": 4366
+    }
+   ]
+  }
+ ],
+ "sources": [
+  {
+   "book": "FCOM",
+   "section": "PRO-ABN-A-ICE — ANTI ICE L(R) WINDOW",
+   "pages": "P 37/42",
+   "pdf": "2884",
+   "rev": "18 FEB 26"
+  },
+  {
+   "book": "QRH",
+   "section": "02.02A System reset table · 02.09A ANTI ICE L(R) WINDSHIELD (WINDOW)",
+   "pages": "02.02A, 02.09A",
+   "pdf": "51, 62",
+   "rev": "26 MAY 26"
+  },
+  {
+   "book": "QRH",
+   "section": "25.05A Cockpit windshield / window arcing",
+   "pages": "25.05A",
+   "pdf": "223",
+   "rev": "18 FEB 26"
+  },
+  {
+   "book": "QRH",
+   "section": "OPS.08D Required equipment for CAT 2 and CAT 3",
+   "pages": "OPS.08D",
+   "pdf": "285",
+   "rev": "14 JUL 26"
+  },
+  {
+   "book": "FCOM",
+   "section": "DSC-30-10 / 30-40 / 30-50 Ice and rain protection",
+   "pages": "P 1/2",
+   "pdf": "1766, 1782, 1788",
+   "rev": "15 FEB 23"
+  },
+  {
+   "book": "FCOM",
+   "section": "PRO-NOR-SUP-ADVWXR Ground operations in cold weather",
+   "pages": "P 4–6/24",
+   "pdf": "4365–4367",
+   "rev": "26 MAY 26"
+  },
+  {
+   "book": "FCOM",
+   "section": "PRO-ABN-MISC Cockpit windshield / window arcing",
+   "pages": "P 10/30",
+   "pdf": "3805",
+   "rev": "18 FEB 26"
+  },
+  {
+   "book": "FCTM",
+   "section": "PR-NP-SP-10-10-1 Cold weather operations",
+   "pages": "P 1/8",
+   "pdf": "350",
+   "rev": "21 MAY 25"
+  }
+ ],
+ "schema": "a320-ecam-abnormal/3",
+ "generated": "2026-10-14"
+}

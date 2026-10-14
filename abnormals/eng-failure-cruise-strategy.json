@@ -1,0 +1,1021 @@
+{
+ "schema": "a320-ecam-abnormal/3",
+ "slug": "eng-failure-cruise-strategy",
+ "generated": "2026-10-14",
+ "title": "ENGINE FAILURE IN CRUISE · drift-down strategy",
+ "kind": "technique",
+ "alert": {
+  "level": "technique",
+  "land_asap": "none",
+  "memory_items": false,
+  "qrh_summary": false,
+  "trigger": "Engine failure or engine shutdown (including after an engine fire) at cruise level.",
+  "inhibited_phases": [],
+  "refs": [
+   {
+    "book": "FCTM",
+    "code": "PR-AEP-ENG",
+    "page": "P 15/26",
+    "pdf": 416
+   },
+   {
+    "book": "PDP",
+    "code": "Engine failure in cruise",
+    "page": "EFTDA1ENGFCRZ01",
+    "pdf": 506
+   }
+  ]
+ },
+ "effectivity": {
+  "branches": [],
+  "note": "FCTM technique and Airbus PDP tutorial; applies to all HS-TX."
+ },
+ "summary": "After an engine failure at cruise level the aircraft cannot hold its altitude. The PF sets MCT with A/THR off, sets a heading and determines the engine-out recovery altitude, then drifts down at M.78/300 kt (standard strategy) to the EO LRC ceiling, never below green dot. After an engine fire, the fire drill is done first and without delay.",
+ "key_limits": [
+  {
+   "label": "Thrust",
+   "value": "MCT · A/THR off",
+   "applies_to": [
+    "all"
+   ],
+   "refs": [
+    {
+     "book": "FCTM",
+     "code": "PR-AEP-ENG",
+     "page": "P 15/26",
+     "pdf": 416
+    },
+    {
+     "book": "PDP",
+     "code": "Engine failure in cruise",
+     "page": "EFTDA1ENGFCRZ01",
+     "pdf": 506
+    }
+   ]
+  },
+  {
+   "label": "Standard strategy",
+   "value": "M.78 / 300 kt",
+   "applies_to": [
+    "all"
+   ],
+   "refs": [
+    {
+     "book": "FCTM",
+     "code": "PR-AEP-ENG",
+     "page": "P 15/26",
+     "pdf": 416
+    }
+   ]
+  },
+  {
+   "label": "Minimum speed",
+   "value": "Green dot",
+   "applies_to": [
+    "all"
+   ],
+   "refs": [
+    {
+     "book": "FCTM",
+     "code": "PR-AEP-ENG",
+     "page": "P 15/26",
+     "pdf": 416
+    },
+    {
+     "book": "PDP",
+     "code": "Engine failure in cruise",
+     "page": "EFTDA1ENGFCRZ01",
+     "pdf": 506
+    }
+   ]
+  }
+ ],
+ "flow": [
+  {
+   "phase": "Drift down (standard strategy)",
+   "steps": [
+    {
+     "actor": "BOTH",
+     "items": [
+      {
+       "kind": "note",
+       "text": "After an engine fire, the fire drill comes first and without delay; the PF flies the strategy around it. No obstacle constraint → standard strategy",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "FCTM",
+         "code": "PR-AEP-ENG",
+         "page": "P 18/26",
+         "pdf": 419
+        },
+        {
+         "book": "PDP",
+         "code": "Engine failure in cruise",
+         "page": "EFTDA1ENGFCRZ01",
+         "pdf": 507
+        },
+        {
+         "book": "FCTM",
+         "code": "PR-AEP-ENG",
+         "page": "P 15/26",
+         "pdf": 416
+        }
+       ]
+      }
+     ]
+    },
+    {
+     "actor": "PF",
+     "items": [
+      {
+       "kind": "ecam",
+       "item": "ALL THRUST LEVERS",
+       "setting": "MCT",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "PDP",
+         "code": "Engine failure in cruise",
+         "page": "EFTDA1ENGFCRZ01",
+         "pdf": 506
+        },
+        {
+         "book": "FCTM",
+         "code": "PR-AEP-ENG",
+         "page": "P 15/26",
+         "pdf": 416
+        }
+       ]
+      },
+      {
+       "kind": "ecam",
+       "item": "A/THR",
+       "setting": "OFF",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "PDP",
+         "code": "Engine failure in cruise",
+         "page": "EFTDA1ENGFCRZ01",
+         "pdf": 506
+        },
+        {
+         "book": "FCTM",
+         "code": "PR-AEP-ENG",
+         "page": "P 15/26",
+         "pdf": 416
+        }
+       ]
+      },
+      {
+       "kind": "note",
+       "text": "A/THR off so thrust is not reduced when selecting speed or OPEN DES; MCT is frozen",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "PDP",
+         "code": "Engine failure in cruise",
+         "page": "EFTDA1ENGFCRZ01",
+         "pdf": 506
+        },
+        {
+         "book": "FCTM",
+         "code": "PR-AEP-ENG",
+         "page": "P 15/26",
+         "pdf": 416
+        }
+       ]
+      },
+      {
+       "kind": "note",
+       "text": "Never decelerate below green dot; at high levels and weights do not delay the descent",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "PDP",
+         "code": "Engine failure in cruise",
+         "page": "EFTDA1ENGFCRZ01",
+         "pdf": 506
+        },
+        {
+         "book": "FCTM",
+         "code": "PR-AEP-ENG",
+         "page": "P 15/26",
+         "pdf": 416
+        }
+       ]
+      },
+      {
+       "kind": "condition",
+       "text": "If the failure occurs below the EO LRC ceiling",
+       "children": [
+        {
+         "kind": "action",
+         "text": "Keep A/THR on",
+         "applies_to": [
+          "all"
+         ],
+         "refs": [
+          {
+           "book": "PDP",
+           "code": "Engine failure in cruise",
+           "page": "EFTDA1ENGFCRZ01",
+           "pdf": 511
+          }
+         ]
+        }
+       ],
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "PDP",
+         "code": "Engine failure in cruise",
+         "page": "EFTDA1ENGFCRZ01",
+         "pdf": 511
+        }
+       ]
+      }
+     ]
+    },
+    {
+     "actor": "BOTH",
+     "items": [
+      {
+       "kind": "ecam",
+       "item": "STRATEGY",
+       "setting": "DETERMINE",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "PDP",
+         "code": "Engine failure in cruise",
+         "page": "EFTDA1ENGFCRZ01",
+         "pdf": 506
+        },
+        {
+         "book": "PDP",
+         "code": "Engine failure in cruise",
+         "page": "EFTDA1ENGFCRZ01",
+         "pdf": 507
+        }
+       ]
+      }
+     ]
+    },
+    {
+     "actor": "PM",
+     "items": [
+      {
+       "kind": "ecam",
+       "item": "ATC",
+       "setting": "NOTIFY",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "PDP",
+         "code": "Engine failure in cruise",
+         "page": "EFTDA1ENGFCRZ01",
+         "pdf": 506
+        }
+       ]
+      },
+      {
+       "kind": "note",
+       "text": "After an engine fire this is already done in the ECAM actions",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "FCOM",
+         "code": "PRO-ABN-ENG",
+         "page": "P 91/226",
+         "pdf": 3338
+        }
+       ]
+      }
+     ]
+    },
+    {
+     "actor": "PF",
+     "items": [
+      {
+       "kind": "ecam",
+       "item": "HDG",
+       "setting": "SET AS APPROPRIATE AND PULL",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "PDP",
+         "code": "Engine failure in cruise",
+         "page": "EFTDA1ENGFCRZ01",
+         "pdf": 508
+        },
+        {
+         "book": "FCTM",
+         "code": "PR-AEP-ENG",
+         "page": "P 15/26",
+         "pdf": 416
+        }
+       ]
+      },
+      {
+       "kind": "ecam",
+       "item": "ENGINE OUT RECOVERY ALTITUDE",
+       "setting": "DETERMINE",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "PDP",
+         "code": "Engine failure in cruise",
+         "page": "EFTDA1ENGFCRZ01",
+         "pdf": 508
+        },
+        {
+         "book": "FCTM",
+         "code": "PR-AEP-ENG",
+         "page": "P 15/26",
+         "pdf": 416
+        }
+       ]
+      },
+      {
+       "kind": "note",
+       "text": "MCDU PROG page REC MAX = EO LRC ceiling; do not press EO CLR",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "PDP",
+         "code": "Engine failure in cruise",
+         "page": "EFTDA1ENGFCRZ01",
+         "pdf": 508
+        },
+        {
+         "book": "FCTM",
+         "code": "PR-AEP-ENG",
+         "page": "P 16/26",
+         "pdf": 417
+        },
+        {
+         "book": "PDP",
+         "code": "Engine failure in cruise",
+         "page": "EFTDA1ENGFCRZ01",
+         "pdf": 507
+        }
+       ]
+      },
+      {
+       "kind": "condition",
+       "text": "When ready for descent",
+       "children": [
+        {
+         "kind": "ecam",
+         "item": "M.78 / 300 KT",
+         "setting": "SET AND PULL",
+         "applies_to": [
+          "all"
+         ],
+         "refs": [
+          {
+           "book": "PDP",
+           "code": "Engine failure in cruise",
+           "page": "EFTDA1ENGFCRZ01",
+           "pdf": 508
+          },
+          {
+           "book": "FCTM",
+           "code": "PR-AEP-ENG",
+           "page": "P 15/26",
+           "pdf": 416
+          }
+         ]
+        },
+        {
+         "kind": "ecam",
+         "item": "EO LRC CEILING ALTITUDE",
+         "setting": "SET AND PULL",
+         "applies_to": [
+          "all"
+         ],
+         "refs": [
+          {
+           "book": "PDP",
+           "code": "Engine failure in cruise",
+           "page": "EFTDA1ENGFCRZ01",
+           "pdf": 508
+          },
+          {
+           "book": "FCTM",
+           "code": "PR-AEP-ENG",
+           "page": "P 15/26",
+           "pdf": 416
+          }
+         ]
+        },
+        {
+         "kind": "note",
+         "text": "OPEN DES; with A/THR off the elevator holds the target speed. Managed speed would target green dot",
+         "applies_to": [
+          "all"
+         ],
+         "refs": [
+          {
+           "book": "FCTM",
+           "code": "PR-AEP-ENG",
+           "page": "P 15/26",
+           "pdf": 416
+          },
+          {
+           "book": "PDP",
+           "code": "Engine failure in cruise",
+           "page": "EFTDA1ENGFCRZ01",
+           "pdf": 508
+          }
+         ]
+        }
+       ],
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "PDP",
+         "code": "Engine failure in cruise",
+         "page": "EFTDA1ENGFCRZ01",
+         "pdf": 508
+        }
+       ]
+      },
+      {
+       "kind": "condition",
+       "text": "When V/S < 500 ft/min in descent",
+       "children": [
+        {
+         "kind": "ecam",
+         "item": "V/S − 500 FT/MIN",
+         "setting": "SET AND PULL",
+         "applies_to": [
+          "all"
+         ],
+         "refs": [
+          {
+           "book": "PDP",
+           "code": "Engine failure in cruise",
+           "page": "EFTDA1ENGFCRZ01",
+           "pdf": 510
+          },
+          {
+           "book": "FCTM",
+           "code": "PR-AEP-ENG",
+           "page": "P 16/26",
+           "pdf": 417
+          }
+         ]
+        },
+        {
+         "kind": "ecam",
+         "item": "A/THR",
+         "setting": "ON",
+         "applies_to": [
+          "all"
+         ],
+         "refs": [
+          {
+           "book": "PDP",
+           "code": "Engine failure in cruise",
+           "page": "EFTDA1ENGFCRZ01",
+           "pdf": 510
+          },
+          {
+           "book": "FCTM",
+           "code": "PR-AEP-ENG",
+           "page": "P 16/26",
+           "pdf": 417
+          }
+         ]
+        }
+       ],
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "PDP",
+         "code": "Engine failure in cruise",
+         "page": "EFTDA1ENGFCRZ01",
+         "pdf": 510
+        }
+       ]
+      },
+      {
+       "kind": "condition",
+       "text": "When reaching the EO LRC ceiling (ALT CRZ)",
+       "children": [
+        {
+         "kind": "ecam",
+         "item": "SPEED",
+         "setting": "MANAGE",
+         "applies_to": [
+          "all"
+         ],
+         "refs": [
+          {
+           "book": "PDP",
+           "code": "Engine failure in cruise",
+           "page": "EFTDA1ENGFCRZ01",
+           "pdf": 510
+          }
+         ]
+        }
+       ],
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "PDP",
+         "code": "Engine failure in cruise",
+         "page": "EFTDA1ENGFCRZ01",
+         "pdf": 510
+        }
+       ]
+      }
+     ]
+    }
+   ]
+  }
+ ],
+ "procedures": [
+  {
+   "title": "Engine failure in cruise — standard strategy",
+   "source": "FCTM PR-AEP-ENG / PDP",
+   "lines": [
+    {
+     "kind": "action",
+     "item": "ALL THRUST LEVERS",
+     "setting": "MCT",
+     "text": "",
+     "level": 0,
+     "applies_to": [
+      "all"
+     ],
+     "refs": [
+      {
+       "book": "PDP",
+       "code": "Engine failure in cruise",
+       "page": "EFTDA1ENGFCRZ01",
+       "pdf": 506
+      },
+      {
+       "book": "FCTM",
+       "code": "PR-AEP-ENG",
+       "page": "P 15/26",
+       "pdf": 416
+      }
+     ]
+    },
+    {
+     "kind": "action",
+     "item": "A/THR",
+     "setting": "OFF",
+     "text": "",
+     "level": 0,
+     "applies_to": [
+      "all"
+     ],
+     "refs": [
+      {
+       "book": "PDP",
+       "code": "Engine failure in cruise",
+       "page": "EFTDA1ENGFCRZ01",
+       "pdf": 506
+      },
+      {
+       "book": "FCTM",
+       "code": "PR-AEP-ENG",
+       "page": "P 15/26",
+       "pdf": 416
+      }
+     ]
+    },
+    {
+     "kind": "condition",
+     "text": "If the failure occurs below the EO LRC ceiling:",
+     "level": 0,
+     "applies_to": [
+      "all"
+     ],
+     "refs": [
+      {
+       "book": "PDP",
+       "code": "Engine failure in cruise",
+       "page": "EFTDA1ENGFCRZ01",
+       "pdf": 511
+      }
+     ]
+    },
+    {
+     "kind": "info",
+     "text": "Keep A/THR on",
+     "level": 1,
+     "applies_to": [
+      "all"
+     ],
+     "refs": [
+      {
+       "book": "PDP",
+       "code": "Engine failure in cruise",
+       "page": "EFTDA1ENGFCRZ01",
+       "pdf": 511
+      }
+     ]
+    },
+    {
+     "kind": "action",
+     "item": "STRATEGY",
+     "setting": "DETERMINE",
+     "text": "",
+     "level": 0,
+     "applies_to": [
+      "all"
+     ],
+     "refs": [
+      {
+       "book": "PDP",
+       "code": "Engine failure in cruise",
+       "page": "EFTDA1ENGFCRZ01",
+       "pdf": 506
+      },
+      {
+       "book": "PDP",
+       "code": "Engine failure in cruise",
+       "page": "EFTDA1ENGFCRZ01",
+       "pdf": 507
+      }
+     ]
+    },
+    {
+     "kind": "action",
+     "item": "ATC",
+     "setting": "NOTIFY",
+     "text": "",
+     "level": 0,
+     "applies_to": [
+      "all"
+     ],
+     "refs": [
+      {
+       "book": "PDP",
+       "code": "Engine failure in cruise",
+       "page": "EFTDA1ENGFCRZ01",
+       "pdf": 506
+      }
+     ]
+    },
+    {
+     "kind": "action",
+     "item": "HDG",
+     "setting": "SET AS APPROPRIATE AND PULL",
+     "text": "",
+     "level": 0,
+     "applies_to": [
+      "all"
+     ],
+     "refs": [
+      {
+       "book": "PDP",
+       "code": "Engine failure in cruise",
+       "page": "EFTDA1ENGFCRZ01",
+       "pdf": 508
+      },
+      {
+       "book": "FCTM",
+       "code": "PR-AEP-ENG",
+       "page": "P 15/26",
+       "pdf": 416
+      }
+     ]
+    },
+    {
+     "kind": "action",
+     "item": "ENGINE OUT RECOVERY ALTITUDE",
+     "setting": "DETERMINE",
+     "text": "",
+     "level": 0,
+     "applies_to": [
+      "all"
+     ],
+     "refs": [
+      {
+       "book": "PDP",
+       "code": "Engine failure in cruise",
+       "page": "EFTDA1ENGFCRZ01",
+       "pdf": 508
+      },
+      {
+       "book": "FCTM",
+       "code": "PR-AEP-ENG",
+       "page": "P 15/26",
+       "pdf": 416
+      }
+     ]
+    },
+    {
+     "kind": "condition",
+     "text": "When ready for descent:",
+     "level": 0,
+     "applies_to": [
+      "all"
+     ],
+     "refs": [
+      {
+       "book": "PDP",
+       "code": "Engine failure in cruise",
+       "page": "EFTDA1ENGFCRZ01",
+       "pdf": 508
+      }
+     ]
+    },
+    {
+     "kind": "action",
+     "item": "M.78 / 300 KT",
+     "setting": "SET AND PULL",
+     "text": "",
+     "level": 1,
+     "applies_to": [
+      "all"
+     ],
+     "refs": [
+      {
+       "book": "PDP",
+       "code": "Engine failure in cruise",
+       "page": "EFTDA1ENGFCRZ01",
+       "pdf": 508
+      },
+      {
+       "book": "FCTM",
+       "code": "PR-AEP-ENG",
+       "page": "P 15/26",
+       "pdf": 416
+      }
+     ]
+    },
+    {
+     "kind": "action",
+     "item": "EO LRC CEILING ALTITUDE",
+     "setting": "SET AND PULL",
+     "text": "",
+     "level": 1,
+     "applies_to": [
+      "all"
+     ],
+     "refs": [
+      {
+       "book": "PDP",
+       "code": "Engine failure in cruise",
+       "page": "EFTDA1ENGFCRZ01",
+       "pdf": 508
+      },
+      {
+       "book": "FCTM",
+       "code": "PR-AEP-ENG",
+       "page": "P 15/26",
+       "pdf": 416
+      }
+     ]
+    },
+    {
+     "kind": "condition",
+     "text": "When V/S < 500 ft/min in descent:",
+     "level": 0,
+     "applies_to": [
+      "all"
+     ],
+     "refs": [
+      {
+       "book": "PDP",
+       "code": "Engine failure in cruise",
+       "page": "EFTDA1ENGFCRZ01",
+       "pdf": 510
+      }
+     ]
+    },
+    {
+     "kind": "action",
+     "item": "V/S − 500 FT/MIN",
+     "setting": "SET AND PULL",
+     "text": "",
+     "level": 1,
+     "applies_to": [
+      "all"
+     ],
+     "refs": [
+      {
+       "book": "PDP",
+       "code": "Engine failure in cruise",
+       "page": "EFTDA1ENGFCRZ01",
+       "pdf": 510
+      },
+      {
+       "book": "FCTM",
+       "code": "PR-AEP-ENG",
+       "page": "P 16/26",
+       "pdf": 417
+      }
+     ]
+    },
+    {
+     "kind": "action",
+     "item": "A/THR",
+     "setting": "ON",
+     "text": "",
+     "level": 1,
+     "applies_to": [
+      "all"
+     ],
+     "refs": [
+      {
+       "book": "PDP",
+       "code": "Engine failure in cruise",
+       "page": "EFTDA1ENGFCRZ01",
+       "pdf": 510
+      },
+      {
+       "book": "FCTM",
+       "code": "PR-AEP-ENG",
+       "page": "P 16/26",
+       "pdf": 417
+      }
+     ]
+    },
+    {
+     "kind": "condition",
+     "text": "When reaching the EO LRC ceiling (ALT CRZ):",
+     "level": 0,
+     "applies_to": [
+      "all"
+     ],
+     "refs": [
+      {
+       "book": "PDP",
+       "code": "Engine failure in cruise",
+       "page": "EFTDA1ENGFCRZ01",
+       "pdf": 510
+      }
+     ]
+    },
+    {
+     "kind": "action",
+     "item": "SPEED",
+     "setting": "MANAGE",
+     "text": "",
+     "level": 1,
+     "applies_to": [
+      "all"
+     ],
+     "refs": [
+      {
+       "book": "PDP",
+       "code": "Engine failure in cruise",
+       "page": "EFTDA1ENGFCRZ01",
+       "pdf": 510
+      }
+     ]
+    }
+   ]
+  }
+ ],
+ "status": null,
+ "qrh": [],
+ "tables": [],
+ "background": [
+  {
+   "text": "Three strategies exist: standard, obstacle and fixed speed. Unless a specific procedure was set at dispatch (ETOPS, mountainous areas), the standard strategy is used.",
+   "applies_to": [
+    "all"
+   ],
+   "refs": [
+    {
+     "book": "FCTM",
+     "code": "PR-AEP-ENG",
+     "page": "P 15/26",
+     "pdf": 416
+    }
+   ]
+  }
+ ],
+ "technique": [
+  {
+   "text": "Engine failure in cruise: unless a dispatch procedure exists, use the standard strategy, M 0.78/300 kt to the REC MAX EO (LRC engine-out ceiling). Obstacle strategy: green dot to the drift-down ceiling, then standard when clear.",
+   "applies_to": [
+    "all"
+   ],
+   "refs": [
+    {
+     "book": "FCTM",
+     "code": "PR-AEP-ENG",
+     "page": "P 15/26",
+     "pdf": 416
+    },
+    {
+     "book": "FCTM",
+     "code": "PR-AEP-ENG",
+     "page": "P 16/26",
+     "pdf": 417
+    }
+   ]
+  },
+  {
+   "text": "Do not hurry the ECAM actions in cruise — complete the drill correctly.",
+   "applies_to": [
+    "all"
+   ],
+   "refs": [
+    {
+     "book": "FCTM",
+     "code": "PR-AEP-ENG",
+     "page": "P 15/26",
+     "pdf": 416
+    }
+   ]
+  }
+ ],
+ "related": [
+  {
+   "title": "ENG 1(2) FIRE (IN FLIGHT)",
+   "why": "When the engine failure is a fire",
+   "key_actions": [
+    "Fire drill first, without delay"
+   ],
+   "refs": [
+    {
+     "book": "FCOM",
+     "code": "PRO-ABN-ENG",
+     "page": "P 91/226",
+     "pdf": 3338
+    }
+   ]
+  }
+ ],
+ "differences": [],
+ "gaps": [
+  {
+   "text": "No source puts the fire drill and the cruise strategy in one sequence. The fire procedure is applied without delay (FCTM), while the cruise flow sets MCT and A/THR off first and starts ECAM “when appropriate” (PDP). The brief keeps the fire drill first.",
+   "applies_to": [
+    "all"
+   ],
+   "refs": [
+    {
+     "book": "FCTM",
+     "code": "PR-AEP-ENG",
+     "page": "P 18/26",
+     "pdf": 419
+    },
+    {
+     "book": "PDP",
+     "code": "Engine failure in cruise",
+     "page": "EFTDA1ENGFCRZ01",
+     "pdf": 508
+    }
+   ]
+  }
+ ],
+ "sources": [
+  {
+   "book": "FCTM",
+   "section": "PR-AEP-ENG — Engine failure during cruise",
+   "pages": "P 15–16/26",
+   "pdf": "416–417",
+   "rev": "26 MAY 26"
+  },
+  {
+   "book": "PDP",
+   "section": "Engine failure in cruise (EFTDA1ENGFCRZ01)",
+   "pages": "—",
+   "pdf": "505–511",
+   "rev": "JAN 2024"
+  }
+ ]
+}

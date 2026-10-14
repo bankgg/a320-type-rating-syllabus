@@ -1,0 +1,710 @@
+{
+ "slug": "fws-fwc-1-2-fault",
+ "title": "FWS FWC 1 + 2 FAULT",
+ "kind": "ecam",
+ "alert": {
+  "level": "caution",
+  "land_asap": "none",
+  "memory_items": false,
+  "qrh_summary": false,
+  "trigger": "Both FWC 1 and FWC 2 have failed, or communication between the FWC and the EIS is lost.",
+  "inhibited_phases": [],
+  "refs": [
+   {
+    "book": "FCOM",
+    "code": "PRO-ABN-FWS",
+    "page": "P 3/8",
+    "pdf": 3684
+   }
+  ]
+ },
+ "effectivity": {
+  "branches": [],
+  "note": "Applicable to ALL."
+ },
+ "summary": "Both flight warning computers are lost: no ECAM cautions or warnings, no aural warnings, no master lights, no altitude alert, STATUS, auto callouts or memos. ECAM system pages remain, so the crew checks the overhead panel and SD pages more often than usual. A single FWC fault can be reset from the QRH.",
+ "key_limits": [
+  {
+   "label": "Lost",
+   "value": "ECAM warnings, aurals, MASTER lights",
+   "applies_to": [
+    "all"
+   ],
+   "refs": [
+    {
+     "book": "FCOM",
+     "code": "PRO-ABN-FWS",
+     "page": "P 4/8",
+     "pdf": 3685
+    }
+   ]
+  },
+  {
+   "label": "Also lost",
+   "value": "ALTI ALERT · STATUS · A/CALL OUT · MEMO",
+   "applies_to": [
+    "all"
+   ],
+   "refs": [
+    {
+     "book": "FCOM",
+     "code": "PRO-ABN-FWS",
+     "page": "P 3/8",
+     "pdf": 3684
+    }
+   ]
+  },
+  {
+   "label": "INOP",
+   "value": "CAT 2",
+   "applies_to": [
+    "all"
+   ],
+   "refs": [
+    {
+     "book": "FCOM",
+     "code": "PRO-ABN-FWS",
+     "page": "P 4/8",
+     "pdf": 3685
+    }
+   ]
+  },
+  {
+   "label": "FWC reset (single)",
+   "value": "C/B 5 s",
+   "applies_to": [
+    "all"
+   ],
+   "refs": [
+    {
+     "book": "QRH",
+     "code": "02.54",
+     "page": "02.54A",
+     "pdf": 116
+    }
+   ]
+  }
+ ],
+ "flow": [
+  {
+   "phase": "Recognise",
+   "steps": [
+    {
+     "actor": "PM",
+     "items": [
+      {
+       "kind": "callout",
+       "text": "FWC 1 + 2 FAULT",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "FCTM",
+         "code": "AOP-30-30",
+         "page": "P 2/6",
+         "pdf": 83
+        },
+        {
+         "book": "FCOM",
+         "code": "PRO-ABN-FWS",
+         "page": "P 3/8",
+         "pdf": 3684
+        }
+       ]
+      }
+     ]
+    },
+    {
+     "actor": "PF",
+     "items": [
+      {
+       "kind": "callout",
+       "text": "ECAM ACTION",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "FCOM",
+         "code": "PRO-ABN-ABN-00",
+         "page": "P 8/12",
+         "pdf": 2831
+        }
+       ]
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "phase": "Procedure",
+   "steps": [
+    {
+     "actor": "PM",
+     "items": [
+      {
+       "kind": "ecam",
+       "item": "MONITOR SYS",
+       "setting": "—",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "FCOM",
+         "code": "PRO-ABN-FWS",
+         "page": "P 3/8",
+         "pdf": 3684
+        }
+       ]
+      },
+      {
+       "kind": "ecam",
+       "item": "MONITOR OVERHEAD PANEL",
+       "setting": "—",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "FCOM",
+         "code": "PRO-ABN-FWS",
+         "page": "P 3/8",
+         "pdf": 3684
+        }
+       ]
+      },
+      {
+       "kind": "note",
+       "text": "Check panels for local warnings and SD pages regularly — more often than usual",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "FCOM",
+         "code": "PRO-ABN-FWS",
+         "page": "P 4/8",
+         "pdf": 3685
+        }
+       ]
+      }
+     ]
+    },
+    {
+     "actor": "PF",
+     "items": [
+      {
+       "kind": "action",
+       "text": "No altitude alert and no auto callouts: crosscheck altitudes and call heights",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "FCOM",
+         "code": "PRO-ABN-FWS",
+         "page": "P 3/8",
+         "pdf": 3684
+        }
+       ]
+      },
+      {
+       "kind": "action",
+       "text": "Check the general status of systems for DES/APPR preparation",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "FCOM",
+         "code": "PRO-ABN-FWS",
+         "page": "P 4/8",
+         "pdf": 3685
+        }
+       ]
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "phase": "Single FWC fault — reset (QRH 02.54)",
+   "steps": [
+    {
+     "actor": "PM",
+     "items": [
+      {
+       "kind": "callout",
+       "text": "CONFIRM?",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "PDP",
+         "code": "Management of abnormal operations",
+         "page": "XFTDN6ECAM00001",
+         "pdf": 432
+        }
+       ]
+      },
+      {
+       "kind": "note",
+       "text": "PM points to the C/B; PF answers “CONFIRMED”",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "PDP",
+         "code": "Management of abnormal operations",
+         "page": "XFTDN6ECAM00001",
+         "pdf": 432
+        },
+        {
+         "book": "FCTM",
+         "code": "AOP-30-20",
+         "page": "P 1/2",
+         "pdf": 80
+        }
+       ]
+      }
+     ]
+    },
+    {
+     "actor": "PF",
+     "items": [
+      {
+       "kind": "callout",
+       "text": "CONFIRMED",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "PDP",
+         "code": "Management of abnormal operations",
+         "page": "XFTDN6ECAM00001",
+         "pdf": 432
+        }
+       ]
+      }
+     ]
+    },
+    {
+     "actor": "PM",
+     "items": [
+      {
+       "kind": "condition",
+       "text": "If FWS FWC 1 FAULT",
+       "children": [
+        {
+         "kind": "ecam",
+         "item": "C/B F01 (FWS / FWC1 / SPLY) on 49VU",
+         "setting": "PULL — wait 5 s — PUSH",
+         "applies_to": [
+          "all"
+         ],
+         "refs": [
+          {
+           "book": "QRH",
+           "code": "02.54",
+           "page": "02.54A",
+           "pdf": 116
+          }
+         ]
+        }
+       ],
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "QRH",
+         "code": "02.54",
+         "page": "02.54A",
+         "pdf": 116
+        }
+       ]
+      },
+      {
+       "kind": "condition",
+       "text": "If FWS FWC 2 FAULT",
+       "children": [
+        {
+         "kind": "ecam",
+         "item": "C/B Q07 (EIS / FWC2 / SPLY) on 121VU",
+         "setting": "PULL — wait 5 s — PUSH",
+         "applies_to": [
+          "all"
+         ],
+         "refs": [
+          {
+           "book": "QRH",
+           "code": "02.54",
+           "page": "02.54A",
+           "pdf": 116
+          }
+         ]
+        }
+       ],
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "QRH",
+         "code": "02.54",
+         "page": "02.54A",
+         "pdf": 116
+        }
+       ]
+      }
+     ]
+    }
+   ]
+  }
+ ],
+ "procedures": [
+  {
+   "title": "ECAM procedure — FWC 1 + 2 FAULT",
+   "source": "FCOM PRO-ABN-FWS",
+   "lines": [
+    {
+     "kind": "action",
+     "item": "MONITOR SYS",
+     "setting": "—",
+     "text": "",
+     "level": 0,
+     "applies_to": [
+      "all"
+     ],
+     "refs": [
+      {
+       "book": "FCOM",
+       "code": "PRO-ABN-FWS",
+       "page": "P 3/8",
+       "pdf": 3684
+      }
+     ]
+    },
+    {
+     "kind": "action",
+     "item": "MONITOR OVERHEAD PANEL",
+     "setting": "—",
+     "text": "",
+     "level": 0,
+     "applies_to": [
+      "all"
+     ],
+     "refs": [
+      {
+       "book": "FCOM",
+       "code": "PRO-ABN-FWS",
+       "page": "P 3/8",
+       "pdf": 3684
+      }
+     ]
+    },
+    {
+     "kind": "info",
+     "text": "NOT AVAIL: ECAM WARN · ALTI ALERT · STATUS · A/CALL OUT · MEMO",
+     "level": 0,
+     "applies_to": [
+      "all"
+     ],
+     "refs": [
+      {
+       "book": "FCOM",
+       "code": "PRO-ABN-FWS",
+       "page": "P 3/8",
+       "pdf": 3684
+      }
+     ]
+    },
+    {
+     "kind": "note",
+     "text": "ECAM cautions and warnings, aural warnings, master caution and warning lights are lost. ECAM system pages are still available.",
+     "level": 0,
+     "applies_to": [
+      "all"
+     ],
+     "refs": [
+      {
+       "book": "FCOM",
+       "code": "PRO-ABN-FWS",
+       "page": "P 4/8",
+       "pdf": 3685
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "title": "FWS FWC 1(2) FAULT reset",
+   "source": "QRH 02.54",
+   "lines": [
+    {
+     "kind": "condition",
+     "text": "If FWS FWC 1 FAULT:",
+     "level": 0,
+     "applies_to": [
+      "all"
+     ],
+     "refs": [
+      {
+       "book": "QRH",
+       "code": "02.54",
+       "page": "02.54A",
+       "pdf": 116
+      }
+     ]
+    },
+    {
+     "kind": "action",
+     "item": "C/B F01 (FWS / FWC1 / SPLY) — on 49VU",
+     "setting": "PULL",
+     "text": "",
+     "level": 1,
+     "applies_to": [
+      "all"
+     ],
+     "refs": [
+      {
+       "book": "QRH",
+       "code": "02.54",
+       "page": "02.54A",
+       "pdf": 116
+      }
+     ]
+    },
+    {
+     "kind": "info",
+     "text": "Wait 5 s",
+     "level": 1,
+     "applies_to": [
+      "all"
+     ],
+     "refs": [
+      {
+       "book": "QRH",
+       "code": "02.54",
+       "page": "02.54A",
+       "pdf": 116
+      }
+     ]
+    },
+    {
+     "kind": "action",
+     "item": "C/B F01 (FWS / FWC1 / SPLY)",
+     "setting": "PUSH",
+     "text": "",
+     "level": 1,
+     "applies_to": [
+      "all"
+     ],
+     "refs": [
+      {
+       "book": "QRH",
+       "code": "02.54",
+       "page": "02.54A",
+       "pdf": 116
+      }
+     ]
+    },
+    {
+     "kind": "condition",
+     "text": "If FWS FWC 2 FAULT:",
+     "level": 0,
+     "applies_to": [
+      "all"
+     ],
+     "refs": [
+      {
+       "book": "QRH",
+       "code": "02.54",
+       "page": "02.54A",
+       "pdf": 116
+      }
+     ]
+    },
+    {
+     "kind": "action",
+     "item": "C/B Q07 (EIS / FWC2 / SPLY) — on 121VU",
+     "setting": "PULL",
+     "text": "",
+     "level": 1,
+     "applies_to": [
+      "all"
+     ],
+     "refs": [
+      {
+       "book": "QRH",
+       "code": "02.54",
+       "page": "02.54A",
+       "pdf": 116
+      }
+     ]
+    },
+    {
+     "kind": "info",
+     "text": "Wait 5 s",
+     "level": 1,
+     "applies_to": [
+      "all"
+     ],
+     "refs": [
+      {
+       "book": "QRH",
+       "code": "02.54",
+       "page": "02.54A",
+       "pdf": 116
+      }
+     ]
+    },
+    {
+     "kind": "action",
+     "item": "C/B Q07 (EIS / FWC2 / SPLY)",
+     "setting": "PUSH",
+     "text": "",
+     "level": 1,
+     "applies_to": [
+      "all"
+     ],
+     "refs": [
+      {
+       "book": "QRH",
+       "code": "02.54",
+       "page": "02.54A",
+       "pdf": 116
+      }
+     ]
+    },
+    {
+     "kind": "note",
+     "text": "On ground, wait 50 s after pushing the C/Bs.",
+     "level": 0,
+     "applies_to": [
+      "all"
+     ],
+     "refs": [
+      {
+       "book": "QRH",
+       "code": "02.54",
+       "page": "02.54A",
+       "pdf": 116
+      }
+     ]
+    }
+   ]
+  }
+ ],
+ "status": {
+  "limitations": [],
+  "info": [
+   {
+    "text": "Single FWC fault: CAT 3 SINGLE ONLY (INOP SYS: CAT 3 DUAL, FWC 1(2))",
+    "applies_to": [
+     "all"
+    ],
+    "refs": [
+     {
+      "book": "FCOM",
+      "code": "PRO-ABN-FWS",
+      "page": "P 5/8",
+      "pdf": 3686
+     }
+    ]
+   }
+  ],
+  "appr_proc": [],
+  "inop_sys": [
+   {
+    "text": "CAT2 (other INOP SYS, FWC 1 + 2)",
+    "applies_to": [
+     "all"
+    ],
+    "refs": [
+     {
+      "book": "FCOM",
+      "code": "PRO-ABN-FWS",
+      "page": "P 4/8",
+      "pdf": 3685
+     }
+    ]
+   }
+  ]
+ },
+ "qrh": [],
+ "tables": [],
+ "background": [],
+ "technique": [],
+ "related": [
+  {
+   "title": "FWS SDAC 1 + 2 FAULT",
+   "why": "Related FWS failure",
+   "key_actions": [
+    "See the SDAC brief"
+   ],
+   "refs": [
+    {
+     "book": "FCOM",
+     "code": "PRO-ABN-FWS",
+     "page": "P 6/8",
+     "pdf": 3687
+    }
+   ]
+  }
+ ],
+ "differences": [],
+ "gaps": [
+  {
+   "text": "The QRH reset table covers FWC 1(2) FAULT (single); no reset is listed for FWC 1 + 2.",
+   "applies_to": [
+    "all"
+   ],
+   "refs": [
+    {
+     "book": "QRH",
+     "code": "02.54",
+     "page": "02.54A",
+     "pdf": 116
+    }
+   ]
+  },
+  {
+   "text": "No FCTM technique for this alert in the supplied FCTM.",
+   "applies_to": [
+    "all"
+   ],
+   "refs": [
+    {
+     "book": "FCOM",
+     "code": "PRO-ABN-FWS",
+     "page": "P 3/8",
+     "pdf": 3684
+    }
+   ]
+  }
+ ],
+ "sources": [
+  {
+   "book": "FCOM",
+   "section": "PRO-ABN-FWS — FWC 1 + 2 FAULT, FWC 1(2) FAULT",
+   "pages": "P 3–5/8",
+   "pdf": "3684–3686",
+   "rev": "26 MAY 26"
+  },
+  {
+   "book": "QRH",
+   "section": "02.54 FWS FWC 1(2) FAULT",
+   "pages": "02.54A",
+   "pdf": "116",
+   "rev": "26 MAY 26"
+  }
+ ],
+ "schema": "a320-ecam-abnormal/3",
+ "generated": "2026-10-14"
+}

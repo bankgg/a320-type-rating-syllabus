@@ -1,0 +1,1354 @@
+{
+ "slug": "eng-1-2-fire-on-ground",
+ "title": "ENG 1(2) FIRE (ON GROUND) · RTO",
+ "kind": "ecam",
+ "alert": {
+  "level": "warning",
+  "land_asap": "none",
+  "memory_items": false,
+  "qrh_summary": false,
+  "trigger": "Fire detected by both loops, or by one loop with the other faulty, or both loops ruptured within 5 s.",
+  "inhibited_phases": [],
+  "refs": [
+   {
+    "book": "FCOM",
+    "code": "PRO-ABN-ENG",
+    "page": "P 92/226",
+    "pdf": 3339
+   }
+  ]
+ },
+ "effectivity": {
+  "branches": [],
+  "note": "Applicable to ALL."
+ },
+ "summary": "An engine fire warning below V1: the Captain calls STOP and rejects the takeoff. Once stopped, the crew secures the aircraft, discharges both agents and — if the fire is not extinguished — goes to the QRH EMER EVAC procedure.",
+ "key_limits": [
+  {
+   "label": "Reject above 100 kt",
+   "value": "fire alert is a reason",
+   "applies_to": [
+    "all"
+   ],
+   "refs": [
+    {
+     "book": "FCTM",
+     "code": "PR-AEP-MISC",
+     "page": "P 19/32",
+     "pdf": 464
+    }
+   ]
+  },
+  {
+   "label": "Decision",
+   "value": "before V1",
+   "applies_to": [
+    "all"
+   ],
+   "refs": [
+    {
+     "book": "FCTM",
+     "code": "PR-AEP-MISC",
+     "page": "P 19/32",
+     "pdf": 464
+    }
+   ]
+  },
+  {
+   "label": "Reverse",
+   "value": "full, reduce passing 70 kt if runway allows",
+   "applies_to": [
+    "all"
+   ],
+   "refs": [
+    {
+     "book": "FCTM",
+     "code": "PR-AEP-MISC",
+     "page": "P 20/32",
+     "pdf": 465
+    }
+   ]
+  },
+  {
+   "label": "Agents",
+   "value": "1 + 2 together",
+   "applies_to": [
+    "all"
+   ],
+   "refs": [
+    {
+     "book": "FCOM",
+     "code": "PRO-ABN-ENG",
+     "page": "P 93/226",
+     "pdf": 3340
+    }
+   ]
+  }
+ ],
+ "flow": [
+  {
+   "phase": "Rejected takeoff (Captain decision)",
+   "steps": [
+    {
+     "actor": "PF",
+     "items": [
+      {
+       "kind": "callout",
+       "text": "STOP!",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "PDP",
+         "code": "Rejected takeoff",
+         "page": "XFTDA6REJECTO01",
+         "pdf": 527
+        },
+        {
+         "book": "FCTM",
+         "code": "PR-AEP-MISC",
+         "page": "P 19/32",
+         "pdf": 464
+        },
+        {
+         "book": "FCOM",
+         "code": "PRO-ABN-ABN-00",
+         "page": "P 10–11/12",
+         "pdf": 2833
+        }
+       ]
+      },
+      {
+       "kind": "note",
+       "text": "The Captain is now PF — no “I have control”",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "PDP",
+         "code": "Rejected takeoff",
+         "page": "XFTDA6REJECTO01",
+         "pdf": 527
+        },
+        {
+         "book": "FCTM",
+         "code": "PR-AEP-MISC",
+         "page": "P 19/32",
+         "pdf": 464
+        }
+       ]
+      },
+      {
+       "kind": "ecam",
+       "item": "ALL THRUST LEVERS",
+       "setting": "IDLE",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "PDP",
+         "code": "Rejected takeoff",
+         "page": "XFTDA6REJECTO01",
+         "pdf": 527
+        },
+        {
+         "book": "FCTM",
+         "code": "PR-AEP-MISC",
+         "page": "P 20/32",
+         "pdf": 465
+        }
+       ]
+      },
+      {
+       "kind": "ecam",
+       "item": "REVERSE THRUST",
+       "setting": "MAX AVAIL",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "PDP",
+         "code": "Rejected takeoff",
+         "page": "XFTDA6REJECTO01",
+         "pdf": 527
+        },
+        {
+         "book": "FCTM",
+         "code": "PR-AEP-MISC",
+         "page": "P 20/32",
+         "pdf": 465
+        }
+       ]
+      },
+      {
+       "kind": "note",
+       "text": "Simultaneously; A/BRK MAX decelerating → keep off the pedals, otherwise full manual braking",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "PDP",
+         "code": "Rejected takeoff",
+         "page": "XFTDA6REJECTO01",
+         "pdf": 527
+        },
+        {
+         "book": "FCTM",
+         "code": "PR-AEP-MISC",
+         "page": "P 21/32",
+         "pdf": 466
+        }
+       ]
+      },
+      {
+       "kind": "note",
+       "text": "Below 72 kt: no ground spoilers, no autobrake — manual braking, NWS and differential braking",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "PDP",
+         "code": "Rejected takeoff",
+         "page": "XFTDA6REJECTO01",
+         "pdf": 525
+        },
+        {
+         "book": "FCTM",
+         "code": "PR-AEP-MISC",
+         "page": "P 21/32",
+         "pdf": 466
+        }
+       ]
+      }
+     ]
+    },
+    {
+     "actor": "PM",
+     "items": [
+      {
+       "kind": "ecam",
+       "item": "REVERSERS / DECELERATION",
+       "setting": "CHECK",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "PDP",
+         "code": "Rejected takeoff",
+         "page": "XFTDA6REJECTO01",
+         "pdf": 527
+        }
+       ]
+      },
+      {
+       "kind": "callout",
+       "text": "REVERSE GREEN",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "PDP",
+         "code": "Rejected takeoff",
+         "page": "XFTDA6REJECTO01",
+         "pdf": 527
+        },
+        {
+         "book": "FCOM",
+         "code": "PRO-ABN-ABN-00",
+         "page": "P 10–11/12",
+         "pdf": 2833
+        }
+       ]
+      },
+      {
+       "kind": "callout",
+       "text": "DECEL",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "PDP",
+         "code": "Rejected takeoff",
+         "page": "XFTDA6REJECTO01",
+         "pdf": 527
+        },
+        {
+         "book": "FCOM",
+         "code": "PRO-ABN-ABN-00",
+         "page": "P 10–11/12",
+         "pdf": 2833
+        }
+       ]
+      },
+      {
+       "kind": "ecam",
+       "item": "ANY AUDIO",
+       "setting": "CANCEL",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "PDP",
+         "code": "Rejected takeoff",
+         "page": "XFTDA6REJECTO01",
+         "pdf": 527
+        },
+        {
+         "book": "FCTM",
+         "code": "PR-AEP-MISC",
+         "page": "P 20/32",
+         "pdf": 465
+        }
+       ]
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "phase": "Aircraft stopped",
+   "steps": [
+    {
+     "actor": "PF",
+     "items": [
+      {
+       "kind": "action",
+       "text": "Consider positioning to keep the fire away from the fuselage",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "FCTM",
+         "code": "PR-AEP-MISC",
+         "page": "P 20/32",
+         "pdf": 465
+        }
+       ]
+      },
+      {
+       "kind": "ecam",
+       "item": "REVERSERS",
+       "setting": "STOWED",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "PDP",
+         "code": "Rejected takeoff",
+         "page": "XFTDA6REJECTO01",
+         "pdf": 527
+        },
+        {
+         "book": "FCTM",
+         "code": "PR-AEP-MISC",
+         "page": "P 20/32",
+         "pdf": 465
+        }
+       ]
+      },
+      {
+       "kind": "ecam",
+       "item": "PARKING BRAKE",
+       "setting": "ON",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "PDP",
+         "code": "Rejected takeoff",
+         "page": "XFTDA6REJECTO01",
+         "pdf": 527
+        },
+        {
+         "book": "FCTM",
+         "code": "PR-AEP-MISC",
+         "page": "P 20/32",
+         "pdf": 465
+        }
+       ]
+      }
+     ]
+    },
+    {
+     "actor": "PM",
+     "items": [
+      {
+       "kind": "callout",
+       "text": "THA ___, STOPPING",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "PDP",
+         "code": "Rejected takeoff",
+         "page": "XFTDA6REJECTO01",
+         "pdf": 527
+        }
+       ]
+      },
+      {
+       "kind": "note",
+       "text": "Notify ATC",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "PDP",
+         "code": "Rejected takeoff",
+         "page": "XFTDA6REJECTO01",
+         "pdf": 527
+        },
+        {
+         "book": "FCTM",
+         "code": "PR-AEP-MISC",
+         "page": "P 20/32",
+         "pdf": 465
+        }
+       ]
+      }
+     ]
+    },
+    {
+     "actor": "PF",
+     "items": [
+      {
+       "kind": "callout",
+       "text": "CABIN CREW, AT YOUR STATIONS",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "PDP",
+         "code": "Rejected takeoff",
+         "page": "XFTDA6REJECTO01",
+         "pdf": 527
+        },
+        {
+         "book": "PDP",
+         "code": "Rejected takeoff",
+         "page": "XFTDA6REJECTO01",
+         "pdf": 529
+        }
+       ]
+      },
+      {
+       "kind": "note",
+       "text": "PA — alerts the cabin crew",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "PDP",
+         "code": "Rejected takeoff",
+         "page": "XFTDA6REJECTO01",
+         "pdf": 527
+        },
+        {
+         "book": "FCTM",
+         "code": "PR-AEP-MISC",
+         "page": "P 20/32",
+         "pdf": 465
+        }
+       ]
+      }
+     ]
+    },
+    {
+     "actor": "PM",
+     "items": [
+      {
+       "kind": "ecam",
+       "item": "EMERGENCY EVACUATION PROC (QRH)",
+       "setting": "LOCATE",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "PDP",
+         "code": "Rejected takeoff",
+         "page": "XFTDA6REJECTO01",
+         "pdf": 527
+        },
+        {
+         "book": "FCTM",
+         "code": "PR-AEP-MISC",
+         "page": "P 20/32",
+         "pdf": 465
+        }
+       ]
+      }
+     ]
+    },
+    {
+     "actor": "PF",
+     "items": [
+      {
+       "kind": "callout",
+       "text": "ECAM ACTIONS",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "PDP",
+         "code": "Rejected takeoff",
+         "page": "XFTDA6REJECTO01",
+         "pdf": 527
+        },
+        {
+         "book": "PDP",
+         "code": "Rejected takeoff",
+         "page": "XFTDA6REJECTO01",
+         "pdf": 529
+        },
+        {
+         "book": "FCTM",
+         "code": "PR-AEP-MISC",
+         "page": "P 20/32",
+         "pdf": 465
+        }
+       ]
+      }
+     ]
+    },
+    {
+     "actor": "PM",
+     "items": [
+      {
+       "kind": "note",
+       "text": "ECAM actions are not confirmed on ground",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "PDP",
+         "code": "Emergency evacuation",
+         "page": "XFTDA1EMREVAC01",
+         "pdf": 493
+        }
+       ]
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "phase": "Fire procedure",
+   "steps": [
+    {
+     "actor": "PM",
+     "items": [
+      {
+       "kind": "ecam",
+       "item": "THR LEVERS",
+       "setting": "IDLE",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "FCOM",
+         "code": "PRO-ABN-ENG",
+         "page": "P 93/226",
+         "pdf": 3340
+        }
+       ]
+      },
+      {
+       "kind": "condition",
+       "text": "WHEN A/C IS STOPPED",
+       "children": [
+        {
+         "kind": "ecam",
+         "item": "PARKING BRK",
+         "setting": "ON",
+         "applies_to": [
+          "all"
+         ],
+         "refs": [
+          {
+           "book": "FCOM",
+           "code": "PRO-ABN-ENG",
+           "page": "P 93/226",
+           "pdf": 3340
+          }
+         ]
+        },
+        {
+         "kind": "ecam",
+         "item": "ATC (VHF 1)",
+         "setting": "NOTIFY",
+         "applies_to": [
+          "all"
+         ],
+         "refs": [
+          {
+           "book": "FCOM",
+           "code": "PRO-ABN-ENG",
+           "page": "P 93/226",
+           "pdf": 3340
+          }
+         ]
+        },
+        {
+         "kind": "ecam",
+         "item": "CABIN CREW (PA)",
+         "setting": "ALERT",
+         "applies_to": [
+          "all"
+         ],
+         "refs": [
+          {
+           "book": "FCOM",
+           "code": "PRO-ABN-ENG",
+           "page": "P 93/226",
+           "pdf": 3340
+          }
+         ]
+        },
+        {
+         "kind": "ecam",
+         "item": "ENG MASTER (AFFECTED)",
+         "setting": "OFF",
+         "applies_to": [
+          "all"
+         ],
+         "refs": [
+          {
+           "book": "FCOM",
+           "code": "PRO-ABN-ENG",
+           "page": "P 93/226",
+           "pdf": 3340
+          }
+         ]
+        },
+        {
+         "kind": "ecam",
+         "item": "ENG FIRE P/B (AFFECTED)",
+         "setting": "PUSH",
+         "applies_to": [
+          "all"
+         ],
+         "refs": [
+          {
+           "book": "FCOM",
+           "code": "PRO-ABN-ENG",
+           "page": "P 93/226",
+           "pdf": 3340
+          }
+         ]
+        },
+        {
+         "kind": "ecam",
+         "item": "AGENT 1+2",
+         "setting": "DISCH",
+         "applies_to": [
+          "all"
+         ],
+         "refs": [
+          {
+           "book": "FCOM",
+           "code": "PRO-ABN-ENG",
+           "page": "P 93/226",
+           "pdf": 3340
+          }
+         ]
+        },
+        {
+         "kind": "ecam",
+         "item": "EMER EVAC PROC",
+         "setting": "APPLY",
+         "applies_to": [
+          "all"
+         ],
+         "refs": [
+          {
+           "book": "FCOM",
+           "code": "PRO-ABN-ENG",
+           "page": "P 93/226",
+           "pdf": 3340
+          }
+         ]
+        }
+       ],
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "FCOM",
+         "code": "PRO-ABN-ENG",
+         "page": "P 93/226",
+         "pdf": 3340
+        }
+       ]
+      }
+     ]
+    },
+    {
+     "actor": "PF",
+     "items": [
+      {
+       "kind": "action",
+       "text": "Stay on the runway until it is clear that no evacuation is needed",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "FCTM",
+         "code": "PR-AEP-MISC",
+         "page": "P 21/32",
+         "pdf": 466
+        }
+       ]
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "phase": "Evacuation decision",
+   "steps": [
+    {
+     "actor": "PF",
+     "items": [
+      {
+       "kind": "action",
+       "text": "CAPT decides; see the EMER EVAC brief",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "FCTM",
+         "code": "PR-AEP-MISC",
+         "page": "P 6–7/32",
+         "pdf": 451
+        }
+       ]
+      }
+     ]
+    }
+   ]
+  }
+ ],
+ "procedures": [
+  {
+   "title": "ECAM procedure",
+   "source": "FCOM PRO-ABN-ENG",
+   "lines": [
+    {
+     "kind": "action",
+     "item": "THR LEVERS",
+     "setting": "IDLE",
+     "text": "Full reverse may be used to stop the aircraft.",
+     "level": 0,
+     "applies_to": [
+      "all"
+     ],
+     "refs": [
+      {
+       "book": "FCOM",
+       "code": "PRO-ABN-ENG",
+       "page": "P 93/226",
+       "pdf": 3340
+      }
+     ]
+    },
+    {
+     "kind": "condition",
+     "text": "WHEN A/C IS STOPPED:",
+     "level": 0,
+     "applies_to": [
+      "all"
+     ],
+     "refs": [
+      {
+       "book": "FCOM",
+       "code": "PRO-ABN-ENG",
+       "page": "P 93/226",
+       "pdf": 3340
+      }
+     ]
+    },
+    {
+     "kind": "action",
+     "item": "PARKING BRK",
+     "setting": "ON",
+     "text": "",
+     "level": 1,
+     "applies_to": [
+      "all"
+     ],
+     "refs": [
+      {
+       "book": "FCOM",
+       "code": "PRO-ABN-ENG",
+       "page": "P 93/226",
+       "pdf": 3340
+      }
+     ]
+    },
+    {
+     "kind": "action",
+     "item": "ATC (VHF 1)",
+     "setting": "NOTIFY",
+     "text": "Only VHF 1 is available on batteries.",
+     "level": 1,
+     "applies_to": [
+      "all"
+     ],
+     "refs": [
+      {
+       "book": "FCOM",
+       "code": "PRO-ABN-ENG",
+       "page": "P 93/226",
+       "pdf": 3340
+      }
+     ]
+    },
+    {
+     "kind": "action",
+     "item": "CABIN CREW (PA)",
+     "setting": "ALERT",
+     "text": "",
+     "level": 1,
+     "applies_to": [
+      "all"
+     ],
+     "refs": [
+      {
+       "book": "FCOM",
+       "code": "PRO-ABN-ENG",
+       "page": "P 93/226",
+       "pdf": 3340
+      }
+     ]
+    },
+    {
+     "kind": "action",
+     "item": "ENG MASTER (AFFECTED)",
+     "setting": "OFF",
+     "text": "",
+     "level": 1,
+     "applies_to": [
+      "all"
+     ],
+     "refs": [
+      {
+       "book": "FCOM",
+       "code": "PRO-ABN-ENG",
+       "page": "P 93/226",
+       "pdf": 3340
+      }
+     ]
+    },
+    {
+     "kind": "action",
+     "item": "ENG FIRE P/B (AFFECTED)",
+     "setting": "PUSH",
+     "text": "",
+     "level": 1,
+     "applies_to": [
+      "all"
+     ],
+     "refs": [
+      {
+       "book": "FCOM",
+       "code": "PRO-ABN-ENG",
+       "page": "P 93/226",
+       "pdf": 3340
+      }
+     ]
+    },
+    {
+     "kind": "action",
+     "item": "AGENT 1+2",
+     "setting": "DISCH",
+     "text": "",
+     "level": 1,
+     "applies_to": [
+      "all"
+     ],
+     "refs": [
+      {
+       "book": "FCOM",
+       "code": "PRO-ABN-ENG",
+       "page": "P 93/226",
+       "pdf": 3340
+      }
+     ]
+    },
+    {
+     "kind": "action",
+     "item": "EMER EVAC PROC",
+     "setting": "APPLY",
+     "text": "",
+     "level": 1,
+     "applies_to": [
+      "all"
+     ],
+     "refs": [
+      {
+       "book": "FCOM",
+       "code": "PRO-ABN-ENG",
+       "page": "P 93/226",
+       "pdf": 3340
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "title": "RTO task sharing (FCTM)",
+   "source": "FCTM PR-AEP-MISC",
+   "lines": [
+    {
+     "kind": "action",
+     "item": "CAPT · \"STOP\"",
+     "setting": "ANNOUNCE",
+     "text": "",
+     "level": 0,
+     "applies_to": [
+      "all"
+     ],
+     "refs": [
+      {
+       "book": "FCTM",
+       "code": "PR-AEP-MISC",
+       "page": "P 20/32",
+       "pdf": 465
+      }
+     ]
+    },
+    {
+     "kind": "action",
+     "item": "CAPT · THRUST LEVERS",
+     "setting": "IDLE",
+     "text": "",
+     "level": 0,
+     "applies_to": [
+      "all"
+     ],
+     "refs": [
+      {
+       "book": "FCTM",
+       "code": "PR-AEP-MISC",
+       "page": "P 20/32",
+       "pdf": 465
+      }
+     ]
+    },
+    {
+     "kind": "action",
+     "item": "CAPT · REVERSE THRUST",
+     "setting": "MAX AVAIL.",
+     "text": "",
+     "level": 0,
+     "applies_to": [
+      "all"
+     ],
+     "refs": [
+      {
+       "book": "FCTM",
+       "code": "PR-AEP-MISC",
+       "page": "P 20/32",
+       "pdf": 465
+      }
+     ]
+    },
+    {
+     "kind": "action",
+     "item": "F/O · REVERSERS",
+     "setting": "CHECK/ANNOUNCE",
+     "text": "",
+     "level": 0,
+     "applies_to": [
+      "all"
+     ],
+     "refs": [
+      {
+       "book": "FCTM",
+       "code": "PR-AEP-MISC",
+       "page": "P 20/32",
+       "pdf": 465
+      }
+     ]
+    },
+    {
+     "kind": "action",
+     "item": "F/O · DECELERATION",
+     "setting": "CHECK/ANNOUNCE",
+     "text": "",
+     "level": 0,
+     "applies_to": [
+      "all"
+     ],
+     "refs": [
+      {
+       "book": "FCTM",
+       "code": "PR-AEP-MISC",
+       "page": "P 20/32",
+       "pdf": 465
+      }
+     ]
+    },
+    {
+     "kind": "action",
+     "item": "F/O · AUTOBRAKE",
+     "setting": "MONITOR",
+     "text": "",
+     "level": 0,
+     "applies_to": [
+      "all"
+     ],
+     "refs": [
+      {
+       "book": "FCTM",
+       "code": "PR-AEP-MISC",
+       "page": "P 20/32",
+       "pdf": 465
+      }
+     ]
+    },
+    {
+     "kind": "action",
+     "item": "F/O · ANY AUDIO",
+     "setting": "CANCEL",
+     "text": "",
+     "level": 0,
+     "applies_to": [
+      "all"
+     ],
+     "refs": [
+      {
+       "book": "FCTM",
+       "code": "PR-AEP-MISC",
+       "page": "P 20/32",
+       "pdf": 465
+      }
+     ]
+    },
+    {
+     "kind": "condition",
+     "text": "Aircraft stopped:",
+     "level": 0,
+     "applies_to": [
+      "all"
+     ],
+     "refs": [
+      {
+       "book": "FCTM",
+       "code": "PR-AEP-MISC",
+       "page": "P 20/32",
+       "pdf": 465
+      }
+     ]
+    },
+    {
+     "kind": "action",
+     "item": "CAPT · REVERSERS",
+     "setting": "STOWED",
+     "text": "",
+     "level": 1,
+     "applies_to": [
+      "all"
+     ],
+     "refs": [
+      {
+       "book": "FCTM",
+       "code": "PR-AEP-MISC",
+       "page": "P 20/32",
+       "pdf": 465
+      }
+     ]
+    },
+    {
+     "kind": "action",
+     "item": "CAPT · PARKING BRAKE",
+     "setting": "ON",
+     "text": "",
+     "level": 1,
+     "applies_to": [
+      "all"
+     ],
+     "refs": [
+      {
+       "book": "FCTM",
+       "code": "PR-AEP-MISC",
+       "page": "P 20/32",
+       "pdf": 465
+      }
+     ]
+    },
+    {
+     "kind": "action",
+     "item": "CAPT · CABIN CREW",
+     "setting": "ALERT",
+     "text": "",
+     "level": 1,
+     "applies_to": [
+      "all"
+     ],
+     "refs": [
+      {
+       "book": "FCTM",
+       "code": "PR-AEP-MISC",
+       "page": "P 20/32",
+       "pdf": 465
+      }
+     ]
+    },
+    {
+     "kind": "action",
+     "item": "CAPT · ECAM ACTIONS",
+     "setting": "ORDER",
+     "text": "",
+     "level": 1,
+     "applies_to": [
+      "all"
+     ],
+     "refs": [
+      {
+       "book": "FCTM",
+       "code": "PR-AEP-MISC",
+       "page": "P 20/32",
+       "pdf": 465
+      }
+     ]
+    },
+    {
+     "kind": "action",
+     "item": "F/O · ATC",
+     "setting": "NOTIFY",
+     "text": "",
+     "level": 1,
+     "applies_to": [
+      "all"
+     ],
+     "refs": [
+      {
+       "book": "FCTM",
+       "code": "PR-AEP-MISC",
+       "page": "P 20/32",
+       "pdf": 465
+      }
+     ]
+    },
+    {
+     "kind": "action",
+     "item": "F/O · EMER EVAC Procedure (QRH)",
+     "setting": "LOCATE",
+     "text": "",
+     "level": 1,
+     "applies_to": [
+      "all"
+     ],
+     "refs": [
+      {
+       "book": "FCTM",
+       "code": "PR-AEP-MISC",
+       "page": "P 20/32",
+       "pdf": 465
+      }
+     ]
+    },
+    {
+     "kind": "action",
+     "item": "F/O · ECAM ACTIONS",
+     "setting": "PERFORM",
+     "text": "",
+     "level": 1,
+     "applies_to": [
+      "all"
+     ],
+     "refs": [
+      {
+       "book": "FCTM",
+       "code": "PR-AEP-MISC",
+       "page": "P 20/32",
+       "pdf": 465
+      }
+     ]
+    }
+   ]
+  }
+ ],
+ "status": null,
+ "qrh": [],
+ "tables": [],
+ "background": [
+  {
+   "text": "ECAM inhibits non-essential alerts from 80 kt to 1 500 ft (or 2 min after lift-off): any alert in this period is significant.",
+   "applies_to": [
+    "all"
+   ],
+   "refs": [
+    {
+     "book": "FCTM",
+     "code": "PR-AEP-MISC",
+     "page": "P 18/32",
+     "pdf": 463
+    }
+   ]
+  },
+  {
+   "text": "Above 100 kt and below V1 the Captain is go-minded; a fire alert or severe damage is one of the few reasons to reject.",
+   "applies_to": [
+    "all"
+   ],
+   "refs": [
+    {
+     "book": "FCTM",
+     "code": "PR-AEP-MISC",
+     "page": "P 19/32",
+     "pdf": 464
+    }
+   ]
+  }
+ ],
+ "technique": [
+  {
+   "text": "The Captain keeps a hand on the thrust levers until V1, whether PF or PM.",
+   "applies_to": [
+    "all"
+   ],
+   "refs": [
+    {
+     "book": "FCTM",
+     "code": "PR-AEP-MISC",
+     "page": "P 19/32",
+     "pdf": 464
+    }
+   ]
+  },
+  {
+   "text": "\"STOP\" both confirms the decision and states the Captain has control — the only handover without \"I have control\".",
+   "applies_to": [
+    "all"
+   ],
+   "refs": [
+    {
+     "book": "FCTM",
+     "code": "PR-AEP-MISC",
+     "page": "P 19/32",
+     "pdf": 464
+    }
+   ]
+  },
+  {
+   "text": "Rejected before 72 kt or autobrake inoperative: reduce thrust and apply full pedal braking until stopped.",
+   "applies_to": [
+    "all"
+   ],
+   "refs": [
+    {
+     "book": "FCTM",
+     "code": "PR-AEP-MISC",
+     "page": "P 21/32",
+     "pdf": 466
+    }
+   ]
+  },
+  {
+   "text": "After an A/BRK MAX stop, disarm ground spoilers before taxiing; do not vacate until it is clear no evacuation is needed.",
+   "applies_to": [
+    "all"
+   ],
+   "refs": [
+    {
+     "book": "FCTM",
+     "code": "PR-AEP-MISC",
+     "page": "P 21/32",
+     "pdf": 466
+    }
+   ]
+  }
+ ],
+ "related": [
+  {
+   "title": "[QRH] EMER EVAC",
+   "why": "Fire not extinguishable",
+   "key_actions": [
+    "See the EMER EVAC brief"
+   ],
+   "refs": [
+    {
+     "book": "FCOM",
+     "code": "PRO-ABN-MISC",
+     "page": "P 16/30",
+     "pdf": 3811
+    }
+   ]
+  }
+ ],
+ "differences": [],
+ "gaps": [
+  {
+   "text": "Company (THAI) phraseology is used instead of the generic Airbus wording: PA “CABIN CREW, AT YOUR STATIONS” (PDP: “ATTENTION! CREW AT STATIONS”) and ATC call sign “THA ___” (PDP: “AIRBUS ___”).",
+   "applies_to": [
+    "all"
+   ],
+   "refs": [
+    {
+     "book": "PDP",
+     "code": "Rejected takeoff",
+     "page": "XFTDA6REJECTO01",
+     "pdf": 527
+    }
+   ]
+  }
+ ],
+ "sources": [
+  {
+   "book": "FCOM",
+   "section": "PRO-ABN-ENG — ENG 1(2) FIRE (ON GROUND)",
+   "pages": "P 92–93/226",
+   "pdf": "3339–3340",
+   "rev": "26 MAY 26"
+  },
+  {
+   "book": "FCTM",
+   "section": "PR-AEP-MISC — Rejected takeoff",
+   "pages": "P 18–21/32",
+   "pdf": "463–466",
+   "rev": "26 MAY 26"
+  },
+  {
+   "book": "FCOM",
+   "section": "PRO-ABN-ABN-00 — malfunction before V1 callouts",
+   "pages": "P 10–11/12",
+   "pdf": "2833–2834",
+   "rev": "26 MAY 26"
+  },
+  {
+   "book": "PDP",
+   "section": "Rejected takeoff (XFTDA6REJECTO01)",
+   "pages": "Task sharing, flow pattern",
+   "pdf": "524–529",
+   "rev": "JUL 2021"
+  }
+ ],
+ "schema": "a320-ecam-abnormal/3",
+ "generated": "2026-10-14"
+}

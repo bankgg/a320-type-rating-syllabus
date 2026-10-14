@@ -1,0 +1,242 @@
+session:
+  id: mftd-3
+  title: MFTD/FBS 3
+  focus: Abnormal procedure timeline
+  effectivity: HS-TX
+  syllabus_ref: S1
+
+sources:
+  S1:
+    title: A320 Trainee A vs B Syllabus Comparison
+    path: sources/A320_Trainee_A_vs_B_Syllabus_Comparison.html
+    locator: MFTD/FBS 3 · exercise IDs e01–e13
+    applicability: syllabus
+  M1:
+    title: MEL · item 49-10-01A
+    path: sources/A320FAM_MEL_23FEB26.pdf
+    issue: 23 FEB 2026
+    effective: 11 SEP 2026
+    locator: MI-49-10 p. 1/2 · PDF p. 1014
+    applicability: ALL
+  M2:
+    title: MEL · APU operational procedure
+    path: sources/A320FAM_MEL_23FEB26.pdf
+    issue: 23 FEB 2026
+    effective: 11 SEP 2026
+    locator: MO-49-10 pp. 1–2/2 · PDF pp. 1554–1555
+    applicability: HS-TX
+  F1:
+    title: FCOM · Air start unit
+    path: sources/A320FAM_FCOM_14JUL26_compressed.pdf
+    issue: 14 JUL 2026
+    effective: 07 SEP 2026
+    locator: PRO-NOR-SUP-ENG p. 10/18 · PDF p. 4395
+    applicability: HS-TX
+  F2:
+    title: FCOM · Air start to crossbleed
+    path: sources/A320FAM_FCOM_14JUL26_compressed.pdf
+    issue: 14 JUL 2026
+    effective: 07 SEP 2026
+    locator: PRO-NOR-SUP-ENG p. 11/18 · PDF p. 4396
+    applicability: HS-TX
+  F3:
+    title: FCOM · Crossbleed engine start
+    path: sources/A320FAM_FCOM_14JUL26_compressed.pdf
+    issue: 14 JUL 2026
+    effective: 07 SEP 2026
+    locator: PRO-NOR-SUP-ENG pp. 12–13/18 · PDF pp. 4397–4398
+    applicability: HS-TX
+  F4:
+    title: FCOM · Engine-start ground callouts
+    path: sources/A320FAM_FCOM_14JUL26_compressed.pdf
+    issue: 14 JUL 2026
+    effective: 07 SEP 2026
+    locator: PRO-NOR-SCO p. 6/10 · PDF p. 4315
+    applicability: ALL
+  F5:
+    title: FCOM · Memory-item callout
+    path: sources/A320FAM_FCOM_14JUL26_compressed.pdf
+    issue: 14 JUL 2026
+    effective: 07 SEP 2026
+    locator: PRO-ABN-ABN-00 p. 10/12 · PDF p. 2833
+    applicability: ALL
+  F6:
+    title: FCOM · Loss of braking
+    path: sources/A320FAM_FCOM_14JUL26_compressed.pdf
+    issue: 14 JUL 2026
+    effective: 07 SEP 2026
+    locator: PRO-ABN-BRAKES p. 1/22 · PDF p. 3024
+    applicability: ALL
+  F7:
+    title: FCOM · After Start SOP
+    path: sources/A320FAM_FCOM_14JUL26_compressed.pdf
+    issue: 14 JUL 2026
+    effective: 07 SEP 2026
+    locator: PRO-NOR-SOP-09 p. 1/12 · PDF p. 4142
+    applicability: ALL
+  F8:
+    title: FCOM · After Landing SOP
+    path: sources/A320FAM_FCOM_14JUL26_compressed.pdf
+    issue: 14 JUL 2026
+    effective: 07 SEP 2026
+    locator: PRO-NOR-SOP-21 p. 1/8 · PDF p. 4288
+    applicability: ALL
+
+scenarios:
+  - id: apu-inop-alternate-start
+    trainee: A
+    title: APU inoperative · alternate engine starts
+    manual_titles:
+      - MEL 49-10-01A · Power Plant (APU)
+      - FCOM · Engine Start With An Air Start Unit → Crossbleed Engine Start
+    exercise_ids: [mftd-3-e01, mftd-3-e02, mftd-3-e03]
+    refs: [S1]
+    mel_refs: [M1, M2]
+    layout: two-column
+    flow_break_at: 10
+    steps:
+      - kind: condition
+        stage: Air start unit · engine 2
+        text: 'Before connecting the air start unit:'
+        refs: [F1]
+      - kind: action
+        procedure:
+          - {item: PACK 1, setting: 'OFF'}
+          - {item: PACK 2, setting: 'OFF'}
+          - {item: APU BLEED, setting: 'OFF'}
+          - {item: ENG 1 BLEED, setting: 'OFF'}
+          - {item: ENG 2 BLEED, setting: 'OFF'}
+          - {item: X BLEED, setting: OPEN}
+          - {item: AIR START UNIT CONNECTION, setting: REQUEST}
+        refs: [F1]
+      - kind: condition
+        text: 'When cleared to start:'
+        refs: [F1]
+      - kind: callout
+        utterances:
+          - {speaker: Captain, words: 'CLEAR TO START ?'}
+          - {speaker: GND, words: CLEAR TO START}
+          - {speaker: Captain, words: 'STARTING ENG(S)__'}
+        refs: [F4]
+      - kind: action
+        procedure:
+          - {item: ENG 2, setting: START}
+        detail: Starter air ≥25 PSI recommended with start valve open.
+        refs: [F1]
+      - kind: condition
+        text: 'After engine 2 is started:'
+        refs: [F1]
+      - kind: action
+        procedure:
+          - {item: EXT PWR, setting: CHECK AVAIL}
+          - {item: EXT PWR DISCONNECTION, setting: REQUEST}
+        detail: Request disconnection only with EXT PWR pb-sw at AVAIL.
+        refs: [F1]
+      - kind: condition
+        stage: Crossbleed · change air supply
+        text: 'If crossbleed start is used for engine 1:'
+        refs: [F2]
+      - kind: action
+        procedure:
+          - {item: AIR START UNIT DISCONNECTION, setting: REQUEST}
+          - {item: PACK 1, setting: 'ON'}
+          - {item: PACK 2, setting: 'ON'}
+          - {item: ENG 2 BLEED, setting: 'ON'}
+        refs: [F2]
+      - kind: caution
+        text: No crossbleed start during pushback; no simultaneous engine bleed and external pneumatic supply.
+        refs: [F3]
+      - kind: condition
+        stage: Crossbleed · engine 1 start
+        text: 'Before second engine start:'
+        refs: [F3]
+      - kind: action
+        procedure:
+          - {item: APU BLEED, setting: 'OFF'}
+          - {item: ENG 2 BLEED, setting: 'ON'}
+          - {item: ENG 1 BLEED, setting: 'OFF'}
+          - {item: X BLEED, setting: OPEN}
+        refs: [F3]
+      - kind: condition
+        text: 'When cleared to start:'
+        refs: [F3]
+      - kind: callout
+        utterances:
+          - {speaker: Captain, words: 'CLEAR TO START ?'}
+          - {speaker: GND, words: CLEAR TO START}
+        refs: [F4]
+      - kind: action
+        procedure:
+          - {item: AREA CLEAR OF OBSTACLES, setting: CONFIRM}
+          - {item: THR LEVER (ENG 2), setting: ADJUST}
+        detail: ENG 2 bleed 30 PSI before start; ≥25 PSI during. Confirm jet blast poses no hazard.
+        refs: [F3]
+      - kind: callout
+        actor: Captain
+        text: 'STARTING ENG(S)__'
+        refs: [F4]
+      - kind: action
+        procedure:
+          - {item: RECEIVING ENGINE (ENG 1), setting: START}
+        detail: Apply normal engine start procedure.
+        refs: [F3]
+      - kind: condition
+        text: 'After start:'
+        refs: [F3]
+      - kind: action
+        procedure:
+          - {item: THR LEVER (ENG 2), setting: IDLE}
+          - {item: X BLEED, setting: AUTO}
+          - {item: ENG 1 BLEED, setting: 'ON'}
+          - {item: PACK 1, setting: 'ON'}
+          - {item: PACK 2, setting: 'ON'}
+        refs: [F3]
+      - kind: resume
+        text: SOP — AFTER START · RESUME
+        refs: [F2, F7]
+
+  - id: loss-of-braking
+    trainee: B
+    conditional: true
+    title: Loss of braking
+    manual_titles:
+      - '[MEM] LOSS OF BRAKING'
+    exercise_ids: [mftd-3-e13]
+    refs: [S1]
+    layout: single
+    steps:
+      - kind: condition
+        text: 'If no braking:'
+        refs: [F6]
+      - kind: callout
+        actor: Crew
+        text: LOSS OF BRAKING
+        refs: [F5]
+      - kind: action
+        procedure:
+          - {item: REV, setting: MAX}
+          - {item: BRAKE PEDALS, setting: RELEASE, actor: PF}
+        refs: [F6]
+      - kind: callout
+        actor: PF
+        text: A/SKID OFF
+        refs: [F6]
+      - kind: action
+        procedure:
+          - {item: A/SKID & N/W STRG, setting: 'OFF', actor: PM}
+          - {item: BRAKE PEDALS, setting: PRESS}
+          - {item: MAX BRK PR, setting: 1 000 PSI}
+        refs: [F6]
+      - kind: condition
+        text: 'If still no braking:'
+        refs: [F6]
+      - kind: action
+        procedure:
+          - {item: PARK BRAKE, setting: USE}
+        detail: Short successive applications until stopped.
+        refs: [F6]
+      - kind: resume
+        text: When stopped and runway vacated, resume After Landing SOP.
+        refs: [F8]
+
+excluded_items: [mftd-3-e04, mftd-3-e05, mftd-3-e06, mftd-3-e07, mftd-3-e08, mftd-3-e09, mftd-3-e10, mftd-3-e11, mftd-3-e12]

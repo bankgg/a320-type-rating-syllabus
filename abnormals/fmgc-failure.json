@@ -1,0 +1,1004 @@
+{
+ "slug": "fmgc-failure",
+ "title": "FMGC 1(2) FAULT · FMGC 1+2 FAULT",
+ "kind": "technique",
+ "alert": {
+  "level": "qrh",
+  "land_asap": "none",
+  "memory_items": false,
+  "qrh_summary": false,
+  "trigger": "Single or dual FMGC failure. Handled from the FCTM technique, the FMGS degraded modes and the QRH system reset table (AUTO FLT — BOTH MCDU LOCKED OR BLANK OR FMGC MALFUNCTION).",
+  "inhibited_phases": [],
+  "refs": [
+   {
+    "book": "FCTM",
+    "code": "PR-AEP-AUTOFLT",
+    "page": "P 1/2",
+    "pdf": 394
+   },
+   {
+    "book": "QRH",
+    "code": "02.12",
+    "page": "02.12A",
+    "pdf": 65
+   }
+  ]
+ },
+ "effectivity": {
+  "branches": [],
+  "note": "QRH reset procedure: HS-TX version."
+ },
+ "summary": "One FMGC failing leaves the other running everything (single mode): recover the AP on the other side, put both NDs on the same range and mode, and reset the failed FMGC from the QRH. Both FMGCs failing drops AP/FD and A/THR: try to re-engage them, otherwise fly manual thrust with FDs off and TRK/FPA, tune navaids on the RMPs, reset per QRH, and use MCDU BACK UP NAV.",
+ "key_limits": [
+  {
+   "label": "C/B pull",
+   "value": "10 s, then push",
+   "applies_to": [
+    "all"
+   ],
+   "refs": [
+    {
+     "book": "QRH",
+     "code": "02.12",
+     "page": "02.12A",
+     "pdf": 65
+    }
+   ]
+  },
+  {
+   "label": "Re-engage AP/FD",
+   "value": "1 min after PLEASE WAIT clears",
+   "applies_to": [
+    "all"
+   ],
+   "refs": [
+    {
+     "book": "QRH",
+     "code": "02.12",
+     "page": "02.12A",
+     "pdf": 65
+    }
+   ]
+  },
+  {
+   "label": "Resets",
+   "value": "only per QRH table",
+   "applies_to": [
+    "all"
+   ],
+   "refs": [
+    {
+     "book": "QRH",
+     "code": "02.01",
+     "page": "02.01A",
+     "pdf": 50
+    },
+    {
+     "book": "FCTM",
+     "code": "AOP-30-20",
+     "page": "P 1/2",
+     "pdf": 80
+    }
+   ]
+  }
+ ],
+ "flow": [
+  {
+   "phase": "Single FMGC failure (demo FMGC 1 / FMGC 2)",
+   "steps": [
+    {
+     "actor": "PF",
+     "items": [
+      {
+       "kind": "action",
+       "text": "Golden rules: fly, navigate, communicate; appropriate level of automation",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "PDP",
+         "code": "Dual FMGC failure",
+         "page": "EFTDA1DUALFM001",
+         "pdf": 452
+        }
+       ]
+      },
+      {
+       "kind": "action",
+       "text": "AP1 and FD1 lost (affected side) → engage AP2; A/THR stays",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "PDP",
+         "code": "Dual FMGC failure",
+         "page": "EFTDA1DUALFM001",
+         "pdf": 453
+        },
+        {
+         "book": "FCTM",
+         "code": "PR-AEP-AUTOFLT",
+         "page": "P 1/2",
+         "pdf": 394
+        }
+       ]
+      },
+      {
+       "kind": "action",
+       "text": "Do not use the MCDU until PLEASE WAIT clears",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "FCOM",
+         "code": "DSC-22_10-30",
+         "page": "P 4/6",
+         "pdf": 319
+        }
+       ]
+      }
+     ]
+    },
+    {
+     "actor": "PM",
+     "items": [
+      {
+       "kind": "action",
+       "text": "Select the same range and mode on both NDs (SET OFFSIDE RNG/MODE → OFFSIDE FM CONTROL)",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "PDP",
+         "code": "Dual FMGC failure",
+         "page": "EFTDA1DUALFM001",
+         "pdf": 454
+        },
+        {
+         "book": "FCOM",
+         "code": "DSC-22_10-30",
+         "page": "P 4/6",
+         "pdf": 319
+        },
+        {
+         "book": "FCTM",
+         "code": "PR-AEP-AUTOFLT",
+         "page": "P 1/2",
+         "pdf": 394
+        }
+       ]
+      },
+      {
+       "kind": "action",
+       "text": "Failed-side MCDU reverts to MCDU MENU; exit by selecting any MCDU page (healthy FM in force)",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "PDP",
+         "code": "Dual FMGC failure",
+         "page": "EFTDA1DUALFM001",
+         "pdf": 454
+        }
+       ]
+      },
+      {
+       "kind": "note",
+       "text": "Both FDs now driven by the operative FMGC; any MCDU entry goes to it",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "FCOM",
+         "code": "DSC-22_10-30",
+         "page": "P 4/6",
+         "pdf": 319
+        }
+       ]
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "phase": "Reset the failed FMGC (QRH 02.12)",
+   "steps": [
+    {
+     "actor": "PM",
+     "items": [
+      {
+       "kind": "callout",
+       "text": "CONFIRM?",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "PDP",
+         "code": "Management of abnormal operations",
+         "page": "XFTDN6ECAM00001",
+         "pdf": 432
+        }
+       ]
+      },
+      {
+       "kind": "note",
+       "text": "Before each C/B action: PM points to the C/B, PF answers “CONFIRMED”",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "PDP",
+         "code": "Management of abnormal operations",
+         "page": "XFTDN6ECAM00001",
+         "pdf": 432
+        },
+        {
+         "book": "FCTM",
+         "code": "AOP-30-20",
+         "page": "P 1/2",
+         "pdf": 80
+        }
+       ]
+      }
+     ]
+    },
+    {
+     "actor": "PF",
+     "items": [
+      {
+       "kind": "callout",
+       "text": "CONFIRMED",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "PDP",
+         "code": "Management of abnormal operations",
+         "page": "XFTDN6ECAM00001",
+         "pdf": 432
+        }
+       ]
+      }
+     ]
+    },
+    {
+     "actor": "PM",
+     "items": [
+      {
+       "kind": "condition",
+       "text": "If FMGC 1 is affected",
+       "children": [
+        {
+         "kind": "ecam",
+         "item": "AP 2 pb",
+         "setting": "ON",
+         "applies_to": [
+          "all"
+         ],
+         "refs": [
+          {
+           "book": "QRH",
+           "code": "02.12",
+           "page": "02.12A",
+           "pdf": 65
+          }
+         ]
+        },
+        {
+         "kind": "ecam",
+         "item": "FD 1 pb",
+         "setting": "OFF",
+         "applies_to": [
+          "all"
+         ],
+         "refs": [
+          {
+           "book": "QRH",
+           "code": "02.12",
+           "page": "02.12A",
+           "pdf": 65
+          }
+         ]
+        },
+        {
+         "kind": "ecam",
+         "item": "C/B B02 (AUTO FLT / FMGC / 1) on 49VU",
+         "setting": "PULL — wait 10 s — PUSH",
+         "applies_to": [
+          "all"
+         ],
+         "refs": [
+          {
+           "book": "QRH",
+           "code": "02.12",
+           "page": "02.12A",
+           "pdf": 65
+          }
+         ]
+        }
+       ],
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "QRH",
+         "code": "02.12",
+         "page": "02.12A",
+         "pdf": 65
+        }
+       ]
+      },
+      {
+       "kind": "condition",
+       "text": "If FMGC 2 is affected",
+       "children": [
+        {
+         "kind": "ecam",
+         "item": "AP 1 pb",
+         "setting": "ON",
+         "applies_to": [
+          "all"
+         ],
+         "refs": [
+          {
+           "book": "QRH",
+           "code": "02.12",
+           "page": "02.12A",
+           "pdf": 65
+          }
+         ]
+        },
+        {
+         "kind": "ecam",
+         "item": "FD 2 pb",
+         "setting": "OFF",
+         "applies_to": [
+          "all"
+         ],
+         "refs": [
+          {
+           "book": "QRH",
+           "code": "02.12",
+           "page": "02.12A",
+           "pdf": 65
+          }
+         ]
+        },
+        {
+         "kind": "ecam",
+         "item": "C/B M17 (AUTO FLT / FMGC / 2) on 121VU",
+         "setting": "PULL — wait 10 s — PUSH",
+         "applies_to": [
+          "all"
+         ],
+         "refs": [
+          {
+           "book": "QRH",
+           "code": "02.12",
+           "page": "02.12A",
+           "pdf": 65
+          }
+         ]
+        }
+       ],
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "QRH",
+         "code": "02.12",
+         "page": "02.12A",
+         "pdf": 65
+        }
+       ]
+      }
+     ]
+    },
+    {
+     "actor": "PF",
+     "items": [
+      {
+       "kind": "action",
+       "text": "Wait 1 min after PLEASE WAIT disappears before re-engaging FD/AP of the reset FMGC",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "QRH",
+         "code": "02.12",
+         "page": "02.12A",
+         "pdf": 65
+        }
+       ]
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "phase": "Dual FMGC failure",
+   "steps": [
+    {
+     "actor": "PF",
+     "items": [
+      {
+       "kind": "action",
+       "text": "FMGC auto-reset may occur; when the ECAM is confirmed apply ECAM/OEB actions and the abnormal task sharing",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "PDP",
+         "code": "Dual FMGC failure",
+         "page": "EFTDA1DUALFM001",
+         "pdf": 456
+        }
+       ]
+      },
+      {
+       "kind": "action",
+       "text": "AP/FD and A/THR disconnect — try to re-engage both",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "FCTM",
+         "code": "PR-AEP-AUTOFLT",
+         "page": "P 1/2",
+         "pdf": 394
+        }
+       ]
+      },
+      {
+       "kind": "action",
+       "text": "Not recovered: move thrust levers for manual thrust; FDs OFF; TRK/FPA (bird)",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "FCTM",
+         "code": "PR-AEP-AUTOFLT",
+         "page": "P 1/2",
+         "pdf": 394
+        }
+       ]
+      }
+     ]
+    },
+    {
+     "actor": "PM",
+     "items": [
+      {
+       "kind": "action",
+       "text": "Tune navaids on the RMPs",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "FCTM",
+         "code": "PR-AEP-AUTOFLT",
+         "page": "P 1/2",
+         "pdf": 394
+        },
+        {
+         "book": "FCOM",
+         "code": "DSC-34-NAV-30-10",
+         "page": "P 1/4",
+         "pdf": 2134
+        }
+       ]
+      },
+      {
+       "kind": "action",
+       "text": "Check the QRH system reset table, then reset per QRH 02.12",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "FCTM",
+         "code": "PR-AEP-AUTOFLT",
+         "page": "P 1/2",
+         "pdf": 394
+        },
+        {
+         "book": "QRH",
+         "code": "02.12",
+         "page": "02.12A",
+         "pdf": 65
+        }
+       ]
+      },
+      {
+       "kind": "action",
+       "text": "Not recovered: MCDU MENU → BACK UP NAV (simplified IRS/GPS navigation)",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "FCTM",
+         "code": "PR-AEP-AUTOFLT",
+         "page": "P 1/2",
+         "pdf": 394
+        },
+        {
+         "book": "FCOM",
+         "code": "DSC-22_10-30",
+         "page": "P 5/6",
+         "pdf": 320
+        }
+       ]
+      }
+     ]
+    }
+   ]
+  }
+ ],
+ "procedures": [
+  {
+   "title": "AUTO FLT — BOTH MCDU LOCKED OR BLANK OR FMGC MALFUNCTION (in flight)",
+   "source": "QRH 02.12",
+   "lines": [
+    {
+     "kind": "condition",
+     "text": "If FMGC 1 is affected:",
+     "level": 0,
+     "applies_to": [
+      "all"
+     ],
+     "refs": [
+      {
+       "book": "QRH",
+       "code": "02.12",
+       "page": "02.12A",
+       "pdf": 65
+      }
+     ]
+    },
+    {
+     "kind": "action",
+     "item": "AP 2 pb",
+     "setting": "ON",
+     "text": "",
+     "level": 1,
+     "applies_to": [
+      "all"
+     ],
+     "refs": [
+      {
+       "book": "QRH",
+       "code": "02.12",
+       "page": "02.12A",
+       "pdf": 65
+      }
+     ]
+    },
+    {
+     "kind": "action",
+     "item": "FD 1 pb",
+     "setting": "OFF",
+     "text": "",
+     "level": 1,
+     "applies_to": [
+      "all"
+     ],
+     "refs": [
+      {
+       "book": "QRH",
+       "code": "02.12",
+       "page": "02.12A",
+       "pdf": 65
+      }
+     ]
+    },
+    {
+     "kind": "action",
+     "item": "C/B B02 (AUTO FLT / FMGC / 1) — on 49VU",
+     "setting": "PULL",
+     "text": "",
+     "level": 1,
+     "applies_to": [
+      "all"
+     ],
+     "refs": [
+      {
+       "book": "QRH",
+       "code": "02.12",
+       "page": "02.12A",
+       "pdf": 65
+      }
+     ]
+    },
+    {
+     "kind": "info",
+     "text": "Wait 10 s",
+     "level": 1,
+     "applies_to": [
+      "all"
+     ],
+     "refs": [
+      {
+       "book": "QRH",
+       "code": "02.12",
+       "page": "02.12A",
+       "pdf": 65
+      }
+     ]
+    },
+    {
+     "kind": "action",
+     "item": "C/B B02 (AUTO FLT / FMGC / 1)",
+     "setting": "PUSH",
+     "text": "",
+     "level": 1,
+     "applies_to": [
+      "all"
+     ],
+     "refs": [
+      {
+       "book": "QRH",
+       "code": "02.12",
+       "page": "02.12A",
+       "pdf": 65
+      }
+     ]
+    },
+    {
+     "kind": "caution",
+     "text": "Wait 1 min after the PLEASE WAIT message disappears from the MCDU, before engaging or re-engaging the FD and the AP of reset FMGC.",
+     "level": 1,
+     "applies_to": [
+      "all"
+     ],
+     "refs": [
+      {
+       "book": "QRH",
+       "code": "02.12",
+       "page": "02.12A",
+       "pdf": 65
+      }
+     ]
+    },
+    {
+     "kind": "condition",
+     "text": "If FMGC 2 is affected:",
+     "level": 0,
+     "applies_to": [
+      "all"
+     ],
+     "refs": [
+      {
+       "book": "QRH",
+       "code": "02.12",
+       "page": "02.12A",
+       "pdf": 65
+      }
+     ]
+    },
+    {
+     "kind": "action",
+     "item": "AP 1 pb",
+     "setting": "ON",
+     "text": "",
+     "level": 1,
+     "applies_to": [
+      "all"
+     ],
+     "refs": [
+      {
+       "book": "QRH",
+       "code": "02.12",
+       "page": "02.12A",
+       "pdf": 65
+      }
+     ]
+    },
+    {
+     "kind": "action",
+     "item": "FD 2 pb",
+     "setting": "OFF",
+     "text": "",
+     "level": 1,
+     "applies_to": [
+      "all"
+     ],
+     "refs": [
+      {
+       "book": "QRH",
+       "code": "02.12",
+       "page": "02.12A",
+       "pdf": 65
+      }
+     ]
+    },
+    {
+     "kind": "action",
+     "item": "C/B M17 (AUTO FLT / FMGC / 2) — on 121VU",
+     "setting": "PULL",
+     "text": "",
+     "level": 1,
+     "applies_to": [
+      "all"
+     ],
+     "refs": [
+      {
+       "book": "QRH",
+       "code": "02.12",
+       "page": "02.12A",
+       "pdf": 65
+      }
+     ]
+    },
+    {
+     "kind": "info",
+     "text": "Wait 10 s",
+     "level": 1,
+     "applies_to": [
+      "all"
+     ],
+     "refs": [
+      {
+       "book": "QRH",
+       "code": "02.12",
+       "page": "02.12A",
+       "pdf": 65
+      }
+     ]
+    },
+    {
+     "kind": "action",
+     "item": "C/B M17 (AUTO FLT / FMGC / 2)",
+     "setting": "PUSH",
+     "text": "",
+     "level": 1,
+     "applies_to": [
+      "all"
+     ],
+     "refs": [
+      {
+       "book": "QRH",
+       "code": "02.12",
+       "page": "02.12A",
+       "pdf": 65
+      }
+     ]
+    },
+    {
+     "kind": "caution",
+     "text": "Wait 1 min after the PLEASE WAIT message disappears from the MCDU, before engaging or re-engaging the FD and the AP of reset FMGC.",
+     "level": 1,
+     "applies_to": [
+      "all"
+     ],
+     "refs": [
+      {
+       "book": "QRH",
+       "code": "02.12",
+       "page": "02.12A",
+       "pdf": 65
+      }
+     ]
+    },
+    {
+     "kind": "note",
+     "text": "If the FMGC reset is not successful, consider FMGC reset with engines not running.",
+     "level": 0,
+     "applies_to": [
+      "all"
+     ],
+     "refs": [
+      {
+       "book": "QRH",
+       "code": "02.12",
+       "page": "02.12B",
+       "pdf": 66
+      }
+     ]
+    }
+   ]
+  }
+ ],
+ "status": null,
+ "qrh": [
+  {
+   "title": "System reset — general",
+   "sections": [
+    {
+     "name": "In flight",
+     "lines": [
+      {
+       "text": "Reset authorized only if an ECAM/OEB/FCOM/QRH procedure requests it, or the alert/malfunction is listed and authorized in the system reset table.",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "QRH",
+         "code": "02.01",
+         "page": "02.01A",
+         "pdf": 50
+        }
+       ]
+      },
+      {
+       "text": "Only one reset at a time unless the procedure says otherwise.",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "QRH",
+         "code": "02.01",
+         "page": "02.01A",
+         "pdf": 50
+        }
+       ]
+      }
+     ]
+    }
+   ]
+  }
+ ],
+ "tables": [],
+ "background": [
+  {
+   "text": "Single mode: the failed FMGC shows OPP FMGC IN PROCESS; its ND shows MAP NOT AVAIL / SET OFFSIDE RNG/MODE, or OFFSIDE FM CONTROL when ranges match.",
+   "applies_to": [
+    "all"
+   ],
+   "refs": [
+    {
+     "book": "FCOM",
+     "code": "DSC-22_10-30",
+     "page": "P 4/6",
+     "pdf": 319
+    }
+   ]
+  },
+  {
+   "text": "If one FMGC fails, the remaining FMGC controls the radio receivers on both sides; if both fail, use the RMPs.",
+   "applies_to": [
+    "all"
+   ],
+   "refs": [
+    {
+     "book": "FCOM",
+     "code": "DSC-34-NAV-30-10",
+     "page": "P 1/4",
+     "pdf": 2134
+    }
+   ]
+  },
+  {
+   "text": "BACK UP NAV gives flight planning, position from IRS/GPIRS, F-PLN on ND and sequencing — no AP/FD NAV mode.",
+   "applies_to": [
+    "all"
+   ],
+   "refs": [
+    {
+     "book": "FCOM",
+     "code": "DSC-22_10-30",
+     "page": "P 5/6",
+     "pdf": 320
+    }
+   ]
+  }
+ ],
+ "technique": [
+  {
+   "text": "Single failure: recover flight-plan display on the affected ND by using the same range as the opposite ND; consider a reset per QRH.",
+   "applies_to": [
+    "all"
+   ],
+   "refs": [
+    {
+     "book": "FCTM",
+     "code": "PR-AEP-AUTOFLT",
+     "page": "P 1/2",
+     "pdf": 394
+    }
+   ]
+  },
+  {
+   "text": "Dual failure: if the FG part is still available, the AP may remain engaged and revert to HDG-V/S or TRK-FPA (FG standard dependent).",
+   "applies_to": [
+    "all"
+   ],
+   "refs": [
+    {
+     "book": "FCTM",
+     "code": "PR-AEP-AUTOFLT",
+     "page": "P 1/2",
+     "pdf": 394
+    }
+   ]
+  }
+ ],
+ "related": [],
+ "differences": [],
+ "gaps": [
+  {
+   "text": "No ECAM procedure titled FMGC 1(2) FAULT exists in the supplied FCOM; the brief uses FCTM, FCOM DSC and QRH reset content.",
+   "applies_to": [
+    "all"
+   ],
+   "refs": [
+    {
+     "book": "FCTM",
+     "code": "PR-AEP-AUTOFLT",
+     "page": "P 1/2",
+     "pdf": 394
+    },
+    {
+     "book": "FCOM",
+     "code": "DSC-22_10-30",
+     "page": "P 4/6",
+     "pdf": 319
+    }
+   ]
+  },
+  {
+   "text": "FCOM DSC-22_20-40-10 manual FMGC reset / resynchronisation not expanded here.",
+   "applies_to": [
+    "all"
+   ],
+   "refs": [
+    {
+     "book": "FCTM",
+     "code": "PR-AEP-AUTOFLT",
+     "page": "P 1/2",
+     "pdf": 394
+    }
+   ]
+  }
+ ],
+ "sources": [
+  {
+   "book": "FCTM",
+   "section": "PR-AEP-AUTOFLT — FMGC failure",
+   "pages": "P 1/2",
+   "pdf": "394",
+   "rev": "23 AUG 23"
+  },
+  {
+   "book": "FCOM",
+   "section": "DSC-22_10-30 — single mode, back up nav",
+   "pages": "P 4–5/6",
+   "pdf": "319–320",
+   "rev": "30 JUL 24"
+  },
+  {
+   "book": "QRH",
+   "section": "02.01 System reset general · 02.12 FMGC malfunction",
+   "pages": "02.01A, 02.12A–B",
+   "pdf": "50, 65–66",
+   "rev": "26 MAY 26"
+  },
+  {
+   "book": "PDP",
+   "section": "Dual FMGC failure (EFTDA1DUALFM001)",
+   "pages": "FMGC 1 failure, dual FMGC failure",
+   "pdf": "451–456",
+   "rev": "OCT 2018"
+  }
+ ],
+ "schema": "a320-ecam-abnormal/3",
+ "generated": "2026-10-14"
+}
