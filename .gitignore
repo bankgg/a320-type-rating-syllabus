@@ -1,6 +1,7 @@
 # Company manuals (uncontrolled copies; FCOM exceeds GitHub's 100 MB limit)
 books/
 sessions/sources/
+*.pdf
 *:Zone.Identifier
 
 # Generated caches
