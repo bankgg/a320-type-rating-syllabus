@@ -81,6 +81,44 @@ def validate(d):
         check_refs(t, f'tables[{i}]')
         if any(len(r) != len(t['columns']) for r in t['rows']):
             fail(f'tables[{i}] row width')
+    check_status_sequence(d)
+
+
+# FCTM AOP-30-30 "When STATUS page appears" / PDP 426, in this order (brief_kit.status_turns)
+STATUS_SEQUENCE = [('PM', 'STATUS'), ('PF', 'STOP ECAM'), ('PM', 'ECAM ACTIONS STOP'), ('PF', 'CONTINUE ECAM'),
+                   ('PM', 'REMOVE STATUS ?'), ('PF', 'REMOVE STATUS'), ('PM', 'ECAM ACTIONS COMPLETE')]
+
+
+def check_status_sequence(d):
+    """Every STATUS reached in the flow follows the full exchange; an ECAM brief with a STATUS
+    section must reach it, unless its procedure says STATUS is not available (e.g. FWC 1 + 2 FAULT)."""
+    tokens = []
+
+    def walk(seq, actor):
+        for it in seq:
+            if it['kind'] == 'callout':
+                text = ' '.join(it.get('text', '').split()).replace('STATUS?', 'STATUS ?')
+                if text in {t for _, t in STATUS_SEQUENCE}:
+                    tokens.append((actor, text))
+            elif it['kind'] == 'ecam' and it.get('item') == 'ECAM ACTIONS' and it.get('setting') == 'STOP':
+                tokens.append((actor, 'ECAM ACTIONS STOP'))
+            walk(it.get('children', []), actor)
+
+    for ph in d['flow']:
+        for step in ph['steps']:
+            walk(step['items'], step['actor'])
+    starts = [i for i, t in enumerate(tokens) if t == ('PM', 'STATUS')]
+    for i in starts:
+        if tokens[i:i + len(STATUS_SEQUENCE)] != STATUS_SEQUENCE:
+            fail('STATUS exchange must be PM "STATUS" → PF "STOP ECAM" → PM ECAM ACTIONS STOP → PF "CONTINUE ECAM" → '
+                 'PM "REMOVE STATUS ?" → PF "REMOVE STATUS" → PM "ECAM ACTIONS COMPLETE" (use brief_kit.status_turns); '
+                 f'found {tokens[i:i + len(STATUS_SEQUENCE)]}')
+    if tokens.count(('PF', 'REMOVE STATUS')) != len(starts):
+        fail('"REMOVE STATUS" without the full STATUS exchange before it (use brief_kit.status_turns)')
+    not_avail = any('NOT AVAIL' in (ln.get('text') or '') and 'STATUS' in (ln.get('text') or '')
+                    for p in d['procedures'] for ln in p['lines'])
+    if d['kind'] == 'ecam' and d.get('status') and not starts and not not_avail:
+        fail('ECAM brief has a STATUS section but its flow never reaches STATUS (use brief_kit.status_turns)')
 
 
 def ref(r):

@@ -207,6 +207,18 @@
          "code": "PRO-ABN-ABN-00",
          "page": "P 8/12",
          "pdf": 2831
+        },
+        {
+         "book": "FCTM",
+         "code": "AOP-30-30",
+         "page": "P 3/6",
+         "pdf": 84
+        },
+        {
+         "book": "PDP",
+         "code": "Management of abnormal operations",
+         "page": "XFTDN6ECAM00001",
+         "pdf": 424
         }
        ]
       }
@@ -227,6 +239,18 @@
          "code": "PRO-ABN-ABN-00",
          "page": "P 8/12",
          "pdf": 2831
+        },
+        {
+         "book": "FCTM",
+         "code": "AOP-30-30",
+         "page": "P 3/6",
+         "pdf": 84
+        },
+        {
+         "book": "PDP",
+         "code": "Management of abnormal operations",
+         "page": "XFTDN6ECAM00001",
+         "pdf": 424
         }
        ]
       }
@@ -235,6 +259,147 @@
     {
      "actor": "PM",
      "items": [
+      {
+       "kind": "callout",
+       "text": "STATUS",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "FCTM",
+         "code": "AOP-30-30",
+         "page": "P 3/6",
+         "pdf": 84
+        },
+        {
+         "book": "PDP",
+         "code": "Management of abnormal operations",
+         "page": "XFTDN6ECAM00001",
+         "pdf": 426
+        }
+       ]
+      }
+     ]
+    },
+    {
+     "actor": "PF",
+     "items": [
+      {
+       "kind": "callout",
+       "text": "STOP ECAM",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "FCTM",
+         "code": "AOP-30-30",
+         "page": "P 3/6",
+         "pdf": 84
+        },
+        {
+         "book": "PDP",
+         "code": "Management of abnormal operations",
+         "page": "XFTDN6ECAM00001",
+         "pdf": 426
+        }
+       ]
+      }
+     ]
+    },
+    {
+     "actor": "PM",
+     "items": [
+      {
+       "kind": "ecam",
+       "item": "ECAM ACTIONS",
+       "setting": "STOP",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "PDP",
+         "code": "Management of abnormal operations",
+         "page": "XFTDN6ECAM00001",
+         "pdf": 426
+        }
+       ]
+      }
+     ]
+    },
+    {
+     "actor": "PF",
+     "items": [
+      {
+       "kind": "action",
+       "text": "Normal C/L as applicable; system resets only per QRH",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "FCTM",
+         "code": "AOP-30-30",
+         "page": "P 4/6",
+         "pdf": 85
+        },
+        {
+         "book": "PDP",
+         "code": "Management of abnormal operations",
+         "page": "XFTDN6ECAM00001",
+         "pdf": 426
+        }
+       ]
+      },
+      {
+       "kind": "callout",
+       "text": "CONTINUE ECAM",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "FCTM",
+         "code": "AOP-30-30",
+         "page": "P 3/6",
+         "pdf": 84
+        },
+        {
+         "book": "PDP",
+         "code": "Management of abnormal operations",
+         "page": "XFTDN6ECAM00001",
+         "pdf": 426
+        }
+       ]
+      }
+     ]
+    },
+    {
+     "actor": "PM",
+     "items": [
+      {
+       "kind": "action",
+       "text": "Read the whole STATUS page; preview APPR PROC workload",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "FCTM",
+         "code": "AOP-30-30",
+         "page": "P 3/6",
+         "pdf": 84
+        },
+        {
+         "book": "PDP",
+         "code": "Management of abnormal operations",
+         "page": "XFTDN6ECAM00001",
+         "pdf": 426
+        }
+       ]
+      },
       {
        "kind": "action",
        "text": "INOP SYS: STBY PITOT · STBY L(R) STAT · STBY AOA",
@@ -247,6 +412,27 @@
          "code": "PRO-ABN-A-ICE",
          "page": "P 39/42",
          "pdf": 2886
+        }
+       ]
+      },
+      {
+       "kind": "callout",
+       "text": "REMOVE STATUS ?",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "FCTM",
+         "code": "AOP-30-30",
+         "page": "P 3/6",
+         "pdf": 84
+        },
+        {
+         "book": "PDP",
+         "code": "Management of abnormal operations",
+         "page": "XFTDN6ECAM00001",
+         "pdf": 426
         }
        ]
       }
@@ -267,6 +453,18 @@
          "code": "PRO-ABN-ABN-00",
          "page": "P 8/12",
          "pdf": 2831
+        },
+        {
+         "book": "FCTM",
+         "code": "AOP-30-30",
+         "page": "P 3/6",
+         "pdf": 84
+        },
+        {
+         "book": "PDP",
+         "code": "Management of abnormal operations",
+         "page": "XFTDN6ECAM00001",
+         "pdf": 426
         }
        ]
       }
@@ -287,6 +485,12 @@
          "code": "PRO-ABN-ABN-00",
          "page": "P 8/12",
          "pdf": 2831
+        },
+        {
+         "book": "PDP",
+         "code": "Management of abnormal operations",
+         "page": "XFTDN6ECAM00001",
+         "pdf": 426
         }
        ]
       }

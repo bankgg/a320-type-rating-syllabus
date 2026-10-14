@@ -1,0 +1,5 @@
+# Search tools (ripgrep, so Claude Code Glob/Grep and other agents) should see the manuals;
+# git still ignores them through .gitignore, so they are never uploaded.
+!books/
+!sessions/sources/
+!*.pdf

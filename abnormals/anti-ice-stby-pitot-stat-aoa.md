@@ -35,15 +35,26 @@ An amber caution: one standby probe (pitot, left or right static, or AOA) has lo
 
 ### 3. STATUS
 **3.1 PM**
-- “CLEAR ANTI ICE ?” [FCOM PRO-ABN-ABN-00 P 8/12, PDF 2831]
+- “CLEAR ANTI ICE ?” [FCOM PRO-ABN-ABN-00 P 8/12, PDF 2831; FCTM AOP-30-30 P 3/6, PDF 84; PDP Management of abnormal operations, PDF 424]
 **3.2 PF**
-- “CLEAR ANTI ICE” [FCOM PRO-ABN-ABN-00 P 8/12, PDF 2831]
+- “CLEAR ANTI ICE” [FCOM PRO-ABN-ABN-00 P 8/12, PDF 2831; FCTM AOP-30-30 P 3/6, PDF 84; PDP Management of abnormal operations, PDF 424]
 **3.3 PM**
-- INOP SYS: STBY PITOT · STBY L(R) STAT · STBY AOA [FCOM PRO-ABN-A-ICE P 39/42, PDF 2886]
+- “STATUS” [FCTM AOP-30-30 P 3/6, PDF 84; PDP Management of abnormal operations, PDF 426]
 **3.4 PF**
-- “REMOVE STATUS” [FCOM PRO-ABN-ABN-00 P 8/12, PDF 2831]
+- “STOP ECAM” [FCTM AOP-30-30 P 3/6, PDF 84; PDP Management of abnormal operations, PDF 426]
 **3.5 PM**
-- “ECAM ACTIONS COMPLETE” [FCOM PRO-ABN-ABN-00 P 8/12, PDF 2831]
+- ECAM ACTIONS …… STOP [PDP Management of abnormal operations, PDF 426]
+**3.6 PF**
+- Normal C/L as applicable; system resets only per QRH [FCTM AOP-30-30 P 4/6, PDF 85; PDP Management of abnormal operations, PDF 426]
+- “CONTINUE ECAM” [FCTM AOP-30-30 P 3/6, PDF 84; PDP Management of abnormal operations, PDF 426]
+**3.7 PM**
+- Read the whole STATUS page; preview APPR PROC workload [FCTM AOP-30-30 P 3/6, PDF 84; PDP Management of abnormal operations, PDF 426]
+- INOP SYS: STBY PITOT · STBY L(R) STAT · STBY AOA [FCOM PRO-ABN-A-ICE P 39/42, PDF 2886]
+- “REMOVE STATUS ?” [FCTM AOP-30-30 P 3/6, PDF 84; PDP Management of abnormal operations, PDF 426]
+**3.8 PF**
+- “REMOVE STATUS” [FCOM PRO-ABN-ABN-00 P 8/12, PDF 2831; FCTM AOP-30-30 P 3/6, PDF 84; PDP Management of abnormal operations, PDF 426]
+**3.9 PM**
+- “ECAM ACTIONS COMPLETE” [FCOM PRO-ABN-ABN-00 P 8/12, PDF 2831; PDP Management of abnormal operations, PDF 426]
 
 ## 4. Procedure
 ### ECAM procedure (FCOM PRO-ABN-A-ICE)

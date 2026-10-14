@@ -572,7 +572,7 @@
       "dialog": {
         "maxWidth": "1200px",
         "width": "calc(100% - 32px)",
-        "maxHeight": "calc(100dvh - 32px)",
+        "maxHeight": "calc(100dvh - 32px)", "structure": "full-screen transparent dialog layer (padding 16px, 8px compact) holding a scrolling .dialog-card; outside tap = target is the layer; no focus return on close",
         "grid": "1.1fr 1fr 1fr",
         "backdrop": "#142c4573",
         "compactWidth": "calc(100% - 16px)",
@@ -653,7 +653,7 @@
       "retainSessionProgress": true
     },
     "verification": {
-      "engine": "Playwright Chromium",
+      "engine": "Playwright Chromium + WebKit (iPad Safari/Chrome engine, touch)",
       "viewports": [
         "1194x834",
         "390x844"

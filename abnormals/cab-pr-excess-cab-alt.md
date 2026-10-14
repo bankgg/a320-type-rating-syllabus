@@ -95,10 +95,20 @@ A red warning that the cabin altitude is too high. Above FL 160 the crew first d
 - “CLEAR CAB PR” [FCOM PRO-ABN-ABN-00 P 8/12, PDF 2831; FCTM AOP-30-30 P 3/6, PDF 84; PDP Management of abnormal operations, PDF 424]
 **4.12 PM**
 - “STATUS” [FCTM AOP-30-30 P 3/6, PDF 84; PDP Management of abnormal operations, PDF 426]
-- STATUS: MAX FL 100/MEA-MORA [FCOM PRO-ABN-CAB_PR P 4/14, PDF 3051]
 **4.13 PF**
-- “REMOVE STATUS” [FCOM PRO-ABN-ABN-00 P 8/12, PDF 2831; PDP Management of abnormal operations, PDF 426]
+- “STOP ECAM” [FCTM AOP-30-30 P 3/6, PDF 84; PDP Management of abnormal operations, PDF 426]
 **4.14 PM**
+- ECAM ACTIONS …… STOP [PDP Management of abnormal operations, PDF 426]
+**4.15 PF**
+- Normal C/L as applicable; system resets only per QRH [FCTM AOP-30-30 P 4/6, PDF 85; PDP Management of abnormal operations, PDF 426]
+- “CONTINUE ECAM” [FCTM AOP-30-30 P 3/6, PDF 84; PDP Management of abnormal operations, PDF 426]
+**4.16 PM**
+- Read the whole STATUS page; preview APPR PROC workload [FCTM AOP-30-30 P 3/6, PDF 84; PDP Management of abnormal operations, PDF 426]
+- STATUS: MAX FL 100/MEA-MORA [FCOM PRO-ABN-CAB_PR P 4/14, PDF 3051]
+- “REMOVE STATUS ?” [FCTM AOP-30-30 P 3/6, PDF 84; PDP Management of abnormal operations, PDF 426]
+**4.17 PF**
+- “REMOVE STATUS” [FCOM PRO-ABN-ABN-00 P 8/12, PDF 2831; FCTM AOP-30-30 P 3/6, PDF 84; PDP Management of abnormal operations, PDF 426]
+**4.18 PM**
 - “ECAM ACTIONS COMPLETE” [FCOM PRO-ABN-ABN-00 P 8/12, PDF 2831; PDP Management of abnormal operations, PDF 426]
 
 ### 5. Reaching FL 100 / MEA or MORA

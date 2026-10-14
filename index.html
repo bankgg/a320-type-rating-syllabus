@@ -48,17 +48,17 @@
     .site-title .icon { width: 30px; height: 30px; padding: 4px; color: var(--blue); background: var(--blue-soft); border-radius: 6px; }
     .toolbar-actions { display: flex; align-items: center; gap: 8px; }
     .control { display: inline-flex; justify-content: center; align-items: center; gap: 6px; min-height: 44px; padding: 8px 12px; border: 1px solid var(--line); border-radius: 6px; background: var(--canvas); font-weight: 600; }
-    .control:hover:not(:disabled) { background: var(--blue-soft); border-color: var(--blue); color: var(--blue); }
+    @media (hover: hover) { .control:hover:not(:disabled) { background: var(--blue-soft); border-color: var(--blue); color: var(--blue); } }
     .control[aria-current="page"] { background: var(--blue-soft); color: var(--blue); border-color: #c3d5f7; }
     .control.primary { background: var(--blue); color: white; border-color: var(--blue); }
-    .control.primary:hover { background: var(--blue-hover); color: white; }
+    @media (hover: hover) { .control.primary:hover { background: var(--blue-hover); color: white; } }
     .session-nav { position: sticky; top: calc(60px + env(safe-area-inset-top)); z-index: 4; background: var(--surface); border-bottom: 1px solid var(--line); }
     .session-nav-inner { max-width: 1224px; margin-inline: auto; padding: 6px 24px; display: flex; gap: 16px; }
     .session-group { display: flex; align-items: center; gap: 8px; }
     .group-label { font-weight: 700; color: var(--navy); white-space: nowrap; }
     .session-buttons { display: flex; gap: 4px; flex-wrap: wrap; }
     .session-button { width: 44px; min-height: 44px; border: 1px solid transparent; border-radius: 6px; background: var(--canvas); color: var(--muted); font-weight: 600; font-variant-numeric: tabular-nums; }
-    .session-button:hover { border-color: var(--blue); color: var(--blue); }
+    @media (hover: hover) { .session-button:hover { border-color: var(--blue); color: var(--blue); } }
     .session-button[aria-current="page"] { background: var(--blue); color: white; border-color: var(--blue); }
     .main { max-width: 1224px; margin-inline: auto; padding: 16px 24px 40px; }
     .session + .session { margin-top: 48px; border-top: 1px solid var(--line); padding-top: 24px; }
@@ -74,7 +74,7 @@
     .brief-values { margin: 0; }
     .tab-nav { display: inline-flex; gap: 4px; padding: 4px; background: #e8eef6; border-radius: 8px; margin-bottom: 10px; }
     .tab-nav button { display: inline-flex; align-items: center; gap: 8px; border: 1px solid transparent; border-radius: 5px; background: transparent; min-height: 44px; padding: 8px 14px; color: var(--muted); }
-    .tab-nav button:hover { color: var(--blue); }
+    @media (hover: hover) { .tab-nav button:hover { color: var(--blue); } }
     .tab-nav button[aria-selected="true"] { color: var(--blue); border-color: #c6d5ec; background: var(--canvas); font-weight: 600; }
     .section-heading { display: flex; justify-content: space-between; align-items: baseline; gap: 16px; margin-bottom: 6px; }
     .matrix-key { display: flex; align-items: center; flex-wrap: wrap; gap: 4px 12px; color: var(--muted); margin-bottom: 10px; }
@@ -130,16 +130,18 @@
     .overview-list { display: grid; grid-template-columns: 1fr 1fr; gap: 0 16px; }
     .overview-card { display: block; width: 100%; padding: 12px; border: 0; border-bottom: 1px solid var(--line); background: var(--canvas); text-align: left; }
     .overview-card:disabled { opacity: 1; }
-    .overview-card:hover:not(:disabled) { background: var(--blue-soft); }
+    @media (hover: hover) { .overview-card:hover:not(:disabled) { background: var(--blue-soft); } }
     .overview-card strong { display: block; color: var(--blue); font-size: 1.125rem; }
     .overview-card span { display: block; margin-top: 4px; color: var(--muted); }
     .setup-details { margin-block: 24px; }
     .enhanced .setup-details { display: none; }
-    .setup-dialog { max-width: 1200px; width: calc(100% - 32px); max-height: calc(100dvh - 32px); margin: auto; padding: 20px; border: 0; border-radius: 12px; background: var(--canvas); color: var(--ink); box-shadow: 0 16px 64px #142c4540; overflow: auto; }
+    /* The dialog is a transparent full-screen layer: a tap anywhere outside the card lands on the dialog itself. */
+    .setup-dialog { width: 100%; height: 100%; max-width: 100%; max-height: 100%; margin: 0; padding: 16px; border: 0; background: transparent; overflow: hidden; }
+    .setup-dialog[open] { display: grid; place-items: center; }
+    .dialog-card { box-sizing: border-box; width: 100%; max-width: 1200px; max-height: 100%; padding: 0 20px 20px; border-radius: 12px; background: var(--canvas); color: var(--ink); box-shadow: 0 16px 64px #142c4540; overflow: auto; overscroll-behavior: contain; }
     .setup-dialog::backdrop { background: #142c4573; }
     .setup-dialog .setup-details { display: block; margin: 0; }
     .dialog-heading { display: flex; align-items: center; justify-content: space-between; gap: 16px; margin-bottom: 4px; }
-    .setup-dialog { padding-top: 0; }
     .setup-dialog .dialog-heading { position: sticky; top: 0; background: var(--canvas); z-index: 3; padding-top: 20px; padding-bottom: 6px; }
     .dialog-subtitle { color: var(--muted); margin-bottom: 14px; }
     .setup-grid { display: grid; grid-template-columns: 1.1fr 1fr 1fr; gap: 16px; }
@@ -156,17 +158,17 @@
     .route-table .field-col { width: 10%; }
     .route-table th, .route-table td { padding: 6px 8px; }
     .summary-link { display: inline; padding: 4px 0; margin: 0; line-height: 1.35; border: 0; background: none; color: var(--blue); font-weight: 500; text-decoration: underline; text-decoration-color: #9db8ec; text-decoration-thickness: 1px; text-underline-offset: 3px; }
-    .summary-link:hover:not(:disabled) { color: var(--blue-hover); text-decoration-color: currentColor; }
+    @media (hover: hover) { .summary-link:hover:not(:disabled) { color: var(--blue-hover); text-decoration-color: currentColor; } }
     .summary-link:disabled { color: var(--muted); opacity: 1; text-decoration: none; }
     .brief-key { color: var(--muted); }
     .brief-cell { padding: 0; }
     .brief-open { display: flex; align-items: flex-start; gap: 0; width: 100%; min-height: 44px; padding: 6px 10px; border: 0; background: transparent; color: inherit; text-align: left; }
     .brief-open:disabled { opacity: 1; color: inherit; }
     .brief-open .exercise-title, .brief-open .topic-text { flex: 1; }
-    .brief-open:hover:not(:disabled) { background: #ffe9d4; }
+    @media (hover: hover) { .brief-open:hover:not(:disabled) { background: #ffe9d4; } }
     .brief-open .exercise-title, .brief-open .topic-text, .key-sample { text-decoration: underline dotted var(--blue); text-decoration-thickness: 1.5px; text-underline-offset: 5px; text-decoration-skip-ink: none; }
     .brief-open:disabled .exercise-title, .brief-open:disabled .topic-text { text-decoration: none; }
-    .brief-open:hover:not(:disabled) .exercise-title, .brief-open:hover:not(:disabled) .topic-text { text-decoration-style: solid; color: var(--blue-hover); text-decoration-color: var(--blue-hover); }
+    @media (hover: hover) { .brief-open:hover:not(:disabled) .exercise-title, .brief-open:hover:not(:disabled) .topic-text { text-decoration-style: solid; color: var(--blue-hover); text-decoration-color: var(--blue-hover); } }
     .brief-cell .exercise-note { padding: 0 10px 8px; margin-top: 0; }
     .procedure-briefs { margin-top: 32px; }
     .enhanced .procedure-briefs { display: none; }
@@ -178,12 +180,13 @@
     .brief-heading-actions { display: flex; align-items: center; gap: 12px; flex: none; }
     .jump-bar { display: flex; gap: 2px; padding: 2px; background: var(--header); border-radius: 8px; }
     .jump { min-height: 44px; min-width: 44px; padding: 6px 12px; border: 0; border-radius: 6px; background: transparent; color: var(--navy); font-weight: 600; }
-    .jump:hover { background: var(--canvas); color: var(--blue); }
+    @media (hover: hover) { .jump:hover { background: var(--canvas); color: var(--blue); } }
+    .jump[aria-current="location"] { background: var(--canvas); color: var(--blue); box-shadow: inset 0 0 0 1px #c6d5ec; }
     .brief-switch { margin: 6px 0 2px; }
     .switch-lead { color: var(--muted); margin-bottom: 8px; }
     .brief-tabs { display: grid; grid-template-columns: repeat(auto-fit, minmax(230px, 1fr)); gap: 10px; }
     .brief-tab { display: flex; align-items: center; gap: 12px; min-height: 64px; padding: 10px 14px; border: 1px solid #b9c5d3; border-radius: 8px; background: var(--canvas); color: var(--ink); text-align: left; box-shadow: 0 1px 2px #142c4514; }
-    .brief-tab:hover { border-color: var(--blue); background: #f7faff; }
+    @media (hover: hover) { .brief-tab:hover { border-color: var(--blue); background: #f7faff; } }
     .brief-tab[aria-selected="true"] { border-color: var(--blue); background: var(--blue-soft); box-shadow: inset 0 0 0 1px var(--blue); }
     .tab-mark { flex: none; width: 12px; height: 12px; border-radius: 4px; background: var(--navy); }
     .tab-mark.warning { background: var(--warning); }
@@ -225,8 +228,8 @@
     .key-limits dt .branch-chip { margin: 0 0 0 6px; }
     .brief-section { margin-top: 28px; padding-top: 20px; border-top: 1px solid var(--line); }
     .section-head { display: flex; flex-wrap: wrap; align-items: baseline; gap: 2px 12px; margin-bottom: 12px; }
-    .section-title { display: flex; align-items: center; gap: 8px; font-size: 1.25rem; line-height: 1.3; color: var(--ink); }
-    .section-icon { width: 24px; height: 24px; padding: 3px; color: var(--navy); background: var(--header); border-radius: 6px; }
+    .section-title { display: block; font-size: 1.25rem; line-height: 1.3; color: var(--ink); }
+    .section-icon { display: inline-block; width: 24px; height: 24px; padding: 3px; margin-right: 8px; vertical-align: -5px; color: var(--navy); background: var(--header); border-radius: 6px; }
     .section-note { color: var(--muted); }
     .flow { border: 1px solid var(--line); border-radius: 8px; overflow: clip; background: var(--canvas); }
     .flow-head, .flow-phase { display: grid; grid-template-columns: 11rem 1fr; }
@@ -297,7 +300,7 @@
     .brief-more details[open] > summary { background: var(--surface); }
     .brief-more summary { display: flex; align-items: center; justify-content: space-between; gap: 12px; min-height: 48px; padding: 0 14px; font-weight: 600; cursor: pointer; list-style: none; }
     .brief-more summary::-webkit-details-marker { display: none; }
-    .brief-more summary:hover { color: var(--blue); }
+    @media (hover: hover) { .brief-more summary:hover { color: var(--blue); } }
     .summary-icon { color: var(--muted); }
     .brief-more details[open] > summary .summary-icon { transform: rotate(90deg); }
     .details-body { padding: 12px 14px 16px; max-width: 85ch; }
@@ -330,8 +333,9 @@
       .course-differences .shared { grid-column: auto; }
       .matrix .exercise-col { width: 68%; }
       .matrix .assignment-col { width: 16%; }
-      .trainee-word { position: absolute; width: 1px; height: 1px; margin: -1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; }
-      .setup-dialog { padding: 0 14px 14px; width: calc(100% - 16px); max-height: calc(100dvh - 16px); }
+      .trainee-word { display: none; }
+      .setup-dialog { padding: 8px; }
+      .dialog-card { padding: 0 14px 14px; }
       .setup-dialog .dialog-heading { padding-top: 14px; }
       .route-table .field-col { width: 18%; }
       .flow-head { display: none; }
@@ -369,9 +373,9 @@
     }
     @media (prefers-reduced-motion: no-preference) {
       .tab-nav button, .control, .session-button { transition: background-color 160ms ease-out, color 160ms ease-out, border-color 160ms ease-out; }
-      .setup-dialog[open] { animation: dialog-in 260ms cubic-bezier(.16, 1, .3, 1); }
+      .setup-dialog[open] .dialog-card { animation: dialog-in 260ms cubic-bezier(.16, 1, .3, 1); }
       .setup-dialog[open]::backdrop { animation: backdrop-in 220ms ease-out; }
-      .setup-dialog.closing { animation: dialog-out 160ms cubic-bezier(.4, 0, 1, 1) forwards; }
+      .setup-dialog.closing .dialog-card { animation: dialog-out 160ms cubic-bezier(.4, 0, 1, 1) forwards; }
       .setup-dialog.closing::backdrop { animation: backdrop-out 160ms ease-in forwards; }
       @keyframes dialog-out { 0% { opacity: 1; transform: none; } 30% { opacity: 1; } 100% { opacity: 0; transform: translateY(6px) scale(.995); } }
       @keyframes backdrop-in { from { opacity: 0; } }
@@ -381,8 +385,8 @@
       @keyframes dialog-in { 0% { opacity: 0; transform: translateY(12px) scale(.99); } 35% { opacity: 1; } 100% { opacity: 1; transform: none; } }
     }
     @media (prefers-reduced-motion: reduce) {
-      .setup-dialog[open], .setup-dialog[open]::backdrop { animation: fade-in 140ms ease-out; }
-      .setup-dialog.closing, .setup-dialog.closing::backdrop { animation: fade-out 120ms ease-in forwards; }
+      .setup-dialog[open] .dialog-card, .setup-dialog[open]::backdrop { animation: fade-in 140ms ease-out; }
+      .setup-dialog.closing .dialog-card, .setup-dialog.closing::backdrop { animation: fade-out 120ms ease-in forwards; }
       @keyframes fade-in { from { opacity: 0; } }
       @keyframes fade-out { to { opacity: 0; } }
     }
@@ -3541,19 +3545,43 @@
                       <div class="turn-body">
                         <span class="turn-no" aria-hidden="true">3.3</span>
                         <span class="lane-tag">PM</span>
-                        <ul aria-label="Step 3.3, Pilot monitoring"><li class="flow-item action">INOP SYS: STBY PITOT · STBY L(R) STAT · STBY AOA</li></ul>
+                        <ul aria-label="Step 3.3, Pilot monitoring"><li class="flow-item callout"><span class="callout-mark"><svg class="icon callout-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 5h16v11H11l-4.5 3.5V16H4z"/></svg></span><q class="callout">STATUS</q></li></ul>
                       </div>
                     </li><li class="turn turn-pf">
                       <div class="turn-body">
                         <span class="turn-no" aria-hidden="true">3.4</span>
                         <span class="lane-tag">PF</span>
-                        <ul aria-label="Step 3.4, Pilot flying"><li class="flow-item callout"><span class="callout-mark"><svg class="icon callout-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 5h16v11H11l-4.5 3.5V16H4z"/></svg></span><q class="callout">REMOVE STATUS</q></li></ul>
+                        <ul aria-label="Step 3.4, Pilot flying"><li class="flow-item callout"><span class="callout-mark"><svg class="icon callout-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 5h16v11H11l-4.5 3.5V16H4z"/></svg></span><q class="callout">STOP ECAM</q></li></ul>
                       </div>
                     </li><li class="turn turn-pm">
                       <div class="turn-body">
                         <span class="turn-no" aria-hidden="true">3.5</span>
                         <span class="lane-tag">PM</span>
-                        <ul aria-label="Step 3.5, Pilot monitoring"><li class="flow-item callout"><span class="callout-mark"><svg class="icon callout-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 5h16v11H11l-4.5 3.5V16H4z"/></svg></span><q class="callout">ECAM ACTIONS COMPLETE</q></li></ul>
+                        <ul aria-label="Step 3.5, Pilot monitoring"><li class="flow-item ecam"><span class="ecam-line"><span class="ecam-item">ECAM ACTIONS</span><span class="leader" aria-hidden="true"></span><span class="ecam-setting">STOP</span></span></li></ul>
+                      </div>
+                    </li><li class="turn turn-pf">
+                      <div class="turn-body">
+                        <span class="turn-no" aria-hidden="true">3.6</span>
+                        <span class="lane-tag">PF</span>
+                        <ul aria-label="Step 3.6, Pilot flying"><li class="flow-item action">Normal C/L as applicable; system resets only per QRH</li><li class="flow-item callout"><span class="callout-mark"><svg class="icon callout-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 5h16v11H11l-4.5 3.5V16H4z"/></svg></span><q class="callout">CONTINUE ECAM</q></li></ul>
+                      </div>
+                    </li><li class="turn turn-pm">
+                      <div class="turn-body">
+                        <span class="turn-no" aria-hidden="true">3.7</span>
+                        <span class="lane-tag">PM</span>
+                        <ul aria-label="Step 3.7, Pilot monitoring"><li class="flow-item action">Read the whole STATUS page; preview APPR PROC workload</li><li class="flow-item action">INOP SYS: STBY PITOT · STBY L(R) STAT · STBY AOA</li><li class="flow-item callout"><span class="callout-mark"><svg class="icon callout-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 5h16v11H11l-4.5 3.5V16H4z"/></svg></span><q class="callout">REMOVE STATUS ?</q></li></ul>
+                      </div>
+                    </li><li class="turn turn-pf">
+                      <div class="turn-body">
+                        <span class="turn-no" aria-hidden="true">3.8</span>
+                        <span class="lane-tag">PF</span>
+                        <ul aria-label="Step 3.8, Pilot flying"><li class="flow-item callout"><span class="callout-mark"><svg class="icon callout-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 5h16v11H11l-4.5 3.5V16H4z"/></svg></span><q class="callout">REMOVE STATUS</q></li></ul>
+                      </div>
+                    </li><li class="turn turn-pm">
+                      <div class="turn-body">
+                        <span class="turn-no" aria-hidden="true">3.9</span>
+                        <span class="lane-tag">PM</span>
+                        <ul aria-label="Step 3.9, Pilot monitoring"><li class="flow-item callout"><span class="callout-mark"><svg class="icon callout-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 5h16v11H11l-4.5 3.5V16H4z"/></svg></span><q class="callout">ECAM ACTIONS COMPLETE</q></li></ul>
                       </div>
                     </li>
                   </ol>
@@ -3593,7 +3621,7 @@
                 <details><summary>Related procedures<svg class="icon summary-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m9 6 6 6-6 6"/></svg></summary><div class="details-body"><ul class="plain-list"><li><strong>[MEM] UNRELIABLE SPEED INDICATION</strong> — If standby/ADR 3 speed becomes erroneous. See the Unreliable speed brief.</li></ul></div></details>
 
                 <details><summary>Gaps and omissions<svg class="icon summary-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m9 6 6 6-6 6"/></svg></summary><div class="details-body"><ul class="plain-list"><li>No FCTM technique for this caution in the supplied FCTM.</li><li>HS-TO version omitted (FCOM P 40/42).</li></ul></div></details>
-                <details><summary>Sources (9 references)<svg class="icon summary-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m9 6 6 6-6 6"/></svg></summary><div class="details-body"><div class="table-scroll"><table class="sources-table"><thead><tr><th scope="col">Book</th><th scope="col">Section</th><th scope="col">Pages</th><th scope="col">PDF</th><th scope="col">Rev</th></tr></thead><tbody><tr><td>FCOM</td><td>PRO-ABN-A-ICE — ANTI ICE STBY PITOT or L(R) STAT or AOA</td><td>P 39/42</td><td>2886</td><td>18 FEB 26</td></tr><tr><td>FCOM</td><td>DSC-30-50 Probes heat</td><td>P 1/2</td><td>1786, 1788</td><td>22 MAR 16</td></tr></tbody></table></div></div></details>
+                <details><summary>Sources (13 references)<svg class="icon summary-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m9 6 6 6-6 6"/></svg></summary><div class="details-body"><div class="table-scroll"><table class="sources-table"><thead><tr><th scope="col">Book</th><th scope="col">Section</th><th scope="col">Pages</th><th scope="col">PDF</th><th scope="col">Rev</th></tr></thead><tbody><tr><td>FCOM</td><td>PRO-ABN-A-ICE — ANTI ICE STBY PITOT or L(R) STAT or AOA</td><td>P 39/42</td><td>2886</td><td>18 FEB 26</td></tr><tr><td>FCOM</td><td>DSC-30-50 Probes heat</td><td>P 1/2</td><td>1786, 1788</td><td>22 MAR 16</td></tr></tbody></table></div></div></details>
               </div>
             </section>
             <p class="brief-footnote">Study aid from uncontrolled THA A320/A321 FCOM, FCTM and QRH copies (14 JUL 26) and the Airbus PDP tutorials (Jan 2024), HS-TX registrations only. Not for operational use.</p>
@@ -3895,25 +3923,37 @@
                       <div class="turn-body">
                         <span class="turn-no" aria-hidden="true">4.4</span>
                         <span class="lane-tag">PF</span>
-                        <ul aria-label="Step 4.4, Pilot flying"><li class="flow-item callout"><span class="callout-mark"><svg class="icon callout-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 5h16v11H11l-4.5 3.5V16H4z"/></svg></span><q class="callout">STOP ECAM</q></li><li class="flow-item action">Normal C/L as applicable, resets only per QRH</li><li class="flow-item callout"><span class="callout-mark"><svg class="icon callout-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 5h16v11H11l-4.5 3.5V16H4z"/></svg></span><q class="callout">CONTINUE ECAM</q></li></ul>
+                        <ul aria-label="Step 4.4, Pilot flying"><li class="flow-item callout"><span class="callout-mark"><svg class="icon callout-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 5h16v11H11l-4.5 3.5V16H4z"/></svg></span><q class="callout">STOP ECAM</q></li></ul>
                       </div>
                     </li><li class="turn turn-pm">
                       <div class="turn-body">
                         <span class="turn-no" aria-hidden="true">4.5</span>
                         <span class="lane-tag">PM</span>
-                        <ul aria-label="Step 4.5, Pilot monitoring"><li class="flow-item action">Read the whole STATUS page; preview APPR PROC workload</li><li class="flow-item callout"><span class="callout-mark"><svg class="icon callout-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 5h16v11H11l-4.5 3.5V16H4z"/></svg></span><q class="callout">REMOVE STATUS ?</q></li></ul>
+                        <ul aria-label="Step 4.5, Pilot monitoring"><li class="flow-item ecam"><span class="ecam-line"><span class="ecam-item">ECAM ACTIONS</span><span class="leader" aria-hidden="true"></span><span class="ecam-setting">STOP</span></span></li></ul>
                       </div>
                     </li><li class="turn turn-pf">
                       <div class="turn-body">
                         <span class="turn-no" aria-hidden="true">4.6</span>
                         <span class="lane-tag">PF</span>
-                        <ul aria-label="Step 4.6, Pilot flying"><li class="flow-item callout"><span class="callout-mark"><svg class="icon callout-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 5h16v11H11l-4.5 3.5V16H4z"/></svg></span><q class="callout">REMOVE STATUS</q></li></ul>
+                        <ul aria-label="Step 4.6, Pilot flying"><li class="flow-item action">Normal C/L as applicable; system resets only per QRH</li><li class="flow-item callout"><span class="callout-mark"><svg class="icon callout-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 5h16v11H11l-4.5 3.5V16H4z"/></svg></span><q class="callout">CONTINUE ECAM</q></li></ul>
                       </div>
                     </li><li class="turn turn-pm">
                       <div class="turn-body">
                         <span class="turn-no" aria-hidden="true">4.7</span>
                         <span class="lane-tag">PM</span>
-                        <ul aria-label="Step 4.7, Pilot monitoring"><li class="flow-item callout"><span class="callout-mark"><svg class="icon callout-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 5h16v11H11l-4.5 3.5V16H4z"/></svg></span><q class="callout">ECAM ACTIONS COMPLETE</q></li></ul>
+                        <ul aria-label="Step 4.7, Pilot monitoring"><li class="flow-item action">Read the whole STATUS page; preview APPR PROC workload</li><li class="flow-item callout"><span class="callout-mark"><svg class="icon callout-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 5h16v11H11l-4.5 3.5V16H4z"/></svg></span><q class="callout">REMOVE STATUS ?</q></li></ul>
+                      </div>
+                    </li><li class="turn turn-pf">
+                      <div class="turn-body">
+                        <span class="turn-no" aria-hidden="true">4.8</span>
+                        <span class="lane-tag">PF</span>
+                        <ul aria-label="Step 4.8, Pilot flying"><li class="flow-item callout"><span class="callout-mark"><svg class="icon callout-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 5h16v11H11l-4.5 3.5V16H4z"/></svg></span><q class="callout">REMOVE STATUS</q></li></ul>
+                      </div>
+                    </li><li class="turn turn-pm">
+                      <div class="turn-body">
+                        <span class="turn-no" aria-hidden="true">4.9</span>
+                        <span class="lane-tag">PM</span>
+                        <ul aria-label="Step 4.9, Pilot monitoring"><li class="flow-item callout"><span class="callout-mark"><svg class="icon callout-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 5h16v11H11l-4.5 3.5V16H4z"/></svg></span><q class="callout">ECAM ACTIONS COMPLETE</q></li></ul>
                       </div>
                     </li>
                   </ol>
@@ -4288,19 +4328,43 @@
                       <div class="turn-body">
                         <span class="turn-no" aria-hidden="true">3.3</span>
                         <span class="lane-tag">PM</span>
-                        <ul aria-label="Step 3.3, Pilot monitoring"><li class="flow-item action">INOP SYS: SDAC 1 + 2</li></ul>
+                        <ul aria-label="Step 3.3, Pilot monitoring"><li class="flow-item callout"><span class="callout-mark"><svg class="icon callout-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 5h16v11H11l-4.5 3.5V16H4z"/></svg></span><q class="callout">STATUS</q></li></ul>
                       </div>
                     </li><li class="turn turn-pf">
                       <div class="turn-body">
                         <span class="turn-no" aria-hidden="true">3.4</span>
                         <span class="lane-tag">PF</span>
-                        <ul aria-label="Step 3.4, Pilot flying"><li class="flow-item callout"><span class="callout-mark"><svg class="icon callout-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 5h16v11H11l-4.5 3.5V16H4z"/></svg></span><q class="callout">REMOVE STATUS</q></li></ul>
+                        <ul aria-label="Step 3.4, Pilot flying"><li class="flow-item callout"><span class="callout-mark"><svg class="icon callout-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 5h16v11H11l-4.5 3.5V16H4z"/></svg></span><q class="callout">STOP ECAM</q></li></ul>
                       </div>
                     </li><li class="turn turn-pm">
                       <div class="turn-body">
                         <span class="turn-no" aria-hidden="true">3.5</span>
                         <span class="lane-tag">PM</span>
-                        <ul aria-label="Step 3.5, Pilot monitoring"><li class="flow-item callout"><span class="callout-mark"><svg class="icon callout-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 5h16v11H11l-4.5 3.5V16H4z"/></svg></span><q class="callout">ECAM ACTIONS COMPLETE</q></li></ul>
+                        <ul aria-label="Step 3.5, Pilot monitoring"><li class="flow-item ecam"><span class="ecam-line"><span class="ecam-item">ECAM ACTIONS</span><span class="leader" aria-hidden="true"></span><span class="ecam-setting">STOP</span></span></li></ul>
+                      </div>
+                    </li><li class="turn turn-pf">
+                      <div class="turn-body">
+                        <span class="turn-no" aria-hidden="true">3.6</span>
+                        <span class="lane-tag">PF</span>
+                        <ul aria-label="Step 3.6, Pilot flying"><li class="flow-item action">Normal C/L as applicable; system resets only per QRH</li><li class="flow-item callout"><span class="callout-mark"><svg class="icon callout-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 5h16v11H11l-4.5 3.5V16H4z"/></svg></span><q class="callout">CONTINUE ECAM</q></li></ul>
+                      </div>
+                    </li><li class="turn turn-pm">
+                      <div class="turn-body">
+                        <span class="turn-no" aria-hidden="true">3.7</span>
+                        <span class="lane-tag">PM</span>
+                        <ul aria-label="Step 3.7, Pilot monitoring"><li class="flow-item action">Read the whole STATUS page; preview APPR PROC workload</li><li class="flow-item action">INOP SYS: SDAC 1 + 2</li><li class="flow-item callout"><span class="callout-mark"><svg class="icon callout-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 5h16v11H11l-4.5 3.5V16H4z"/></svg></span><q class="callout">REMOVE STATUS ?</q></li></ul>
+                      </div>
+                    </li><li class="turn turn-pf">
+                      <div class="turn-body">
+                        <span class="turn-no" aria-hidden="true">3.8</span>
+                        <span class="lane-tag">PF</span>
+                        <ul aria-label="Step 3.8, Pilot flying"><li class="flow-item callout"><span class="callout-mark"><svg class="icon callout-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 5h16v11H11l-4.5 3.5V16H4z"/></svg></span><q class="callout">REMOVE STATUS</q></li></ul>
+                      </div>
+                    </li><li class="turn turn-pm">
+                      <div class="turn-body">
+                        <span class="turn-no" aria-hidden="true">3.9</span>
+                        <span class="lane-tag">PM</span>
+                        <ul aria-label="Step 3.9, Pilot monitoring"><li class="flow-item callout"><span class="callout-mark"><svg class="icon callout-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 5h16v11H11l-4.5 3.5V16H4z"/></svg></span><q class="callout">ECAM ACTIONS COMPLETE</q></li></ul>
                       </div>
                     </li>
                   </ol>
@@ -4340,7 +4404,7 @@
                 <details><summary>Related procedures<svg class="icon summary-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m9 6 6 6-6 6"/></svg></summary><div class="details-body"><ul class="plain-list"><li><strong>FWS FWC 1 + 2 FAULT</strong> — Related FWS failure. See the FWC brief.</li></ul></div></details>
 
                 <details><summary>Gaps and omissions<svg class="icon summary-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m9 6 6 6-6 6"/></svg></summary><div class="details-body"><ul class="plain-list"><li>No SDAC entry in the QRH system reset table and no FCTM technique for this alert in the supplied manuals; the syllabus &#34;reset&#34; is not described in books/.</li></ul></div></details>
-                <details><summary>Sources (5 references)<svg class="icon summary-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m9 6 6 6-6 6"/></svg></summary><div class="details-body"><div class="table-scroll"><table class="sources-table"><thead><tr><th scope="col">Book</th><th scope="col">Section</th><th scope="col">Pages</th><th scope="col">PDF</th><th scope="col">Rev</th></tr></thead><tbody><tr><td>FCOM</td><td>PRO-ABN-FWS — FWS SDAC 1 + 2 FAULT</td><td>P 6/8</td><td>3687</td><td>26 MAY 26</td></tr></tbody></table></div></div></details>
+                <details><summary>Sources (9 references)<svg class="icon summary-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m9 6 6 6-6 6"/></svg></summary><div class="details-body"><div class="table-scroll"><table class="sources-table"><thead><tr><th scope="col">Book</th><th scope="col">Section</th><th scope="col">Pages</th><th scope="col">PDF</th><th scope="col">Rev</th></tr></thead><tbody><tr><td>FCOM</td><td>PRO-ABN-FWS — FWS SDAC 1 + 2 FAULT</td><td>P 6/8</td><td>3687</td><td>26 MAY 26</td></tr></tbody></table></div></div></details>
               </div>
             </section>
             <p class="brief-footnote">Study aid from uncontrolled THA A320/A321 FCOM, FCTM and QRH copies (14 JUL 26) and the Airbus PDP tutorials (Jan 2024), HS-TX registrations only. Not for operational use.</p>
@@ -4786,25 +4850,37 @@
                       <div class="turn-body">
                         <span class="turn-no" aria-hidden="true">4.4</span>
                         <span class="lane-tag">PF</span>
-                        <ul aria-label="Step 4.4, Pilot flying"><li class="flow-item callout"><span class="callout-mark"><svg class="icon callout-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 5h16v11H11l-4.5 3.5V16H4z"/></svg></span><q class="callout">STOP ECAM</q></li><li class="flow-item action">Normal C/L as applicable, resets only per QRH</li><li class="flow-item callout"><span class="callout-mark"><svg class="icon callout-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 5h16v11H11l-4.5 3.5V16H4z"/></svg></span><q class="callout">CONTINUE ECAM</q></li></ul>
+                        <ul aria-label="Step 4.4, Pilot flying"><li class="flow-item callout"><span class="callout-mark"><svg class="icon callout-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 5h16v11H11l-4.5 3.5V16H4z"/></svg></span><q class="callout">STOP ECAM</q></li></ul>
                       </div>
                     </li><li class="turn turn-pm">
                       <div class="turn-body">
                         <span class="turn-no" aria-hidden="true">4.5</span>
                         <span class="lane-tag">PM</span>
-                        <ul aria-label="Step 4.5, Pilot monitoring"><li class="flow-item action">Read the whole STATUS page; preview APPR PROC workload</li><li class="flow-item callout"><span class="callout-mark"><svg class="icon callout-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 5h16v11H11l-4.5 3.5V16H4z"/></svg></span><q class="callout">REMOVE STATUS ?</q></li></ul>
+                        <ul aria-label="Step 4.5, Pilot monitoring"><li class="flow-item ecam"><span class="ecam-line"><span class="ecam-item">ECAM ACTIONS</span><span class="leader" aria-hidden="true"></span><span class="ecam-setting">STOP</span></span></li></ul>
                       </div>
                     </li><li class="turn turn-pf">
                       <div class="turn-body">
                         <span class="turn-no" aria-hidden="true">4.6</span>
                         <span class="lane-tag">PF</span>
-                        <ul aria-label="Step 4.6, Pilot flying"><li class="flow-item callout"><span class="callout-mark"><svg class="icon callout-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 5h16v11H11l-4.5 3.5V16H4z"/></svg></span><q class="callout">REMOVE STATUS</q></li></ul>
+                        <ul aria-label="Step 4.6, Pilot flying"><li class="flow-item action">Normal C/L as applicable; system resets only per QRH</li><li class="flow-item callout"><span class="callout-mark"><svg class="icon callout-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 5h16v11H11l-4.5 3.5V16H4z"/></svg></span><q class="callout">CONTINUE ECAM</q></li></ul>
                       </div>
                     </li><li class="turn turn-pm">
                       <div class="turn-body">
                         <span class="turn-no" aria-hidden="true">4.7</span>
                         <span class="lane-tag">PM</span>
-                        <ul aria-label="Step 4.7, Pilot monitoring"><li class="flow-item callout"><span class="callout-mark"><svg class="icon callout-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 5h16v11H11l-4.5 3.5V16H4z"/></svg></span><q class="callout">ECAM ACTIONS COMPLETE</q></li></ul>
+                        <ul aria-label="Step 4.7, Pilot monitoring"><li class="flow-item action">Read the whole STATUS page; preview APPR PROC workload</li><li class="flow-item callout"><span class="callout-mark"><svg class="icon callout-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 5h16v11H11l-4.5 3.5V16H4z"/></svg></span><q class="callout">REMOVE STATUS ?</q></li></ul>
+                      </div>
+                    </li><li class="turn turn-pf">
+                      <div class="turn-body">
+                        <span class="turn-no" aria-hidden="true">4.8</span>
+                        <span class="lane-tag">PF</span>
+                        <ul aria-label="Step 4.8, Pilot flying"><li class="flow-item callout"><span class="callout-mark"><svg class="icon callout-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 5h16v11H11l-4.5 3.5V16H4z"/></svg></span><q class="callout">REMOVE STATUS</q></li></ul>
+                      </div>
+                    </li><li class="turn turn-pm">
+                      <div class="turn-body">
+                        <span class="turn-no" aria-hidden="true">4.9</span>
+                        <span class="lane-tag">PM</span>
+                        <ul aria-label="Step 4.9, Pilot monitoring"><li class="flow-item callout"><span class="callout-mark"><svg class="icon callout-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 5h16v11H11l-4.5 3.5V16H4z"/></svg></span><q class="callout">ECAM ACTIONS COMPLETE</q></li></ul>
                       </div>
                     </li>
                   </ol>
@@ -5696,25 +5772,37 @@
                       <div class="turn-body">
                         <span class="turn-no" aria-hidden="true">4.4</span>
                         <span class="lane-tag">PF</span>
-                        <ul aria-label="Step 4.4, Pilot flying"><li class="flow-item callout"><span class="callout-mark"><svg class="icon callout-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 5h16v11H11l-4.5 3.5V16H4z"/></svg></span><q class="callout">STOP ECAM</q></li><li class="flow-item action">Normal C/L as applicable, resets only per QRH</li><li class="flow-item callout"><span class="callout-mark"><svg class="icon callout-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 5h16v11H11l-4.5 3.5V16H4z"/></svg></span><q class="callout">CONTINUE ECAM</q></li></ul>
+                        <ul aria-label="Step 4.4, Pilot flying"><li class="flow-item callout"><span class="callout-mark"><svg class="icon callout-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 5h16v11H11l-4.5 3.5V16H4z"/></svg></span><q class="callout">STOP ECAM</q></li></ul>
                       </div>
                     </li><li class="turn turn-pm">
                       <div class="turn-body">
                         <span class="turn-no" aria-hidden="true">4.5</span>
                         <span class="lane-tag">PM</span>
-                        <ul aria-label="Step 4.5, Pilot monitoring"><li class="flow-item action">Read the whole STATUS page; preview APPR PROC workload</li><li class="flow-item callout"><span class="callout-mark"><svg class="icon callout-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 5h16v11H11l-4.5 3.5V16H4z"/></svg></span><q class="callout">REMOVE STATUS ?</q></li></ul>
+                        <ul aria-label="Step 4.5, Pilot monitoring"><li class="flow-item ecam"><span class="ecam-line"><span class="ecam-item">ECAM ACTIONS</span><span class="leader" aria-hidden="true"></span><span class="ecam-setting">STOP</span></span></li></ul>
                       </div>
                     </li><li class="turn turn-pf">
                       <div class="turn-body">
                         <span class="turn-no" aria-hidden="true">4.6</span>
                         <span class="lane-tag">PF</span>
-                        <ul aria-label="Step 4.6, Pilot flying"><li class="flow-item callout"><span class="callout-mark"><svg class="icon callout-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 5h16v11H11l-4.5 3.5V16H4z"/></svg></span><q class="callout">REMOVE STATUS</q></li></ul>
+                        <ul aria-label="Step 4.6, Pilot flying"><li class="flow-item action">Normal C/L as applicable; system resets only per QRH</li><li class="flow-item callout"><span class="callout-mark"><svg class="icon callout-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 5h16v11H11l-4.5 3.5V16H4z"/></svg></span><q class="callout">CONTINUE ECAM</q></li></ul>
                       </div>
                     </li><li class="turn turn-pm">
                       <div class="turn-body">
                         <span class="turn-no" aria-hidden="true">4.7</span>
                         <span class="lane-tag">PM</span>
-                        <ul aria-label="Step 4.7, Pilot monitoring"><li class="flow-item callout"><span class="callout-mark"><svg class="icon callout-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 5h16v11H11l-4.5 3.5V16H4z"/></svg></span><q class="callout">ECAM ACTIONS COMPLETE</q></li></ul>
+                        <ul aria-label="Step 4.7, Pilot monitoring"><li class="flow-item action">Read the whole STATUS page; preview APPR PROC workload</li><li class="flow-item callout"><span class="callout-mark"><svg class="icon callout-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 5h16v11H11l-4.5 3.5V16H4z"/></svg></span><q class="callout">REMOVE STATUS ?</q></li></ul>
+                      </div>
+                    </li><li class="turn turn-pf">
+                      <div class="turn-body">
+                        <span class="turn-no" aria-hidden="true">4.8</span>
+                        <span class="lane-tag">PF</span>
+                        <ul aria-label="Step 4.8, Pilot flying"><li class="flow-item callout"><span class="callout-mark"><svg class="icon callout-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 5h16v11H11l-4.5 3.5V16H4z"/></svg></span><q class="callout">REMOVE STATUS</q></li></ul>
+                      </div>
+                    </li><li class="turn turn-pm">
+                      <div class="turn-body">
+                        <span class="turn-no" aria-hidden="true">4.9</span>
+                        <span class="lane-tag">PM</span>
+                        <ul aria-label="Step 4.9, Pilot monitoring"><li class="flow-item callout"><span class="callout-mark"><svg class="icon callout-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 5h16v11H11l-4.5 3.5V16H4z"/></svg></span><q class="callout">ECAM ACTIONS COMPLETE</q></li></ul>
                       </div>
                     </li>
                   </ol>
@@ -6371,19 +6459,43 @@
                       <div class="turn-body">
                         <span class="turn-no" aria-hidden="true">4.12</span>
                         <span class="lane-tag">PM</span>
-                        <ul aria-label="Step 4.12, Pilot monitoring"><li class="flow-item callout"><span class="callout-mark"><svg class="icon callout-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 5h16v11H11l-4.5 3.5V16H4z"/></svg></span><q class="callout">STATUS</q></li><li class="flow-item action">STATUS: MAX FL 100/MEA-MORA</li></ul>
+                        <ul aria-label="Step 4.12, Pilot monitoring"><li class="flow-item callout"><span class="callout-mark"><svg class="icon callout-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 5h16v11H11l-4.5 3.5V16H4z"/></svg></span><q class="callout">STATUS</q></li></ul>
                       </div>
                     </li><li class="turn turn-pf">
                       <div class="turn-body">
                         <span class="turn-no" aria-hidden="true">4.13</span>
                         <span class="lane-tag">PF</span>
-                        <ul aria-label="Step 4.13, Pilot flying"><li class="flow-item callout"><span class="callout-mark"><svg class="icon callout-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 5h16v11H11l-4.5 3.5V16H4z"/></svg></span><q class="callout">REMOVE STATUS</q></li></ul>
+                        <ul aria-label="Step 4.13, Pilot flying"><li class="flow-item callout"><span class="callout-mark"><svg class="icon callout-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 5h16v11H11l-4.5 3.5V16H4z"/></svg></span><q class="callout">STOP ECAM</q></li></ul>
                       </div>
                     </li><li class="turn turn-pm">
                       <div class="turn-body">
                         <span class="turn-no" aria-hidden="true">4.14</span>
                         <span class="lane-tag">PM</span>
-                        <ul aria-label="Step 4.14, Pilot monitoring"><li class="flow-item callout"><span class="callout-mark"><svg class="icon callout-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 5h16v11H11l-4.5 3.5V16H4z"/></svg></span><q class="callout">ECAM ACTIONS COMPLETE</q></li></ul>
+                        <ul aria-label="Step 4.14, Pilot monitoring"><li class="flow-item ecam"><span class="ecam-line"><span class="ecam-item">ECAM ACTIONS</span><span class="leader" aria-hidden="true"></span><span class="ecam-setting">STOP</span></span></li></ul>
+                      </div>
+                    </li><li class="turn turn-pf">
+                      <div class="turn-body">
+                        <span class="turn-no" aria-hidden="true">4.15</span>
+                        <span class="lane-tag">PF</span>
+                        <ul aria-label="Step 4.15, Pilot flying"><li class="flow-item action">Normal C/L as applicable; system resets only per QRH</li><li class="flow-item callout"><span class="callout-mark"><svg class="icon callout-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 5h16v11H11l-4.5 3.5V16H4z"/></svg></span><q class="callout">CONTINUE ECAM</q></li></ul>
+                      </div>
+                    </li><li class="turn turn-pm">
+                      <div class="turn-body">
+                        <span class="turn-no" aria-hidden="true">4.16</span>
+                        <span class="lane-tag">PM</span>
+                        <ul aria-label="Step 4.16, Pilot monitoring"><li class="flow-item action">Read the whole STATUS page; preview APPR PROC workload</li><li class="flow-item action">STATUS: MAX FL 100/MEA-MORA</li><li class="flow-item callout"><span class="callout-mark"><svg class="icon callout-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 5h16v11H11l-4.5 3.5V16H4z"/></svg></span><q class="callout">REMOVE STATUS ?</q></li></ul>
+                      </div>
+                    </li><li class="turn turn-pf">
+                      <div class="turn-body">
+                        <span class="turn-no" aria-hidden="true">4.17</span>
+                        <span class="lane-tag">PF</span>
+                        <ul aria-label="Step 4.17, Pilot flying"><li class="flow-item callout"><span class="callout-mark"><svg class="icon callout-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 5h16v11H11l-4.5 3.5V16H4z"/></svg></span><q class="callout">REMOVE STATUS</q></li></ul>
+                      </div>
+                    </li><li class="turn turn-pm">
+                      <div class="turn-body">
+                        <span class="turn-no" aria-hidden="true">4.18</span>
+                        <span class="lane-tag">PM</span>
+                        <ul aria-label="Step 4.18, Pilot monitoring"><li class="flow-item callout"><span class="callout-mark"><svg class="icon callout-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 5h16v11H11l-4.5 3.5V16H4z"/></svg></span><q class="callout">ECAM ACTIONS COMPLETE</q></li></ul>
                       </div>
                     </li>
                   </ol>
@@ -6461,7 +6573,7 @@
                 <details><summary>Related procedures<svg class="icon summary-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m9 6 6 6-6 6"/></svg></summary><div class="details-body"><ul class="plain-list"><li><strong>CAB PR SYS 1+2 FAULT</strong> — Both CPCs failed — a common lead-in to the excess cabin altitude. MODE SEL MAN; MAN V/S CTL AS RQRD; keep aircraft altitude at or above cabin altitude; Final approach: V/S CTL FULL UP; ΔP zero before opening doors.</li></ul></div></details>
                 <details><summary>HS-TX differences<svg class="icon summary-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m9 6 6 6-6 6"/></svg></summary><div class="details-body"><div class="table-scroll"><table><thead><tr><th scope="col">Topic</th><th scope="col">HS-TXA..TXF</th><th scope="col">HS-TXG..TXU</th></tr></thead><tbody><tr><th scope="row">OEB 61 (CAB PR EXCESS CAB ALT)</th><td>Applies: do the ECAM even if the CAB PRESS SD page looks normal</td><td>Not applicable</td></tr></tbody></table></div><p class="muted-note">The ECAM, memory items and QRH are the same for every HS-TX (Applicable to ALL). Only OEB 61 differs: it applies to HS-TXA..TXF.</p></div></details>
                 <details><summary>Gaps and omissions<svg class="icon summary-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m9 6 6 6-6 6"/></svg></summary><div class="details-body"><ul class="plain-list"><li>The ECAM has no explicit LAND ASAP for this alert; the diversion decision follows the general assess/decide step.</li><li>Callout wording comes from the PDP; the FCOM memory-item callout is “EMERGENCY DESCENT”.</li><li>The PDP says the EMER DESCENT (PA) line may not show on the ECAM on some aircraft; it is in the HS-TX FCOM procedure.</li></ul></div></details>
-                <details><summary>Sources (30 references)<svg class="icon summary-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m9 6 6 6-6 6"/></svg></summary><div class="details-body"><div class="table-scroll"><table class="sources-table"><thead><tr><th scope="col">Book</th><th scope="col">Section</th><th scope="col">Pages</th><th scope="col">PDF</th><th scope="col">Rev</th></tr></thead><tbody><tr><td>FCOM</td><td>PRO-ABN-CAB_PR — CAB PR EXCESS CAB ALT; CAB PR SYS 1+2 FAULT</td><td>P 2–4, 12–13/14</td><td>3049–3051, 3059–3060</td><td>24 NOV 25</td></tr><tr><td>FCOM</td><td>PRO-ABN-MISC — [MEM] EMER DESCENT</td><td>P 1–2/30</td><td>3796–3797</td><td>18 FEB 26</td></tr><tr><td>QRH</td><td>25 — EMER DESCENT; 61 — OEB CAB PR EXCESS CAB ALT</td><td>25.02A, 61.01A–61.02A</td><td>219, 290–291</td><td>18 FEB 26 / 25 APR 24</td></tr><tr><td>FCTM</td><td>PR-AEP-CAB_PR; PR-AEP-MISC — EMER DESCENT</td><td>P 1/2; P 3–4/32</td><td>398; 448–449</td><td>21 FEB 24 / 26 MAY 26</td></tr><tr><td>PDP</td><td>Emergency descent (XFTDA7EMERDES01)</td><td>—</td><td>483–491</td><td>JAN 2024</td></tr></tbody></table></div></div></details>
+                <details><summary>Sources (31 references)<svg class="icon summary-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m9 6 6 6-6 6"/></svg></summary><div class="details-body"><div class="table-scroll"><table class="sources-table"><thead><tr><th scope="col">Book</th><th scope="col">Section</th><th scope="col">Pages</th><th scope="col">PDF</th><th scope="col">Rev</th></tr></thead><tbody><tr><td>FCOM</td><td>PRO-ABN-CAB_PR — CAB PR EXCESS CAB ALT; CAB PR SYS 1+2 FAULT</td><td>P 2–4, 12–13/14</td><td>3049–3051, 3059–3060</td><td>24 NOV 25</td></tr><tr><td>FCOM</td><td>PRO-ABN-MISC — [MEM] EMER DESCENT</td><td>P 1–2/30</td><td>3796–3797</td><td>18 FEB 26</td></tr><tr><td>QRH</td><td>25 — EMER DESCENT; 61 — OEB CAB PR EXCESS CAB ALT</td><td>25.02A, 61.01A–61.02A</td><td>219, 290–291</td><td>18 FEB 26 / 25 APR 24</td></tr><tr><td>FCTM</td><td>PR-AEP-CAB_PR; PR-AEP-MISC — EMER DESCENT</td><td>P 1/2; P 3–4/32</td><td>398; 448–449</td><td>21 FEB 24 / 26 MAY 26</td></tr><tr><td>PDP</td><td>Emergency descent (XFTDA7EMERDES01)</td><td>—</td><td>483–491</td><td>JAN 2024</td></tr></tbody></table></div></div></details>
               </div>
             </section>
             <p class="brief-footnote">Study aid from uncontrolled THA A320/A321 FCOM, FCTM and QRH copies (14 JUL 26) and the Airbus PDP tutorials (Jan 2024), HS-TX registrations only. Not for operational use.</p>
@@ -6566,25 +6678,49 @@
                       <div class="turn-body">
                         <span class="turn-no" aria-hidden="true">4.3</span>
                         <span class="lane-tag">PM</span>
-                        <ul aria-label="Step 4.3, Pilot monitoring"><li class="flow-item callout"><span class="callout-mark"><svg class="icon callout-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 5h16v11H11l-4.5 3.5V16H4z"/></svg></span><q class="callout">STATUS</q></li><li class="flow-item action">STATUS: L/G GRVTY EXTN; flight with gear down increases fuel burn (QRH OPS fuel penalty)</li></ul>
+                        <ul aria-label="Step 4.3, Pilot monitoring"><li class="flow-item callout"><span class="callout-mark"><svg class="icon callout-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 5h16v11H11l-4.5 3.5V16H4z"/></svg></span><q class="callout">STATUS</q></li></ul>
                       </div>
                     </li><li class="turn turn-pf">
                       <div class="turn-body">
                         <span class="turn-no" aria-hidden="true">4.4</span>
                         <span class="lane-tag">PF</span>
-                        <ul aria-label="Step 4.4, Pilot flying"><li class="flow-item callout"><span class="callout-mark"><svg class="icon callout-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 5h16v11H11l-4.5 3.5V16H4z"/></svg></span><q class="callout">REMOVE STATUS</q></li></ul>
+                        <ul aria-label="Step 4.4, Pilot flying"><li class="flow-item callout"><span class="callout-mark"><svg class="icon callout-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 5h16v11H11l-4.5 3.5V16H4z"/></svg></span><q class="callout">STOP ECAM</q></li></ul>
                       </div>
                     </li><li class="turn turn-pm">
                       <div class="turn-body">
                         <span class="turn-no" aria-hidden="true">4.5</span>
                         <span class="lane-tag">PM</span>
-                        <ul aria-label="Step 4.5, Pilot monitoring"><li class="flow-item callout"><span class="callout-mark"><svg class="icon callout-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 5h16v11H11l-4.5 3.5V16H4z"/></svg></span><q class="callout">ECAM ACTIONS COMPLETE</q></li></ul>
+                        <ul aria-label="Step 4.5, Pilot monitoring"><li class="flow-item ecam"><span class="ecam-line"><span class="ecam-item">ECAM ACTIONS</span><span class="leader" aria-hidden="true"></span><span class="ecam-setting">STOP</span></span></li></ul>
                       </div>
                     </li><li class="turn turn-pf">
                       <div class="turn-body">
                         <span class="turn-no" aria-hidden="true">4.6</span>
                         <span class="lane-tag">PF</span>
-                        <ul aria-label="Step 4.6, Pilot flying"><li class="flow-item action">Assess fuel with gear down, decide, inform ATC / cabin</li></ul>
+                        <ul aria-label="Step 4.6, Pilot flying"><li class="flow-item action">Normal C/L as applicable; system resets only per QRH</li><li class="flow-item callout"><span class="callout-mark"><svg class="icon callout-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 5h16v11H11l-4.5 3.5V16H4z"/></svg></span><q class="callout">CONTINUE ECAM</q></li></ul>
+                      </div>
+                    </li><li class="turn turn-pm">
+                      <div class="turn-body">
+                        <span class="turn-no" aria-hidden="true">4.7</span>
+                        <span class="lane-tag">PM</span>
+                        <ul aria-label="Step 4.7, Pilot monitoring"><li class="flow-item action">Read the whole STATUS page; preview APPR PROC workload</li><li class="flow-item action">STATUS: L/G GRVTY EXTN; flight with gear down increases fuel burn (QRH OPS fuel penalty)</li><li class="flow-item callout"><span class="callout-mark"><svg class="icon callout-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 5h16v11H11l-4.5 3.5V16H4z"/></svg></span><q class="callout">REMOVE STATUS ?</q></li></ul>
+                      </div>
+                    </li><li class="turn turn-pf">
+                      <div class="turn-body">
+                        <span class="turn-no" aria-hidden="true">4.8</span>
+                        <span class="lane-tag">PF</span>
+                        <ul aria-label="Step 4.8, Pilot flying"><li class="flow-item callout"><span class="callout-mark"><svg class="icon callout-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 5h16v11H11l-4.5 3.5V16H4z"/></svg></span><q class="callout">REMOVE STATUS</q></li></ul>
+                      </div>
+                    </li><li class="turn turn-pm">
+                      <div class="turn-body">
+                        <span class="turn-no" aria-hidden="true">4.9</span>
+                        <span class="lane-tag">PM</span>
+                        <ul aria-label="Step 4.9, Pilot monitoring"><li class="flow-item callout"><span class="callout-mark"><svg class="icon callout-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 5h16v11H11l-4.5 3.5V16H4z"/></svg></span><q class="callout">ECAM ACTIONS COMPLETE</q></li></ul>
+                      </div>
+                    </li><li class="turn turn-pf">
+                      <div class="turn-body">
+                        <span class="turn-no" aria-hidden="true">4.10</span>
+                        <span class="lane-tag">PF</span>
+                        <ul aria-label="Step 4.10, Pilot flying"><li class="flow-item action">Assess fuel with gear down, decide, inform ATC / cabin</li></ul>
                       </div>
                     </li>
                   </ol>
@@ -10029,19 +10165,43 @@
                       <div class="turn-body">
                         <span class="turn-no" aria-hidden="true">4.12</span>
                         <span class="lane-tag">PM</span>
-                        <ul aria-label="Step 4.12, Pilot monitoring"><li class="flow-item callout"><span class="callout-mark"><svg class="icon callout-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 5h16v11H11l-4.5 3.5V16H4z"/></svg></span><q class="callout">STATUS</q></li><li class="flow-item action">STATUS: MAX FL 100/MEA-MORA</li></ul>
+                        <ul aria-label="Step 4.12, Pilot monitoring"><li class="flow-item callout"><span class="callout-mark"><svg class="icon callout-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 5h16v11H11l-4.5 3.5V16H4z"/></svg></span><q class="callout">STATUS</q></li></ul>
                       </div>
                     </li><li class="turn turn-pf">
                       <div class="turn-body">
                         <span class="turn-no" aria-hidden="true">4.13</span>
                         <span class="lane-tag">PF</span>
-                        <ul aria-label="Step 4.13, Pilot flying"><li class="flow-item callout"><span class="callout-mark"><svg class="icon callout-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 5h16v11H11l-4.5 3.5V16H4z"/></svg></span><q class="callout">REMOVE STATUS</q></li></ul>
+                        <ul aria-label="Step 4.13, Pilot flying"><li class="flow-item callout"><span class="callout-mark"><svg class="icon callout-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 5h16v11H11l-4.5 3.5V16H4z"/></svg></span><q class="callout">STOP ECAM</q></li></ul>
                       </div>
                     </li><li class="turn turn-pm">
                       <div class="turn-body">
                         <span class="turn-no" aria-hidden="true">4.14</span>
                         <span class="lane-tag">PM</span>
-                        <ul aria-label="Step 4.14, Pilot monitoring"><li class="flow-item callout"><span class="callout-mark"><svg class="icon callout-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 5h16v11H11l-4.5 3.5V16H4z"/></svg></span><q class="callout">ECAM ACTIONS COMPLETE</q></li></ul>
+                        <ul aria-label="Step 4.14, Pilot monitoring"><li class="flow-item ecam"><span class="ecam-line"><span class="ecam-item">ECAM ACTIONS</span><span class="leader" aria-hidden="true"></span><span class="ecam-setting">STOP</span></span></li></ul>
+                      </div>
+                    </li><li class="turn turn-pf">
+                      <div class="turn-body">
+                        <span class="turn-no" aria-hidden="true">4.15</span>
+                        <span class="lane-tag">PF</span>
+                        <ul aria-label="Step 4.15, Pilot flying"><li class="flow-item action">Normal C/L as applicable; system resets only per QRH</li><li class="flow-item callout"><span class="callout-mark"><svg class="icon callout-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 5h16v11H11l-4.5 3.5V16H4z"/></svg></span><q class="callout">CONTINUE ECAM</q></li></ul>
+                      </div>
+                    </li><li class="turn turn-pm">
+                      <div class="turn-body">
+                        <span class="turn-no" aria-hidden="true">4.16</span>
+                        <span class="lane-tag">PM</span>
+                        <ul aria-label="Step 4.16, Pilot monitoring"><li class="flow-item action">Read the whole STATUS page; preview APPR PROC workload</li><li class="flow-item action">STATUS: MAX FL 100/MEA-MORA</li><li class="flow-item callout"><span class="callout-mark"><svg class="icon callout-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 5h16v11H11l-4.5 3.5V16H4z"/></svg></span><q class="callout">REMOVE STATUS ?</q></li></ul>
+                      </div>
+                    </li><li class="turn turn-pf">
+                      <div class="turn-body">
+                        <span class="turn-no" aria-hidden="true">4.17</span>
+                        <span class="lane-tag">PF</span>
+                        <ul aria-label="Step 4.17, Pilot flying"><li class="flow-item callout"><span class="callout-mark"><svg class="icon callout-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 5h16v11H11l-4.5 3.5V16H4z"/></svg></span><q class="callout">REMOVE STATUS</q></li></ul>
+                      </div>
+                    </li><li class="turn turn-pm">
+                      <div class="turn-body">
+                        <span class="turn-no" aria-hidden="true">4.18</span>
+                        <span class="lane-tag">PM</span>
+                        <ul aria-label="Step 4.18, Pilot monitoring"><li class="flow-item callout"><span class="callout-mark"><svg class="icon callout-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 5h16v11H11l-4.5 3.5V16H4z"/></svg></span><q class="callout">ECAM ACTIONS COMPLETE</q></li></ul>
                       </div>
                     </li>
                   </ol>
@@ -10119,7 +10279,7 @@
                 <details><summary>Related procedures<svg class="icon summary-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m9 6 6 6-6 6"/></svg></summary><div class="details-body"><ul class="plain-list"><li><strong>CAB PR SYS 1+2 FAULT</strong> — Both CPCs failed — a common lead-in to the excess cabin altitude. MODE SEL MAN; MAN V/S CTL AS RQRD; keep aircraft altitude at or above cabin altitude; Final approach: V/S CTL FULL UP; ΔP zero before opening doors.</li></ul></div></details>
                 <details><summary>HS-TX differences<svg class="icon summary-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m9 6 6 6-6 6"/></svg></summary><div class="details-body"><div class="table-scroll"><table><thead><tr><th scope="col">Topic</th><th scope="col">HS-TXA..TXF</th><th scope="col">HS-TXG..TXU</th></tr></thead><tbody><tr><th scope="row">OEB 61 (CAB PR EXCESS CAB ALT)</th><td>Applies: do the ECAM even if the CAB PRESS SD page looks normal</td><td>Not applicable</td></tr></tbody></table></div><p class="muted-note">The ECAM, memory items and QRH are the same for every HS-TX (Applicable to ALL). Only OEB 61 differs: it applies to HS-TXA..TXF.</p></div></details>
                 <details><summary>Gaps and omissions<svg class="icon summary-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m9 6 6 6-6 6"/></svg></summary><div class="details-body"><ul class="plain-list"><li>The ECAM has no explicit LAND ASAP for this alert; the diversion decision follows the general assess/decide step.</li><li>Callout wording comes from the PDP; the FCOM memory-item callout is “EMERGENCY DESCENT”.</li><li>The PDP says the EMER DESCENT (PA) line may not show on the ECAM on some aircraft; it is in the HS-TX FCOM procedure.</li></ul></div></details>
-                <details><summary>Sources (30 references)<svg class="icon summary-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m9 6 6 6-6 6"/></svg></summary><div class="details-body"><div class="table-scroll"><table class="sources-table"><thead><tr><th scope="col">Book</th><th scope="col">Section</th><th scope="col">Pages</th><th scope="col">PDF</th><th scope="col">Rev</th></tr></thead><tbody><tr><td>FCOM</td><td>PRO-ABN-CAB_PR — CAB PR EXCESS CAB ALT; CAB PR SYS 1+2 FAULT</td><td>P 2–4, 12–13/14</td><td>3049–3051, 3059–3060</td><td>24 NOV 25</td></tr><tr><td>FCOM</td><td>PRO-ABN-MISC — [MEM] EMER DESCENT</td><td>P 1–2/30</td><td>3796–3797</td><td>18 FEB 26</td></tr><tr><td>QRH</td><td>25 — EMER DESCENT; 61 — OEB CAB PR EXCESS CAB ALT</td><td>25.02A, 61.01A–61.02A</td><td>219, 290–291</td><td>18 FEB 26 / 25 APR 24</td></tr><tr><td>FCTM</td><td>PR-AEP-CAB_PR; PR-AEP-MISC — EMER DESCENT</td><td>P 1/2; P 3–4/32</td><td>398; 448–449</td><td>21 FEB 24 / 26 MAY 26</td></tr><tr><td>PDP</td><td>Emergency descent (XFTDA7EMERDES01)</td><td>—</td><td>483–491</td><td>JAN 2024</td></tr></tbody></table></div></div></details>
+                <details><summary>Sources (31 references)<svg class="icon summary-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m9 6 6 6-6 6"/></svg></summary><div class="details-body"><div class="table-scroll"><table class="sources-table"><thead><tr><th scope="col">Book</th><th scope="col">Section</th><th scope="col">Pages</th><th scope="col">PDF</th><th scope="col">Rev</th></tr></thead><tbody><tr><td>FCOM</td><td>PRO-ABN-CAB_PR — CAB PR EXCESS CAB ALT; CAB PR SYS 1+2 FAULT</td><td>P 2–4, 12–13/14</td><td>3049–3051, 3059–3060</td><td>24 NOV 25</td></tr><tr><td>FCOM</td><td>PRO-ABN-MISC — [MEM] EMER DESCENT</td><td>P 1–2/30</td><td>3796–3797</td><td>18 FEB 26</td></tr><tr><td>QRH</td><td>25 — EMER DESCENT; 61 — OEB CAB PR EXCESS CAB ALT</td><td>25.02A, 61.01A–61.02A</td><td>219, 290–291</td><td>18 FEB 26 / 25 APR 24</td></tr><tr><td>FCTM</td><td>PR-AEP-CAB_PR; PR-AEP-MISC — EMER DESCENT</td><td>P 1/2; P 3–4/32</td><td>398; 448–449</td><td>21 FEB 24 / 26 MAY 26</td></tr><tr><td>PDP</td><td>Emergency descent (XFTDA7EMERDES01)</td><td>—</td><td>483–491</td><td>JAN 2024</td></tr></tbody></table></div></div></details>
               </div>
             </section>
             <p class="brief-footnote">Study aid from uncontrolled THA A320/A321 FCOM, FCTM and QRH copies (14 JUL 26) and the Airbus PDP tutorials (Jan 2024), HS-TX registrations only. Not for operational use.</p>
@@ -13795,12 +13955,14 @@
       const dialog = document.createElement('dialog');
       dialog.className = 'setup-dialog';
       dialog.id = 'setup-dialog';
+      const card = document.createElement('div');
+      card.className = 'dialog-card';
+      dialog.append(card);
       document.body.append(dialog);
       let selected = 'overview';
       let activeTab = 'exercises';
       let panel = null;          // element currently shown in the dialog
       let panelHome = null;      // [parent, nextSibling] to restore it
-      let opener = null;
       let savedScroll = 0;
       let openBriefSlug = null;
       let briefPushed = false;
@@ -13816,7 +13978,8 @@
         document.documentElement.classList.remove('modal-open');
         document.documentElement.style.removeProperty('--locked-top');
         window.scrollTo(0, savedScroll);
-        if (opener && opener.isConnected) opener.focus({preventScroll: true});
+        // No focus return to the opener: on iPad it leaves a focus ring on the tapped row.
+        if (document.activeElement && document.activeElement !== document.body) document.activeElement.blur();
         panel = null;
         panelHome = null;
         openBriefSlug = null;
@@ -13829,20 +13992,21 @@
         dialog.classList.add('closing');
         closingTimer = setTimeout(finishClose, matchMedia('(prefers-reduced-motion: reduce)').matches ? 130 : 170);
       };
-      const openPanel = (element, labelId, source) => {
+      const openPanel = (element, labelId) => {
         closePanel(true);
         if (!element) return;
         panel = element;
         panelHome = [element.parentNode, element.nextSibling];
-        opener = source;
         savedScroll = window.scrollY;
-        dialog.append(element);
+        card.append(element);
         dialog.setAttribute('aria-labelledby', labelId);
         document.documentElement.style.setProperty('--locked-top', -savedScroll + 'px');
         document.documentElement.classList.add('modal-open');
         dialog.showModal();
-        dialog.scrollTop = 0;
+        card.scrollTop = 0;
         syncHeading();
+        jumpLock = 0;
+        syncJump();
         document.getElementById(labelId).focus({preventScroll: true});
       };
       const syncHeading = () => {
@@ -13850,7 +14014,32 @@
         dialog.style.setProperty('--dialog-head', heading ? heading.offsetHeight + 'px' : '0px');
       };
       window.addEventListener('resize', () => { if (dialog.open) syncHeading(); });
-      const openSetup = session => openPanel(session.querySelector('.setup-details'), session.id + '-modal-title', session.querySelector('.open-setup'));
+      // Jump bar follows the reading position: the current section is the last one whose heading
+      // is in the top third of the reading area (below the sticky header); at the end of the card
+      // it is the last section.
+      let jumpLock = 0;
+      let spyFrame = 0;
+      const markJump = (bar, key) => bar.querySelectorAll('.jump').forEach(button => {
+        if (button.dataset.jump === key) button.setAttribute('aria-current', 'location');
+        else button.removeAttribute('aria-current');
+      });
+      const syncJump = () => {
+        spyFrame = 0;
+        const bar = panel && panel.querySelector('.jump-bar');
+        const brief = panel && panel.querySelector('.brief:not([hidden])');
+        if (!bar || !brief || performance.now() < jumpLock) return;
+        const head = panel.querySelector('.dialog-heading').offsetHeight;
+        const line = card.getBoundingClientRect().top + head + Math.max(28, (card.clientHeight - head) / 3);
+        const atEnd = card.scrollTop + card.clientHeight >= card.scrollHeight - 2;
+        let current = null;
+        bar.querySelectorAll('.jump').forEach(button => {
+          const section = document.getElementById(brief.id + '-' + button.dataset.jump);
+          if (section && (atEnd || section.getBoundingClientRect().top <= line)) current = button.dataset.jump;
+        });
+        markJump(bar, current);
+      };
+      card.addEventListener('scroll', () => { if (!spyFrame) spyFrame = requestAnimationFrame(syncJump); }, {passive: true});
+      const openSetup = session => openPanel(session.querySelector('.setup-details'), session.id + '-modal-title');
       const closeSetup = closePanel;
 
       const showBrief = (group, slug) => {
@@ -13870,11 +14059,11 @@
         const brief = scope.querySelector('.brief[data-brief="' + CSS.escape(slug) + '"]');
         return brief ? brief.closest('.brief-group') : null;
       };
-      const openBrief = (slug, source = null, push = true) => {
+      const openBrief = (slug, push = true) => {
         const group = briefLocation(slug);
         if (!group) return;
         const shown = showBrief(group, slug);
-        openPanel(group, group.id + '-title', source);
+        openPanel(group, group.id + '-title');
         if (push) {
           const url = new URL(location.href);
           url.searchParams.set('brief', shown);
@@ -13903,13 +14092,11 @@
           first.focus();
         }
       });
-      let backdropStart = false;
-      const outsideDialog = event => {
-        const bounds = dialog.getBoundingClientRect();
-        return event.clientX < bounds.left || event.clientX > bounds.right || event.clientY < bounds.top || event.clientY > bounds.bottom;
-      };
-      dialog.addEventListener('pointerdown', event => { backdropStart = event.target === dialog && outsideDialog(event); });
-      dialog.addEventListener('click', event => { if (backdropStart && event.target === dialog && outsideDialog(event)) dismiss(); backdropStart = false; });
+      // Outside the card the target is the dialog layer itself; a press that starts inside the card
+      // (e.g. selecting text and dragging out) never closes it.
+      let pressedInside = false;
+      dialog.addEventListener('pointerdown', event => { pressedInside = card.contains(event.target); });
+      dialog.addEventListener('click', event => { if (event.target === dialog && !pressedInside) dismiss(); pressedInside = false; });
 
       const selectTab = (session, name) => {
         session.querySelectorAll(':scope > .tab-nav [role="tab"]').forEach(tab => {
@@ -13919,7 +14106,7 @@
         });
         session.querySelectorAll('[data-panel]').forEach(panel => { panel.hidden = panel.dataset.panel !== name; });
       };
-      const display = (id, tab, focus = false, resetScroll = false) => {
+      const display = (id, tab, resetScroll = false) => {
         closeSetup();
         selected = ids.includes(id) ? id : 'overview';
         activeTab = tab === 'topics' ? 'topics' : 'exercises';
@@ -13934,7 +14121,6 @@
         previous.disabled = index <= 0;
         next.disabled = index < 0 || index === ids.length - 1;
         if (resetScroll) window.scrollTo({top: 0, behavior: 'instant'});
-        if (focus) { const heading = session.querySelector('h2'); heading.tabIndex = -1; heading.focus({preventScroll: true}); }
       };
       const updateURL = (id, tab, replace = false) => {
         const url = new URL(location.href);
@@ -13944,10 +14130,10 @@
         url.searchParams.delete('brief');
         if (url.href !== location.href) history[replace ? 'replaceState' : 'pushState'](null, '', url);
       };
-      const navigate = (id, tab = activeTab, focus = false) => {
+      const navigate = (id, tab = activeTab) => {
         const changedSession = id !== selected;
         updateURL(id, tab);
-        display(id, tab, focus, changedSession);
+        display(id, tab, changedSession);
       };
       const route = (initial = false) => {
         const query = new URLSearchParams(location.search);
@@ -13966,7 +14152,7 @@
           updateURL(ids.includes(id) ? id : 'overview', tab, true);
         }
         const priorScroll = window.scrollY;
-        display(id, tab, false, !initial && id !== selected);
+        display(id, tab, !initial && id !== selected);
         if (legacySetup && selected !== 'overview') openSetup(document.getElementById(selected));
         const brief = query.get('brief');
         briefPushed = false;
@@ -13974,7 +14160,7 @@
           const group = briefLocation(brief);
           if (group && document.getElementById(selected).contains(group)) {
             if (!initial) window.scrollTo(0, priorScroll);
-            openBrief(brief, null, false);
+            openBrief(brief, false);
           }
         }
       };
@@ -13988,7 +14174,7 @@
         session.querySelectorAll('.brief-key').forEach(key => { key.hidden = false; });
         session.querySelectorAll('.brief-open, .summary-link').forEach(button => {
           button.disabled = false;
-          button.addEventListener('click', () => openBrief(button.dataset.brief, button));
+          button.addEventListener('click', () => openBrief(button.dataset.brief));
         });
         session.querySelectorAll('.close-brief').forEach(button => {
           button.hidden = false;
@@ -14002,8 +14188,11 @@
             const target = brief && document.getElementById(brief.id + '-' + button.dataset.jump);
             if (!target) return;
             const head = group.querySelector('.dialog-heading').offsetHeight;
-            const top = dialog.scrollTop + target.getBoundingClientRect().top - dialog.getBoundingClientRect().top - head - 20;
-            dialog.scrollTo({top, behavior: matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth'});
+            const top = card.scrollTop + target.getBoundingClientRect().top - card.getBoundingClientRect().top - head - 20;
+            const smooth = !matchMedia('(prefers-reduced-motion: reduce)').matches;
+            markJump(bar, button.dataset.jump);
+            jumpLock = performance.now() + (smooth ? 900 : 0);  // the smooth scroll passes other sections
+            card.scrollTo({top, behavior: smooth ? 'smooth' : 'auto'});
             target.focus({preventScroll: true});
           }));
         });
@@ -14021,7 +14210,9 @@
             const url = new URL(location.href);
             url.searchParams.set('brief', slug);
             history.replaceState(history.state, '', url);
-            dialog.scrollTop = 0;
+            card.scrollTop = 0;
+            jumpLock = 0;
+            syncJump();
           };
           tabs.forEach((tab, index) => {
             tab.addEventListener('click', () => choose(tab));
@@ -14059,10 +14250,10 @@
       });
       document.querySelectorAll('[data-session]').forEach(button => {
         button.disabled = false;
-        button.addEventListener('click', () => navigate(button.dataset.session, activeTab, true));
+        button.addEventListener('click', () => navigate(button.dataset.session));
       });
-      previous.addEventListener('click', () => navigate(ids[ids.indexOf(selected) - 1], activeTab, true));
-      next.addEventListener('click', () => navigate(ids[ids.indexOf(selected) + 1], activeTab, true));
+      previous.addEventListener('click', () => navigate(ids[ids.indexOf(selected) - 1]));
+      next.addEventListener('click', () => navigate(ids[ids.indexOf(selected) + 1]));
       document.querySelector('.toolbar-actions').hidden = false;
       document.querySelector('.session-nav').hidden = false;
       document.documentElement.classList.add('enhanced');

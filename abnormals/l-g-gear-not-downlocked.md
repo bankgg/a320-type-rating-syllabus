@@ -77,12 +77,22 @@ A red warning on approach: one gear did not lock down 30 s after the lever went 
 - “CLEAR L/G” [FCOM PRO-ABN-ABN-00 P 8/12, PDF 2831; FCTM AOP-30-30 P 3/6, PDF 84; PDP Management of abnormal operations, PDF 424]
 **4.3 PM**
 - “STATUS” [FCTM AOP-30-30 P 3/6, PDF 84; PDP Management of abnormal operations, PDF 426]
-- STATUS: L/G GRVTY EXTN; flight with gear down increases fuel burn (QRH OPS fuel penalty) [FCOM PRO-ABN-LG P 13/30, PDF 3778]
 **4.4 PF**
-- “REMOVE STATUS” [FCOM PRO-ABN-ABN-00 P 8/12, PDF 2831; PDP Management of abnormal operations, PDF 426]
+- “STOP ECAM” [FCTM AOP-30-30 P 3/6, PDF 84; PDP Management of abnormal operations, PDF 426]
 **4.5 PM**
-- “ECAM ACTIONS COMPLETE” [FCOM PRO-ABN-ABN-00 P 8/12, PDF 2831; PDP Management of abnormal operations, PDF 426]
+- ECAM ACTIONS …… STOP [PDP Management of abnormal operations, PDF 426]
 **4.6 PF**
+- Normal C/L as applicable; system resets only per QRH [FCTM AOP-30-30 P 4/6, PDF 85; PDP Management of abnormal operations, PDF 426]
+- “CONTINUE ECAM” [FCTM AOP-30-30 P 3/6, PDF 84; PDP Management of abnormal operations, PDF 426]
+**4.7 PM**
+- Read the whole STATUS page; preview APPR PROC workload [FCTM AOP-30-30 P 3/6, PDF 84; PDP Management of abnormal operations, PDF 426]
+- STATUS: L/G GRVTY EXTN; flight with gear down increases fuel burn (QRH OPS fuel penalty) [FCOM PRO-ABN-LG P 13/30, PDF 3778]
+- “REMOVE STATUS ?” [FCTM AOP-30-30 P 3/6, PDF 84; PDP Management of abnormal operations, PDF 426]
+**4.8 PF**
+- “REMOVE STATUS” [FCOM PRO-ABN-ABN-00 P 8/12, PDF 2831; FCTM AOP-30-30 P 3/6, PDF 84; PDP Management of abnormal operations, PDF 426]
+**4.9 PM**
+- “ECAM ACTIONS COMPLETE” [FCOM PRO-ABN-ABN-00 P 8/12, PDF 2831; PDP Management of abnormal operations, PDF 426]
+**4.10 PF**
 - Assess fuel with gear down, decide, inform ATC / cabin [PDP Management of abnormal operations, PDF 428; FCOM PRO-ABN-LG P 13/30, PDF 3778]
 
 ### 5. Warning disappears during the procedure
