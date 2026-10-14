@@ -31,6 +31,8 @@ For each failure item, decide in this order:
 
 **Briefs must be session-neutral.** No "MFTD"/"FFS" names, exercise numbers or scenario remarks anywhere in a brief's JSON. Phrase conditional cases as procedure conditions ("If the approach is discontinued …"). The build rejects any brief that names a session.
 
+**ECAM STATUS exchange (user rule).** Every ECAM brief that reaches STATUS uses the full exchange — PM "STATUS" → PF "STOP ECAM" → PM ECAM ACTIONS STOP → PF "CONTINUE ECAM" → PM reads STATUS, "REMOVE STATUS ?" → PF "REMOVE STATUS" → PM "ECAM ACTIONS COMPLETE" (FCTM AOP-30-30 P 3/6, PDP PDF 426), built with `brief_kit.status_turns`. When reusing a brief, it already satisfies this (the validator rejects any that does not).
+
 Every brief must validate: `python3 -I .claude/skills/a320-ecam-abnormal/scripts/render_md.py abnormals/<slug>.json`.
 
 ## 3. Map them in `build_comparison.py`
