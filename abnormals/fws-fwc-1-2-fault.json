@@ -22,7 +22,7 @@
   "branches": [],
   "note": "Applicable to ALL."
  },
- "summary": "Both flight warning computers are lost: no ECAM cautions or warnings, no aural warnings, no master lights, no altitude alert, STATUS, auto callouts or memos. ECAM system pages remain, so the crew checks the overhead panel and SD pages more often than usual. A single FWC fault can be reset from the QRH.",
+ "summary": "Both flight warning computers are lost: no ECAM cautions or warnings, no aural warnings, no master lights, no altitude alert, STATUS, auto callouts or memos. ECAM system pages remain, so the crew checks the overhead panel and SD pages more often than usual. The procedure requests no reset, and the QRH reset table lists only a single FWC fault (FWS FWC 1(2) FAULT), so resetting FWC 1 + 2 is not authorized in flight.",
  "key_limits": [
   {
    "label": "Lost",
@@ -70,17 +70,23 @@
    ]
   },
   {
-   "label": "FWC reset (single)",
-   "value": "C/B 5 s",
+   "label": "Reset",
+   "value": "NOT AUTHORIZED in flight",
    "applies_to": [
     "all"
    ],
    "refs": [
     {
      "book": "QRH",
-     "code": "02.54",
-     "page": "02.54A",
-     "pdf": 116
+     "code": "02.01",
+     "page": "02.01A",
+     "pdf": 50
+    },
+    {
+     "book": "QRH",
+     "code": "02.02",
+     "page": "02.02D",
+     "pdf": 54
     }
    ]
   }
@@ -230,135 +236,41 @@
    ]
   },
   {
-   "phase": "Single FWC fault — reset (QRH 02.54)",
+   "phase": "No reset",
    "steps": [
     {
-     "actor": "PM",
+     "actor": "BOTH",
      "items": [
-      {
-       "kind": "callout",
-       "text": "CONFIRM?",
-       "applies_to": [
-        "all"
-       ],
-       "refs": [
-        {
-         "book": "PDP",
-         "code": "Management of abnormal operations",
-         "page": "XFTDN6ECAM00001",
-         "pdf": 432
-        }
-       ]
-      },
       {
        "kind": "note",
-       "text": "PM points to the C/B; PF answers “CONFIRMED”",
+       "text": "Do not use the FWS FWC 1(2) FAULT reset (QRH 02.54A): it covers a single FWC only. FWC 1 + 2 is not in the system reset table and its procedure requests no reset → RESET NOT AUTHORIZED in flight.",
        "applies_to": [
         "all"
        ],
        "refs": [
         {
-         "book": "PDP",
-         "code": "Management of abnormal operations",
-         "page": "XFTDN6ECAM00001",
-         "pdf": 432
+         "book": "QRH",
+         "code": "02.01",
+         "page": "02.01A",
+         "pdf": 50
         },
         {
-         "book": "FCTM",
-         "code": "AOP-30-20",
-         "page": "P 1/2",
-         "pdf": 80
-        }
-       ]
-      }
-     ]
-    },
-    {
-     "actor": "PF",
-     "items": [
-      {
-       "kind": "callout",
-       "text": "CONFIRMED",
-       "applies_to": [
-        "all"
-       ],
-       "refs": [
-        {
-         "book": "PDP",
-         "code": "Management of abnormal operations",
-         "page": "XFTDN6ECAM00001",
-         "pdf": 432
-        }
-       ]
-      }
-     ]
-    },
-    {
-     "actor": "PM",
-     "items": [
-      {
-       "kind": "condition",
-       "text": "If FWS FWC 1 FAULT",
-       "children": [
-        {
-         "kind": "ecam",
-         "item": "C/B F01 (FWS / FWC1 / SPLY) on 49VU",
-         "setting": "PULL — wait 5 s — PUSH",
-         "applies_to": [
-          "all"
-         ],
-         "refs": [
-          {
-           "book": "QRH",
-           "code": "02.54",
-           "page": "02.54A",
-           "pdf": 116
-          }
-         ]
-        }
-       ],
-       "applies_to": [
-        "all"
-       ],
-       "refs": [
+         "book": "QRH",
+         "code": "02.02",
+         "page": "02.02D",
+         "pdf": 54
+        },
         {
          "book": "QRH",
          "code": "02.54",
          "page": "02.54A",
          "pdf": 116
-        }
-       ]
-      },
-      {
-       "kind": "condition",
-       "text": "If FWS FWC 2 FAULT",
-       "children": [
+        },
         {
-         "kind": "ecam",
-         "item": "C/B Q07 (EIS / FWC2 / SPLY) on 121VU",
-         "setting": "PULL — wait 5 s — PUSH",
-         "applies_to": [
-          "all"
-         ],
-         "refs": [
-          {
-           "book": "QRH",
-           "code": "02.54",
-           "page": "02.54A",
-           "pdf": 116
-          }
-         ]
-        }
-       ],
-       "applies_to": [
-        "all"
-       ],
-       "refs": [
-        {
-         "book": "QRH",
-         "code": "02.54",
-         "page": "02.54A",
-         "pdf": 116
+         "book": "FCOM",
+         "code": "PRO-ABN-FWS",
+         "page": "P 3/8",
+         "pdf": 3684
         }
        ]
       }
@@ -441,184 +353,11 @@
      ]
     }
    ]
-  },
-  {
-   "title": "FWS FWC 1(2) FAULT reset",
-   "source": "QRH 02.54",
-   "lines": [
-    {
-     "kind": "condition",
-     "text": "If FWS FWC 1 FAULT:",
-     "level": 0,
-     "applies_to": [
-      "all"
-     ],
-     "refs": [
-      {
-       "book": "QRH",
-       "code": "02.54",
-       "page": "02.54A",
-       "pdf": 116
-      }
-     ]
-    },
-    {
-     "kind": "action",
-     "item": "C/B F01 (FWS / FWC1 / SPLY) — on 49VU",
-     "setting": "PULL",
-     "text": "",
-     "level": 1,
-     "applies_to": [
-      "all"
-     ],
-     "refs": [
-      {
-       "book": "QRH",
-       "code": "02.54",
-       "page": "02.54A",
-       "pdf": 116
-      }
-     ]
-    },
-    {
-     "kind": "info",
-     "text": "Wait 5 s",
-     "level": 1,
-     "applies_to": [
-      "all"
-     ],
-     "refs": [
-      {
-       "book": "QRH",
-       "code": "02.54",
-       "page": "02.54A",
-       "pdf": 116
-      }
-     ]
-    },
-    {
-     "kind": "action",
-     "item": "C/B F01 (FWS / FWC1 / SPLY)",
-     "setting": "PUSH",
-     "text": "",
-     "level": 1,
-     "applies_to": [
-      "all"
-     ],
-     "refs": [
-      {
-       "book": "QRH",
-       "code": "02.54",
-       "page": "02.54A",
-       "pdf": 116
-      }
-     ]
-    },
-    {
-     "kind": "condition",
-     "text": "If FWS FWC 2 FAULT:",
-     "level": 0,
-     "applies_to": [
-      "all"
-     ],
-     "refs": [
-      {
-       "book": "QRH",
-       "code": "02.54",
-       "page": "02.54A",
-       "pdf": 116
-      }
-     ]
-    },
-    {
-     "kind": "action",
-     "item": "C/B Q07 (EIS / FWC2 / SPLY) — on 121VU",
-     "setting": "PULL",
-     "text": "",
-     "level": 1,
-     "applies_to": [
-      "all"
-     ],
-     "refs": [
-      {
-       "book": "QRH",
-       "code": "02.54",
-       "page": "02.54A",
-       "pdf": 116
-      }
-     ]
-    },
-    {
-     "kind": "info",
-     "text": "Wait 5 s",
-     "level": 1,
-     "applies_to": [
-      "all"
-     ],
-     "refs": [
-      {
-       "book": "QRH",
-       "code": "02.54",
-       "page": "02.54A",
-       "pdf": 116
-      }
-     ]
-    },
-    {
-     "kind": "action",
-     "item": "C/B Q07 (EIS / FWC2 / SPLY)",
-     "setting": "PUSH",
-     "text": "",
-     "level": 1,
-     "applies_to": [
-      "all"
-     ],
-     "refs": [
-      {
-       "book": "QRH",
-       "code": "02.54",
-       "page": "02.54A",
-       "pdf": 116
-      }
-     ]
-    },
-    {
-     "kind": "note",
-     "text": "On ground, wait 50 s after pushing the C/Bs.",
-     "level": 0,
-     "applies_to": [
-      "all"
-     ],
-     "refs": [
-      {
-       "book": "QRH",
-       "code": "02.54",
-       "page": "02.54A",
-       "pdf": 116
-      }
-     ]
-    }
-   ]
   }
  ],
  "status": {
   "limitations": [],
-  "info": [
-   {
-    "text": "Single FWC fault: CAT 3 SINGLE ONLY (INOP SYS: CAT 3 DUAL, FWC 1(2))",
-    "applies_to": [
-     "all"
-    ],
-    "refs": [
-     {
-      "book": "FCOM",
-      "code": "PRO-ABN-FWS",
-      "page": "P 5/8",
-      "pdf": 3686
-     }
-    ]
-   }
-  ],
+  "info": [],
   "appr_proc": [],
   "inop_sys": [
    {
@@ -639,7 +378,22 @@
  },
  "qrh": [],
  "tables": [],
- "background": [],
+ "background": [
+  {
+   "text": "QRH system reset rule: in flight, a reset is authorized only if the ECAM/OEB/FCOM/QRH procedure requests it, or if the alert is listed and authorized in the system reset table; on ground, also if the affected system is NOT listed in the table. In all other cases: RESET NOT AUTHORIZED. Only one reset at a time.",
+   "applies_to": [
+    "all"
+   ],
+   "refs": [
+    {
+     "book": "QRH",
+     "code": "02.01",
+     "page": "02.01A",
+     "pdf": 50
+    }
+   ]
+  }
+ ],
  "technique": [],
  "related": [
   {
@@ -656,24 +410,40 @@
      "pdf": 3687
     }
    ]
-  }
- ],
- "differences": [],
- "gaps": [
+  },
   {
-   "text": "The QRH reset table covers FWC 1(2) FAULT (single); no reset is listed for FWC 1 + 2.",
-   "applies_to": [
-    "all"
+   "title": "FWS FWC 1(2) FAULT (single FWC)",
+   "why": "A different alert. Only this single-FWC fault is in the QRH system reset table; it does not apply to FWC 1 + 2.",
+   "key_actions": [
+    "If FWS FWC 1 FAULT: C/B F01 (FWS / FWC1 / SPLY) on 49VU PULL, wait 5 s, PUSH",
+    "If FWS FWC 2 FAULT: C/B Q07 (EIS / FWC2 / SPLY) on 121VU PULL, wait 5 s, PUSH",
+    "On ground, wait 50 s after pushing the C/Bs",
+    "STATUS: CAT 3 SINGLE ONLY"
    ],
    "refs": [
+    {
+     "book": "QRH",
+     "code": "02.02",
+     "page": "02.02D",
+     "pdf": 54
+    },
     {
      "book": "QRH",
      "code": "02.54",
      "page": "02.54A",
      "pdf": 116
+    },
+    {
+     "book": "FCOM",
+     "code": "PRO-ABN-FWS",
+     "page": "P 5/8",
+     "pdf": 3686
     }
    ]
-  },
+  }
+ ],
+ "differences": [],
+ "gaps": [
   {
    "text": "No FCTM technique for this alert in the supplied FCTM.",
    "applies_to": [
@@ -685,6 +455,26 @@
      "code": "PRO-ABN-FWS",
      "page": "P 3/8",
      "pdf": 3684
+    }
+   ]
+  },
+  {
+   "text": "On ground, QRH 02.01A also authorizes a reset when the affected system is not listed in the reset table. The FWC is listed (as FWS FWC 1(2) FAULT), so the supplied manuals give no reset for FWC 1 + 2 on ground either.",
+   "applies_to": [
+    "all"
+   ],
+   "refs": [
+    {
+     "book": "QRH",
+     "code": "02.01",
+     "page": "02.01A",
+     "pdf": 50
+    },
+    {
+     "book": "QRH",
+     "code": "02.02",
+     "page": "02.02D",
+     "pdf": 54
     }
    ]
   }
@@ -699,9 +489,9 @@
   },
   {
    "book": "QRH",
-   "section": "02.54 FWS FWC 1(2) FAULT",
-   "pages": "02.54A",
-   "pdf": "116",
+   "section": "02.01A System reset – general; 02.02D system reset table; 02.54A FWS FWC 1(2) FAULT (related, single FWC)",
+   "pages": "02.01A, 02.02D, 02.54A",
+   "pdf": "50, 54, 116",
    "rev": "26 MAY 26"
   }
  ],

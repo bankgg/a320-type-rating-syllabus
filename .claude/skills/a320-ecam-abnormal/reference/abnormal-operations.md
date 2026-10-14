@@ -42,6 +42,8 @@ Source: FCTM AOP-30-20 P 1–2/2 (PDF 80–81)
 - **Thrust levers** are operated by the PF only: PF indicates the lever and asks confirmation → PM verifies and confirms → PF moves it.
 - Overhead actions: PM points to the panel/control and announces **system name – control – action** (e.g. "AIR, XBLEED, CLOSE"), then checks the SD page to confirm the result.
 - System resets: only those listed in the QRH; never from memory.
+- **Reset authorization (QRH 02.01A, PDF 50, verified visually):** in flight, a reset is authorized only if the ECAM/OEB/FCOM/QRH procedure requests it, or the alert is *listed and authorized* in the system reset table (02.02); on ground, also if the affected system is NOT listed. In all other cases: **RESET NOT AUTHORIZED** (red WARNING). Several failures of the same system: not authorized if at least one reset is not. One reset at a time. Standard reset: CKPT CTL OFF, 3 s, ON — or C/B CROSSCHECK (both), PULL, 5 s, PUSH — then 3 s, RESET(S) RECORD in logbook.
+- **A table entry covers only the alert it names.** A single-unit entry ("FWS FWC 1(2) FAULT") does not cover the dual failure; dual cases are named explicitly when covered ("NAV FLS 1(2) (1+2) FAULT", "FUEL FQI CH 1+2 FAULT"). So FWC 1 + 2 FAULT has no reset in flight, and SDAC (not in the table at all) has none in flight but the standard reset on ground.
 
 ## 6. ECAM handling sequence (PF/PM table)
 Source: FCTM AOP-30-30 P 2–4/6 (PDF 83–85, graphical table — verified visually); callouts also FCOM PRO-ABN-ABN-00 P 8/12 (PDF 2831)

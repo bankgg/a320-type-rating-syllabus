@@ -4267,9 +4267,9 @@
                 <span class="alert-chip caution">Amber caution</span>
                 <span class="brief-trainees">Practised by <span class="trainee-label trainee-b"><span class="trainee-word">Trainee </span>B</span></span>
               </div>
-              <p class="brief-summary">Both system data acquisition concentrators are lost, so some amber cautions will not appear. Red warnings, engine and fuel parameters and slat/flap positions stay on the upper ECAM. Watch the overhead panel for local fault lights; only the ENG, FUEL, F/CTL and WHEEL (gear position) SD pages remain.</p>
-              <p class="session-note"><strong>In MFTD/FBS 8</strong> Demonstration with reset.</p>
-              <dl class="key-limits" aria-label="Key limits"><div><dt>Lost</dt><dd>some amber cautions</dd></div><div><dt>SD pages left</dt><dd>ENG · FUEL · F/CTL · WHEEL</dd></div></dl>
+              <p class="brief-summary">Both system data acquisition concentrators are lost, so some amber cautions will not appear. Red warnings, engine and fuel parameters and slat/flap positions stay on the upper ECAM. Watch the overhead panel for local fault lights; only the ENG, FUEL, F/CTL and WHEEL (gear position) SD pages remain. SDAC is not in the QRH system reset table: no reset in flight; on ground, the standard reset procedure may be used.</p>
+              <p class="session-note"><strong>In MFTD/FBS 8</strong> Demonstration with reset. The QRH allows no SDAC reset in flight, only the standard reset on ground (see Reset rule).</p>
+              <dl class="key-limits" aria-label="Key limits"><div><dt>Lost</dt><dd>some amber cautions</dd></div><div><dt>SD pages left</dt><dd>ENG · FUEL · F/CTL · WHEEL</dd></div><div><dt>Reset</dt><dd>In flight: NOT AUTHORIZED · on ground: standard reset</dd></div></dl>
             </div>
             <section class="brief-section" aria-labelledby="mftd-8-procedures-6-fws-sdac-1-2-fault-flow">
               <div class="section-head"><h5 class="section-title" tabindex="-1" id="mftd-8-procedures-6-fws-sdac-1-2-fault-flow"><svg class="icon section-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="6" cy="5.5" r="2.2"/><circle cx="6" cy="18.5" r="2.2"/><path d="M6 7.7v8.6M11 5.5h9M11 12h6M11 18.5h9"/></svg>Handling flow</h5><p class="section-note">Who does what, phase by phase</p></div>
@@ -4309,7 +4309,7 @@
                       </div>
                     </li>
                   </ol>
-                </div><div class="flow-phase last">
+                </div><div class="flow-phase">
                   <h6 class="phase-name"><span class="phase-num" aria-hidden="true">3</span><span>STATUS</span></h6>
                   <ol class="turns">
                     <li class="turn turn-pm">
@@ -4368,6 +4368,17 @@
                       </div>
                     </li>
                   </ol>
+                </div><div class="flow-phase last">
+                  <h6 class="phase-name"><span class="phase-num" aria-hidden="true">4</span><span>Reset rule</span></h6>
+                  <ol class="turns">
+                    <li class="turn turn-both">
+                      <div class="turn-body">
+                        <span class="turn-no" aria-hidden="true">4.1</span>
+                        <span class="lane-tag">PF + PM</span>
+                        <ul aria-label="Step 4.1, Both pilots"><li class="flow-item note">SDAC is not listed in the QRH system reset table and the procedure requests no reset → in flight: RESET NOT AUTHORIZED.</li><li class="flow-item condition"><span class="cond-label">On ground (affected system not listed → reset authorized)</span><ul class="flow-children"><li class="flow-item action">Standard reset: associated C/B CROSSCHECK (both pilots), PULL, wait 5 s, PUSH; wait 3 s; RESET(S) RECORD in logbook. One reset at a time.</li></ul></li></ul>
+                      </div>
+                    </li>
+                  </ol>
                 </div>
               </div>
             </section>
@@ -4398,13 +4409,13 @@
                 <details><summary>What it is<svg class="icon summary-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m9 6 6 6-6 6"/></svg></summary><div class="details-body">
                   <p><strong>Trigger.</strong> Both SDAC 1 and SDAC 2 have failed.</p>
                   <p><strong>Flight phase inhibition.</strong> Inhibited in phases 4, 5, 7, 8.</p>
-
+                  <ul class="plain-list"><li>QRH system reset rule: in flight, a reset is authorized only if the ECAM/OEB/FCOM/QRH procedure requests it, or if the alert is listed and authorized in the system reset table; on ground, also if the affected system is NOT listed in the table. In all other cases: RESET NOT AUTHORIZED. Only one reset at a time.</li></ul>
                 </div></details>
 
                 <details><summary>Related procedures<svg class="icon summary-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m9 6 6 6-6 6"/></svg></summary><div class="details-body"><ul class="plain-list"><li><strong>FWS FWC 1 + 2 FAULT</strong> — Related FWS failure. See the FWC brief.</li></ul></div></details>
 
-                <details><summary>Gaps and omissions<svg class="icon summary-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m9 6 6 6-6 6"/></svg></summary><div class="details-body"><ul class="plain-list"><li>No SDAC entry in the QRH system reset table and no FCTM technique for this alert in the supplied manuals; the syllabus &#34;reset&#34; is not described in books/.</li></ul></div></details>
-                <details><summary>Sources (9 references)<svg class="icon summary-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m9 6 6 6-6 6"/></svg></summary><div class="details-body"><div class="table-scroll"><table class="sources-table"><thead><tr><th scope="col">Book</th><th scope="col">Section</th><th scope="col">Pages</th><th scope="col">PDF</th><th scope="col">Rev</th></tr></thead><tbody><tr><td>FCOM</td><td>PRO-ABN-FWS — FWS SDAC 1 + 2 FAULT</td><td>P 6/8</td><td>3687</td><td>26 MAY 26</td></tr></tbody></table></div></div></details>
+                <details><summary>Gaps and omissions<svg class="icon summary-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m9 6 6 6-6 6"/></svg></summary><div class="details-body"><ul class="plain-list"><li>SDAC is not in the QRH system reset table, so the general rule (QRH 02.01A) applies: no reset in flight, standard reset on ground. The SDAC C/B identities are not given in the supplied QRH. No FCTM technique for this alert in the supplied manuals.</li></ul></div></details>
+                <details><summary>Sources (10 references)<svg class="icon summary-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m9 6 6 6-6 6"/></svg></summary><div class="details-body"><div class="table-scroll"><table class="sources-table"><thead><tr><th scope="col">Book</th><th scope="col">Section</th><th scope="col">Pages</th><th scope="col">PDF</th><th scope="col">Rev</th></tr></thead><tbody><tr><td>FCOM</td><td>PRO-ABN-FWS — FWS SDAC 1 + 2 FAULT</td><td>P 6/8</td><td>3687</td><td>26 MAY 26</td></tr><tr><td>QRH</td><td>02.01A System reset – general; 02.02 system reset table (no SDAC entry)</td><td>02.01A, 02.02A–02.02E</td><td>50–55</td><td>26 MAY 26</td></tr></tbody></table></div></div></details>
               </div>
             </section>
             <p class="brief-footnote">Study aid from uncontrolled THA A320/A321 FCOM, FCTM and QRH copies (14 JUL 26) and the Airbus PDP tutorials (Jan 2024), HS-TX registrations only. Not for operational use.</p>
@@ -4415,9 +4426,9 @@
                 <span class="alert-chip caution">Amber caution</span>
                 <span class="brief-trainees">Practised by <span class="trainee-label trainee-b"><span class="trainee-word">Trainee </span>B</span></span>
               </div>
-              <p class="brief-summary">Both flight warning computers are lost: no ECAM cautions or warnings, no aural warnings, no master lights, no altitude alert, STATUS, auto callouts or memos. ECAM system pages remain, so the crew checks the overhead panel and SD pages more often than usual. A single FWC fault can be reset from the QRH.</p>
-              <p class="session-note"><strong>In MFTD/FBS 8</strong> Demonstration with reset.</p>
-              <dl class="key-limits" aria-label="Key limits"><div><dt>Lost</dt><dd>ECAM warnings, aurals, MASTER lights</dd></div><div><dt>Also lost</dt><dd>ALTI ALERT · STATUS · A/CALL OUT · MEMO</dd></div><div><dt>INOP</dt><dd>CAT 2</dd></div><div><dt>FWC reset (single)</dt><dd>C/B 5 s</dd></div></dl>
+              <p class="brief-summary">Both flight warning computers are lost: no ECAM cautions or warnings, no aural warnings, no master lights, no altitude alert, STATUS, auto callouts or memos. ECAM system pages remain, so the crew checks the overhead panel and SD pages more often than usual. The procedure requests no reset, and the QRH reset table lists only a single FWC fault (FWS FWC 1(2) FAULT), so resetting FWC 1 + 2 is not authorized in flight.</p>
+              <p class="session-note"><strong>In MFTD/FBS 8</strong> Demonstration with reset. The QRH authorizes no reset for FWC 1 + 2; its FWC 1(2) reset is for a single FWC only (see No reset).</p>
+              <dl class="key-limits" aria-label="Key limits"><div><dt>Lost</dt><dd>ECAM warnings, aurals, MASTER lights</dd></div><div><dt>Also lost</dt><dd>ALTI ALERT · STATUS · A/CALL OUT · MEMO</dd></div><div><dt>INOP</dt><dd>CAT 2</dd></div><div><dt>Reset</dt><dd>NOT AUTHORIZED in flight</dd></div></dl>
             </div>
             <section class="brief-section" aria-labelledby="mftd-8-procedures-6-fws-fwc-1-2-fault-flow">
               <div class="section-head"><h5 class="section-title" tabindex="-1" id="mftd-8-procedures-6-fws-fwc-1-2-fault-flow"><svg class="icon section-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="6" cy="5.5" r="2.2"/><circle cx="6" cy="18.5" r="2.2"/><path d="M6 7.7v8.6M11 5.5h9M11 12h6M11 18.5h9"/></svg>Handling flow</h5><p class="section-note">Who does what, phase by phase</p></div>
@@ -4458,25 +4469,13 @@
                     </li>
                   </ol>
                 </div><div class="flow-phase last">
-                  <h6 class="phase-name"><span class="phase-num" aria-hidden="true">3</span><span>Single FWC fault — reset (QRH 02.54)</span></h6>
+                  <h6 class="phase-name"><span class="phase-num" aria-hidden="true">3</span><span>No reset</span></h6>
                   <ol class="turns">
-                    <li class="turn turn-pm">
+                    <li class="turn turn-both">
                       <div class="turn-body">
                         <span class="turn-no" aria-hidden="true">3.1</span>
-                        <span class="lane-tag">PM</span>
-                        <ul aria-label="Step 3.1, Pilot monitoring"><li class="flow-item callout"><span class="callout-mark"><svg class="icon callout-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 5h16v11H11l-4.5 3.5V16H4z"/></svg></span><q class="callout">CONFIRM?</q></li><li class="flow-item note">PM points to the C/B; PF answers “CONFIRMED”</li></ul>
-                      </div>
-                    </li><li class="turn turn-pf">
-                      <div class="turn-body">
-                        <span class="turn-no" aria-hidden="true">3.2</span>
-                        <span class="lane-tag">PF</span>
-                        <ul aria-label="Step 3.2, Pilot flying"><li class="flow-item callout"><span class="callout-mark"><svg class="icon callout-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 5h16v11H11l-4.5 3.5V16H4z"/></svg></span><q class="callout">CONFIRMED</q></li></ul>
-                      </div>
-                    </li><li class="turn turn-pm">
-                      <div class="turn-body">
-                        <span class="turn-no" aria-hidden="true">3.3</span>
-                        <span class="lane-tag">PM</span>
-                        <ul aria-label="Step 3.3, Pilot monitoring"><li class="flow-item condition"><span class="cond-label">If FWS FWC 1 FAULT</span><ul class="flow-children"><li class="flow-item ecam"><span class="ecam-line"><span class="ecam-item">C/B F01 (FWS / FWC1 / SPLY) on 49VU</span><span class="leader" aria-hidden="true"></span><span class="ecam-setting">PULL — wait 5 s — PUSH</span></span></li></ul></li><li class="flow-item condition"><span class="cond-label">If FWS FWC 2 FAULT</span><ul class="flow-children"><li class="flow-item ecam"><span class="ecam-line"><span class="ecam-item">C/B Q07 (EIS / FWC2 / SPLY) on 121VU</span><span class="leader" aria-hidden="true"></span><span class="ecam-setting">PULL — wait 5 s — PUSH</span></span></li></ul></li></ul>
+                        <span class="lane-tag">PF + PM</span>
+                        <ul aria-label="Step 3.1, Both pilots"><li class="flow-item note">Do not use the FWS FWC 1(2) FAULT reset (QRH 02.54A): it covers a single FWC only. FWC 1 + 2 is not in the system reset table and its procedure requests no reset → RESET NOT AUTHORIZED in flight.</li></ul>
                       </div>
                     </li>
                   </ol>
@@ -4490,17 +4489,13 @@
                   <h6 class="block-title">ECAM procedure — FWC 1 + 2 FAULT</h6>
                   <ol class="proc-lines"><li class="proc-line action" style="--level: 0"><span class="ecam-line"><span class="ecam-item">MONITOR SYS</span><span class="leader" aria-hidden="true"></span><span class="ecam-setting">—</span></span></li><li class="proc-line action" style="--level: 0"><span class="ecam-line"><span class="ecam-item">MONITOR OVERHEAD PANEL</span><span class="leader" aria-hidden="true"></span><span class="ecam-setting">—</span></span></li><li class="proc-line info" style="--level: 0"><span class="proc-note">NOT AVAIL: ECAM WARN · ALTI ALERT · STATUS · A/CALL OUT · MEMO</span></li><li class="proc-line note" style="--level: 0"><span class="proc-note">ECAM cautions and warnings, aural warnings, master caution and warning lights are lost. ECAM system pages are still available.</span></li></ol>
                   <p class="ref-line">FCOM PRO-ABN-FWS P 3/8 · PDF 3684 · FCOM PRO-ABN-FWS P 4/8 · PDF 3685</p>
-                </section><section class="verbatim">
-                  <h6 class="block-title">FWS FWC 1(2) FAULT reset</h6>
-                  <ol class="proc-lines"><li class="proc-line condition" style="--level: 0"><span class="cond-label">If FWS FWC 1 FAULT:</span></li><li class="proc-line action" style="--level: 1"><span class="ecam-line"><span class="ecam-item">C/B F01 (FWS / FWC1 / SPLY) — on 49VU</span><span class="leader" aria-hidden="true"></span><span class="ecam-setting">PULL</span></span></li><li class="proc-line info" style="--level: 1"><span class="proc-note">Wait 5 s</span></li><li class="proc-line action" style="--level: 1"><span class="ecam-line"><span class="ecam-item">C/B F01 (FWS / FWC1 / SPLY)</span><span class="leader" aria-hidden="true"></span><span class="ecam-setting">PUSH</span></span></li><li class="proc-line condition" style="--level: 0"><span class="cond-label">If FWS FWC 2 FAULT:</span></li><li class="proc-line action" style="--level: 1"><span class="ecam-line"><span class="ecam-item">C/B Q07 (EIS / FWC2 / SPLY) — on 121VU</span><span class="leader" aria-hidden="true"></span><span class="ecam-setting">PULL</span></span></li><li class="proc-line info" style="--level: 1"><span class="proc-note">Wait 5 s</span></li><li class="proc-line action" style="--level: 1"><span class="ecam-line"><span class="ecam-item">C/B Q07 (EIS / FWC2 / SPLY)</span><span class="leader" aria-hidden="true"></span><span class="ecam-setting">PUSH</span></span></li><li class="proc-line note" style="--level: 0"><span class="proc-note">On ground, wait 50 s after pushing the C/Bs.</span></li></ol>
-                  <p class="ref-line">QRH 02.54A · PDF 116</p>
                 </section></div>
                 <div class="verbatim-col">
                   <section class="verbatim status">
                     <h6 class="block-title">STATUS</h6>
 
 
-                    <p class="block-sub">Information</p><ul class="plain-list"><li>Single FWC fault: CAT 3 SINGLE ONLY (INOP SYS: CAT 3 DUAL, FWC 1(2))</li></ul>
+
                     <p class="block-sub">INOP SYS</p><ul class="inop-list"><li>CAT2 (other INOP SYS, FWC 1 + 2)</li></ul>
                   </section>
 
@@ -4514,13 +4509,13 @@
                 <details><summary>What it is<svg class="icon summary-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m9 6 6 6-6 6"/></svg></summary><div class="details-body">
                   <p><strong>Trigger.</strong> Both FWC 1 and FWC 2 have failed, or communication between the FWC and the EIS is lost.</p>
                   <p><strong>Flight phase inhibition.</strong> Not inhibited in any phase.</p>
-
+                  <ul class="plain-list"><li>QRH system reset rule: in flight, a reset is authorized only if the ECAM/OEB/FCOM/QRH procedure requests it, or if the alert is listed and authorized in the system reset table; on ground, also if the affected system is NOT listed in the table. In all other cases: RESET NOT AUTHORIZED. Only one reset at a time.</li></ul>
                 </div></details>
 
-                <details><summary>Related procedures<svg class="icon summary-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m9 6 6 6-6 6"/></svg></summary><div class="details-body"><ul class="plain-list"><li><strong>FWS SDAC 1 + 2 FAULT</strong> — Related FWS failure. See the SDAC brief.</li></ul></div></details>
+                <details><summary>Related procedures<svg class="icon summary-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m9 6 6 6-6 6"/></svg></summary><div class="details-body"><ul class="plain-list"><li><strong>FWS SDAC 1 + 2 FAULT</strong> — Related FWS failure. See the SDAC brief.</li><li><strong>FWS FWC 1(2) FAULT (single FWC)</strong> — A different alert. Only this single-FWC fault is in the QRH system reset table; it does not apply to FWC 1 + 2.. If FWS FWC 1 FAULT: C/B F01 (FWS / FWC1 / SPLY) on 49VU PULL, wait 5 s, PUSH; If FWS FWC 2 FAULT: C/B Q07 (EIS / FWC2 / SPLY) on 121VU PULL, wait 5 s, PUSH; On ground, wait 50 s after pushing the C/Bs; STATUS: CAT 3 SINGLE ONLY.</li></ul></div></details>
 
-                <details><summary>Gaps and omissions<svg class="icon summary-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m9 6 6 6-6 6"/></svg></summary><div class="details-body"><ul class="plain-list"><li>The QRH reset table covers FWC 1(2) FAULT (single); no reset is listed for FWC 1 + 2.</li><li>No FCTM technique for this alert in the supplied FCTM.</li></ul></div></details>
-                <details><summary>Sources (9 references)<svg class="icon summary-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m9 6 6 6-6 6"/></svg></summary><div class="details-body"><div class="table-scroll"><table class="sources-table"><thead><tr><th scope="col">Book</th><th scope="col">Section</th><th scope="col">Pages</th><th scope="col">PDF</th><th scope="col">Rev</th></tr></thead><tbody><tr><td>FCOM</td><td>PRO-ABN-FWS — FWC 1 + 2 FAULT, FWC 1(2) FAULT</td><td>P 3–5/8</td><td>3684–3686</td><td>26 MAY 26</td></tr><tr><td>QRH</td><td>02.54 FWS FWC 1(2) FAULT</td><td>02.54A</td><td>116</td><td>26 MAY 26</td></tr></tbody></table></div></div></details>
+                <details><summary>Gaps and omissions<svg class="icon summary-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m9 6 6 6-6 6"/></svg></summary><div class="details-body"><ul class="plain-list"><li>No FCTM technique for this alert in the supplied FCTM.</li><li>On ground, QRH 02.01A also authorizes a reset when the affected system is not listed in the reset table. The FWC is listed (as FWS FWC 1(2) FAULT), so the supplied manuals give no reset for FWC 1 + 2 on ground either.</li></ul></div></details>
+                <details><summary>Sources (9 references)<svg class="icon summary-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m9 6 6 6-6 6"/></svg></summary><div class="details-body"><div class="table-scroll"><table class="sources-table"><thead><tr><th scope="col">Book</th><th scope="col">Section</th><th scope="col">Pages</th><th scope="col">PDF</th><th scope="col">Rev</th></tr></thead><tbody><tr><td>FCOM</td><td>PRO-ABN-FWS — FWC 1 + 2 FAULT, FWC 1(2) FAULT</td><td>P 3–5/8</td><td>3684–3686</td><td>26 MAY 26</td></tr><tr><td>QRH</td><td>02.01A System reset – general; 02.02D system reset table; 02.54A FWS FWC 1(2) FAULT (related, single FWC)</td><td>02.01A, 02.02D, 02.54A</td><td>50, 54, 116</td><td>26 MAY 26</td></tr></tbody></table></div></div></details>
               </div>
             </section>
             <p class="brief-footnote">Study aid from uncontrolled THA A320/A321 FCOM, FCTM and QRH copies (14 JUL 26) and the Airbus PDP tutorials (Jan 2024), HS-TX registrations only. Not for operational use.</p>

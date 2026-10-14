@@ -5,15 +5,17 @@
 **Amber caution · no memory items**  
 **Applicability:** all HS-TX — Applicable to ALL.
 
-Both system data acquisition concentrators are lost, so some amber cautions will not appear. Red warnings, engine and fuel parameters and slat/flap positions stay on the upper ECAM. Watch the overhead panel for local fault lights; only the ENG, FUEL, F/CTL and WHEEL (gear position) SD pages remain.
+Both system data acquisition concentrators are lost, so some amber cautions will not appear. Red warnings, engine and fuel parameters and slat/flap positions stay on the upper ECAM. Watch the overhead panel for local fault lights; only the ENG, FUEL, F/CTL and WHEEL (gear position) SD pages remain. SDAC is not in the QRH system reset table: no reset in flight; on ground, the standard reset procedure may be used.
 
 ## 1. What it is
 - **Trigger:** Both SDAC 1 and SDAC 2 have failed. [FCOM PRO-ABN-FWS P 6/8, PDF 3687]
 - **Flight phase inhibition:** phases 4, 5, 7, 8 [FCOM PRO-ABN-FWS P 6/8, PDF 3687]
+- QRH system reset rule: in flight, a reset is authorized only if the ECAM/OEB/FCOM/QRH procedure requests it, or if the alert is listed and authorized in the system reset table; on ground, also if the affected system is NOT listed in the table. In all other cases: RESET NOT AUTHORIZED. Only one reset at a time. [QRH 02.01A, PDF 50]
 
 ## 2. Key limits
 - **Lost:** some amber cautions [FCOM PRO-ABN-FWS P 6/8, PDF 3687]
 - **SD pages left:** ENG · FUEL · F/CTL · WHEEL [FCOM PRO-ABN-FWS P 6/8, PDF 3687]
+- **Reset:** In flight: NOT AUTHORIZED · on ground: standard reset [QRH 02.01A, PDF 50]
 
 ## 3. Flow (PF / PM)
 ### 1. Recognise
@@ -52,6 +54,12 @@ Both system data acquisition concentrators are lost, so some amber cautions will
 **3.9 PM**
 - “ECAM ACTIONS COMPLETE” [FCOM PRO-ABN-ABN-00 P 8/12, PDF 2831; PDP Management of abnormal operations, PDF 426]
 
+### 4. Reset rule
+**4.1 PF + PM**
+- SDAC is not listed in the QRH system reset table and the procedure requests no reset → in flight: RESET NOT AUTHORIZED. [QRH 02.01A, PDF 50; FCOM PRO-ABN-FWS P 6/8, PDF 3687]
+- **On ground (affected system not listed → reset authorized)** [QRH 02.01A, PDF 50]
+  - Standard reset: associated C/B CROSSCHECK (both pilots), PULL, wait 5 s, PUSH; wait 3 s; RESET(S) RECORD in logbook. One reset at a time. [QRH 02.01A, PDF 50]
+
 ## 4. Procedure
 ### ECAM procedure (FCOM PRO-ABN-FWS)
 - MONITOR OVERHEAD PANEL …… — — Some amber cautions are lost. [FCOM PRO-ABN-FWS P 6/8, PDF 3687]
@@ -71,9 +79,10 @@ Both system data acquisition concentrators are lost, so some amber cautions will
 None — the content applies to every HS-TX registration.
 
 ## 10. Gaps and omissions
-- No SDAC entry in the QRH system reset table and no FCTM technique for this alert in the supplied manuals; the syllabus "reset" is not described in books/. [FCOM PRO-ABN-FWS P 6/8, PDF 3687; QRH 02.01A, PDF 50]
+- SDAC is not in the QRH system reset table, so the general rule (QRH 02.01A) applies: no reset in flight, standard reset on ground. The SDAC C/B identities are not given in the supplied QRH. No FCTM technique for this alert in the supplied manuals. [QRH 02.01A, PDF 50; QRH 02.02D, PDF 54]
 
 ## Sources
 | Book | Section | Pages | PDF | Rev |
 |---|---|---|---|---|
 | FCOM | PRO-ABN-FWS — FWS SDAC 1 + 2 FAULT | P 6/8 | 3687 | 26 MAY 26 |
+| QRH | 02.01A System reset – general; 02.02 system reset table (no SDAC entry) | 02.01A, 02.02A–02.02E | 50–55 | 26 MAY 26 |

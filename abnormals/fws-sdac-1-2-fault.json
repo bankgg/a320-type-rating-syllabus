@@ -27,7 +27,7 @@
   "branches": [],
   "note": "Applicable to ALL."
  },
- "summary": "Both system data acquisition concentrators are lost, so some amber cautions will not appear. Red warnings, engine and fuel parameters and slat/flap positions stay on the upper ECAM. Watch the overhead panel for local fault lights; only the ENG, FUEL, F/CTL and WHEEL (gear position) SD pages remain.",
+ "summary": "Both system data acquisition concentrators are lost, so some amber cautions will not appear. Red warnings, engine and fuel parameters and slat/flap positions stay on the upper ECAM. Watch the overhead panel for local fault lights; only the ENG, FUEL, F/CTL and WHEEL (gear position) SD pages remain. SDAC is not in the QRH system reset table: no reset in flight; on ground, the standard reset procedure may be used.",
  "key_limits": [
   {
    "label": "Lost",
@@ -56,6 +56,21 @@
      "code": "PRO-ABN-FWS",
      "page": "P 6/8",
      "pdf": 3687
+    }
+   ]
+  },
+  {
+   "label": "Reset",
+   "value": "In flight: NOT AUTHORIZED · on ground: standard reset",
+   "applies_to": [
+    "all"
+   ],
+   "refs": [
+    {
+     "book": "QRH",
+     "code": "02.01",
+     "page": "02.01A",
+     "pdf": 50
     }
    ]
   }
@@ -481,6 +496,69 @@
      ]
     }
    ]
+  },
+  {
+   "phase": "Reset rule",
+   "steps": [
+    {
+     "actor": "BOTH",
+     "items": [
+      {
+       "kind": "note",
+       "text": "SDAC is not listed in the QRH system reset table and the procedure requests no reset → in flight: RESET NOT AUTHORIZED.",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "QRH",
+         "code": "02.01",
+         "page": "02.01A",
+         "pdf": 50
+        },
+        {
+         "book": "FCOM",
+         "code": "PRO-ABN-FWS",
+         "page": "P 6/8",
+         "pdf": 3687
+        }
+       ]
+      },
+      {
+       "kind": "condition",
+       "text": "On ground (affected system not listed → reset authorized)",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "QRH",
+         "code": "02.01",
+         "page": "02.01A",
+         "pdf": 50
+        }
+       ],
+       "children": [
+        {
+         "kind": "action",
+         "text": "Standard reset: associated C/B CROSSCHECK (both pilots), PULL, wait 5 s, PUSH; wait 3 s; RESET(S) RECORD in logbook. One reset at a time.",
+         "applies_to": [
+          "all"
+         ],
+         "refs": [
+          {
+           "book": "QRH",
+           "code": "02.01",
+           "page": "02.01A",
+           "pdf": 50
+          }
+         ]
+        }
+       ]
+      }
+     ]
+    }
+   ]
   }
  ],
  "procedures": [
@@ -564,7 +642,22 @@
  },
  "qrh": [],
  "tables": [],
- "background": [],
+ "background": [
+  {
+   "text": "QRH system reset rule: in flight, a reset is authorized only if the ECAM/OEB/FCOM/QRH procedure requests it, or if the alert is listed and authorized in the system reset table; on ground, also if the affected system is NOT listed in the table. In all other cases: RESET NOT AUTHORIZED. Only one reset at a time.",
+   "applies_to": [
+    "all"
+   ],
+   "refs": [
+    {
+     "book": "QRH",
+     "code": "02.01",
+     "page": "02.01A",
+     "pdf": 50
+    }
+   ]
+  }
+ ],
  "technique": [],
  "related": [
   {
@@ -586,22 +679,22 @@
  "differences": [],
  "gaps": [
   {
-   "text": "No SDAC entry in the QRH system reset table and no FCTM technique for this alert in the supplied manuals; the syllabus \"reset\" is not described in books/.",
+   "text": "SDAC is not in the QRH system reset table, so the general rule (QRH 02.01A) applies: no reset in flight, standard reset on ground. The SDAC C/B identities are not given in the supplied QRH. No FCTM technique for this alert in the supplied manuals.",
    "applies_to": [
     "all"
    ],
    "refs": [
     {
-     "book": "FCOM",
-     "code": "PRO-ABN-FWS",
-     "page": "P 6/8",
-     "pdf": 3687
-    },
-    {
      "book": "QRH",
      "code": "02.01",
      "page": "02.01A",
      "pdf": 50
+    },
+    {
+     "book": "QRH",
+     "code": "02.02",
+     "page": "02.02D",
+     "pdf": 54
     }
    ]
   }
@@ -612,6 +705,13 @@
    "section": "PRO-ABN-FWS — FWS SDAC 1 + 2 FAULT",
    "pages": "P 6/8",
    "pdf": "3687",
+   "rev": "26 MAY 26"
+  },
+  {
+   "book": "QRH",
+   "section": "02.01A System reset – general; 02.02 system reset table (no SDAC entry)",
+   "pages": "02.01A, 02.02A–02.02E",
+   "pdf": "50–55",
    "rev": "26 MAY 26"
   }
  ],
