@@ -548,7 +548,6 @@
       "toolbarMinHeight": "60px",
       "toolbarLayer": 5,
       "sessionNavigationLayer": 4,
-      "skipButtonLayer": 10,
       "gridGap": "16px",
       "readingWidths": {
         "overview": "70ch",
@@ -630,7 +629,7 @@
       },
       "procedureEntry": {
         "summaryLink": "inline, padding 4px 0, Blue medium weight",
-        "briefOpen": "full-width title button, min-height 44px, padding 6px 10px (6px inline at <=520px); cue word hidden at <=760px; schedule rows chevron only",
+        "briefOpen": "full-width title button, min-height 44px, padding 6px 10px (6px inline at <=520px); cue is a 1.5px dotted blue title underline (offset 5px, solid on hover) in Exercises and Schedule; no chevron or cue word",
         "disabledUntilEnhanced": true
       }
     },

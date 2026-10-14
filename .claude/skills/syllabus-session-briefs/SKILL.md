@@ -5,7 +5,7 @@ description: Add source-cited failure/abnormal procedure briefs (PF/PM handling 
 
 # Add failure-procedure briefs to a syllabus session
 
-Reference implementations: **MFTD/FBS 8** (11 briefs) and **MFTD/FBS 9** (9 briefs, including 4 reused from MFTD 8 and the companion `eng-failure-cruise-strategy`). Look at it before starting: `PROCEDURE_GROUPS['mftd-8']` and `EXERCISE_BRIEFS` in `build_comparison.py`, the briefs in `abnormals/`, and the page at `index.html?session=mftd-8&view=exercises&brief=eng-1-2-fail`. The page design is already finished. This skill adds content and mappings; do not restyle the modal.
+Reference implementations: **MFTD/FBS 8** (11 briefs) and **MFTD/FBS 9** (9 briefs, including 4 reused from MFTD 8 and the companion `eng-failure-cruise-strategy`). Look at it before starting: `PROCEDURE_GROUPS['mftd-8']` and `EXERCISE_BRIEFS` in `build_comparison.py`, the briefs in `abnormals/`, and the page at `index.html?session=mftd-8&view=exercises&brief=eng-1-2-fail`. The page design is already finished, including the procedure cue (dotted blue underline on Exercises and Schedule titles that open a brief). This skill adds content and mappings; do not restyle the modal or the cue.
 
 ## 1. Scope the session
 - Normalise the request: "MFTD 9" → `mftd-9`, "FFS 5" → `ffs-5`.
@@ -41,14 +41,14 @@ Every brief must validate: `python3 -I .claude/skills/a320-ecam-abnormal/scripts
 - **`EXERCISE_BRIEFS`:** map each failure-related exercise id (`<sid>-eNN`) that has a brief to its main slug. Each id must be in `FAILURE_IDS`.
   - Every group needs at least one exercise-mapped member.
   - Companion briefs need no exercise of their own; they inherit the group's trainees and open from the group's tabs.
-- Schedule rows link automatically through their `exercise_ids`.
+- Schedule rows link automatically through their `exercise_ids`. Every linked row — an Exercises title or a Schedule topic — shows a dotted blue underline (the page's only "opens a procedure" cue, keyed in each table's key); an orange row with no mapped exercise stays plain. So the mapping **is** the cue: map every failure exercise that has an ECAM/QRH brief, and never map a recovery row just to make it tappable.
 - Never edit `syllabus_sessions.json` facts or `index.html` directly. Rebuild with `python3 build_comparison.py`. Its validation fails clearly on bad labels, ids, unreachable groups, session-naming briefs or invalid briefs.
 
 ## 4. Verify (one batched round, one fix round, at most one confirm)
 Run `sh .claude/skills/syllabus-session-briefs/scripts/run_check.sh <sid>`. It fetches `libasound` once without root (needed by the cached headless Chromium), then runs [scripts/check_session.py](scripts/check_session.py) through `uv run --with playwright`. It takes about 1–2 min.
-- **Checks, at 1194×834 (iPad) and 390×844 (phone):** every `.brief-open` (exercise and schedule rows) and `.summary-link` opens the right brief; no page or dialog overflow; no visible text under 16px; buttons and summaries at least 44px tall; Escape closes the dialog and clears `?brief=`; every `&brief=<slug>` deep link works; no console errors.
+- **Checks, at 1194×834 (iPad) and 390×844 (phone):** every `.brief-open` (exercise and schedule rows) and `.summary-link` opens the right brief; in both Exercises and Schedule, every linked title has the dotted underline, no plain title has it, and the table key is visible; no page or dialog overflow; no visible text under 16px; buttons and summaries at least 44px tall; Escape closes the dialog and clears `?brief=`; every `&brief=<slug>` deep link works; no console errors.
 - **Also checked:** the Setup dialog of another session still opens; every brief renders without JavaScript.
-- **Output:** a JSON report (`failures` must be empty; exit code 1 otherwise), plus screenshots of each brief's first view and full height in `.claude/skills/syllabus-session-briefs/cache/shots/<sid>/`. **Look at the screenshots**: the flow turn order, condition indentation and HS-TX branch chips need human-eye review.
+- **Output:** a JSON report (`failures` must be empty; exit code 1 otherwise; `<viewport>-exercises.linked` / `<viewport>-schedule.linked` list the underlined titles), plus full-page Exercises and Schedule screenshots and screenshots of each brief's first view and full height in `.claude/skills/syllabus-session-briefs/cache/shots/<sid>/`. **Look at the screenshots**: the flow turn order, condition indentation and HS-TX branch chips need human-eye review. In `*-exercises.png` and `*-schedule.png`, confirm the underlined titles are exactly the ECAM/QRH items and the remaining orange rows are recovery manoeuvres.
 - **Shared-brief regression:** if you edited any shared brief or the template, rerun the check for every session that uses it (e.g. `mftd-8`), not only the new one.
 - **Reuse check:** for each reused brief, confirm the content is identical in both sessions. Only the badges and the session note may differ.
 
@@ -56,6 +56,6 @@ Run `sh .claude/skills/syllabus-session-briefs/scripts/run_check.sh <sid>`. It f
 - Update `PRODUCT.md` (which sessions have briefs) and the memory note about abnormal briefs.
 - Report:
   - the groups and briefs per subject, marking each as **reused unchanged**, **companion** or **new** (and any shared brief that was corrected, with the sessions rechecked);
-  - recovery rows left without a brief;
+  - the rows now underlined in Exercises and Schedule (from the `linked` lists) and the orange rows left plain (recovery, no brief);
   - gaps and source conflicts found by the briefs;
   - the review URL (`python3 -m http.server 8765 --bind 127.0.0.1`, then `/index.html?session=<sid>&view=exercises`).

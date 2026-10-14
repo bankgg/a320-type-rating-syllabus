@@ -52,6 +52,26 @@ with sync_playwright() as p:
         base = page.evaluate(CHECK)
         if base['docOverflow'] > 0 or base['small'] or base['targets']:
             fail(f'{label} session page: {base}')
+        # Procedure cue: in both tabs only rows that open a brief carry the dotted blue underline, and each tab's key says so
+        for view, panel, text, name in (('exercises', 'exercises', '.exercise-title', 'exercises'), ('topics', 'topics', '.topic-text', 'schedule')):
+            page.goto(f'{URL}?session={SID}&view={view}')
+            page.wait_for_timeout(300)
+            page.screenshot(path=str(OUT / f'{label}-{name}.png'), full_page=True)
+            cue = page.evaluate(f"""() => {{
+                const panel = document.getElementById('{SID}-panel-{panel}');
+                const rows = Array.from(panel.querySelectorAll('{text}'));
+                const style = e => getComputedStyle(e).textDecorationStyle + (getComputedStyle(e).textDecorationLine.includes('underline') ? '' : ':none');
+                const key = panel.querySelector('.brief-key');
+                return {{linked: rows.filter(e => e.closest('.brief-open')).map(e => [e.textContent.slice(0, 40), style(e)]),
+                         plain: rows.filter(e => !e.closest('.brief-open')).map(e => [e.textContent.slice(0, 40), style(e)]),
+                         key: !!(key && key.getClientRects().length)}};
+            }}""")
+            bad = [t for t, s in cue['linked'] if s != 'dotted'] + [t for t, s in cue['plain'] if s == 'dotted']
+            if not cue['linked'] or bad or not cue['key']:
+                fail(f"{label} {name} cue: linked={len(cue['linked'])} key={cue['key']} wrong={bad}")
+            report[f'{label}-{name}'] = {'linked': [t for t, _ in cue['linked']]}
+        page.goto(f'{URL}?session={SID}&view=exercises')
+        page.wait_for_timeout(300)
         buttons = page.evaluate(f"""() => Array.from(document.querySelectorAll('#{SID} .brief-open, #{SID} .summary-link'))
             .map((b, i) => ({{i, brief: b.dataset.brief, kind: b.className}}))""")
         if not buttons:

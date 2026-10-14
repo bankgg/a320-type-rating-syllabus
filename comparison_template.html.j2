@@ -8,15 +8,15 @@
 {%- endmacro %}
 {% macro included(exercise, side) -%}
 {% if exercise[side] %}
-  {% if exercise[side]|length > 1 %}<span class="repeat"><span class="sr-only">Included </span>×{{ exercise[side]|length }}</span>
-  {% else %}<svg class="included" viewBox="0 0 20 20" aria-hidden="true"><path d="m4 10 4 4 8-8"/></svg><span class="sr-only">Included</span>{% endif %}
-{% elif exercise.conditional_for == side %}<span class="conditional-label">If<span class="sr-only"> conditional branch applies; see the condition in this exercise row</span></span>
+  {% if exercise[side]|length > 1 %}<span class="repeat">×{{ exercise[side]|length }}</span>
+  {% else %}<svg class="included" viewBox="0 0 20 20" aria-hidden="true"><path d="m4 10 4 4 8-8"/></svg>{% endif %}
+{% elif exercise.conditional_for == side %}<span class="conditional-label">If</span>
 {% else %}<span class="absent" aria-label="Not assigned">—</span>{% endif %}
 {%- endmacro %}
 {% macro icon(name, cls='icon') -%}
 <svg class="{{ cls }}" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">{% if name == 'previous' %}<path d="m14 6-6 6 6 6"/>{% elif name == 'next' %}<path d="m10 6 6 6-6 6"/>{% elif name == 'close' %}<path d="m6 6 12 12M18 6 6 18"/>{% elif name == 'setup' %}<path d="M4 6h16M4 12h16M4 18h16M8 3v6M16 9v6M10 15v6"/>{% elif name == 'warning' %}<path d="m12 3 10 18H2L12 3Z"/><path d="M12 9v5M12 17h.01"/>{% elif name == 'exercises' %}<path d="M9 6h11M9 12h11M9 18h11M3 6h.01M3 12h.01M3 18h.01"/>{% elif name == 'topics' %}<path d="M9 5h11M9 12h11M9 19h11M3 4h1v3M3 10h2l-2 3h2M3 17h2v3H3"/>{% elif name == 'chevron' %}<path d="m9 6 6 6-6 6"/>{% elif name == 'procedure' %}<path d="M8 4h11v16H5V7l3-3Z"/><path d="M8 4v3H5M9 11h6M9 15h6"/>{% elif name == 'speech' %}<path d="M4 5h16v11H11l-4.5 3.5V16H4z"/>{% elif name == 'flow' %}<circle cx="6" cy="5.5" r="2.2"/><circle cx="6" cy="18.5" r="2.2"/><path d="M6 7.7v8.6M11 5.5h9M11 12h6M11 18.5h9"/>{% elif name == 'book' %}<path d="M5 4.5A1.5 1.5 0 0 1 6.5 3H19v15H6.5A1.5 1.5 0 0 0 5 19.5v-15Z"/><path d="M5 19.5A1.5 1.5 0 0 0 6.5 21H19M9 7.5h6"/>{% elif name == 'table' %}<rect x="3.5" y="5" width="17" height="14" rx="1"/><path d="M3.5 10h17M9.5 5v14"/>{% elif name == 'info' %}<circle cx="12" cy="12" r="8.5"/><path d="M12 11v5.5M12 7.8h.01"/>{% elif name == 'check' %}<path d="m5 12.5 4.5 4.5L19 7.5"/>{% elif name == 'plane' %}<path d="m12 3 2 7 7 4v2l-7-2v5l2 2H8l2-2v-5l-7 2v-2l7-4 2-7Z"/>{% endif %}</svg>
 {%- endmacro %}
-{% macro trainee_short(side) -%}<span class="trainee-label trainee-{{ side|lower }}" title="Trainee {{ side }}"><span class="sr-only">Trainee </span>{{ side }}</span>{%- endmacro %}
+{% macro trainee_short(side) -%}<span class="trainee-label trainee-{{ side|lower }}" title="Trainee {{ side }}">{{ side }}</span>{%- endmacro %}
 {% macro branch(obj) -%}{% if obj.applies_to and obj.applies_to != ['all'] %}<span class="branch-chip">{{ obj.applies_to|join(' · ') }}</span>{% endif %}{%- endmacro %}
 {% macro flow_item(it) -%}
 <li class="flow-item {{ it.kind }}">{{ branch(it) }}{% if it.kind == 'callout' %}<span class="callout-mark">{{ icon('speech', 'icon callout-icon') }}</span><q class="callout">{{ it.text }}</q>{% elif it.kind == 'ecam' %}<span class="ecam-line"><span class="ecam-item">{{ it['item'] }}</span><span class="leader" aria-hidden="true"></span><span class="ecam-setting">{{ it.setting }}</span></span>{% elif it.kind == 'condition' %}<span class="cond-label">{{ it.text }}</span>{% else %}{{ it.text }}{% endif %}{% if it.children %}<ul class="flow-children">{% for child in it.children %}{{ flow_item(child) }}{% endfor %}</ul>{% endif %}</li>
@@ -25,7 +25,7 @@
 <li class="proc-line {{ ln.kind }}" style="--level: {{ ln.level or 0 }}">{{ branch(ln) }}{% if ln.kind == 'action' %}<span class="ecam-line"><span class="ecam-item">{{ ln['item'] }}</span><span class="leader" aria-hidden="true"></span><span class="ecam-setting">{{ ln.setting }}</span></span>{% if ln.text %}<span class="proc-note">{{ ln.text }}</span>{% endif %}{% elif ln.kind == 'condition' %}<span class="cond-label">{{ ln.text }}</span>{% elif ln.kind == 'caution' %}<span class="caution-label">Caution</span> {{ ln.text }}{% elif ln.kind == 'land_asap' %}<span class="alert-chip {{ 'warning' if 'red' in ln.text else 'caution' }}">{{ ln.text }}</span>{% else %}<span class="proc-note">{{ ln.text }}</span>{% endif %}</li>
 {%- endmacro %}
 {% macro text_list(items, cls='plain-list') -%}<ul class="{{ cls }}">{% for t in items %}<li>{{ branch(t) }}{{ t.text }}</li>{% endfor %}</ul>{%- endmacro %}
-{% macro failure_mark() -%}<span class="failure-mark" title="Failure-related exercise or recovery">{{ icon('warning') }}<span class="sr-only">Failure-related exercise or recovery. </span></span>{%- endmacro %}
+{% macro failure_mark() -%}<span class="failure-mark" title="Failure-related exercise or recovery">{{ icon('warning') }}</span>{%- endmacro %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -59,10 +59,7 @@
     h2 { font-size: 1.75rem; line-height: 1.2; letter-spacing: -.025em; text-wrap: balance; }
     h3 { font-size: 1.25rem; line-height: 1.3; }
     h4 { font-size: 1rem; }
-    .sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; border: 0; }
     .icon { width: 20px; height: 20px; flex: none; vertical-align: -.2em; }
-    .skip-button { position: fixed; left: 16px; top: -100px; z-index: 10; background: var(--canvas); padding: 12px 16px; border: 1px solid var(--blue); }
-    .skip-button:focus { top: 12px; }
     .toolbar { position: sticky; top: 0; z-index: 5; background: var(--canvas); border-bottom: 1px solid var(--line); padding-top: env(safe-area-inset-top); }
     .toolbar-inner { max-width: 1224px; margin-inline: auto; min-height: 60px; padding: 8px 24px; display: flex; align-items: center; justify-content: space-between; gap: 16px; }
     .site-title { display: flex; align-items: center; gap: 10px; font-size: 1.125rem; font-weight: 700; letter-spacing: -.015em; }
@@ -184,11 +181,10 @@
     .brief-open { display: flex; align-items: flex-start; gap: 0; width: 100%; min-height: 44px; padding: 6px 10px; border: 0; background: transparent; color: inherit; text-align: left; }
     .brief-open:disabled { opacity: 1; color: inherit; }
     .brief-open .exercise-title, .brief-open .topic-text { flex: 1; }
-    .brief-cue { display: inline-flex; align-items: center; gap: 2px; margin-left: 12px; color: var(--blue); font-weight: 600; white-space: nowrap; }
-    .brief-cue .icon { width: 18px; height: 18px; }
-    .brief-open:disabled .brief-cue { display: none; }
     .brief-open:hover:not(:disabled) { background: #ffe9d4; }
-    .brief-open:hover:not(:disabled) .exercise-title, .brief-open:hover:not(:disabled) .topic-text { text-decoration: underline; text-decoration-color: var(--failure-line); text-underline-offset: 3px; }
+    .brief-open .exercise-title, .brief-open .topic-text, .key-sample { text-decoration: underline dotted var(--blue); text-decoration-thickness: 1.5px; text-underline-offset: 5px; text-decoration-skip-ink: none; }
+    .brief-open:disabled .exercise-title, .brief-open:disabled .topic-text { text-decoration: none; }
+    .brief-open:hover:not(:disabled) .exercise-title, .brief-open:hover:not(:disabled) .topic-text { text-decoration-style: solid; color: var(--blue-hover); text-decoration-color: var(--blue-hover); }
     .brief-cell .exercise-note { padding: 0 10px 8px; margin-top: 0; }
     .procedure-briefs { margin-top: 32px; }
     .enhanced .procedure-briefs { display: none; }
@@ -366,7 +362,6 @@
       .turn-pm { background: #fbfcfd; }
       .lane-tag, .turn-both .lane-tag { display: inline-block; padding: 0 6px; border-radius: 4px; background: var(--header); color: var(--navy); font-weight: 700; }
       .verbatim-grid { grid-template-columns: minmax(0, 1fr); }
-      .cue-word { display: none; }
     }
     @media (max-width: 520px) {
       .toolbar-inner { flex-wrap: wrap; gap: 6px; padding-block: 6px; }
@@ -410,7 +405,7 @@
       @keyframes fade-out { to { opacity: 0; } }
     }
     @media print {
-      .toolbar, .session-nav, .skip-button, .tab-nav, .open-setup, .close-setup { display: none !important; }
+      .toolbar, .session-nav, .tab-nav, .open-setup, .close-setup { display: none !important; }
       .main { max-width: none; padding: 0; }
       .main > [hidden], .tab-panel[hidden], .enhanced .setup-details, .enhanced .procedure-briefs, .brief[hidden] { display: block !important; }
       .brief-more details > .details-body { display: block; }
@@ -421,7 +416,6 @@
   </style>
 </head>
 <body>
-  <button class="skip-button" type="button" hidden>Skip to syllabus</button>
   <header class="toolbar">
     <div class="toolbar-inner">
       <h1 class="site-title">{{ icon('plane') }}A320 SIM syllabus</h1>
@@ -477,13 +471,13 @@
       <div class="tab-panel" id="{{ session.id }}-panel-exercises" data-panel="exercises" tabindex="-1">
         <section class="session-section" aria-labelledby="{{ session.id }}-exercise-title">
           <div class="section-heading"><h3 id="{{ session.id }}-exercise-title">Combined exercises</h3></div>
-          <p class="matrix-key"><svg class="included" viewBox="0 0 20 20" aria-hidden="true"><path d="m4 10 4 4 8-8"/></svg> Included · ×2 repeated · — not assigned{% if session.conditional %} · If conditional branch applies{% endif %}<span class="failure-key">{{ icon('warning') }}Failure / recovery</span>{% if session.procedure_groups %}<span class="brief-key">Tap a failure for its procedure</span>{% endif %}</p>
+          <p class="matrix-key"><svg class="included" viewBox="0 0 20 20" aria-hidden="true"><path d="m4 10 4 4 8-8"/></svg> Included · ×2 repeated · — not assigned{% if session.conditional %} · If conditional branch applies{% endif %}<span class="failure-key">{{ icon('warning') }}Failure / recovery</span>{% if session.procedure_groups %}<span class="brief-key" hidden><span class="key-sample">Dotted underline</span> opens its procedure</span>{% endif %}</p>
           <table class="matrix"><colgroup><col class="exercise-col"><col class="assignment-col"><col class="assignment-col"></colgroup>
             <thead><tr><th scope="col">Exercise</th><th scope="col">{{ trainee('A') }}</th><th scope="col">{{ trainee('B') }}</th></tr></thead>
             {% for group in session.exercise_categories %}<tbody>
               <tr class="category-row"><th colspan="3" scope="rowgroup">{{ group.name }}</th></tr>
               {% for exercise in group['items'] %}<tr class="exercise-item{% if exercise.failure_related %} failure{% endif %}" id="{{ exercise.id }}">
-                <td{% if exercise.brief %} class="brief-cell"{% endif %}>{% if exercise.brief %}<button class="brief-open" type="button" data-group="{{ exercise.brief_group }}" data-brief="{{ exercise.brief }}" aria-haspopup="dialog" disabled>{{ failure_mark() }}<span class="exercise-title">{{ exercise.title }}</span><span class="brief-cue"><span class="cue-word">Procedure</span>{{ icon('chevron') }}</span></button>{% else %}{% if exercise.failure_related %}{{ failure_mark() }}{% endif %}<span class="exercise-title">{{ exercise.title }}</span>{% endif %}{% if exercise.note %}<span class="exercise-note">{{ exercise.note }}</span>{% endif %}{% if exercise.condition %}<span class="exercise-note exercise-condition" id="{{ exercise.id }}-condition">{{ exercise.condition }}</span>{% endif %}</td>
+                <td{% if exercise.brief %} class="brief-cell"{% endif %}>{% if exercise.brief %}<button class="brief-open" type="button" data-group="{{ exercise.brief_group }}" data-brief="{{ exercise.brief }}" aria-haspopup="dialog" disabled>{{ failure_mark() }}<span class="exercise-title">{{ exercise.title }}</span></button>{% else %}{% if exercise.failure_related %}{{ failure_mark() }}{% endif %}<span class="exercise-title">{{ exercise.title }}</span>{% endif %}{% if exercise.note %}<span class="exercise-note">{{ exercise.note }}</span>{% endif %}{% if exercise.condition %}<span class="exercise-note exercise-condition" id="{{ exercise.id }}-condition">{{ exercise.condition }}</span>{% endif %}</td>
                 <td class="assignment">{{ included(exercise, 'A') }}</td><td class="assignment">{{ included(exercise, 'B') }}</td>
               </tr>{% endfor %}
             </tbody>{% endfor %}
@@ -520,13 +514,13 @@
       <div class="tab-panel" id="{{ session.id }}-panel-topics" data-panel="topics" tabindex="-1">
         <section class="session-section" aria-labelledby="{{ session.id }}-topics-title">
           <h3 id="{{ session.id }}-topics-title">Session schedule</h3>
-          <p class="matrix-key">Published sequence for each trainee. Blue rows identify differences; orange marks failure / recovery.</p>
+          <p class="matrix-key"><span>Published sequence for each trainee. Blue rows identify differences; orange marks failure / recovery{% if session.procedure_groups %}<span class="brief-key" hidden>; topics with a <span class="key-sample">dotted underline</span> open their procedure</span>{% endif %}.</span></p>
           <div class="topic-grid">{% for side in ('A','B') %}<div class="topic-block {{ side|lower }}">
             <h4>Trainee {{ side }}</h4>
             <table class="topic-table"><colgroup><col class="number"><col>{% if session.topics_different %}<col class="status">{% endif %}</colgroup>
               <thead><tr><th scope="col">#</th><th scope="col">Topic</th>{% if session.topics_different %}<th scope="col">A/B</th>{% endif %}</tr></thead>
               <tbody>{% for row in session.topics[side] %}<tr class="{{ row.kind }} {{ row.status }}{% if row.failure_related %} failure{% endif %}">
-                <td class="number">{{ row.n }}</td><td{% if row.brief %} class="brief-cell"{% endif %}>{% if row.brief %}<button class="brief-open" type="button" data-group="{{ row.brief_group }}" data-brief="{{ row.brief }}" aria-haspopup="dialog" disabled>{{ failure_mark() }}<span class="topic-text">{{ row.text }}</span><span class="brief-cue">{{ icon('chevron') }}<span class="sr-only">Open procedure</span></span></button>{% else %}{% if row.failure_related %}{{ failure_mark() }}{% endif %}<span class="topic-text">{{ row.text }}</span>{% endif %}</td>
+                <td class="number">{{ row.n }}</td><td{% if row.brief %} class="brief-cell"{% endif %}>{% if row.brief %}<button class="brief-open" type="button" data-group="{{ row.brief_group }}" data-brief="{{ row.brief }}" aria-haspopup="dialog" disabled>{{ failure_mark() }}<span class="topic-text">{{ row.text }}</span></button>{% else %}{% if row.failure_related %}{{ failure_mark() }}{% endif %}<span class="topic-text">{{ row.text }}</span>{% endif %}</td>
                 {% if session.topics_different %}<td class="status">{% if row.status == 'unique' %}<span class="status-label">{{ side }} only</span>{% elif row.status == 'mixed' %}<span class="status-label">{{ side }} adds</span>{% endif %}</td>{% endif %}
               </tr>{% endfor %}</tbody>
             </table>
@@ -843,6 +837,7 @@
         session.querySelector('.close-setup').hidden = false;
         session.querySelector('.open-setup').addEventListener('click', () => openSetup(session));
         session.querySelector('.close-setup').addEventListener('click', closeSetup);
+        session.querySelectorAll('.brief-key').forEach(key => { key.hidden = false; });
         session.querySelectorAll('.brief-open, .summary-link').forEach(button => {
           button.disabled = false;
           button.addEventListener('click', () => openBrief(button.dataset.brief, button));
@@ -920,8 +915,6 @@
       });
       previous.addEventListener('click', () => navigate(ids[ids.indexOf(selected) - 1], activeTab, true));
       next.addEventListener('click', () => navigate(ids[ids.indexOf(selected) + 1], activeTab, true));
-      document.querySelector('.skip-button').hidden = false;
-      document.querySelector('.skip-button').addEventListener('click', () => main.focus());
       document.querySelector('.toolbar-actions').hidden = false;
       document.querySelector('.session-nav').hidden = false;
       document.documentElement.classList.add('enhanced');

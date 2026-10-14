@@ -60,4 +60,4 @@ The comparison brings the reviewed Trainee A and Trainee B syllabus into one ses
 
 ## Accessibility & Inclusion
 
-Support comfortable reading and touch navigation on the primary iPad and on mobile phones. Convey trainee applicability and conditional content in text as well as any visual styling. No additional product-specific accessibility standard has been established.
+Support comfortable reading and touch navigation on the primary iPad and on mobile phones. Convey trainee applicability and conditional content in text as well as any visual styling. The users do not use screen readers (user decision, 2026-10-14): do not add screen-reader-only text, visually hidden labels or assistive-only UI such as skip buttons. No additional product-specific accessibility standard has been established.
