@@ -127,6 +127,16 @@ PROCEDURE_GROUPS = {
                         ('nav-adr-1-2-1-3-2-3-fault', 'Dual ADR'))),
         ('Emergency evacuation', (('emer-evac', 'Emergency evacuation', 'Due to the cargo fire.'),)),
     ],
+    'ffs-5': [
+        ('Engine failure', (('eng-1-2-fail', 'Engine failure', 'Trainee A: after V2 (familiarization), between V1 and V2 (repeat to proficiency), after V2, and at go-around from minima. Trainee B: between V1 and V2 (repeat to proficiency), after V2, and during go-around.'),
+                            ('eng-relight-in-flight', 'Relight in flight', 'Trainee A repositions to FL 350 after the restart.'),
+                            ('eng-failure-cruise-strategy', 'Drift down', 'ENG 1(2) FAIL with the drift-down procedure.'))),
+        ('Dual-engine failure', (('eng-all-engines-failure', 'ALL ENG FAIL', 'Listed in the syllabus as ENG DUAL FAILURE - FUEL REMAINING, followed by the windmill relight.'),)),
+        ('RNP degradation', (('rnp-approach-degraded-navigation', 'Degraded navigation', '3D RNP approach, RNAV(GNSS) with LNAV/VNAV minima, flown manually with FD. The syllabus says "degradation or system failure" without naming it.'),)),
+        ('Emergency electrical configuration', (('elec-emer-config', 'ELEC EMER CONFIG', 'Trainee A performs it in either branch; if both trainees are co-pilots, the malfunction is removed after the procedures. Trainee B performs it only if both trainees are captains.'),)),
+        ('Unreliable speed', (('unreliable-speed-indication', 'Unreliable speed', 'Demonstration of BUSS and BAS (see BUSS · BAS).'),
+                              ('nav-adr-1-2-3-fault-buss', 'BUSS · BAS'))),
+    ],
 }
 # Exercise rows that open a brief. Recovery manoeuvres (OEI approach,
 # go-around, autoland) are failure-related but have no ECAM/QRH brief.
@@ -148,6 +158,12 @@ EXERCISE_BRIEFS = {
     'ffs-4-e09': 'nav-ra-1-and-2-fault', 'ffs-4-e13': 'smoke-aft-cargo-smoke',
     'ffs-4-e14': 'removal-of-smoke-fumes', 'ffs-4-e16': 'emer-evac',
     'ffs-4-e17': 'nav-adr-1-2-3-fault', 'ffs-4-e18': 'nav-adr-1-2-1-3-2-3-fault',
+    'ffs-5-e01': 'eng-1-2-fail', 'ffs-5-e02': 'eng-1-2-fail', 'ffs-5-e03': 'eng-1-2-fail',
+    'ffs-5-e09': 'eng-1-2-fail', 'ffs-5-e18': 'eng-1-2-fail',
+    'ffs-5-e04': 'eng-relight-in-flight', 'ffs-5-e05': 'eng-failure-cruise-strategy',
+    'ffs-5-e06': 'eng-all-engines-failure', 'ffs-5-e07': 'eng-all-engines-failure',
+    'ffs-5-e08': 'rnp-approach-degraded-navigation', 'ffs-5-e13': 'elec-emer-config',
+    'ffs-5-e19': 'unreliable-speed-indication',
 }
 ALERT_LABELS = {'warning': 'Red warning', 'caution': 'Amber caution', 'qrh': 'QRH procedure',
                 'memory': 'Memory items', 'technique': 'Technique'}

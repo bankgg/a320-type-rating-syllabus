@@ -1,0 +1,5426 @@
+{
+ "slug": "eng-all-engines-failure",
+ "title": "ENG ALL ENGINES FAILURE",
+ "kind": "ecam",
+ "alert": {
+  "level": "warning",
+  "land_asap": "red",
+  "memory_items": false,
+  "qrh_summary": false,
+  "trigger": "All engines are failed in flight.",
+  "inhibited_phases": [
+   1,
+   2,
+   3,
+   4,
+   8,
+   9,
+   10
+  ],
+  "refs": [
+   {
+    "book": "FCOM",
+    "code": "PRO-ABN-ENG",
+    "page": "P 37/226",
+    "pdf": 3284
+   }
+  ]
+ },
+ "effectivity": {
+  "branches": [],
+  "note": "One version for all HS-TX: 280/0.77 optimum relight speed, windmill relight approaching or below FL 300."
+ },
+ "summary": "All engines fail: the captain side keeps PFD 1 and the left-seat pilot flies, in alternate law with no AP, FD or A/THR. The PM runs a short ECAM (RAT and emergency generator, 280/0.77, APU, idle, FAC 1 reset, glide range), then goes straight to the QRH ALL ENG FAIL. If fuel remains and the engines are not damaged, try windmill relights on both engines, then starter-assisted relights below FL 200. If nothing relights, the QRH continues to a forced landing or ditching: those sections are under From the manuals, not in the flow.",
+ "key_limits": [
+  {
+   "label": "Optimum relight speed",
+   "value": "280/0.77",
+   "applies_to": [
+    "all"
+   ],
+   "refs": [
+    {
+     "book": "FCOM",
+     "code": "PRO-ABN-ENG",
+     "page": "P 38/226",
+     "pdf": 3285
+    },
+    {
+     "book": "QRH",
+     "code": "19.01",
+     "page": "19.01A",
+     "pdf": 162
+    }
+   ]
+  },
+  {
+   "label": "Windmill relight",
+   "value": "Approaching or below FL 300",
+   "applies_to": [
+    "all"
+   ],
+   "refs": [
+    {
+     "book": "QRH",
+     "code": "19.02",
+     "page": "19.02A",
+     "pdf": 164
+    }
+   ]
+  },
+  {
+   "label": "Starter-assisted relight",
+   "value": "Below FL 200 · APU bleed · green dot · one engine at a time",
+   "applies_to": [
+    "all"
+   ],
+   "refs": [
+    {
+     "book": "QRH",
+     "code": "19.02",
+     "page": "19.02A",
+     "pdf": 164
+    },
+    {
+     "book": "FCTM",
+     "code": "PR-AEP-ENG",
+     "page": "P 7/26",
+     "pdf": 408
+    }
+   ]
+  },
+  {
+   "label": "Glide",
+   "value": "2 NM / 1000 FT at 280 kt · 2.5 NM / 1000 FT at green dot",
+   "applies_to": [
+    "all"
+   ],
+   "refs": [
+    {
+     "book": "QRH",
+     "code": "19.01",
+     "page": "19.01B",
+     "pdf": 163
+    },
+    {
+     "book": "QRH",
+     "code": "19.03",
+     "page": "19.03A",
+     "pdf": 167
+    }
+   ]
+  },
+  {
+   "label": "Minimum RAT speed",
+   "value": "140 kt",
+   "applies_to": [
+    "all"
+   ],
+   "refs": [
+    {
+     "book": "FCOM",
+     "code": "PRO-ABN-ENG",
+     "page": "P 40/226",
+     "pdf": 3287
+    },
+    {
+     "book": "QRH",
+     "code": "19.04",
+     "page": "19.04A",
+     "pdf": 170
+    },
+    {
+     "book": "QRH",
+     "code": "19.05",
+     "page": "19.05B",
+     "pdf": 172
+    }
+   ]
+  },
+  {
+   "label": "Max speed · max brake pressure",
+   "value": "320/0.77 · 1000 PSI",
+   "applies_to": [
+    "all"
+   ],
+   "refs": [
+    {
+     "book": "FCOM",
+     "code": "PRO-ABN-ENG",
+     "page": "P 40/226",
+     "pdf": 3287
+    }
+   ]
+  }
+ ],
+ "flow": [
+  {
+   "phase": "Detection — fly first",
+   "steps": [
+    {
+     "actor": "BOTH",
+     "items": [
+      {
+       "kind": "action",
+       "text": "Golden rule 1: fly, navigate, communicate",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "FCTM",
+         "code": "PR-AEP-ENG",
+         "page": "P 5/26",
+         "pdf": 406
+        },
+        {
+         "book": "PDP",
+         "code": "All engine flameout",
+         "page": "XFTDA1ALENGFO01",
+         "pdf": 443
+        }
+       ]
+      }
+     ]
+    },
+    {
+     "actor": "PF",
+     "items": [
+      {
+       "kind": "action",
+       "text": "CM1 (left seat) is PF: only PFD 1 is available. Take over and establish a safe flight path",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "FCTM",
+         "code": "PR-AEP-ENG",
+         "page": "P 5/26",
+         "pdf": 406
+        }
+       ]
+      },
+      {
+       "kind": "note",
+       "text": "AP, FD and A/THR are lost; alternate law, protections lost. Remove the FD flag, consider FPV",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "FCTM",
+         "code": "PR-AEP-ENG",
+         "page": "P 5/26",
+         "pdf": 406
+        },
+        {
+         "book": "PDP",
+         "code": "All engine flameout",
+         "page": "XFTDA1ALENGFO01",
+         "pdf": 443
+        },
+        {
+         "book": "PDP",
+         "code": "All engine flameout",
+         "page": "XFTDA1ALENGFO01",
+         "pdf": 444
+        }
+       ]
+      }
+     ]
+    },
+    {
+     "actor": "BOTH",
+     "items": [
+      {
+       "kind": "action",
+       "text": "First to notice: MASTER WARNING / CAUTION reset",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "FCTM",
+         "code": "AOP-30-30",
+         "page": "P 2/6",
+         "pdf": 83
+        },
+        {
+         "book": "PDP",
+         "code": "Management of abnormal operations",
+         "page": "XFTDN6ECAM00001",
+         "pdf": 424
+        }
+       ]
+      }
+     ]
+    },
+    {
+     "actor": "PM",
+     "items": [
+      {
+       "kind": "callout",
+       "text": "ENG ALL ENGINES FAILURE",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "FCTM",
+         "code": "AOP-30-30",
+         "page": "P 2/6",
+         "pdf": 83
+        },
+        {
+         "book": "FCOM",
+         "code": "PRO-ABN-ENG",
+         "page": "P 38/226",
+         "pdf": 3285
+        },
+        {
+         "book": "PDP",
+         "code": "Management of abnormal operations",
+         "page": "XFTDN6ECAM00001",
+         "pdf": 424
+        }
+       ]
+      },
+      {
+       "kind": "action",
+       "text": "Confirm the failure on the SD page and overhead panel before acting",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "FCTM",
+         "code": "AOP-30-30",
+         "page": "P 2/6",
+         "pdf": 83
+        },
+        {
+         "book": "PDP",
+         "code": "Management of abnormal operations",
+         "page": "XFTDN6ECAM00001",
+         "pdf": 424
+        }
+       ]
+      }
+     ]
+    },
+    {
+     "actor": "PF",
+     "items": [
+      {
+       "kind": "callout",
+       "text": "ECAM ACTIONS",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "FCOM",
+         "code": "PRO-ABN-ABN-00",
+         "page": "P 8/12",
+         "pdf": 2831
+        },
+        {
+         "book": "FCTM",
+         "code": "AOP-30-30",
+         "page": "P 3/6",
+         "pdf": 84
+        },
+        {
+         "book": "PDP",
+         "code": "Management of abnormal operations",
+         "page": "XFTDN6ECAM00001",
+         "pdf": 424
+        }
+       ]
+      },
+      {
+       "kind": "note",
+       "text": "PF now flies, navigates and communicates",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "FCTM",
+         "code": "AOP-20",
+         "page": "P 1–2/10",
+         "pdf": 68
+        },
+        {
+         "book": "PDP",
+         "code": "Management of abnormal operations",
+         "page": "XFTDN6ECAM00001",
+         "pdf": 424
+        }
+       ]
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "phase": "ECAM actions",
+   "steps": [
+    {
+     "actor": "PM",
+     "items": [
+      {
+       "kind": "ecam",
+       "item": "EMER ELEC PWR MAN ON PB",
+       "setting": "PRESS",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "FCOM",
+         "code": "PRO-ABN-ENG",
+         "page": "P 38/226",
+         "pdf": 3285
+        },
+        {
+         "book": "QRH",
+         "code": "19.01",
+         "page": "19.01A",
+         "pdf": 162
+        }
+       ]
+      },
+      {
+       "kind": "ecam",
+       "item": "OPT RELIGHT SPD",
+       "setting": "280/0.77",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "FCOM",
+         "code": "PRO-ABN-ENG",
+         "page": "P 38/226",
+         "pdf": 3285
+        },
+        {
+         "book": "QRH",
+         "code": "19.01",
+         "page": "19.01A",
+         "pdf": 162
+        }
+       ]
+      }
+     ]
+    },
+    {
+     "actor": "PF",
+     "items": [
+      {
+       "kind": "action",
+       "text": "Fly at or above the optimum relight speed: mandatory after a failure in climb or cruise, to prevent engine core lock",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "FCOM",
+         "code": "PRO-ABN-ENG",
+         "page": "P 38/226",
+         "pdf": 3285
+        },
+        {
+         "book": "QRH",
+         "code": "19.01",
+         "page": "19.01A",
+         "pdf": 162
+        }
+       ]
+      },
+      {
+       "kind": "note",
+       "text": "In alternate law the overspeed protection is lost and the upper speed limits are reduced",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "FCTM",
+         "code": "PR-AEP-ENG",
+         "page": "P 5/26",
+         "pdf": 406
+        }
+       ]
+      },
+      {
+       "kind": "condition",
+       "text": "Speed indication failure (volcanic ash)",
+       "children": [
+        {
+         "kind": "action",
+         "text": "Fly the pitch target from the QRH table",
+         "applies_to": [
+          "all"
+         ],
+         "refs": [
+          {
+           "book": "FCOM",
+           "code": "PRO-ABN-ENG",
+           "page": "P 38/226",
+           "pdf": 3285
+          },
+          {
+           "book": "QRH",
+           "code": "19.01",
+           "page": "19.01A",
+           "pdf": 162
+          }
+         ]
+        }
+       ],
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "FCOM",
+         "code": "PRO-ABN-ENG",
+         "page": "P 38/226",
+         "pdf": 3285
+        },
+        {
+         "book": "QRH",
+         "code": "19.01",
+         "page": "19.01A",
+         "pdf": 162
+        }
+       ]
+      }
+     ]
+    },
+    {
+     "actor": "PM",
+     "items": [
+      {
+       "kind": "ecam",
+       "item": "APU (BELOW FL 250)",
+       "setting": "START",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "FCOM",
+         "code": "PRO-ABN-ENG",
+         "page": "P 39/226",
+         "pdf": 3286
+        },
+        {
+         "book": "QRH",
+         "code": "19.01",
+         "page": "19.01A",
+         "pdf": 162
+        }
+       ]
+      },
+      {
+       "kind": "ecam",
+       "item": "THR LEVERS",
+       "setting": "IDLE",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "FCOM",
+         "code": "PRO-ABN-ENG",
+         "page": "P 39/226",
+         "pdf": 3286
+        },
+        {
+         "book": "QRH",
+         "code": "19.01",
+         "page": "19.01A",
+         "pdf": 162
+        }
+       ]
+      }
+     ]
+    },
+    {
+     "actor": "PF",
+     "items": [
+      {
+       "kind": "action",
+       "text": "Set the thrust levers to idle, after the PM confirms: no thrust surge at relight",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "FCTM",
+         "code": "PR-AEP-ENG",
+         "page": "P 5/26",
+         "pdf": 406
+        },
+        {
+         "book": "FCTM",
+         "code": "AOP-30-20",
+         "page": "P 1/2",
+         "pdf": 80
+        }
+       ]
+      }
+     ]
+    },
+    {
+     "actor": "PM",
+     "items": [
+      {
+       "kind": "ecam",
+       "item": "FAC 1",
+       "setting": "OFF THEN ON",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "FCOM",
+         "code": "PRO-ABN-ENG",
+         "page": "P 39/226",
+         "pdf": 3286
+        },
+        {
+         "book": "QRH",
+         "code": "19.01",
+         "page": "19.01A",
+         "pdf": 162
+        }
+       ]
+      },
+      {
+       "kind": "note",
+       "text": "Recovers the characteristic speeds on the PFD and rudder trim",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "FCOM",
+         "code": "PRO-ABN-ENG",
+         "page": "P 39/226",
+         "pdf": 3286
+        }
+       ]
+      },
+      {
+       "kind": "action",
+       "text": "Read GLDG DIST: 2NM/1000FT",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "FCOM",
+         "code": "PRO-ABN-ENG",
+         "page": "P 39/226",
+         "pdf": 3286
+        },
+        {
+         "book": "QRH",
+         "code": "19.01",
+         "page": "19.01B",
+         "pdf": 163
+        }
+       ]
+      }
+     ]
+    },
+    {
+     "actor": "PF",
+     "items": [
+      {
+       "kind": "action",
+       "text": "DIVERSION INITIATE: an accessible runway, or the best area for a forced landing or ditching",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "FCOM",
+         "code": "PRO-ABN-ENG",
+         "page": "P 39/226",
+         "pdf": 3286
+        },
+        {
+         "book": "QRH",
+         "code": "19.01",
+         "page": "19.01B",
+         "pdf": 163
+        },
+        {
+         "book": "FCTM",
+         "code": "PR-AEP-ENG",
+         "page": "P 5/26",
+         "pdf": 406
+        }
+       ]
+      }
+     ]
+    },
+    {
+     "actor": "PM",
+     "items": [
+      {
+       "kind": "ecam",
+       "item": "ALL ENG FAIL PROC",
+       "setting": "APPLY",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "FCOM",
+         "code": "PRO-ABN-ENG",
+         "page": "P 39/226",
+         "pdf": 3286
+        }
+       ]
+      },
+      {
+       "kind": "action",
+       "text": "Go to the QRH ALL ENG FAIL at once and keep the ECAM procedure displayed",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "PDP",
+         "code": "All engine flameout",
+         "page": "XFTDA1ALENGFO01",
+         "pdf": 446
+        },
+        {
+         "book": "FCTM",
+         "code": "AOP-30-30",
+         "page": "P 2/6",
+         "pdf": 83
+        }
+       ]
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "phase": "QRH ALL ENG FAIL — notify, then check fuel",
+   "steps": [
+    {
+     "actor": "PF",
+     "items": [
+      {
+       "kind": "action",
+       "text": "Emergency message on VHF 1 (MAYDAY) when time permits",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "FCTM",
+         "code": "PR-AEP-ENG",
+         "page": "P 6/26",
+         "pdf": 407
+        },
+        {
+         "book": "PDP",
+         "code": "All engine flameout",
+         "page": "XFTDA1ALENGFO01",
+         "pdf": 444
+        }
+       ]
+      },
+      {
+       "kind": "note",
+       "text": "PF communicates once the ECAM actions are started",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "FCTM",
+         "code": "AOP-20",
+         "page": "P 1–2/10",
+         "pdf": 68
+        }
+       ]
+      }
+     ]
+    },
+    {
+     "actor": "PM",
+     "items": [
+      {
+       "kind": "ecam",
+       "item": "VHF1/HF1/ATC1",
+       "setting": "USE",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "FCOM",
+         "code": "PRO-ABN-ENG",
+         "page": "P 7/226",
+         "pdf": 3254
+        },
+        {
+         "book": "QRH",
+         "code": "19.01",
+         "page": "19.01B",
+         "pdf": 163
+        }
+       ]
+      },
+      {
+       "kind": "ecam",
+       "item": "ATC",
+       "setting": "NOTIFY",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "FCOM",
+         "code": "PRO-ABN-ENG",
+         "page": "P 7/226",
+         "pdf": 3254
+        },
+        {
+         "book": "QRH",
+         "code": "19.01",
+         "page": "19.01B",
+         "pdf": 163
+        }
+       ]
+      },
+      {
+       "kind": "ecam",
+       "item": "CABIN CREW",
+       "setting": "NOTIFY",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "FCOM",
+         "code": "PRO-ABN-ENG",
+         "page": "P 7/226",
+         "pdf": 3254
+        },
+        {
+         "book": "QRH",
+         "code": "19.01",
+         "page": "19.01B",
+         "pdf": 163
+        }
+       ]
+      },
+      {
+       "kind": "ecam",
+       "item": "SIGNS",
+       "setting": "ON",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "FCOM",
+         "code": "PRO-ABN-ENG",
+         "page": "P 7/226",
+         "pdf": 3254
+        },
+        {
+         "book": "QRH",
+         "code": "19.01",
+         "page": "19.01B",
+         "pdf": 163
+        }
+       ]
+      },
+      {
+       "kind": "ecam",
+       "item": "CREW OXY MASK (FL > 100)",
+       "setting": "USE",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "FCOM",
+         "code": "PRO-ABN-ENG",
+         "page": "P 7/226",
+         "pdf": 3254
+        },
+        {
+         "book": "QRH",
+         "code": "19.01",
+         "page": "19.01B",
+         "pdf": 163
+        }
+       ]
+      },
+      {
+       "kind": "ecam",
+       "item": "FUEL QUANTITY",
+       "setting": "CHECK",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "FCOM",
+         "code": "PRO-ABN-ENG",
+         "page": "P 7/226",
+         "pdf": 3254
+        },
+        {
+         "book": "QRH",
+         "code": "19.01",
+         "page": "19.01B",
+         "pdf": 163
+        }
+       ]
+      }
+     ]
+    },
+    {
+     "actor": "BOTH",
+     "items": [
+      {
+       "kind": "action",
+       "text": "Decide: can a relight be attempted? Fuel starvation is one of the most probable causes; engine damage or fuel starvation means no relight",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "FCTM",
+         "code": "PR-AEP-ENG",
+         "page": "P 6/26",
+         "pdf": 407
+        },
+        {
+         "book": "FCTM",
+         "code": "PR-AEP-ENG",
+         "page": "P 7/26",
+         "pdf": 408
+        },
+        {
+         "book": "QRH",
+         "code": "19.01",
+         "page": "19.01B",
+         "pdf": 163
+        }
+       ]
+      },
+      {
+       "kind": "condition",
+       "text": "Relight cannot be attempted",
+       "children": [
+        {
+         "kind": "action",
+         "text": "Go to QRH 19.03A: green dot, then ditching or forced landing (see From the manuals)",
+         "applies_to": [
+          "all"
+         ],
+         "refs": [
+          {
+           "book": "QRH",
+           "code": "19.01",
+           "page": "19.01B",
+           "pdf": 163
+          },
+          {
+           "book": "QRH",
+           "code": "19.03",
+           "page": "19.03A",
+           "pdf": 167
+          }
+         ]
+        }
+       ],
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "QRH",
+         "code": "19.01",
+         "page": "19.01B",
+         "pdf": 163
+        }
+       ]
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "phase": "Fuel remains — windmill relight",
+   "steps": [
+    {
+     "actor": "PM",
+     "items": [
+      {
+       "kind": "ecam",
+       "item": "ENG MODE sel",
+       "setting": "IGN",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "FCOM",
+         "code": "PRO-ABN-ENG",
+         "page": "P 9/226",
+         "pdf": 3256
+        },
+        {
+         "book": "QRH",
+         "code": "19.02",
+         "page": "19.02A",
+         "pdf": 164
+        }
+       ]
+      },
+      {
+       "kind": "action",
+       "text": "Indicate the ENG MASTER levers",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "PDP",
+         "code": "Management of abnormal operations",
+         "page": "XFTDN6ECAM00001",
+         "pdf": 432
+        },
+        {
+         "book": "FCTM",
+         "code": "AOP-30-20",
+         "page": "P 1/2",
+         "pdf": 80
+        }
+       ]
+      },
+      {
+       "kind": "callout",
+       "text": "CONFIRM?",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "PDP",
+         "code": "Management of abnormal operations",
+         "page": "XFTDN6ECAM00001",
+         "pdf": 432
+        },
+        {
+         "book": "QRH",
+         "code": "19.02",
+         "page": "19.02A",
+         "pdf": 164
+        }
+       ]
+      }
+     ]
+    },
+    {
+     "actor": "PF",
+     "items": [
+      {
+       "kind": "callout",
+       "text": "CONFIRMED",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "PDP",
+         "code": "Management of abnormal operations",
+         "page": "XFTDN6ECAM00001",
+         "pdf": 432
+        }
+       ]
+      },
+      {
+       "kind": "note",
+       "text": "After verifying the control the PM points to",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "PDP",
+         "code": "Management of abnormal operations",
+         "page": "XFTDN6ECAM00001",
+         "pdf": 432
+        },
+        {
+         "book": "FCTM",
+         "code": "AOP-30-20",
+         "page": "P 1/2",
+         "pdf": 80
+        }
+       ]
+      }
+     ]
+    },
+    {
+     "actor": "PM",
+     "items": [
+      {
+       "kind": "condition",
+       "text": "Approaching or below FL 300",
+       "children": [
+        {
+         "kind": "ecam",
+         "item": "ALL ENG MASTERS",
+         "setting": "OFF 30 S THEN ON",
+         "applies_to": [
+          "all"
+         ],
+         "refs": [
+          {
+           "book": "FCOM",
+           "code": "PRO-ABN-ENG",
+           "page": "P 9/226",
+           "pdf": 3256
+          },
+          {
+           "book": "QRH",
+           "code": "19.02",
+           "page": "19.02A",
+           "pdf": 164
+          }
+         ]
+        },
+        {
+         "kind": "ecam",
+         "item": "ENGs RELIGHT",
+         "setting": "TRY REGULARLY",
+         "applies_to": [
+          "all"
+         ],
+         "refs": [
+          {
+           "book": "FCOM",
+           "code": "PRO-ABN-ENG",
+           "page": "P 9/226",
+           "pdf": 3256
+          },
+          {
+           "book": "QRH",
+           "code": "19.02",
+           "page": "19.02A",
+           "pdf": 164
+          }
+         ]
+        }
+       ],
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "FCOM",
+         "code": "PRO-ABN-ENG",
+         "page": "P 9/226",
+         "pdf": 3256
+        },
+        {
+         "book": "QRH",
+         "code": "19.02",
+         "page": "19.02A",
+         "pdf": 164
+        }
+       ]
+      },
+      {
+       "kind": "action",
+       "text": "Masters OFF, start the chrono; at 30 s masters ON; check N2 and EGT; at 1 min, if no relight, masters OFF; repeat",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "PDP",
+         "code": "All engine flameout",
+         "page": "XFTDA1ALENGFO01",
+         "pdf": 448
+        },
+        {
+         "book": "FCTM",
+         "code": "PR-AEP-ENG",
+         "page": "P 6/26",
+         "pdf": 407
+        }
+       ]
+      },
+      {
+       "kind": "note",
+       "text": "Both engines at the same time. The 30 s off ventilates the combustion chamber",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "FCTM",
+         "code": "PR-AEP-ENG",
+         "page": "P 6/26",
+         "pdf": 407
+        }
+       ]
+      },
+      {
+       "kind": "ecam",
+       "item": "APU (below FL 250)",
+       "setting": "START",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "QRH",
+         "code": "19.02",
+         "page": "19.02A",
+         "pdf": 164
+        }
+       ]
+      }
+     ]
+    },
+    {
+     "actor": "PF",
+     "items": [
+      {
+       "kind": "action",
+       "text": "Hold the optimum relight speed for the windmill relight",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "FCOM",
+         "code": "PRO-ABN-ENG",
+         "page": "P 38/226",
+         "pdf": 3285
+        },
+        {
+         "book": "FCTM",
+         "code": "PR-AEP-ENG",
+         "page": "P 5/26",
+         "pdf": 406
+        }
+       ]
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "phase": "If one engine relights",
+   "steps": [
+    {
+     "actor": "BOTH",
+     "items": [
+      {
+       "kind": "action",
+       "text": "ENG ALL ENGINES FAILURE disappears and ENG 1(2) FAIL appears for the other engine: apply that ECAM procedure instead",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "FCTM",
+         "code": "PR-AEP-ENG",
+         "page": "P 9/26",
+         "pdf": 410
+        },
+        {
+         "book": "FCOM",
+         "code": "PRO-ABN-ENG",
+         "page": "P 6/226",
+         "pdf": 3253
+        }
+       ]
+      },
+      {
+       "kind": "note",
+       "text": "After a successful start, use the restored engine as soon as possible",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "PDP",
+         "code": "All engine flameout",
+         "page": "XFTDA1ALENGFO01",
+         "pdf": 448
+        },
+        {
+         "book": "PDP",
+         "code": "All engine flameout",
+         "page": "XFTDA1ALENGFO01",
+         "pdf": 450
+        }
+       ]
+      },
+      {
+       "kind": "note",
+       "text": "Normal electrical configuration returns, except AC ESS and DC ESS stay on the emergency generator; green, yellow and blue hydraulics return",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "FCTM",
+         "code": "PR-AEP-ENG",
+         "page": "P 9/26",
+         "pdf": 410
+        }
+       ]
+      }
+     ]
+    },
+    {
+     "actor": "PM",
+     "items": [
+      {
+       "kind": "action",
+       "text": "ENG 1(2) FAIL asks to consider the QRH ENG RELIGHT for the other engine; it may be stopped at any time if time or distance requires",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "FCTM",
+         "code": "PR-AEP-ENG",
+         "page": "P 9/26",
+         "pdf": 410
+        }
+       ]
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "phase": "Windmill unsuccessful — starter-assisted relight",
+   "steps": [
+    {
+     "actor": "PM",
+     "items": [
+      {
+       "kind": "condition",
+       "text": "APU available and windmill relight not successful, below FL 200",
+       "children": [
+        {
+         "kind": "ecam",
+         "item": "ALL ENG MASTERS",
+         "setting": "OFF",
+         "applies_to": [
+          "all"
+         ],
+         "refs": [
+          {
+           "book": "QRH",
+           "code": "19.02",
+           "page": "19.02A",
+           "pdf": 164
+          }
+         ]
+        },
+        {
+         "kind": "action",
+         "text": "OPTIMUM SPEED: GREEN DOT (table)",
+         "applies_to": [
+          "all"
+         ],
+         "refs": [
+          {
+           "book": "QRH",
+           "code": "19.02",
+           "page": "19.02A",
+           "pdf": 164
+          }
+         ]
+        }
+       ],
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "FCOM",
+         "code": "PRO-ABN-ENG",
+         "page": "P 9/226",
+         "pdf": 3256
+        },
+        {
+         "book": "QRH",
+         "code": "19.02",
+         "page": "19.02A",
+         "pdf": 164
+        }
+       ]
+      }
+     ]
+    },
+    {
+     "actor": "PF",
+     "items": [
+      {
+       "kind": "action",
+       "text": "Reduce to all-engines-inoperative green dot: displayed on PFD 1, also in the QRH table",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "FCTM",
+         "code": "PR-AEP-ENG",
+         "page": "P 6/26",
+         "pdf": 407
+        },
+        {
+         "book": "QRH",
+         "code": "19.02",
+         "page": "19.02A",
+         "pdf": 164
+        }
+       ]
+      }
+     ]
+    },
+    {
+     "actor": "PM",
+     "items": [
+      {
+       "kind": "ecam",
+       "item": "WING ANTI ICE",
+       "setting": "OFF",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "QRH",
+         "code": "19.02",
+         "page": "19.02A",
+         "pdf": 164
+        }
+       ]
+      },
+      {
+       "kind": "ecam",
+       "item": "APU BLEED",
+       "setting": "ON",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "QRH",
+         "code": "19.02",
+         "page": "19.02A",
+         "pdf": 164
+        }
+       ]
+      },
+      {
+       "kind": "ecam",
+       "item": "ALL ENG MASTERS",
+       "setting": "OFF",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "QRH",
+         "code": "19.02",
+         "page": "19.02A",
+         "pdf": 164
+        }
+       ]
+      },
+      {
+       "kind": "ecam",
+       "item": "ENG MASTER 1 or 2",
+       "setting": "ON",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "QRH",
+         "code": "19.02",
+         "page": "19.02A",
+         "pdf": 164
+        }
+       ]
+      },
+      {
+       "kind": "ecam",
+       "item": "ENG PARAMETERS (N2, EGT)",
+       "setting": "MONITOR AT LEAST 30S",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "QRH",
+         "code": "19.02",
+         "page": "19.02A",
+         "pdf": 164
+        }
+       ]
+      },
+      {
+       "kind": "note",
+       "text": "One engine at a time: the APU cannot supply two. Do not abort while N2 and EGT keep increasing within limits",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "FCTM",
+         "code": "PR-AEP-ENG",
+         "page": "P 7/26",
+         "pdf": 408
+        }
+       ]
+      },
+      {
+       "kind": "condition",
+       "text": "If relight not successful",
+       "children": [
+        {
+         "kind": "ecam",
+         "item": "ALL ENG MASTERS",
+         "setting": "OFF",
+         "applies_to": [
+          "all"
+         ],
+         "refs": [
+          {
+           "book": "QRH",
+           "code": "19.02",
+           "page": "19.02A",
+           "pdf": 164
+          }
+         ]
+        },
+        {
+         "kind": "ecam",
+         "item": "FOR SAME ENGINE RELIGHT",
+         "setting": "WAIT 30S",
+         "applies_to": [
+          "all"
+         ],
+         "refs": [
+          {
+           "book": "QRH",
+           "code": "19.02",
+           "page": "19.02A",
+           "pdf": 164
+          }
+         ]
+        },
+        {
+         "kind": "ecam",
+         "item": "ENGINE RELIGHT (one at a time)",
+         "setting": "TRY REGULARLY",
+         "applies_to": [
+          "all"
+         ],
+         "refs": [
+          {
+           "book": "QRH",
+           "code": "19.02",
+           "page": "19.02A",
+           "pdf": 164
+          }
+         ]
+        },
+        {
+         "kind": "note",
+         "text": "The opposite engine can be tried at once: it is already ventilated",
+         "applies_to": [
+          "all"
+         ],
+         "refs": [
+          {
+           "book": "FCTM",
+           "code": "PR-AEP-ENG",
+           "page": "P 7/26",
+           "pdf": 408
+          }
+         ]
+        }
+       ],
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "QRH",
+         "code": "19.02",
+         "page": "19.02A",
+         "pdf": 164
+        },
+        {
+         "book": "FCTM",
+         "code": "PR-AEP-ENG",
+         "page": "P 7/26",
+         "pdf": 408
+        }
+       ]
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "phase": "Below 10 000 ft AGL",
+   "steps": [
+    {
+     "actor": "PF",
+     "items": [
+      {
+       "kind": "action",
+       "text": "SPEED BRAKES AVAILABLE. USE RUDDER WITH CARE: only the RAT powers hydraulics, so avoid large and rapid rudder inputs",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "QRH",
+         "code": "19.02",
+         "page": "19.02A",
+         "pdf": 164
+        },
+        {
+         "book": "QRH",
+         "code": "19.02",
+         "page": "19.02B",
+         "pdf": 165
+        },
+        {
+         "book": "FCTM",
+         "code": "PR-AEP-ENG",
+         "page": "P 3/26",
+         "pdf": 404
+        }
+       ]
+      }
+     ]
+    },
+    {
+     "actor": "PM",
+     "items": [
+      {
+       "kind": "ecam",
+       "item": "RAM AIR",
+       "setting": "ON",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "QRH",
+         "code": "19.02",
+         "page": "19.02B",
+         "pdf": 165
+        },
+        {
+         "book": "QRH",
+         "code": "19.03",
+         "page": "19.03A",
+         "pdf": 167
+        }
+       ]
+      },
+      {
+       "kind": "ecam",
+       "item": "BARO REF (if avail)",
+       "setting": "SET",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "QRH",
+         "code": "19.02",
+         "page": "19.02B",
+         "pdf": 165
+        },
+        {
+         "book": "QRH",
+         "code": "19.03",
+         "page": "19.03A",
+         "pdf": 167
+        }
+       ]
+      },
+      {
+       "kind": "ecam",
+       "item": "COMMERCIAL",
+       "setting": "OFF",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "QRH",
+         "code": "19.02",
+         "page": "19.02B",
+         "pdf": 165
+        },
+        {
+         "book": "QRH",
+         "code": "19.03",
+         "page": "19.03A",
+         "pdf": 167
+        }
+       ]
+      },
+      {
+       "kind": "ecam",
+       "item": "ELT (when conditions permit)",
+       "setting": "ON",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "QRH",
+         "code": "19.02",
+         "page": "19.02B",
+         "pdf": 165
+        },
+        {
+         "book": "QRH",
+         "code": "19.03",
+         "page": "19.03A",
+         "pdf": 167
+        }
+       ]
+      },
+      {
+       "kind": "ecam",
+       "item": "ENGs RELIGHT",
+       "setting": "TRY REGULARLY",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "QRH",
+         "code": "19.02",
+         "page": "19.02B",
+         "pdf": 165
+        }
+       ]
+      },
+      {
+       "kind": "action",
+       "text": "Prepare cabin and cockpit",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "QRH",
+         "code": "19.02",
+         "page": "19.02B",
+         "pdf": 165
+        },
+        {
+         "book": "QRH",
+         "code": "19.03",
+         "page": "19.03A",
+         "pdf": 167
+        }
+       ]
+      }
+     ]
+    },
+    {
+     "actor": "BOTH",
+     "items": [
+      {
+       "kind": "condition",
+       "text": "If ditching or forced landing anticipated",
+       "children": [
+        {
+         "kind": "action",
+         "text": "Go to QRH 19.04A (ditching) or 19.05B (forced landing): see From the manuals",
+         "applies_to": [
+          "all"
+         ],
+         "refs": [
+          {
+           "book": "QRH",
+           "code": "19.02",
+           "page": "19.02B",
+           "pdf": 165
+          },
+          {
+           "book": "QRH",
+           "code": "19.04",
+           "page": "19.04A",
+           "pdf": 170
+          },
+          {
+           "book": "QRH",
+           "code": "19.05",
+           "page": "19.05B",
+           "pdf": 172
+          }
+         ]
+        }
+       ],
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "QRH",
+         "code": "19.02",
+         "page": "19.02B",
+         "pdf": 165
+        }
+       ]
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "phase": "No relight, time permits — clear ECAM → STATUS",
+   "steps": [
+    {
+     "actor": "BOTH",
+     "items": [
+      {
+       "kind": "note",
+       "text": "As long as no engine relights, keep to the QRH; clear the ECAM alerts and STATUS page only if there is sufficient time",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "FCOM",
+         "code": "PRO-ABN-ENG",
+         "page": "P 6/226",
+         "pdf": 3253
+        },
+        {
+         "book": "FCOM",
+         "code": "PRO-ABN-ENG",
+         "page": "P 7/226",
+         "pdf": 3254
+        }
+       ]
+      }
+     ]
+    },
+    {
+     "actor": "PM",
+     "items": [
+      {
+       "kind": "callout",
+       "text": "CLEAR ENG ?",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "FCOM",
+         "code": "PRO-ABN-ABN-00",
+         "page": "P 8/12",
+         "pdf": 2831
+        },
+        {
+         "book": "FCTM",
+         "code": "AOP-30-30",
+         "page": "P 3/6",
+         "pdf": 84
+        },
+        {
+         "book": "PDP",
+         "code": "Management of abnormal operations",
+         "page": "XFTDN6ECAM00001",
+         "pdf": 424
+        }
+       ]
+      }
+     ]
+    },
+    {
+     "actor": "PF",
+     "items": [
+      {
+       "kind": "callout",
+       "text": "CLEAR ENG",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "FCOM",
+         "code": "PRO-ABN-ABN-00",
+         "page": "P 8/12",
+         "pdf": 2831
+        },
+        {
+         "book": "FCTM",
+         "code": "AOP-30-30",
+         "page": "P 3/6",
+         "pdf": 84
+        },
+        {
+         "book": "PDP",
+         "code": "Management of abnormal operations",
+         "page": "XFTDN6ECAM00001",
+         "pdf": 424
+        }
+       ]
+      }
+     ]
+    },
+    {
+     "actor": "PM",
+     "items": [
+      {
+       "kind": "callout",
+       "text": "STATUS",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "FCTM",
+         "code": "AOP-30-30",
+         "page": "P 3/6",
+         "pdf": 84
+        },
+        {
+         "book": "PDP",
+         "code": "Management of abnormal operations",
+         "page": "XFTDN6ECAM00001",
+         "pdf": 426
+        }
+       ]
+      }
+     ]
+    },
+    {
+     "actor": "PF",
+     "items": [
+      {
+       "kind": "callout",
+       "text": "STOP ECAM",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "FCTM",
+         "code": "AOP-30-30",
+         "page": "P 3/6",
+         "pdf": 84
+        },
+        {
+         "book": "PDP",
+         "code": "Management of abnormal operations",
+         "page": "XFTDN6ECAM00001",
+         "pdf": 426
+        }
+       ]
+      }
+     ]
+    },
+    {
+     "actor": "PM",
+     "items": [
+      {
+       "kind": "ecam",
+       "item": "ECAM ACTIONS",
+       "setting": "STOP",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "PDP",
+         "code": "Management of abnormal operations",
+         "page": "XFTDN6ECAM00001",
+         "pdf": 426
+        }
+       ]
+      }
+     ]
+    },
+    {
+     "actor": "PF",
+     "items": [
+      {
+       "kind": "action",
+       "text": "Normal C/L as applicable; system resets only per QRH",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "FCTM",
+         "code": "AOP-30-30",
+         "page": "P 4/6",
+         "pdf": 85
+        },
+        {
+         "book": "PDP",
+         "code": "Management of abnormal operations",
+         "page": "XFTDN6ECAM00001",
+         "pdf": 426
+        }
+       ]
+      },
+      {
+       "kind": "callout",
+       "text": "CONTINUE ECAM",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "FCTM",
+         "code": "AOP-30-30",
+         "page": "P 3/6",
+         "pdf": 84
+        },
+        {
+         "book": "PDP",
+         "code": "Management of abnormal operations",
+         "page": "XFTDN6ECAM00001",
+         "pdf": 426
+        }
+       ]
+      }
+     ]
+    },
+    {
+     "actor": "PM",
+     "items": [
+      {
+       "kind": "action",
+       "text": "Read the whole STATUS page; preview APPR PROC workload",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "FCTM",
+         "code": "AOP-30-30",
+         "page": "P 3/6",
+         "pdf": 84
+        },
+        {
+         "book": "PDP",
+         "code": "Management of abnormal operations",
+         "page": "XFTDN6ECAM00001",
+         "pdf": 426
+        }
+       ]
+      },
+      {
+       "kind": "callout",
+       "text": "REMOVE STATUS ?",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "FCTM",
+         "code": "AOP-30-30",
+         "page": "P 3/6",
+         "pdf": 84
+        },
+        {
+         "book": "PDP",
+         "code": "Management of abnormal operations",
+         "page": "XFTDN6ECAM00001",
+         "pdf": 426
+        }
+       ]
+      }
+     ]
+    },
+    {
+     "actor": "PF",
+     "items": [
+      {
+       "kind": "callout",
+       "text": "REMOVE STATUS",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "FCOM",
+         "code": "PRO-ABN-ABN-00",
+         "page": "P 8/12",
+         "pdf": 2831
+        },
+        {
+         "book": "FCTM",
+         "code": "AOP-30-30",
+         "page": "P 3/6",
+         "pdf": 84
+        },
+        {
+         "book": "PDP",
+         "code": "Management of abnormal operations",
+         "page": "XFTDN6ECAM00001",
+         "pdf": 426
+        }
+       ]
+      }
+     ]
+    },
+    {
+     "actor": "PM",
+     "items": [
+      {
+       "kind": "callout",
+       "text": "ECAM ACTIONS COMPLETE",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "FCOM",
+         "code": "PRO-ABN-ABN-00",
+         "page": "P 8/12",
+         "pdf": 2831
+        },
+        {
+         "book": "PDP",
+         "code": "Management of abnormal operations",
+         "page": "XFTDN6ECAM00001",
+         "pdf": 426
+        }
+       ]
+      }
+     ]
+    }
+   ]
+  }
+ ],
+ "procedures": [
+  {
+   "title": "ENG ALL ENGINES FAILURE — ECAM",
+   "source": "FCOM PRO-ABN-ENG",
+   "lines": [
+    {
+     "kind": "land_asap",
+     "text": "LAND ASAP (red)",
+     "level": 0,
+     "applies_to": [
+      "all"
+     ],
+     "refs": [
+      {
+       "book": "FCOM",
+       "code": "PRO-ABN-ENG",
+       "page": "P 38/226",
+       "pdf": 3285
+      }
+     ]
+    },
+    {
+     "kind": "action",
+     "item": "EMER ELEC PWR MAN ON PB",
+     "setting": "PRESS",
+     "text": "Enables RAT extension and emergency generator connection.",
+     "level": 0,
+     "applies_to": [
+      "all"
+     ],
+     "refs": [
+      {
+       "book": "FCOM",
+       "code": "PRO-ABN-ENG",
+       "page": "P 38/226",
+       "pdf": 3285
+      }
+     ]
+    },
+    {
+     "kind": "action",
+     "item": "OPT RELIGHT SPD",
+     "setting": "280/0.77",
+     "text": "Speed indication failure (volcanic ash): pitch in the QRH.",
+     "level": 0,
+     "applies_to": [
+      "all"
+     ],
+     "refs": [
+      {
+       "book": "FCOM",
+       "code": "PRO-ABN-ENG",
+       "page": "P 38/226",
+       "pdf": 3285
+      }
+     ]
+    },
+    {
+     "kind": "note",
+     "text": "During high power operations (climb, cruise) it is mandatory to fly at or above the optimum relight speed, to prevent engine core lock.",
+     "level": 0,
+     "applies_to": [
+      "all"
+     ],
+     "refs": [
+      {
+       "book": "FCOM",
+       "code": "PRO-ABN-ENG",
+       "page": "P 38/226",
+       "pdf": 3285
+      }
+     ]
+    },
+    {
+     "kind": "action",
+     "item": "APU (BELOW FL 250)",
+     "setting": "START",
+     "text": "",
+     "level": 0,
+     "applies_to": [
+      "all"
+     ],
+     "refs": [
+      {
+       "book": "FCOM",
+       "code": "PRO-ABN-ENG",
+       "page": "P 39/226",
+       "pdf": 3286
+      }
+     ]
+    },
+    {
+     "kind": "action",
+     "item": "THR LEVERS",
+     "setting": "IDLE",
+     "text": "",
+     "level": 0,
+     "applies_to": [
+      "all"
+     ],
+     "refs": [
+      {
+       "book": "FCOM",
+       "code": "PRO-ABN-ENG",
+       "page": "P 39/226",
+       "pdf": 3286
+      }
+     ]
+    },
+    {
+     "kind": "action",
+     "item": "FAC 1",
+     "setting": "OFF THEN ON",
+     "text": "Recovers characteristic speeds on the PFD and rudder trim.",
+     "level": 0,
+     "applies_to": [
+      "all"
+     ],
+     "refs": [
+      {
+       "book": "FCOM",
+       "code": "PRO-ABN-ENG",
+       "page": "P 39/226",
+       "pdf": 3286
+      }
+     ]
+    },
+    {
+     "kind": "info",
+     "text": "GLDG DIST: 2NM/1000FT",
+     "level": 0,
+     "applies_to": [
+      "all"
+     ],
+     "refs": [
+      {
+       "book": "FCOM",
+       "code": "PRO-ABN-ENG",
+       "page": "P 39/226",
+       "pdf": 3286
+      }
+     ]
+    },
+    {
+     "kind": "action",
+     "item": "DIVERSION",
+     "setting": "INITIATE",
+     "text": "An accessible runway, or the most appropriate area for a forced landing or ditching.",
+     "level": 0,
+     "applies_to": [
+      "all"
+     ],
+     "refs": [
+      {
+       "book": "FCOM",
+       "code": "PRO-ABN-ENG",
+       "page": "P 39/226",
+       "pdf": 3286
+      }
+     ]
+    },
+    {
+     "kind": "action",
+     "item": "ALL ENG FAIL PROC",
+     "setting": "APPLY",
+     "text": "",
+     "level": 0,
+     "applies_to": [
+      "all"
+     ],
+     "refs": [
+      {
+       "book": "FCOM",
+       "code": "PRO-ABN-ENG",
+       "page": "P 39/226",
+       "pdf": 3286
+      }
+     ]
+    },
+    {
+     "kind": "info",
+     "text": "Associated: F/CTL ALTN LAW (PROT LOST).",
+     "level": 0,
+     "applies_to": [
+      "all"
+     ],
+     "refs": [
+      {
+       "book": "FCOM",
+       "code": "PRO-ABN-ENG",
+       "page": "P 39/226",
+       "pdf": 3286
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "title": "ALL ENG FAIL — notify and decide",
+   "source": "QRH 19.01",
+   "lines": [
+    {
+     "kind": "action",
+     "item": "VHF1/HF1/ATC1",
+     "setting": "USE",
+     "text": "",
+     "level": 0,
+     "applies_to": [
+      "all"
+     ],
+     "refs": [
+      {
+       "book": "QRH",
+       "code": "19.01",
+       "page": "19.01B",
+       "pdf": 163
+      }
+     ]
+    },
+    {
+     "kind": "action",
+     "item": "ATC",
+     "setting": "NOTIFY",
+     "text": "",
+     "level": 0,
+     "applies_to": [
+      "all"
+     ],
+     "refs": [
+      {
+       "book": "QRH",
+       "code": "19.01",
+       "page": "19.01B",
+       "pdf": 163
+      }
+     ]
+    },
+    {
+     "kind": "action",
+     "item": "CABIN CREW",
+     "setting": "NOTIFY",
+     "text": "",
+     "level": 0,
+     "applies_to": [
+      "all"
+     ],
+     "refs": [
+      {
+       "book": "QRH",
+       "code": "19.01",
+       "page": "19.01B",
+       "pdf": 163
+      }
+     ]
+    },
+    {
+     "kind": "action",
+     "item": "SIGNS",
+     "setting": "ON",
+     "text": "",
+     "level": 0,
+     "applies_to": [
+      "all"
+     ],
+     "refs": [
+      {
+       "book": "QRH",
+       "code": "19.01",
+       "page": "19.01B",
+       "pdf": 163
+      }
+     ]
+    },
+    {
+     "kind": "action",
+     "item": "CREW OXY MASK (FL > 100)",
+     "setting": "USE",
+     "text": "",
+     "level": 0,
+     "applies_to": [
+      "all"
+     ],
+     "refs": [
+      {
+       "book": "QRH",
+       "code": "19.01",
+       "page": "19.01B",
+       "pdf": 163
+      }
+     ]
+    },
+    {
+     "kind": "action",
+     "item": "FUEL QUANTITY",
+     "setting": "CHECK",
+     "text": "",
+     "level": 0,
+     "applies_to": [
+      "all"
+     ],
+     "refs": [
+      {
+       "book": "QRH",
+       "code": "19.01",
+       "page": "19.01B",
+       "pdf": 163
+      }
+     ]
+    },
+    {
+     "kind": "condition",
+     "text": "If engine relight can be attempted: QRH 19.02A",
+     "level": 0,
+     "applies_to": [
+      "all"
+     ],
+     "refs": [
+      {
+       "book": "QRH",
+       "code": "19.01",
+       "page": "19.01B",
+       "pdf": 163
+      }
+     ]
+    },
+    {
+     "kind": "condition",
+     "text": "If engine relight cannot be attempted: QRH 19.03A",
+     "level": 0,
+     "applies_to": [
+      "all"
+     ],
+     "refs": [
+      {
+       "book": "QRH",
+       "code": "19.01",
+       "page": "19.01B",
+       "pdf": 163
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "title": "ALL ENG FAIL — relight",
+   "source": "QRH 19.02",
+   "lines": [
+    {
+     "kind": "condition",
+     "text": "If engine relight can be attempted:",
+     "level": 0,
+     "applies_to": [
+      "all"
+     ],
+     "refs": [
+      {
+       "book": "QRH",
+       "code": "19.02",
+       "page": "19.02A",
+       "pdf": 164
+      }
+     ]
+    },
+    {
+     "kind": "action",
+     "item": "ENG MODE sel",
+     "setting": "IGN",
+     "text": "",
+     "level": 1,
+     "applies_to": [
+      "all"
+     ],
+     "refs": [
+      {
+       "book": "QRH",
+       "code": "19.02",
+       "page": "19.02A",
+       "pdf": 164
+      }
+     ]
+    },
+    {
+     "kind": "condition",
+     "text": "Approaching or below FL 300: Windmill Relight",
+     "level": 1,
+     "applies_to": [
+      "all"
+     ],
+     "refs": [
+      {
+       "book": "QRH",
+       "code": "19.02",
+       "page": "19.02A",
+       "pdf": 164
+      }
+     ]
+    },
+    {
+     "kind": "action",
+     "item": "ALL ENG MASTERS",
+     "setting": "OFF 30 S THEN ON",
+     "text": "",
+     "level": 2,
+     "applies_to": [
+      "all"
+     ],
+     "refs": [
+      {
+       "book": "QRH",
+       "code": "19.02",
+       "page": "19.02A",
+       "pdf": 164
+      }
+     ]
+    },
+    {
+     "kind": "action",
+     "item": "ENGs RELIGHT",
+     "setting": "TRY REGULARLY",
+     "text": "",
+     "level": 2,
+     "applies_to": [
+      "all"
+     ],
+     "refs": [
+      {
+       "book": "QRH",
+       "code": "19.02",
+       "page": "19.02A",
+       "pdf": 164
+      }
+     ]
+    },
+    {
+     "kind": "note",
+     "text": "Windmill relight attempts can be repeated until successful, or until the APU bleed is available.",
+     "level": 2,
+     "applies_to": [
+      "all"
+     ],
+     "refs": [
+      {
+       "book": "QRH",
+       "code": "19.02",
+       "page": "19.02A",
+       "pdf": 164
+      }
+     ]
+    },
+    {
+     "kind": "action",
+     "item": "APU (below FL 250)",
+     "setting": "START",
+     "text": "",
+     "level": 2,
+     "applies_to": [
+      "all"
+     ],
+     "refs": [
+      {
+       "book": "QRH",
+       "code": "19.02",
+       "page": "19.02A",
+       "pdf": 164
+      }
+     ]
+    },
+    {
+     "kind": "condition",
+     "text": "If APU available and windmill relight not successful: Starter Assisted Relight below FL 200",
+     "level": 2,
+     "applies_to": [
+      "all"
+     ],
+     "refs": [
+      {
+       "book": "QRH",
+       "code": "19.02",
+       "page": "19.02A",
+       "pdf": 164
+      }
+     ]
+    },
+    {
+     "kind": "action",
+     "item": "ALL ENG MASTERS",
+     "setting": "OFF",
+     "text": "",
+     "level": 3,
+     "applies_to": [
+      "all"
+     ],
+     "refs": [
+      {
+       "book": "QRH",
+       "code": "19.02",
+       "page": "19.02A",
+       "pdf": 164
+      }
+     ]
+    },
+    {
+     "kind": "info",
+     "text": "OPTIMUM SPEED: GREEN DOT",
+     "level": 3,
+     "applies_to": [
+      "all"
+     ],
+     "refs": [
+      {
+       "book": "QRH",
+       "code": "19.02",
+       "page": "19.02A",
+       "pdf": 164
+      }
+     ]
+    },
+    {
+     "kind": "action",
+     "item": "WING ANTI ICE",
+     "setting": "OFF",
+     "text": "",
+     "level": 3,
+     "applies_to": [
+      "all"
+     ],
+     "refs": [
+      {
+       "book": "QRH",
+       "code": "19.02",
+       "page": "19.02A",
+       "pdf": 164
+      }
+     ]
+    },
+    {
+     "kind": "action",
+     "item": "APU BLEED",
+     "setting": "ON",
+     "text": "",
+     "level": 3,
+     "applies_to": [
+      "all"
+     ],
+     "refs": [
+      {
+       "book": "QRH",
+       "code": "19.02",
+       "page": "19.02A",
+       "pdf": 164
+      }
+     ]
+    },
+    {
+     "kind": "info",
+     "text": "ENGINE RELIGHT (one at a time)",
+     "level": 3,
+     "applies_to": [
+      "all"
+     ],
+     "refs": [
+      {
+       "book": "QRH",
+       "code": "19.02",
+       "page": "19.02A",
+       "pdf": 164
+      }
+     ]
+    },
+    {
+     "kind": "action",
+     "item": "ALL ENG MASTERS",
+     "setting": "OFF",
+     "text": "",
+     "level": 3,
+     "applies_to": [
+      "all"
+     ],
+     "refs": [
+      {
+       "book": "QRH",
+       "code": "19.02",
+       "page": "19.02A",
+       "pdf": 164
+      }
+     ]
+    },
+    {
+     "kind": "action",
+     "item": "ENG MASTER 1 or 2",
+     "setting": "ON",
+     "text": "",
+     "level": 3,
+     "applies_to": [
+      "all"
+     ],
+     "refs": [
+      {
+       "book": "QRH",
+       "code": "19.02",
+       "page": "19.02A",
+       "pdf": 164
+      }
+     ]
+    },
+    {
+     "kind": "action",
+     "item": "ENG PARAMETERS (N2, EGT)",
+     "setting": "MONITOR AT LEAST 30S",
+     "text": "",
+     "level": 3,
+     "applies_to": [
+      "all"
+     ],
+     "refs": [
+      {
+       "book": "QRH",
+       "code": "19.02",
+       "page": "19.02A",
+       "pdf": 164
+      }
+     ]
+    },
+    {
+     "kind": "condition",
+     "text": "If relight not successful",
+     "level": 3,
+     "applies_to": [
+      "all"
+     ],
+     "refs": [
+      {
+       "book": "QRH",
+       "code": "19.02",
+       "page": "19.02A",
+       "pdf": 164
+      }
+     ]
+    },
+    {
+     "kind": "action",
+     "item": "ALL ENG MASTERS",
+     "setting": "OFF",
+     "text": "",
+     "level": 4,
+     "applies_to": [
+      "all"
+     ],
+     "refs": [
+      {
+       "book": "QRH",
+       "code": "19.02",
+       "page": "19.02A",
+       "pdf": 164
+      }
+     ]
+    },
+    {
+     "kind": "action",
+     "item": "FOR SAME ENGINE RELIGHT",
+     "setting": "WAIT 30S",
+     "text": "",
+     "level": 4,
+     "applies_to": [
+      "all"
+     ],
+     "refs": [
+      {
+       "book": "QRH",
+       "code": "19.02",
+       "page": "19.02A",
+       "pdf": 164
+      }
+     ]
+    },
+    {
+     "kind": "action",
+     "item": "ENGINE RELIGHT (one at a time)",
+     "setting": "TRY REGULARLY",
+     "text": "",
+     "level": 4,
+     "applies_to": [
+      "all"
+     ],
+     "refs": [
+      {
+       "book": "QRH",
+       "code": "19.02",
+       "page": "19.02A",
+       "pdf": 164
+      }
+     ]
+    },
+    {
+     "kind": "info",
+     "text": "SPEED BRAKES AVAILABLE",
+     "level": 1,
+     "applies_to": [
+      "all"
+     ],
+     "refs": [
+      {
+       "book": "QRH",
+       "code": "19.02",
+       "page": "19.02A",
+       "pdf": 164
+      }
+     ]
+    },
+    {
+     "kind": "condition",
+     "text": "When below 10 000 ft AGL:",
+     "level": 1,
+     "applies_to": [
+      "all"
+     ],
+     "refs": [
+      {
+       "book": "QRH",
+       "code": "19.02",
+       "page": "19.02B",
+       "pdf": 165
+      }
+     ]
+    },
+    {
+     "kind": "info",
+     "text": "PREPARE CABIN AND COCKPIT",
+     "level": 2,
+     "applies_to": [
+      "all"
+     ],
+     "refs": [
+      {
+       "book": "QRH",
+       "code": "19.02",
+       "page": "19.02B",
+       "pdf": 165
+      }
+     ]
+    },
+    {
+     "kind": "action",
+     "item": "RAM AIR",
+     "setting": "ON",
+     "text": "",
+     "level": 2,
+     "applies_to": [
+      "all"
+     ],
+     "refs": [
+      {
+       "book": "QRH",
+       "code": "19.02",
+       "page": "19.02B",
+       "pdf": 165
+      }
+     ]
+    },
+    {
+     "kind": "action",
+     "item": "BARO REF (if avail)",
+     "setting": "SET",
+     "text": "",
+     "level": 2,
+     "applies_to": [
+      "all"
+     ],
+     "refs": [
+      {
+       "book": "QRH",
+       "code": "19.02",
+       "page": "19.02B",
+       "pdf": 165
+      }
+     ]
+    },
+    {
+     "kind": "action",
+     "item": "COMMERCIAL",
+     "setting": "OFF",
+     "text": "",
+     "level": 2,
+     "applies_to": [
+      "all"
+     ],
+     "refs": [
+      {
+       "book": "QRH",
+       "code": "19.02",
+       "page": "19.02B",
+       "pdf": 165
+      }
+     ]
+    },
+    {
+     "kind": "action",
+     "item": "ELT (when conditions permit)",
+     "setting": "ON",
+     "text": "",
+     "level": 2,
+     "applies_to": [
+      "all"
+     ],
+     "refs": [
+      {
+       "book": "QRH",
+       "code": "19.02",
+       "page": "19.02B",
+       "pdf": 165
+      }
+     ]
+    },
+    {
+     "kind": "action",
+     "item": "ENGs RELIGHT",
+     "setting": "TRY REGULARLY",
+     "text": "",
+     "level": 2,
+     "applies_to": [
+      "all"
+     ],
+     "refs": [
+      {
+       "book": "QRH",
+       "code": "19.02",
+       "page": "19.02B",
+       "pdf": 165
+      }
+     ]
+    },
+    {
+     "kind": "info",
+     "text": "USE RUDDER WITH CARE",
+     "level": 1,
+     "applies_to": [
+      "all"
+     ],
+     "refs": [
+      {
+       "book": "QRH",
+       "code": "19.02",
+       "page": "19.02B",
+       "pdf": 165
+      }
+     ]
+    },
+    {
+     "kind": "condition",
+     "text": "If ditching anticipated: 19.04A · If forced landing anticipated: 19.05A",
+     "level": 1,
+     "applies_to": [
+      "all"
+     ],
+     "refs": [
+      {
+       "book": "QRH",
+       "code": "19.02",
+       "page": "19.02B",
+       "pdf": 165
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "title": "ALL ENG FAIL — no relight",
+   "source": "QRH 19.03",
+   "lines": [
+    {
+     "kind": "condition",
+     "text": "If engine relight cannot be attempted:",
+     "level": 0,
+     "applies_to": [
+      "all"
+     ],
+     "refs": [
+      {
+       "book": "QRH",
+       "code": "19.03",
+       "page": "19.03A",
+       "pdf": 167
+      }
+     ]
+    },
+    {
+     "kind": "info",
+     "text": "OPTIMUM SPEED: GREEN DOT",
+     "level": 1,
+     "applies_to": [
+      "all"
+     ],
+     "refs": [
+      {
+       "book": "QRH",
+       "code": "19.03",
+       "page": "19.03A",
+       "pdf": 167
+      }
+     ]
+    },
+    {
+     "kind": "info",
+     "text": "GLIDING DISTANCE : 2.5 NM / 1000 FT",
+     "level": 1,
+     "applies_to": [
+      "all"
+     ],
+     "refs": [
+      {
+       "book": "QRH",
+       "code": "19.03",
+       "page": "19.03A",
+       "pdf": 167
+      }
+     ]
+    },
+    {
+     "kind": "action",
+     "item": "APU (below FL 250)",
+     "setting": "START",
+     "text": "",
+     "level": 1,
+     "applies_to": [
+      "all"
+     ],
+     "refs": [
+      {
+       "book": "QRH",
+       "code": "19.03",
+       "page": "19.03A",
+       "pdf": 167
+      }
+     ]
+    },
+    {
+     "kind": "action",
+     "item": "WING ANTI ICE",
+     "setting": "OFF",
+     "text": "",
+     "level": 1,
+     "applies_to": [
+      "all"
+     ],
+     "refs": [
+      {
+       "book": "QRH",
+       "code": "19.03",
+       "page": "19.03A",
+       "pdf": 167
+      }
+     ]
+    },
+    {
+     "kind": "action",
+     "item": "APU BLEED (below FL 200)",
+     "setting": "ON",
+     "text": "",
+     "level": 1,
+     "applies_to": [
+      "all"
+     ],
+     "refs": [
+      {
+       "book": "QRH",
+       "code": "19.03",
+       "page": "19.03A",
+       "pdf": 167
+      }
+     ]
+    },
+    {
+     "kind": "info",
+     "text": "SPEED BRAKES AVAILABLE",
+     "level": 1,
+     "applies_to": [
+      "all"
+     ],
+     "refs": [
+      {
+       "book": "QRH",
+       "code": "19.03",
+       "page": "19.03A",
+       "pdf": 167
+      }
+     ]
+    },
+    {
+     "kind": "condition",
+     "text": "Below 10 000 ft AGL:",
+     "level": 1,
+     "applies_to": [
+      "all"
+     ],
+     "refs": [
+      {
+       "book": "QRH",
+       "code": "19.03",
+       "page": "19.03A",
+       "pdf": 167
+      }
+     ]
+    },
+    {
+     "kind": "info",
+     "text": "PREPARE CABIN AND COCKPIT",
+     "level": 2,
+     "applies_to": [
+      "all"
+     ],
+     "refs": [
+      {
+       "book": "QRH",
+       "code": "19.03",
+       "page": "19.03A",
+       "pdf": 167
+      }
+     ]
+    },
+    {
+     "kind": "action",
+     "item": "RAM AIR",
+     "setting": "ON",
+     "text": "",
+     "level": 2,
+     "applies_to": [
+      "all"
+     ],
+     "refs": [
+      {
+       "book": "QRH",
+       "code": "19.03",
+       "page": "19.03A",
+       "pdf": 167
+      }
+     ]
+    },
+    {
+     "kind": "action",
+     "item": "BARO REF (if avail)",
+     "setting": "SET",
+     "text": "",
+     "level": 2,
+     "applies_to": [
+      "all"
+     ],
+     "refs": [
+      {
+       "book": "QRH",
+       "code": "19.03",
+       "page": "19.03A",
+       "pdf": 167
+      }
+     ]
+    },
+    {
+     "kind": "action",
+     "item": "COMMERCIAL",
+     "setting": "OFF",
+     "text": "",
+     "level": 2,
+     "applies_to": [
+      "all"
+     ],
+     "refs": [
+      {
+       "book": "QRH",
+       "code": "19.03",
+       "page": "19.03A",
+       "pdf": 167
+      }
+     ]
+    },
+    {
+     "kind": "action",
+     "item": "ELT (when conditions permit)",
+     "setting": "ON",
+     "text": "",
+     "level": 2,
+     "applies_to": [
+      "all"
+     ],
+     "refs": [
+      {
+       "book": "QRH",
+       "code": "19.03",
+       "page": "19.03A",
+       "pdf": 167
+      }
+     ]
+    },
+    {
+     "kind": "info",
+     "text": "USE RUDDER WITH CARE",
+     "level": 1,
+     "applies_to": [
+      "all"
+     ],
+     "refs": [
+      {
+       "book": "QRH",
+       "code": "19.03",
+       "page": "19.03A",
+       "pdf": 167
+      }
+     ]
+    },
+    {
+     "kind": "condition",
+     "text": "If ditching anticipated: 19.04A · If forced landing anticipated: 19.05A",
+     "level": 1,
+     "applies_to": [
+      "all"
+     ],
+     "refs": [
+      {
+       "book": "QRH",
+       "code": "19.03",
+       "page": "19.03B",
+       "pdf": 168
+      },
+      {
+       "book": "QRH",
+       "code": "19.03",
+       "page": "19.03C",
+       "pdf": 169
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "title": "ALL ENG FAIL — ditching",
+   "source": "QRH 19.04",
+   "lines": [
+    {
+     "kind": "condition",
+     "text": "If ditching anticipated:",
+     "level": 0,
+     "applies_to": [
+      "all"
+     ],
+     "refs": [
+      {
+       "book": "QRH",
+       "code": "19.04",
+       "page": "19.04A",
+       "pdf": 170
+      }
+     ]
+    },
+    {
+     "kind": "info",
+     "text": "MIN RAT SPEED : 140 KT",
+     "level": 1,
+     "applies_to": [
+      "all"
+     ],
+     "refs": [
+      {
+       "book": "QRH",
+       "code": "19.04",
+       "page": "19.04A",
+       "pdf": 170
+      }
+     ]
+    },
+    {
+     "kind": "action",
+     "item": "GPWS SYS",
+     "setting": "OFF",
+     "text": "",
+     "level": 1,
+     "applies_to": [
+      "all"
+     ],
+     "refs": [
+      {
+       "book": "QRH",
+       "code": "19.04",
+       "page": "19.04A",
+       "pdf": 170
+      }
+     ]
+    },
+    {
+     "kind": "action",
+     "item": "GPWS TERR",
+     "setting": "OFF",
+     "text": "",
+     "level": 1,
+     "applies_to": [
+      "all"
+     ],
+     "refs": [
+      {
+       "book": "QRH",
+       "code": "19.04",
+       "page": "19.04A",
+       "pdf": 170
+      }
+     ]
+    },
+    {
+     "kind": "condition",
+     "text": "At appropriate altitude (above 3 000 ft AGL), configure aircraft for ditching:",
+     "level": 1,
+     "applies_to": [
+      "all"
+     ],
+     "refs": [
+      {
+       "book": "QRH",
+       "code": "19.04",
+       "page": "19.04A",
+       "pdf": 170
+      }
+     ]
+    },
+    {
+     "kind": "action",
+     "item": "FOR LDG",
+     "setting": "FLAP LVR 2",
+     "text": "Only slats extend, and slowly.",
+     "level": 2,
+     "applies_to": [
+      "all"
+     ],
+     "refs": [
+      {
+       "book": "QRH",
+       "code": "19.04",
+       "page": "19.04A",
+       "pdf": 170
+      }
+     ]
+    },
+    {
+     "kind": "info",
+     "text": "KEEP LANDING GEAR UP",
+     "level": 2,
+     "applies_to": [
+      "all"
+     ],
+     "refs": [
+      {
+       "book": "QRH",
+       "code": "19.04",
+       "page": "19.04A",
+       "pdf": 170
+      }
+     ]
+    },
+    {
+     "kind": "action",
+     "item": "VAPP",
+     "setting": "DETERMINE",
+     "text": "",
+     "level": 2,
+     "applies_to": [
+      "all"
+     ],
+     "refs": [
+      {
+       "book": "QRH",
+       "code": "19.04",
+       "page": "19.04A",
+       "pdf": 170
+      }
+     ]
+    },
+    {
+     "kind": "condition",
+     "text": "At 2 000 ft AGL:",
+     "level": 1,
+     "applies_to": [
+      "all"
+     ],
+     "refs": [
+      {
+       "book": "QRH",
+       "code": "19.04",
+       "page": "19.04A",
+       "pdf": 170
+      }
+     ]
+    },
+    {
+     "kind": "action",
+     "item": "CABIN CREW",
+     "setting": "NOTIFY FOR DITCHING",
+     "text": "",
+     "level": 2,
+     "applies_to": [
+      "all"
+     ],
+     "refs": [
+      {
+       "book": "QRH",
+       "code": "19.04",
+       "page": "19.04A",
+       "pdf": 170
+      }
+     ]
+    },
+    {
+     "kind": "action",
+     "item": "DITCHING pb",
+     "setting": "ON",
+     "text": "Ditch parallel to the swell. If that causes a strong crosswind, ditch into the wind.",
+     "level": 2,
+     "applies_to": [
+      "all"
+     ],
+     "refs": [
+      {
+       "book": "QRH",
+       "code": "19.04",
+       "page": "19.04A",
+       "pdf": 170
+      }
+     ]
+    },
+    {
+     "kind": "condition",
+     "text": "At 500 ft AGL:",
+     "level": 1,
+     "applies_to": [
+      "all"
+     ],
+     "refs": [
+      {
+       "book": "QRH",
+       "code": "19.04",
+       "page": "19.04A",
+       "pdf": 170
+      }
+     ]
+    },
+    {
+     "kind": "action",
+     "item": "BRACE FOR IMPACT",
+     "setting": "ORDER",
+     "text": "",
+     "level": 2,
+     "applies_to": [
+      "all"
+     ],
+     "refs": [
+      {
+       "book": "QRH",
+       "code": "19.04",
+       "page": "19.04A",
+       "pdf": 170
+      }
+     ]
+    },
+    {
+     "kind": "info",
+     "text": "TOUCH DOWN AT MIN V/S · TARGET PITCH ATT 11°",
+     "level": 2,
+     "applies_to": [
+      "all"
+     ],
+     "refs": [
+      {
+       "book": "QRH",
+       "code": "19.04",
+       "page": "19.04A",
+       "pdf": 170
+      }
+     ]
+    },
+    {
+     "kind": "condition",
+     "text": "At touchdown:",
+     "level": 1,
+     "applies_to": [
+      "all"
+     ],
+     "refs": [
+      {
+       "book": "QRH",
+       "code": "19.04",
+       "page": "19.04A",
+       "pdf": 170
+      }
+     ]
+    },
+    {
+     "kind": "action",
+     "item": "ALL ENG MASTERS",
+     "setting": "OFF",
+     "text": "",
+     "level": 2,
+     "applies_to": [
+      "all"
+     ],
+     "refs": [
+      {
+       "book": "QRH",
+       "code": "19.04",
+       "page": "19.04A",
+       "pdf": 170
+      }
+     ]
+    },
+    {
+     "kind": "action",
+     "item": "APU MASTER sw",
+     "setting": "OFF",
+     "text": "",
+     "level": 2,
+     "applies_to": [
+      "all"
+     ],
+     "refs": [
+      {
+       "book": "QRH",
+       "code": "19.04",
+       "page": "19.04A",
+       "pdf": 170
+      }
+     ]
+    },
+    {
+     "kind": "condition",
+     "text": "After ditching:",
+     "level": 1,
+     "applies_to": [
+      "all"
+     ],
+     "refs": [
+      {
+       "book": "QRH",
+       "code": "19.04",
+       "page": "19.04A",
+       "pdf": 170
+      }
+     ]
+    },
+    {
+     "kind": "action",
+     "item": "ATC (VHF 1)",
+     "setting": "NOTIFY",
+     "text": "",
+     "level": 2,
+     "applies_to": [
+      "all"
+     ],
+     "refs": [
+      {
+       "book": "QRH",
+       "code": "19.04",
+       "page": "19.04A",
+       "pdf": 170
+      }
+     ]
+    },
+    {
+     "kind": "action",
+     "item": "ALL FIRE pb (ENGs & APU)",
+     "setting": "PUSH",
+     "text": "",
+     "level": 2,
+     "applies_to": [
+      "all"
+     ],
+     "refs": [
+      {
+       "book": "QRH",
+       "code": "19.04",
+       "page": "19.04A",
+       "pdf": 170
+      }
+     ]
+    },
+    {
+     "kind": "action",
+     "item": "ALL AGENT (ENGs & APU)",
+     "setting": "DISCH",
+     "text": "",
+     "level": 2,
+     "applies_to": [
+      "all"
+     ],
+     "refs": [
+      {
+       "book": "QRH",
+       "code": "19.04",
+       "page": "19.04A",
+       "pdf": 170
+      }
+     ]
+    },
+    {
+     "kind": "action",
+     "item": "EVACUATION",
+     "setting": "INITIATE",
+     "text": "",
+     "level": 2,
+     "applies_to": [
+      "all"
+     ],
+     "refs": [
+      {
+       "book": "QRH",
+       "code": "19.04",
+       "page": "19.04A",
+       "pdf": 170
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "title": "ALL ENG FAIL — forced landing",
+   "source": "QRH 19.05",
+   "lines": [
+    {
+     "kind": "condition",
+     "text": "If forced landing anticipated:",
+     "level": 0,
+     "applies_to": [
+      "all"
+     ],
+     "refs": [
+      {
+       "book": "QRH",
+       "code": "19.05",
+       "page": "19.05B",
+       "pdf": 172
+      }
+     ]
+    },
+    {
+     "kind": "info",
+     "text": "DESCENT SLOPE (CONF 2, L/G DOWN) : 1.6 NM / 1000 FT (600 FT/NM)",
+     "level": 1,
+     "applies_to": [
+      "all"
+     ],
+     "refs": [
+      {
+       "book": "QRH",
+       "code": "19.05",
+       "page": "19.05B",
+       "pdf": 172
+      }
+     ]
+    },
+    {
+     "kind": "info",
+     "text": "MIN RAT SPEED: 140 KT",
+     "level": 1,
+     "applies_to": [
+      "all"
+     ],
+     "refs": [
+      {
+       "book": "QRH",
+       "code": "19.05",
+       "page": "19.05B",
+       "pdf": 172
+      }
+     ]
+    },
+    {
+     "kind": "action",
+     "item": "GPWS SYS",
+     "setting": "OFF",
+     "text": "",
+     "level": 1,
+     "applies_to": [
+      "all"
+     ],
+     "refs": [
+      {
+       "book": "QRH",
+       "code": "19.05",
+       "page": "19.05B",
+       "pdf": 172
+      }
+     ]
+    },
+    {
+     "kind": "action",
+     "item": "GPWS TERR",
+     "setting": "OFF",
+     "text": "",
+     "level": 1,
+     "applies_to": [
+      "all"
+     ],
+     "refs": [
+      {
+       "book": "QRH",
+       "code": "19.05",
+       "page": "19.05B",
+       "pdf": 172
+      }
+     ]
+    },
+    {
+     "kind": "condition",
+     "text": "At appropriate altitude (above 3 000 ft AGL), configure aircraft for landing:",
+     "level": 1,
+     "applies_to": [
+      "all"
+     ],
+     "refs": [
+      {
+       "book": "QRH",
+       "code": "19.05",
+       "page": "19.05B",
+       "pdf": 172
+      }
+     ]
+    },
+    {
+     "kind": "action",
+     "item": "FOR LDG",
+     "setting": "FLAP LVR 2",
+     "text": "Only slats extend, and slowly.",
+     "level": 2,
+     "applies_to": [
+      "all"
+     ],
+     "refs": [
+      {
+       "book": "QRH",
+       "code": "19.05",
+       "page": "19.05B",
+       "pdf": 172
+      }
+     ]
+    },
+    {
+     "kind": "action",
+     "item": "VAPP",
+     "setting": "DETERMINE",
+     "text": "",
+     "level": 2,
+     "applies_to": [
+      "all"
+     ],
+     "refs": [
+      {
+       "book": "QRH",
+       "code": "19.05",
+       "page": "19.05B",
+       "pdf": 172
+      }
+     ]
+    },
+    {
+     "kind": "condition",
+     "text": "When in CONF 2 and VAPP:",
+     "level": 2,
+     "applies_to": [
+      "all"
+     ],
+     "refs": [
+      {
+       "book": "QRH",
+       "code": "19.05",
+       "page": "19.05B",
+       "pdf": 172
+      }
+     ]
+    },
+    {
+     "kind": "action",
+     "item": "GRAVITY GEAR EXTN handcrank",
+     "setting": "PULL AND TURN",
+     "text": "",
+     "level": 3,
+     "applies_to": [
+      "all"
+     ],
+     "refs": [
+      {
+       "book": "QRH",
+       "code": "19.05",
+       "page": "19.05B",
+       "pdf": 172
+      }
+     ]
+    },
+    {
+     "kind": "note",
+     "text": "Flight controls revert to direct law at landing gear extension. MAN PITCH TRIM NOT AVAILABLE. Disregard the \"USE MAN PITCH TRIM\" message on the PFD.",
+     "level": 3,
+     "applies_to": [
+      "all"
+     ],
+     "refs": [
+      {
+       "book": "QRH",
+       "code": "19.05",
+       "page": "19.05B",
+       "pdf": 172
+      }
+     ]
+    },
+    {
+     "kind": "condition",
+     "text": "When L/G downlocked:",
+     "level": 3,
+     "applies_to": [
+      "all"
+     ],
+     "refs": [
+      {
+       "book": "QRH",
+       "code": "19.05",
+       "page": "19.05B",
+       "pdf": 172
+      }
+     ]
+    },
+    {
+     "kind": "action",
+     "item": "L/G lever",
+     "setting": "DOWN",
+     "text": "",
+     "level": 4,
+     "applies_to": [
+      "all"
+     ],
+     "refs": [
+      {
+       "book": "QRH",
+       "code": "19.05",
+       "page": "19.05B",
+       "pdf": 172
+      }
+     ]
+    },
+    {
+     "kind": "action",
+     "item": "APPROACH SPEED",
+     "setting": "ADJUST",
+     "text": "To the VAPP above; it may be increased to reach the landing field or runway.",
+     "level": 4,
+     "applies_to": [
+      "all"
+     ],
+     "refs": [
+      {
+       "book": "QRH",
+       "code": "19.05",
+       "page": "19.05B",
+       "pdf": 172
+      }
+     ]
+    },
+    {
+     "kind": "action",
+     "item": "SPLRs",
+     "setting": "ARM",
+     "text": "",
+     "level": 2,
+     "applies_to": [
+      "all"
+     ],
+     "refs": [
+      {
+       "book": "QRH",
+       "code": "19.05",
+       "page": "19.05B",
+       "pdf": 172
+      }
+     ]
+    },
+    {
+     "kind": "info",
+     "text": "MAX BRK PR : 1 000 PSI",
+     "level": 2,
+     "applies_to": [
+      "all"
+     ],
+     "refs": [
+      {
+       "book": "QRH",
+       "code": "19.05",
+       "page": "19.05B",
+       "pdf": 172
+      }
+     ]
+    },
+    {
+     "kind": "condition",
+     "text": "At 2 000 ft AGL:",
+     "level": 1,
+     "applies_to": [
+      "all"
+     ],
+     "refs": [
+      {
+       "book": "QRH",
+       "code": "19.05",
+       "page": "19.05B",
+       "pdf": 172
+      }
+     ]
+    },
+    {
+     "kind": "action",
+     "item": "CABIN CREW",
+     "setting": "NOTIFY FOR LANDING",
+     "text": "",
+     "level": 2,
+     "applies_to": [
+      "all"
+     ],
+     "refs": [
+      {
+       "book": "QRH",
+       "code": "19.05",
+       "page": "19.05B",
+       "pdf": 172
+      }
+     ]
+    },
+    {
+     "kind": "condition",
+     "text": "At 500 ft AGL:",
+     "level": 1,
+     "applies_to": [
+      "all"
+     ],
+     "refs": [
+      {
+       "book": "QRH",
+       "code": "19.05",
+       "page": "19.05B",
+       "pdf": 172
+      }
+     ]
+    },
+    {
+     "kind": "action",
+     "item": "BRACE FOR IMPACT",
+     "setting": "ORDER",
+     "text": "",
+     "level": 2,
+     "applies_to": [
+      "all"
+     ],
+     "refs": [
+      {
+       "book": "QRH",
+       "code": "19.05",
+       "page": "19.05B",
+       "pdf": 172
+      }
+     ]
+    },
+    {
+     "kind": "condition",
+     "text": "At touchdown:",
+     "level": 1,
+     "applies_to": [
+      "all"
+     ],
+     "refs": [
+      {
+       "book": "QRH",
+       "code": "19.05",
+       "page": "19.05B",
+       "pdf": 172
+      }
+     ]
+    },
+    {
+     "kind": "action",
+     "item": "ALL ENG MASTERS",
+     "setting": "OFF",
+     "text": "",
+     "level": 2,
+     "applies_to": [
+      "all"
+     ],
+     "refs": [
+      {
+       "book": "QRH",
+       "code": "19.05",
+       "page": "19.05B",
+       "pdf": 172
+      }
+     ]
+    },
+    {
+     "kind": "action",
+     "item": "APU MASTER SW",
+     "setting": "OFF",
+     "text": "",
+     "level": 2,
+     "applies_to": [
+      "all"
+     ],
+     "refs": [
+      {
+       "book": "QRH",
+       "code": "19.05",
+       "page": "19.05B",
+       "pdf": 172
+      }
+     ]
+    },
+    {
+     "kind": "info",
+     "text": "BRAKES ON ACCU ONLY",
+     "level": 2,
+     "applies_to": [
+      "all"
+     ],
+     "refs": [
+      {
+       "book": "QRH",
+       "code": "19.05",
+       "page": "19.05B",
+       "pdf": 172
+      }
+     ]
+    },
+    {
+     "kind": "condition",
+     "text": "When aircraft stopped:",
+     "level": 1,
+     "applies_to": [
+      "all"
+     ],
+     "refs": [
+      {
+       "book": "QRH",
+       "code": "19.05",
+       "page": "19.05C",
+       "pdf": 173
+      }
+     ]
+    },
+    {
+     "kind": "action",
+     "item": "PARKING BRK",
+     "setting": "ON",
+     "text": "",
+     "level": 2,
+     "applies_to": [
+      "all"
+     ],
+     "refs": [
+      {
+       "book": "QRH",
+       "code": "19.05",
+       "page": "19.05C",
+       "pdf": 173
+      }
+     ]
+    },
+    {
+     "kind": "action",
+     "item": "ATC (VHF 1)",
+     "setting": "NOTIFY",
+     "text": "",
+     "level": 2,
+     "applies_to": [
+      "all"
+     ],
+     "refs": [
+      {
+       "book": "QRH",
+       "code": "19.05",
+       "page": "19.05C",
+       "pdf": 173
+      }
+     ]
+    },
+    {
+     "kind": "action",
+     "item": "ALL FIRE pb (ENGs & APU)",
+     "setting": "PUSH",
+     "text": "",
+     "level": 2,
+     "applies_to": [
+      "all"
+     ],
+     "refs": [
+      {
+       "book": "QRH",
+       "code": "19.05",
+       "page": "19.05C",
+       "pdf": 173
+      }
+     ]
+    },
+    {
+     "kind": "action",
+     "item": "ALL AGENT (ENGs & APU)",
+     "setting": "DISCH",
+     "text": "",
+     "level": 2,
+     "applies_to": [
+      "all"
+     ],
+     "refs": [
+      {
+       "book": "QRH",
+       "code": "19.05",
+       "page": "19.05C",
+       "pdf": 173
+      }
+     ]
+    },
+    {
+     "kind": "condition",
+     "text": "If evacuation required:",
+     "level": 2,
+     "applies_to": [
+      "all"
+     ],
+     "refs": [
+      {
+       "book": "QRH",
+       "code": "19.05",
+       "page": "19.05C",
+       "pdf": 173
+      }
+     ]
+    },
+    {
+     "kind": "action",
+     "item": "EVACUATION",
+     "setting": "INITIATE",
+     "text": "",
+     "level": 3,
+     "applies_to": [
+      "all"
+     ],
+     "refs": [
+      {
+       "book": "QRH",
+       "code": "19.05",
+       "page": "19.05C",
+       "pdf": 173
+      }
+     ]
+    },
+    {
+     "kind": "condition",
+     "text": "If evacuation not required:",
+     "level": 2,
+     "applies_to": [
+      "all"
+     ],
+     "refs": [
+      {
+       "book": "QRH",
+       "code": "19.05",
+       "page": "19.05C",
+       "pdf": 173
+      }
+     ]
+    },
+    {
+     "kind": "action",
+     "item": "CABIN CREW and PASSENGERS (PA)",
+     "setting": "NOTIFY",
+     "text": "Company wording: \"REMAIN SEATED, RESUME NORMAL DUTIES\".",
+     "level": 3,
+     "applies_to": [
+      "all"
+     ],
+     "refs": [
+      {
+       "book": "QRH",
+       "code": "19.05",
+       "page": "19.05C",
+       "pdf": 173
+      }
+     ]
+    }
+   ]
+  }
+ ],
+ "status": {
+  "limitations": [
+   {
+    "text": "MIN RAT SPEED 140 KT",
+    "applies_to": [
+     "all"
+    ],
+    "refs": [
+     {
+      "book": "FCOM",
+      "code": "PRO-ABN-ENG",
+      "page": "P 40/226",
+      "pdf": 3287
+     }
+    ]
+   },
+   {
+    "text": "MAX SPEED 320/0.77",
+    "applies_to": [
+     "all"
+    ],
+    "refs": [
+     {
+      "book": "FCOM",
+      "code": "PRO-ABN-ENG",
+      "page": "P 40/226",
+      "pdf": 3287
+     }
+    ]
+   },
+   {
+    "text": "MAX BRK PR 1000 PSI",
+    "applies_to": [
+     "all"
+    ],
+    "refs": [
+     {
+      "book": "FCOM",
+      "code": "PRO-ABN-ENG",
+      "page": "P 40/226",
+      "pdf": 3287
+     }
+    ]
+   },
+   {
+    "text": "MANEUVER WITH CARE",
+    "applies_to": [
+     "all"
+    ],
+    "refs": [
+     {
+      "book": "FCOM",
+      "code": "PRO-ABN-ENG",
+      "page": "P 40/226",
+      "pdf": 3287
+     }
+    ]
+   },
+   {
+    "text": "FUEL GRVTY FEED",
+    "applies_to": [
+     "all"
+    ],
+    "refs": [
+     {
+      "book": "FCOM",
+      "code": "PRO-ABN-ENG",
+      "page": "P 40/226",
+      "pdf": 3287
+     }
+    ]
+   },
+   {
+    "text": "AVOID NEGATIVE G FACTOR",
+    "applies_to": [
+     "all"
+    ],
+    "refs": [
+     {
+      "book": "FCOM",
+      "code": "PRO-ABN-ENG",
+      "page": "P 40/226",
+      "pdf": 3287
+     }
+    ]
+   }
+  ],
+  "info": [
+   {
+    "text": "ALTN LAW: PROT LOST. WHEN L/G DN: DIRECT LAW (pitch and roll)",
+    "applies_to": [
+     "all"
+    ],
+    "refs": [
+     {
+      "book": "FCOM",
+      "code": "PRO-ABN-ENG",
+      "page": "P 40/226",
+      "pdf": 3287
+     },
+     {
+      "book": "FCOM",
+      "code": "PRO-ABN-ENG",
+      "page": "P 41/226",
+      "pdf": 3288
+     }
+    ]
+   },
+   {
+    "text": "BRK Y ACCU PR ONLY: 7 full brake applications",
+    "applies_to": [
+     "all"
+    ],
+    "refs": [
+     {
+      "book": "FCOM",
+      "code": "PRO-ABN-ENG",
+      "page": "P 40/226",
+      "pdf": 3287
+     },
+     {
+      "book": "FCOM",
+      "code": "PRO-ABN-ENG",
+      "page": "P 41/226",
+      "pdf": 3288
+     }
+    ]
+   },
+   {
+    "text": "SLATS SLOW",
+    "applies_to": [
+     "all"
+    ],
+    "refs": [
+     {
+      "book": "FCOM",
+      "code": "PRO-ABN-ENG",
+      "page": "P 40/226",
+      "pdf": 3287
+     }
+    ]
+   },
+   {
+    "text": "FLS LIMITED TO F-APP + RAW",
+    "applies_to": [
+     "all"
+    ],
+    "refs": [
+     {
+      "book": "FCOM",
+      "code": "PRO-ABN-ENG",
+      "page": "P 40/226",
+      "pdf": 3287
+     }
+    ]
+   }
+  ],
+  "appr_proc": [
+   {
+    "kind": "action",
+    "item": "FOR LDG",
+    "setting": "FLAP LVR 2",
+    "text": "",
+    "level": 0,
+    "applies_to": [
+     "all"
+    ],
+    "refs": [
+     {
+      "book": "FCOM",
+      "code": "PRO-ABN-ENG",
+      "page": "P 40/226",
+      "pdf": 3287
+     }
+    ]
+   },
+   {
+    "kind": "condition",
+    "text": "WHEN CONF 2 AND VAPP:",
+    "level": 0,
+    "applies_to": [
+     "all"
+    ],
+    "refs": [
+     {
+      "book": "FCOM",
+      "code": "PRO-ABN-ENG",
+      "page": "P 40/226",
+      "pdf": 3287
+     }
+    ]
+   },
+   {
+    "kind": "action",
+    "item": "L/G GRVTY EXTN",
+    "setting": "AS RQRD",
+    "text": "Being stabilized at VAPP before selecting the gear down lets the aircraft be trimmed for approach.",
+    "level": 1,
+    "applies_to": [
+     "all"
+    ],
+    "refs": [
+     {
+      "book": "FCOM",
+      "code": "PRO-ABN-ENG",
+      "page": "P 40/226",
+      "pdf": 3287
+     }
+    ]
+   }
+  ],
+  "inop_sys": [
+   {
+    "text": "G+Y HYD",
+    "applies_to": [
+     "all"
+    ],
+    "refs": [
+     {
+      "book": "FCOM",
+      "code": "PRO-ABN-ENG",
+      "page": "P 40/226",
+      "pdf": 3287
+     }
+    ]
+   },
+   {
+    "text": "F/CTL PROT",
+    "applies_to": [
+     "all"
+    ],
+    "refs": [
+     {
+      "book": "FCOM",
+      "code": "PRO-ABN-ENG",
+      "page": "P 40/226",
+      "pdf": 3287
+     }
+    ]
+   },
+   {
+    "text": "STABILIZER",
+    "applies_to": [
+     "all"
+    ],
+    "refs": [
+     {
+      "book": "FCOM",
+      "code": "PRO-ABN-ENG",
+      "page": "P 40/226",
+      "pdf": 3287
+     }
+    ]
+   },
+   {
+    "text": "R AIL",
+    "applies_to": [
+     "all"
+    ],
+    "refs": [
+     {
+      "book": "FCOM",
+      "code": "PRO-ABN-ENG",
+      "page": "P 40/226",
+      "pdf": 3287
+     }
+    ]
+   },
+   {
+    "text": "REVERSER 1+2",
+    "applies_to": [
+     "all"
+    ],
+    "refs": [
+     {
+      "book": "FCOM",
+      "code": "PRO-ABN-ENG",
+      "page": "P 40/226",
+      "pdf": 3287
+     }
+    ]
+   },
+   {
+    "text": "ADR 2+3",
+    "applies_to": [
+     "all"
+    ],
+    "refs": [
+     {
+      "book": "FCOM",
+      "code": "PRO-ABN-ENG",
+      "page": "P 40/226",
+      "pdf": 3287
+     }
+    ]
+   },
+   {
+    "text": "IR 2+3",
+    "applies_to": [
+     "all"
+    ],
+    "refs": [
+     {
+      "book": "FCOM",
+      "code": "PRO-ABN-ENG",
+      "page": "P 40/226",
+      "pdf": 3287
+     }
+    ]
+   },
+   {
+    "text": "RA 1+2",
+    "applies_to": [
+     "all"
+    ],
+    "refs": [
+     {
+      "book": "FCOM",
+      "code": "PRO-ABN-ENG",
+      "page": "P 40/226",
+      "pdf": 3287
+     }
+    ]
+   },
+   {
+    "text": "SPLR 1+2+4+5",
+    "applies_to": [
+     "all"
+    ],
+    "refs": [
+     {
+      "book": "FCOM",
+      "code": "PRO-ABN-ENG",
+      "page": "P 40/226",
+      "pdf": 3287
+     }
+    ]
+   },
+   {
+    "text": "ELAC 2",
+    "applies_to": [
+     "all"
+    ],
+    "refs": [
+     {
+      "book": "FCOM",
+      "code": "PRO-ABN-ENG",
+      "page": "P 40/226",
+      "pdf": 3287
+     }
+    ]
+   },
+   {
+    "text": "SEC 2+3",
+    "applies_to": [
+     "all"
+    ],
+    "refs": [
+     {
+      "book": "FCOM",
+      "code": "PRO-ABN-ENG",
+      "page": "P 40/226",
+      "pdf": 3287
+     }
+    ]
+   },
+   {
+    "text": "FLAPS",
+    "applies_to": [
+     "all"
+    ],
+    "refs": [
+     {
+      "book": "FCOM",
+      "code": "PRO-ABN-ENG",
+      "page": "P 40/226",
+      "pdf": 3287
+     }
+    ]
+   },
+   {
+    "text": "YAW DAMPER",
+    "applies_to": [
+     "all"
+    ],
+    "refs": [
+     {
+      "book": "FCOM",
+      "code": "PRO-ABN-ENG",
+      "page": "P 41/226",
+      "pdf": 3288
+     }
+    ]
+   },
+   {
+    "text": "A/CALL OUT",
+    "applies_to": [
+     "all"
+    ],
+    "refs": [
+     {
+      "book": "FCOM",
+      "code": "PRO-ABN-ENG",
+      "page": "P 41/226",
+      "pdf": 3288
+     }
+    ]
+   },
+   {
+    "text": "AP 1+2",
+    "applies_to": [
+     "all"
+    ],
+    "refs": [
+     {
+      "book": "FCOM",
+      "code": "PRO-ABN-ENG",
+      "page": "P 41/226",
+      "pdf": 3288
+     }
+    ]
+   },
+   {
+    "text": "A/THR",
+    "applies_to": [
+     "all"
+    ],
+    "refs": [
+     {
+      "book": "FCOM",
+      "code": "PRO-ABN-ENG",
+      "page": "P 41/226",
+      "pdf": 3288
+     }
+    ]
+   },
+   {
+    "text": "FUEL PUMPS",
+    "applies_to": [
+     "all"
+    ],
+    "refs": [
+     {
+      "book": "FCOM",
+      "code": "PRO-ABN-ENG",
+      "page": "P 41/226",
+      "pdf": 3288
+     }
+    ]
+   },
+   {
+    "text": "ANTI SKID",
+    "applies_to": [
+     "all"
+    ],
+    "refs": [
+     {
+      "book": "FCOM",
+      "code": "PRO-ABN-ENG",
+      "page": "P 41/226",
+      "pdf": 3288
+     }
+    ]
+   },
+   {
+    "text": "N/W. STEER",
+    "applies_to": [
+     "all"
+    ],
+    "refs": [
+     {
+      "book": "FCOM",
+      "code": "PRO-ABN-ENG",
+      "page": "P 41/226",
+      "pdf": 3288
+     }
+    ]
+   },
+   {
+    "text": "CAT 2",
+    "applies_to": [
+     "all"
+    ],
+    "refs": [
+     {
+      "book": "FCOM",
+      "code": "PRO-ABN-ENG",
+      "page": "P 41/226",
+      "pdf": 3288
+     }
+    ]
+   },
+   {
+    "text": "GLS AUTOLAND",
+    "applies_to": [
+     "all"
+    ],
+    "refs": [
+     {
+      "book": "FCOM",
+      "code": "PRO-ABN-ENG",
+      "page": "P 41/226",
+      "pdf": 3288
+     }
+    ]
+   },
+   {
+    "text": "L/G RETRACT",
+    "applies_to": [
+     "all"
+    ],
+    "refs": [
+     {
+      "book": "FCOM",
+      "code": "PRO-ABN-ENG",
+      "page": "P 41/226",
+      "pdf": 3288
+     }
+    ]
+   },
+   {
+    "text": "CAB PR 1+2",
+    "applies_to": [
+     "all"
+    ],
+    "refs": [
+     {
+      "book": "FCOM",
+      "code": "PRO-ABN-ENG",
+      "page": "P 41/226",
+      "pdf": 3288
+     }
+    ]
+   },
+   {
+    "text": "PACK 1+2",
+    "applies_to": [
+     "all"
+    ],
+    "refs": [
+     {
+      "book": "FCOM",
+      "code": "PRO-ABN-ENG",
+      "page": "P 41/226",
+      "pdf": 3288
+     }
+    ]
+   }
+  ]
+ },
+ "tables": [
+  {
+   "title": "Pitch target if speed indications fail",
+   "caption": "To hold the optimum relight speed.",
+   "columns": [
+    "Gross weight",
+    "Pitch"
+   ],
+   "rows": [
+    [
+     "At or below 50 000 kg",
+     "-2.5°"
+    ],
+    [
+     "60 000 kg",
+     "-1.5°"
+    ],
+    [
+     "70 000 kg",
+     "-0.5°"
+    ]
+   ],
+   "applies_to": [
+    "all"
+   ],
+   "refs": [
+    {
+     "book": "QRH",
+     "code": "19.01",
+     "page": "19.01A",
+     "pdf": 162
+    }
+   ]
+  },
+  {
+   "title": "Gliding distance, no wind",
+   "caption": "",
+   "columns": [
+    "Speed",
+    "FL 200",
+    "FL 300",
+    "FL 400"
+   ],
+   "rows": [
+    [
+     "280 kt: 2 NM / 1000 FT",
+     "40 NM",
+     "60 NM",
+     "80 NM"
+    ],
+    [
+     "Green dot: 2.5 NM / 1000 FT",
+     "50 NM",
+     "75 NM",
+     "100 NM"
+    ]
+   ],
+   "applies_to": [
+    "all"
+   ],
+   "refs": [
+    {
+     "book": "QRH",
+     "code": "19.01",
+     "page": "19.01B",
+     "pdf": 163
+    },
+    {
+     "book": "QRH",
+     "code": "19.03",
+     "page": "19.03A",
+     "pdf": 167
+    }
+   ]
+  },
+  {
+   "title": "Green dot speed with all engines inoperative (kt)",
+   "caption": "",
+   "columns": [
+    "Weight (t)",
+    "≤ FL 200",
+    "FL 300",
+    "FL 400"
+   ],
+   "rows": [
+    [
+     "78",
+     "236",
+     "246",
+     "256"
+    ],
+    [
+     "76",
+     "232",
+     "242",
+     "252"
+    ],
+    [
+     "72",
+     "224",
+     "234",
+     "244"
+    ],
+    [
+     "68",
+     "216",
+     "226",
+     "236"
+    ],
+    [
+     "64",
+     "208",
+     "218",
+     "228"
+    ],
+    [
+     "60",
+     "200",
+     "210",
+     "220"
+    ],
+    [
+     "56",
+     "192",
+     "202",
+     "212"
+    ],
+    [
+     "52",
+     "184",
+     "194",
+     "204"
+    ],
+    [
+     "48",
+     "176",
+     "186",
+     "196"
+    ],
+    [
+     "44",
+     "168",
+     "178",
+     "188"
+    ],
+    [
+     "40",
+     "160",
+     "170",
+     "180"
+    ]
+   ],
+   "applies_to": [
+    "all"
+   ],
+   "refs": [
+    {
+     "book": "QRH",
+     "code": "19.02",
+     "page": "19.02A",
+     "pdf": 164
+    },
+    {
+     "book": "QRH",
+     "code": "19.03",
+     "page": "19.03A",
+     "pdf": 167
+    }
+   ]
+  },
+  {
+   "title": "VAPP for ditching or forced landing",
+   "caption": "",
+   "columns": [
+    "Weight (t)",
+    "40",
+    "50",
+    "60",
+    "70",
+    "80",
+    "90",
+    "95"
+   ],
+   "rows": [
+    [
+     "VAPP (kt)",
+     "150",
+     "150",
+     "163",
+     "173",
+     "183",
+     "193",
+     "198"
+    ]
+   ],
+   "applies_to": [
+    "all"
+   ],
+   "refs": [
+    {
+     "book": "QRH",
+     "code": "19.04",
+     "page": "19.04A",
+     "pdf": 170
+    },
+    {
+     "book": "QRH",
+     "code": "19.05",
+     "page": "19.05B",
+     "pdf": 172
+    }
+   ]
+  }
+ ],
+ "background": [
+  {
+   "text": "Thrust is lost so that level flight cannot be held. The alert may not trigger on a partial loss of thrust: the crew then decides between ALL ENG FAIL (time for a relight) and EMER LANDING (no time).",
+   "applies_to": [
+    "all"
+   ],
+   "refs": [
+    {
+     "book": "FCTM",
+     "code": "PR-AEP-ENG",
+     "page": "P 1/26",
+     "pdf": 402
+    },
+    {
+     "book": "FCTM",
+     "code": "PR-AEP-ENG",
+     "page": "P 2/26",
+     "pdf": 403
+    }
+   ]
+  },
+  {
+   "text": "This alert inhibits ELEC EMER CONFIG. Its purpose is to secure RAT extension and emergency generator connection, then send the crew to the QRH.",
+   "applies_to": [
+    "all"
+   ],
+   "refs": [
+    {
+     "book": "FCOM",
+     "code": "PRO-ABN-ENG",
+     "page": "P 38/226",
+     "pdf": 3285
+    }
+   ]
+  },
+  {
+   "text": "All AC busbars are lost; the RAT supplies the emergency generator, which feeds AC ESS and DC ESS. Green and yellow hydraulics are lost; the RAT pressurizes blue.",
+   "applies_to": [
+    "all"
+   ],
+   "refs": [
+    {
+     "book": "FCTM",
+     "code": "PR-AEP-ENG",
+     "page": "P 2/26",
+     "pdf": 403
+    }
+   ]
+  },
+  {
+   "text": "Each APU start attempt takes about 3.5 min off the battery time; total battery time is more than 30 min.",
+   "applies_to": [
+    "all"
+   ],
+   "refs": [
+    {
+     "book": "FCTM",
+     "code": "PR-AEP-ENG",
+     "page": "P 2/26",
+     "pdf": 403
+    }
+   ]
+  },
+  {
+   "text": "The right aileron is lost and floats; the PF may use rudder trim to balance it instead of holding a stick input. It returns when the APU generator connects (ELAC 2).",
+   "applies_to": [
+    "all"
+   ],
+   "refs": [
+    {
+     "book": "FCTM",
+     "code": "PR-AEP-ENG",
+     "page": "P 2/26",
+     "pdf": 403
+    },
+    {
+     "book": "FCTM",
+     "code": "PR-AEP-ENG",
+     "page": "P 3/26",
+     "pdf": 404
+    }
+   ]
+  },
+  {
+   "text": "Windmill relight is preferred: it works over a wide altitude range, tries all engines at once and does not depend on aircraft systems.",
+   "applies_to": [
+    "all"
+   ],
+   "refs": [
+    {
+     "book": "FCTM",
+     "code": "PR-AEP-ENG",
+     "page": "P 5/26",
+     "pdf": 406
+    }
+   ]
+  }
+ ],
+ "technique": [
+  {
+   "text": "The ECAM glide distance is an envelope value for a rough range estimate; the actual distance may differ.",
+   "applies_to": [
+    "all"
+   ],
+   "refs": [
+    {
+     "book": "FCTM",
+     "code": "PR-AEP-ENG",
+     "page": "P 5/26",
+     "pdf": 406
+    }
+   ]
+  },
+  {
+   "text": "Going faster than the optimum speed keeps relight conditions, but in alternate law there is no overspeed protection.",
+   "applies_to": [
+    "all"
+   ],
+   "refs": [
+    {
+     "book": "FCTM",
+     "code": "PR-AEP-ENG",
+     "page": "P 5/26",
+     "pdf": 406
+    }
+   ]
+  },
+  {
+   "text": "Prepare for a ditching or forced landing even if a runway can be reached, if no engine relights.",
+   "applies_to": [
+    "all"
+   ],
+   "refs": [
+    {
+     "book": "FCTM",
+     "code": "PR-AEP-ENG",
+     "page": "P 8/26",
+     "pdf": 409
+    }
+   ]
+  },
+  {
+   "text": "Forced landing: gear down by gravity even off a runway, to absorb energy. The brake accumulator allows a limited number of applications, and there is no anti-skid.",
+   "applies_to": [
+    "all"
+   ],
+   "refs": [
+    {
+     "book": "FCTM",
+     "code": "PR-AEP-ENG",
+     "page": "P 8/26",
+     "pdf": 409
+    },
+    {
+     "book": "FCOM",
+     "code": "PRO-ABN-ENG",
+     "page": "P 41/226",
+     "pdf": 3288
+    }
+   ]
+  },
+  {
+   "text": "Ditching: DITCHING pb just before touchdown closes the valves under the aircraft; hold the pitch and keep the wings level until impact.",
+   "applies_to": [
+    "all"
+   ],
+   "refs": [
+    {
+     "book": "FCTM",
+     "code": "PR-AEP-ENG",
+     "page": "P 8/26",
+     "pdf": 409
+    }
+   ]
+  }
+ ],
+ "related": [
+  {
+   "title": "ENG 1(2) FAIL",
+   "why": "Appears for the remaining engine once one engine relights",
+   "key_actions": [
+    "See the ENG 1(2) FAIL brief"
+   ],
+   "refs": [
+    {
+     "book": "FCTM",
+     "code": "PR-AEP-ENG",
+     "page": "P 9/26",
+     "pdf": 410
+    }
+   ]
+  },
+  {
+   "title": "[QRH] ENG RELIGHT IN FLIGHT",
+   "why": "Requested from ENG 1(2) FAIL for the remaining engine",
+   "key_actions": [
+    "See the ENG RELIGHT brief"
+   ],
+   "refs": [
+    {
+     "book": "FCTM",
+     "code": "PR-AEP-ENG",
+     "page": "P 9/26",
+     "pdf": 410
+    }
+   ]
+  },
+  {
+   "title": "F/CTL ALTN LAW (PROT LOST)",
+   "why": "Associated procedure",
+   "key_actions": [
+    "See the F/CTL ALTN LAW brief"
+   ],
+   "refs": [
+    {
+     "book": "FCOM",
+     "code": "PRO-ABN-ENG",
+     "page": "P 39/226",
+     "pdf": 3286
+    }
+   ]
+  },
+  {
+   "title": "[QRH] EMER LANDING — ALL ENG FAILURE",
+   "why": "Loss of thrust near the ground, not enough time for a relight",
+   "key_actions": [
+    "APU START, FLAPS LEVER 2, VAPP, gear per ditching or forced landing, BRACE FOR IMPACT, EMER EVAC PROC"
+   ],
+   "refs": [
+    {
+     "book": "QRH",
+     "code": "C2",
+     "page": "C2",
+     "pdf": 294
+    },
+    {
+     "book": "FCTM",
+     "code": "PR-AEP-MISC",
+     "page": "P 8/32",
+     "pdf": 453
+    },
+    {
+     "book": "FCTM",
+     "code": "PR-AEP-MISC",
+     "page": "P 9/32",
+     "pdf": 454
+    }
+   ]
+  },
+  {
+   "title": "EMER EVAC",
+   "why": "After a ditching or forced landing",
+   "key_actions": [
+    "See the EMER EVAC brief"
+   ],
+   "refs": [
+    {
+     "book": "QRH",
+     "code": "19.04",
+     "page": "19.04A",
+     "pdf": 170
+    },
+    {
+     "book": "QRH",
+     "code": "19.05",
+     "page": "19.05C",
+     "pdf": 173
+    }
+   ]
+  }
+ ],
+ "differences": [],
+ "gaps": [
+  {
+   "text": "The title \"ENG DUAL FAILURE - FUEL REMAINING\" is not used in the supplied HS-TX manuals. They use ENG ALL ENGINES FAILURE (ECAM) and ALL ENG FAIL (QRH); the PDP shows a \"FUEL REMAINING\" title for the A330 only. Fuel remaining corresponds to the \"relight can be attempted\" branch here.",
+   "applies_to": [
+    "all"
+   ],
+   "refs": [
+    {
+     "book": "FCOM",
+     "code": "PRO-ABN-ENG",
+     "page": "P 37/226",
+     "pdf": 3284
+    },
+    {
+     "book": "QRH",
+     "code": "19.01",
+     "page": "19.01A",
+     "pdf": 162
+    },
+    {
+     "book": "PDP",
+     "code": "All engine flameout",
+     "page": "XFTDA1ALENGFO01",
+     "pdf": 446
+    }
+   ]
+  },
+  {
+   "text": "No source gives PF/PM turns for the QRH part. The order follows the QRH lines, with the FCTM and PDP notes; the 30 s masters timing is from the PDP slide.",
+   "applies_to": [
+    "all"
+   ],
+   "refs": [
+    {
+     "book": "QRH",
+     "code": "19.02",
+     "page": "19.02A",
+     "pdf": 164
+    },
+    {
+     "book": "PDP",
+     "code": "All engine flameout",
+     "page": "XFTDA1ALENGFO01",
+     "pdf": 448
+    }
+   ]
+  },
+  {
+   "text": "The QRH lists CABIN CREW and PASSENGERS (PA) NOTIFY when no evacuation is needed; the company wording \"REMAIN SEATED, RESUME NORMAL DUTIES\" is noted on that line.",
+   "applies_to": [
+    "all"
+   ],
+   "refs": [
+    {
+     "book": "QRH",
+     "code": "19.05",
+     "page": "19.05C",
+     "pdf": 173
+    }
+   ]
+  },
+  {
+   "text": "The handling flow stops at relight and STATUS. The no-relight, ditching and forced landing sections of the QRH are given only as verbatim procedures, without PF/PM turns.",
+   "applies_to": [
+    "all"
+   ],
+   "refs": [
+    {
+     "book": "QRH",
+     "code": "19.03",
+     "page": "19.03A",
+     "pdf": 167
+    },
+    {
+     "book": "QRH",
+     "code": "19.04",
+     "page": "19.04A",
+     "pdf": 170
+    },
+    {
+     "book": "QRH",
+     "code": "19.05",
+     "page": "19.05B",
+     "pdf": 172
+    }
+   ]
+  },
+  {
+   "text": "HS-TO versions omitted (QRH 19.01A–B, 19.02B–19.03B and 19.05A blocks, FCOM P 41–43/226). The QRH points to 19.05A for a forced landing, but the HS-TX block starts on 19.05B.",
+   "applies_to": [
+    "all"
+   ],
+   "refs": [
+    {
+     "book": "QRH",
+     "code": "19.02",
+     "page": "19.02B",
+     "pdf": 165
+    },
+    {
+     "book": "QRH",
+     "code": "19.05",
+     "page": "19.05B",
+     "pdf": 172
+    },
+    {
+     "book": "FCOM",
+     "code": "PRO-ABN-ENG",
+     "page": "P 41/226",
+     "pdf": 3288
+    }
+   ]
+  }
+ ],
+ "sources": [
+  {
+   "book": "FCOM",
+   "section": "PRO-ABN-ENG — ENG ALL ENGINES FAILURE",
+   "pages": "P 37–41/226",
+   "pdf": "3284–3288",
+   "rev": "26 MAY 26"
+  },
+  {
+   "book": "FCOM",
+   "section": "PRO-ABN-ENG — [QRH] ALL ENG FAIL",
+   "pages": "P 6–9/226",
+   "pdf": "3253–3256",
+   "rev": "26 MAY 26"
+  },
+  {
+   "book": "QRH",
+   "section": "19.01–19.05 ALL ENG FAIL",
+   "pages": "19.01A–19.05C",
+   "pdf": "162–173",
+   "rev": "18 FEB 26"
+  },
+  {
+   "book": "QRH",
+   "section": "C2 EMER LANDING",
+   "pages": "C2",
+   "pdf": "294",
+   "rev": "22 MAR 17"
+  },
+  {
+   "book": "FCTM",
+   "section": "PR-AEP-ENG — All engines failure",
+   "pages": "P 1–9/26",
+   "pdf": "402–410",
+   "rev": "26 MAY 26"
+  },
+  {
+   "book": "FCTM",
+   "section": "PR-AEP-MISC — EMER LANDING",
+   "pages": "P 8–9/32",
+   "pdf": "453–454",
+   "rev": "26 MAY 26"
+  },
+  {
+   "book": "PDP",
+   "section": "All engine flameout (XFTDA1ALENGFO01)",
+   "pages": "—",
+   "pdf": "443–450",
+   "rev": "APR 2021"
+  }
+ ],
+ "schema": "a320-ecam-abnormal/3",
+ "generated": "2026-10-31",
+ "qrh": []
+}

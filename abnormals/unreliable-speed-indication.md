@@ -53,7 +53,7 @@ If the safe conduct of the flight is affected, fly the memory pitch/thrust, then
 **2.5 PF**
 - LEVEL OFF …… PERFORM [PDP Unreliable speed indication, PDF 559]
 - Pitch above target → more thrust; below → less thrust. Altitude unreliable → GPS altitude (MCDU GPS MONITOR) [FCOM PRO-ABN-NAV P 1/124, PDF 3826; QRH 26.02C, PDF 237; PDP Unreliable speed indication, PDF 560]
-- Below FL 250: reversible BUSS if installed [PDP Unreliable speed indication, PDF 559]
+- Below FL 250: BUSS (activation not reversible) [FCOM PRO-ABN-NAV P 3/124, PDF 3828; FCOM DSC-34-NAV-10-30-10 P 1/4, PDF 2106]
 - **If needed and reliable (bird reliable if baro altitude reliable)** [PDP Unreliable speed indication, PDF 559]
   - “BIRD ON” [PDP Unreliable speed indication, PDF 559]
 **2.6 PM**
@@ -204,6 +204,7 @@ Selected weights shown; full table 44–76 t in QRH 25.08.
 ## 10. Gaps and omissions
 - Full pitch/thrust and severe-turbulence tables are abridged here; read the QRH tables for the actual weight. [QRH 26.02C, PDF 237; QRH 25.08A–B, PDF 226]
 - HS-TO versions (A321 weights) omitted. [FCOM PRO-ABN-NAV P 5–8/124, PDF 3830]
+- PDP mentions a "reversible BUSS (if installed)". The FCOM states activation is not reversible for all HS-TX; the reversible modification is listed for HS-TO only. This brief follows the FCOM. [FCOM DSC-34-NAV-10-30-10 P 1/4, PDF 2106; FCOM PLP-LOM P 25/58, PDF 52; PDP Unreliable speed indication, PDF 559]
 
 ## Sources
 | Book | Section | Pages | PDF | Rev |

@@ -1,0 +1,3059 @@
+{
+ "slug": "nav-adr-1-2-3-fault-buss",
+ "title": "NAV ADR 1+2+3 FAULT · BUSS",
+ "kind": "ecam",
+ "alert": {
+  "level": "warning",
+  "land_asap": "none",
+  "memory_items": false,
+  "qrh_summary": false,
+  "trigger": "The three ADRs are failed. Also triggers when the crew turns off all ADRs below FL 250 because speed stays unreliable.",
+  "inhibited_phases": [
+   1,
+   4,
+   8,
+   10
+  ],
+  "refs": [
+   {
+    "book": "FCOM",
+    "code": "PRO-ABN-NAV",
+    "page": "P 38/124",
+    "pdf": 3863
+   },
+   {
+    "book": "FCTM",
+    "code": "PR-AEP-NAV",
+    "page": "P 20/20",
+    "pdf": 497
+   }
+  ]
+ },
+ "effectivity": {
+  "branches": [
+   "HS-TXA..TXO",
+   "HS-TXP..TXU"
+  ],
+  "note": "ECAM procedure and STATUS: one version for all HS-TX. QRH ALL ADR OFF differs: HS-TXA..TXO also lose both FMS."
+ },
+ "summary": "Below FL 250, if the speed stays unreliable, the crew turns off all three ADRs. Both PFDs then show the Backup Speed Scale (BUSS) based on angle of attack and the backup altitude scale, GPS altitude. Fly the green band with pitch and thrust. The BUSS cannot be switched back. Do not use speed brakes, and control the cabin pressure manually.",
+ "key_limits": [
+  {
+   "label": "Use the BUSS",
+   "value": "Below FL 250",
+   "applies_to": [
+    "all"
+   ],
+   "refs": [
+    {
+     "book": "FCOM",
+     "code": "PRO-ABN-NAV",
+     "page": "P 3/124",
+     "pdf": 3828
+    },
+    {
+     "book": "FCTM",
+     "code": "PR-AEP-NAV",
+     "page": "P 18/20",
+     "pdf": 495
+    }
+   ]
+  },
+  {
+   "label": "Speed",
+   "value": "FLY THE GREEN",
+   "applies_to": [
+    "all"
+   ],
+   "refs": [
+    {
+     "book": "FCOM",
+     "code": "PRO-ABN-NAV",
+     "page": "P 39/124",
+     "pdf": 3864
+    },
+    {
+     "book": "QRH",
+     "code": "26.01",
+     "page": "26.01A",
+     "pdf": 232
+    },
+    {
+     "book": "QRH",
+     "code": "26.01",
+     "page": "26.01B",
+     "pdf": 233
+    }
+   ]
+  },
+  {
+   "label": "Speed brakes",
+   "value": "DO NOT USE",
+   "applies_to": [
+    "all"
+   ],
+   "refs": [
+    {
+     "book": "FCOM",
+     "code": "PRO-ABN-NAV",
+     "page": "P 40/124",
+     "pdf": 3865
+    },
+    {
+     "book": "FCTM",
+     "code": "PR-AEP-NAV",
+     "page": "P 19/20",
+     "pdf": 496
+    }
+   ]
+  },
+  {
+   "label": "Landing configuration",
+   "value": "FLAP LVR 3 · gravity gear extension at FLAP 2",
+   "applies_to": [
+    "all"
+   ],
+   "refs": [
+    {
+     "book": "FCOM",
+     "code": "PRO-ABN-NAV",
+     "page": "P 11/124",
+     "pdf": 3836
+    },
+    {
+     "book": "FCOM",
+     "code": "PRO-ABN-NAV",
+     "page": "P 13/124",
+     "pdf": 3838
+    },
+    {
+     "book": "QRH",
+     "code": "26.01",
+     "page": "26.01A",
+     "pdf": 232
+    },
+    {
+     "book": "QRH",
+     "code": "26.01",
+     "page": "26.01B",
+     "pdf": 233
+    }
+   ]
+  },
+  {
+   "label": "Approach speed",
+   "value": "BUSS target speed (green triangle)",
+   "applies_to": [
+    "all"
+   ],
+   "refs": [
+    {
+     "book": "FCOM",
+     "code": "PRO-ABN-NAV",
+     "page": "P 11/124",
+     "pdf": 3836
+    },
+    {
+     "book": "FCOM",
+     "code": "PRO-ABN-NAV",
+     "page": "P 14/124",
+     "pdf": 3839
+    },
+    {
+     "book": "QRH",
+     "code": "26.01",
+     "page": "26.01A",
+     "pdf": 232
+    },
+    {
+     "book": "QRH",
+     "code": "26.01",
+     "page": "26.01B",
+     "pdf": 233
+    }
+   ]
+  },
+  {
+   "label": "Cabin V/S target",
+   "value": "Climb 500 ft/min · descent 300 ft/min",
+   "applies_to": [
+    "all"
+   ],
+   "refs": [
+    {
+     "book": "QRH",
+     "code": "26.01",
+     "page": "26.01A",
+     "pdf": 232
+    },
+    {
+     "book": "QRH",
+     "code": "26.01",
+     "page": "26.01B",
+     "pdf": 233
+    }
+   ]
+  }
+ ],
+ "flow": [
+  {
+   "phase": "Turn off all ADRs (from Unreliable speed)",
+   "steps": [
+    {
+     "actor": "BOTH",
+     "items": [
+      {
+       "kind": "action",
+       "text": "Below FL 250, the affected ADR cannot be identified, or all speeds stay unreliable",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "FCOM",
+         "code": "PRO-ABN-NAV",
+         "page": "P 3/124",
+         "pdf": 3828
+        },
+        {
+         "book": "FCTM",
+         "code": "PR-AEP-NAV",
+         "page": "P 18/20",
+         "pdf": 495
+        },
+        {
+         "book": "PDP",
+         "code": "Unreliable speed indication",
+         "page": "XFTDA6UNRASPD01",
+         "pdf": 562
+        }
+       ]
+      }
+     ]
+    },
+    {
+     "actor": "PM",
+     "items": [
+      {
+       "kind": "ecam",
+       "item": "ALL ADR pbs",
+       "setting": "OFF",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "FCOM",
+         "code": "PRO-ABN-NAV",
+         "page": "P 3/124",
+         "pdf": 3828
+        }
+       ]
+      },
+      {
+       "kind": "note",
+       "text": "Use the pushbuttons, not the rotary selector. The BUSS activation is not reversible",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "FCTM",
+         "code": "PR-AEP-NAV",
+         "page": "P 2/20",
+         "pdf": 479
+        },
+        {
+         "book": "FCOM",
+         "code": "DSC-34-NAV-10-30-10",
+         "page": "P 1/4",
+         "pdf": 2106
+        }
+       ]
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "phase": "ECAM actions",
+   "steps": [
+    {
+     "actor": "BOTH",
+     "items": [
+      {
+       "kind": "action",
+       "text": "First to notice: MASTER WARNING / CAUTION reset",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "FCTM",
+         "code": "AOP-30-30",
+         "page": "P 2/6",
+         "pdf": 83
+        },
+        {
+         "book": "PDP",
+         "code": "Management of abnormal operations",
+         "page": "XFTDN6ECAM00001",
+         "pdf": 424
+        }
+       ]
+      }
+     ]
+    },
+    {
+     "actor": "PM",
+     "items": [
+      {
+       "kind": "callout",
+       "text": "NAV ADR 1+2+3 FAULT",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "FCTM",
+         "code": "AOP-30-30",
+         "page": "P 2/6",
+         "pdf": 83
+        },
+        {
+         "book": "FCOM",
+         "code": "PRO-ABN-NAV",
+         "page": "P 39/124",
+         "pdf": 3864
+        },
+        {
+         "book": "PDP",
+         "code": "Management of abnormal operations",
+         "page": "XFTDN6ECAM00001",
+         "pdf": 424
+        }
+       ]
+      },
+      {
+       "kind": "action",
+       "text": "Confirm the failure on the SD page and overhead panel before acting",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "FCTM",
+         "code": "AOP-30-30",
+         "page": "P 2/6",
+         "pdf": 83
+        },
+        {
+         "book": "PDP",
+         "code": "Management of abnormal operations",
+         "page": "XFTDN6ECAM00001",
+         "pdf": 424
+        }
+       ]
+      }
+     ]
+    },
+    {
+     "actor": "PF",
+     "items": [
+      {
+       "kind": "callout",
+       "text": "ECAM ACTIONS",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "FCOM",
+         "code": "PRO-ABN-ABN-00",
+         "page": "P 8/12",
+         "pdf": 2831
+        },
+        {
+         "book": "FCTM",
+         "code": "AOP-30-30",
+         "page": "P 3/6",
+         "pdf": 84
+        },
+        {
+         "book": "PDP",
+         "code": "Management of abnormal operations",
+         "page": "XFTDN6ECAM00001",
+         "pdf": 424
+        }
+       ]
+      },
+      {
+       "kind": "note",
+       "text": "PF now flies, navigates and communicates",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "FCTM",
+         "code": "AOP-20",
+         "page": "P 1–2/10",
+         "pdf": 68
+        },
+        {
+         "book": "PDP",
+         "code": "Management of abnormal operations",
+         "page": "XFTDN6ECAM00001",
+         "pdf": 424
+        }
+       ]
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "phase": "ECAM procedure",
+   "steps": [
+    {
+     "actor": "PF",
+     "items": [
+      {
+       "kind": "ecam",
+       "item": "AP+FD",
+       "setting": "OFF",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "FCOM",
+         "code": "PRO-ABN-NAV",
+         "page": "P 39/124",
+         "pdf": 3864
+        }
+       ]
+      },
+      {
+       "kind": "ecam",
+       "item": "A/THR",
+       "setting": "OFF",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "FCOM",
+         "code": "PRO-ABN-NAV",
+         "page": "P 39/124",
+         "pdf": 3864
+        }
+       ]
+      },
+      {
+       "kind": "note",
+       "text": "AP/FD and A/THR must stay disconnected while the BUSS is active; alternate law",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "FCTM",
+         "code": "PR-AEP-NAV",
+         "page": "P 19/20",
+         "pdf": 496
+        }
+       ]
+      }
+     ]
+    },
+    {
+     "actor": "PM",
+     "items": [
+      {
+       "kind": "ecam",
+       "item": "PROBE/WINDOW HEAT",
+       "setting": "ON",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "FCOM",
+         "code": "PRO-ABN-NAV",
+         "page": "P 39/124",
+         "pdf": 3864
+        }
+       ]
+      },
+      {
+       "kind": "ecam",
+       "item": "ADR 1+2+3 P/B",
+       "setting": "OFF",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "FCOM",
+         "code": "PRO-ABN-NAV",
+         "page": "P 39/124",
+         "pdf": 3864
+        }
+       ]
+      },
+      {
+       "kind": "note",
+       "text": "GPWS TERR FAULT and GPWS SYS FAULT lights can come on: the crew should then switch off the GPWS TERR and GPWS SYS pb-sw",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "FCOM",
+         "code": "PRO-ABN-NAV",
+         "page": "P 39/124",
+         "pdf": 3864
+        }
+       ]
+      }
+     ]
+    },
+    {
+     "actor": "PF",
+     "items": [
+      {
+       "kind": "ecam",
+       "item": "SPD",
+       "setting": "FLY THE GREEN",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "FCOM",
+         "code": "PRO-ABN-NAV",
+         "page": "P 39/124",
+         "pdf": 3864
+        }
+       ]
+      },
+      {
+       "kind": "action",
+       "text": "Adjust pitch and thrust to fly the green area. The STALL WARNING remains operative",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "FCTM",
+         "code": "PR-AEP-NAV",
+         "page": "P 19/20",
+         "pdf": 496
+        },
+        {
+         "book": "FCOM",
+         "code": "PRO-ABN-NAV",
+         "page": "P 39/124",
+         "pdf": 3864
+        }
+       ]
+      },
+      {
+       "kind": "condition",
+       "text": "The BUSS does not react to longitudinal stick input",
+       "children": [
+        {
+         "kind": "action",
+         "text": "Disregard it and use the pitch/thrust tables",
+         "applies_to": [
+          "all"
+         ],
+         "refs": [
+          {
+           "book": "FCOM",
+           "code": "PRO-ABN-NAV",
+           "page": "P 39/124",
+           "pdf": 3864
+          },
+          {
+           "book": "FCTM",
+           "code": "PR-AEP-NAV",
+           "page": "P 19/20",
+           "pdf": 496
+          },
+          {
+           "book": "PDP",
+           "code": "Unreliable speed indication",
+           "page": "XFTDA6UNRASPD01",
+           "pdf": 563
+          }
+         ]
+        }
+       ],
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "FCOM",
+         "code": "PRO-ABN-NAV",
+         "page": "P 39/124",
+         "pdf": 3864
+        },
+        {
+         "book": "FCTM",
+         "code": "PR-AEP-NAV",
+         "page": "P 19/20",
+         "pdf": 496
+        }
+       ]
+      }
+     ]
+    },
+    {
+     "actor": "PM",
+     "items": [
+      {
+       "kind": "ecam",
+       "item": "STBY INST",
+       "setting": "MAY BE UNREL",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "FCOM",
+         "code": "PRO-ABN-NAV",
+         "page": "P 39/124",
+         "pdf": 3864
+        }
+       ]
+      },
+      {
+       "kind": "note",
+       "text": "ADR 3 and the standby speed use the same probes",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "FCOM",
+         "code": "PRO-ABN-NAV",
+         "page": "P 39/124",
+         "pdf": 3864
+        }
+       ]
+      },
+      {
+       "kind": "ecam",
+       "item": "ALL ADR OFF PROC",
+       "setting": "APPLY",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "FCOM",
+         "code": "PRO-ABN-NAV",
+         "page": "P 39/124",
+         "pdf": 3864
+        }
+       ]
+      },
+      {
+       "kind": "action",
+       "text": "Keep the ECAM displayed and apply the QRH procedure",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "FCTM",
+         "code": "AOP-30-30",
+         "page": "P 2/6",
+         "pdf": 83
+        },
+        {
+         "book": "PDP",
+         "code": "Management of abnormal operations",
+         "page": "XFTDN6ECAM00001",
+         "pdf": 431
+        }
+       ]
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "phase": "QRH ALL ADR OFF",
+   "steps": [
+    {
+     "actor": "PF",
+     "items": [
+      {
+       "kind": "ecam",
+       "item": "SPEED",
+       "setting": "FLY THE GREEN",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "QRH",
+         "code": "26.01",
+         "page": "26.01A",
+         "pdf": 232
+        },
+        {
+         "book": "QRH",
+         "code": "26.01",
+         "page": "26.01B",
+         "pdf": 233
+        }
+       ]
+      },
+      {
+       "kind": "note",
+       "text": "For flaps retraction, fly the top of the green area",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "FCOM",
+         "code": "PRO-ABN-NAV",
+         "page": "P 11/124",
+         "pdf": 3836
+        },
+        {
+         "book": "FCOM",
+         "code": "PRO-ABN-NAV",
+         "page": "P 13/124",
+         "pdf": 3838
+        }
+       ]
+      }
+     ]
+    },
+    {
+     "actor": "PM",
+     "items": [
+      {
+       "kind": "condition",
+       "text": "WHEN ALL ADR OFF BOTH FMS LOST",
+       "children": [
+        {
+         "kind": "ecam",
+         "item": "BACK UP NAV",
+         "setting": "USE",
+         "applies_to": [
+          "all"
+         ],
+         "refs": [
+          {
+           "book": "FCOM",
+           "code": "PRO-ABN-NAV",
+           "page": "P 13/124",
+           "pdf": 3838
+          },
+          {
+           "book": "QRH",
+           "code": "26.01",
+           "page": "26.01B",
+           "pdf": 233
+          }
+         ]
+        },
+        {
+         "kind": "note",
+         "text": "NAV B/UP prompt on the MCDU MENU page. USE RMP FOR NAVAID TUNING",
+         "applies_to": [
+          "all"
+         ],
+         "refs": [
+          {
+           "book": "FCOM",
+           "code": "PRO-ABN-NAV",
+           "page": "P 13/124",
+           "pdf": 3838
+          },
+          {
+           "book": "QRH",
+           "code": "26.01",
+           "page": "26.01B",
+           "pdf": 233
+          }
+         ]
+        }
+       ],
+       "applies_to": [
+        "HS-TXA..TXO"
+       ],
+       "refs": [
+        {
+         "book": "FCOM",
+         "code": "PRO-ABN-NAV",
+         "page": "P 13/124",
+         "pdf": 3838
+        },
+        {
+         "book": "QRH",
+         "code": "26.01",
+         "page": "26.01B",
+         "pdf": 233
+        }
+       ]
+      },
+      {
+       "kind": "action",
+       "text": "PFD ALTITUDE: GPS",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "QRH",
+         "code": "26.01",
+         "page": "26.01A",
+         "pdf": 232
+        },
+        {
+         "book": "QRH",
+         "code": "26.01",
+         "page": "26.01B",
+         "pdf": 233
+        }
+       ]
+      },
+      {
+       "kind": "action",
+       "text": "TCAS & ATC ALT RPTG INOP",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "QRH",
+         "code": "26.01",
+         "page": "26.01A",
+         "pdf": 232
+        },
+        {
+         "book": "QRH",
+         "code": "26.01",
+         "page": "26.01B",
+         "pdf": 233
+        }
+       ]
+      },
+      {
+       "kind": "ecam",
+       "item": "CABIN PRESS MODE SEL",
+       "setting": "MAN",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "QRH",
+         "code": "26.01",
+         "page": "26.01A",
+         "pdf": 232
+        },
+        {
+         "book": "QRH",
+         "code": "26.01",
+         "page": "26.01B",
+         "pdf": 233
+        }
+       ]
+      },
+      {
+       "kind": "ecam",
+       "item": "MAN V/S CTL",
+       "setting": "AS RQRD",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "QRH",
+         "code": "26.01",
+         "page": "26.01A",
+         "pdf": 232
+        },
+        {
+         "book": "QRH",
+         "code": "26.01",
+         "page": "26.01B",
+         "pdf": 233
+        }
+       ]
+      },
+      {
+       "kind": "ecam",
+       "item": "LDG DIST PROC",
+       "setting": "APPLY",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "QRH",
+         "code": "26.01",
+         "page": "26.01A",
+         "pdf": 232
+        },
+        {
+         "book": "QRH",
+         "code": "26.01",
+         "page": "26.01B",
+         "pdf": 233
+        }
+       ]
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "phase": "Continue ECAM → STATUS",
+   "steps": [
+    {
+     "actor": "PM",
+     "items": [
+      {
+       "kind": "callout",
+       "text": "CLEAR NAV ?",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "FCOM",
+         "code": "PRO-ABN-ABN-00",
+         "page": "P 8/12",
+         "pdf": 2831
+        },
+        {
+         "book": "FCTM",
+         "code": "AOP-30-30",
+         "page": "P 3/6",
+         "pdf": 84
+        },
+        {
+         "book": "PDP",
+         "code": "Management of abnormal operations",
+         "page": "XFTDN6ECAM00001",
+         "pdf": 424
+        }
+       ]
+      }
+     ]
+    },
+    {
+     "actor": "PF",
+     "items": [
+      {
+       "kind": "callout",
+       "text": "CLEAR NAV",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "FCOM",
+         "code": "PRO-ABN-ABN-00",
+         "page": "P 8/12",
+         "pdf": 2831
+        },
+        {
+         "book": "FCTM",
+         "code": "AOP-30-30",
+         "page": "P 3/6",
+         "pdf": 84
+        },
+        {
+         "book": "PDP",
+         "code": "Management of abnormal operations",
+         "page": "XFTDN6ECAM00001",
+         "pdf": 424
+        }
+       ]
+      }
+     ]
+    },
+    {
+     "actor": "PM",
+     "items": [
+      {
+       "kind": "callout",
+       "text": "STATUS",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "FCTM",
+         "code": "AOP-30-30",
+         "page": "P 3/6",
+         "pdf": 84
+        },
+        {
+         "book": "PDP",
+         "code": "Management of abnormal operations",
+         "page": "XFTDN6ECAM00001",
+         "pdf": 426
+        }
+       ]
+      }
+     ]
+    },
+    {
+     "actor": "PF",
+     "items": [
+      {
+       "kind": "callout",
+       "text": "STOP ECAM",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "FCTM",
+         "code": "AOP-30-30",
+         "page": "P 3/6",
+         "pdf": 84
+        },
+        {
+         "book": "PDP",
+         "code": "Management of abnormal operations",
+         "page": "XFTDN6ECAM00001",
+         "pdf": 426
+        }
+       ]
+      }
+     ]
+    },
+    {
+     "actor": "PM",
+     "items": [
+      {
+       "kind": "ecam",
+       "item": "ECAM ACTIONS",
+       "setting": "STOP",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "PDP",
+         "code": "Management of abnormal operations",
+         "page": "XFTDN6ECAM00001",
+         "pdf": 426
+        }
+       ]
+      }
+     ]
+    },
+    {
+     "actor": "PF",
+     "items": [
+      {
+       "kind": "action",
+       "text": "Normal C/L as applicable; system resets only per QRH",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "FCTM",
+         "code": "AOP-30-30",
+         "page": "P 4/6",
+         "pdf": 85
+        },
+        {
+         "book": "PDP",
+         "code": "Management of abnormal operations",
+         "page": "XFTDN6ECAM00001",
+         "pdf": 426
+        }
+       ]
+      },
+      {
+       "kind": "callout",
+       "text": "CONTINUE ECAM",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "FCTM",
+         "code": "AOP-30-30",
+         "page": "P 3/6",
+         "pdf": 84
+        },
+        {
+         "book": "PDP",
+         "code": "Management of abnormal operations",
+         "page": "XFTDN6ECAM00001",
+         "pdf": 426
+        }
+       ]
+      }
+     ]
+    },
+    {
+     "actor": "PM",
+     "items": [
+      {
+       "kind": "action",
+       "text": "Read the whole STATUS page; preview APPR PROC workload",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "FCTM",
+         "code": "AOP-30-30",
+         "page": "P 3/6",
+         "pdf": 84
+        },
+        {
+         "book": "PDP",
+         "code": "Management of abnormal operations",
+         "page": "XFTDN6ECAM00001",
+         "pdf": 426
+        }
+       ]
+      },
+      {
+       "kind": "callout",
+       "text": "REMOVE STATUS ?",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "FCTM",
+         "code": "AOP-30-30",
+         "page": "P 3/6",
+         "pdf": 84
+        },
+        {
+         "book": "PDP",
+         "code": "Management of abnormal operations",
+         "page": "XFTDN6ECAM00001",
+         "pdf": 426
+        }
+       ]
+      }
+     ]
+    },
+    {
+     "actor": "PF",
+     "items": [
+      {
+       "kind": "callout",
+       "text": "REMOVE STATUS",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "FCOM",
+         "code": "PRO-ABN-ABN-00",
+         "page": "P 8/12",
+         "pdf": 2831
+        },
+        {
+         "book": "FCTM",
+         "code": "AOP-30-30",
+         "page": "P 3/6",
+         "pdf": 84
+        },
+        {
+         "book": "PDP",
+         "code": "Management of abnormal operations",
+         "page": "XFTDN6ECAM00001",
+         "pdf": 426
+        }
+       ]
+      }
+     ]
+    },
+    {
+     "actor": "PM",
+     "items": [
+      {
+       "kind": "callout",
+       "text": "ECAM ACTIONS COMPLETE",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "FCOM",
+         "code": "PRO-ABN-ABN-00",
+         "page": "P 8/12",
+         "pdf": 2831
+        },
+        {
+         "book": "PDP",
+         "code": "Management of abnormal operations",
+         "page": "XFTDN6ECAM00001",
+         "pdf": 426
+        }
+       ]
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "phase": "Approach",
+   "steps": [
+    {
+     "actor": "PF",
+     "items": [
+      {
+       "kind": "ecam",
+       "item": "SPEED",
+       "setting": "FLY THE GREEN",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "QRH",
+         "code": "26.01",
+         "page": "26.01A",
+         "pdf": 232
+        },
+        {
+         "book": "QRH",
+         "code": "26.01",
+         "page": "26.01B",
+         "pdf": 233
+        }
+       ]
+      },
+      {
+       "kind": "action",
+       "text": "Early stabilized approach. Change configuration wings level; before extending the next flap setting, fly the bottom of the green band",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "FCTM",
+         "code": "PR-AEP-NAV",
+         "page": "P 20/20",
+         "pdf": 497
+        },
+        {
+         "book": "FCOM",
+         "code": "PRO-ABN-NAV",
+         "page": "P 11/124",
+         "pdf": 3836
+        },
+        {
+         "book": "FCOM",
+         "code": "PRO-ABN-NAV",
+         "page": "P 13/124",
+         "pdf": 3838
+        }
+       ]
+      },
+      {
+       "kind": "action",
+       "text": "APPR SPEED: fly the BUSS target speed, the green triangle shows VAPP",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "QRH",
+         "code": "26.01",
+         "page": "26.01A",
+         "pdf": 232
+        },
+        {
+         "book": "QRH",
+         "code": "26.01",
+         "page": "26.01B",
+         "pdf": 233
+        },
+        {
+         "book": "PDP",
+         "code": "Unreliable speed indication",
+         "page": "XFTDA6UNRASPD01",
+         "pdf": 563
+        }
+       ]
+      }
+     ]
+    },
+    {
+     "actor": "PM",
+     "items": [
+      {
+       "kind": "ecam",
+       "item": "FOR LDG",
+       "setting": "FLAP LVR 3",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "QRH",
+         "code": "26.01",
+         "page": "26.01A",
+         "pdf": 232
+        },
+        {
+         "book": "QRH",
+         "code": "26.01",
+         "page": "26.01B",
+         "pdf": 233
+        }
+       ]
+      },
+      {
+       "kind": "ecam",
+       "item": "GPWS LDG FLAP 3",
+       "setting": "ON",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "QRH",
+         "code": "26.01",
+         "page": "26.01A",
+         "pdf": 232
+        },
+        {
+         "book": "QRH",
+         "code": "26.01",
+         "page": "26.01B",
+         "pdf": 233
+        }
+       ]
+      },
+      {
+       "kind": "condition",
+       "text": "When FLAP 2",
+       "children": [
+        {
+         "kind": "ecam",
+         "item": "LDG GEAR GRVTY EXTN handcrank",
+         "setting": "PULL AND TURN",
+         "applies_to": [
+          "all"
+         ],
+         "refs": [
+          {
+           "book": "QRH",
+           "code": "26.01",
+           "page": "26.01A",
+           "pdf": 232
+          },
+          {
+           "book": "QRH",
+           "code": "26.01",
+           "page": "26.01B",
+           "pdf": 233
+          }
+         ]
+        }
+       ],
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "QRH",
+         "code": "26.01",
+         "page": "26.01A",
+         "pdf": 232
+        },
+        {
+         "book": "QRH",
+         "code": "26.01",
+         "page": "26.01B",
+         "pdf": 233
+        }
+       ]
+      },
+      {
+       "kind": "condition",
+       "text": "When L/G downlocked",
+       "children": [
+        {
+         "kind": "ecam",
+         "item": "L/G lever",
+         "setting": "DOWN",
+         "applies_to": [
+          "all"
+         ],
+         "refs": [
+          {
+           "book": "QRH",
+           "code": "26.01",
+           "page": "26.01A",
+           "pdf": 232
+          },
+          {
+           "book": "QRH",
+           "code": "26.01",
+           "page": "26.01B",
+           "pdf": 233
+          }
+         ]
+        },
+        {
+         "kind": "ecam",
+         "item": "GEAR DOWN indications",
+         "setting": "CHECK",
+         "applies_to": [
+          "all"
+         ],
+         "refs": [
+          {
+           "book": "QRH",
+           "code": "26.01",
+           "page": "26.01A",
+           "pdf": 232
+          },
+          {
+           "book": "QRH",
+           "code": "26.01",
+           "page": "26.01B",
+           "pdf": 233
+          }
+         ]
+        },
+        {
+         "kind": "note",
+         "text": "L/G DOORS REMAIN OPEN. Direct law in pitch and roll at gear extension",
+         "applies_to": [
+          "all"
+         ],
+         "refs": [
+          {
+           "book": "QRH",
+           "code": "26.01",
+           "page": "26.01A",
+           "pdf": 232
+          },
+          {
+           "book": "QRH",
+           "code": "26.01",
+           "page": "26.01B",
+           "pdf": 233
+          },
+          {
+           "book": "FCOM",
+           "code": "PRO-ABN-NAV",
+           "page": "P 40/124",
+           "pdf": 3865
+          }
+         ]
+        }
+       ],
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "QRH",
+         "code": "26.01",
+         "page": "26.01A",
+         "pdf": 232
+        },
+        {
+         "book": "QRH",
+         "code": "26.01",
+         "page": "26.01B",
+         "pdf": 233
+        }
+       ]
+      },
+      {
+       "kind": "condition",
+       "text": "During final approach",
+       "children": [
+        {
+         "kind": "ecam",
+         "item": "MAN V/S CTL",
+         "setting": "FULL UP",
+         "applies_to": [
+          "all"
+         ],
+         "refs": [
+          {
+           "book": "QRH",
+           "code": "26.01",
+           "page": "26.01A",
+           "pdf": 232
+          },
+          {
+           "book": "QRH",
+           "code": "26.01",
+           "page": "26.01B",
+           "pdf": 233
+          }
+         ]
+        }
+       ],
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "QRH",
+         "code": "26.01",
+         "page": "26.01A",
+         "pdf": 232
+        },
+        {
+         "book": "QRH",
+         "code": "26.01",
+         "page": "26.01B",
+         "pdf": 233
+        }
+       ]
+      },
+      {
+       "kind": "action",
+       "text": "Before door opening: CHECK ΔP ZERO",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "QRH",
+         "code": "26.01",
+         "page": "26.01A",
+         "pdf": 232
+        },
+        {
+         "book": "QRH",
+         "code": "26.01",
+         "page": "26.01B",
+         "pdf": 233
+        }
+       ]
+      }
+     ]
+    }
+   ]
+  }
+ ],
+ "procedures": [
+  {
+   "title": "NAV ADR 1+2+3 FAULT — ECAM",
+   "source": "FCOM PRO-ABN-NAV",
+   "lines": [
+    {
+     "kind": "note",
+     "text": "In case of a simultaneous ADR and IR (same ADIRU) failure, apply the ADR FAULT procedure prior to the IR FAULT procedure.",
+     "level": 0,
+     "applies_to": [
+      "all"
+     ],
+     "refs": [
+      {
+       "book": "FCOM",
+       "code": "PRO-ABN-NAV",
+       "page": "P 39/124",
+       "pdf": 3864
+      }
+     ]
+    },
+    {
+     "kind": "action",
+     "item": "AP+FD",
+     "setting": "OFF",
+     "text": "",
+     "level": 0,
+     "applies_to": [
+      "all"
+     ],
+     "refs": [
+      {
+       "book": "FCOM",
+       "code": "PRO-ABN-NAV",
+       "page": "P 39/124",
+       "pdf": 3864
+      }
+     ]
+    },
+    {
+     "kind": "action",
+     "item": "A/THR",
+     "setting": "OFF",
+     "text": "",
+     "level": 0,
+     "applies_to": [
+      "all"
+     ],
+     "refs": [
+      {
+       "book": "FCOM",
+       "code": "PRO-ABN-NAV",
+       "page": "P 39/124",
+       "pdf": 3864
+      }
+     ]
+    },
+    {
+     "kind": "action",
+     "item": "PROBE/WINDOW HEAT",
+     "setting": "ON",
+     "text": "",
+     "level": 0,
+     "applies_to": [
+      "all"
+     ],
+     "refs": [
+      {
+       "book": "FCOM",
+       "code": "PRO-ABN-NAV",
+       "page": "P 39/124",
+       "pdf": 3864
+      }
+     ]
+    },
+    {
+     "kind": "action",
+     "item": "ADR 1+2+3 P/B",
+     "setting": "OFF",
+     "text": "",
+     "level": 0,
+     "applies_to": [
+      "all"
+     ],
+     "refs": [
+      {
+       "book": "FCOM",
+       "code": "PRO-ABN-NAV",
+       "page": "P 39/124",
+       "pdf": 3864
+      }
+     ]
+    },
+    {
+     "kind": "note",
+     "text": "The STALL WARNING remains operative.",
+     "level": 0,
+     "applies_to": [
+      "all"
+     ],
+     "refs": [
+      {
+       "book": "FCOM",
+       "code": "PRO-ABN-NAV",
+       "page": "P 39/124",
+       "pdf": 3864
+      }
+     ]
+    },
+    {
+     "kind": "action",
+     "item": "SPD",
+     "setting": "FLY THE GREEN",
+     "text": "",
+     "level": 0,
+     "applies_to": [
+      "all"
+     ],
+     "refs": [
+      {
+       "book": "FCOM",
+       "code": "PRO-ABN-NAV",
+       "page": "P 39/124",
+       "pdf": 3864
+      }
+     ]
+    },
+    {
+     "kind": "note",
+     "text": "If the BUSS does not react to longitudinal stick input when flying the green area of the speed scale, the flight crew must disregard the BUSS and use pitch/thrust table.",
+     "level": 0,
+     "applies_to": [
+      "all"
+     ],
+     "refs": [
+      {
+       "book": "FCOM",
+       "code": "PRO-ABN-NAV",
+       "page": "P 39/124",
+       "pdf": 3864
+      }
+     ]
+    },
+    {
+     "kind": "action",
+     "item": "STBY INST",
+     "setting": "MAY BE UNREL",
+     "text": "ADR3 and STBY speeds use the data of the same probes.",
+     "level": 0,
+     "applies_to": [
+      "all"
+     ],
+     "refs": [
+      {
+       "book": "FCOM",
+       "code": "PRO-ABN-NAV",
+       "page": "P 39/124",
+       "pdf": 3864
+      }
+     ]
+    },
+    {
+     "kind": "action",
+     "item": "ALL ADR OFF PROC",
+     "setting": "APPLY",
+     "text": "",
+     "level": 0,
+     "applies_to": [
+      "all"
+     ],
+     "refs": [
+      {
+       "book": "FCOM",
+       "code": "PRO-ABN-NAV",
+       "page": "P 39/124",
+       "pdf": 3864
+      }
+     ]
+    },
+    {
+     "kind": "info",
+     "text": "Associated: F/CTL ALTN LAW (PROT LOST).",
+     "level": 0,
+     "applies_to": [
+      "all"
+     ],
+     "refs": [
+      {
+       "book": "FCOM",
+       "code": "PRO-ABN-NAV",
+       "page": "P 39/124",
+       "pdf": 3864
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "title": "ALL ADR OFF — QRH",
+   "source": "QRH 26.01",
+   "lines": [
+    {
+     "kind": "action",
+     "item": "SPEED",
+     "setting": "FLY THE GREEN",
+     "text": "",
+     "level": 0,
+     "applies_to": [
+      "all"
+     ],
+     "refs": [
+      {
+       "book": "QRH",
+       "code": "26.01",
+       "page": "26.01A",
+       "pdf": 232
+      },
+      {
+       "book": "QRH",
+       "code": "26.01",
+       "page": "26.01B",
+       "pdf": 233
+      }
+     ]
+    },
+    {
+     "kind": "note",
+     "text": "If the BUSS does not react to longitudinal stick input when flying the green area of the speed scale, the flight crew must disregard the BUSS and use pitch/thrust tables.",
+     "level": 0,
+     "applies_to": [
+      "all"
+     ],
+     "refs": [
+      {
+       "book": "QRH",
+       "code": "26.01",
+       "page": "26.01A",
+       "pdf": 232
+      },
+      {
+       "book": "QRH",
+       "code": "26.01",
+       "page": "26.01B",
+       "pdf": 233
+      }
+     ]
+    },
+    {
+     "kind": "condition",
+     "text": "WHEN ALL ADR OFF BOTH FMS LOST",
+     "level": 0,
+     "applies_to": [
+      "HS-TXA..TXO"
+     ],
+     "refs": [
+      {
+       "book": "QRH",
+       "code": "26.01",
+       "page": "26.01B",
+       "pdf": 233
+      }
+     ]
+    },
+    {
+     "kind": "action",
+     "item": "BACK UP NAV",
+     "setting": "USE",
+     "text": "",
+     "level": 1,
+     "applies_to": [
+      "HS-TXA..TXO"
+     ],
+     "refs": [
+      {
+       "book": "QRH",
+       "code": "26.01",
+       "page": "26.01B",
+       "pdf": 233
+      }
+     ]
+    },
+    {
+     "kind": "info",
+     "text": "USE RMP FOR NAVAID TUNING",
+     "level": 1,
+     "applies_to": [
+      "HS-TXA..TXO"
+     ],
+     "refs": [
+      {
+       "book": "QRH",
+       "code": "26.01",
+       "page": "26.01B",
+       "pdf": 233
+      }
+     ]
+    },
+    {
+     "kind": "info",
+     "text": "PFD ALTITUDE: GPS",
+     "level": 0,
+     "applies_to": [
+      "all"
+     ],
+     "refs": [
+      {
+       "book": "QRH",
+       "code": "26.01",
+       "page": "26.01A",
+       "pdf": 232
+      },
+      {
+       "book": "QRH",
+       "code": "26.01",
+       "page": "26.01B",
+       "pdf": 233
+      }
+     ]
+    },
+    {
+     "kind": "info",
+     "text": "TCAS & ATC ALT RPTG INOP",
+     "level": 0,
+     "applies_to": [
+      "all"
+     ],
+     "refs": [
+      {
+       "book": "QRH",
+       "code": "26.01",
+       "page": "26.01A",
+       "pdf": 232
+      },
+      {
+       "book": "QRH",
+       "code": "26.01",
+       "page": "26.01B",
+       "pdf": 233
+      }
+     ]
+    },
+    {
+     "kind": "action",
+     "item": "CABIN PRESS MODE SEL",
+     "setting": "MAN",
+     "text": "",
+     "level": 0,
+     "applies_to": [
+      "all"
+     ],
+     "refs": [
+      {
+       "book": "QRH",
+       "code": "26.01",
+       "page": "26.01A",
+       "pdf": 232
+      },
+      {
+       "book": "QRH",
+       "code": "26.01",
+       "page": "26.01B",
+       "pdf": 233
+      }
+     ]
+    },
+    {
+     "kind": "action",
+     "item": "MAN V/S CTL",
+     "setting": "AS RQRD",
+     "text": "Target CAB PRESS V/S: climb 500 ft/min, descent 300 ft/min.",
+     "level": 0,
+     "applies_to": [
+      "all"
+     ],
+     "refs": [
+      {
+       "book": "QRH",
+       "code": "26.01",
+       "page": "26.01A",
+       "pdf": 232
+      },
+      {
+       "book": "QRH",
+       "code": "26.01",
+       "page": "26.01B",
+       "pdf": 233
+      }
+     ]
+    },
+    {
+     "kind": "action",
+     "item": "LDG DIST PROC",
+     "setting": "APPLY",
+     "text": "",
+     "level": 0,
+     "applies_to": [
+      "all"
+     ],
+     "refs": [
+      {
+       "book": "QRH",
+       "code": "26.01",
+       "page": "26.01A",
+       "pdf": 232
+      },
+      {
+       "book": "QRH",
+       "code": "26.01",
+       "page": "26.01B",
+       "pdf": 233
+      }
+     ]
+    },
+    {
+     "kind": "condition",
+     "text": "For approach:",
+     "level": 0,
+     "applies_to": [
+      "all"
+     ],
+     "refs": [
+      {
+       "book": "QRH",
+       "code": "26.01",
+       "page": "26.01A",
+       "pdf": 232
+      },
+      {
+       "book": "QRH",
+       "code": "26.01",
+       "page": "26.01B",
+       "pdf": 233
+      }
+     ]
+    },
+    {
+     "kind": "action",
+     "item": "SPEED",
+     "setting": "FLY THE GREEN",
+     "text": "",
+     "level": 1,
+     "applies_to": [
+      "all"
+     ],
+     "refs": [
+      {
+       "book": "QRH",
+       "code": "26.01",
+       "page": "26.01A",
+       "pdf": 232
+      },
+      {
+       "book": "QRH",
+       "code": "26.01",
+       "page": "26.01B",
+       "pdf": 233
+      }
+     ]
+    },
+    {
+     "kind": "action",
+     "item": "FOR LDG",
+     "setting": "FLAP LVR 3",
+     "text": "",
+     "level": 1,
+     "applies_to": [
+      "all"
+     ],
+     "refs": [
+      {
+       "book": "QRH",
+       "code": "26.01",
+       "page": "26.01A",
+       "pdf": 232
+      },
+      {
+       "book": "QRH",
+       "code": "26.01",
+       "page": "26.01B",
+       "pdf": 233
+      }
+     ]
+    },
+    {
+     "kind": "action",
+     "item": "GPWS LDG FLAP 3",
+     "setting": "ON",
+     "text": "",
+     "level": 1,
+     "applies_to": [
+      "all"
+     ],
+     "refs": [
+      {
+       "book": "QRH",
+       "code": "26.01",
+       "page": "26.01A",
+       "pdf": 232
+      },
+      {
+       "book": "QRH",
+       "code": "26.01",
+       "page": "26.01B",
+       "pdf": 233
+      }
+     ]
+    },
+    {
+     "kind": "info",
+     "text": "APPR SPEED: BUSS TARGET SPEED. During approach, BUSS TARGET SPEED (green triangle) indicates VAPP.",
+     "level": 1,
+     "applies_to": [
+      "all"
+     ],
+     "refs": [
+      {
+       "book": "QRH",
+       "code": "26.01",
+       "page": "26.01A",
+       "pdf": 232
+      },
+      {
+       "book": "QRH",
+       "code": "26.01",
+       "page": "26.01B",
+       "pdf": 233
+      }
+     ]
+    },
+    {
+     "kind": "condition",
+     "text": "When FLAP 2:",
+     "level": 1,
+     "applies_to": [
+      "all"
+     ],
+     "refs": [
+      {
+       "book": "QRH",
+       "code": "26.01",
+       "page": "26.01A",
+       "pdf": 232
+      },
+      {
+       "book": "QRH",
+       "code": "26.01",
+       "page": "26.01B",
+       "pdf": 233
+      }
+     ]
+    },
+    {
+     "kind": "action",
+     "item": "LDG GEAR GRVTY EXTN handcrank",
+     "setting": "PULL AND TURN",
+     "text": "",
+     "level": 2,
+     "applies_to": [
+      "all"
+     ],
+     "refs": [
+      {
+       "book": "QRH",
+       "code": "26.01",
+       "page": "26.01A",
+       "pdf": 232
+      },
+      {
+       "book": "QRH",
+       "code": "26.01",
+       "page": "26.01B",
+       "pdf": 233
+      }
+     ]
+    },
+    {
+     "kind": "condition",
+     "text": "When L/G downlocked:",
+     "level": 1,
+     "applies_to": [
+      "all"
+     ],
+     "refs": [
+      {
+       "book": "QRH",
+       "code": "26.01",
+       "page": "26.01A",
+       "pdf": 232
+      },
+      {
+       "book": "QRH",
+       "code": "26.01",
+       "page": "26.01B",
+       "pdf": 233
+      }
+     ]
+    },
+    {
+     "kind": "action",
+     "item": "L/G lever",
+     "setting": "DOWN",
+     "text": "",
+     "level": 2,
+     "applies_to": [
+      "all"
+     ],
+     "refs": [
+      {
+       "book": "QRH",
+       "code": "26.01",
+       "page": "26.01A",
+       "pdf": 232
+      },
+      {
+       "book": "QRH",
+       "code": "26.01",
+       "page": "26.01B",
+       "pdf": 233
+      }
+     ]
+    },
+    {
+     "kind": "action",
+     "item": "GEAR DOWN indications",
+     "setting": "CHECK",
+     "text": "",
+     "level": 2,
+     "applies_to": [
+      "all"
+     ],
+     "refs": [
+      {
+       "book": "QRH",
+       "code": "26.01",
+       "page": "26.01A",
+       "pdf": 232
+      },
+      {
+       "book": "QRH",
+       "code": "26.01",
+       "page": "26.01B",
+       "pdf": 233
+      }
+     ]
+    },
+    {
+     "kind": "info",
+     "text": "L/G DOORS REMAIN OPEN",
+     "level": 2,
+     "applies_to": [
+      "all"
+     ],
+     "refs": [
+      {
+       "book": "QRH",
+       "code": "26.01",
+       "page": "26.01A",
+       "pdf": 232
+      },
+      {
+       "book": "QRH",
+       "code": "26.01",
+       "page": "26.01B",
+       "pdf": 233
+      }
+     ]
+    },
+    {
+     "kind": "caution",
+     "text": "For flight with L/G extended, fuel consumption is increased. Refer to OPS Fuel Penalty Factors/ECAM Alert Table.",
+     "level": 2,
+     "applies_to": [
+      "all"
+     ],
+     "refs": [
+      {
+       "book": "QRH",
+       "code": "26.01",
+       "page": "26.01A",
+       "pdf": 232
+      },
+      {
+       "book": "QRH",
+       "code": "26.01",
+       "page": "26.01B",
+       "pdf": 233
+      }
+     ]
+    },
+    {
+     "kind": "condition",
+     "text": "During final approach:",
+     "level": 1,
+     "applies_to": [
+      "all"
+     ],
+     "refs": [
+      {
+       "book": "QRH",
+       "code": "26.01",
+       "page": "26.01A",
+       "pdf": 232
+      },
+      {
+       "book": "QRH",
+       "code": "26.01",
+       "page": "26.01B",
+       "pdf": 233
+      }
+     ]
+    },
+    {
+     "kind": "action",
+     "item": "MAN V/S CTL",
+     "setting": "FULL UP",
+     "text": "",
+     "level": 2,
+     "applies_to": [
+      "all"
+     ],
+     "refs": [
+      {
+       "book": "QRH",
+       "code": "26.01",
+       "page": "26.01A",
+       "pdf": 232
+      },
+      {
+       "book": "QRH",
+       "code": "26.01",
+       "page": "26.01B",
+       "pdf": 233
+      }
+     ]
+    },
+    {
+     "kind": "info",
+     "text": "Before door opening: CHECK ΔP ZERO",
+     "level": 0,
+     "applies_to": [
+      "all"
+     ],
+     "refs": [
+      {
+       "book": "QRH",
+       "code": "26.01",
+       "page": "26.01A",
+       "pdf": 232
+      },
+      {
+       "book": "QRH",
+       "code": "26.01",
+       "page": "26.01B",
+       "pdf": 233
+      }
+     ]
+    }
+   ]
+  }
+ ],
+ "status": {
+  "limitations": [
+   {
+    "text": "MANEUVER WITH CARE",
+    "applies_to": [
+     "all"
+    ],
+    "refs": [
+     {
+      "book": "FCOM",
+      "code": "PRO-ABN-NAV",
+      "page": "P 40/124",
+      "pdf": 3865
+     }
+    ]
+   },
+   {
+    "text": "SPD BRK DO NOT USE",
+    "applies_to": [
+     "all"
+    ],
+    "refs": [
+     {
+      "book": "FCOM",
+      "code": "PRO-ABN-NAV",
+      "page": "P 40/124",
+      "pdf": 3865
+     }
+    ]
+   },
+   {
+    "text": "STBY INST MAY BE UNREL",
+    "applies_to": [
+     "all"
+    ],
+    "refs": [
+     {
+      "book": "FCOM",
+      "code": "PRO-ABN-NAV",
+      "page": "P 40/124",
+      "pdf": 3865
+     }
+    ]
+   }
+  ],
+  "info": [
+   {
+    "text": "ALTN LAW: PROT LOST. WHEN L/G DN: DIRECT LAW (pitch and roll)",
+    "applies_to": [
+     "all"
+    ],
+    "refs": [
+     {
+      "book": "FCOM",
+      "code": "PRO-ABN-NAV",
+      "page": "P 40/124",
+      "pdf": 3865
+     }
+    ]
+   }
+  ],
+  "appr_proc": [
+   {
+    "kind": "action",
+    "item": "FOR LDG",
+    "setting": "FLAP LVR 3",
+    "text": "",
+    "level": 0,
+    "applies_to": [
+     "all"
+    ],
+    "refs": [
+     {
+      "book": "FCOM",
+      "code": "PRO-ABN-NAV",
+      "page": "P 40/124",
+      "pdf": 3865
+     }
+    ]
+   },
+   {
+    "kind": "action",
+    "item": "LDG",
+    "setting": "GRVTY EXTN",
+    "text": "",
+    "level": 0,
+    "applies_to": [
+     "all"
+    ],
+    "refs": [
+     {
+      "book": "FCOM",
+      "code": "PRO-ABN-NAV",
+      "page": "P 40/124",
+      "pdf": 3865
+     }
+    ]
+   },
+   {
+    "kind": "caution",
+    "text": "For flight with L/G extended, fuel consumption is increased. Refer to QRH/OPS Fuel Penalty Factors/ECAM Alert Table.",
+    "level": 0,
+    "applies_to": [
+     "all"
+    ],
+    "refs": [
+     {
+      "book": "FCOM",
+      "code": "PRO-ABN-NAV",
+      "page": "P 40/124",
+      "pdf": 3865
+     }
+    ]
+   }
+  ],
+  "inop_sys": [
+   {
+    "text": "REAC W/S DET",
+    "applies_to": [
+     "all"
+    ],
+    "refs": [
+     {
+      "book": "FCOM",
+      "code": "PRO-ABN-NAV",
+      "page": "P 40/124",
+      "pdf": 3865
+     }
+    ]
+   },
+   {
+    "text": "PRED W/S DET",
+    "applies_to": [
+     "all"
+    ],
+    "refs": [
+     {
+      "book": "FCOM",
+      "code": "PRO-ABN-NAV",
+      "page": "P 40/124",
+      "pdf": 3865
+     }
+    ]
+   },
+   {
+    "text": "F/CTL PROT",
+    "applies_to": [
+     "all"
+    ],
+    "refs": [
+     {
+      "book": "FCOM",
+      "code": "PRO-ABN-NAV",
+      "page": "P 40/124",
+      "pdf": 3865
+     }
+    ]
+   },
+   {
+    "text": "ADR 1+2+3",
+    "applies_to": [
+     "all"
+    ],
+    "refs": [
+     {
+      "book": "FCOM",
+      "code": "PRO-ABN-NAV",
+      "page": "P 40/124",
+      "pdf": 3865
+     }
+    ]
+   },
+   {
+    "text": "STEEP APPR",
+    "applies_to": [
+     "all"
+    ],
+    "refs": [
+     {
+      "book": "FCOM",
+      "code": "PRO-ABN-NAV",
+      "page": "P 40/124",
+      "pdf": 3865
+     }
+    ]
+   },
+   {
+    "text": "RUD TRV LIM",
+    "applies_to": [
+     "all"
+    ],
+    "refs": [
+     {
+      "book": "FCOM",
+      "code": "PRO-ABN-NAV",
+      "page": "P 40/124",
+      "pdf": 3865
+     }
+    ]
+   },
+   {
+    "text": "AP 1+2",
+    "applies_to": [
+     "all"
+    ],
+    "refs": [
+     {
+      "book": "FCOM",
+      "code": "PRO-ABN-NAV",
+      "page": "P 40/124",
+      "pdf": 3865
+     }
+    ]
+   },
+   {
+    "text": "A/THR",
+    "applies_to": [
+     "all"
+    ],
+    "refs": [
+     {
+      "book": "FCOM",
+      "code": "PRO-ABN-NAV",
+      "page": "P 40/124",
+      "pdf": 3865
+     }
+    ]
+   },
+   {
+    "text": "CAB PR 1+2",
+    "applies_to": [
+     "all"
+    ],
+    "refs": [
+     {
+      "book": "FCOM",
+      "code": "PRO-ABN-NAV",
+      "page": "P 40/124",
+      "pdf": 3865
+     }
+    ]
+   },
+   {
+    "text": "GPWS",
+    "applies_to": [
+     "all"
+    ],
+    "refs": [
+     {
+      "book": "FCOM",
+      "code": "PRO-ABN-NAV",
+      "page": "P 40/124",
+      "pdf": 3865
+     }
+    ]
+   },
+   {
+    "text": "GPWS TERR",
+    "applies_to": [
+     "all"
+    ],
+    "refs": [
+     {
+      "book": "FCOM",
+      "code": "PRO-ABN-NAV",
+      "page": "P 40/124",
+      "pdf": 3865
+     }
+    ]
+   },
+   {
+    "text": "ATC/XPDR 1",
+    "applies_to": [
+     "all"
+    ],
+    "refs": [
+     {
+      "book": "FCOM",
+      "code": "PRO-ABN-NAV",
+      "page": "P 40/124",
+      "pdf": 3865
+     }
+    ]
+   },
+   {
+    "text": "ATC/XPDR 2",
+    "applies_to": [
+     "all"
+    ],
+    "refs": [
+     {
+      "book": "FCOM",
+      "code": "PRO-ABN-NAV",
+      "page": "P 40/124",
+      "pdf": 3865
+     }
+    ]
+   },
+   {
+    "text": "ROW/ROP",
+    "applies_to": [
+     "all"
+    ],
+    "refs": [
+     {
+      "book": "FCOM",
+      "code": "PRO-ABN-NAV",
+      "page": "P 40/124",
+      "pdf": 3865
+     }
+    ]
+   }
+  ]
+ },
+ "tables": [
+  {
+   "title": "Backup Speed Scale (BUSS)",
+   "caption": "Top to bottom on the PFD.",
+   "columns": [
+    "Band",
+    "Meaning"
+   ],
+   "rows": [
+    [
+     "Red FAST",
+     "Excessive speed, decreasing the margin to the maximum structural speed"
+    ],
+    [
+     "Amber FAST",
+     "Excessive speed, keeping an appropriate margin to the maximum structural speed"
+    ],
+    [
+     "Green",
+     "Safe speed range"
+    ],
+    [
+     "Green triangle",
+     "Optimum target speed; in approach, the approach target speed"
+    ],
+    [
+     "Yellow line",
+     "Current speed"
+    ],
+    [
+     "Amber SLOW",
+     "Too low, keeping an appropriate margin to the stall speed"
+    ],
+    [
+     "Red SLOW",
+     "Too low, reducing the margin to the stall speed"
+    ]
+   ],
+   "applies_to": [
+    "all"
+   ],
+   "refs": [
+    {
+     "book": "FCOM",
+     "code": "DSC-34-NAV-10-30-10",
+     "page": "P 2/4",
+     "pdf": 2107
+    },
+    {
+     "book": "FCOM",
+     "code": "DSC-34-NAV-10-30-10",
+     "page": "P 3/4",
+     "pdf": 2108
+    }
+   ]
+  },
+  {
+   "title": "Cabin altitude target",
+   "caption": "With manual cabin pressure control.",
+   "columns": [
+    "Aircraft cruise FL",
+    "CAB ALT target (ft)"
+   ],
+   "rows": [
+    [
+     "410",
+     "8000"
+    ],
+    [
+     "350",
+     "7000"
+    ],
+    [
+     "300",
+     "5500"
+    ],
+    [
+     "250",
+     "3000"
+    ],
+    [
+     "<200",
+     "0"
+    ]
+   ],
+   "applies_to": [
+    "all"
+   ],
+   "refs": [
+    {
+     "book": "QRH",
+     "code": "26.01",
+     "page": "26.01A",
+     "pdf": 232
+    },
+    {
+     "book": "QRH",
+     "code": "26.01",
+     "page": "26.01B",
+     "pdf": 233
+    }
+   ]
+  }
+ ],
+ "background": [
+  {
+   "text": "When activated, the BUSS replaces the normal speed and GPS altitude replaces the barometric altitude scale, on both PFDs, once the crew turns off all ADRs.",
+   "applies_to": [
+    "all"
+   ],
+   "refs": [
+    {
+     "book": "FCOM",
+     "code": "DSC-34-NAV-10-30-10",
+     "page": "P 1/4",
+     "pdf": 2106
+    }
+   ]
+  },
+  {
+   "text": "The BUSS comes from the angle of attack and depends on the slat/flap configuration.",
+   "applies_to": [
+    "all"
+   ],
+   "refs": [
+    {
+     "book": "FCOM",
+     "code": "DSC-34-NAV-10-30-10",
+     "page": "P 1/4",
+     "pdf": 2106
+    }
+   ]
+  },
+  {
+   "text": "Backup altitude scale: current GPS altitude with two amber dashes over the last two digits, a GPS ALT flag, and no vertical speed indication.",
+   "applies_to": [
+    "all"
+   ],
+   "refs": [
+    {
+     "book": "FCOM",
+     "code": "DSC-34-NAV-10-30-10",
+     "page": "P 3/4",
+     "pdf": 2108
+    },
+    {
+     "book": "PDP",
+     "code": "Unreliable speed indication",
+     "page": "XFTDA6UNRASPD01",
+     "pdf": 563
+    }
+   ]
+  },
+  {
+   "text": "Speed brakes change the speed-to-AOA relationship, so the BUSS may then give erroneous data.",
+   "applies_to": [
+    "all"
+   ],
+   "refs": [
+    {
+     "book": "FCTM",
+     "code": "PR-AEP-NAV",
+     "page": "P 19/20",
+     "pdf": 496
+    }
+   ]
+  }
+ ],
+ "technique": [
+  {
+   "text": "Before retracting the next flap setting fly the upper part of the green band; before extending it, the lower part. This limits excursions into the amber zones.",
+   "applies_to": [
+    "all"
+   ],
+   "refs": [
+    {
+     "book": "FCTM",
+     "code": "PR-AEP-NAV",
+     "page": "P 20/20",
+     "pdf": 497
+    }
+   ]
+  },
+  {
+   "text": "Any longitudinal stick input changes the AOA, so the BUSS must move. If it does not, disregard it.",
+   "applies_to": [
+    "all"
+   ],
+   "refs": [
+    {
+     "book": "FCTM",
+     "code": "PR-AEP-NAV",
+     "page": "P 19/20",
+     "pdf": 496
+    }
+   ]
+  },
+  {
+   "text": "While the BUSS is active: cabin pressure controlled manually, HUD not used if installed, FPV available on one or both PFDs depending on the ADIRS standard.",
+   "applies_to": [
+    "all"
+   ],
+   "refs": [
+    {
+     "book": "FCTM",
+     "code": "PR-AEP-NAV",
+     "page": "P 19/20",
+     "pdf": 496
+    }
+   ]
+  }
+ ],
+ "related": [
+  {
+   "title": "UNRELIABLE SPEED INDICATION",
+   "why": "Leads here below FL 250 when speed stays unreliable",
+   "key_actions": [
+    "See the Unreliable speed brief"
+   ],
+   "refs": [
+    {
+     "book": "FCOM",
+     "code": "PRO-ABN-NAV",
+     "page": "P 3/124",
+     "pdf": 3828
+    },
+    {
+     "book": "FCTM",
+     "code": "PR-AEP-NAV",
+     "page": "P 18/20",
+     "pdf": 495
+    }
+   ]
+  },
+  {
+   "title": "F/CTL ALTN LAW (PROT LOST)",
+   "why": "Associated procedure",
+   "key_actions": [
+    "See the F/CTL ALTN LAW brief"
+   ],
+   "refs": [
+    {
+     "book": "FCOM",
+     "code": "PRO-ABN-NAV",
+     "page": "P 39/124",
+     "pdf": 3864
+    }
+   ]
+  },
+  {
+   "title": "F/CTL DIRECT LAW",
+   "why": "Control reverts to direct law at gear extension",
+   "key_actions": [
+    "See the F/CTL DIRECT LAW brief"
+   ],
+   "refs": [
+    {
+     "book": "FCOM",
+     "code": "PRO-ABN-NAV",
+     "page": "P 40/124",
+     "pdf": 3865
+    }
+   ]
+  }
+ ],
+ "differences": [
+  {
+   "topic": "FMS after all ADRs off",
+   "values": {
+    "HS-TXA..TXO": "WHEN ALL ADR OFF BOTH FMS LOST · BACK UP NAV USE · USE RMP FOR NAVAID TUNING",
+    "HS-TXP..TXU": "No such lines in the QRH ALL ADR OFF"
+   },
+   "refs": [
+    {
+     "book": "QRH",
+     "code": "26.01",
+     "page": "26.01A",
+     "pdf": 232
+    },
+    {
+     "book": "QRH",
+     "code": "26.01",
+     "page": "26.01B",
+     "pdf": 233
+    },
+    {
+     "book": "FCOM",
+     "code": "PRO-ABN-NAV",
+     "page": "P 11/124",
+     "pdf": 3836
+    },
+    {
+     "book": "FCOM",
+     "code": "PRO-ABN-NAV",
+     "page": "P 13/124",
+     "pdf": 3838
+    }
+   ]
+  }
+ ],
+ "gaps": [
+  {
+   "text": "\"BAS\" is not an abbreviation in the supplied manuals: the FCOM says Backup Altitude Scale and the PDP says Back-Up Altitude Scale.",
+   "applies_to": [
+    "all"
+   ],
+   "refs": [
+    {
+     "book": "FCOM",
+     "code": "DSC-34-NAV-10-30-10",
+     "page": "P 3/4",
+     "pdf": 2108
+    },
+    {
+     "book": "PDP",
+     "code": "Unreliable speed indication",
+     "page": "XFTDA6UNRASPD01",
+     "pdf": 562
+    }
+   ]
+  },
+  {
+   "text": "PDP mentions a \"reversible BUSS (if installed)\". The FCOM states activation is not reversible for all HS-TX; the reversible modification is listed for HS-TO only. This brief follows the FCOM.",
+   "applies_to": [
+    "all"
+   ],
+   "refs": [
+    {
+     "book": "FCOM",
+     "code": "DSC-34-NAV-10-30-10",
+     "page": "P 1/4",
+     "pdf": 2106
+    },
+    {
+     "book": "FCOM",
+     "code": "PLP-LOM",
+     "page": "P 25/58",
+     "pdf": 52
+    },
+    {
+     "book": "PDP",
+     "code": "Unreliable speed indication",
+     "page": "XFTDA6UNRASPD01",
+     "pdf": 562
+    }
+   ]
+  },
+  {
+   "text": "The flow order and PF/PM split of the QRH part are arranged from the QRH lines and AOP-30-30; no PDP slide gives the turns.",
+   "applies_to": [
+    "all"
+   ],
+   "refs": [
+    {
+     "book": "QRH",
+     "code": "26.01",
+     "page": "26.01A",
+     "pdf": 232
+    },
+    {
+     "book": "FCTM",
+     "code": "AOP-30-30",
+     "page": "P 2/6",
+     "pdf": 83
+    }
+   ]
+  },
+  {
+   "text": "HS-TO versions omitted (FCOM P 41–42/124, QRH 26.01C).",
+   "applies_to": [
+    "all"
+   ],
+   "refs": [
+    {
+     "book": "FCOM",
+     "code": "PRO-ABN-NAV",
+     "page": "P 40/124",
+     "pdf": 3865
+    }
+   ]
+  }
+ ],
+ "sources": [
+  {
+   "book": "FCOM",
+   "section": "PRO-ABN-NAV — NAV ADR 1+2+3 FAULT",
+   "pages": "P 38–40/124",
+   "pdf": "3863–3865",
+   "rev": "26 MAY 26"
+  },
+  {
+   "book": "FCOM",
+   "section": "PRO-ABN-NAV — [QRH] ALL ADR OFF",
+   "pages": "P 11–14/124",
+   "pdf": "3836–3839",
+   "rev": "26 MAY 26"
+  },
+  {
+   "book": "FCOM",
+   "section": "DSC-34-NAV-10-30-10 — Backup Speed/Altitude Scale",
+   "pages": "P 1–3/4",
+   "pdf": "2106–2108",
+   "rev": "21 MAY 25"
+  },
+  {
+   "book": "QRH",
+   "section": "26.01 ALL ADR OFF",
+   "pages": "26.01A–B",
+   "pdf": "232–233",
+   "rev": "26 MAY 26"
+  },
+  {
+   "book": "FCTM",
+   "section": "PR-AEP-NAV — Backup Speed Scale",
+   "pages": "P 18–20/20",
+   "pdf": "495–497",
+   "rev": "26 MAY 26"
+  },
+  {
+   "book": "PDP",
+   "section": "Unreliable speed indication (XFTDA6UNRASPD01)",
+   "pages": "—",
+   "pdf": "562–563",
+   "rev": "JUN 2023"
+  }
+ ],
+ "schema": "a320-ecam-abnormal/3",
+ "generated": "2026-10-31",
+ "qrh": []
+}

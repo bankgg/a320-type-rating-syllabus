@@ -1,0 +1,1746 @@
+{
+ "slug": "rnp-approach-degraded-navigation",
+ "title": "RNP APPROACH · DEGRADED NAVIGATION",
+ "kind": "technique",
+ "alert": {
+  "level": "technique",
+  "land_asap": "none",
+  "memory_items": false,
+  "qrh_summary": false,
+  "trigger": "During an RNAV(GNSS) or RNAV(RNP) approach: GPS PRIMARY LOST, NAV ACCUR DOWNGRAD, NAV FM/GPS POS DISAGREE, excessive XTK or V/DEV, FINAL APP not engaging, or a failure of a guidance system.",
+  "inhibited_phases": [],
+  "refs": [
+   {
+    "book": "FCOM",
+    "code": "PRO-NOR-SOP-18-C",
+    "page": "P 16/36",
+    "pdf": 4251
+   },
+   {
+    "book": "FCOM",
+    "code": "PRO-NOR-SOP-18-C",
+    "page": "P 20/36",
+    "pdf": 4255
+   }
+  ]
+ },
+ "effectivity": {
+  "branches": [],
+  "note": "FCOM SOP blocks for all HS-TX. No ECAM procedure covers the degradation as a whole."
+ },
+ "summary": "There is no single procedure: the FCOM SOP lists what to do under Management of Degraded Navigation, and the crew reviews it in the arrival briefing. This brief leads with RNAV(GNSS) approaches with LNAV/VNAV minima; RNAV(RNP) rules are kept for reference under From the manuals. A loss on one side only: continue on the remaining AP/FD. A loss on both sides, XTK above 0.3 NM or 75 ft below the path: discontinue unless visual references are enough to proceed visually. Hand-flying needs the FD: in approach, AP and FD both off is not authorized without F-LOC deviation.",
+ "key_limits": [
+  {
+   "label": "PM callouts",
+   "value": "\"CROSS TRACK\" XTK > 0.1 NM · \"VDEV\" V/DEV > ½ dot (50 ft)",
+   "applies_to": [
+    "all"
+   ],
+   "refs": [
+    {
+     "book": "FCOM",
+     "code": "PRO-NOR-SOP-18-C",
+     "page": "P 14/36",
+     "pdf": 4249
+    },
+    {
+     "book": "FCOM",
+     "code": "PRO-NOR-SCO",
+     "page": "P 5/10",
+     "pdf": 4314
+    },
+    {
+     "book": "PDP",
+     "code": "3D approach",
+     "page": "XFTDN13DAPPRO01",
+     "pdf": 261
+    }
+   ]
+  },
+  {
+   "label": "Discontinue, lateral",
+   "value": "XTK > 0.3 NM",
+   "applies_to": [
+    "all"
+   ],
+   "refs": [
+    {
+     "book": "FCOM",
+     "code": "PRO-NOR-SOP-18-C",
+     "page": "P 16/36",
+     "pdf": 4251
+    }
+   ]
+  },
+  {
+   "label": "Discontinue, vertical",
+   "value": "75 ft below the path (V/DEV > ¾ dot)",
+   "applies_to": [
+    "all"
+   ],
+   "refs": [
+    {
+     "book": "FCOM",
+     "code": "PRO-NOR-SOP-18-C",
+     "page": "P 16/36",
+     "pdf": 4251
+    }
+   ]
+  },
+  {
+   "label": "RNP accuracy in approach",
+   "value": "0.3 NM with AP ON, or AP OFF with FD ON",
+   "applies_to": [
+    "all"
+   ],
+   "refs": [
+    {
+     "book": "FCOM",
+     "code": "LIM-AFS-10",
+     "page": "P 4/8",
+     "pdf": 4669
+    }
+   ]
+  },
+  {
+   "label": "Altimeter difference",
+   "value": "100 ft maximum",
+   "applies_to": [
+    "all"
+   ],
+   "refs": [
+    {
+     "book": "FCOM",
+     "code": "PRO-NOR-SOP-18-C",
+     "page": "P 14/36",
+     "pdf": 4249
+    }
+   ]
+  }
+ ],
+ "flow": [
+  {
+   "phase": "Before the approach",
+   "steps": [
+    {
+     "actor": "PF",
+     "items": [
+      {
+       "kind": "ecam",
+       "item": "GO-AROUND STRATEGY",
+       "setting": "REVIEW",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "FCOM",
+         "code": "PRO-NOR-SOP-18-C",
+         "page": "P 13/36",
+         "pdf": 4248
+        }
+       ]
+      },
+      {
+       "kind": "note",
+       "text": "The briefing includes Management of Degraded Navigation",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "FCOM",
+         "code": "PRO-NOR-SOP-18-C",
+         "page": "P 13/36",
+         "pdf": 4248
+        }
+       ]
+      },
+      {
+       "kind": "condition",
+       "text": "At 10 000 ft AAL",
+       "children": [
+        {
+         "kind": "ecam",
+         "item": "NAV ACCURACY",
+         "setting": "CHECK",
+         "applies_to": [
+          "all"
+         ],
+         "refs": [
+          {
+           "book": "FCOM",
+           "code": "PRO-NOR-SOP-18-C",
+           "page": "P 13/36",
+           "pdf": 4248
+          }
+         ]
+        },
+        {
+         "kind": "note",
+         "text": "LOW: use TRK FPA for the approach",
+         "applies_to": [
+          "all"
+         ],
+         "refs": [
+          {
+           "book": "FCOM",
+           "code": "PRO-NOR-SOP-18-C",
+           "page": "P 13/36",
+           "pdf": 4248
+          }
+         ]
+        },
+        {
+         "kind": "ecam",
+         "item": "GPS PRIMARY",
+         "setting": "CHECK",
+         "applies_to": [
+          "all"
+         ],
+         "refs": [
+          {
+           "book": "FCOM",
+           "code": "PRO-NOR-SOP-18-C",
+           "page": "P 13/36",
+           "pdf": 4248
+          }
+         ]
+        },
+        {
+         "kind": "note",
+         "text": "Available on at least one FMS",
+         "applies_to": [
+          "all"
+         ],
+         "refs": [
+          {
+           "book": "FCOM",
+           "code": "PRO-NOR-SOP-18-C",
+           "page": "P 13/36",
+           "pdf": 4248
+          }
+         ]
+        }
+       ],
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "FCOM",
+         "code": "PRO-NOR-SOP-18-C",
+         "page": "P 13/36",
+         "pdf": 4248
+        }
+       ]
+      }
+     ]
+    },
+    {
+     "actor": "BOTH",
+     "items": [
+      {
+       "kind": "ecam",
+       "item": "BAROMETRIC REFERENCE",
+       "setting": "SET/CROSSCHECK",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "FCOM",
+         "code": "PRO-NOR-SOP-18-C",
+         "page": "P 14/36",
+         "pdf": 4249
+        }
+       ]
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "phase": "Final approach — monitor",
+   "steps": [
+    {
+     "actor": "PF",
+     "items": [
+      {
+       "kind": "action",
+       "text": "Fly with FD or AP/FD: AP OFF with FD ON gives 0.3 NM in approach",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "FCOM",
+         "code": "LIM-AFS-10",
+         "page": "P 3/8",
+         "pdf": 4668
+        },
+        {
+         "book": "FCOM",
+         "code": "LIM-AFS-10",
+         "page": "P 4/8",
+         "pdf": 4669
+        }
+       ]
+      },
+      {
+       "kind": "ecam",
+       "item": "APP NAV",
+       "setting": "CHECK ARMED or ENGAGED",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "FCOM",
+         "code": "PRO-NOR-SOP-18-C",
+         "page": "P 14/36",
+         "pdf": 4249
+        }
+       ]
+      },
+      {
+       "kind": "ecam",
+       "item": "FINAL",
+       "setting": "CHECK ARMED",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "FCOM",
+         "code": "PRO-NOR-SOP-18-C",
+         "page": "P 14/36",
+         "pdf": 4249
+        }
+       ]
+      },
+      {
+       "kind": "ecam",
+       "item": "FINAL APP (at the FDP)",
+       "setting": "CHECK ENGAGED",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "FCOM",
+         "code": "PRO-NOR-SOP-18-C",
+         "page": "P 14/36",
+         "pdf": 4249
+        }
+       ]
+      },
+      {
+       "kind": "condition",
+       "text": "FINAL does not engage at the start of the final descent",
+       "children": [
+        {
+         "kind": "action",
+         "text": "Consider interrupting the approach, unless visual references can be kept throughout",
+         "applies_to": [
+          "all"
+         ],
+         "refs": [
+          {
+           "book": "FCTM",
+           "code": "PR-NP-SOP-190-GUI",
+           "page": "P 21/36",
+           "pdf": 290
+          }
+         ]
+        }
+       ],
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "FCTM",
+         "code": "PR-NP-SOP-190-GUI",
+         "page": "P 21/36",
+         "pdf": 290
+        }
+       ]
+      }
+     ]
+    },
+    {
+     "actor": "PM",
+     "items": [
+      {
+       "kind": "ecam",
+       "item": "FLIGHT PARAMETERS",
+       "setting": "MONITOR",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "FCOM",
+         "code": "PRO-NOR-SOP-18-C",
+         "page": "P 14/36",
+         "pdf": 4249
+        }
+       ]
+      },
+      {
+       "kind": "action",
+       "text": "Watch XTK on the ND, V/DEV on the PFD, and altitude crossings at the FAF and final approach waypoints",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "FCOM",
+         "code": "PRO-NOR-SOP-18-C",
+         "page": "P 14/36",
+         "pdf": 4249
+        }
+       ]
+      },
+      {
+       "kind": "condition",
+       "text": "XTK above 0.1 NM",
+       "children": [
+        {
+         "kind": "callout",
+         "text": "CROSS TRACK",
+         "applies_to": [
+          "all"
+         ],
+         "refs": [
+          {
+           "book": "FCOM",
+           "code": "PRO-NOR-SCO",
+           "page": "P 5/10",
+           "pdf": 4314
+          },
+          {
+           "book": "PDP",
+           "code": "3D approach",
+           "page": "XFTDN13DAPPRO01",
+           "pdf": 261
+          }
+         ]
+        }
+       ],
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "FCOM",
+         "code": "PRO-NOR-SOP-18-C",
+         "page": "P 14/36",
+         "pdf": 4249
+        },
+        {
+         "book": "FCOM",
+         "code": "PRO-NOR-SCO",
+         "page": "P 5/10",
+         "pdf": 4314
+        }
+       ]
+      },
+      {
+       "kind": "condition",
+       "text": "V/DEV above ½ dot",
+       "children": [
+        {
+         "kind": "callout",
+         "text": "VDEV",
+         "applies_to": [
+          "all"
+         ],
+         "refs": [
+          {
+           "book": "FCOM",
+           "code": "PRO-NOR-SCO",
+           "page": "P 5/10",
+           "pdf": 4314
+          },
+          {
+           "book": "PDP",
+           "code": "3D approach",
+           "page": "XFTDN13DAPPRO01",
+           "pdf": 261
+          }
+         ]
+        }
+       ],
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "FCOM",
+         "code": "PRO-NOR-SOP-18-C",
+         "page": "P 14/36",
+         "pdf": 4249
+        },
+        {
+         "book": "FCOM",
+         "code": "PRO-NOR-SCO",
+         "page": "P 5/10",
+         "pdf": 4314
+        }
+       ]
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "phase": "Degradation on one side — continue",
+   "steps": [
+    {
+     "actor": "PF",
+     "items": [
+      {
+       "kind": "condition",
+       "text": "GPS PRIMARY LOST or NAV ACCUR DOWNGRAD on one ND",
+       "children": [
+        {
+         "kind": "action",
+         "text": "Use the appropriate remaining AP/FD",
+         "applies_to": [
+          "all"
+         ],
+         "refs": [
+          {
+           "book": "FCOM",
+           "code": "PRO-NOR-SOP-18-C",
+           "page": "P 16/36",
+           "pdf": 4251
+          }
+         ]
+        }
+       ],
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "FCOM",
+         "code": "PRO-NOR-SOP-18-C",
+         "page": "P 16/36",
+         "pdf": 4251
+        }
+       ]
+      }
+     ]
+    },
+    {
+     "actor": "PM",
+     "items": [
+      {
+       "kind": "ecam",
+       "item": "FLIGHT PARAMETERS",
+       "setting": "MONITOR",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "FCOM",
+         "code": "PRO-NOR-SOP-18-C",
+         "page": "P 14/36",
+         "pdf": 4249
+        }
+       ]
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "phase": "Both sides or excessive deviation — discontinue",
+   "steps": [
+    {
+     "actor": "BOTH",
+     "items": [
+      {
+       "kind": "condition",
+       "text": "If external visual references are not sufficient to proceed visually",
+       "children": [
+        {
+         "kind": "action",
+         "text": "GPS PRIMARY LOST on both NDs",
+         "applies_to": [
+          "all"
+         ],
+         "refs": [
+          {
+           "book": "FCOM",
+           "code": "PRO-NOR-SOP-18-C",
+           "page": "P 16/36",
+           "pdf": 4251
+          }
+         ]
+        },
+        {
+         "kind": "action",
+         "text": "XTK > 0.3 NM",
+         "applies_to": [
+          "all"
+         ],
+         "refs": [
+          {
+           "book": "FCOM",
+           "code": "PRO-NOR-SOP-18-C",
+           "page": "P 16/36",
+           "pdf": 4251
+          }
+         ]
+        },
+        {
+         "kind": "action",
+         "text": "NAV FM/GPS POS DISAGREE",
+         "applies_to": [
+          "all"
+         ],
+         "refs": [
+          {
+           "book": "FCOM",
+           "code": "PRO-NOR-SOP-18-C",
+           "page": "P 16/36",
+           "pdf": 4251
+          }
+         ]
+        },
+        {
+         "kind": "action",
+         "text": "NAV ACCUR DOWNGRAD on both NDs",
+         "applies_to": [
+          "all"
+         ],
+         "refs": [
+          {
+           "book": "FCOM",
+           "code": "PRO-NOR-SOP-18-C",
+           "page": "P 16/36",
+           "pdf": 4251
+          }
+         ]
+        }
+       ],
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "FCOM",
+         "code": "PRO-NOR-SOP-18-C",
+         "page": "P 16/36",
+         "pdf": 4251
+        }
+       ]
+      },
+      {
+       "kind": "condition",
+       "text": "In all cases",
+       "children": [
+        {
+         "kind": "action",
+         "text": "75 ft below the vertical path (V/DEV > ¾ dot)",
+         "applies_to": [
+          "all"
+         ],
+         "refs": [
+          {
+           "book": "FCOM",
+           "code": "PRO-NOR-SOP-18-C",
+           "page": "P 16/36",
+           "pdf": 4251
+          }
+         ]
+        }
+       ],
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "FCOM",
+         "code": "PRO-NOR-SOP-18-C",
+         "page": "P 16/36",
+         "pdf": 4251
+        }
+       ]
+      }
+     ]
+    },
+    {
+     "actor": "PF",
+     "items": [
+      {
+       "kind": "ecam",
+       "item": "THRUST LEVERS",
+       "setting": "TOGA",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "FCOM",
+         "code": "PRO-NOR-SOP-20",
+         "page": "P 1/4",
+         "pdf": 4284
+        }
+       ]
+      },
+      {
+       "kind": "ecam",
+       "item": "ROTATION",
+       "setting": "PERFORM",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "FCOM",
+         "code": "PRO-NOR-SOP-20",
+         "page": "P 1/4",
+         "pdf": 4284
+        }
+       ]
+      },
+      {
+       "kind": "ecam",
+       "item": "GO AROUND",
+       "setting": "ANNOUNCE",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "FCOM",
+         "code": "PRO-NOR-SOP-20",
+         "page": "P 1/4",
+         "pdf": 4284
+        }
+       ]
+      },
+      {
+       "kind": "note",
+       "text": "During an RF leg, check that NAV engages immediately; if it does not, engage it manually",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "FCTM",
+         "code": "PR-NP-SP-30",
+         "page": "P 2/4",
+         "pdf": 383
+        }
+       ]
+      }
+     ]
+    },
+    {
+     "actor": "PM",
+     "items": [
+      {
+       "kind": "ecam",
+       "item": "FLIGHT PARAMETERS",
+       "setting": "MONITOR",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "FCOM",
+         "code": "PRO-NOR-SOP-20",
+         "page": "P 1/4",
+         "pdf": 4284
+        }
+       ]
+      },
+      {
+       "kind": "ecam",
+       "item": "FLAPS",
+       "setting": "RETRACT ONE STEP",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "FCOM",
+         "code": "PRO-NOR-SOP-20",
+         "page": "P 1/4",
+         "pdf": 4284
+        }
+       ]
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "phase": "ECAM alerts during the approach",
+   "steps": [
+    {
+     "actor": "PM",
+     "items": [
+      {
+       "kind": "condition",
+       "text": "NAV FM/GPS POS DISAGREE",
+       "children": [
+        {
+         "kind": "ecam",
+         "item": "A/C POS",
+         "setting": "CHECK",
+         "applies_to": [
+          "all"
+         ],
+         "refs": [
+          {
+           "book": "FCOM",
+           "code": "PRO-ABN-NAV",
+           "page": "P 79/124",
+           "pdf": 3904
+          }
+         ]
+        },
+        {
+         "kind": "note",
+         "text": "FMS POSITION/MONITOR page; for the rest of the flight consider periodic NAV ACCURACY checks",
+         "applies_to": [
+          "all"
+         ],
+         "refs": [
+          {
+           "book": "FCOM",
+           "code": "PRO-ABN-NAV",
+           "page": "P 79/124",
+           "pdf": 3904
+          }
+         ]
+        }
+       ],
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "FCOM",
+         "code": "PRO-ABN-NAV",
+         "page": "P 79/124",
+         "pdf": 3904
+        }
+       ]
+      },
+      {
+       "kind": "condition",
+       "text": "NAV ALT DISCREPANCY",
+       "children": [
+        {
+         "kind": "ecam",
+         "item": "ALT",
+         "setting": "X CHECK",
+         "applies_to": [
+          "all"
+         ],
+         "refs": [
+          {
+           "book": "FCOM",
+           "code": "PRO-ABN-NAV",
+           "page": "P 61/124",
+           "pdf": 3886
+          }
+         ]
+        },
+        {
+         "kind": "note",
+         "text": "Against the standby altimeter",
+         "applies_to": [
+          "all"
+         ],
+         "refs": [
+          {
+           "book": "FCOM",
+           "code": "PRO-ABN-NAV",
+           "page": "P 61/124",
+           "pdf": 3886
+          }
+         ]
+        },
+        {
+         "kind": "ecam",
+         "item": "AIR DATA SWTG",
+         "setting": "AS RQRD",
+         "applies_to": [
+          "all"
+         ],
+         "refs": [
+          {
+           "book": "FCOM",
+           "code": "PRO-ABN-NAV",
+           "page": "P 61/124",
+           "pdf": 3886
+          }
+         ]
+        },
+        {
+         "kind": "note",
+         "text": "ADR 3 to the faulty side",
+         "applies_to": [
+          "all"
+         ],
+         "refs": [
+          {
+           "book": "FCOM",
+           "code": "PRO-ABN-NAV",
+           "page": "P 61/124",
+           "pdf": 3886
+          }
+         ]
+        }
+       ],
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "FCOM",
+         "code": "PRO-ABN-NAV",
+         "page": "P 61/124",
+         "pdf": 3886
+        }
+       ]
+      }
+     ]
+    }
+   ]
+  }
+ ],
+ "procedures": [
+  {
+   "title": "Management of degraded navigation — RNAV(GNSS)",
+   "source": "FCOM PRO-NOR-SOP-18-C",
+   "lines": [
+    {
+     "kind": "condition",
+     "text": "Use the appropriate remaining AP/FD in the following cases:",
+     "level": 0,
+     "applies_to": [
+      "all"
+     ],
+     "refs": [
+      {
+       "book": "FCOM",
+       "code": "PRO-NOR-SOP-18-C",
+       "page": "P 16/36",
+       "pdf": 4251
+      }
+     ]
+    },
+    {
+     "kind": "info",
+     "text": "GPS PRIMARY LOST on one ND",
+     "level": 1,
+     "applies_to": [
+      "all"
+     ],
+     "refs": [
+      {
+       "book": "FCOM",
+       "code": "PRO-NOR-SOP-18-C",
+       "page": "P 16/36",
+       "pdf": 4251
+      }
+     ]
+    },
+    {
+     "kind": "info",
+     "text": "NAV ACCUR DOWNGRAD on one ND",
+     "level": 1,
+     "applies_to": [
+      "all"
+     ],
+     "refs": [
+      {
+       "book": "FCOM",
+       "code": "PRO-NOR-SOP-18-C",
+       "page": "P 16/36",
+       "pdf": 4251
+      }
+     ]
+    },
+    {
+     "kind": "condition",
+     "text": "Discontinue the approach in the following cases, if external visual references are not sufficient to proceed visually:",
+     "level": 0,
+     "applies_to": [
+      "all"
+     ],
+     "refs": [
+      {
+       "book": "FCOM",
+       "code": "PRO-NOR-SOP-18-C",
+       "page": "P 16/36",
+       "pdf": 4251
+      }
+     ]
+    },
+    {
+     "kind": "info",
+     "text": "GPS PRIMARY LOST on both NDs",
+     "level": 1,
+     "applies_to": [
+      "all"
+     ],
+     "refs": [
+      {
+       "book": "FCOM",
+       "code": "PRO-NOR-SOP-18-C",
+       "page": "P 16/36",
+       "pdf": 4251
+      }
+     ]
+    },
+    {
+     "kind": "info",
+     "text": "XTK > 0.3 NM",
+     "level": 1,
+     "applies_to": [
+      "all"
+     ],
+     "refs": [
+      {
+       "book": "FCOM",
+       "code": "PRO-NOR-SOP-18-C",
+       "page": "P 16/36",
+       "pdf": 4251
+      }
+     ]
+    },
+    {
+     "kind": "info",
+     "text": "NAV FM/GPS POS DISAGREE",
+     "level": 1,
+     "applies_to": [
+      "all"
+     ],
+     "refs": [
+      {
+       "book": "FCOM",
+       "code": "PRO-NOR-SOP-18-C",
+       "page": "P 16/36",
+       "pdf": 4251
+      }
+     ]
+    },
+    {
+     "kind": "info",
+     "text": "NAV ACCUR DOWNGRAD on both NDs",
+     "level": 1,
+     "applies_to": [
+      "all"
+     ],
+     "refs": [
+      {
+       "book": "FCOM",
+       "code": "PRO-NOR-SOP-18-C",
+       "page": "P 16/36",
+       "pdf": 4251
+      }
+     ]
+    },
+    {
+     "kind": "info",
+     "text": "LNAV minima: be prepared to continue the approach by reverting to NAV-FPA, if the vertical guidance is not satisfactory.",
+     "level": 0,
+     "applies_to": [
+      "all"
+     ],
+     "refs": [
+      {
+       "book": "FCOM",
+       "code": "PRO-NOR-SOP-18-C",
+       "page": "P 16/36",
+       "pdf": 4251
+      }
+     ]
+    },
+    {
+     "kind": "info",
+     "text": "LNAV/VNAV minima: discontinue the approach in the case of deviation of 75 ft below the vertical path (V/DEV > ¾ dot).",
+     "level": 0,
+     "applies_to": [
+      "all"
+     ],
+     "refs": [
+      {
+       "book": "FCOM",
+       "code": "PRO-NOR-SOP-18-C",
+       "page": "P 16/36",
+       "pdf": 4251
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "title": "For reference — RNAV(RNP) differs",
+   "source": "FCOM PRO-NOR-SOP-18-C",
+   "lines": [
+    {
+     "kind": "info",
+     "text": "GPS PRIMARY must be available on both FMS, with both GPS in NAV or SBAS. If one FMS is inoperative or one GPS is not in NAV or SBAS before the IAF, RNAV(RNP) is not permitted.",
+     "level": 0,
+     "applies_to": [
+      "all"
+     ],
+     "refs": [
+      {
+       "book": "FCOM",
+       "code": "PRO-NOR-SOP-18-C",
+       "page": "P 18/36",
+       "pdf": 4253
+      }
+     ]
+    },
+    {
+     "kind": "condition",
+     "text": "The approach may be continued in the case of single failure of:",
+     "level": 0,
+     "applies_to": [
+      "all"
+     ],
+     "refs": [
+      {
+       "book": "FCOM",
+       "code": "PRO-NOR-SOP-18-C",
+       "page": "P 20/36",
+       "pdf": 4255
+      }
+     ]
+    },
+    {
+     "kind": "info",
+     "text": "GPS (MMR) · FMGC · EFIS DU · MCDU · AP",
+     "level": 1,
+     "applies_to": [
+      "all"
+     ],
+     "refs": [
+      {
+       "book": "FCOM",
+       "code": "PRO-NOR-SOP-18-C",
+       "page": "P 20/36",
+       "pdf": 4255
+      }
+     ]
+    },
+    {
+     "kind": "condition",
+     "text": "Discontinue the approach in the following cases:",
+     "level": 0,
+     "applies_to": [
+      "all"
+     ],
+     "refs": [
+      {
+       "book": "FCOM",
+       "code": "PRO-NOR-SOP-18-C",
+       "page": "P 20/36",
+       "pdf": 4255
+      }
+     ]
+    },
+    {
+     "kind": "info",
+     "text": "FINAL APP does not engage",
+     "level": 1,
+     "applies_to": [
+      "all"
+     ],
+     "refs": [
+      {
+       "book": "FCOM",
+       "code": "PRO-NOR-SOP-18-C",
+       "page": "P 20/36",
+       "pdf": 4255
+      }
+     ]
+    },
+    {
+     "kind": "info",
+     "text": "GPS PRIMARY LOST on both NDs",
+     "level": 1,
+     "applies_to": [
+      "all"
+     ],
+     "refs": [
+      {
+       "book": "FCOM",
+       "code": "PRO-NOR-SOP-18-C",
+       "page": "P 20/36",
+       "pdf": 4255
+      }
+     ]
+    },
+    {
+     "kind": "info",
+     "text": "Dual NAV ACCUR DOWNGRAD",
+     "level": 1,
+     "applies_to": [
+      "all"
+     ],
+     "refs": [
+      {
+       "book": "FCOM",
+       "code": "PRO-NOR-SOP-18-C",
+       "page": "P 20/36",
+       "pdf": 4255
+      }
+     ]
+    },
+    {
+     "kind": "info",
+     "text": "FM/GPS POSITION DISAGREE",
+     "level": 1,
+     "applies_to": [
+      "all"
+     ],
+     "refs": [
+      {
+       "book": "FCOM",
+       "code": "PRO-NOR-SOP-18-C",
+       "page": "P 20/36",
+       "pdf": 4255
+      }
+     ]
+    },
+    {
+     "kind": "info",
+     "text": "FMS1/FMS2 POS DIFF",
+     "level": 1,
+     "applies_to": [
+      "all"
+     ],
+     "refs": [
+      {
+       "book": "FCOM",
+       "code": "PRO-NOR-SOP-18-C",
+       "page": "P 20/36",
+       "pdf": 4255
+      }
+     ]
+    },
+    {
+     "kind": "info",
+     "text": "Dual loss of FMGC or dual loss of FINAL APP mode",
+     "level": 1,
+     "applies_to": [
+      "all"
+     ],
+     "refs": [
+      {
+       "book": "FCOM",
+       "code": "PRO-NOR-SOP-18-C",
+       "page": "P 20/36",
+       "pdf": 4255
+      }
+     ]
+    },
+    {
+     "kind": "info",
+     "text": "Loss of GPWS TERRAIN function in case of inconsistencies affecting obstacles or terrain computation",
+     "level": 1,
+     "applies_to": [
+      "all"
+     ],
+     "refs": [
+      {
+       "book": "FCOM",
+       "code": "PRO-NOR-SOP-18-C",
+       "page": "P 20/36",
+       "pdf": 4255
+      }
+     ]
+    },
+    {
+     "kind": "info",
+     "text": "NAV ALT DISCREPANCY",
+     "level": 1,
+     "applies_to": [
+      "all"
+     ],
+     "refs": [
+      {
+       "book": "FCOM",
+       "code": "PRO-NOR-SOP-18-C",
+       "page": "P 20/36",
+       "pdf": 4255
+      }
+     ]
+    },
+    {
+     "kind": "info",
+     "text": "Go-around must be initiated if XTK reaches 1 RNP or V/DEV reaches ¾ dot below the vertical profile.",
+     "level": 0,
+     "applies_to": [
+      "all"
+     ],
+     "refs": [
+      {
+       "book": "FCOM",
+       "code": "PRO-NOR-SOP-18-C",
+       "page": "P 19/36",
+       "pdf": 4254
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "title": "NAV FM/GPS POS DISAGREE (amber caution)",
+   "source": "FCOM PRO-ABN-NAV",
+   "lines": [
+    {
+     "kind": "action",
+     "item": "A/C POS",
+     "setting": "CHECK",
+     "text": "Use the FMS POSITION/MONITOR page. For the remainder of the flight, consider periodic NAV ACCURACY check.",
+     "level": 0,
+     "applies_to": [
+      "all"
+     ],
+     "refs": [
+      {
+       "book": "FCOM",
+       "code": "PRO-ABN-NAV",
+       "page": "P 79/124",
+       "pdf": 3904
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "title": "NAV ALT DISCREPANCY (amber caution)",
+   "source": "FCOM PRO-ABN-NAV",
+   "lines": [
+    {
+     "kind": "action",
+     "item": "ALT",
+     "setting": "X CHECK",
+     "text": "Crosscheck with the standby altimeter.",
+     "level": 0,
+     "applies_to": [
+      "all"
+     ],
+     "refs": [
+      {
+       "book": "FCOM",
+       "code": "PRO-ABN-NAV",
+       "page": "P 61/124",
+       "pdf": 3886
+      }
+     ]
+    },
+    {
+     "kind": "action",
+     "item": "AIR DATA SWTG",
+     "setting": "AS RQRD",
+     "text": "Select ADR 3 to the faulty side.",
+     "level": 0,
+     "applies_to": [
+      "all"
+     ],
+     "refs": [
+      {
+       "book": "FCOM",
+       "code": "PRO-ABN-NAV",
+       "page": "P 61/124",
+       "pdf": 3886
+      }
+     ]
+    }
+   ]
+  }
+ ],
+ "status": null,
+ "tables": [
+  {
+   "title": "RNP accuracy with GPS PRIMARY",
+   "caption": "AP or FD in NAV, or F-LOC in approach phase.",
+   "columns": [
+    "Phase",
+    "AP ON",
+    "AP OFF, FD ON",
+    "AP OFF, FD OFF"
+   ],
+   "rows": [
+    [
+     "En route",
+     "1 NM",
+     "1 NM",
+     "1.1 NM"
+    ],
+    [
+     "Terminal area",
+     "0.5 NM",
+     "0.51 NM",
+     "0.51 NM"
+    ],
+    [
+     "In approach",
+     "0.3 NM",
+     "0.3 NM",
+     "0.3 NM with F-LOC deviation; not authorized without"
+    ]
+   ],
+   "applies_to": [
+    "all"
+   ],
+   "refs": [
+    {
+     "book": "FCOM",
+     "code": "LIM-AFS-10",
+     "page": "P 3/8",
+     "pdf": 4668
+    },
+    {
+     "book": "FCOM",
+     "code": "LIM-AFS-10",
+     "page": "P 4/8",
+     "pdf": 4669
+    }
+   ]
+  }
+ ],
+ "background": [
+  {
+   "text": "\"RNP APCH\" corresponds to RNAV(GNSS) approaches and \"RNP AR\" to RNAV(RNP). Both use FINAL APP with V/DEV and XTK deviations.",
+   "applies_to": [
+    "all"
+   ],
+   "refs": [
+    {
+     "book": "FCOM",
+     "code": "PRO-SPO-51",
+     "page": "P 10/14",
+     "pdf": 4609
+    },
+    {
+     "book": "FCOM",
+     "code": "PRO-SPO-51",
+     "page": "P 12/14",
+     "pdf": 4611
+    },
+    {
+     "book": "PDP",
+     "code": "3D approach",
+     "page": "XFTDN13DAPPRO01",
+     "pdf": 246
+    }
+   ]
+  },
+  {
+   "text": "Minimum equipment to start RNP APCH: one FMGC, one GPS, two IRS, one MCDU, one FD, one PFD on the PF side, two NDs, two FCU channels.",
+   "applies_to": [
+    "all"
+   ],
+   "refs": [
+    {
+     "book": "FCOM",
+     "code": "PRO-SPO-51",
+     "page": "P 11/14",
+     "pdf": 4610
+    }
+   ]
+  },
+  {
+   "text": "If GPS PRIMARY LOST is displayed, navigation accuracy stays sufficient for RNP operations provided the RNP value is checked or entered and HIGH accuracy is displayed. An RNAV(GNSS) approach, however, requires GPS PRIMARY.",
+   "applies_to": [
+    "all"
+   ],
+   "refs": [
+    {
+     "book": "FCOM",
+     "code": "LIM-AFS-10",
+     "page": "P 4/8",
+     "pdf": 4669
+    },
+    {
+     "book": "FCOM",
+     "code": "LIM-AFS-10",
+     "page": "P 5/8",
+     "pdf": 4670
+    }
+   ]
+  },
+  {
+   "text": "GPS jamming or spoofing can cause NAV ACCUR DOWNGRAD, GPS PRIMARY LOST and NAV FM/GPS POS DISAGREE.",
+   "applies_to": [
+    "all"
+   ],
+   "refs": [
+    {
+     "book": "FCOM",
+     "code": "PRO-NOR-SUP-GPSINT",
+     "page": "P 1/18",
+     "pdf": 4418
+    }
+   ]
+  }
+ ],
+ "technique": [
+  {
+   "text": "If NAV accuracy is LOW before the approach, use TRK FPA, and establish on the final course against navaid raw data.",
+   "applies_to": [
+    "all"
+   ],
+   "refs": [
+    {
+     "book": "FCOM",
+     "code": "PRO-NOR-SOP-18-C",
+     "page": "P 13/36",
+     "pdf": 4248
+    },
+    {
+     "book": "FCTM",
+     "code": "PR-NP-SOP-190-GUI",
+     "page": "P 24/36",
+     "pdf": 293
+    }
+   ]
+  },
+  {
+   "text": "Monitor the final approach with the blue start-of-descent symbol, FMA, V/DEV, XTK and F-PLN, confirmed by needles and distance/altitude.",
+   "applies_to": [
+    "all"
+   ],
+   "refs": [
+    {
+     "book": "FCTM",
+     "code": "PR-NP-SOP-190-GUI",
+     "page": "P 21/36",
+     "pdf": 290
+    }
+   ]
+  },
+  {
+   "text": "With one engine inoperative, the bank limit can be below 30° when IAS is below manoeuvring speed; retracting flaps at the usual speeds may affect the turn radius.",
+   "applies_to": [
+    "all"
+   ],
+   "refs": [
+    {
+     "book": "FCTM",
+     "code": "PR-NP-SP-30",
+     "page": "P 3/4",
+     "pdf": 384
+    },
+    {
+     "book": "FCTM",
+     "code": "PR-NP-SP-30",
+     "page": "P 4/4",
+     "pdf": 385
+    }
+   ]
+  }
+ ],
+ "related": [
+  {
+   "title": "FMGC faults",
+   "why": "FMGC failure as the system failure",
+   "key_actions": [
+    "See the FMGC faults brief"
+   ],
+   "refs": [
+    {
+     "book": "FCOM",
+     "code": "PRO-NOR-SOP-18-C",
+     "page": "P 20/36",
+     "pdf": 4255
+    }
+   ]
+  },
+  {
+   "title": "GPS interference (FCOM supplementary)",
+   "why": "Expected spoofing during approach",
+   "key_actions": [
+    "GLS, RNAV(GNSS) or RNAV(RNP) approaches should not be considered",
+    "GPS DESELECT"
+   ],
+   "refs": [
+    {
+     "book": "FCOM",
+     "code": "PRO-NOR-SUP-GPSINT",
+     "page": "P 14/18",
+     "pdf": 4431
+    }
+   ]
+  },
+  {
+   "title": "Go-around, one engine inoperative",
+   "why": "Engine failure during the go-around",
+   "key_actions": [
+    "See the ENG 1(2) FAIL brief"
+   ],
+   "refs": [
+    {
+     "book": "FCTM",
+     "code": "PR-NP-SP-30",
+     "page": "P 3/4",
+     "pdf": 384
+    }
+   ]
+  }
+ ],
+ "differences": [],
+ "gaps": [
+  {
+   "text": "The manuals have no ECAM or QRH procedure for \"RNP degradation\": this brief is built from the FCOM SOP lists. The PF/PM turns are arranged from the SOP role labels, not from a PDP slide.",
+   "applies_to": [
+    "all"
+   ],
+   "refs": [
+    {
+     "book": "FCOM",
+     "code": "PRO-NOR-SOP-18-C",
+     "page": "P 16/36",
+     "pdf": 4251
+    },
+    {
+     "book": "FCOM",
+     "code": "PRO-NOR-SOP-18-C",
+     "page": "P 20/36",
+     "pdf": 4255
+    }
+   ]
+  },
+  {
+   "text": "The SOP does not list NAV ALT DISCREPANCY as a reason to discontinue an RNAV(GNSS) approach; it does for RNAV(RNP).",
+   "applies_to": [
+    "all"
+   ],
+   "refs": [
+    {
+     "book": "FCOM",
+     "code": "PRO-NOR-SOP-18-C",
+     "page": "P 16/36",
+     "pdf": 4251
+    },
+    {
+     "book": "FCOM",
+     "code": "PRO-NOR-SOP-18-C",
+     "page": "P 20/36",
+     "pdf": 4255
+    }
+   ]
+  },
+  {
+   "text": "The manuals do not say how to continue by hand when the PF-side FD is the one lost; they say only to use the appropriate remaining AP/FD.",
+   "applies_to": [
+    "all"
+   ],
+   "refs": [
+    {
+     "book": "FCOM",
+     "code": "PRO-NOR-SOP-18-C",
+     "page": "P 16/36",
+     "pdf": 4251
+    }
+   ]
+  },
+  {
+   "text": "RNP AR contingency detail is in the Airbus ACD and airline procedures, which are not in the supplied books.",
+   "applies_to": [
+    "all"
+   ],
+   "refs": [
+    {
+     "book": "FCOM",
+     "code": "PRO-SPO-51",
+     "page": "P 12/14",
+     "pdf": 4611
+    },
+    {
+     "book": "FCOM",
+     "code": "PRO-SPO-51",
+     "page": "P 13/14",
+     "pdf": 4612
+    }
+   ]
+  }
+ ],
+ "sources": [
+  {
+   "book": "FCOM",
+   "section": "PRO-NOR-SOP-18-C — FINAL APP guidance, RNAV(RNP), degraded navigation",
+   "pages": "P 13–20/36",
+   "pdf": "4248–4255",
+   "rev": "26 MAY 26"
+  },
+  {
+   "book": "FCOM",
+   "section": "PRO-NOR-SCO — approach callouts",
+   "pages": "P 5/10",
+   "pdf": "4314",
+   "rev": "26 MAY 26"
+  },
+  {
+   "book": "FCOM",
+   "section": "LIM-AFS-10 — navigation performance, RNAV approach",
+   "pages": "P 3–5/8",
+   "pdf": "4668–4670",
+   "rev": "18 FEB 26"
+  },
+  {
+   "book": "FCOM",
+   "section": "PRO-SPO-51 — RNP APCH, RNP AR",
+   "pages": "P 10–13/14",
+   "pdf": "4609–4612",
+   "rev": "18 FEB 26"
+  },
+  {
+   "book": "FCOM",
+   "section": "PRO-ABN-NAV — NAV FM/GPS POS DISAGREE, NAV ALT DISCREPANCY",
+   "pages": "P 61, 79/124",
+   "pdf": "3886, 3904",
+   "rev": "26 MAY 26"
+  },
+  {
+   "book": "FCOM",
+   "section": "PRO-NOR-SOP-20 — go-around",
+   "pages": "P 1/4",
+   "pdf": "4284",
+   "rev": "18 FEB 26"
+  },
+  {
+   "book": "FCOM",
+   "section": "PRO-NOR-SUP-GPSINT — GPS interference",
+   "pages": "P 1, 14/18",
+   "pdf": "4418, 4431",
+   "rev": "14 JUL 26"
+  },
+  {
+   "book": "FCTM",
+   "section": "PR-NP-SOP-190-GUI · PR-NP-SP-30",
+   "pages": "P 21, 24/36 · P 2–4/4",
+   "pdf": "290, 293, 383–385",
+   "rev": "26 MAY 26"
+  },
+  {
+   "book": "PDP",
+   "section": "3D approach (XFTDN13DAPPRO01)",
+   "pages": "—",
+   "pdf": "246, 261",
+   "rev": ""
+  }
+ ],
+ "schema": "a320-ecam-abnormal/3",
+ "generated": "2026-10-31",
+ "qrh": []
+}

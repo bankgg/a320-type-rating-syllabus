@@ -527,16 +527,22 @@
       },
       {
        "kind": "note",
-       "text": "Below FL 250: reversible BUSS if installed",
+       "text": "Below FL 250: BUSS (activation not reversible)",
        "applies_to": [
         "all"
        ],
        "refs": [
         {
-         "book": "PDP",
-         "code": "Unreliable speed indication",
-         "page": "XFTDA6UNRASPD01",
-         "pdf": 559
+         "book": "FCOM",
+         "code": "PRO-ABN-NAV",
+         "page": "P 3/124",
+         "pdf": 3828
+        },
+        {
+         "book": "FCOM",
+         "code": "DSC-34-NAV-10-30-10",
+         "page": "P 1/4",
+         "pdf": 2106
         }
        ]
       },
@@ -2160,6 +2166,32 @@
      "code": "PRO-ABN-NAV",
      "page": "P 5–8/124",
      "pdf": 3830
+    }
+   ]
+  },
+  {
+   "text": "PDP mentions a \"reversible BUSS (if installed)\". The FCOM states activation is not reversible for all HS-TX; the reversible modification is listed for HS-TO only. This brief follows the FCOM.",
+   "applies_to": [
+    "all"
+   ],
+   "refs": [
+    {
+     "book": "FCOM",
+     "code": "DSC-34-NAV-10-30-10",
+     "page": "P 1/4",
+     "pdf": 2106
+    },
+    {
+     "book": "FCOM",
+     "code": "PLP-LOM",
+     "page": "P 25/58",
+     "pdf": 52
+    },
+    {
+     "book": "PDP",
+     "code": "Unreliable speed indication",
+     "page": "XFTDA6UNRASPD01",
+     "pdf": 559
     }
    ]
   }
