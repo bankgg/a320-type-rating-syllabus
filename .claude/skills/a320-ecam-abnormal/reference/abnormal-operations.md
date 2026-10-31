@@ -126,6 +126,10 @@ User-specified operator wording (2026-10-14). Use it in every brief and note the
 - PA when evacuation is not required: **"REMAIN SEATED, RESUME NORMAL DUTIES"** — not "CABIN CREW and PASSENGERS REMAIN SEATED".
 - Radio call sign: **"THA {flight number}"** (THAI), e.g. "THA ___, STOPPING" — not "AIRBUS ___".
 
+Instructor practice where the manuals name no role (user-specified, 2026-10-31). Show it in the flow and say under Gaps that it is not from the manuals:
+- The **PM** turns the gravity gear extension handcrank.
+- The **PF** moves the pitch trim wheel.
+
 ## 13. How to read an FCOM procedure page
 Source: FCOM PRO-ABN-ABN-00 P 2–8/12 (PDF 2825–2831)
 

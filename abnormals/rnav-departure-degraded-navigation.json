@@ -1,0 +1,1062 @@
+{
+ "slug": "rnav-departure-degraded-navigation",
+ "title": "RNAV DEPARTURE · DEGRADED NAVIGATION",
+ "kind": "technique",
+ "alert": {
+  "level": "technique",
+  "land_asap": "none",
+  "memory_items": false,
+  "qrh_summary": false,
+  "trigger": "On an RNAV SID in RNAV 1(2) or RNP 1 airspace: GPS PRIMARY LOST, NAV ACCUR DOWNGRAD, FMS1/FMS2 POS DIFF, CHECK IRS 1(2)(3)/FM POSITION, CHECK A/C POSITION or NAV FM/GPS POS DISAGREE.",
+  "inhibited_phases": [],
+  "refs": [
+   {
+    "book": "FCOM",
+    "code": "PRO-SPO-51",
+    "page": "P 5/14",
+    "pdf": 4604
+   },
+   {
+    "book": "FCOM",
+    "code": "PRO-SPO-51",
+    "page": "P 10/14",
+    "pdf": 4609
+   }
+  ]
+ },
+ "effectivity": {
+  "branches": [],
+  "note": "FCOM PBN blocks for ALL aircraft. No ECAM or QRH procedure covers the degradation as a whole."
+ },
+ "summary": "There is no single procedure: the FCOM PBN chapter says what to do for RNAV 1(2) and RNP 1 airspace, and both lists are the same. A message on one side: continue on the FMGC that provides the correct position. A message on both sides or a position disagreement: find the correct FMGC on the MCDU PROG page and continue on it. NAV ACCUR DOWNGRAD on both sides: tell ATC the capability is lost.",
+ "key_limits": [
+  {
+   "label": "RNP accuracy, terminal area",
+   "value": "0.5 NM with AP ON; 0.51 NM with AP OFF",
+   "applies_to": [
+    "all"
+   ],
+   "refs": [
+    {
+     "book": "FCOM",
+     "code": "LIM-AFS-10",
+     "page": "P 4/8",
+     "pdf": 4669
+    }
+   ]
+  },
+  {
+   "label": "RNP accuracy, en route",
+   "value": "1 NM (AP OFF, FD OFF: 1.1 NM)",
+   "applies_to": [
+    "all"
+   ],
+   "refs": [
+    {
+     "book": "FCOM",
+     "code": "LIM-AFS-10",
+     "page": "P 3/8",
+     "pdf": 4668
+    }
+   ]
+  },
+  {
+   "label": "NAV ACCUR DOWNGRAD on both sides",
+   "value": "Inform ATC that the capability is lost",
+   "applies_to": [
+    "all"
+   ],
+   "refs": [
+    {
+     "book": "FCOM",
+     "code": "PRO-SPO-51",
+     "page": "P 5/14",
+     "pdf": 4604
+    },
+    {
+     "book": "FCOM",
+     "code": "PRO-SPO-51",
+     "page": "P 10/14",
+     "pdf": 4609
+    }
+   ]
+  }
+ ],
+ "flow": [
+  {
+   "phase": "Before the RNAV SID",
+   "steps": [
+    {
+     "actor": "PF",
+     "items": [
+      {
+       "kind": "action",
+       "text": "Crosscheck the terminal procedure from the chart against the F-PLN page: waypoint sequences, tracks, distances, altitude or speed constraints",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "FCOM",
+         "code": "PRO-SPO-51",
+         "page": "P 4/14",
+         "pdf": 4603
+        },
+        {
+         "book": "FCOM",
+         "code": "PRO-SPO-51",
+         "page": "P 9/14",
+         "pdf": 4608
+        }
+       ]
+      },
+      {
+       "kind": "note",
+       "text": "Do not modify the database procedure unless ATC requires it (DIR TO, radar vectoring, insertion of waypoints from the database)",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "FCOM",
+         "code": "PRO-SPO-51",
+         "page": "P 5/14",
+         "pdf": 4604
+        },
+        {
+         "book": "FCOM",
+         "code": "PRO-SPO-51",
+         "page": "P 9/14",
+         "pdf": 4608
+        }
+       ]
+      }
+     ]
+    },
+    {
+     "actor": "BOTH",
+     "items": [
+      {
+       "kind": "action",
+       "text": "Check the minimum equipment for the airspace (see What it is)",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "FCOM",
+         "code": "PRO-SPO-51",
+         "page": "P 4/14",
+         "pdf": 4603
+        },
+        {
+         "book": "FCOM",
+         "code": "PRO-SPO-51",
+         "page": "P 9/14",
+         "pdf": 4608
+        }
+       ]
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "phase": "Message on one side — continue",
+   "steps": [
+    {
+     "actor": "PM",
+     "items": [
+      {
+       "kind": "condition",
+       "text": "GPS PRIMARY LOST or NAV ACCUR DOWNGRAD on one ND/MCDU",
+       "children": [
+        {
+         "kind": "action",
+         "text": "Announce the message to the PF",
+         "applies_to": [
+          "all"
+         ],
+         "refs": [
+          {
+           "book": "FCOM",
+           "code": "PRO-SPO-51",
+           "page": "P 5/14",
+           "pdf": 4604
+          },
+          {
+           "book": "FCOM",
+           "code": "PRO-SPO-51",
+           "page": "P 10/14",
+           "pdf": 4609
+          }
+         ]
+        }
+       ],
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "FCOM",
+         "code": "PRO-SPO-51",
+         "page": "P 5/14",
+         "pdf": 4604
+        },
+        {
+         "book": "FCOM",
+         "code": "PRO-SPO-51",
+         "page": "P 10/14",
+         "pdf": 4609
+        }
+       ]
+      }
+     ]
+    },
+    {
+     "actor": "PF",
+     "items": [
+      {
+       "kind": "action",
+       "text": "Resume navigation with the FMGC that provides the correct position",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "FCOM",
+         "code": "PRO-SPO-51",
+         "page": "P 5/14",
+         "pdf": 4604
+        },
+        {
+         "book": "FCOM",
+         "code": "PRO-SPO-51",
+         "page": "P 10/14",
+         "pdf": 4609
+        }
+       ]
+      }
+     ]
+    },
+    {
+     "actor": "PM",
+     "items": [
+      {
+       "kind": "action",
+       "text": "Monitor the flight path and navigation",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "FCTM",
+         "code": "AOP-20",
+         "page": "P 1–2/10",
+         "pdf": 68
+        }
+       ]
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "phase": "Both sides or a position disagreement — find the correct FMGC",
+   "steps": [
+    {
+     "actor": "PM",
+     "items": [
+      {
+       "kind": "condition",
+       "text": "GPS PRIMARY LOST on both NDs/MCDUs · FMS1/FMS2 POS DIFF · CHECK IRS 1(2)(3)/FM POSITION · CHECK A/C POSITION · NAV FM/GPS POS DISAGREE",
+       "children": [
+        {
+         "kind": "action",
+         "text": "Check the position data on the MCDU PROG page to identify which FMGC position is correct",
+         "applies_to": [
+          "all"
+         ],
+         "refs": [
+          {
+           "book": "FCOM",
+           "code": "PRO-SPO-51",
+           "page": "P 5/14",
+           "pdf": 4604
+          },
+          {
+           "book": "FCOM",
+           "code": "PRO-SPO-51",
+           "page": "P 10/14",
+           "pdf": 4609
+          }
+         ]
+        }
+       ],
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "FCOM",
+         "code": "PRO-SPO-51",
+         "page": "P 5/14",
+         "pdf": 4604
+        },
+        {
+         "book": "FCOM",
+         "code": "PRO-SPO-51",
+         "page": "P 10/14",
+         "pdf": 4609
+        }
+       ]
+      }
+     ]
+    },
+    {
+     "actor": "PF",
+     "items": [
+      {
+       "kind": "action",
+       "text": "Resume navigation with the FMGC that provides the correct position",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "FCOM",
+         "code": "PRO-SPO-51",
+         "page": "P 5/14",
+         "pdf": 4604
+        },
+        {
+         "book": "FCOM",
+         "code": "PRO-SPO-51",
+         "page": "P 10/14",
+         "pdf": 4609
+        }
+       ]
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "phase": "NAV ACCUR DOWNGRAD on both sides — tell ATC",
+   "steps": [
+    {
+     "actor": "PF",
+     "items": [
+      {
+       "kind": "condition",
+       "text": "NAV ACCUR DOWNGRAD on both sides",
+       "children": [
+        {
+         "kind": "action",
+         "text": "Inform ATC that the RNAV 1(2) or RNP 1 capability is lost",
+         "applies_to": [
+          "all"
+         ],
+         "refs": [
+          {
+           "book": "FCOM",
+           "code": "PRO-SPO-51",
+           "page": "P 5/14",
+           "pdf": 4604
+          },
+          {
+           "book": "FCOM",
+           "code": "PRO-SPO-51",
+           "page": "P 10/14",
+           "pdf": 4609
+          }
+         ]
+        }
+       ],
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "FCOM",
+         "code": "PRO-SPO-51",
+         "page": "P 5/14",
+         "pdf": 4604
+        },
+        {
+         "book": "FCOM",
+         "code": "PRO-SPO-51",
+         "page": "P 10/14",
+         "pdf": 4609
+        }
+       ]
+      },
+      {
+       "kind": "note",
+       "text": "The PF communicates during abnormal management",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "FCTM",
+         "code": "AOP-20",
+         "page": "P 1–2/10",
+         "pdf": 68
+        }
+       ]
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "phase": "NAV FM/GPS POS DISAGREE on ECAM",
+   "steps": [
+    {
+     "actor": "PM",
+     "items": [
+      {
+       "kind": "ecam",
+       "item": "A/C POS",
+       "setting": "CHECK",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "FCOM",
+         "code": "PRO-ABN-NAV",
+         "page": "P 79/124",
+         "pdf": 3904
+        }
+       ]
+      },
+      {
+       "kind": "note",
+       "text": "FMS POSITION/MONITOR page; for the rest of the flight consider periodic NAV ACCURACY checks",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "FCOM",
+         "code": "PRO-ABN-NAV",
+         "page": "P 79/124",
+         "pdf": 3904
+        }
+       ]
+      }
+     ]
+    }
+   ]
+  }
+ ],
+ "procedures": [
+  {
+   "title": "Management of degraded navigation, RNAV 1(2)",
+   "source": "FCOM PRO-SPO-51",
+   "lines": [
+    {
+     "kind": "condition",
+     "text": "If one of the following messages is displayed, the flight crew should resume navigation with the FMGC that provides the correct position:",
+     "level": 0,
+     "applies_to": [
+      "all"
+     ],
+     "refs": [
+      {
+       "book": "FCOM",
+       "code": "PRO-SPO-51",
+       "page": "P 5/14",
+       "pdf": 4604
+      }
+     ]
+    },
+    {
+     "kind": "info",
+     "text": "GPS PRIMARY LOST on one ND/MCDU",
+     "level": 1,
+     "applies_to": [
+      "all"
+     ],
+     "refs": [
+      {
+       "book": "FCOM",
+       "code": "PRO-SPO-51",
+       "page": "P 5/14",
+       "pdf": 4604
+      }
+     ]
+    },
+    {
+     "kind": "info",
+     "text": "NAV ACCUR DOWNGRAD on one ND/MCDU",
+     "level": 1,
+     "applies_to": [
+      "all"
+     ],
+     "refs": [
+      {
+       "book": "FCOM",
+       "code": "PRO-SPO-51",
+       "page": "P 5/14",
+       "pdf": 4604
+      }
+     ]
+    },
+    {
+     "kind": "condition",
+     "text": "If one of the following MCDU or ECAM messages is displayed, the flight crew should check the position data via the MCDU PROG page in order to identify which FMGC position is correct:",
+     "level": 0,
+     "applies_to": [
+      "all"
+     ],
+     "refs": [
+      {
+       "book": "FCOM",
+       "code": "PRO-SPO-51",
+       "page": "P 5/14",
+       "pdf": 4604
+      }
+     ]
+    },
+    {
+     "kind": "info",
+     "text": "GPS PRIMARY LOST on both NDs/MCDUs",
+     "level": 1,
+     "applies_to": [
+      "all"
+     ],
+     "refs": [
+      {
+       "book": "FCOM",
+       "code": "PRO-SPO-51",
+       "page": "P 5/14",
+       "pdf": 4604
+      }
+     ]
+    },
+    {
+     "kind": "info",
+     "text": "FMS1/FMS2 POS DIFF",
+     "level": 1,
+     "applies_to": [
+      "all"
+     ],
+     "refs": [
+      {
+       "book": "FCOM",
+       "code": "PRO-SPO-51",
+       "page": "P 5/14",
+       "pdf": 4604
+      }
+     ]
+    },
+    {
+     "kind": "info",
+     "text": "CHECK IRS 1(2)(3)/FM POSITION",
+     "level": 1,
+     "applies_to": [
+      "all"
+     ],
+     "refs": [
+      {
+       "book": "FCOM",
+       "code": "PRO-SPO-51",
+       "page": "P 5/14",
+       "pdf": 4604
+      }
+     ]
+    },
+    {
+     "kind": "info",
+     "text": "CHECK A/C POSITION",
+     "level": 1,
+     "applies_to": [
+      "all"
+     ],
+     "refs": [
+      {
+       "book": "FCOM",
+       "code": "PRO-SPO-51",
+       "page": "P 5/14",
+       "pdf": 4604
+      }
+     ]
+    },
+    {
+     "kind": "info",
+     "text": "NAV FM/GPS POS DISAGREE",
+     "level": 1,
+     "applies_to": [
+      "all"
+     ],
+     "refs": [
+      {
+       "book": "FCOM",
+       "code": "PRO-SPO-51",
+       "page": "P 5/14",
+       "pdf": 4604
+      }
+     ]
+    },
+    {
+     "kind": "info",
+     "text": "The flight crew should resume navigation with the FMGC that provides the correct position.",
+     "level": 1,
+     "applies_to": [
+      "all"
+     ],
+     "refs": [
+      {
+       "book": "FCOM",
+       "code": "PRO-SPO-51",
+       "page": "P 5/14",
+       "pdf": 4604
+      }
+     ]
+    },
+    {
+     "kind": "condition",
+     "text": "If NAV ACCUR DOWNGRAD is displayed on both sides:",
+     "level": 0,
+     "applies_to": [
+      "all"
+     ],
+     "refs": [
+      {
+       "book": "FCOM",
+       "code": "PRO-SPO-51",
+       "page": "P 5/14",
+       "pdf": 4604
+      }
+     ]
+    },
+    {
+     "kind": "info",
+     "text": "The flight crew should inform the ATC that the RNAV 1(2) capability is lost.",
+     "level": 1,
+     "applies_to": [
+      "all"
+     ],
+     "refs": [
+      {
+       "book": "FCOM",
+       "code": "PRO-SPO-51",
+       "page": "P 5/14",
+       "pdf": 4604
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "title": "Management of degraded navigation, RNP 1",
+   "source": "FCOM PRO-SPO-51",
+   "lines": [
+    {
+     "kind": "info",
+     "text": "The same lists as RNAV 1(2).",
+     "level": 0,
+     "applies_to": [
+      "all"
+     ],
+     "refs": [
+      {
+       "book": "FCOM",
+       "code": "PRO-SPO-51",
+       "page": "P 9/14",
+       "pdf": 4608
+      },
+      {
+       "book": "FCOM",
+       "code": "PRO-SPO-51",
+       "page": "P 10/14",
+       "pdf": 4609
+      }
+     ]
+    },
+    {
+     "kind": "condition",
+     "text": "If NAV ACCUR DOWNGRAD is displayed on both sides:",
+     "level": 0,
+     "applies_to": [
+      "all"
+     ],
+     "refs": [
+      {
+       "book": "FCOM",
+       "code": "PRO-SPO-51",
+       "page": "P 10/14",
+       "pdf": 4609
+      }
+     ]
+    },
+    {
+     "kind": "info",
+     "text": "The flight crew should inform the ATC that the RNP 1 capability is lost.",
+     "level": 1,
+     "applies_to": [
+      "all"
+     ],
+     "refs": [
+      {
+       "book": "FCOM",
+       "code": "PRO-SPO-51",
+       "page": "P 10/14",
+       "pdf": 4609
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "title": "NAV FM/GPS POS DISAGREE (amber caution)",
+   "source": "FCOM PRO-ABN-NAV",
+   "lines": [
+    {
+     "kind": "action",
+     "item": "A/C POS",
+     "setting": "CHECK",
+     "text": "Use the FMS POSITION/MONITOR page. For the remainder of the flight, consider periodic NAV ACCURACY check.",
+     "level": 0,
+     "applies_to": [
+      "all"
+     ],
+     "refs": [
+      {
+       "book": "FCOM",
+       "code": "PRO-ABN-NAV",
+       "page": "P 79/124",
+       "pdf": 3904
+      }
+     ]
+    }
+   ]
+  }
+ ],
+ "status": null,
+ "tables": [
+  {
+   "title": "Minimum equipment to enter the airspace",
+   "caption": "The temporary display of ND information via the PFD/ND sw is permitted on the PM side.",
+   "columns": [
+    "Item",
+    "RNAV 1(2)",
+    "RNP 1"
+   ],
+   "rows": [
+    [
+     "FMGC",
+     "One",
+     "One"
+    ],
+    [
+     "MCDU",
+     "One",
+     "One"
+    ],
+    [
+     "Position update",
+     "One GPS or one DME receiver",
+     "One GPS"
+    ],
+    [
+     "IRS",
+     "Two",
+     "Two"
+    ],
+    [
+     "FD",
+     "One in NAV mode",
+     "One in NAV mode"
+    ],
+    [
+     "ND",
+     "Two",
+     "Two"
+    ]
+   ],
+   "applies_to": [
+    "all"
+   ],
+   "refs": [
+    {
+     "book": "FCOM",
+     "code": "PRO-SPO-51",
+     "page": "P 4/14",
+     "pdf": 4603
+    },
+    {
+     "book": "FCOM",
+     "code": "PRO-SPO-51",
+     "page": "P 9/14",
+     "pdf": 4608
+    }
+   ]
+  },
+  {
+   "title": "RNP accuracy with GPS PRIMARY",
+   "caption": "AP or FD in NAV.",
+   "columns": [
+    "Phase",
+    "AP ON",
+    "AP OFF, FD ON",
+    "AP OFF, FD OFF"
+   ],
+   "rows": [
+    [
+     "En route",
+     "1 NM",
+     "1 NM",
+     "1.1 NM"
+    ],
+    [
+     "Terminal area",
+     "0.5 NM",
+     "0.51 NM",
+     "0.51 NM"
+    ]
+   ],
+   "applies_to": [
+    "all"
+   ],
+   "refs": [
+    {
+     "book": "FCOM",
+     "code": "LIM-AFS-10",
+     "page": "P 3/8",
+     "pdf": 4668
+    },
+    {
+     "book": "FCOM",
+     "code": "LIM-AFS-10",
+     "page": "P 4/8",
+     "pdf": 4669
+    }
+   ]
+  }
+ ],
+ "background": [
+  {
+   "text": "RNAV 1(2) operations correspond to P-RNAV terminal RNAV; the AIP may specify that GPS is required. RNP 1 operations correspond to RNP 1 terminal operations.",
+   "applies_to": [
+    "all"
+   ],
+   "refs": [
+    {
+     "book": "FCOM",
+     "code": "PRO-SPO-51",
+     "page": "P 4/14",
+     "pdf": 4603
+    },
+    {
+     "book": "FCOM",
+     "code": "PRO-SPO-51",
+     "page": "P 9/14",
+     "pdf": 4608
+    }
+   ]
+  },
+  {
+   "text": "For RNP 1, RAIM/AIME availability should be confirmed during flight preparation.",
+   "applies_to": [
+    "all"
+   ],
+   "refs": [
+    {
+     "book": "FCOM",
+     "code": "PRO-SPO-51",
+     "page": "P 9/14",
+     "pdf": 4608
+    }
+   ]
+  },
+  {
+   "text": "If GPS PRIMARY LOST is displayed, navigation accuracy stays sufficient for RNP operations provided the RNP value is checked or entered and HIGH accuracy is displayed.",
+   "applies_to": [
+    "all"
+   ],
+   "refs": [
+    {
+     "book": "FCOM",
+     "code": "LIM-AFS-10",
+     "page": "P 4/8",
+     "pdf": 4669
+    },
+    {
+     "book": "FCOM",
+     "code": "LIM-AFS-10",
+     "page": "P 5/8",
+     "pdf": 4670
+    }
+   ]
+  },
+  {
+   "text": "GPS jamming or spoofing can cause NAV ACCUR DOWNGRAD, GPS PRIMARY LOST and NAV FM/GPS POS DISAGREE.",
+   "applies_to": [
+    "all"
+   ],
+   "refs": [
+    {
+     "book": "FCOM",
+     "code": "PRO-NOR-SUP-GPSINT",
+     "page": "P 1/18",
+     "pdf": 4418
+    }
+   ]
+  }
+ ],
+ "technique": [
+  {
+   "text": "Fly, navigate, communicate in that order: keep a safe flight path first, and start READ & DO actions no lower than 400 ft AGL unless the path is safe.",
+   "applies_to": [
+    "all"
+   ],
+   "refs": [
+    {
+     "book": "FCTM",
+     "code": "AOP-30-30",
+     "page": "P 1/6",
+     "pdf": 82
+    }
+   ]
+  }
+ ],
+ "related": [
+  {
+   "title": "FMGC faults",
+   "why": "An FMGC failure as the system failure on the SID",
+   "key_actions": [
+    "See the FMGC faults brief"
+   ],
+   "refs": [
+    {
+     "book": "FCOM",
+     "code": "PRO-SPO-51",
+     "page": "P 4/14",
+     "pdf": 4603
+    }
+   ]
+  },
+  {
+   "title": "RNP approach · degraded navigation",
+   "why": "Different limits apply once on an RNAV(GNSS) or RNAV(RNP) approach",
+   "key_actions": [
+    "See the RNP approach brief"
+   ],
+   "refs": [
+    {
+     "book": "FCOM",
+     "code": "PRO-NOR-SOP-18-C",
+     "page": "P 16/36",
+     "pdf": 4251
+    }
+   ]
+  }
+ ],
+ "gaps": [
+  {
+   "text": "The manuals have no ECAM or QRH procedure for degraded navigation on a SID: this brief is built from the FCOM PBN lists. The PF/PM turns are arranged from the general task sharing, not from a PDP slide.",
+   "applies_to": [
+    "all"
+   ],
+   "refs": [
+    {
+     "book": "FCOM",
+     "code": "PRO-SPO-51",
+     "page": "P 5/14",
+     "pdf": 4604
+    },
+    {
+     "book": "FCTM",
+     "code": "AOP-20",
+     "page": "P 1–2/10",
+     "pdf": 68
+    }
+   ]
+  },
+  {
+   "text": "The manuals do not say how to continue the SID once the capability is lost (for example conventional navigation or vectors); they say only to inform ATC.",
+   "applies_to": [
+    "all"
+   ],
+   "refs": [
+    {
+     "book": "FCOM",
+     "code": "PRO-SPO-51",
+     "page": "P 5/14",
+     "pdf": 4604
+    },
+    {
+     "book": "FCOM",
+     "code": "PRO-SPO-51",
+     "page": "P 10/14",
+     "pdf": 4609
+    }
+   ]
+  },
+  {
+   "text": "The syllabus does not name the failure, so the brief covers the listed messages. The required specification (RNAV 1 or RNP 1) comes from the departure chart, which is not in the supplied books.",
+   "applies_to": [
+    "all"
+   ],
+   "refs": [
+    {
+     "book": "FCOM",
+     "code": "PRO-SPO-51",
+     "page": "P 4/14",
+     "pdf": 4603
+    },
+    {
+     "book": "FCOM",
+     "code": "PRO-SPO-51",
+     "page": "P 9/14",
+     "pdf": 4608
+    }
+   ]
+  }
+ ],
+ "sources": [
+  {
+   "book": "FCOM",
+   "section": "PRO-SPO-51 — RNAV 1(2), RNP 1",
+   "pages": "P 4–5, 9–10/14",
+   "pdf": "4603–4604, 4608–4609",
+   "rev": "18 FEB 26"
+  },
+  {
+   "book": "FCOM",
+   "section": "LIM-AFS-10 — navigation performance",
+   "pages": "P 3–5/8",
+   "pdf": "4668–4670",
+   "rev": "18 FEB 26"
+  },
+  {
+   "book": "FCOM",
+   "section": "PRO-ABN-NAV — NAV FM/GPS POS DISAGREE",
+   "pages": "P 79/124",
+   "pdf": "3904",
+   "rev": "26 MAY 26"
+  },
+  {
+   "book": "FCOM",
+   "section": "PRO-NOR-SUP-GPSINT — GPS interference",
+   "pages": "P 1/18",
+   "pdf": "4418",
+   "rev": "14 JUL 26"
+  },
+  {
+   "book": "FCTM",
+   "section": "AOP-20 · AOP-30-30",
+   "pages": "P 1–2/10 · P 1/6",
+   "pdf": "68–69, 82",
+   "rev": ""
+  }
+ ],
+ "schema": "a320-ecam-abnormal/3",
+ "generated": "2026-10-31",
+ "qrh": [],
+ "differences": []
+}

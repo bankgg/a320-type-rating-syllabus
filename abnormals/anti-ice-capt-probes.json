@@ -1,0 +1,784 @@
+{
+ "slug": "anti-ice-capt-probes",
+ "title": "ANTI ICE CAPT PROBES",
+ "kind": "ecam",
+ "alert": {
+  "level": "caution",
+  "land_asap": "none",
+  "memory_items": false,
+  "qrh_summary": false,
+  "trigger": "This alert triggers when the captain probe heat computer is failed.",
+  "inhibited_phases": [
+   3,
+   4,
+   5,
+   7,
+   8
+  ],
+  "refs": [
+   {
+    "book": "FCOM",
+    "code": "PRO-ABN-A-ICE",
+    "page": "P 19/42",
+    "pdf": 2866
+   }
+  ]
+ },
+ "effectivity": {
+  "branches": [],
+  "note": "One version for all HS-TX."
+ },
+ "summary": "An amber caution: the captain probe heat computer has failed, so the captain probes are no longer heated. ADIRU 1 takes its air data from those probes. The one action is AIR DATA SWTG to CAPT 3, which replaces ADR 1 with ADR 3, unless ADR 3 is not available.",
+ "key_limits": [
+  {
+   "label": "AIR DATA SWTG",
+   "value": "CAPT 3 — not if ADR 3 is not available",
+   "applies_to": [
+    "all"
+   ],
+   "refs": [
+    {
+     "book": "FCOM",
+     "code": "PRO-ABN-A-ICE",
+     "page": "P 19/42",
+     "pdf": 2866
+    }
+   ]
+  },
+  {
+   "label": "Inhibited",
+   "value": "phases 3, 4, 5, 7, 8",
+   "applies_to": [
+    "all"
+   ],
+   "refs": [
+    {
+     "book": "FCOM",
+     "code": "PRO-ABN-A-ICE",
+     "page": "P 19/42",
+     "pdf": 2866
+    }
+   ]
+  },
+  {
+   "label": "Reset in flight",
+   "value": "Not authorized: not in the reset table",
+   "applies_to": [
+    "all"
+   ],
+   "refs": [
+    {
+     "book": "QRH",
+     "code": "02.01",
+     "page": "02.01A",
+     "pdf": 50
+    },
+    {
+     "book": "QRH",
+     "code": "02.02",
+     "page": "02.02A",
+     "pdf": 51
+    }
+   ]
+  }
+ ],
+ "flow": [
+  {
+   "phase": "Recognise",
+   "steps": [
+    {
+     "actor": "BOTH",
+     "items": [
+      {
+       "kind": "action",
+       "text": "First to notice: MASTER WARNING / CAUTION reset",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "FCTM",
+         "code": "AOP-30-30",
+         "page": "P 2/6",
+         "pdf": 83
+        },
+        {
+         "book": "PDP",
+         "code": "Management of abnormal operations",
+         "page": "XFTDN6ECAM00001",
+         "pdf": 424
+        }
+       ]
+      }
+     ]
+    },
+    {
+     "actor": "PM",
+     "items": [
+      {
+       "kind": "callout",
+       "text": "ANTI ICE CAPT PROBES",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "FCTM",
+         "code": "AOP-30-30",
+         "page": "P 2/6",
+         "pdf": 83
+        },
+        {
+         "book": "FCOM",
+         "code": "PRO-ABN-A-ICE",
+         "page": "P 19/42",
+         "pdf": 2866
+        },
+        {
+         "book": "PDP",
+         "code": "Management of abnormal operations",
+         "page": "XFTDN6ECAM00001",
+         "pdf": 424
+        }
+       ]
+      },
+      {
+       "kind": "action",
+       "text": "Confirm the failure on the SD page and overhead panel before acting",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "FCTM",
+         "code": "AOP-30-30",
+         "page": "P 2/6",
+         "pdf": 83
+        },
+        {
+         "book": "PDP",
+         "code": "Management of abnormal operations",
+         "page": "XFTDN6ECAM00001",
+         "pdf": 424
+        }
+       ]
+      }
+     ]
+    },
+    {
+     "actor": "PF",
+     "items": [
+      {
+       "kind": "callout",
+       "text": "ECAM ACTIONS",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "FCOM",
+         "code": "PRO-ABN-ABN-00",
+         "page": "P 8/12",
+         "pdf": 2831
+        },
+        {
+         "book": "FCTM",
+         "code": "AOP-30-30",
+         "page": "P 3/6",
+         "pdf": 84
+        },
+        {
+         "book": "PDP",
+         "code": "Management of abnormal operations",
+         "page": "XFTDN6ECAM00001",
+         "pdf": 424
+        }
+       ]
+      },
+      {
+       "kind": "note",
+       "text": "PF now flies, navigates and communicates",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "FCTM",
+         "code": "AOP-20",
+         "page": "P 1–2/10",
+         "pdf": 68
+        },
+        {
+         "book": "PDP",
+         "code": "Management of abnormal operations",
+         "page": "XFTDN6ECAM00001",
+         "pdf": 424
+        }
+       ]
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "phase": "ECAM actions",
+   "steps": [
+    {
+     "actor": "PM",
+     "items": [
+      {
+       "kind": "ecam",
+       "item": "AIR DATA SWTG",
+       "setting": "CAPT 3",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "FCOM",
+         "code": "PRO-ABN-A-ICE",
+         "page": "P 19/42",
+         "pdf": 2866
+        }
+       ]
+      },
+      {
+       "kind": "note",
+       "text": "Not to CAPT 3 if ADR 3 is not available",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "FCOM",
+         "code": "PRO-ABN-A-ICE",
+         "page": "P 19/42",
+         "pdf": 2866
+        }
+       ]
+      },
+      {
+       "kind": "note",
+       "text": "ADR 3 replaces ADR 1",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "FCOM",
+         "code": "DSC-34-NAV-10-20",
+         "page": "P 3/6",
+         "pdf": 2102
+        }
+       ]
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "phase": "STATUS",
+   "steps": [
+    {
+     "actor": "PM",
+     "items": [
+      {
+       "kind": "callout",
+       "text": "CLEAR ANTI ICE ?",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "FCOM",
+         "code": "PRO-ABN-ABN-00",
+         "page": "P 8/12",
+         "pdf": 2831
+        },
+        {
+         "book": "FCTM",
+         "code": "AOP-30-30",
+         "page": "P 3/6",
+         "pdf": 84
+        },
+        {
+         "book": "PDP",
+         "code": "Management of abnormal operations",
+         "page": "XFTDN6ECAM00001",
+         "pdf": 424
+        }
+       ]
+      }
+     ]
+    },
+    {
+     "actor": "PF",
+     "items": [
+      {
+       "kind": "callout",
+       "text": "CLEAR ANTI ICE",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "FCOM",
+         "code": "PRO-ABN-ABN-00",
+         "page": "P 8/12",
+         "pdf": 2831
+        },
+        {
+         "book": "FCTM",
+         "code": "AOP-30-30",
+         "page": "P 3/6",
+         "pdf": 84
+        },
+        {
+         "book": "PDP",
+         "code": "Management of abnormal operations",
+         "page": "XFTDN6ECAM00001",
+         "pdf": 424
+        }
+       ]
+      }
+     ]
+    },
+    {
+     "actor": "PM",
+     "items": [
+      {
+       "kind": "callout",
+       "text": "STATUS",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "FCTM",
+         "code": "AOP-30-30",
+         "page": "P 3/6",
+         "pdf": 84
+        },
+        {
+         "book": "PDP",
+         "code": "Management of abnormal operations",
+         "page": "XFTDN6ECAM00001",
+         "pdf": 426
+        }
+       ]
+      }
+     ]
+    },
+    {
+     "actor": "PF",
+     "items": [
+      {
+       "kind": "callout",
+       "text": "STOP ECAM",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "FCTM",
+         "code": "AOP-30-30",
+         "page": "P 3/6",
+         "pdf": 84
+        },
+        {
+         "book": "PDP",
+         "code": "Management of abnormal operations",
+         "page": "XFTDN6ECAM00001",
+         "pdf": 426
+        }
+       ]
+      }
+     ]
+    },
+    {
+     "actor": "PM",
+     "items": [
+      {
+       "kind": "ecam",
+       "item": "ECAM ACTIONS",
+       "setting": "STOP",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "PDP",
+         "code": "Management of abnormal operations",
+         "page": "XFTDN6ECAM00001",
+         "pdf": 426
+        }
+       ]
+      }
+     ]
+    },
+    {
+     "actor": "PF",
+     "items": [
+      {
+       "kind": "action",
+       "text": "Normal C/L as applicable; system resets only per QRH",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "FCTM",
+         "code": "AOP-30-30",
+         "page": "P 4/6",
+         "pdf": 85
+        },
+        {
+         "book": "PDP",
+         "code": "Management of abnormal operations",
+         "page": "XFTDN6ECAM00001",
+         "pdf": 426
+        }
+       ]
+      },
+      {
+       "kind": "callout",
+       "text": "CONTINUE ECAM",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "FCTM",
+         "code": "AOP-30-30",
+         "page": "P 3/6",
+         "pdf": 84
+        },
+        {
+         "book": "PDP",
+         "code": "Management of abnormal operations",
+         "page": "XFTDN6ECAM00001",
+         "pdf": 426
+        }
+       ]
+      }
+     ]
+    },
+    {
+     "actor": "PM",
+     "items": [
+      {
+       "kind": "action",
+       "text": "Read the whole STATUS page; preview APPR PROC workload",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "FCTM",
+         "code": "AOP-30-30",
+         "page": "P 3/6",
+         "pdf": 84
+        },
+        {
+         "book": "PDP",
+         "code": "Management of abnormal operations",
+         "page": "XFTDN6ECAM00001",
+         "pdf": 426
+        }
+       ]
+      },
+      {
+       "kind": "callout",
+       "text": "REMOVE STATUS ?",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "FCTM",
+         "code": "AOP-30-30",
+         "page": "P 3/6",
+         "pdf": 84
+        },
+        {
+         "book": "PDP",
+         "code": "Management of abnormal operations",
+         "page": "XFTDN6ECAM00001",
+         "pdf": 426
+        }
+       ]
+      }
+     ]
+    },
+    {
+     "actor": "PF",
+     "items": [
+      {
+       "kind": "callout",
+       "text": "REMOVE STATUS",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "FCOM",
+         "code": "PRO-ABN-ABN-00",
+         "page": "P 8/12",
+         "pdf": 2831
+        },
+        {
+         "book": "FCTM",
+         "code": "AOP-30-30",
+         "page": "P 3/6",
+         "pdf": 84
+        },
+        {
+         "book": "PDP",
+         "code": "Management of abnormal operations",
+         "page": "XFTDN6ECAM00001",
+         "pdf": 426
+        }
+       ]
+      }
+     ]
+    },
+    {
+     "actor": "PM",
+     "items": [
+      {
+       "kind": "callout",
+       "text": "ECAM ACTIONS COMPLETE",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "FCOM",
+         "code": "PRO-ABN-ABN-00",
+         "page": "P 8/12",
+         "pdf": 2831
+        },
+        {
+         "book": "PDP",
+         "code": "Management of abnormal operations",
+         "page": "XFTDN6ECAM00001",
+         "pdf": 426
+        }
+       ]
+      }
+     ]
+    }
+   ]
+  }
+ ],
+ "procedures": [
+  {
+   "title": "ECAM procedure",
+   "source": "FCOM PRO-ABN-A-ICE",
+   "lines": [
+    {
+     "kind": "action",
+     "item": "AIR DATA SWTG",
+     "setting": "CAPT 3",
+     "text": "",
+     "level": 0,
+     "applies_to": [
+      "all"
+     ],
+     "refs": [
+      {
+       "book": "FCOM",
+       "code": "PRO-ABN-A-ICE",
+       "page": "P 19/42",
+       "pdf": 2866
+      }
+     ]
+    },
+    {
+     "kind": "note",
+     "text": "AIR DATA SWTG should not be selected to CAPT 3 if ADR 3 is not available.",
+     "level": 0,
+     "applies_to": [
+      "all"
+     ],
+     "refs": [
+      {
+       "book": "FCOM",
+       "code": "PRO-ABN-A-ICE",
+       "page": "P 19/42",
+       "pdf": 2866
+      }
+     ]
+    }
+   ]
+  }
+ ],
+ "status": {
+  "limitations": [],
+  "info": [],
+  "appr_proc": [],
+  "inop_sys": [
+   {
+    "text": "CAPT PROBES",
+    "applies_to": [
+     "all"
+    ],
+    "refs": [
+     {
+      "book": "FCOM",
+      "code": "PRO-ABN-A-ICE",
+      "page": "P 20/42",
+      "pdf": 2867
+     }
+    ]
+   }
+  ]
+ },
+ "background": [
+  {
+   "text": "Three independent Probe Heat Computers automatically control and monitor the captain, F/O and standby probes. They protect against overheating and indicate faults.",
+   "applies_to": [
+    "all"
+   ],
+   "refs": [
+    {
+     "book": "FCOM",
+     "code": "DSC-30-50-10",
+     "page": "P 1/2",
+     "pdf": 1786
+    }
+   ]
+  },
+  {
+   "text": "Heating protects the pitot probes, static ports, AOA probes and TAT probes.",
+   "applies_to": [
+    "all"
+   ],
+   "refs": [
+    {
+     "book": "FCOM",
+     "code": "DSC-30-50-10",
+     "page": "P 1/2",
+     "pdf": 1786
+    }
+   ]
+  },
+  {
+   "text": "ADIRU 1 is supplied by the CAPT probes, ADIRU 2 by the F/O probes, and ADIRU 3 by the STBY probes and CAPT TAT.",
+   "applies_to": [
+    "all"
+   ],
+   "refs": [
+    {
+     "book": "FCOM",
+     "code": "DSC-34-NAV-10-10",
+     "page": "P 3/4",
+     "pdf": 2098
+    }
+   ]
+  },
+  {
+   "text": "With the selector in NORM, ADIRU 1 supplies PFD 1 and ND 1. CAPT 3 replaces ADR 1 with ADR 3.",
+   "applies_to": [
+    "all"
+   ],
+   "refs": [
+    {
+     "book": "FCOM",
+     "code": "DSC-34-NAV-10-20",
+     "page": "P 3/6",
+     "pdf": 2102
+    }
+   ]
+  }
+ ],
+ "technique": [],
+ "related": [
+  {
+   "title": "ANTI ICE STBY PITOT or L(R) STAT or AOA",
+   "why": "ADIRU 3, which replaces ADIRU 1 here, uses the standby probes",
+   "key_actions": [
+    "See the standby probe heat brief"
+   ],
+   "refs": [
+    {
+     "book": "FCOM",
+     "code": "DSC-34-NAV-10-10",
+     "page": "P 3/4",
+     "pdf": 2098
+    }
+   ]
+  }
+ ],
+ "gaps": [
+  {
+   "text": "ANTI ICE CAPT PROBES is not in the QRH reset table, so a reset is not authorized in flight; on ground the standard reset rule for unlisted systems applies.",
+   "applies_to": [
+    "all"
+   ],
+   "refs": [
+    {
+     "book": "QRH",
+     "code": "02.01",
+     "page": "02.01A",
+     "pdf": 50
+    },
+    {
+     "book": "QRH",
+     "code": "02.02",
+     "page": "02.02A",
+     "pdf": 51
+    }
+   ]
+  },
+  {
+   "text": "The manuals give no limitation or icing advice on the ANTI ICE CAPT PROBES STATUS page beyond the INOP SYS line.",
+   "applies_to": [
+    "all"
+   ],
+   "refs": [
+    {
+     "book": "FCOM",
+     "code": "PRO-ABN-A-ICE",
+     "page": "P 20/42",
+     "pdf": 2867
+    }
+   ]
+  }
+ ],
+ "sources": [
+  {
+   "book": "FCOM",
+   "section": "PRO-ABN-A-ICE — ANTI ICE CAPT PROBES (HS-TX)",
+   "pages": "P 19–20/42",
+   "pdf": "2866–2867",
+   "rev": "18 FEB 26"
+  },
+  {
+   "book": "FCOM",
+   "section": "DSC-30-50-10 — probes heat",
+   "pages": "P 1/2",
+   "pdf": "1786",
+   "rev": "22 MAR 16"
+  },
+  {
+   "book": "FCOM",
+   "section": "DSC-34-NAV-10 — probes schematic, AIR DATA selector",
+   "pages": "P 3/4 · P 3/6",
+   "pdf": "2098, 2102",
+   "rev": "18 FEB 26"
+  },
+  {
+   "book": "QRH",
+   "section": "02.01–02.02 — reset rule and table",
+   "pages": "02.01A–02.02A",
+   "pdf": "50–51",
+   "rev": "26 MAY 26"
+  }
+ ],
+ "schema": "a320-ecam-abnormal/3",
+ "generated": "2026-10-31",
+ "qrh": [],
+ "tables": [],
+ "differences": []
+}

@@ -137,6 +137,20 @@ PROCEDURE_GROUPS = {
         ('Unreliable speed', (('unreliable-speed-indication', 'Unreliable speed', 'Demonstration of BUSS and BAS (see BUSS · BAS).'),
                               ('nav-adr-1-2-3-fault-buss', 'BUSS · BAS'))),
     ],
+    'ffs-6': [
+        ('RNP degradation', (('rnav-departure-degraded-navigation', 'On the SID', 'While following the RNAV SID. The syllabus says "RNP degradation or failure" (Trainee B: "or system failure") without naming it.'),
+                             ('rnp-approach-degraded-navigation', 'RNP approach', 'Trainee A only: the later 3D RNP approach with AP, LNAV/VNAV minima and FINAL APP, after the flaps fault. The syllabus names no degradation on this approach; shown for reference.'))),
+        ('Probe anti-ice', (('anti-ice-capt-probes', 'ANTI ICE CAPT PROBES', 'A TCAS event is inserted as the failure appears.'),)),
+        ('Hydraulic system low pressure', (('hyd-g-b-sys-lo-pr', 'HYD G+B', 'Trainee A only: followed by the ILS flown manually with FD and the landing with partial/no flaps or slats.'),
+                                           ('hyd-g-y-sys-lo-pr', 'HYD G+Y', 'Trainee A: after repositioning, followed by the landing with partial/no flaps or slats. Trainee B: followed by the L/G gravity extension, the ILS flown manually with FD and the landing with the jammed horizontal stabilizer.'),
+                                           ('l-g-gravity-extension', 'L/G gravity extension', 'Trainee B only: after HYD G+Y SYS LO PR, before the ILS.'))),
+        ('Flaps/slats faults', (('f-ctl-flaps-fault-locked', 'FLAPS FAULT/LOCKED', 'Trainee A only: before the 3D RNP approach and the landing with partial/no flaps or slats.'),
+                                ('f-ctl-slats-fault-locked', 'SLATS FAULT/LOCKED', 'Trainee B only: during retraction after the crosswind take-off, then radar vectoring for the visual circuits and the landing.'),
+                                ('landing-with-slats-or-flaps-jammed', 'Landing · S/F jammed', 'Trainee A: three times, after each hydraulic failure and after the flaps fault. Trainee B: once, after the slats fault.'))),
+        ('Stabilizer jam', (('f-ctl-stabilizer-jam', 'Stabilizer jam', 'Trainee A: stabilizer jam, visual circuits, then the out-of-trim landing. Trainee B: the same landing follows HYD G+Y SYS LO PR, which also loses the stabilizer (see the HYD G+Y brief).'),)),
+        ('Engine fire', (('eng-1-2-fire-on-ground', 'On ground · RTO', 'Engine fire below V1; the emergency evacuation follows.'),)),
+        ('Emergency evacuation', (('emer-evac', 'Emergency evacuation', 'After the rejected take-off for the engine fire.'),)),
+    ],
 }
 # Exercise rows that open a brief. Recovery manoeuvres (OEI approach,
 # go-around, autoland) are failure-related but have no ECAM/QRH brief.
@@ -164,6 +178,12 @@ EXERCISE_BRIEFS = {
     'ffs-5-e06': 'eng-all-engines-failure', 'ffs-5-e07': 'eng-all-engines-failure',
     'ffs-5-e08': 'rnp-approach-degraded-navigation', 'ffs-5-e13': 'elec-emer-config',
     'ffs-5-e19': 'unreliable-speed-indication',
+    'ffs-6-e03': 'rnav-departure-degraded-navigation', 'ffs-6-e04': 'anti-ice-capt-probes',
+    'ffs-6-e06': 'hyd-g-b-sys-lo-pr', 'ffs-6-e09': 'hyd-g-y-sys-lo-pr', 'ffs-6-e18': 'l-g-gravity-extension',
+    'ffs-6-e11': 'f-ctl-flaps-fault-locked', 'ffs-6-e19': 'f-ctl-slats-fault-locked',
+    'ffs-6-e08': 'landing-with-slats-or-flaps-jammed',
+    'ffs-6-e13': 'f-ctl-stabilizer-jam', 'ffs-6-e15': 'f-ctl-stabilizer-jam',
+    'ffs-6-e16': 'eng-1-2-fire-on-ground', 'ffs-6-e17': 'emer-evac',
 }
 ALERT_LABELS = {'warning': 'Red warning', 'caution': 'Amber caution', 'qrh': 'QRH procedure',
                 'memory': 'Memory items', 'technique': 'Technique'}

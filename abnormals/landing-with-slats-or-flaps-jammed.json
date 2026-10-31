@@ -1,0 +1,2043 @@
+{
+ "slug": "landing-with-slats-or-flaps-jammed",
+ "title": "LANDING WITH SLATS OR FLAPS JAMMED",
+ "kind": "qrh",
+ "alert": {
+  "level": "qrh",
+  "land_asap": "none",
+  "memory_items": false,
+  "qrh_summary": false,
+  "trigger": "A QRH procedure, requested by S/F JAMMED PROC APPLY on the STATUS page of a slats/flaps fault or a dual hydraulic failure.",
+  "inhibited_phases": [],
+  "refs": [
+   {
+    "book": "QRH",
+    "code": "20.02",
+    "page": "20.02B",
+    "pdf": 188
+   },
+   {
+    "book": "FCOM",
+    "code": "PRO-ABN-F_CTL",
+    "page": "P 1/132",
+    "pdf": 3474
+   }
+  ]
+ },
+ "effectivity": {
+  "branches": [],
+  "note": "One version for all HS-TX."
+ },
+ "summary": "The approach configures in steps with selected speed: VFE NEXT - 5 kt, then one flaps lever step at VFE NEXT, repeated until the landing configuration. In landing configuration on final, decelerate to the calculated VAPP and keep selected speed; no AP below 500 ft AGL. Prepare the go-around speed from the MAX SPEED table before the approach.",
+ "key_limits": [
+  {
+   "label": "Configure",
+   "value": "SPD SEL VFE NEXT - 5 kt; AT VFE NEXT: flaps lever one step down",
+   "applies_to": [
+    "all"
+   ],
+   "refs": [
+    {
+     "book": "QRH",
+     "code": "20.02",
+     "page": "20.02B",
+     "pdf": 188
+    },
+    {
+     "book": "FCOM",
+     "code": "PRO-ABN-F_CTL",
+     "page": "P 1/132",
+     "pdf": 3474
+    }
+   ]
+  },
+  {
+   "label": "Final",
+   "value": "Keep selected speed: calculated VAPP",
+   "applies_to": [
+    "all"
+   ],
+   "refs": [
+    {
+     "book": "QRH",
+     "code": "20.02",
+     "page": "20.02C",
+     "pdf": 189
+    },
+    {
+     "book": "FCOM",
+     "code": "PRO-ABN-F_CTL",
+     "page": "P 1/132",
+     "pdf": 3474
+    }
+   ]
+  },
+  {
+   "label": "AP",
+   "value": "DO NOT USE BELOW 500 ft AGL",
+   "applies_to": [
+    "all"
+   ],
+   "refs": [
+    {
+     "book": "QRH",
+     "code": "20.02",
+     "page": "20.02C",
+     "pdf": 189
+    },
+    {
+     "book": "FCOM",
+     "code": "PRO-ABN-F_CTL",
+     "page": "P 1/132",
+     "pdf": 3474
+    }
+   ]
+  },
+  {
+   "label": "Go-around, circuit",
+   "value": "Recommended speed: MAX SPEED - 10 kt",
+   "applies_to": [
+    "all"
+   ],
+   "refs": [
+    {
+     "book": "QRH",
+     "code": "20.02",
+     "page": "20.02C",
+     "pdf": 189
+    },
+    {
+     "book": "FCOM",
+     "code": "PRO-ABN-F_CTL",
+     "page": "P 2/132",
+     "pdf": 3475
+    }
+   ]
+  },
+  {
+   "label": "Diversion with slats/flaps extended",
+   "value": "Cruise altitude limited to 20 000 ft",
+   "applies_to": [
+    "all"
+   ],
+   "refs": [
+    {
+     "book": "FCTM",
+     "code": "PR-AEP-F_CTL",
+     "page": "P 2/6",
+     "pdf": 429
+    }
+   ]
+  }
+ ],
+ "flow": [
+  {
+   "phase": "Order and prepare",
+   "steps": [
+    {
+     "actor": "PF",
+     "items": [
+      {
+       "kind": "callout",
+       "text": "LANDING WITH SLATS OR FLAPS JAMMED PROCEDURE",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "PDP",
+         "code": "Management of abnormal operations",
+         "page": "XFTDN6ECAM00001",
+         "pdf": 427
+        }
+       ]
+      }
+     ]
+    },
+    {
+     "actor": "PM",
+     "items": [
+      {
+       "kind": "action",
+       "text": "READ AND DO the QRH lines aloud",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "PDP",
+         "code": "Management of abnormal operations",
+         "page": "XFTDN6ECAM00001",
+         "pdf": 427
+        }
+       ]
+      }
+     ]
+    },
+    {
+     "actor": "PM",
+     "items": [
+      {
+       "kind": "ecam",
+       "item": "LDG DIST PROC",
+       "setting": "APPLY",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "QRH",
+         "code": "20.02",
+         "page": "20.02B",
+         "pdf": 188
+        },
+        {
+         "book": "FCOM",
+         "code": "PRO-ABN-F_CTL",
+         "page": "P 1/132",
+         "pdf": 3474
+        }
+       ]
+      },
+      {
+       "kind": "action",
+       "text": "Determine flap lever position for landing",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "QRH",
+         "code": "20.02",
+         "page": "20.02B",
+         "pdf": 188
+        },
+        {
+         "book": "FCOM",
+         "code": "PRO-ABN-F_CTL",
+         "page": "P 1/132",
+         "pdf": 3474
+        }
+       ]
+      }
+     ]
+    },
+    {
+     "actor": "PF",
+     "items": [
+      {
+       "kind": "action",
+       "text": "Update the arrival briefing: tail strike awareness, go-around configuration, any deviation from standard callout, speeds after a missed approach, selected speed for acceleration at the acceleration altitude",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "FCTM",
+         "code": "PR-AEP-F_CTL",
+         "page": "P 2/6",
+         "pdf": 429
+        }
+       ]
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "phase": "Configure · repeat until landing configuration",
+   "steps": [
+    {
+     "actor": "PF",
+     "items": [
+      {
+       "kind": "ecam",
+       "item": "SPD SEL",
+       "setting": "VFE NEXT - 5 kt",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "QRH",
+         "code": "20.02",
+         "page": "20.02B",
+         "pdf": 188
+        },
+        {
+         "book": "FCOM",
+         "code": "PRO-ABN-F_CTL",
+         "page": "P 1/132",
+         "pdf": 3474
+        }
+       ]
+      },
+      {
+       "kind": "note",
+       "text": "This may take you below the manoeuvring speed for the current configuration, which is acceptable above VLS. Preferably reduce speed and configure with wings level",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "FCTM",
+         "code": "PR-AEP-F_CTL",
+         "page": "P 2/6",
+         "pdf": 429
+        }
+       ]
+      }
+     ]
+    },
+    {
+     "actor": "BOTH",
+     "items": [
+      {
+       "kind": "condition",
+       "text": "AT VFE NEXT",
+       "children": [
+        {
+         "kind": "action",
+         "text": "SELECT FLAPS LEVER ONE STEP DOWN",
+         "applies_to": [
+          "all"
+         ],
+         "refs": [
+          {
+           "book": "QRH",
+           "code": "20.02",
+           "page": "20.02B",
+           "pdf": 188
+          },
+          {
+           "book": "FCOM",
+           "code": "PRO-ABN-F_CTL",
+           "page": "P 1/132",
+           "pdf": 3474
+          }
+         ]
+        }
+       ],
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "QRH",
+         "code": "20.02",
+         "page": "20.02B",
+         "pdf": 188
+        },
+        {
+         "book": "FCOM",
+         "code": "PRO-ABN-F_CTL",
+         "page": "P 1/132",
+         "pdf": 3474
+        }
+       ]
+      },
+      {
+       "kind": "note",
+       "text": "OVERSPEED alert and VLS on the PFD are computed from the current flaps/slats position. VFE and VFE NEXT follow the FLAPS lever; if not displayed, use the placard speeds",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "QRH",
+         "code": "20.02",
+         "page": "20.02C",
+         "pdf": 189
+        },
+        {
+         "book": "FCOM",
+         "code": "PRO-ABN-F_CTL",
+         "page": "P 1/132",
+         "pdf": 3474
+        }
+       ]
+      }
+     ]
+    },
+    {
+     "actor": "PF",
+     "items": [
+      {
+       "kind": "condition",
+       "text": "If VLS is greater than VFE NEXT (overweight landing case)",
+       "children": [
+        {
+         "kind": "action",
+         "text": "The FLAPS lever can be set in the required next position while the speed is reduced to follow VLS reduction as surfaces extend. The VFE warning threshold should not be triggered",
+         "applies_to": [
+          "all"
+         ],
+         "refs": [
+          {
+           "book": "QRH",
+           "code": "20.02",
+           "page": "20.02C",
+           "pdf": 189
+          },
+          {
+           "book": "FCOM",
+           "code": "PRO-ABN-F_CTL",
+           "page": "P 1/132",
+           "pdf": 3474
+          }
+         ]
+        },
+        {
+         "kind": "action",
+         "text": "Disconnect the A/THR; it can be re-engaged when the landing configuration is established",
+         "applies_to": [
+          "all"
+         ],
+         "refs": [
+          {
+           "book": "QRH",
+           "code": "20.02",
+           "page": "20.02C",
+           "pdf": 189
+          },
+          {
+           "book": "FCOM",
+           "code": "PRO-ABN-F_CTL",
+           "page": "P 1/132",
+           "pdf": 3474
+          }
+         ]
+        }
+       ],
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "QRH",
+         "code": "20.02",
+         "page": "20.02C",
+         "pdf": 189
+        },
+        {
+         "book": "FCOM",
+         "code": "PRO-ABN-F_CTL",
+         "page": "P 1/132",
+         "pdf": 3474
+        }
+       ]
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "phase": "Final approach and landing",
+   "steps": [
+    {
+     "actor": "PF",
+     "items": [
+      {
+       "kind": "condition",
+       "text": "When in landing CONF and in final approach",
+       "children": [
+        {
+         "kind": "action",
+         "text": "DECELERATE TO CALCULATED VAPP",
+         "applies_to": [
+          "all"
+         ],
+         "refs": [
+          {
+           "book": "QRH",
+           "code": "20.02",
+           "page": "20.02C",
+           "pdf": 189
+          },
+          {
+           "book": "FCOM",
+           "code": "PRO-ABN-F_CTL",
+           "page": "P 1/132",
+           "pdf": 3474
+          }
+         ]
+        },
+        {
+         "kind": "action",
+         "text": "Use and keep the selected speed",
+         "applies_to": [
+          "all"
+         ],
+         "refs": [
+          {
+           "book": "QRH",
+           "code": "20.02",
+           "page": "20.02C",
+           "pdf": 189
+          },
+          {
+           "book": "FCOM",
+           "code": "PRO-ABN-F_CTL",
+           "page": "P 1/132",
+           "pdf": 3474
+          }
+         ]
+        },
+        {
+         "kind": "action",
+         "text": "DO NOT USE AP BELOW 500 ft AGL",
+         "applies_to": [
+          "all"
+         ],
+         "refs": [
+          {
+           "book": "QRH",
+           "code": "20.02",
+           "page": "20.02C",
+           "pdf": 189
+          },
+          {
+           "book": "FCOM",
+           "code": "PRO-ABN-F_CTL",
+           "page": "P 1/132",
+           "pdf": 3474
+          }
+         ]
+        }
+       ],
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "QRH",
+         "code": "20.02",
+         "page": "20.02C",
+         "pdf": 189
+        },
+        {
+         "book": "FCOM",
+         "code": "PRO-ABN-F_CTL",
+         "page": "P 1/132",
+         "pdf": 3474
+        }
+       ]
+      },
+      {
+       "kind": "note",
+       "text": "VAPP should be close to VLS + wind correction. If VAPP is lower than VLS, disconnect the A/THR above VLS when reducing to VAPP",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "FCTM",
+         "code": "PR-AEP-F_CTL",
+         "page": "P 2/6",
+         "pdf": 429
+        }
+       ]
+      },
+      {
+       "kind": "note",
+       "text": "An early stabilized approach should be preferred; approach attitudes change, so stay aware of tail strike",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "FCTM",
+         "code": "PR-AEP-F_CTL",
+         "page": "P 1/6",
+         "pdf": 428
+        },
+        {
+         "book": "FCTM",
+         "code": "PR-AEP-F_CTL",
+         "page": "P 2/6",
+         "pdf": 429
+        }
+       ]
+      }
+     ]
+    },
+    {
+     "actor": "PM",
+     "items": [
+      {
+       "kind": "callout",
+       "text": "LANDING WITH SLATS OR FLAPS JAMMED PROCEDURE COMPLETED",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "PDP",
+         "code": "Management of abnormal operations",
+         "page": "XFTDN6ECAM00001",
+         "pdf": 427
+        }
+       ]
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "phase": "Go-around",
+   "steps": [
+    {
+     "actor": "PF",
+     "items": [
+      {
+       "kind": "action",
+       "text": "Use selected speed: at the acceleration altitude, control the acceleration to the speed required for the configuration",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "FCTM",
+         "code": "PR-AEP-F_CTL",
+         "page": "P 2/6",
+         "pdf": 429
+        }
+       ]
+      },
+      {
+       "kind": "note",
+       "text": "MAX SPEED from the table. In a go-around with CONF FULL selected, the L/G GEAR NOT DOWN warning triggers at landing gear retraction",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "QRH",
+         "code": "20.02",
+         "page": "20.02C",
+         "pdf": 189
+        },
+        {
+         "book": "FCOM",
+         "code": "PRO-ABN-F_CTL",
+         "page": "P 2/132",
+         "pdf": 3475
+        }
+       ]
+      }
+     ]
+    },
+    {
+     "actor": "BOTH",
+     "items": [
+      {
+       "kind": "condition",
+       "text": "If SLATS jammed",
+       "children": [
+        {
+         "kind": "condition",
+         "text": "For circuit",
+         "children": [
+          {
+           "kind": "action",
+           "text": "MAINTAIN SLATS/FLAPS CONFIGURATION; recommended speed MAX SPEED - 10 kt",
+           "applies_to": [
+            "all"
+           ],
+           "refs": [
+            {
+             "book": "QRH",
+             "code": "20.02",
+             "page": "20.02C",
+             "pdf": 189
+            },
+            {
+             "book": "FCOM",
+             "code": "PRO-ABN-F_CTL",
+             "page": "P 2/132",
+             "pdf": 3475
+            }
+           ]
+          }
+         ],
+         "applies_to": [
+          "all"
+         ],
+         "refs": [
+          {
+           "book": "QRH",
+           "code": "20.02",
+           "page": "20.02C",
+           "pdf": 189
+          },
+          {
+           "book": "FCOM",
+           "code": "PRO-ABN-F_CTL",
+           "page": "P 2/132",
+           "pdf": 3475
+          }
+         ]
+        },
+        {
+         "kind": "condition",
+         "text": "For diversion",
+         "children": [
+          {
+           "kind": "action",
+           "text": "SELECT FLAPS LEVER 0. Recommended speed for flaps retraction: between MAX SPEED - 10 kt and MAX SPEED. Recommended diversion speed: MAX SPEED - 10 kt. INCREASED FUEL CONSUMPTION",
+           "applies_to": [
+            "all"
+           ],
+           "refs": [
+            {
+             "book": "QRH",
+             "code": "20.02",
+             "page": "20.02C",
+             "pdf": 189
+            },
+            {
+             "book": "FCOM",
+             "code": "PRO-ABN-F_CTL",
+             "page": "P 2/132",
+             "pdf": 3475
+            }
+           ]
+          }
+         ],
+         "applies_to": [
+          "all"
+         ],
+         "refs": [
+          {
+           "book": "QRH",
+           "code": "20.02",
+           "page": "20.02C",
+           "pdf": 189
+          },
+          {
+           "book": "FCOM",
+           "code": "PRO-ABN-F_CTL",
+           "page": "P 2/132",
+           "pdf": 3475
+          }
+         ]
+        }
+       ],
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "QRH",
+         "code": "20.02",
+         "page": "20.02C",
+         "pdf": 189
+        },
+        {
+         "book": "FCOM",
+         "code": "PRO-ABN-F_CTL",
+         "page": "P 2/132",
+         "pdf": 3475
+        }
+       ]
+      },
+      {
+       "kind": "condition",
+       "text": "If FLAPS jammed",
+       "children": [
+        {
+         "kind": "condition",
+         "text": "For circuit",
+         "children": [
+          {
+           "kind": "action",
+           "text": "MAINTAIN SLATS/FLAPS CONFIGURATION; recommended speed MAX SPEED - 10 kt. If HYD G+Y SYS LO PR: MAINTAIN SPEED CLOSE TO VAPP",
+           "applies_to": [
+            "all"
+           ],
+           "refs": [
+            {
+             "book": "QRH",
+             "code": "20.02",
+             "page": "20.02C",
+             "pdf": 189
+            },
+            {
+             "book": "QRH",
+             "code": "20.02",
+             "page": "20.02D",
+             "pdf": 190
+            },
+            {
+             "book": "FCOM",
+             "code": "PRO-ABN-F_CTL",
+             "page": "P 2/132",
+             "pdf": 3475
+            }
+           ]
+          }
+         ],
+         "applies_to": [
+          "all"
+         ],
+         "refs": [
+          {
+           "book": "QRH",
+           "code": "20.02",
+           "page": "20.02C",
+           "pdf": 189
+          },
+          {
+           "book": "QRH",
+           "code": "20.02",
+           "page": "20.02D",
+           "pdf": 190
+          },
+          {
+           "book": "FCOM",
+           "code": "PRO-ABN-F_CTL",
+           "page": "P 2/132",
+           "pdf": 3475
+          }
+         ]
+        },
+        {
+         "kind": "condition",
+         "text": "For diversion, flaps jammed at 0",
+         "children": [
+          {
+           "kind": "action",
+           "text": "SELECT FLAPS LEVER 0. Recommended speed for slats retraction: between MAX SPEED - 10 kt and MAX SPEED. USE NORMAL OPERATING SPEEDS. If HYD G+Y SYS LO PR: MAINTAIN AT LEAST THE HIGHER OF VAPP OR VLS",
+           "applies_to": [
+            "all"
+           ],
+           "refs": [
+            {
+             "book": "QRH",
+             "code": "20.02",
+             "page": "20.02D",
+             "pdf": 190
+            },
+            {
+             "book": "FCOM",
+             "code": "PRO-ABN-F_CTL",
+             "page": "P 2/132",
+             "pdf": 3475
+            }
+           ]
+          }
+         ],
+         "applies_to": [
+          "all"
+         ],
+         "refs": [
+          {
+           "book": "QRH",
+           "code": "20.02",
+           "page": "20.02D",
+           "pdf": 190
+          },
+          {
+           "book": "FCOM",
+           "code": "PRO-ABN-F_CTL",
+           "page": "P 2/132",
+           "pdf": 3475
+          }
+         ]
+        },
+        {
+         "kind": "condition",
+         "text": "For diversion, flaps jammed > 0",
+         "children": [
+          {
+           "kind": "action",
+           "text": "MAINTAIN SLAT/FLAP CONFIGURATION. Recommended speed for diversion: MAX SPEED - 10 kt. If HYD G+Y SYS LO PR: MAINTAIN SPEED CLOSE TO VAPP. INCREASED FUEL CONSUMPTION",
+           "applies_to": [
+            "all"
+           ],
+           "refs": [
+            {
+             "book": "QRH",
+             "code": "20.02",
+             "page": "20.02D",
+             "pdf": 190
+            },
+            {
+             "book": "FCOM",
+             "code": "PRO-ABN-F_CTL",
+             "page": "P 2/132",
+             "pdf": 3475
+            },
+            {
+             "book": "FCOM",
+             "code": "PRO-ABN-F_CTL",
+             "page": "P 3/132",
+             "pdf": 3476
+            }
+           ]
+          }
+         ],
+         "applies_to": [
+          "all"
+         ],
+         "refs": [
+          {
+           "book": "QRH",
+           "code": "20.02",
+           "page": "20.02D",
+           "pdf": 190
+          },
+          {
+           "book": "FCOM",
+           "code": "PRO-ABN-F_CTL",
+           "page": "P 2/132",
+           "pdf": 3475
+          },
+          {
+           "book": "FCOM",
+           "code": "PRO-ABN-F_CTL",
+           "page": "P 3/132",
+           "pdf": 3476
+          }
+         ]
+        }
+       ],
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "QRH",
+         "code": "20.02",
+         "page": "20.02C",
+         "pdf": 189
+        },
+        {
+         "book": "QRH",
+         "code": "20.02",
+         "page": "20.02D",
+         "pdf": 190
+        },
+        {
+         "book": "FCOM",
+         "code": "PRO-ABN-F_CTL",
+         "page": "P 2/132",
+         "pdf": 3475
+        }
+       ]
+      }
+     ]
+    }
+   ]
+  }
+ ],
+ "procedures": [
+  {
+   "title": "LANDING WITH SLATS OR FLAPS JAMMED",
+   "source": "QRH 20.02B–D / FCOM PRO-ABN-F_CTL",
+   "lines": [
+    {
+     "kind": "action",
+     "item": "LDG DIST PROC",
+     "setting": "APPLY",
+     "text": "",
+     "level": 0,
+     "applies_to": [
+      "all"
+     ],
+     "refs": [
+      {
+       "book": "QRH",
+       "code": "20.02",
+       "page": "20.02B",
+       "pdf": 188
+      }
+     ]
+    },
+    {
+     "kind": "info",
+     "text": "Determine flap lever position for landing.",
+     "level": 0,
+     "applies_to": [
+      "all"
+     ],
+     "refs": [
+      {
+       "book": "QRH",
+       "code": "20.02",
+       "page": "20.02B",
+       "pdf": 188
+      }
+     ]
+    },
+    {
+     "kind": "condition",
+     "text": "Repeat the following until landing configuration is reached:",
+     "level": 0,
+     "applies_to": [
+      "all"
+     ],
+     "refs": [
+      {
+       "book": "QRH",
+       "code": "20.02",
+       "page": "20.02B",
+       "pdf": 188
+      }
+     ]
+    },
+    {
+     "kind": "action",
+     "item": "SPD SEL",
+     "setting": "VFE NEXT - 5 kt",
+     "text": "",
+     "level": 1,
+     "applies_to": [
+      "all"
+     ],
+     "refs": [
+      {
+       "book": "QRH",
+       "code": "20.02",
+       "page": "20.02B",
+       "pdf": 188
+      }
+     ]
+    },
+    {
+     "kind": "info",
+     "text": "AT VFE NEXT: SELECT FLAPS LEVER ONE STEP DOWN",
+     "level": 1,
+     "applies_to": [
+      "all"
+     ],
+     "refs": [
+      {
+       "book": "QRH",
+       "code": "20.02",
+       "page": "20.02B",
+       "pdf": 188
+      }
+     ]
+    },
+    {
+     "kind": "note",
+     "text": "OVERSPEED alert, and VLS displayed on the PFD, are computed according to the current flaps/slats position.",
+     "level": 1,
+     "applies_to": [
+      "all"
+     ],
+     "refs": [
+      {
+       "book": "QRH",
+       "code": "20.02",
+       "page": "20.02C",
+       "pdf": 189
+      }
+     ]
+    },
+    {
+     "kind": "note",
+     "text": "VFE and VFE NEXT are displayed on the PFD according to the FLAPS lever position. If not displayed, use the placard speeds.",
+     "level": 1,
+     "applies_to": [
+      "all"
+     ],
+     "refs": [
+      {
+       "book": "QRH",
+       "code": "20.02",
+       "page": "20.02C",
+       "pdf": 189
+      }
+     ]
+    },
+    {
+     "kind": "note",
+     "text": "In some cases, the recommended speed for go-around requested by the procedure might be slightly above the VFE displayed on PFD as the VFE is linked to the S/F lever position. The OVERSPEED alert will not be triggered as it is taking into account the current slat/flap position.",
+     "level": 1,
+     "applies_to": [
+      "all"
+     ],
+     "refs": [
+      {
+       "book": "QRH",
+       "code": "20.02",
+       "page": "20.02C",
+       "pdf": 189
+      }
+     ]
+    },
+    {
+     "kind": "note",
+     "text": "If VLS is greater than VFE NEXT (overweight landing case), the FLAPS lever can be set in the required next position, while the speed is reduced to follow VLS reduction as surfaces extend. The VFE warning threshold should not be triggered. In this case, disconnect the A/THR. A/THR can be re-engaged when the landing configuration is established.",
+     "level": 1,
+     "applies_to": [
+      "all"
+     ],
+     "refs": [
+      {
+       "book": "QRH",
+       "code": "20.02",
+       "page": "20.02C",
+       "pdf": 189
+      }
+     ]
+    },
+    {
+     "kind": "condition",
+     "text": "When in landing CONF and in final approach:",
+     "level": 0,
+     "applies_to": [
+      "all"
+     ],
+     "refs": [
+      {
+       "book": "QRH",
+       "code": "20.02",
+       "page": "20.02C",
+       "pdf": 189
+      }
+     ]
+    },
+    {
+     "kind": "info",
+     "text": "DECELERATE TO CALCULATED VAPP",
+     "level": 1,
+     "applies_to": [
+      "all"
+     ],
+     "refs": [
+      {
+       "book": "QRH",
+       "code": "20.02",
+       "page": "20.02C",
+       "pdf": 189
+      }
+     ]
+    },
+    {
+     "kind": "info",
+     "text": "The flight crew must use and keep the selected speed.",
+     "level": 1,
+     "applies_to": [
+      "all"
+     ],
+     "refs": [
+      {
+       "book": "QRH",
+       "code": "20.02",
+       "page": "20.02C",
+       "pdf": 189
+      }
+     ]
+    },
+    {
+     "kind": "info",
+     "text": "DO NOT USE AP BELOW 500 ft AGL",
+     "level": 1,
+     "applies_to": [
+      "all"
+     ],
+     "refs": [
+      {
+       "book": "QRH",
+       "code": "20.02",
+       "page": "20.02C",
+       "pdf": 189
+      }
+     ]
+    },
+    {
+     "kind": "condition",
+     "text": "For Go-around: (MAX SPEED table)",
+     "level": 0,
+     "applies_to": [
+      "all"
+     ],
+     "refs": [
+      {
+       "book": "QRH",
+       "code": "20.02",
+       "page": "20.02C",
+       "pdf": 189
+      }
+     ]
+    },
+    {
+     "kind": "note",
+     "text": "In the case of go-around with CONF FULL selected, the L/G GEAR NOT DOWN warning is triggered at landing gear retraction.",
+     "level": 1,
+     "applies_to": [
+      "all"
+     ],
+     "refs": [
+      {
+       "book": "QRH",
+       "code": "20.02",
+       "page": "20.02C",
+       "pdf": 189
+      }
+     ]
+    },
+    {
+     "kind": "condition",
+     "text": "If SLATS jammed:",
+     "level": 1,
+     "applies_to": [
+      "all"
+     ],
+     "refs": [
+      {
+       "book": "QRH",
+       "code": "20.02",
+       "page": "20.02C",
+       "pdf": 189
+      }
+     ]
+    },
+    {
+     "kind": "condition",
+     "text": "For circuit:",
+     "level": 2,
+     "applies_to": [
+      "all"
+     ],
+     "refs": [
+      {
+       "book": "QRH",
+       "code": "20.02",
+       "page": "20.02C",
+       "pdf": 189
+      }
+     ]
+    },
+    {
+     "kind": "info",
+     "text": "MAINTAIN SLATS/FLAPS CONFIGURATION",
+     "level": 3,
+     "applies_to": [
+      "all"
+     ],
+     "refs": [
+      {
+       "book": "QRH",
+       "code": "20.02",
+       "page": "20.02C",
+       "pdf": 189
+      }
+     ]
+    },
+    {
+     "kind": "info",
+     "text": "Recommended speed: MAX SPEED - 10 kt",
+     "level": 3,
+     "applies_to": [
+      "all"
+     ],
+     "refs": [
+      {
+       "book": "QRH",
+       "code": "20.02",
+       "page": "20.02C",
+       "pdf": 189
+      }
+     ]
+    },
+    {
+     "kind": "condition",
+     "text": "For diversion:",
+     "level": 2,
+     "applies_to": [
+      "all"
+     ],
+     "refs": [
+      {
+       "book": "QRH",
+       "code": "20.02",
+       "page": "20.02C",
+       "pdf": 189
+      }
+     ]
+    },
+    {
+     "kind": "info",
+     "text": "SELECT FLAPS LEVER 0",
+     "level": 3,
+     "applies_to": [
+      "all"
+     ],
+     "refs": [
+      {
+       "book": "QRH",
+       "code": "20.02",
+       "page": "20.02C",
+       "pdf": 189
+      }
+     ]
+    },
+    {
+     "kind": "info",
+     "text": "Recommended speed for flaps retraction: between MAX SPEED - 10 kt and MAX SPEED",
+     "level": 3,
+     "applies_to": [
+      "all"
+     ],
+     "refs": [
+      {
+       "book": "QRH",
+       "code": "20.02",
+       "page": "20.02C",
+       "pdf": 189
+      }
+     ]
+    },
+    {
+     "kind": "info",
+     "text": "Recommended speed for diversion: MAX SPEED - 10 kt",
+     "level": 3,
+     "applies_to": [
+      "all"
+     ],
+     "refs": [
+      {
+       "book": "QRH",
+       "code": "20.02",
+       "page": "20.02C",
+       "pdf": 189
+      }
+     ]
+    },
+    {
+     "kind": "info",
+     "text": "INCREASED FUEL CONSUMPTION",
+     "level": 3,
+     "applies_to": [
+      "all"
+     ],
+     "refs": [
+      {
+       "book": "QRH",
+       "code": "20.02",
+       "page": "20.02C",
+       "pdf": 189
+      }
+     ]
+    },
+    {
+     "kind": "condition",
+     "text": "If FLAPS jammed:",
+     "level": 1,
+     "applies_to": [
+      "all"
+     ],
+     "refs": [
+      {
+       "book": "QRH",
+       "code": "20.02",
+       "page": "20.02C",
+       "pdf": 189
+      }
+     ]
+    },
+    {
+     "kind": "condition",
+     "text": "For circuit:",
+     "level": 2,
+     "applies_to": [
+      "all"
+     ],
+     "refs": [
+      {
+       "book": "QRH",
+       "code": "20.02",
+       "page": "20.02C",
+       "pdf": 189
+      }
+     ]
+    },
+    {
+     "kind": "info",
+     "text": "MAINTAIN SLATS/FLAPS CONFIGURATION",
+     "level": 3,
+     "applies_to": [
+      "all"
+     ],
+     "refs": [
+      {
+       "book": "QRH",
+       "code": "20.02",
+       "page": "20.02C",
+       "pdf": 189
+      }
+     ]
+    },
+    {
+     "kind": "info",
+     "text": "Recommended speed: MAX SPEED - 10 kt",
+     "level": 3,
+     "applies_to": [
+      "all"
+     ],
+     "refs": [
+      {
+       "book": "QRH",
+       "code": "20.02",
+       "page": "20.02C",
+       "pdf": 189
+      }
+     ]
+    },
+    {
+     "kind": "condition",
+     "text": "If HYD G+Y SYS LO PR:",
+     "level": 3,
+     "applies_to": [
+      "all"
+     ],
+     "refs": [
+      {
+       "book": "QRH",
+       "code": "20.02",
+       "page": "20.02D",
+       "pdf": 190
+      }
+     ]
+    },
+    {
+     "kind": "info",
+     "text": "MAINTAIN SPEED CLOSE TO VAPP",
+     "level": 4,
+     "applies_to": [
+      "all"
+     ],
+     "refs": [
+      {
+       "book": "QRH",
+       "code": "20.02",
+       "page": "20.02D",
+       "pdf": 190
+      }
+     ]
+    },
+    {
+     "kind": "condition",
+     "text": "For diversion:",
+     "level": 2,
+     "applies_to": [
+      "all"
+     ],
+     "refs": [
+      {
+       "book": "QRH",
+       "code": "20.02",
+       "page": "20.02D",
+       "pdf": 190
+      }
+     ]
+    },
+    {
+     "kind": "condition",
+     "text": "If FLAPS jammed at 0:",
+     "level": 3,
+     "applies_to": [
+      "all"
+     ],
+     "refs": [
+      {
+       "book": "QRH",
+       "code": "20.02",
+       "page": "20.02D",
+       "pdf": 190
+      }
+     ]
+    },
+    {
+     "kind": "info",
+     "text": "SELECT FLAPS LEVER 0",
+     "level": 4,
+     "applies_to": [
+      "all"
+     ],
+     "refs": [
+      {
+       "book": "QRH",
+       "code": "20.02",
+       "page": "20.02D",
+       "pdf": 190
+      }
+     ]
+    },
+    {
+     "kind": "info",
+     "text": "Recommended speed for slats retraction: between MAX SPEED - 10 kt and MAX SPEED",
+     "level": 4,
+     "applies_to": [
+      "all"
+     ],
+     "refs": [
+      {
+       "book": "QRH",
+       "code": "20.02",
+       "page": "20.02D",
+       "pdf": 190
+      }
+     ]
+    },
+    {
+     "kind": "info",
+     "text": "USE NORMAL OPERATING SPEEDS",
+     "level": 4,
+     "applies_to": [
+      "all"
+     ],
+     "refs": [
+      {
+       "book": "QRH",
+       "code": "20.02",
+       "page": "20.02D",
+       "pdf": 190
+      }
+     ]
+    },
+    {
+     "kind": "condition",
+     "text": "If HYD G+Y SYS LO PR:",
+     "level": 4,
+     "applies_to": [
+      "all"
+     ],
+     "refs": [
+      {
+       "book": "QRH",
+       "code": "20.02",
+       "page": "20.02D",
+       "pdf": 190
+      }
+     ]
+    },
+    {
+     "kind": "info",
+     "text": "MAINTAIN AT LEAST THE HIGHER OF VAPP OR VLS",
+     "level": 5,
+     "applies_to": [
+      "all"
+     ],
+     "refs": [
+      {
+       "book": "QRH",
+       "code": "20.02",
+       "page": "20.02D",
+       "pdf": 190
+      }
+     ]
+    },
+    {
+     "kind": "condition",
+     "text": "If FLAPS jammed > 0:",
+     "level": 3,
+     "applies_to": [
+      "all"
+     ],
+     "refs": [
+      {
+       "book": "QRH",
+       "code": "20.02",
+       "page": "20.02D",
+       "pdf": 190
+      }
+     ]
+    },
+    {
+     "kind": "info",
+     "text": "MAINTAIN SLAT/FLAP CONFIGURATION",
+     "level": 4,
+     "applies_to": [
+      "all"
+     ],
+     "refs": [
+      {
+       "book": "QRH",
+       "code": "20.02",
+       "page": "20.02D",
+       "pdf": 190
+      }
+     ]
+    },
+    {
+     "kind": "info",
+     "text": "Recommended speed for diversion: MAX SPEED - 10 kt",
+     "level": 4,
+     "applies_to": [
+      "all"
+     ],
+     "refs": [
+      {
+       "book": "QRH",
+       "code": "20.02",
+       "page": "20.02D",
+       "pdf": 190
+      }
+     ]
+    },
+    {
+     "kind": "condition",
+     "text": "If HYD G+Y SYS LO PR:",
+     "level": 4,
+     "applies_to": [
+      "all"
+     ],
+     "refs": [
+      {
+       "book": "QRH",
+       "code": "20.02",
+       "page": "20.02D",
+       "pdf": 190
+      }
+     ]
+    },
+    {
+     "kind": "info",
+     "text": "MAINTAIN SPEED CLOSE TO VAPP",
+     "level": 5,
+     "applies_to": [
+      "all"
+     ],
+     "refs": [
+      {
+       "book": "QRH",
+       "code": "20.02",
+       "page": "20.02D",
+       "pdf": 190
+      }
+     ]
+    },
+    {
+     "kind": "info",
+     "text": "INCREASED FUEL CONSUMPTION",
+     "level": 4,
+     "applies_to": [
+      "all"
+     ],
+     "refs": [
+      {
+       "book": "QRH",
+       "code": "20.02",
+       "page": "20.02D",
+       "pdf": 190
+      }
+     ]
+    },
+    {
+     "kind": "caution",
+     "text": "For flight with SLATS or FLAPS extended, fuel consumption is increased. Refer to OPS Use of Fuel Penalty Factor Tables.",
+     "level": 0,
+     "applies_to": [
+      "all"
+     ],
+     "refs": [
+      {
+       "book": "QRH",
+       "code": "20.02",
+       "page": "20.02D",
+       "pdf": 190
+      }
+     ]
+    }
+   ]
+  }
+ ],
+ "status": null,
+ "tables": [
+  {
+   "title": "MAX SPEED",
+   "caption": "Slats/flaps position displayed on the upper ECAM display.",
+   "columns": [
+    "Slats \\ Flaps",
+    "F = 0",
+    "0 < F ≤ 1",
+    "1 < F ≤ 2",
+    "2 < F ≤ 3",
+    "F > 3"
+   ],
+   "rows": [
+    [
+     "S = 0",
+     "NO LIMITATION",
+     "215 kt",
+     "200 kt",
+     "185 kt",
+     "Not allowed (177 kt)"
+    ],
+    [
+     "0 < S < 1",
+     "230 kt",
+     "215 kt",
+     "200 kt",
+     "185 kt",
+     "Not allowed (177 kt)"
+    ],
+    [
+     "S = 1",
+     "230 kt",
+     "215 kt",
+     "200 kt",
+     "185 kt",
+     "177 kt"
+    ],
+    [
+     "1 < S ≤ 3",
+     "200 kt",
+     "200 kt",
+     "200 kt",
+     "185 kt",
+     "177 kt"
+    ],
+    [
+     "S > 3",
+     "177 kt",
+     "177 kt",
+     "177 kt",
+     "177 kt",
+     "177 kt"
+    ]
+   ],
+   "applies_to": [
+    "all"
+   ],
+   "refs": [
+    {
+     "book": "FCOM",
+     "code": "PRO-ABN-F_CTL",
+     "page": "P 59/132",
+     "pdf": 3532
+    },
+    {
+     "book": "FCOM",
+     "code": "PRO-ABN-F_CTL",
+     "page": "P 1/132",
+     "pdf": 3474
+    },
+    {
+     "book": "QRH",
+     "code": "20.02",
+     "page": "20.02C",
+     "pdf": 189
+    }
+   ]
+  },
+  {
+   "title": "APPR SPD",
+   "caption": "Slats/flaps position displayed on the upper ECAM display.",
+   "columns": [
+    "Slats \\ Flaps",
+    "F = 0",
+    "0 < F < 1",
+    "1 ≤ F < 2",
+    "2 ≤ F < 3",
+    "F = 3",
+    "F > 3"
+   ],
+   "rows": [
+    [
+     "S = 0",
+     "VREF +60 (Appr), VREF +50 (Touch Down)",
+     "VREF +45",
+     "VREF +30",
+     "VREF +25",
+     "VREF +25",
+     "Not allowed"
+    ],
+    [
+     "0 < S < 1",
+     "VREF +45",
+     "VREF +45",
+     "VREF +30",
+     "VREF +25",
+     "VREF +25",
+     "Not allowed"
+    ],
+    [
+     "1 ≤ S ≤ 3",
+     "VREF +25",
+     "VREF +25",
+     "VREF +15",
+     "VREF +10",
+     "VREF +10",
+     "VREF +10"
+    ],
+    [
+     "S > 3",
+     "VREF +25",
+     "VREF +25",
+     "VREF +15",
+     "VREF +10",
+     "VREF +10",
+     "VREF +5"
+    ]
+   ],
+   "applies_to": [
+    "all"
+   ],
+   "refs": [
+    {
+     "book": "FCOM",
+     "code": "PRO-ABN-F_CTL",
+     "page": "P 59/132",
+     "pdf": 3532
+    }
+   ]
+  }
+ ],
+ "background": [
+  {
+   "text": "The line SPD SEL VFE NEXT - 5 kt lets the crew configure for landing while controlling the speed safely.",
+   "applies_to": [
+    "all"
+   ],
+   "refs": [
+    {
+     "book": "FCTM",
+     "code": "PR-AEP-F_CTL",
+     "page": "P 2/6",
+     "pdf": 429
+    }
+   ]
+  },
+  {
+   "text": "FMS predictions do not take slat or flap failures into account. Fuel consumption is increased, so the predictions are not valid.",
+   "applies_to": [
+    "all"
+   ],
+   "refs": [
+    {
+     "book": "FCTM",
+     "code": "PR-AEP-F_CTL",
+     "page": "P 1/6",
+     "pdf": 428
+    }
+   ]
+  },
+  {
+   "text": "QRH fuel penalty factor for all HS-TX: flaps extended 80 %, slats extended 60 %, slats and flaps extended 100 %.",
+   "applies_to": [
+    "all"
+   ],
+   "refs": [
+    {
+     "book": "QRH",
+     "code": "OPS.04",
+     "page": "OPS.04C",
+     "pdf": 275
+    },
+    {
+     "book": "QRH",
+     "code": "OPS.04",
+     "page": "OPS.04E",
+     "pdf": 277
+    }
+   ]
+  }
+ ],
+ "technique": [
+  {
+   "text": "This procedure may reduce speed below the manoeuvring speed for the current configuration, which is acceptable if the speed stays above VLS. Reduce speed and configure preferably with wings level.",
+   "applies_to": [
+    "all"
+   ],
+   "refs": [
+    {
+     "book": "FCTM",
+     "code": "PR-AEP-F_CTL",
+     "page": "P 2/6",
+     "pdf": 429
+    }
+   ]
+  },
+  {
+   "text": "Assuming VLS is displayed, VAPP should be close to VLS + wind correction, because this speed is computed from the current slat/flap position. VAPP can be lower than VLS: then disconnect the A/THR above VLS when reducing to VAPP.",
+   "applies_to": [
+    "all"
+   ],
+   "refs": [
+    {
+     "book": "FCTM",
+     "code": "PR-AEP-F_CTL",
+     "page": "P 2/6",
+     "pdf": 429
+    }
+   ]
+  },
+  {
+   "text": "The AP may be used down to 500 ft AGL. It is not tuned for abnormal configurations: monitor it.",
+   "applies_to": [
+    "all"
+   ],
+   "refs": [
+    {
+     "book": "FCTM",
+     "code": "PR-AEP-F_CTL",
+     "page": "P 2/6",
+     "pdf": 429
+    }
+   ]
+  },
+  {
+   "text": "In the arrival briefing, emphasize tail strike awareness, the go-around configuration, any deviation from standard callout, the speeds after a missed approach, and selected speed for acceleration at the acceleration altitude.",
+   "applies_to": [
+    "all"
+   ],
+   "refs": [
+    {
+     "book": "FCTM",
+     "code": "PR-AEP-F_CTL",
+     "page": "P 2/6",
+     "pdf": 429
+    }
+   ]
+  }
+ ],
+ "related": [
+  {
+   "title": "F/CTL FLAPS FAULT/LOCKED",
+   "why": "Leads here",
+   "key_actions": [
+    "See the FLAPS brief"
+   ],
+   "refs": [
+    {
+     "book": "FCOM",
+     "code": "PRO-ABN-F_CTL",
+     "page": "P 1/132",
+     "pdf": 3474
+    }
+   ]
+  },
+  {
+   "title": "F/CTL SLATS FAULT/LOCKED",
+   "why": "Leads here",
+   "key_actions": [
+    "See the SLATS brief"
+   ],
+   "refs": [
+    {
+     "book": "FCOM",
+     "code": "PRO-ABN-F_CTL",
+     "page": "P 1/132",
+     "pdf": 3474
+    }
+   ]
+  },
+  {
+   "title": "HYD G+B / G+Y SYS LO PR",
+   "why": "Leads here; their QRH summaries include these lines and add the hydraulic-specific speeds",
+   "key_actions": [
+    "See the HYD briefs"
+   ],
+   "refs": [
+    {
+     "book": "QRH",
+     "code": "23.02",
+     "page": "23.02A",
+     "pdf": 210
+    },
+    {
+     "book": "QRH",
+     "code": "23.03",
+     "page": "23.03A",
+     "pdf": 212
+    }
+   ]
+  }
+ ],
+ "gaps": [
+  {
+   "text": "The QRH and FCOM word two lines differently: \"Recommended speed for diversion\" / \"Recommended diversion speed\", and \"L/G GEAR NOT DOWN\" / \"L/G L/G NOT DOWN\". The QRH wording is used.",
+   "applies_to": [
+    "all"
+   ],
+   "refs": [
+    {
+     "book": "QRH",
+     "code": "20.02",
+     "page": "20.02C",
+     "pdf": 189
+    },
+    {
+     "book": "FCOM",
+     "code": "PRO-ABN-F_CTL",
+     "page": "P 2/132",
+     "pdf": 3475
+    }
+   ]
+  },
+  {
+   "text": "The procedure gives no PF/PM roles, and the PDP has no slide for it: the turns follow the task sharing for a QRH procedure, and the flap lever selection is shown as shared.",
+   "applies_to": [
+    "all"
+   ],
+   "refs": [
+    {
+     "book": "PDP",
+     "code": "Management of abnormal operations",
+     "page": "XFTDN6ECAM00001",
+     "pdf": 427
+    },
+    {
+     "book": "FCTM",
+     "code": "AOP-20",
+     "page": "P 1–2/10",
+     "pdf": 68
+    }
+   ]
+  },
+  {
+   "text": "\"Any deviation from standard call out\" is to be briefed, but the manuals do not list the deviations.",
+   "applies_to": [
+    "all"
+   ],
+   "refs": [
+    {
+     "book": "FCTM",
+     "code": "PR-AEP-F_CTL",
+     "page": "P 2/6",
+     "pdf": 429
+    }
+   ]
+  }
+ ],
+ "sources": [
+  {
+   "book": "QRH",
+   "section": "20.02 — Landing with Slats or Flaps Jammed; OPS.04 — fuel penalty factors",
+   "pages": "20.02B–D · OPS.04C, E",
+   "pdf": "188–190, 275, 277",
+   "rev": "26 MAY 26, 14 JUL 26"
+  },
+  {
+   "book": "FCOM",
+   "section": "PRO-ABN-F_CTL — [QRH] procedure (HS-TX); FLAPS/SLATS tables",
+   "pages": "P 1–3, 59/132",
+   "pdf": "3474–3476, 3532",
+   "rev": "26 MAY 26"
+  },
+  {
+   "book": "FCTM",
+   "section": "PR-AEP-F_CTL — abnormal slats/flaps configuration",
+   "pages": "P 1–2/6",
+   "pdf": "428–429",
+   "rev": "26 MAY 26"
+  },
+  {
+   "book": "PDP",
+   "section": "Management of abnormal operations",
+   "pages": "—",
+   "pdf": "427",
+   "rev": ""
+  }
+ ],
+ "schema": "a320-ecam-abnormal/3",
+ "generated": "2026-10-31",
+ "qrh": [],
+ "differences": []
+}

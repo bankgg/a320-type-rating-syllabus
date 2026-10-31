@@ -1,0 +1,2357 @@
+{
+ "slug": "f-ctl-stabilizer-jam",
+ "title": "F/CTL STABILIZER JAM",
+ "kind": "ecam",
+ "alert": {
+  "level": "caution",
+  "land_asap": "none",
+  "memory_items": false,
+  "qrh_summary": false,
+  "trigger": "This alert triggers when there is a loss of the electrical control of the stabilizer (with or without jamming of the stabilizer). The ELACs may not detect a jam when the pitch trim wheel is jammed: no ECAM warning, normal law remains, and the [QRH] STABILIZER JAM applies.",
+  "inhibited_phases": [
+   4,
+   5
+  ],
+  "refs": [
+   {
+    "book": "FCOM",
+    "code": "PRO-ABN-F_CTL",
+    "page": "P 124/132",
+    "pdf": 3597
+   },
+   {
+    "book": "FCOM",
+    "code": "PRO-ABN-F_CTL",
+    "page": "P 7/132",
+    "pdf": 3480
+   }
+  ]
+ },
+ "effectivity": {
+  "branches": [],
+  "note": "ECAM procedure for all HS-TX; QRH procedure for ALL."
+ },
+ "summary": "The stabilizer no longer moves electrically. Two versions: the amber ECAM with alternate law, or no ECAM with normal law, where the QRH procedure applies. Check the pitch trim wheel first. If it works, trim to keep the elevators at neutral on the F/CTL SD page. If not, the landing is FLAP LVR 3 and the gear goes down only in CONF 3 at VAPP, because direct law then removes the autotrim.",
+ "key_limits": [
+  {
+   "label": "MAX SPEED",
+   "value": "320 KT",
+   "applies_to": [
+    "all"
+   ],
+   "refs": [
+    {
+     "book": "FCOM",
+     "code": "PRO-ABN-F_CTL",
+     "page": "P 126/132",
+     "pdf": 3599
+    }
+   ]
+  },
+  {
+   "label": "For landing",
+   "value": "FLAP LVR 3 · GPWS LDG FLAP 3 ON · VREF + 10 KT",
+   "applies_to": [
+    "all"
+   ],
+   "refs": [
+    {
+     "book": "FCOM",
+     "code": "PRO-ABN-F_CTL",
+     "page": "P 126/132",
+     "pdf": 3599
+    }
+   ]
+  },
+  {
+   "label": "If MAN TRIM not available",
+   "value": "L/G DN only when CONF 3 and VAPP",
+   "applies_to": [
+    "all"
+   ],
+   "refs": [
+    {
+     "book": "FCOM",
+     "code": "PRO-ABN-F_CTL",
+     "page": "P 126/132",
+     "pdf": 3599
+    },
+    {
+     "book": "FCTM",
+     "code": "PR-AEP-F_CTL",
+     "page": "P 4/6",
+     "pdf": 431
+    }
+   ]
+  },
+  {
+   "label": "Go-around",
+   "value": "MAX PITCH 15 DEG · TOGA THEN MCT",
+   "applies_to": [
+    "all"
+   ],
+   "refs": [
+    {
+     "book": "FCOM",
+     "code": "PRO-ABN-F_CTL",
+     "page": "P 125/132",
+     "pdf": 3598
+    },
+    {
+     "book": "FCOM",
+     "code": "PRO-ABN-F_CTL",
+     "page": "P 126/132",
+     "pdf": 3599
+    }
+   ]
+  },
+  {
+   "label": "CONF FULL (QRH, no MAN PITCH TRIM)",
+   "value": "Do not select, to keep the handling qualities",
+   "applies_to": [
+    "all"
+   ],
+   "refs": [
+    {
+     "book": "FCOM",
+     "code": "PRO-ABN-F_CTL",
+     "page": "P 7/132",
+     "pdf": 3480
+    }
+   ]
+  }
+ ],
+ "flow": [
+  {
+   "phase": "ECAM: recognise",
+   "steps": [
+    {
+     "actor": "BOTH",
+     "items": [
+      {
+       "kind": "action",
+       "text": "First to notice: MASTER WARNING / CAUTION reset",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "FCTM",
+         "code": "AOP-30-30",
+         "page": "P 2/6",
+         "pdf": 83
+        },
+        {
+         "book": "PDP",
+         "code": "Management of abnormal operations",
+         "page": "XFTDN6ECAM00001",
+         "pdf": 424
+        }
+       ]
+      }
+     ]
+    },
+    {
+     "actor": "PM",
+     "items": [
+      {
+       "kind": "callout",
+       "text": "F/CTL STABILIZER JAM",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "FCTM",
+         "code": "AOP-30-30",
+         "page": "P 2/6",
+         "pdf": 83
+        },
+        {
+         "book": "FCOM",
+         "code": "PRO-ABN-F_CTL",
+         "page": "P 124/132",
+         "pdf": 3597
+        },
+        {
+         "book": "PDP",
+         "code": "Management of abnormal operations",
+         "page": "XFTDN6ECAM00001",
+         "pdf": 424
+        }
+       ]
+      },
+      {
+       "kind": "action",
+       "text": "Confirm the failure on the SD page and overhead panel before acting",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "FCTM",
+         "code": "AOP-30-30",
+         "page": "P 2/6",
+         "pdf": 83
+        },
+        {
+         "book": "PDP",
+         "code": "Management of abnormal operations",
+         "page": "XFTDN6ECAM00001",
+         "pdf": 424
+        }
+       ]
+      }
+     ]
+    },
+    {
+     "actor": "PF",
+     "items": [
+      {
+       "kind": "callout",
+       "text": "ECAM ACTIONS",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "FCOM",
+         "code": "PRO-ABN-ABN-00",
+         "page": "P 8/12",
+         "pdf": 2831
+        },
+        {
+         "book": "FCTM",
+         "code": "AOP-30-30",
+         "page": "P 3/6",
+         "pdf": 84
+        },
+        {
+         "book": "PDP",
+         "code": "Management of abnormal operations",
+         "page": "XFTDN6ECAM00001",
+         "pdf": 424
+        }
+       ]
+      },
+      {
+       "kind": "note",
+       "text": "PF now flies, navigates and communicates",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "FCTM",
+         "code": "AOP-20",
+         "page": "P 1–2/10",
+         "pdf": 68
+        },
+        {
+         "book": "PDP",
+         "code": "Management of abnormal operations",
+         "page": "XFTDN6ECAM00001",
+         "pdf": 424
+        }
+       ]
+      }
+     ]
+    },
+    {
+     "actor": "PF",
+     "items": [
+      {
+       "kind": "note",
+       "text": "Pitch law reverts to alternate law; the autotrim remains, with the elevators commanded by the SEC",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "FCTM",
+         "code": "PR-AEP-F_CTL",
+         "page": "P 2/6",
+         "pdf": 429
+        },
+        {
+         "book": "FCOM",
+         "code": "PRO-ABN-F_CTL",
+         "page": "P 125/132",
+         "pdf": 3598
+        }
+       ]
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "phase": "ECAM actions",
+   "steps": [
+    {
+     "actor": "PM",
+     "items": [
+      {
+       "kind": "ecam",
+       "item": "MAN PITCH TRIM",
+       "setting": "CHECK",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "FCOM",
+         "code": "PRO-ABN-F_CTL",
+         "page": "P 125/132",
+         "pdf": 3598
+        }
+       ]
+      }
+     ]
+    },
+    {
+     "actor": "PF",
+     "items": [
+      {
+       "kind": "action",
+       "text": "Check the pitch trim wheel",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "FCOM",
+         "code": "PRO-ABN-F_CTL",
+         "page": "P 125/132",
+         "pdf": 3598
+        }
+       ]
+      },
+      {
+       "kind": "note",
+       "text": "The force needed on the PITCH TRIM wheel may be higher than during pre-takeoff manual setting",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "FCOM",
+         "code": "PRO-ABN-F_CTL",
+         "page": "P 125/132",
+         "pdf": 3598
+        }
+       ]
+      },
+      {
+       "kind": "condition",
+       "text": "IF MAN TRIM AVAIL",
+       "children": [
+        {
+         "kind": "ecam",
+         "item": "TRIM FOR NEUTRAL ELEV",
+         "setting": "—",
+         "applies_to": [
+          "all"
+         ],
+         "refs": [
+          {
+           "book": "FCOM",
+           "code": "PRO-ABN-F_CTL",
+           "page": "P 125/132",
+           "pdf": 3598
+          }
+         ]
+        },
+        {
+         "kind": "action",
+         "text": "Use the pitch trim wheel to keep the elevators at the zero position on the F/CTL SD page: this gives maximum elevator authority",
+         "applies_to": [
+          "all"
+         ],
+         "refs": [
+          {
+           "book": "FCOM",
+           "code": "PRO-ABN-F_CTL",
+           "page": "P 125/132",
+           "pdf": 3598
+          },
+          {
+           "book": "FCTM",
+           "code": "PR-AEP-F_CTL",
+           "page": "P 2/6",
+           "pdf": 429
+          },
+          {
+           "book": "FCTM",
+           "code": "PR-AEP-F_CTL",
+           "page": "P 3/6",
+           "pdf": 430
+          }
+         ]
+        },
+        {
+         "kind": "note",
+         "text": "Elevators UP: trim nose UP. Elevators DOWN: trim nose DOWN",
+         "applies_to": [
+          "all"
+         ],
+         "refs": [
+          {
+           "book": "FCTM",
+           "code": "PR-AEP-F_CTL",
+           "page": "P 3/6",
+           "pdf": 430
+          }
+         ]
+        }
+       ],
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "FCOM",
+         "code": "PRO-ABN-F_CTL",
+         "page": "P 125/132",
+         "pdf": 3598
+        }
+       ]
+      }
+     ]
+    },
+    {
+     "actor": "PM",
+     "items": [
+      {
+       "kind": "ecam",
+       "item": "MANEUVER WITH CARE",
+       "setting": "—",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "FCOM",
+         "code": "PRO-ABN-F_CTL",
+         "page": "P 125/132",
+         "pdf": 3598
+        }
+       ]
+      },
+      {
+       "kind": "condition",
+       "text": "FOR GO-AROUND",
+       "children": [
+        {
+         "kind": "ecam",
+         "item": "MAX PITCH 15 DEG",
+         "setting": "—",
+         "applies_to": [
+          "all"
+         ],
+         "refs": [
+          {
+           "book": "FCOM",
+           "code": "PRO-ABN-F_CTL",
+           "page": "P 125/132",
+           "pdf": 3598
+          }
+         ]
+        },
+        {
+         "kind": "ecam",
+         "item": "THR LVR",
+         "setting": "TOGA THEN MCT",
+         "applies_to": [
+          "all"
+         ],
+         "refs": [
+          {
+           "book": "FCOM",
+           "code": "PRO-ABN-F_CTL",
+           "page": "P 125/132",
+           "pdf": 3598
+          }
+         ]
+        },
+        {
+         "kind": "note",
+         "text": "Not displayed if one engine is inoperative",
+         "applies_to": [
+          "all"
+         ],
+         "refs": [
+          {
+           "book": "FCOM",
+           "code": "PRO-ABN-F_CTL",
+           "page": "P 125/132",
+           "pdf": 3598
+          }
+         ]
+        }
+       ],
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "FCOM",
+         "code": "PRO-ABN-F_CTL",
+         "page": "P 125/132",
+         "pdf": 3598
+        }
+       ]
+      },
+      {
+       "kind": "ecam",
+       "item": "F/CTL ALTN LAW (PROT LOST)",
+       "setting": "Associated procedure",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "FCOM",
+         "code": "PRO-ABN-F_CTL",
+         "page": "P 125/132",
+         "pdf": 3598
+        },
+        {
+         "book": "FCOM",
+         "code": "PRO-ABN-F_CTL",
+         "page": "P 9/132",
+         "pdf": 3482
+        }
+       ]
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "phase": "STATUS",
+   "steps": [
+    {
+     "actor": "PM",
+     "items": [
+      {
+       "kind": "callout",
+       "text": "CLEAR FLIGHT CONTROL ?",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "FCOM",
+         "code": "PRO-ABN-ABN-00",
+         "page": "P 8/12",
+         "pdf": 2831
+        },
+        {
+         "book": "FCTM",
+         "code": "AOP-30-30",
+         "page": "P 3/6",
+         "pdf": 84
+        },
+        {
+         "book": "PDP",
+         "code": "Management of abnormal operations",
+         "page": "XFTDN6ECAM00001",
+         "pdf": 424
+        }
+       ]
+      }
+     ]
+    },
+    {
+     "actor": "PF",
+     "items": [
+      {
+       "kind": "callout",
+       "text": "CLEAR FLIGHT CONTROL",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "FCOM",
+         "code": "PRO-ABN-ABN-00",
+         "page": "P 8/12",
+         "pdf": 2831
+        },
+        {
+         "book": "FCTM",
+         "code": "AOP-30-30",
+         "page": "P 3/6",
+         "pdf": 84
+        },
+        {
+         "book": "PDP",
+         "code": "Management of abnormal operations",
+         "page": "XFTDN6ECAM00001",
+         "pdf": 424
+        }
+       ]
+      }
+     ]
+    },
+    {
+     "actor": "PM",
+     "items": [
+      {
+       "kind": "callout",
+       "text": "STATUS",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "FCTM",
+         "code": "AOP-30-30",
+         "page": "P 3/6",
+         "pdf": 84
+        },
+        {
+         "book": "PDP",
+         "code": "Management of abnormal operations",
+         "page": "XFTDN6ECAM00001",
+         "pdf": 426
+        }
+       ]
+      }
+     ]
+    },
+    {
+     "actor": "PF",
+     "items": [
+      {
+       "kind": "callout",
+       "text": "STOP ECAM",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "FCTM",
+         "code": "AOP-30-30",
+         "page": "P 3/6",
+         "pdf": 84
+        },
+        {
+         "book": "PDP",
+         "code": "Management of abnormal operations",
+         "page": "XFTDN6ECAM00001",
+         "pdf": 426
+        }
+       ]
+      }
+     ]
+    },
+    {
+     "actor": "PM",
+     "items": [
+      {
+       "kind": "ecam",
+       "item": "ECAM ACTIONS",
+       "setting": "STOP",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "PDP",
+         "code": "Management of abnormal operations",
+         "page": "XFTDN6ECAM00001",
+         "pdf": 426
+        }
+       ]
+      }
+     ]
+    },
+    {
+     "actor": "PF",
+     "items": [
+      {
+       "kind": "action",
+       "text": "Normal C/L as applicable; system resets only per QRH",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "FCTM",
+         "code": "AOP-30-30",
+         "page": "P 4/6",
+         "pdf": 85
+        },
+        {
+         "book": "PDP",
+         "code": "Management of abnormal operations",
+         "page": "XFTDN6ECAM00001",
+         "pdf": 426
+        }
+       ]
+      },
+      {
+       "kind": "callout",
+       "text": "CONTINUE ECAM",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "FCTM",
+         "code": "AOP-30-30",
+         "page": "P 3/6",
+         "pdf": 84
+        },
+        {
+         "book": "PDP",
+         "code": "Management of abnormal operations",
+         "page": "XFTDN6ECAM00001",
+         "pdf": 426
+        }
+       ]
+      }
+     ]
+    },
+    {
+     "actor": "PM",
+     "items": [
+      {
+       "kind": "action",
+       "text": "Read the whole STATUS page; preview APPR PROC workload",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "FCTM",
+         "code": "AOP-30-30",
+         "page": "P 3/6",
+         "pdf": 84
+        },
+        {
+         "book": "PDP",
+         "code": "Management of abnormal operations",
+         "page": "XFTDN6ECAM00001",
+         "pdf": 426
+        }
+       ]
+      },
+      {
+       "kind": "callout",
+       "text": "REMOVE STATUS ?",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "FCTM",
+         "code": "AOP-30-30",
+         "page": "P 3/6",
+         "pdf": 84
+        },
+        {
+         "book": "PDP",
+         "code": "Management of abnormal operations",
+         "page": "XFTDN6ECAM00001",
+         "pdf": 426
+        }
+       ]
+      }
+     ]
+    },
+    {
+     "actor": "PF",
+     "items": [
+      {
+       "kind": "callout",
+       "text": "REMOVE STATUS",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "FCOM",
+         "code": "PRO-ABN-ABN-00",
+         "page": "P 8/12",
+         "pdf": 2831
+        },
+        {
+         "book": "FCTM",
+         "code": "AOP-30-30",
+         "page": "P 3/6",
+         "pdf": 84
+        },
+        {
+         "book": "PDP",
+         "code": "Management of abnormal operations",
+         "page": "XFTDN6ECAM00001",
+         "pdf": 426
+        }
+       ]
+      }
+     ]
+    },
+    {
+     "actor": "PM",
+     "items": [
+      {
+       "kind": "callout",
+       "text": "ECAM ACTIONS COMPLETE",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "FCOM",
+         "code": "PRO-ABN-ABN-00",
+         "page": "P 8/12",
+         "pdf": 2831
+        },
+        {
+         "book": "PDP",
+         "code": "Management of abnormal operations",
+         "page": "XFTDN6ECAM00001",
+         "pdf": 426
+        }
+       ]
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "phase": "Approach and landing",
+   "steps": [
+    {
+     "actor": "PM",
+     "items": [
+      {
+       "kind": "ecam",
+       "item": "FOR LDG",
+       "setting": "FLAP LVR 3",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "FCOM",
+         "code": "PRO-ABN-F_CTL",
+         "page": "P 126/132",
+         "pdf": 3599
+        }
+       ]
+      },
+      {
+       "kind": "condition",
+       "text": "Flaps in CONF 3",
+       "children": [
+        {
+         "kind": "ecam",
+         "item": "GPWS LDG FLAP 3",
+         "setting": "ON",
+         "applies_to": [
+          "all"
+         ],
+         "refs": [
+          {
+           "book": "FCOM",
+           "code": "PRO-ABN-F_CTL",
+           "page": "P 126/132",
+           "pdf": 3599
+          }
+         ]
+        }
+       ],
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "FCOM",
+         "code": "PRO-ABN-F_CTL",
+         "page": "P 126/132",
+         "pdf": 3599
+        }
+       ]
+      },
+      {
+       "kind": "ecam",
+       "item": "APPR SPD",
+       "setting": "VREF + 10 KT",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "FCOM",
+         "code": "PRO-ABN-F_CTL",
+         "page": "P 126/132",
+         "pdf": 3599
+        }
+       ]
+      },
+      {
+       "kind": "ecam",
+       "item": "LDG DIST PROC",
+       "setting": "APPLY",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "FCOM",
+         "code": "PRO-ABN-F_CTL",
+         "page": "P 126/132",
+         "pdf": 3599
+        }
+       ]
+      }
+     ]
+    },
+    {
+     "actor": "PF",
+     "items": [
+      {
+       "kind": "condition",
+       "text": "IF MAN TRIM NOT AVAIL",
+       "children": [
+        {
+         "kind": "condition",
+         "text": "WHEN CONF 3 AND VAPP",
+         "children": [
+          {
+           "kind": "ecam",
+           "item": "L/G",
+           "setting": "DN",
+           "applies_to": [
+            "all"
+           ],
+           "refs": [
+            {
+             "book": "FCOM",
+             "code": "PRO-ABN-F_CTL",
+             "page": "P 126/132",
+             "pdf": 3599
+            }
+           ]
+          },
+          {
+           "kind": "note",
+           "text": "Landing gear extension is delayed, to delay the switching to direct law. It ensures the aircraft is correctly trimmed for the final approach",
+           "applies_to": [
+            "all"
+           ],
+           "refs": [
+            {
+             "book": "FCOM",
+             "code": "PRO-ABN-F_CTL",
+             "page": "P 126/132",
+             "pdf": 3599
+            },
+            {
+             "book": "FCTM",
+             "code": "PR-AEP-F_CTL",
+             "page": "P 4/6",
+             "pdf": 431
+            },
+            {
+             "book": "FCTM",
+             "code": "PR-AEP-F_CTL",
+             "page": "P 5/6",
+             "pdf": 432
+            }
+           ]
+          }
+         ],
+         "applies_to": [
+          "all"
+         ],
+         "refs": [
+          {
+           "book": "FCOM",
+           "code": "PRO-ABN-F_CTL",
+           "page": "P 126/132",
+           "pdf": 3599
+          }
+         ]
+        }
+       ],
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "FCOM",
+         "code": "PRO-ABN-F_CTL",
+         "page": "P 126/132",
+         "pdf": 3599
+        }
+       ]
+      },
+      {
+       "kind": "condition",
+       "text": "IF MAN TRIM AVAIL",
+       "children": [
+        {
+         "kind": "action",
+         "text": "Keep trimming for neutral elevator",
+         "applies_to": [
+          "all"
+         ],
+         "refs": [
+          {
+           "book": "FCOM",
+           "code": "PRO-ABN-F_CTL",
+           "page": "P 125/132",
+           "pdf": 3598
+          },
+          {
+           "book": "FCTM",
+           "code": "PR-AEP-F_CTL",
+           "page": "P 2/6",
+           "pdf": 429
+          }
+         ]
+        }
+       ],
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "FCOM",
+         "code": "PRO-ABN-F_CTL",
+         "page": "P 125/132",
+         "pdf": 3598
+        }
+       ]
+      },
+      {
+       "kind": "note",
+       "text": "WHEN L/G DN: DIRECT LAW, in pitch and in roll. The autotrim with the elevators is lost in direct law",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "FCOM",
+         "code": "PRO-ABN-F_CTL",
+         "page": "P 126/132",
+         "pdf": 3599
+        },
+        {
+         "book": "FCTM",
+         "code": "PR-AEP-F_CTL",
+         "page": "P 5/6",
+         "pdf": 432
+        }
+       ]
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "phase": "No ECAM: QRH STABILIZER JAM",
+   "steps": [
+    {
+     "actor": "PF",
+     "items": [
+      {
+       "kind": "condition",
+       "text": "The stabilizer is jammed with no ECAM warning",
+       "children": [
+        {
+         "kind": "callout",
+         "text": "STABILIZER JAM PROCEDURE",
+         "applies_to": [
+          "all"
+         ],
+         "refs": [
+          {
+           "book": "PDP",
+           "code": "Management of abnormal operations",
+           "page": "XFTDN6ECAM00001",
+           "pdf": 427
+          }
+         ]
+        },
+        {
+         "kind": "note",
+         "text": "Normal law remains active",
+         "applies_to": [
+          "all"
+         ],
+         "refs": [
+          {
+           "book": "FCOM",
+           "code": "PRO-ABN-F_CTL",
+           "page": "P 7/132",
+           "pdf": 3480
+          }
+         ]
+        }
+       ],
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "FCOM",
+         "code": "PRO-ABN-F_CTL",
+         "page": "P 7/132",
+         "pdf": 3480
+        }
+       ]
+      }
+     ]
+    },
+    {
+     "actor": "PM",
+     "items": [
+      {
+       "kind": "action",
+       "text": "READ AND DO the QRH lines aloud",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "PDP",
+         "code": "Management of abnormal operations",
+         "page": "XFTDN6ECAM00001",
+         "pdf": 427
+        }
+       ]
+      },
+      {
+       "kind": "ecam",
+       "item": "AP",
+       "setting": "OFF",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "QRH",
+         "code": "20.04",
+         "page": "20.04A",
+         "pdf": 192
+        },
+        {
+         "book": "FCOM",
+         "code": "PRO-ABN-F_CTL",
+         "page": "P 7/132",
+         "pdf": 3480
+        }
+       ]
+      },
+      {
+       "kind": "ecam",
+       "item": "MAN PITCH TRIM",
+       "setting": "CHECK",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "QRH",
+         "code": "20.04",
+         "page": "20.04A",
+         "pdf": 192
+        },
+        {
+         "book": "FCOM",
+         "code": "PRO-ABN-F_CTL",
+         "page": "P 7/132",
+         "pdf": 3480
+        }
+       ]
+      }
+     ]
+    },
+    {
+     "actor": "PF",
+     "items": [
+      {
+       "kind": "action",
+       "text": "Check the pitch trim wheel",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "QRH",
+         "code": "20.04",
+         "page": "20.04A",
+         "pdf": 192
+        },
+        {
+         "book": "FCOM",
+         "code": "PRO-ABN-F_CTL",
+         "page": "P 7/132",
+         "pdf": 3480
+        }
+       ]
+      },
+      {
+       "kind": "note",
+       "text": "The pitch trim wheel may not be fully jammed; the force needed may be higher than pre-takeoff manual setting",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "QRH",
+         "code": "20.04",
+         "page": "20.04A",
+         "pdf": 192
+        },
+        {
+         "book": "FCOM",
+         "code": "PRO-ABN-F_CTL",
+         "page": "P 7/132",
+         "pdf": 3480
+        }
+       ]
+      },
+      {
+       "kind": "condition",
+       "text": "If MAN PITCH TRIM available",
+       "children": [
+        {
+         "kind": "action",
+         "text": "TRIM FOR NEUTRAL ELEV: keep the elevator at the zero position on the F/CTL SD page",
+         "applies_to": [
+          "all"
+         ],
+         "refs": [
+          {
+           "book": "QRH",
+           "code": "20.04",
+           "page": "20.04A",
+           "pdf": 192
+          },
+          {
+           "book": "FCOM",
+           "code": "PRO-ABN-F_CTL",
+           "page": "P 7/132",
+           "pdf": 3480
+          }
+         ]
+        }
+       ],
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "QRH",
+         "code": "20.04",
+         "page": "20.04A",
+         "pdf": 192
+        },
+        {
+         "book": "FCOM",
+         "code": "PRO-ABN-F_CTL",
+         "page": "P 7/132",
+         "pdf": 3480
+        }
+       ]
+      }
+     ]
+    },
+    {
+     "actor": "PM",
+     "items": [
+      {
+       "kind": "condition",
+       "text": "If MAN PITCH TRIM not available",
+       "children": [
+        {
+         "kind": "ecam",
+         "item": "FOR LDG",
+         "setting": "FLAP LVR 3",
+         "applies_to": [
+          "all"
+         ],
+         "refs": [
+          {
+           "book": "QRH",
+           "code": "20.04",
+           "page": "20.04A",
+           "pdf": 192
+          },
+          {
+           "book": "FCOM",
+           "code": "PRO-ABN-F_CTL",
+           "page": "P 7/132",
+           "pdf": 3480
+          }
+         ]
+        },
+        {
+         "kind": "note",
+         "text": "Do not select CONF FULL, in order not to degrade the handling qualities",
+         "applies_to": [
+          "all"
+         ],
+         "refs": [
+          {
+           "book": "FCOM",
+           "code": "PRO-ABN-F_CTL",
+           "page": "P 7/132",
+           "pdf": 3480
+          }
+         ]
+        },
+        {
+         "kind": "ecam",
+         "item": "GPWS LDG FLAP 3",
+         "setting": "ON",
+         "applies_to": [
+          "all"
+         ],
+         "refs": [
+          {
+           "book": "QRH",
+           "code": "20.04",
+           "page": "20.04A",
+           "pdf": 192
+          },
+          {
+           "book": "FCOM",
+           "code": "PRO-ABN-F_CTL",
+           "page": "P 7/132",
+           "pdf": 3480
+          }
+         ]
+        }
+       ],
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "QRH",
+         "code": "20.04",
+         "page": "20.04A",
+         "pdf": 192
+        },
+        {
+         "book": "FCOM",
+         "code": "PRO-ABN-F_CTL",
+         "page": "P 7/132",
+         "pdf": 3480
+        }
+       ]
+      },
+      {
+       "kind": "action",
+       "text": "CAT 1 ONLY",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "QRH",
+         "code": "20.04",
+         "page": "20.04A",
+         "pdf": 192
+        },
+        {
+         "book": "FCOM",
+         "code": "PRO-ABN-F_CTL",
+         "page": "P 7/132",
+         "pdf": 3480
+        }
+       ]
+      },
+      {
+       "kind": "callout",
+       "text": "STABILIZER JAM PROCEDURE COMPLETED",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "PDP",
+         "code": "Management of abnormal operations",
+         "page": "XFTDN6ECAM00001",
+         "pdf": 427
+        }
+       ]
+      }
+     ]
+    }
+   ]
+  }
+ ],
+ "procedures": [
+  {
+   "title": "F/CTL STABILIZER JAM — ECAM procedure",
+   "source": "FCOM PRO-ABN-F_CTL",
+   "lines": [
+    {
+     "kind": "action",
+     "item": "MAN PITCH TRIM",
+     "setting": "CHECK",
+     "text": "The force needed on the PITCH TRIM wheel may be higher than during pre-takeoff manual setting.",
+     "level": 0,
+     "applies_to": [
+      "all"
+     ],
+     "refs": [
+      {
+       "book": "FCOM",
+       "code": "PRO-ABN-F_CTL",
+       "page": "P 125/132",
+       "pdf": 3598
+      }
+     ]
+    },
+    {
+     "kind": "condition",
+     "text": "IF MAN TRIM AVAIL:",
+     "level": 0,
+     "applies_to": [
+      "all"
+     ],
+     "refs": [
+      {
+       "book": "FCOM",
+       "code": "PRO-ABN-F_CTL",
+       "page": "P 125/132",
+       "pdf": 3598
+      }
+     ]
+    },
+    {
+     "kind": "info",
+     "text": "TRIM FOR NEUTRAL ELEV",
+     "level": 1,
+     "applies_to": [
+      "all"
+     ],
+     "refs": [
+      {
+       "book": "FCOM",
+       "code": "PRO-ABN-F_CTL",
+       "page": "P 125/132",
+       "pdf": 3598
+      }
+     ]
+    },
+    {
+     "kind": "note",
+     "text": "If manual pitch trim is available, trim to maintain the elevator at the zero position (indications on F/CTL SD page).",
+     "level": 1,
+     "applies_to": [
+      "all"
+     ],
+     "refs": [
+      {
+       "book": "FCOM",
+       "code": "PRO-ABN-F_CTL",
+       "page": "P 125/132",
+       "pdf": 3598
+      }
+     ]
+    },
+    {
+     "kind": "info",
+     "text": "MANEUVER WITH CARE",
+     "level": 0,
+     "applies_to": [
+      "all"
+     ],
+     "refs": [
+      {
+       "book": "FCOM",
+       "code": "PRO-ABN-F_CTL",
+       "page": "P 125/132",
+       "pdf": 3598
+      }
+     ]
+    },
+    {
+     "kind": "condition",
+     "text": "FOR GO-AROUND:",
+     "level": 0,
+     "applies_to": [
+      "all"
+     ],
+     "refs": [
+      {
+       "book": "FCOM",
+       "code": "PRO-ABN-F_CTL",
+       "page": "P 125/132",
+       "pdf": 3598
+      }
+     ]
+    },
+    {
+     "kind": "info",
+     "text": "MAX PITCH 15 DEG",
+     "level": 1,
+     "applies_to": [
+      "all"
+     ],
+     "refs": [
+      {
+       "book": "FCOM",
+       "code": "PRO-ABN-F_CTL",
+       "page": "P 125/132",
+       "pdf": 3598
+      }
+     ]
+    },
+    {
+     "kind": "action",
+     "item": "THR LVR",
+     "setting": "TOGA THEN MCT",
+     "text": "This line is not displayed if one engine is inoperative.",
+     "level": 1,
+     "applies_to": [
+      "all"
+     ],
+     "refs": [
+      {
+       "book": "FCOM",
+       "code": "PRO-ABN-F_CTL",
+       "page": "P 125/132",
+       "pdf": 3598
+      }
+     ]
+    },
+    {
+     "kind": "info",
+     "text": "ASSOCIATED PROCEDURES: F/CTL ALTN LAW (PROT LOST)",
+     "level": 0,
+     "applies_to": [
+      "all"
+     ],
+     "refs": [
+      {
+       "book": "FCOM",
+       "code": "PRO-ABN-F_CTL",
+       "page": "P 125/132",
+       "pdf": 3598
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "title": "[QRH] STABILIZER JAM — no ECAM",
+   "source": "QRH 20.04A / FCOM PRO-ABN-F_CTL",
+   "lines": [
+    {
+     "kind": "note",
+     "text": "The ELACs may not detect a stabilizer jam when the pitch trim wheel is jammed. The flight control normal law remains active in this case and there is no ECAM warning. Apply the following procedure.",
+     "level": 0,
+     "applies_to": [
+      "all"
+     ],
+     "refs": [
+      {
+       "book": "FCOM",
+       "code": "PRO-ABN-F_CTL",
+       "page": "P 7/132",
+       "pdf": 3480
+      }
+     ]
+    },
+    {
+     "kind": "action",
+     "item": "AP",
+     "setting": "OFF",
+     "text": "",
+     "level": 0,
+     "applies_to": [
+      "all"
+     ],
+     "refs": [
+      {
+       "book": "QRH",
+       "code": "20.04",
+       "page": "20.04A",
+       "pdf": 192
+      }
+     ]
+    },
+    {
+     "kind": "action",
+     "item": "MAN PITCH TRIM",
+     "setting": "CHECK",
+     "text": "The pitch trim wheel may not be fully jammed, the force needed may be higher than pre-takeoff manual setting.",
+     "level": 0,
+     "applies_to": [
+      "all"
+     ],
+     "refs": [
+      {
+       "book": "QRH",
+       "code": "20.04",
+       "page": "20.04A",
+       "pdf": 192
+      }
+     ]
+    },
+    {
+     "kind": "condition",
+     "text": "If MAN PITCH TRIM available:",
+     "level": 0,
+     "applies_to": [
+      "all"
+     ],
+     "refs": [
+      {
+       "book": "QRH",
+       "code": "20.04",
+       "page": "20.04A",
+       "pdf": 192
+      }
+     ]
+    },
+    {
+     "kind": "info",
+     "text": "TRIM FOR NEUTRAL ELEV",
+     "level": 1,
+     "applies_to": [
+      "all"
+     ],
+     "refs": [
+      {
+       "book": "QRH",
+       "code": "20.04",
+       "page": "20.04A",
+       "pdf": 192
+      }
+     ]
+    },
+    {
+     "kind": "note",
+     "text": "If manual pitch trim is available, trim to maintain the elevator at the zero position (indications on F/CTL SD page).",
+     "level": 1,
+     "applies_to": [
+      "all"
+     ],
+     "refs": [
+      {
+       "book": "QRH",
+       "code": "20.04",
+       "page": "20.04A",
+       "pdf": 192
+      }
+     ]
+    },
+    {
+     "kind": "condition",
+     "text": "If MAN PITCH TRIM not available:",
+     "level": 0,
+     "applies_to": [
+      "all"
+     ],
+     "refs": [
+      {
+       "book": "QRH",
+       "code": "20.04",
+       "page": "20.04A",
+       "pdf": 192
+      }
+     ]
+    },
+    {
+     "kind": "action",
+     "item": "FOR LDG",
+     "setting": "FLAP LVR 3",
+     "text": "Do not select CONF FULL, in order not to degrade the handling qualities.",
+     "level": 1,
+     "applies_to": [
+      "all"
+     ],
+     "refs": [
+      {
+       "book": "QRH",
+       "code": "20.04",
+       "page": "20.04A",
+       "pdf": 192
+      }
+     ]
+    },
+    {
+     "kind": "action",
+     "item": "GPWS LDG FLAP 3",
+     "setting": "ON",
+     "text": "",
+     "level": 1,
+     "applies_to": [
+      "all"
+     ],
+     "refs": [
+      {
+       "book": "QRH",
+       "code": "20.04",
+       "page": "20.04A",
+       "pdf": 192
+      }
+     ]
+    },
+    {
+     "kind": "info",
+     "text": "CAT 1 ONLY",
+     "level": 0,
+     "applies_to": [
+      "all"
+     ],
+     "refs": [
+      {
+       "book": "QRH",
+       "code": "20.04",
+       "page": "20.04A",
+       "pdf": 192
+      }
+     ]
+    }
+   ]
+  }
+ ],
+ "status": {
+  "limitations": [
+   {
+    "text": "MAX SPEED …… 320 KT",
+    "applies_to": [
+     "all"
+    ],
+    "refs": [
+     {
+      "book": "FCOM",
+      "code": "PRO-ABN-F_CTL",
+      "page": "P 126/132",
+      "pdf": 3599
+     }
+    ]
+   },
+   {
+    "text": "MANEUVER WITH CARE",
+    "applies_to": [
+     "all"
+    ],
+    "refs": [
+     {
+      "book": "FCOM",
+      "code": "PRO-ABN-F_CTL",
+      "page": "P 126/132",
+      "pdf": 3599
+     }
+    ]
+   },
+   {
+    "text": "FOR GO-AROUND: MAX PITCH 15 DEG; THR LVR …… TOGA THEN MCT (not displayed if one engine is inoperative)",
+    "applies_to": [
+     "all"
+    ],
+    "refs": [
+     {
+      "book": "FCOM",
+      "code": "PRO-ABN-F_CTL",
+      "page": "P 126/132",
+      "pdf": 3599
+     }
+    ]
+   }
+  ],
+  "info": [
+   {
+    "text": "ALTN LAW: PROT LOST",
+    "applies_to": [
+     "all"
+    ],
+    "refs": [
+     {
+      "book": "FCOM",
+      "code": "PRO-ABN-F_CTL",
+      "page": "P 126/132",
+      "pdf": 3599
+     }
+    ]
+   },
+   {
+    "text": "WHEN L/G DN: DIRECT LAW — at landing gear extension, control reverts to direct law in pitch, as well as in roll",
+    "applies_to": [
+     "all"
+    ],
+    "refs": [
+     {
+      "book": "FCOM",
+      "code": "PRO-ABN-F_CTL",
+      "page": "P 126/132",
+      "pdf": 3599
+     }
+    ]
+   }
+  ],
+  "appr_proc": [
+   {
+    "kind": "action",
+    "item": "FOR LDG",
+    "setting": "FLAP LVR 3",
+    "text": "Replaced by \"FOR LDG : FLAP LVR 3\" when CONF 3 is selected, as a reminder.",
+    "level": 0,
+    "applies_to": [
+     "all"
+    ],
+    "refs": [
+     {
+      "book": "FCOM",
+      "code": "PRO-ABN-F_CTL",
+      "page": "P 126/132",
+      "pdf": 3599
+     }
+    ]
+   },
+   {
+    "kind": "action",
+    "item": "GPWS LDG FLAP 3",
+    "setting": "ON",
+    "text": "Will be displayed when flaps in CONF 3.",
+    "level": 0,
+    "applies_to": [
+     "all"
+    ],
+    "refs": [
+     {
+      "book": "FCOM",
+      "code": "PRO-ABN-F_CTL",
+      "page": "P 126/132",
+      "pdf": 3599
+     }
+    ]
+   },
+   {
+    "kind": "condition",
+    "text": "IF MAN TRIM NOT AVAIL:",
+    "level": 0,
+    "applies_to": [
+     "all"
+    ],
+    "refs": [
+     {
+      "book": "FCOM",
+      "code": "PRO-ABN-F_CTL",
+      "page": "P 126/132",
+      "pdf": 3599
+     }
+    ]
+   },
+   {
+    "kind": "condition",
+    "text": "WHEN CONF 3 AND VAPP:",
+    "level": 1,
+    "applies_to": [
+     "all"
+    ],
+    "refs": [
+     {
+      "book": "FCOM",
+      "code": "PRO-ABN-F_CTL",
+      "page": "P 126/132",
+      "pdf": 3599
+     }
+    ]
+   },
+   {
+    "kind": "action",
+    "item": "L/G",
+    "setting": "DN",
+    "text": "Landing gear extension is delayed, in order to delay the switching to direct law.",
+    "level": 2,
+    "applies_to": [
+     "all"
+    ],
+    "refs": [
+     {
+      "book": "FCOM",
+      "code": "PRO-ABN-F_CTL",
+      "page": "P 126/132",
+      "pdf": 3599
+     }
+    ]
+   },
+   {
+    "kind": "action",
+    "item": "APPR SPD",
+    "setting": "VREF + 10 KT",
+    "text": "",
+    "level": 0,
+    "applies_to": [
+     "all"
+    ],
+    "refs": [
+     {
+      "book": "FCOM",
+      "code": "PRO-ABN-F_CTL",
+      "page": "P 126/132",
+      "pdf": 3599
+     }
+    ]
+   },
+   {
+    "kind": "action",
+    "item": "LDG DIST PROC",
+    "setting": "APPLY",
+    "text": "",
+    "level": 0,
+    "applies_to": [
+     "all"
+    ],
+    "refs": [
+     {
+      "book": "FCOM",
+      "code": "PRO-ABN-F_CTL",
+      "page": "P 126/132",
+      "pdf": 3599
+     }
+    ]
+   }
+  ],
+  "inop_sys": [
+   {
+    "text": "F/CTL PROT",
+    "applies_to": [
+     "all"
+    ],
+    "refs": [
+     {
+      "book": "FCOM",
+      "code": "PRO-ABN-F_CTL",
+      "page": "P 126/132",
+      "pdf": 3599
+     }
+    ]
+   },
+   {
+    "text": "STABILIZER",
+    "applies_to": [
+     "all"
+    ],
+    "refs": [
+     {
+      "book": "FCOM",
+      "code": "PRO-ABN-F_CTL",
+      "page": "P 126/132",
+      "pdf": 3599
+     }
+    ]
+   },
+   {
+    "text": "ELAC PITCH",
+    "applies_to": [
+     "all"
+    ],
+    "refs": [
+     {
+      "book": "FCOM",
+      "code": "PRO-ABN-F_CTL",
+      "page": "P 126/132",
+      "pdf": 3599
+     }
+    ]
+   },
+   {
+    "text": "AP 1 + 2",
+    "applies_to": [
+     "all"
+    ],
+    "refs": [
+     {
+      "book": "FCOM",
+      "code": "PRO-ABN-F_CTL",
+      "page": "P 126/132",
+      "pdf": 3599
+     }
+    ]
+   },
+   {
+    "text": "CAT 2",
+    "applies_to": [
+     "all"
+    ],
+    "refs": [
+     {
+      "book": "FCOM",
+      "code": "PRO-ABN-F_CTL",
+      "page": "P 126/132",
+      "pdf": 3599
+     }
+    ]
+   },
+   {
+    "text": "GLS AUTOLAND",
+    "applies_to": [
+     "all"
+    ],
+    "refs": [
+     {
+      "book": "FCOM",
+      "code": "PRO-ABN-F_CTL",
+      "page": "P 126/132",
+      "pdf": 3599
+     }
+    ]
+   },
+   {
+    "text": "STEEP APPR",
+    "applies_to": [
+     "all"
+    ],
+    "refs": [
+     {
+      "book": "FCOM",
+      "code": "PRO-ABN-F_CTL",
+      "page": "P 126/132",
+      "pdf": 3599
+     }
+    ]
+   }
+  ]
+ },
+ "background": [
+  {
+   "text": "The ECAM alert triggers on a loss of electrical control of the stabilizer. Pitch reverts to alternate law, and the autotrim remains available with the elevators commanded by the SEC.",
+   "applies_to": [
+    "all"
+   ],
+   "refs": [
+    {
+     "book": "FCTM",
+     "code": "PR-AEP-F_CTL",
+     "page": "P 2/6",
+     "pdf": 429
+    }
+   ]
+  },
+  {
+   "text": "Depending on the type of failure, the MAN PITCH TRIM may still be available.",
+   "applies_to": [
+    "all"
+   ],
+   "refs": [
+    {
+     "book": "FCOM",
+     "code": "PRO-ABN-F_CTL",
+     "page": "P 125/132",
+     "pdf": 3598
+    },
+    {
+     "book": "FCTM",
+     "code": "PR-AEP-F_CTL",
+     "page": "P 2/6",
+     "pdf": 429
+    }
+   ]
+  },
+  {
+   "text": "With the THS jammed with the alert F/CTL STABILIZER JAM: pitch alternate law with reduced protections, roll direct, yaw alternate.",
+   "applies_to": [
+    "all"
+   ],
+   "refs": [
+    {
+     "book": "FCOM",
+     "code": "DSC-27-20-20",
+     "page": "P 3/20",
+     "pdf": 1614
+    },
+    {
+     "book": "FCOM",
+     "code": "DSC-27-20-20",
+     "page": "P 4/20",
+     "pdf": 1615
+    }
+   ]
+  }
+ ],
+ "technique": [
+  {
+   "text": "Trimming for neutral elevator provides maximum authority to the elevators. Elevators in the UP position: move the wheel nose UP. Elevators in the DOWN position: move the wheel nose DOWN. Neutral is shown on the F/CTL SD page.",
+   "applies_to": [
+    "all"
+   ],
+   "refs": [
+    {
+     "book": "FCTM",
+     "code": "PR-AEP-F_CTL",
+     "page": "P 2/6",
+     "pdf": 429
+    },
+    {
+     "book": "FCTM",
+     "code": "PR-AEP-F_CTL",
+     "page": "P 3/6",
+     "pdf": 430
+    },
+    {
+     "book": "FCTM",
+     "code": "PR-AEP-F_CTL",
+     "page": "P 4/6",
+     "pdf": 431
+    }
+   ]
+  },
+  {
+   "text": "If manual trim is not available, extend the gear after CONF 3 and stabilization at VAPP. This ensures the aircraft is correctly trimmed for the final approach when control reverts to direct law, since the autotrim with the elevators is lost in direct law.",
+   "applies_to": [
+    "all"
+   ],
+   "refs": [
+    {
+     "book": "FCTM",
+     "code": "PR-AEP-F_CTL",
+     "page": "P 4/6",
+     "pdf": 431
+    },
+    {
+     "book": "FCTM",
+     "code": "PR-AEP-F_CTL",
+     "page": "P 5/6",
+     "pdf": 432
+    }
+   ]
+  }
+ ],
+ "related": [
+  {
+   "title": "HYD G+Y SYS LO PR",
+   "why": "The stabilizer is also lost in this failure: MAN TRIM is unusable and the same VAPP-before-gear rule applies",
+   "key_actions": [
+    "See the HYD G+Y brief"
+   ],
+   "refs": [
+    {
+     "book": "FCTM",
+     "code": "PR-AEP-HYD",
+     "page": "P 3/4",
+     "pdf": 440
+    },
+    {
+     "book": "QRH",
+     "code": "23.03",
+     "page": "23.03A",
+     "pdf": 212
+    }
+   ]
+  },
+  {
+   "title": "F/CTL ALTN LAW",
+   "why": "Associated procedure (PROT LOST)",
+   "key_actions": [
+    "See the ALTN LAW brief"
+   ],
+   "refs": [
+    {
+     "book": "FCOM",
+     "code": "PRO-ABN-F_CTL",
+     "page": "P 125/132",
+     "pdf": 3598
+    },
+    {
+     "book": "FCOM",
+     "code": "PRO-ABN-F_CTL",
+     "page": "P 9/132",
+     "pdf": 3482
+    }
+   ]
+  },
+  {
+   "title": "F/CTL DIRECT LAW",
+   "why": "At landing gear extension",
+   "key_actions": [
+    "See the DIRECT LAW brief"
+   ],
+   "refs": [
+    {
+     "book": "FCOM",
+     "code": "PRO-ABN-F_CTL",
+     "page": "P 126/132",
+     "pdf": 3599
+    },
+    {
+     "book": "FCOM",
+     "code": "PRO-ABN-F_CTL",
+     "page": "P 18/132",
+     "pdf": 3491
+    }
+   ]
+  }
+ ],
+ "gaps": [
+  {
+   "text": "The manuals say \"the flight crew\" uses the pitch trim wheel; the PF is shown from instructor practice. The PDP has no slide for this failure.",
+   "applies_to": [
+    "all"
+   ],
+   "refs": [
+    {
+     "book": "FCTM",
+     "code": "PR-AEP-F_CTL",
+     "page": "P 2/6",
+     "pdf": 429
+    }
+   ]
+  },
+  {
+   "text": "The QRH procedure has no APPR SPD or gear extension line, so the VREF + 10 KT and the VAPP-before-gear rule are shown only for the ECAM case. The manuals do not state them for the no-ECAM case, where normal law remains.",
+   "applies_to": [
+    "all"
+   ],
+   "refs": [
+    {
+     "book": "QRH",
+     "code": "20.04",
+     "page": "20.04A",
+     "pdf": 192
+    },
+    {
+     "book": "FCOM",
+     "code": "PRO-ABN-F_CTL",
+     "page": "P 7/132",
+     "pdf": 3480
+    },
+    {
+     "book": "FCOM",
+     "code": "PRO-ABN-F_CTL",
+     "page": "P 126/132",
+     "pdf": 3599
+    }
+   ]
+  },
+  {
+   "text": "The QRH says CAT 1 ONLY; the ECAM STATUS lists CAT 2 under INOP SYS. Each is quoted as written.",
+   "applies_to": [
+    "all"
+   ],
+   "refs": [
+    {
+     "book": "QRH",
+     "code": "20.04",
+     "page": "20.04A",
+     "pdf": 192
+    },
+    {
+     "book": "FCOM",
+     "code": "PRO-ABN-F_CTL",
+     "page": "P 126/132",
+     "pdf": 3599
+    }
+   ]
+  },
+  {
+   "text": "No fuel penalty entry exists for F/CTL STABILIZER JAM in the QRH table.",
+   "applies_to": [
+    "all"
+   ],
+   "refs": [
+    {
+     "book": "QRH",
+     "code": "OPS.04",
+     "page": "OPS.04C",
+     "pdf": 275
+    },
+    {
+     "book": "QRH",
+     "code": "OPS.04",
+     "page": "OPS.04E",
+     "pdf": 277
+    }
+   ]
+  },
+  {
+   "text": "F/CTL STABILIZER JAM is not in the QRH reset table.",
+   "applies_to": [
+    "all"
+   ],
+   "refs": [
+    {
+     "book": "QRH",
+     "code": "02.02",
+     "page": "02.02A",
+     "pdf": 51
+    }
+   ]
+  },
+  {
+   "text": "The syllabus says \"stabilizer jam\" and does not say which version the simulator presents; both are shown.",
+   "applies_to": [
+    "all"
+   ],
+   "refs": [
+    {
+     "book": "FCOM",
+     "code": "PRO-ABN-F_CTL",
+     "page": "P 124/132",
+     "pdf": 3597
+    },
+    {
+     "book": "FCOM",
+     "code": "PRO-ABN-F_CTL",
+     "page": "P 7/132",
+     "pdf": 3480
+    }
+   ]
+  }
+ ],
+ "sources": [
+  {
+   "book": "FCOM",
+   "section": "PRO-ABN-F_CTL — F/CTL STABILIZER JAM (HS-TX)",
+   "pages": "P 124–126/132",
+   "pdf": "3597–3599",
+   "rev": "26 MAY 26"
+  },
+  {
+   "book": "FCOM",
+   "section": "PRO-ABN-F_CTL — [QRH] STABILIZER JAM",
+   "pages": "P 7/132",
+   "pdf": "3480",
+   "rev": "26 MAY 26"
+  },
+  {
+   "book": "QRH",
+   "section": "20.04 — STABILIZER JAM",
+   "pages": "20.04A",
+   "pdf": "192",
+   "rev": "26 MAY 26"
+  },
+  {
+   "book": "FCTM",
+   "section": "PR-AEP-F_CTL — stabilizer jam",
+   "pages": "P 2–5/6",
+   "pdf": "429–432",
+   "rev": "26 MAY 26"
+  },
+  {
+   "book": "FCOM",
+   "section": "DSC-27-20-20 — reconfiguration laws",
+   "pages": "P 3–4/20",
+   "pdf": "1614–1615",
+   "rev": "18 FEB 26"
+  },
+  {
+   "book": "PDP",
+   "section": "Management of abnormal operations",
+   "pages": "—",
+   "pdf": "427",
+   "rev": ""
+  }
+ ],
+ "schema": "a320-ecam-abnormal/3",
+ "generated": "2026-10-31",
+ "qrh": [],
+ "tables": [],
+ "differences": []
+}

@@ -1,0 +1,1369 @@
+{
+ "slug": "l-g-gravity-extension",
+ "title": "L/G GRAVITY EXTENSION",
+ "kind": "qrh",
+ "alert": {
+  "level": "qrh",
+  "land_asap": "none",
+  "memory_items": false,
+  "qrh_summary": false,
+  "trigger": "A QRH procedure, requested by L/G GRVTY PROC on an ECAM STATUS page or after L/G GEAR NOT DOWNLOCKED.",
+  "inhibited_phases": [],
+  "refs": [
+   {
+    "book": "QRH",
+    "code": "24.02",
+    "page": "24.02A",
+    "pdf": 216
+   },
+   {
+    "book": "FCOM",
+    "code": "PRO-ABN-LG",
+    "page": "P 7/30",
+    "pdf": 3772
+   }
+  ]
+ },
+ "effectivity": {
+  "branches": [],
+  "note": "QRH and FCOM blocks for ALL aircraft."
+ },
+ "summary": "The gear free-falls when the handcrank is pulled and turned 3 turns clockwise to the mechanical stop. Then set the L/G lever DOWN and check the gear down indications. Do not apply it if at least one green triangle shows on each gear. After a successful extension do not reset the free-fall system; if it fails, apply LDG WITH ABNORMAL L/G.",
+ "key_limits": [
+  {
+   "label": "Handcrank",
+   "value": "3 turns clockwise, to the mechanical stop, even if resistance is felt",
+   "applies_to": [
+    "all"
+   ],
+   "refs": [
+    {
+     "book": "QRH",
+     "code": "24.02",
+     "page": "24.02A",
+     "pdf": 216
+    },
+    {
+     "book": "FCOM",
+     "code": "PRO-ABN-LG",
+     "page": "P 7/30",
+     "pdf": 3772
+    }
+   ]
+  },
+  {
+   "label": "Do not apply if",
+   "value": "At least one green triangle on each gear on the WHEEL SD page",
+   "applies_to": [
+    "all"
+   ],
+   "refs": [
+    {
+     "book": "QRH",
+     "code": "24.02",
+     "page": "24.02A",
+     "pdf": 216
+    },
+    {
+     "book": "FCOM",
+     "code": "PRO-ABN-LG",
+     "page": "P 7/30",
+     "pdf": 3772
+    }
+   ]
+  },
+  {
+   "label": "After L/G GEAR NOT DOWNLOCKED, if time permits",
+   "value": "Up to 4 recycles: wait at least 60 s after each; then wait at least 120 s",
+   "applies_to": [
+    "all"
+   ],
+   "refs": [
+    {
+     "book": "QRH",
+     "code": "24.02",
+     "page": "24.02A",
+     "pdf": 216
+    },
+    {
+     "book": "FCOM",
+     "code": "PRO-ABN-LG",
+     "page": "P 7/30",
+     "pdf": 3772
+    }
+   ]
+  },
+  {
+   "label": "Fuel penalty, gear and doors open",
+   "value": "145 %",
+   "applies_to": [
+    "all"
+   ],
+   "refs": [
+    {
+     "book": "QRH",
+     "code": "OPS.04",
+     "page": "OPS.04D",
+     "pdf": 276
+    },
+    {
+     "book": "QRH",
+     "code": "OPS.04",
+     "page": "OPS.04F",
+     "pdf": 278
+    }
+   ]
+  }
+ ],
+ "flow": [
+  {
+   "phase": "Order",
+   "steps": [
+    {
+     "actor": "PF",
+     "items": [
+      {
+       "kind": "callout",
+       "text": "L/G GRAVITY EXTENSION PROCEDURE",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "PDP",
+         "code": "Management of abnormal operations",
+         "page": "XFTDN6ECAM00001",
+         "pdf": 427
+        }
+       ]
+      }
+     ]
+    },
+    {
+     "actor": "PF",
+     "items": [
+      {
+       "kind": "note",
+       "text": "When the ECAM asks for the procedure, keep the ECAM displayed and do the QRH procedure",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "FCTM",
+         "code": "AOP-30-30",
+         "page": "P 3/6",
+         "pdf": 84
+        },
+        {
+         "book": "PDP",
+         "code": "Management of abnormal operations",
+         "page": "XFTDN6ECAM00001",
+         "pdf": 431
+        }
+       ]
+      }
+     ]
+    },
+    {
+     "actor": "PM",
+     "items": [
+      {
+       "kind": "action",
+       "text": "READ AND DO the QRH lines aloud",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "PDP",
+         "code": "Management of abnormal operations",
+         "page": "XFTDN6ECAM00001",
+         "pdf": 427
+        }
+       ]
+      },
+      {
+       "kind": "note",
+       "text": "CAUTION: do not apply if at least one green triangle shows on each gear. Disregard any possible GPWS \"TOO LOW GEAR\" aural alert",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "QRH",
+         "code": "24.02",
+         "page": "24.02A",
+         "pdf": 216
+        },
+        {
+         "book": "FCTM",
+         "code": "PR-AEP-LG",
+         "page": "P 1/4",
+         "pdf": 442
+        }
+       ]
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "phase": "Recycle first, after L/G GEAR NOT DOWNLOCKED",
+   "steps": [
+    {
+     "actor": "PM",
+     "items": [
+      {
+       "kind": "condition",
+       "text": "If L/G GEAR NOT DOWNLOCKED alert was displayed and IF TIME PERMITS",
+       "children": [
+        {
+         "kind": "ecam",
+         "item": "L/G lever",
+         "setting": "UP",
+         "applies_to": [
+          "all"
+         ],
+         "refs": [
+          {
+           "book": "QRH",
+           "code": "24.02",
+           "page": "24.02A",
+           "pdf": 216
+          }
+         ]
+        },
+        {
+         "kind": "action",
+         "text": "WAIT L/G UPLOCKED",
+         "applies_to": [
+          "all"
+         ],
+         "refs": [
+          {
+           "book": "QRH",
+           "code": "24.02",
+           "page": "24.02A",
+           "pdf": 216
+          }
+         ]
+        },
+        {
+         "kind": "ecam",
+         "item": "L/G lever",
+         "setting": "DOWN",
+         "applies_to": [
+          "all"
+         ],
+         "refs": [
+          {
+           "book": "QRH",
+           "code": "24.02",
+           "page": "24.02A",
+           "pdf": 216
+          }
+         ]
+        },
+        {
+         "kind": "action",
+         "text": "WAIT AT LEAST 60 s",
+         "applies_to": [
+          "all"
+         ],
+         "refs": [
+          {
+           "book": "QRH",
+           "code": "24.02",
+           "page": "24.02A",
+           "pdf": 216
+          }
+         ]
+        },
+        {
+         "kind": "condition",
+         "text": "If unsuccessful",
+         "children": [
+          {
+           "kind": "action",
+           "text": "REPEAT UP TO THREE TIMES",
+           "applies_to": [
+            "all"
+           ],
+           "refs": [
+            {
+             "book": "QRH",
+             "code": "24.02",
+             "page": "24.02A",
+             "pdf": 216
+            }
+           ]
+          },
+          {
+           "kind": "condition",
+           "text": "If unsuccessful after 4 attempts",
+           "children": [
+            {
+             "kind": "action",
+             "text": "WAIT AT LEAST 120 s",
+             "applies_to": [
+              "all"
+             ],
+             "refs": [
+              {
+               "book": "QRH",
+               "code": "24.02",
+               "page": "24.02A",
+               "pdf": 216
+              }
+             ]
+            },
+            {
+             "kind": "action",
+             "text": "Continue with the handcrank",
+             "applies_to": [
+              "all"
+             ],
+             "refs": [
+              {
+               "book": "QRH",
+               "code": "24.02",
+               "page": "24.02A",
+               "pdf": 216
+              }
+             ]
+            }
+           ],
+           "applies_to": [
+            "all"
+           ],
+           "refs": [
+            {
+             "book": "QRH",
+             "code": "24.02",
+             "page": "24.02A",
+             "pdf": 216
+            }
+           ]
+          }
+         ],
+         "applies_to": [
+          "all"
+         ],
+         "refs": [
+          {
+           "book": "QRH",
+           "code": "24.02",
+           "page": "24.02A",
+           "pdf": 216
+          }
+         ]
+        }
+       ],
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "QRH",
+         "code": "24.02",
+         "page": "24.02A",
+         "pdf": 216
+        },
+        {
+         "book": "FCOM",
+         "code": "PRO-ABN-LG",
+         "page": "P 7/30",
+         "pdf": 3772
+        }
+       ]
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "phase": "Gravity extension",
+   "steps": [
+    {
+     "actor": "PM",
+     "items": [
+      {
+       "kind": "ecam",
+       "item": "GRAVITY GEAR EXTN handcrank",
+       "setting": "PULL AND TURN",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "QRH",
+         "code": "24.02",
+         "page": "24.02A",
+         "pdf": 216
+        },
+        {
+         "book": "FCOM",
+         "code": "PRO-ABN-LG",
+         "page": "P 7/30",
+         "pdf": 3772
+        }
+       ]
+      },
+      {
+       "kind": "note",
+       "text": "Rotate the handle clockwise 3 turns until reaching the mechanical stop, even if resistance is felt",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "QRH",
+         "code": "24.02",
+         "page": "24.02A",
+         "pdf": 216
+        },
+        {
+         "book": "FCOM",
+         "code": "PRO-ABN-LG",
+         "page": "P 7/30",
+         "pdf": 3772
+        }
+       ]
+      },
+      {
+       "kind": "ecam",
+       "item": "L/G lever",
+       "setting": "DOWN",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "QRH",
+         "code": "24.02",
+         "page": "24.02A",
+         "pdf": 216
+        },
+        {
+         "book": "FCOM",
+         "code": "PRO-ABN-LG",
+         "page": "P 7/30",
+         "pdf": 3772
+        }
+       ]
+      },
+      {
+       "kind": "note",
+       "text": "Extinguishes the UNLK lights, avoids the L/G CTL message and minimizes the risk of retraction on the ground",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "FCOM",
+         "code": "PRO-ABN-LG",
+         "page": "P 7/30",
+         "pdf": 3772
+        }
+       ]
+      },
+      {
+       "kind": "ecam",
+       "item": "GEAR DOWN indications (if available)",
+       "setting": "CHECK",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "QRH",
+         "code": "24.02",
+         "page": "24.02A",
+         "pdf": 216
+        },
+        {
+         "book": "FCOM",
+         "code": "PRO-ABN-LG",
+         "page": "P 7/30",
+         "pdf": 3772
+        }
+       ]
+      },
+      {
+       "kind": "note",
+       "text": "Three green downlock arrows not lit may mean the handcrank did not reach the mechanical stop: check it is firmly against the stop",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "FCOM",
+         "code": "PRO-ABN-LG",
+         "page": "P 8/30",
+         "pdf": 3773
+        }
+       ]
+      },
+      {
+       "kind": "note",
+       "text": "L/G LGCIU 2 FAULT or BRAKES SYS 1(2) FAULT may trigger spuriously after a gravity extension",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "QRH",
+         "code": "24.02",
+         "page": "24.02A",
+         "pdf": 216
+        },
+        {
+         "book": "FCOM",
+         "code": "PRO-ABN-LG",
+         "page": "P 8/30",
+         "pdf": 3773
+        }
+       ]
+      },
+      {
+       "kind": "condition",
+       "text": "If successful",
+       "children": [
+        {
+         "kind": "action",
+         "text": "DO NOT RESET GRAVITY GEAR EXTN handcrank",
+         "applies_to": [
+          "all"
+         ],
+         "refs": [
+          {
+           "book": "QRH",
+           "code": "24.02",
+           "page": "24.02A",
+           "pdf": 216
+          },
+          {
+           "book": "FCOM",
+           "code": "PRO-ABN-LG",
+           "page": "P 8/30",
+           "pdf": 3773
+          }
+         ]
+        }
+       ],
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "QRH",
+         "code": "24.02",
+         "page": "24.02A",
+         "pdf": 216
+        },
+        {
+         "book": "FCOM",
+         "code": "PRO-ABN-LG",
+         "page": "P 8/30",
+         "pdf": 3773
+        }
+       ]
+      },
+      {
+       "kind": "condition",
+       "text": "If unsuccessful",
+       "children": [
+        {
+         "kind": "ecam",
+         "item": "LDG WITH ABNORMAL L/G PROC",
+         "setting": "APPLY",
+         "applies_to": [
+          "all"
+         ],
+         "refs": [
+          {
+           "book": "QRH",
+           "code": "24.02",
+           "page": "24.02A",
+           "pdf": 216
+          },
+          {
+           "book": "FCOM",
+           "code": "PRO-ABN-LG",
+           "page": "P 8/30",
+           "pdf": 3773
+          }
+         ]
+        }
+       ],
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "QRH",
+         "code": "24.02",
+         "page": "24.02A",
+         "pdf": 216
+        },
+        {
+         "book": "FCOM",
+         "code": "PRO-ABN-LG",
+         "page": "P 8/30",
+         "pdf": 3773
+        }
+       ]
+      },
+      {
+       "kind": "callout",
+       "text": "L/G GRAVITY EXTENSION PROCEDURE COMPLETED",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "PDP",
+         "code": "Management of abnormal operations",
+         "page": "XFTDN6ECAM00001",
+         "pdf": 427
+        }
+       ]
+      }
+     ]
+    },
+    {
+     "actor": "PF",
+     "items": [
+      {
+       "kind": "note",
+       "text": "In a dual hydraulic failure, control reverts to direct law at gear extension (see the HYD briefs)",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "FCOM",
+         "code": "PRO-ABN-HYD",
+         "page": "P 53/76",
+         "pdf": 3742
+        },
+        {
+         "book": "FCOM",
+         "code": "PRO-ABN-HYD",
+         "page": "P 65/76",
+         "pdf": 3754
+        }
+       ]
+      }
+     ]
+    }
+   ]
+  }
+ ],
+ "procedures": [
+  {
+   "title": "L/G GRAVITY EXTENSION",
+   "source": "QRH 24.02A / FCOM PRO-ABN-LG",
+   "lines": [
+    {
+     "kind": "caution",
+     "text": "Do not apply this procedure if at least one green triangle is displayed on each landing gear on the WHEEL SD page. Disregard any possible GPWS \"TOO LOW GEAR\" aural alert.",
+     "level": 0,
+     "applies_to": [
+      "all"
+     ],
+     "refs": [
+      {
+       "book": "QRH",
+       "code": "24.02",
+       "page": "24.02A",
+       "pdf": 216
+      }
+     ]
+    },
+    {
+     "kind": "condition",
+     "text": "If L/G GEAR NOT DOWNLOCKED alert was displayed and IF TIME PERMITS:",
+     "level": 0,
+     "applies_to": [
+      "all"
+     ],
+     "refs": [
+      {
+       "book": "QRH",
+       "code": "24.02",
+       "page": "24.02A",
+       "pdf": 216
+      }
+     ]
+    },
+    {
+     "kind": "action",
+     "item": "L/G lever",
+     "setting": "UP",
+     "text": "",
+     "level": 1,
+     "applies_to": [
+      "all"
+     ],
+     "refs": [
+      {
+       "book": "QRH",
+       "code": "24.02",
+       "page": "24.02A",
+       "pdf": 216
+      }
+     ]
+    },
+    {
+     "kind": "info",
+     "text": "WAIT L/G UPLOCKED",
+     "level": 1,
+     "applies_to": [
+      "all"
+     ],
+     "refs": [
+      {
+       "book": "QRH",
+       "code": "24.02",
+       "page": "24.02A",
+       "pdf": 216
+      }
+     ]
+    },
+    {
+     "kind": "action",
+     "item": "L/G lever",
+     "setting": "DOWN",
+     "text": "",
+     "level": 1,
+     "applies_to": [
+      "all"
+     ],
+     "refs": [
+      {
+       "book": "QRH",
+       "code": "24.02",
+       "page": "24.02A",
+       "pdf": 216
+      }
+     ]
+    },
+    {
+     "kind": "info",
+     "text": "WAIT AT LEAST 60 s",
+     "level": 1,
+     "applies_to": [
+      "all"
+     ],
+     "refs": [
+      {
+       "book": "QRH",
+       "code": "24.02",
+       "page": "24.02A",
+       "pdf": 216
+      }
+     ]
+    },
+    {
+     "kind": "condition",
+     "text": "If unsuccessful:",
+     "level": 1,
+     "applies_to": [
+      "all"
+     ],
+     "refs": [
+      {
+       "book": "QRH",
+       "code": "24.02",
+       "page": "24.02A",
+       "pdf": 216
+      }
+     ]
+    },
+    {
+     "kind": "info",
+     "text": "REPEAT UP TO THREE TIMES",
+     "level": 2,
+     "applies_to": [
+      "all"
+     ],
+     "refs": [
+      {
+       "book": "QRH",
+       "code": "24.02",
+       "page": "24.02A",
+       "pdf": 216
+      }
+     ]
+    },
+    {
+     "kind": "condition",
+     "text": "If unsuccessful after 4 attempts:",
+     "level": 2,
+     "applies_to": [
+      "all"
+     ],
+     "refs": [
+      {
+       "book": "QRH",
+       "code": "24.02",
+       "page": "24.02A",
+       "pdf": 216
+      }
+     ]
+    },
+    {
+     "kind": "info",
+     "text": "WAIT AT LEAST 120 s",
+     "level": 3,
+     "applies_to": [
+      "all"
+     ],
+     "refs": [
+      {
+       "book": "QRH",
+       "code": "24.02",
+       "page": "24.02A",
+       "pdf": 216
+      }
+     ]
+    },
+    {
+     "kind": "action",
+     "item": "GRAVITY GEAR EXTN handcrank",
+     "setting": "PULL AND TURN",
+     "text": "Rotate the handle clockwise 3 turns until reaching the mechanical stop, even if resistance is felt.",
+     "level": 3,
+     "applies_to": [
+      "all"
+     ],
+     "refs": [
+      {
+       "book": "QRH",
+       "code": "24.02",
+       "page": "24.02A",
+       "pdf": 216
+      }
+     ]
+    },
+    {
+     "kind": "action",
+     "item": "L/G lever",
+     "setting": "DOWN",
+     "text": "",
+     "level": 3,
+     "applies_to": [
+      "all"
+     ],
+     "refs": [
+      {
+       "book": "QRH",
+       "code": "24.02",
+       "page": "24.02A",
+       "pdf": 216
+      }
+     ]
+    },
+    {
+     "kind": "action",
+     "item": "GEAR DOWN indications (if available)",
+     "setting": "CHECK",
+     "text": "",
+     "level": 3,
+     "applies_to": [
+      "all"
+     ],
+     "refs": [
+      {
+       "book": "QRH",
+       "code": "24.02",
+       "page": "24.02A",
+       "pdf": 216
+      }
+     ]
+    },
+    {
+     "kind": "note",
+     "text": "The L/G LGCIU 2 FAULT or BRAKES SYS 1(2) FAULT alert may be spuriously triggered after a gravity extension.",
+     "level": 3,
+     "applies_to": [
+      "all"
+     ],
+     "refs": [
+      {
+       "book": "QRH",
+       "code": "24.02",
+       "page": "24.02A",
+       "pdf": 216
+      }
+     ]
+    },
+    {
+     "kind": "condition",
+     "text": "If successful:",
+     "level": 3,
+     "applies_to": [
+      "all"
+     ],
+     "refs": [
+      {
+       "book": "QRH",
+       "code": "24.02",
+       "page": "24.02A",
+       "pdf": 216
+      }
+     ]
+    },
+    {
+     "kind": "info",
+     "text": "DO NOT RESET GRAVITY GEAR EXTN handcrank",
+     "level": 4,
+     "applies_to": [
+      "all"
+     ],
+     "refs": [
+      {
+       "book": "QRH",
+       "code": "24.02",
+       "page": "24.02A",
+       "pdf": 216
+      }
+     ]
+    },
+    {
+     "kind": "condition",
+     "text": "If unsuccessful:",
+     "level": 3,
+     "applies_to": [
+      "all"
+     ],
+     "refs": [
+      {
+       "book": "QRH",
+       "code": "24.02",
+       "page": "24.02A",
+       "pdf": 216
+      }
+     ]
+    },
+    {
+     "kind": "action",
+     "item": "LDG WITH ABNORMAL L/G PROC",
+     "setting": "APPLY",
+     "text": "",
+     "level": 4,
+     "applies_to": [
+      "all"
+     ],
+     "refs": [
+      {
+       "book": "QRH",
+       "code": "24.02",
+       "page": "24.02A",
+       "pdf": 216
+      }
+     ]
+    },
+    {
+     "kind": "caution",
+     "text": "For flight with L/G extended, fuel consumption is increased. Refer to OPS Fuel Penalty Factors/ECAM Alert Table.",
+     "level": 3,
+     "applies_to": [
+      "all"
+     ],
+     "refs": [
+      {
+       "book": "QRH",
+       "code": "24.02",
+       "page": "24.02A",
+       "pdf": 216
+      }
+     ]
+    },
+    {
+     "kind": "condition",
+     "text": "In all other cases:",
+     "level": 0,
+     "applies_to": [
+      "all"
+     ],
+     "refs": [
+      {
+       "book": "QRH",
+       "code": "24.02",
+       "page": "24.02A",
+       "pdf": 216
+      }
+     ]
+    },
+    {
+     "kind": "action",
+     "item": "GRAVITY GEAR EXTN handcrank",
+     "setting": "PULL AND TURN",
+     "text": "",
+     "level": 1,
+     "applies_to": [
+      "all"
+     ],
+     "refs": [
+      {
+       "book": "QRH",
+       "code": "24.02",
+       "page": "24.02A",
+       "pdf": 216
+      }
+     ]
+    },
+    {
+     "kind": "action",
+     "item": "L/G lever",
+     "setting": "DOWN",
+     "text": "",
+     "level": 1,
+     "applies_to": [
+      "all"
+     ],
+     "refs": [
+      {
+       "book": "QRH",
+       "code": "24.02",
+       "page": "24.02A",
+       "pdf": 216
+      }
+     ]
+    },
+    {
+     "kind": "action",
+     "item": "GEAR DOWN indications (if available)",
+     "setting": "CHECK",
+     "text": "",
+     "level": 1,
+     "applies_to": [
+      "all"
+     ],
+     "refs": [
+      {
+       "book": "QRH",
+       "code": "24.02",
+       "page": "24.02A",
+       "pdf": 216
+      }
+     ]
+    },
+    {
+     "kind": "condition",
+     "text": "If successful:",
+     "level": 1,
+     "applies_to": [
+      "all"
+     ],
+     "refs": [
+      {
+       "book": "QRH",
+       "code": "24.02",
+       "page": "24.02A",
+       "pdf": 216
+      }
+     ]
+    },
+    {
+     "kind": "info",
+     "text": "DO NOT RESET GRAVITY GEAR EXTN handcrank",
+     "level": 2,
+     "applies_to": [
+      "all"
+     ],
+     "refs": [
+      {
+       "book": "QRH",
+       "code": "24.02",
+       "page": "24.02A",
+       "pdf": 216
+      }
+     ]
+    },
+    {
+     "kind": "condition",
+     "text": "If unsuccessful:",
+     "level": 1,
+     "applies_to": [
+      "all"
+     ],
+     "refs": [
+      {
+       "book": "QRH",
+       "code": "24.02",
+       "page": "24.02A",
+       "pdf": 216
+      }
+     ]
+    },
+    {
+     "kind": "action",
+     "item": "LDG WITH ABNORMAL L/G PROC",
+     "setting": "APPLY",
+     "text": "",
+     "level": 2,
+     "applies_to": [
+      "all"
+     ],
+     "refs": [
+      {
+       "book": "QRH",
+       "code": "24.02",
+       "page": "24.02A",
+       "pdf": 216
+      }
+     ]
+    }
+   ]
+  }
+ ],
+ "status": null,
+ "tables": [],
+ "background": [
+  {
+   "text": "Lever DOWN after gravity extension extinguishes the UNLK lights on the LDG GEAR indicator panel, avoids the L/G CTL message on the WHEEL SD page, and minimizes the risk of gear retraction on the ground if the free-fall system is reset.",
+   "applies_to": [
+    "all"
+   ],
+   "refs": [
+    {
+     "book": "FCOM",
+     "code": "PRO-ABN-LG",
+     "page": "P 7/30",
+     "pdf": 3772
+    }
+   ]
+  },
+  {
+   "text": "Do not reset the free-fall system: this avoids further fluid loss in a leak, or a possible gear unlock if a gear selector valve is jammed UP. It may be reset on training flights; if the green system is available the reset allows the doors to close. The crew should not reset it on the ground after the flight.",
+   "applies_to": [
+    "all"
+   ],
+   "refs": [
+    {
+     "book": "FCOM",
+     "code": "PRO-ABN-LG",
+     "page": "P 8/30",
+     "pdf": 3773
+    }
+   ]
+  },
+  {
+   "text": "The display may show the gear doors in the amber transit position, depending on speed.",
+   "applies_to": [
+    "all"
+   ],
+   "refs": [
+    {
+     "book": "FCOM",
+     "code": "PRO-ABN-LG",
+     "page": "P 8/30",
+     "pdf": 3773
+    }
+   ]
+  },
+  {
+   "text": "With both LGCIUs failed, the gear position indications on the ECAM are lost; the LDG GEAR lights remain if LGCIU 1 is electrically supplied.",
+   "applies_to": [
+    "all"
+   ],
+   "refs": [
+    {
+     "book": "FCOM",
+     "code": "PRO-ABN-LG",
+     "page": "P 8/30",
+     "pdf": 3773
+    }
+   ]
+  },
+  {
+   "text": "With gear and doors extended, fuel consumption is increased (QRH factor 145 % for all HS-TX).",
+   "applies_to": [
+    "all"
+   ],
+   "refs": [
+    {
+     "book": "QRH",
+     "code": "24.02",
+     "page": "24.02B",
+     "pdf": 217
+    },
+    {
+     "book": "QRH",
+     "code": "OPS.04",
+     "page": "OPS.04D",
+     "pdf": 276
+    },
+    {
+     "book": "QRH",
+     "code": "OPS.04",
+     "page": "OPS.04F",
+     "pdf": 278
+    }
+   ]
+  }
+ ],
+ "technique": [
+  {
+   "text": "Check for the green indications on the WHEEL SD page first: at least one green triangle on each gear, with the LDG GEAR DN memo, confirms the gear is downlocked.",
+   "applies_to": [
+    "all"
+   ],
+   "refs": [
+    {
+     "book": "FCTM",
+     "code": "PR-AEP-LG",
+     "page": "P 1/4",
+     "pdf": 442
+    }
+   ]
+  }
+ ],
+ "related": [
+  {
+   "title": "L/G GEAR NOT DOWNLOCKED",
+   "why": "The ECAM that leads to the recycle branch",
+   "key_actions": [
+    "See the GEAR NOT DOWNLOCKED brief"
+   ],
+   "refs": [
+    {
+     "book": "FCOM",
+     "code": "PRO-ABN-LG",
+     "page": "P 7/30",
+     "pdf": 3772
+    }
+   ]
+  },
+  {
+   "title": "HYD G+B SYS LO PR",
+   "why": "L/G GRVTY PROC when SPD 200 KT",
+   "key_actions": [
+    "See the HYD G+B brief"
+   ],
+   "refs": [
+    {
+     "book": "FCOM",
+     "code": "PRO-ABN-HYD",
+     "page": "P 53/76",
+     "pdf": 3742
+    }
+   ]
+  },
+  {
+   "title": "HYD G+Y SYS LO PR",
+   "why": "L/G GRVTY PROC when CONF 3 and VAPP",
+   "key_actions": [
+    "See the HYD G+Y brief"
+   ],
+   "refs": [
+    {
+     "book": "FCOM",
+     "code": "PRO-ABN-HYD",
+     "page": "P 64/76",
+     "pdf": 3753
+    }
+   ]
+  }
+ ],
+ "gaps": [
+  {
+   "text": "FCOM calls the do-not-reset line DO NOT RESET LDG GEAR GRVTY EXTN; the QRH calls it DO NOT RESET GRAVITY GEAR EXTN handcrank. The QRH wording is used.",
+   "applies_to": [
+    "all"
+   ],
+   "refs": [
+    {
+     "book": "FCOM",
+     "code": "PRO-ABN-LG",
+     "page": "P 8/30",
+     "pdf": 3773
+    },
+    {
+     "book": "QRH",
+     "code": "24.02",
+     "page": "24.02A",
+     "pdf": 216
+    }
+   ]
+  },
+  {
+   "text": "The manuals do not say who turns the handcrank; the PM is shown from instructor practice. In the dual hydraulic summaries the lines are in the APPROACH section.",
+   "applies_to": [
+    "all"
+   ],
+   "refs": [
+    {
+     "book": "PDP",
+     "code": "Management of abnormal operations",
+     "page": "XFTDN6ECAM00001",
+     "pdf": 427
+    },
+    {
+     "book": "QRH",
+     "code": "23.02",
+     "page": "23.02A",
+     "pdf": 210
+    },
+    {
+     "book": "QRH",
+     "code": "23.03",
+     "page": "23.03A",
+     "pdf": 212
+    }
+   ]
+  },
+  {
+   "text": "The landing after an unsuccessful extension is [QRH] Landing with Abnormal L/G, which is not covered here.",
+   "applies_to": [
+    "all"
+   ],
+   "refs": [
+    {
+     "book": "QRH",
+     "code": "24.02",
+     "page": "24.02A",
+     "pdf": 216
+    }
+   ]
+  }
+ ],
+ "sources": [
+  {
+   "book": "QRH",
+   "section": "24.02 — L/G gravity extension; OPS.04 — fuel penalty factors",
+   "pages": "24.02A–B · OPS.04D, F",
+   "pdf": "216–217, 276, 278",
+   "rev": "26 MAY 26, 14 JUL 26"
+  },
+  {
+   "book": "FCOM",
+   "section": "PRO-ABN-LG — [QRH] L/G GRAVITY EXTENSION",
+   "pages": "P 7–8/30",
+   "pdf": "3772–3773",
+   "rev": "26 MAY 26"
+  },
+  {
+   "book": "FCTM",
+   "section": "PR-AEP-LG",
+   "pages": "P 1/4",
+   "pdf": "442",
+   "rev": "26 MAY 26"
+  },
+  {
+   "book": "PDP",
+   "section": "Management of abnormal operations",
+   "pages": "—",
+   "pdf": "427, 431",
+   "rev": ""
+  }
+ ],
+ "schema": "a320-ecam-abnormal/3",
+ "generated": "2026-10-31",
+ "qrh": [],
+ "differences": []
+}

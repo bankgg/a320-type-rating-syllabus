@@ -1,0 +1,2734 @@
+{
+ "slug": "f-ctl-slats-fault-locked",
+ "title": "F/CTL SLATS FAULT/LOCKED",
+ "kind": "ecam",
+ "alert": {
+  "level": "caution",
+  "land_asap": "none",
+  "memory_items": false,
+  "qrh_summary": false,
+  "trigger": "The SLATS FAULT alert triggers when there is a failure of both slats channels. The SLATS LOCKED alert triggers when the slats wing tip brakes are activated.",
+  "inhibited_phases": [
+   4,
+   5,
+   8
+  ],
+  "refs": [
+   {
+    "book": "FCOM",
+    "code": "PRO-ABN-F_CTL",
+    "page": "P 99/132",
+    "pdf": 3572
+   },
+   {
+    "book": "FCOM",
+    "code": "PRO-ABN-F_CTL",
+    "page": "P 102/132",
+    "pdf": 3575
+   }
+  ]
+ },
+ "effectivity": {
+  "branches": [
+   "HS-TXA..TXO",
+   "HS-TXP..TXU"
+  ],
+  "note": "Two FCOM units. Only HS-TXA..TXO has the FUEL MODE SEL / CTR TK PUMPS lines (see HS-TX differences)."
+ },
+ "summary": "An amber caution: the slats have stopped. On takeoff, select the speed and stop the acceleration before VFE. If locked (wing tip brake on), hold the table MAX SPEED. If not locked, recycle the flaps lever once below VFE. A SLATS FAULT from both channels also gives alternate law, then direct law at gear down. If unsuccessful, apply the QRH LANDING WITH SLATS OR FLAPS JAMMED with flap lever 3 for landing.",
+ "key_limits": [
+  {
+   "label": "MAX SPEED",
+   "value": "Table: VFE of the next slat position (see tables)",
+   "applies_to": [
+    "all"
+   ],
+   "refs": [
+    {
+     "book": "FCOM",
+     "code": "PRO-ABN-F_CTL",
+     "page": "P 100/132",
+     "pdf": 3573
+    },
+    {
+     "book": "FCOM",
+     "code": "PRO-ABN-F_CTL",
+     "page": "P 103/132",
+     "pdf": 3576
+    },
+    {
+     "book": "FCOM",
+     "code": "PRO-ABN-F_CTL",
+     "page": "P 59/132",
+     "pdf": 3532
+    }
+   ]
+  },
+  {
+   "label": "APPR SPD",
+   "value": "Table by slats/flaps position (see tables)",
+   "applies_to": [
+    "all"
+   ],
+   "refs": [
+    {
+     "book": "FCOM",
+     "code": "PRO-ABN-F_CTL",
+     "page": "P 101/132",
+     "pdf": 3574
+    },
+    {
+     "book": "FCOM",
+     "code": "PRO-ABN-F_CTL",
+     "page": "P 104/132",
+     "pdf": 3577
+    },
+    {
+     "book": "FCOM",
+     "code": "PRO-ABN-F_CTL",
+     "page": "P 59/132",
+     "pdf": 3532
+    }
+   ]
+  },
+  {
+   "label": "For landing",
+   "value": "FLAP LVR 3",
+   "applies_to": [
+    "all"
+   ],
+   "refs": [
+    {
+     "book": "FCOM",
+     "code": "PRO-ABN-F_CTL",
+     "page": "P 101/132",
+     "pdf": 3574
+    },
+    {
+     "book": "FCOM",
+     "code": "PRO-ABN-F_CTL",
+     "page": "P 104/132",
+     "pdf": 3577
+    }
+   ]
+  },
+  {
+   "label": "AP",
+   "value": "May be used down to 500 ft AGL; monitor it",
+   "applies_to": [
+    "all"
+   ],
+   "refs": [
+    {
+     "book": "FCOM",
+     "code": "PRO-ABN-F_CTL",
+     "page": "P 100/132",
+     "pdf": 3573
+    },
+    {
+     "book": "FCOM",
+     "code": "PRO-ABN-F_CTL",
+     "page": "P 103/132",
+     "pdf": 3576
+    },
+    {
+     "book": "FCTM",
+     "code": "PR-AEP-F_CTL",
+     "page": "P 2/6",
+     "pdf": 429
+    }
+   ]
+  },
+  {
+   "label": "FUEL penalty, slats extended",
+   "value": "60 %",
+   "applies_to": [
+    "all"
+   ],
+   "refs": [
+    {
+     "book": "QRH",
+     "code": "OPS.04",
+     "page": "OPS.04C",
+     "pdf": 275
+    },
+    {
+     "book": "QRH",
+     "code": "OPS.04",
+     "page": "OPS.04E",
+     "pdf": 277
+    }
+   ]
+  }
+ ],
+ "flow": [
+  {
+   "phase": "Recognise · hold the speed",
+   "steps": [
+    {
+     "actor": "PF",
+     "items": [
+      {
+       "kind": "condition",
+       "text": "Failure at takeoff",
+       "children": [
+        {
+         "kind": "action",
+         "text": "During takeoff: pull the SPD/MACH knob to select the speed and stop the acceleration, to avoid exceeding VFE. The overspeed warning follows the actual slats/flaps position",
+         "applies_to": [
+          "all"
+         ],
+         "refs": [
+          {
+           "book": "FCTM",
+           "code": "PR-AEP-F_CTL",
+           "page": "P 1/6",
+           "pdf": 428
+          }
+         ]
+        }
+       ],
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "FCTM",
+         "code": "PR-AEP-F_CTL",
+         "page": "P 1/6",
+         "pdf": 428
+        }
+       ]
+      },
+      {
+       "kind": "condition",
+       "text": "Failure during the approach",
+       "children": [
+        {
+         "kind": "action",
+         "text": "During the approach: pull the speed knob for selected speed to avoid further deceleration, and delay the approach to complete the ECAM procedure",
+         "applies_to": [
+          "all"
+         ],
+         "refs": [
+          {
+           "book": "FCTM",
+           "code": "PR-AEP-F_CTL",
+           "page": "P 1/6",
+           "pdf": 428
+          }
+         ]
+        }
+       ],
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "FCTM",
+         "code": "PR-AEP-F_CTL",
+         "page": "P 1/6",
+         "pdf": 428
+        }
+       ]
+      }
+     ]
+    },
+    {
+     "actor": "BOTH",
+     "items": [
+      {
+       "kind": "action",
+       "text": "First to notice: MASTER WARNING / CAUTION reset",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "FCTM",
+         "code": "AOP-30-30",
+         "page": "P 2/6",
+         "pdf": 83
+        },
+        {
+         "book": "PDP",
+         "code": "Management of abnormal operations",
+         "page": "XFTDN6ECAM00001",
+         "pdf": 424
+        }
+       ]
+      }
+     ]
+    },
+    {
+     "actor": "PM",
+     "items": [
+      {
+       "kind": "callout",
+       "text": "F/CTL SLATS FAULT",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "FCTM",
+         "code": "AOP-30-30",
+         "page": "P 2/6",
+         "pdf": 83
+        },
+        {
+         "book": "FCOM",
+         "code": "PRO-ABN-F_CTL",
+         "page": "P 99/132",
+         "pdf": 3572
+        },
+        {
+         "book": "PDP",
+         "code": "Management of abnormal operations",
+         "page": "XFTDN6ECAM00001",
+         "pdf": 424
+        }
+       ]
+      },
+      {
+       "kind": "action",
+       "text": "Confirm the failure on the SD page and overhead panel before acting",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "FCTM",
+         "code": "AOP-30-30",
+         "page": "P 2/6",
+         "pdf": 83
+        },
+        {
+         "book": "PDP",
+         "code": "Management of abnormal operations",
+         "page": "XFTDN6ECAM00001",
+         "pdf": 424
+        }
+       ]
+      }
+     ]
+    },
+    {
+     "actor": "PF",
+     "items": [
+      {
+       "kind": "callout",
+       "text": "ECAM ACTIONS",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "FCOM",
+         "code": "PRO-ABN-ABN-00",
+         "page": "P 8/12",
+         "pdf": 2831
+        },
+        {
+         "book": "FCTM",
+         "code": "AOP-30-30",
+         "page": "P 3/6",
+         "pdf": 84
+        },
+        {
+         "book": "PDP",
+         "code": "Management of abnormal operations",
+         "page": "XFTDN6ECAM00001",
+         "pdf": 424
+        }
+       ]
+      },
+      {
+       "kind": "note",
+       "text": "PF now flies, navigates and communicates",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "FCTM",
+         "code": "AOP-20",
+         "page": "P 1–2/10",
+         "pdf": 68
+        },
+        {
+         "book": "PDP",
+         "code": "Management of abnormal operations",
+         "page": "XFTDN6ECAM00001",
+         "pdf": 424
+        }
+       ]
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "phase": "ECAM actions",
+   "steps": [
+    {
+     "actor": "PM",
+     "items": [
+      {
+       "kind": "condition",
+       "text": "If slats locked",
+       "children": [
+        {
+         "kind": "ecam",
+         "item": "WING TIP BRK ON",
+         "setting": "—",
+         "applies_to": [
+          "all"
+         ],
+         "refs": [
+          {
+           "book": "FCOM",
+           "code": "PRO-ABN-F_CTL",
+           "page": "P 100/132",
+           "pdf": 3573
+          },
+          {
+           "book": "FCOM",
+           "code": "PRO-ABN-F_CTL",
+           "page": "P 103/132",
+           "pdf": 3576
+          }
+         ]
+        },
+        {
+         "kind": "ecam",
+         "item": "MAX SPEED",
+         "setting": "REFER TO THE TABLE",
+         "applies_to": [
+          "all"
+         ],
+         "refs": [
+          {
+           "book": "FCOM",
+           "code": "PRO-ABN-F_CTL",
+           "page": "P 100/132",
+           "pdf": 3573
+          },
+          {
+           "book": "FCOM",
+           "code": "PRO-ABN-F_CTL",
+           "page": "P 103/132",
+           "pdf": 3576
+          },
+          {
+           "book": "FCOM",
+           "code": "PRO-ABN-F_CTL",
+           "page": "P 59/132",
+           "pdf": 3532
+          }
+         ]
+        },
+        {
+         "kind": "note",
+         "text": "Speed is limited to the VFE corresponding to the next slat position",
+         "applies_to": [
+          "all"
+         ],
+         "refs": [
+          {
+           "book": "FCOM",
+           "code": "PRO-ABN-F_CTL",
+           "page": "P 100/132",
+           "pdf": 3573
+          },
+          {
+           "book": "FCOM",
+           "code": "PRO-ABN-F_CTL",
+           "page": "P 103/132",
+           "pdf": 3576
+          }
+         ]
+        }
+       ],
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "FCOM",
+         "code": "PRO-ABN-F_CTL",
+         "page": "P 100/132",
+         "pdf": 3573
+        },
+        {
+         "book": "FCOM",
+         "code": "PRO-ABN-F_CTL",
+         "page": "P 103/132",
+         "pdf": 3576
+        }
+       ]
+      },
+      {
+       "kind": "condition",
+       "text": "If slats not locked",
+       "children": [
+        {
+         "kind": "condition",
+         "text": "WHEN SPD BELOW VFE",
+         "children": [
+          {
+           "kind": "note",
+           "text": "Configuration change: the PF can stop the ECAM while the lever is moved",
+           "applies_to": [
+            "all"
+           ],
+           "refs": [
+            {
+             "book": "PDP",
+             "code": "Management of abnormal operations",
+             "page": "XFTDN6ECAM00001",
+             "pdf": 430
+            }
+           ]
+          },
+          {
+           "kind": "ecam",
+           "item": "FLAPS LEVER",
+           "setting": "RECYCLE",
+           "applies_to": [
+            "all"
+           ],
+           "refs": [
+            {
+             "book": "FCOM",
+             "code": "PRO-ABN-F_CTL",
+             "page": "P 100/132",
+             "pdf": 3573
+            },
+            {
+             "book": "FCOM",
+             "code": "PRO-ABN-F_CTL",
+             "page": "P 103/132",
+             "pdf": 3576
+            }
+           ]
+          },
+          {
+           "kind": "note",
+           "text": "Return to the previous selection, then back to the desired position",
+           "applies_to": [
+            "all"
+           ],
+           "refs": [
+            {
+             "book": "FCOM",
+             "code": "PRO-ABN-F_CTL",
+             "page": "P 100/132",
+             "pdf": 3573
+            },
+            {
+             "book": "FCOM",
+             "code": "PRO-ABN-F_CTL",
+             "page": "P 103/132",
+             "pdf": 3576
+            }
+           ]
+          }
+         ],
+         "applies_to": [
+          "all"
+         ],
+         "refs": [
+          {
+           "book": "FCOM",
+           "code": "PRO-ABN-F_CTL",
+           "page": "P 100/132",
+           "pdf": 3573
+          },
+          {
+           "book": "FCOM",
+           "code": "PRO-ABN-F_CTL",
+           "page": "P 103/132",
+           "pdf": 3576
+          }
+         ]
+        }
+       ],
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "FCOM",
+         "code": "PRO-ABN-F_CTL",
+         "page": "P 100/132",
+         "pdf": 3573
+        },
+        {
+         "book": "FCOM",
+         "code": "PRO-ABN-F_CTL",
+         "page": "P 103/132",
+         "pdf": 3576
+        }
+       ]
+      },
+      {
+       "kind": "condition",
+       "text": "If slats not at zero",
+       "children": [
+        {
+         "kind": "ecam",
+         "item": "FUEL MODE SEL",
+         "setting": "MAN",
+         "applies_to": [
+          "all"
+         ],
+         "refs": [
+          {
+           "book": "FCOM",
+           "code": "PRO-ABN-F_CTL",
+           "page": "P 100/132",
+           "pdf": 3573
+          }
+         ]
+        },
+        {
+         "kind": "note",
+         "text": "To allow CTR TK feeding",
+         "applies_to": [
+          "all"
+         ],
+         "refs": [
+          {
+           "book": "FCOM",
+           "code": "PRO-ABN-F_CTL",
+           "page": "P 100/132",
+           "pdf": 3573
+          }
+         ]
+        },
+        {
+         "kind": "ecam",
+         "item": "CTR TK PUMPS",
+         "setting": "AS RQRD",
+         "applies_to": [
+          "all"
+         ],
+         "refs": [
+          {
+           "book": "FCOM",
+           "code": "PRO-ABN-F_CTL",
+           "page": "P 100/132",
+           "pdf": 3573
+          }
+         ]
+        },
+        {
+         "kind": "note",
+         "text": "Set CTR TK PUMPS pb to OFF when CTR TK is empty or during approach",
+         "applies_to": [
+          "all"
+         ],
+         "refs": [
+          {
+           "book": "FCOM",
+           "code": "PRO-ABN-F_CTL",
+           "page": "P 100/132",
+           "pdf": 3573
+          }
+         ]
+        }
+       ],
+       "applies_to": [
+        "HS-TXA..TXO"
+       ],
+       "refs": [
+        {
+         "book": "FCOM",
+         "code": "PRO-ABN-F_CTL",
+         "page": "P 100/132",
+         "pdf": 3573
+        }
+       ]
+      },
+      {
+       "kind": "condition",
+       "text": "If slats extended",
+       "children": [
+        {
+         "kind": "ecam",
+         "item": "FUEL CONSUMPT INCRSD · FMS PRED UNRELIABLE",
+         "setting": "—",
+         "applies_to": [
+          "all"
+         ],
+         "refs": [
+          {
+           "book": "FCOM",
+           "code": "PRO-ABN-F_CTL",
+           "page": "P 100/132",
+           "pdf": 3573
+          },
+          {
+           "book": "FCOM",
+           "code": "PRO-ABN-F_CTL",
+           "page": "P 103/132",
+           "pdf": 3576
+          }
+         ]
+        }
+       ],
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "FCOM",
+         "code": "PRO-ABN-F_CTL",
+         "page": "P 100/132",
+         "pdf": 3573
+        },
+        {
+         "book": "FCOM",
+         "code": "PRO-ABN-F_CTL",
+         "page": "P 103/132",
+         "pdf": 3576
+        }
+       ]
+      },
+      {
+       "kind": "condition",
+       "text": "If unsuccessful",
+       "children": [
+        {
+         "kind": "action",
+         "text": "Refer to [QRH] Landing with Slats or Flaps Jammed",
+         "applies_to": [
+          "all"
+         ],
+         "refs": [
+          {
+           "book": "FCOM",
+           "code": "PRO-ABN-F_CTL",
+           "page": "P 100/132",
+           "pdf": 3573
+          },
+          {
+           "book": "FCOM",
+           "code": "PRO-ABN-F_CTL",
+           "page": "P 103/132",
+           "pdf": 3576
+          }
+         ]
+        },
+        {
+         "kind": "note",
+         "text": "The autopilot may be used down to 500 ft AGL. It is not tuned for the abnormal configurations, so monitor its behavior",
+         "applies_to": [
+          "all"
+         ],
+         "refs": [
+          {
+           "book": "FCOM",
+           "code": "PRO-ABN-F_CTL",
+           "page": "P 100/132",
+           "pdf": 3573
+          },
+          {
+           "book": "FCOM",
+           "code": "PRO-ABN-F_CTL",
+           "page": "P 103/132",
+           "pdf": 3576
+          }
+         ]
+        }
+       ],
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "FCOM",
+         "code": "PRO-ABN-F_CTL",
+         "page": "P 100/132",
+         "pdf": 3573
+        },
+        {
+         "book": "FCOM",
+         "code": "PRO-ABN-F_CTL",
+         "page": "P 103/132",
+         "pdf": 3576
+        }
+       ]
+      },
+      {
+       "kind": "ecam",
+       "item": "F/CTL ALTN LAW (PROT LOST)",
+       "setting": "Associated procedure",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "FCOM",
+         "code": "PRO-ABN-F_CTL",
+         "page": "P 100/132",
+         "pdf": 3573
+        },
+        {
+         "book": "FCOM",
+         "code": "PRO-ABN-F_CTL",
+         "page": "P 103/132",
+         "pdf": 3576
+        },
+        {
+         "book": "FCOM",
+         "code": "PRO-ABN-F_CTL",
+         "page": "P 9/132",
+         "pdf": 3482
+        }
+       ]
+      },
+      {
+       "kind": "note",
+       "text": "If F/CTL SLATS FAULT is due to dual slat channels failure, flight controls revert to alternate law",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "FCOM",
+         "code": "PRO-ABN-F_CTL",
+         "page": "P 100/132",
+         "pdf": 3573
+        },
+        {
+         "book": "FCOM",
+         "code": "PRO-ABN-F_CTL",
+         "page": "P 103/132",
+         "pdf": 3576
+        }
+       ]
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "phase": "STATUS",
+   "steps": [
+    {
+     "actor": "PM",
+     "items": [
+      {
+       "kind": "callout",
+       "text": "CLEAR FLIGHT CONTROL ?",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "FCOM",
+         "code": "PRO-ABN-ABN-00",
+         "page": "P 8/12",
+         "pdf": 2831
+        },
+        {
+         "book": "FCTM",
+         "code": "AOP-30-30",
+         "page": "P 3/6",
+         "pdf": 84
+        },
+        {
+         "book": "PDP",
+         "code": "Management of abnormal operations",
+         "page": "XFTDN6ECAM00001",
+         "pdf": 424
+        }
+       ]
+      }
+     ]
+    },
+    {
+     "actor": "PF",
+     "items": [
+      {
+       "kind": "callout",
+       "text": "CLEAR FLIGHT CONTROL",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "FCOM",
+         "code": "PRO-ABN-ABN-00",
+         "page": "P 8/12",
+         "pdf": 2831
+        },
+        {
+         "book": "FCTM",
+         "code": "AOP-30-30",
+         "page": "P 3/6",
+         "pdf": 84
+        },
+        {
+         "book": "PDP",
+         "code": "Management of abnormal operations",
+         "page": "XFTDN6ECAM00001",
+         "pdf": 424
+        }
+       ]
+      }
+     ]
+    },
+    {
+     "actor": "PM",
+     "items": [
+      {
+       "kind": "callout",
+       "text": "STATUS",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "FCTM",
+         "code": "AOP-30-30",
+         "page": "P 3/6",
+         "pdf": 84
+        },
+        {
+         "book": "PDP",
+         "code": "Management of abnormal operations",
+         "page": "XFTDN6ECAM00001",
+         "pdf": 426
+        }
+       ]
+      }
+     ]
+    },
+    {
+     "actor": "PF",
+     "items": [
+      {
+       "kind": "callout",
+       "text": "STOP ECAM",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "FCTM",
+         "code": "AOP-30-30",
+         "page": "P 3/6",
+         "pdf": 84
+        },
+        {
+         "book": "PDP",
+         "code": "Management of abnormal operations",
+         "page": "XFTDN6ECAM00001",
+         "pdf": 426
+        }
+       ]
+      }
+     ]
+    },
+    {
+     "actor": "PM",
+     "items": [
+      {
+       "kind": "ecam",
+       "item": "ECAM ACTIONS",
+       "setting": "STOP",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "PDP",
+         "code": "Management of abnormal operations",
+         "page": "XFTDN6ECAM00001",
+         "pdf": 426
+        }
+       ]
+      }
+     ]
+    },
+    {
+     "actor": "PF",
+     "items": [
+      {
+       "kind": "action",
+       "text": "Normal C/L as applicable; system resets only per QRH",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "FCTM",
+         "code": "AOP-30-30",
+         "page": "P 4/6",
+         "pdf": 85
+        },
+        {
+         "book": "PDP",
+         "code": "Management of abnormal operations",
+         "page": "XFTDN6ECAM00001",
+         "pdf": 426
+        }
+       ]
+      },
+      {
+       "kind": "callout",
+       "text": "CONTINUE ECAM",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "FCTM",
+         "code": "AOP-30-30",
+         "page": "P 3/6",
+         "pdf": 84
+        },
+        {
+         "book": "PDP",
+         "code": "Management of abnormal operations",
+         "page": "XFTDN6ECAM00001",
+         "pdf": 426
+        }
+       ]
+      }
+     ]
+    },
+    {
+     "actor": "PM",
+     "items": [
+      {
+       "kind": "action",
+       "text": "Read the whole STATUS page; preview APPR PROC workload",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "FCTM",
+         "code": "AOP-30-30",
+         "page": "P 3/6",
+         "pdf": 84
+        },
+        {
+         "book": "PDP",
+         "code": "Management of abnormal operations",
+         "page": "XFTDN6ECAM00001",
+         "pdf": 426
+        }
+       ]
+      },
+      {
+       "kind": "callout",
+       "text": "REMOVE STATUS ?",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "FCTM",
+         "code": "AOP-30-30",
+         "page": "P 3/6",
+         "pdf": 84
+        },
+        {
+         "book": "PDP",
+         "code": "Management of abnormal operations",
+         "page": "XFTDN6ECAM00001",
+         "pdf": 426
+        }
+       ]
+      }
+     ]
+    },
+    {
+     "actor": "PF",
+     "items": [
+      {
+       "kind": "callout",
+       "text": "REMOVE STATUS",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "FCOM",
+         "code": "PRO-ABN-ABN-00",
+         "page": "P 8/12",
+         "pdf": 2831
+        },
+        {
+         "book": "FCTM",
+         "code": "AOP-30-30",
+         "page": "P 3/6",
+         "pdf": 84
+        },
+        {
+         "book": "PDP",
+         "code": "Management of abnormal operations",
+         "page": "XFTDN6ECAM00001",
+         "pdf": 426
+        }
+       ]
+      }
+     ]
+    },
+    {
+     "actor": "PM",
+     "items": [
+      {
+       "kind": "callout",
+       "text": "ECAM ACTIONS COMPLETE",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "FCOM",
+         "code": "PRO-ABN-ABN-00",
+         "page": "P 8/12",
+         "pdf": 2831
+        },
+        {
+         "book": "PDP",
+         "code": "Management of abnormal operations",
+         "page": "XFTDN6ECAM00001",
+         "pdf": 426
+        }
+       ]
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "phase": "Assess and decide",
+   "steps": [
+    {
+     "actor": "BOTH",
+     "items": [
+      {
+       "kind": "condition",
+       "text": "After a failure at takeoff",
+       "children": [
+        {
+         "kind": "action",
+         "text": "The landing distance available at the departure airport and the aircraft gross weight determine the next course of action",
+         "applies_to": [
+          "all"
+         ],
+         "refs": [
+          {
+           "book": "FCTM",
+           "code": "PR-AEP-F_CTL",
+           "page": "P 1/6",
+           "pdf": 428
+          }
+         ]
+        }
+       ],
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "FCTM",
+         "code": "PR-AEP-F_CTL",
+         "page": "P 1/6",
+         "pdf": 428
+        }
+       ]
+      },
+      {
+       "kind": "action",
+       "text": "Consider the fuel and the increased consumption on a diversion; FMS predictions are not valid. With slats/flaps extended, cruise altitude is limited to 20 000 ft",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "FCTM",
+         "code": "PR-AEP-F_CTL",
+         "page": "P 1/6",
+         "pdf": 428
+        },
+        {
+         "book": "FCTM",
+         "code": "PR-AEP-F_CTL",
+         "page": "P 2/6",
+         "pdf": 429
+        }
+       ]
+      }
+     ]
+    },
+    {
+     "actor": "PF",
+     "items": [
+      {
+       "kind": "action",
+       "text": "Decide; inform ATC, cabin crew, passengers and airline operations as required",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "FCTM",
+         "code": "AOP-30-30",
+         "page": "P 5/6",
+         "pdf": 86
+        },
+        {
+         "book": "PDP",
+         "code": "Management of abnormal operations",
+         "page": "XFTDN6ECAM00001",
+         "pdf": 428
+        }
+       ]
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "phase": "Approach preparation",
+   "steps": [
+    {
+     "actor": "PF",
+     "items": [
+      {
+       "kind": "callout",
+       "text": "LANDING WITH SLATS OR FLAPS JAMMED PROCEDURE",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "PDP",
+         "code": "Management of abnormal operations",
+         "page": "XFTDN6ECAM00001",
+         "pdf": 427
+        }
+       ]
+      }
+     ]
+    },
+    {
+     "actor": "PM",
+     "items": [
+      {
+       "kind": "action",
+       "text": "READ AND DO the QRH lines aloud",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "PDP",
+         "code": "Management of abnormal operations",
+         "page": "XFTDN6ECAM00001",
+         "pdf": 427
+        }
+       ]
+      }
+     ]
+    },
+    {
+     "actor": "PM",
+     "items": [
+      {
+       "kind": "note",
+       "text": "The STATUS APPR PROC asks for it: S/F JAMMED PROC APPLY",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "FCOM",
+         "code": "PRO-ABN-F_CTL",
+         "page": "P 101/132",
+         "pdf": 3574
+        },
+        {
+         "book": "FCOM",
+         "code": "PRO-ABN-F_CTL",
+         "page": "P 104/132",
+         "pdf": 3577
+        },
+        {
+         "book": "FCOM",
+         "code": "PRO-ABN-F_CTL",
+         "page": "P 1/132",
+         "pdf": 3474
+        }
+       ]
+      }
+     ]
+    },
+    {
+     "actor": "PF",
+     "items": [
+      {
+       "kind": "action",
+       "text": "Update the arrival briefing: tail strike awareness, go-around configuration, any deviation from standard callout, speeds after a missed approach, selected speed for acceleration at the acceleration altitude",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "FCTM",
+         "code": "PR-AEP-F_CTL",
+         "page": "P 2/6",
+         "pdf": 429
+        }
+       ]
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "phase": "Approach",
+   "steps": [
+    {
+     "actor": "PM",
+     "items": [
+      {
+       "kind": "ecam",
+       "item": "FOR LDG",
+       "setting": "FLAP LVR 3",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "FCOM",
+         "code": "PRO-ABN-F_CTL",
+         "page": "P 101/132",
+         "pdf": 3574
+        },
+        {
+         "book": "FCOM",
+         "code": "PRO-ABN-F_CTL",
+         "page": "P 104/132",
+         "pdf": 3577
+        }
+       ]
+      },
+      {
+       "kind": "ecam",
+       "item": "CTR TK PUMPS",
+       "setting": "OFF",
+       "applies_to": [
+        "HS-TXA..TXO"
+       ],
+       "refs": [
+        {
+         "book": "FCOM",
+         "code": "PRO-ABN-F_CTL",
+         "page": "P 101/132",
+         "pdf": 3574
+        }
+       ]
+      },
+      {
+       "kind": "condition",
+       "text": "When flaps are in CONF 3",
+       "children": [
+        {
+         "kind": "ecam",
+         "item": "GPWS LDG FLAP 3",
+         "setting": "ON",
+         "applies_to": [
+          "all"
+         ],
+         "refs": [
+          {
+           "book": "FCOM",
+           "code": "PRO-ABN-F_CTL",
+           "page": "P 101/132",
+           "pdf": 3574
+          },
+          {
+           "book": "FCOM",
+           "code": "PRO-ABN-F_CTL",
+           "page": "P 104/132",
+           "pdf": 3577
+          }
+         ]
+        }
+       ],
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "FCOM",
+         "code": "PRO-ABN-F_CTL",
+         "page": "P 101/132",
+         "pdf": 3574
+        },
+        {
+         "book": "FCOM",
+         "code": "PRO-ABN-F_CTL",
+         "page": "P 104/132",
+         "pdf": 3577
+        }
+       ]
+      },
+      {
+       "kind": "ecam",
+       "item": "APPR SPD",
+       "setting": "REFER TO THE TABLE",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "FCOM",
+         "code": "PRO-ABN-F_CTL",
+         "page": "P 101/132",
+         "pdf": 3574
+        },
+        {
+         "book": "FCOM",
+         "code": "PRO-ABN-F_CTL",
+         "page": "P 104/132",
+         "pdf": 3577
+        },
+        {
+         "book": "FCOM",
+         "code": "PRO-ABN-F_CTL",
+         "page": "P 59/132",
+         "pdf": 3532
+        }
+       ]
+      },
+      {
+       "kind": "ecam",
+       "item": "LDG DIST PROC",
+       "setting": "APPLY",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "FCOM",
+         "code": "PRO-ABN-F_CTL",
+         "page": "P 101/132",
+         "pdf": 3574
+        },
+        {
+         "book": "FCOM",
+         "code": "PRO-ABN-F_CTL",
+         "page": "P 104/132",
+         "pdf": 3577
+        }
+       ]
+      }
+     ]
+    },
+    {
+     "actor": "PF",
+     "items": [
+      {
+       "kind": "action",
+       "text": "Fly the configuration steps of the QRH procedure with selected speed (see the LANDING WITH SLATS OR FLAPS JAMMED brief)",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "FCTM",
+         "code": "PR-AEP-F_CTL",
+         "page": "P 2/6",
+         "pdf": 429
+        },
+        {
+         "book": "FCOM",
+         "code": "PRO-ABN-F_CTL",
+         "page": "P 1/132",
+         "pdf": 3474
+        }
+       ]
+      },
+      {
+       "kind": "condition",
+       "text": "If both slat channels fail",
+       "children": [
+        {
+         "kind": "action",
+         "text": "ALTN LAW: PROT LOST. WHEN L/G DN: DIRECT LAW, in pitch and in roll",
+         "applies_to": [
+          "all"
+         ],
+         "refs": [
+          {
+           "book": "FCOM",
+           "code": "PRO-ABN-F_CTL",
+           "page": "P 101/132",
+           "pdf": 3574
+          },
+          {
+           "book": "FCOM",
+           "code": "PRO-ABN-F_CTL",
+           "page": "P 104/132",
+           "pdf": 3577
+          }
+         ]
+        }
+       ],
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "FCOM",
+         "code": "PRO-ABN-F_CTL",
+         "page": "P 101/132",
+         "pdf": 3574
+        },
+        {
+         "book": "FCOM",
+         "code": "PRO-ABN-F_CTL",
+         "page": "P 104/132",
+         "pdf": 3577
+        }
+       ]
+      }
+     ]
+    }
+   ]
+  }
+ ],
+ "procedures": [
+  {
+   "title": "ECAM procedure",
+   "source": "FCOM PRO-ABN-F_CTL",
+   "lines": [
+    {
+     "kind": "condition",
+     "text": "If slats locked:",
+     "level": 0,
+     "applies_to": [
+      "all"
+     ],
+     "refs": [
+      {
+       "book": "FCOM",
+       "code": "PRO-ABN-F_CTL",
+       "page": "P 100/132",
+       "pdf": 3573
+      },
+      {
+       "book": "FCOM",
+       "code": "PRO-ABN-F_CTL",
+       "page": "P 103/132",
+       "pdf": 3576
+      }
+     ]
+    },
+    {
+     "kind": "info",
+     "text": "WING TIP BRK ON",
+     "level": 1,
+     "applies_to": [
+      "all"
+     ],
+     "refs": [
+      {
+       "book": "FCOM",
+       "code": "PRO-ABN-F_CTL",
+       "page": "P 100/132",
+       "pdf": 3573
+      },
+      {
+       "book": "FCOM",
+       "code": "PRO-ABN-F_CTL",
+       "page": "P 103/132",
+       "pdf": 3576
+      }
+     ]
+    },
+    {
+     "kind": "action",
+     "item": "MAX SPEED",
+     "setting": "REFER TO F/CTL FLAPS/SLATS FAULT/LOCKED",
+     "text": "Speed is limited to the VFE corresponding to the next slat position.",
+     "level": 0,
+     "applies_to": [
+      "all"
+     ],
+     "refs": [
+      {
+       "book": "FCOM",
+       "code": "PRO-ABN-F_CTL",
+       "page": "P 100/132",
+       "pdf": 3573
+      },
+      {
+       "book": "FCOM",
+       "code": "PRO-ABN-F_CTL",
+       "page": "P 103/132",
+       "pdf": 3576
+      }
+     ]
+    },
+    {
+     "kind": "condition",
+     "text": "If slats not locked:",
+     "level": 0,
+     "applies_to": [
+      "all"
+     ],
+     "refs": [
+      {
+       "book": "FCOM",
+       "code": "PRO-ABN-F_CTL",
+       "page": "P 100/132",
+       "pdf": 3573
+      },
+      {
+       "book": "FCOM",
+       "code": "PRO-ABN-F_CTL",
+       "page": "P 103/132",
+       "pdf": 3576
+      }
+     ]
+    },
+    {
+     "kind": "condition",
+     "text": "WHEN SPD BELOW VFE:",
+     "level": 1,
+     "applies_to": [
+      "all"
+     ],
+     "refs": [
+      {
+       "book": "FCOM",
+       "code": "PRO-ABN-F_CTL",
+       "page": "P 100/132",
+       "pdf": 3573
+      },
+      {
+       "book": "FCOM",
+       "code": "PRO-ABN-F_CTL",
+       "page": "P 103/132",
+       "pdf": 3576
+      }
+     ]
+    },
+    {
+     "kind": "action",
+     "item": "FLAPS LEVER",
+     "setting": "RECYCLE",
+     "text": "Return to the previous selection, then back to the desired position.",
+     "level": 2,
+     "applies_to": [
+      "all"
+     ],
+     "refs": [
+      {
+       "book": "FCOM",
+       "code": "PRO-ABN-F_CTL",
+       "page": "P 100/132",
+       "pdf": 3573
+      },
+      {
+       "book": "FCOM",
+       "code": "PRO-ABN-F_CTL",
+       "page": "P 103/132",
+       "pdf": 3576
+      }
+     ]
+    },
+    {
+     "kind": "condition",
+     "text": "If slats not at zero:",
+     "level": 0,
+     "applies_to": [
+      "HS-TXA..TXO"
+     ],
+     "refs": [
+      {
+       "book": "FCOM",
+       "code": "PRO-ABN-F_CTL",
+       "page": "P 100/132",
+       "pdf": 3573
+      }
+     ]
+    },
+    {
+     "kind": "action",
+     "item": "FUEL MODE SEL",
+     "setting": "MAN",
+     "text": "To allow CTR TK feeding.",
+     "level": 1,
+     "applies_to": [
+      "HS-TXA..TXO"
+     ],
+     "refs": [
+      {
+       "book": "FCOM",
+       "code": "PRO-ABN-F_CTL",
+       "page": "P 100/132",
+       "pdf": 3573
+      }
+     ]
+    },
+    {
+     "kind": "action",
+     "item": "CTR TK PUMPS",
+     "setting": "AS RQRD",
+     "text": "Set CTR TK PUMPS pb to OFF when CTR TK is empty or during approach.",
+     "level": 1,
+     "applies_to": [
+      "HS-TXA..TXO"
+     ],
+     "refs": [
+      {
+       "book": "FCOM",
+       "code": "PRO-ABN-F_CTL",
+       "page": "P 100/132",
+       "pdf": 3573
+      }
+     ]
+    },
+    {
+     "kind": "condition",
+     "text": "If slats extended:",
+     "level": 0,
+     "applies_to": [
+      "all"
+     ],
+     "refs": [
+      {
+       "book": "FCOM",
+       "code": "PRO-ABN-F_CTL",
+       "page": "P 100/132",
+       "pdf": 3573
+      },
+      {
+       "book": "FCOM",
+       "code": "PRO-ABN-F_CTL",
+       "page": "P 103/132",
+       "pdf": 3576
+      }
+     ]
+    },
+    {
+     "kind": "info",
+     "text": "FUEL CONSUMPT INCRSD",
+     "level": 1,
+     "applies_to": [
+      "all"
+     ],
+     "refs": [
+      {
+       "book": "FCOM",
+       "code": "PRO-ABN-F_CTL",
+       "page": "P 100/132",
+       "pdf": 3573
+      },
+      {
+       "book": "FCOM",
+       "code": "PRO-ABN-F_CTL",
+       "page": "P 103/132",
+       "pdf": 3576
+      }
+     ]
+    },
+    {
+     "kind": "info",
+     "text": "FMS PRED UNRELIABLE",
+     "level": 1,
+     "applies_to": [
+      "all"
+     ],
+     "refs": [
+      {
+       "book": "FCOM",
+       "code": "PRO-ABN-F_CTL",
+       "page": "P 100/132",
+       "pdf": 3573
+      },
+      {
+       "book": "FCOM",
+       "code": "PRO-ABN-F_CTL",
+       "page": "P 103/132",
+       "pdf": 3576
+      }
+     ]
+    },
+    {
+     "kind": "condition",
+     "text": "If unsuccessful:",
+     "level": 0,
+     "applies_to": [
+      "all"
+     ],
+     "refs": [
+      {
+       "book": "FCOM",
+       "code": "PRO-ABN-F_CTL",
+       "page": "P 100/132",
+       "pdf": 3573
+      },
+      {
+       "book": "FCOM",
+       "code": "PRO-ABN-F_CTL",
+       "page": "P 103/132",
+       "pdf": 3576
+      }
+     ]
+    },
+    {
+     "kind": "info",
+     "text": "Refer to PRO-ABN-F_CTL [QRH] Landing with Slats or Flaps Jammed.",
+     "level": 1,
+     "applies_to": [
+      "all"
+     ],
+     "refs": [
+      {
+       "book": "FCOM",
+       "code": "PRO-ABN-F_CTL",
+       "page": "P 100/132",
+       "pdf": 3573
+      },
+      {
+       "book": "FCOM",
+       "code": "PRO-ABN-F_CTL",
+       "page": "P 103/132",
+       "pdf": 3576
+      }
+     ]
+    },
+    {
+     "kind": "note",
+     "text": "The autopilot may be used down to 500 ft AGL. As it is not tuned for the abnormal configurations, its behavior could be less than optimum and must be monitored.",
+     "level": 1,
+     "applies_to": [
+      "all"
+     ],
+     "refs": [
+      {
+       "book": "FCOM",
+       "code": "PRO-ABN-F_CTL",
+       "page": "P 100/132",
+       "pdf": 3573
+      },
+      {
+       "book": "FCOM",
+       "code": "PRO-ABN-F_CTL",
+       "page": "P 103/132",
+       "pdf": 3576
+      }
+     ]
+    },
+    {
+     "kind": "info",
+     "text": "ASSOCIATED PROCEDURES: F/CTL ALTN LAW (PROT LOST)",
+     "level": 0,
+     "applies_to": [
+      "all"
+     ],
+     "refs": [
+      {
+       "book": "FCOM",
+       "code": "PRO-ABN-F_CTL",
+       "page": "P 100/132",
+       "pdf": 3573
+      },
+      {
+       "book": "FCOM",
+       "code": "PRO-ABN-F_CTL",
+       "page": "P 103/132",
+       "pdf": 3576
+      }
+     ]
+    },
+    {
+     "kind": "note",
+     "text": "If F/CTL SLATS FAULT due to dual slat channels failure, flight controls revert to alternate law.",
+     "level": 0,
+     "applies_to": [
+      "all"
+     ],
+     "refs": [
+      {
+       "book": "FCOM",
+       "code": "PRO-ABN-F_CTL",
+       "page": "P 100/132",
+       "pdf": 3573
+      },
+      {
+       "book": "FCOM",
+       "code": "PRO-ABN-F_CTL",
+       "page": "P 103/132",
+       "pdf": 3576
+      }
+     ]
+    }
+   ]
+  }
+ ],
+ "status": {
+  "limitations": [],
+  "info": [
+   {
+    "text": "CTR TK FEED: MAN ONLY",
+    "applies_to": [
+     "HS-TXA..TXO"
+    ],
+    "refs": [
+     {
+      "book": "FCOM",
+      "code": "PRO-ABN-F_CTL",
+      "page": "P 101/132",
+      "pdf": 3574
+     }
+    ]
+   },
+   {
+    "text": "If both slat channels fail: ALTN LAW: PROT LOST; WHEN L/G DN: DIRECT LAW — at landing gear extension, control reverts to direct law in pitch, as well as in roll",
+    "applies_to": [
+     "all"
+    ],
+    "refs": [
+     {
+      "book": "FCOM",
+      "code": "PRO-ABN-F_CTL",
+      "page": "P 101/132",
+      "pdf": 3574
+     },
+     {
+      "book": "FCOM",
+      "code": "PRO-ABN-F_CTL",
+      "page": "P 104/132",
+      "pdf": 3577
+     }
+    ]
+   },
+   {
+    "text": "FUEL CONSUMPT INCRSD",
+    "applies_to": [
+     "all"
+    ],
+    "refs": [
+     {
+      "book": "FCOM",
+      "code": "PRO-ABN-F_CTL",
+      "page": "P 101/132",
+      "pdf": 3574
+     },
+     {
+      "book": "FCOM",
+      "code": "PRO-ABN-F_CTL",
+      "page": "P 104/132",
+      "pdf": 3577
+     }
+    ]
+   },
+   {
+    "text": "FMS PRED UNRELIABLE — disregard FMS fuel predictions and refer to QRH/OPS Fuel Penalty Factors/ECAM Alert Table",
+    "applies_to": [
+     "all"
+    ],
+    "refs": [
+     {
+      "book": "FCOM",
+      "code": "PRO-ABN-F_CTL",
+      "page": "P 101/132",
+      "pdf": 3574
+     },
+     {
+      "book": "FCOM",
+      "code": "PRO-ABN-F_CTL",
+      "page": "P 104/132",
+      "pdf": 3577
+     },
+     {
+      "book": "FCOM",
+      "code": "PRO-ABN-F_CTL",
+      "page": "P 105/132",
+      "pdf": 3578
+     }
+    ]
+   }
+  ],
+  "appr_proc": [
+   {
+    "kind": "action",
+    "item": "S/F JAMMED PROC",
+    "setting": "APPLY",
+    "text": "",
+    "level": 0,
+    "applies_to": [
+     "all"
+    ],
+    "refs": [
+     {
+      "book": "FCOM",
+      "code": "PRO-ABN-F_CTL",
+      "page": "P 101/132",
+      "pdf": 3574
+     },
+     {
+      "book": "FCOM",
+      "code": "PRO-ABN-F_CTL",
+      "page": "P 104/132",
+      "pdf": 3577
+     }
+    ]
+   },
+   {
+    "kind": "action",
+    "item": "FOR LDG",
+    "setting": "FLAP LVR 3",
+    "text": "Replaced by \"FOR LDG: FLAP LVR 3\" when CONF 3 is selected, as a reminder.",
+    "level": 0,
+    "applies_to": [
+     "all"
+    ],
+    "refs": [
+     {
+      "book": "FCOM",
+      "code": "PRO-ABN-F_CTL",
+      "page": "P 101/132",
+      "pdf": 3574
+     },
+     {
+      "book": "FCOM",
+      "code": "PRO-ABN-F_CTL",
+      "page": "P 104/132",
+      "pdf": 3577
+     }
+    ]
+   },
+   {
+    "kind": "action",
+    "item": "CTR TK PUMPS",
+    "setting": "OFF",
+    "text": "",
+    "level": 0,
+    "applies_to": [
+     "HS-TXA..TXO"
+    ],
+    "refs": [
+     {
+      "book": "FCOM",
+      "code": "PRO-ABN-F_CTL",
+      "page": "P 101/132",
+      "pdf": 3574
+     }
+    ]
+   },
+   {
+    "kind": "action",
+    "item": "GPWS LDG FLAP 3",
+    "setting": "ON",
+    "text": "This line is displayed when flaps are in CONF 3.",
+    "level": 0,
+    "applies_to": [
+     "all"
+    ],
+    "refs": [
+     {
+      "book": "FCOM",
+      "code": "PRO-ABN-F_CTL",
+      "page": "P 101/132",
+      "pdf": 3574
+     },
+     {
+      "book": "FCOM",
+      "code": "PRO-ABN-F_CTL",
+      "page": "P 104/132",
+      "pdf": 3577
+     }
+    ]
+   },
+   {
+    "kind": "action",
+    "item": "APPR SPD",
+    "setting": "REFER TO F/CTL FLAPS/SLATS FAULT/LOCKED",
+    "text": "",
+    "level": 0,
+    "applies_to": [
+     "all"
+    ],
+    "refs": [
+     {
+      "book": "FCOM",
+      "code": "PRO-ABN-F_CTL",
+      "page": "P 101/132",
+      "pdf": 3574
+     },
+     {
+      "book": "FCOM",
+      "code": "PRO-ABN-F_CTL",
+      "page": "P 104/132",
+      "pdf": 3577
+     }
+    ]
+   },
+   {
+    "kind": "action",
+    "item": "LDG DIST PROC",
+    "setting": "APPLY",
+    "text": "",
+    "level": 0,
+    "applies_to": [
+     "all"
+    ],
+    "refs": [
+     {
+      "book": "FCOM",
+      "code": "PRO-ABN-F_CTL",
+      "page": "P 101/132",
+      "pdf": 3574
+     },
+     {
+      "book": "FCOM",
+      "code": "PRO-ABN-F_CTL",
+      "page": "P 104/132",
+      "pdf": 3577
+     }
+    ]
+   }
+  ],
+  "inop_sys": [
+   {
+    "text": "F/CTL PROT (If both slat channels fail)",
+    "applies_to": [
+     "all"
+    ],
+    "refs": [
+     {
+      "book": "FCOM",
+      "code": "PRO-ABN-F_CTL",
+      "page": "P 101/132",
+      "pdf": 3574
+     },
+     {
+      "book": "FCOM",
+      "code": "PRO-ABN-F_CTL",
+      "page": "P 104/132",
+      "pdf": 3577
+     }
+    ]
+   },
+   {
+    "text": "SLATS",
+    "applies_to": [
+     "all"
+    ],
+    "refs": [
+     {
+      "book": "FCOM",
+      "code": "PRO-ABN-F_CTL",
+      "page": "P 101/132",
+      "pdf": 3574
+     },
+     {
+      "book": "FCOM",
+      "code": "PRO-ABN-F_CTL",
+      "page": "P 104/132",
+      "pdf": 3577
+     }
+    ]
+   },
+   {
+    "text": "AP 1+2 (If both slat channels fail)",
+    "applies_to": [
+     "all"
+    ],
+    "refs": [
+     {
+      "book": "FCOM",
+      "code": "PRO-ABN-F_CTL",
+      "page": "P 101/132",
+      "pdf": 3574
+     },
+     {
+      "book": "FCOM",
+      "code": "PRO-ABN-F_CTL",
+      "page": "P 104/132",
+      "pdf": 3577
+     }
+    ]
+   },
+   {
+    "text": "A/THR (If both slat channels fail)",
+    "applies_to": [
+     "all"
+    ],
+    "refs": [
+     {
+      "book": "FCOM",
+      "code": "PRO-ABN-F_CTL",
+      "page": "P 101/132",
+      "pdf": 3574
+     },
+     {
+      "book": "FCOM",
+      "code": "PRO-ABN-F_CTL",
+      "page": "P 104/132",
+      "pdf": 3577
+     }
+    ]
+   },
+   {
+    "text": "CAT 2 (If both slat channels fail)",
+    "applies_to": [
+     "all"
+    ],
+    "refs": [
+     {
+      "book": "FCOM",
+      "code": "PRO-ABN-F_CTL",
+      "page": "P 101/132",
+      "pdf": 3574
+     },
+     {
+      "book": "FCOM",
+      "code": "PRO-ABN-F_CTL",
+      "page": "P 104/132",
+      "pdf": 3577
+     }
+    ]
+   },
+   {
+    "text": "STEEP APPR (If both slat channels fail)",
+    "applies_to": [
+     "all"
+    ],
+    "refs": [
+     {
+      "book": "FCOM",
+      "code": "PRO-ABN-F_CTL",
+      "page": "P 101/132",
+      "pdf": 3574
+     },
+     {
+      "book": "FCOM",
+      "code": "PRO-ABN-F_CTL",
+      "page": "P 104/132",
+      "pdf": 3577
+     }
+    ]
+   },
+   {
+    "text": "GLS AUTOLAND (If both slat channels fail)",
+    "applies_to": [
+     "all"
+    ],
+    "refs": [
+     {
+      "book": "FCOM",
+      "code": "PRO-ABN-F_CTL",
+      "page": "P 101/132",
+      "pdf": 3574
+     },
+     {
+      "book": "FCOM",
+      "code": "PRO-ABN-F_CTL",
+      "page": "P 104/132",
+      "pdf": 3577
+     }
+    ]
+   },
+   {
+    "text": "FD 1+2 (If both slat channels fail. Not displayed on ECAM)",
+    "applies_to": [
+     "all"
+    ],
+    "refs": [
+     {
+      "book": "FCOM",
+      "code": "PRO-ABN-F_CTL",
+      "page": "P 101/132",
+      "pdf": 3574
+     },
+     {
+      "book": "FCOM",
+      "code": "PRO-ABN-F_CTL",
+      "page": "P 104/132",
+      "pdf": 3577
+     }
+    ]
+   }
+  ]
+ },
+ "tables": [
+  {
+   "title": "MAX SPEED",
+   "caption": "Slats/flaps position displayed on the upper ECAM display.",
+   "columns": [
+    "Slats \\ Flaps",
+    "F = 0",
+    "0 < F ≤ 1",
+    "1 < F ≤ 2",
+    "2 < F ≤ 3",
+    "F > 3"
+   ],
+   "rows": [
+    [
+     "S = 0",
+     "NO LIMITATION",
+     "215 kt",
+     "200 kt",
+     "185 kt",
+     "Not allowed (177 kt)"
+    ],
+    [
+     "0 < S < 1",
+     "230 kt",
+     "215 kt",
+     "200 kt",
+     "185 kt",
+     "Not allowed (177 kt)"
+    ],
+    [
+     "S = 1",
+     "230 kt",
+     "215 kt",
+     "200 kt",
+     "185 kt",
+     "177 kt"
+    ],
+    [
+     "1 < S ≤ 3",
+     "200 kt",
+     "200 kt",
+     "200 kt",
+     "185 kt",
+     "177 kt"
+    ],
+    [
+     "S > 3",
+     "177 kt",
+     "177 kt",
+     "177 kt",
+     "177 kt",
+     "177 kt"
+    ]
+   ],
+   "applies_to": [
+    "all"
+   ],
+   "refs": [
+    {
+     "book": "FCOM",
+     "code": "PRO-ABN-F_CTL",
+     "page": "P 59/132",
+     "pdf": 3532
+    },
+    {
+     "book": "FCOM",
+     "code": "PRO-ABN-F_CTL",
+     "page": "P 1/132",
+     "pdf": 3474
+    },
+    {
+     "book": "QRH",
+     "code": "20.02",
+     "page": "20.02C",
+     "pdf": 189
+    }
+   ]
+  },
+  {
+   "title": "APPR SPD",
+   "caption": "Slats/flaps position displayed on the upper ECAM display.",
+   "columns": [
+    "Slats \\ Flaps",
+    "F = 0",
+    "0 < F < 1",
+    "1 ≤ F < 2",
+    "2 ≤ F < 3",
+    "F = 3",
+    "F > 3"
+   ],
+   "rows": [
+    [
+     "S = 0",
+     "VREF +60 (Appr), VREF +50 (Touch Down)",
+     "VREF +45",
+     "VREF +30",
+     "VREF +25",
+     "VREF +25",
+     "Not allowed"
+    ],
+    [
+     "0 < S < 1",
+     "VREF +45",
+     "VREF +45",
+     "VREF +30",
+     "VREF +25",
+     "VREF +25",
+     "Not allowed"
+    ],
+    [
+     "1 ≤ S ≤ 3",
+     "VREF +25",
+     "VREF +25",
+     "VREF +15",
+     "VREF +10",
+     "VREF +10",
+     "VREF +10"
+    ],
+    [
+     "S > 3",
+     "VREF +25",
+     "VREF +25",
+     "VREF +15",
+     "VREF +10",
+     "VREF +10",
+     "VREF +5"
+    ]
+   ],
+   "applies_to": [
+    "all"
+   ],
+   "refs": [
+    {
+     "book": "FCOM",
+     "code": "PRO-ABN-F_CTL",
+     "page": "P 59/132",
+     "pdf": 3532
+    }
+   ]
+  }
+ ],
+ "background": [
+  {
+   "text": "Causes: dual slats control unit (SFCC slats channel) failure, dual hydraulic failure, a combination, a mechanical jam, or locking by wing tip brake activation.",
+   "applies_to": [
+    "all"
+   ],
+   "refs": [
+    {
+     "book": "FCTM",
+     "code": "PR-AEP-F_CTL",
+     "page": "P 1/6",
+     "pdf": 428
+    }
+   ]
+  },
+  {
+   "text": "Consequences: the control laws may change, the selected speed must be used, an early stabilized approach should be preferred, approach attitudes change, approach speeds and landing distances increase, and the go-around procedure may have to be modified.",
+   "applies_to": [
+    "all"
+   ],
+   "refs": [
+    {
+     "book": "FCTM",
+     "code": "PR-AEP-F_CTL",
+     "page": "P 1/6",
+     "pdf": 428
+    }
+   ]
+  },
+  {
+   "text": "With 2 SFCC slat channels failed, pitch is in alternate law with no protections, and roll is in direct law.",
+   "applies_to": [
+    "all"
+   ],
+   "refs": [
+    {
+     "book": "FCOM",
+     "code": "DSC-27-20-20",
+     "page": "P 3/20",
+     "pdf": 1614
+    },
+    {
+     "book": "FCOM",
+     "code": "DSC-27-20-20",
+     "page": "P 4/20",
+     "pdf": 1615
+    }
+   ]
+  },
+  {
+   "text": "For flight with SLATS or FLAPS extended, fuel consumption is increased. Refer to QRH/OPS Fuel Penalty Factors/ECAM Alert Table.",
+   "applies_to": [
+    "all"
+   ],
+   "refs": [
+    {
+     "book": "FCOM",
+     "code": "PRO-ABN-F_CTL",
+     "page": "P 59/132",
+     "pdf": 3532
+    }
+   ]
+  }
+ ],
+ "technique": [
+  {
+   "text": "If a slats/flaps retraction failure occurs during takeoff, pull the SPD/MACH knob to select the speed and stop the acceleration, to avoid exceeding VFE. The overspeed warning follows the actual slats/flaps position.",
+   "applies_to": [
+    "all"
+   ],
+   "refs": [
+    {
+     "book": "FCTM",
+     "code": "PR-AEP-F_CTL",
+     "page": "P 1/6",
+     "pdf": 428
+    }
+   ]
+  },
+  {
+   "text": "The landing distance available at the departure airport and the aircraft gross weight determine the next course of action.",
+   "applies_to": [
+    "all"
+   ],
+   "refs": [
+    {
+     "book": "FCTM",
+     "code": "PR-AEP-F_CTL",
+     "page": "P 1/6",
+     "pdf": 428
+    }
+   ]
+  },
+  {
+   "text": "The AP may be used down to 500 ft AGL. It is not tuned for abnormal configurations: monitor it.",
+   "applies_to": [
+    "all"
+   ],
+   "refs": [
+    {
+     "book": "FCTM",
+     "code": "PR-AEP-F_CTL",
+     "page": "P 2/6",
+     "pdf": 429
+    }
+   ]
+  }
+ ],
+ "related": [
+  {
+   "title": "LANDING WITH SLATS OR FLAPS JAMMED",
+   "why": "If unsuccessful, and on the STATUS page: S/F JAMMED PROC APPLY",
+   "key_actions": [
+    "See the QRH brief"
+   ],
+   "refs": [
+    {
+     "book": "FCOM",
+     "code": "PRO-ABN-F_CTL",
+     "page": "P 100/132",
+     "pdf": 3573
+    },
+    {
+     "book": "FCOM",
+     "code": "PRO-ABN-F_CTL",
+     "page": "P 103/132",
+     "pdf": 3576
+    },
+    {
+     "book": "FCOM",
+     "code": "PRO-ABN-F_CTL",
+     "page": "P 1/132",
+     "pdf": 3474
+    }
+   ]
+  },
+  {
+   "title": "F/CTL ALTN LAW",
+   "why": "Associated procedure, if both slat channels fail",
+   "key_actions": [
+    "See the ALTN LAW brief"
+   ],
+   "refs": [
+    {
+     "book": "FCOM",
+     "code": "PRO-ABN-F_CTL",
+     "page": "P 100/132",
+     "pdf": 3573
+    },
+    {
+     "book": "FCOM",
+     "code": "PRO-ABN-F_CTL",
+     "page": "P 9/132",
+     "pdf": 3482
+    }
+   ]
+  },
+  {
+   "title": "F/CTL DIRECT LAW",
+   "why": "At landing gear extension, if both slat channels fail",
+   "key_actions": [
+    "See the DIRECT LAW brief"
+   ],
+   "refs": [
+    {
+     "book": "FCOM",
+     "code": "PRO-ABN-F_CTL",
+     "page": "P 101/132",
+     "pdf": 3574
+    },
+    {
+     "book": "FCOM",
+     "code": "PRO-ABN-F_CTL",
+     "page": "P 18/132",
+     "pdf": 3491
+    }
+   ]
+  }
+ ],
+ "differences": [
+  {
+   "topic": "If slats not at zero",
+   "values": {
+    "HS-TXA..TXO": "FUEL MODE SEL MAN; CTR TK PUMPS AS RQRD. APPR PROC: CTR TK PUMPS OFF. STATUS: CTR TK FEED: MAN ONLY",
+    "HS-TXP..TXU": "Not displayed: no such lines in the procedure"
+   },
+   "refs": [
+    {
+     "book": "FCOM",
+     "code": "PRO-ABN-F_CTL",
+     "page": "P 100/132",
+     "pdf": 3573
+    },
+    {
+     "book": "FCOM",
+     "code": "PRO-ABN-F_CTL",
+     "page": "P 101/132",
+     "pdf": 3574
+    },
+    {
+     "book": "FCOM",
+     "code": "PRO-ABN-F_CTL",
+     "page": "P 103/132",
+     "pdf": 3576
+    },
+    {
+     "book": "FCOM",
+     "code": "PRO-ABN-F_CTL",
+     "page": "P 104/132",
+     "pdf": 3577
+    }
+   ]
+  }
+ ],
+ "gaps": [
+  {
+   "text": "F/CTL SLATS FAULT/LOCKED is not in the QRH reset table.",
+   "applies_to": [
+    "all"
+   ],
+   "refs": [
+    {
+     "book": "QRH",
+     "code": "02.02",
+     "page": "02.02A",
+     "pdf": 51
+    }
+   ]
+  },
+  {
+   "text": "The PDP has no slide for this failure: the turns come from the FCTM AOP-30-30 sequence and PR-AEP-F_CTL. The FCTM says \"the crew\" pulls the knob; it is shown for the PF, who flies.",
+   "applies_to": [
+    "all"
+   ],
+   "refs": [
+    {
+     "book": "FCTM",
+     "code": "PR-AEP-F_CTL",
+     "page": "P 1/6",
+     "pdf": 428
+    },
+    {
+     "book": "FCTM",
+     "code": "AOP-30-30",
+     "page": "P 2/6",
+     "pdf": 83
+    }
+   ]
+  },
+  {
+   "text": "The STATUS line on slats locked in clean configuration names other types (A318/A319, A319/A321); HS-TX aircraft are all A320-232, so only the both-channels case is shown.",
+   "applies_to": [
+    "all"
+   ],
+   "refs": [
+    {
+     "book": "FCOM",
+     "code": "PRO-ABN-F_CTL",
+     "page": "P 101/132",
+     "pdf": 3574
+    },
+    {
+     "book": "FCOM",
+     "code": "PRO-ABN-F_CTL",
+     "page": "P 104/132",
+     "pdf": 3577
+    },
+    {
+     "book": "FCOM",
+     "code": "PLP-AAT",
+     "page": "P 1/2",
+     "pdf": 26
+    }
+   ]
+  },
+  {
+   "text": "The ECAM calls the alert F/CTL SLATS FAULT or F/CTL SLATS LOCKED: announce the title shown.",
+   "applies_to": [
+    "all"
+   ],
+   "refs": [
+    {
+     "book": "FCOM",
+     "code": "PRO-ABN-F_CTL",
+     "page": "P 99/132",
+     "pdf": 3572
+    }
+   ]
+  }
+ ],
+ "sources": [
+  {
+   "book": "FCOM",
+   "section": "PRO-ABN-F_CTL — F/CTL SLATS FAULT/LOCKED (HS-TX); FLAPS/SLATS tables",
+   "pages": "P 99–105, 59/132",
+   "pdf": "3572–3578, 3532",
+   "rev": "26 MAY 26"
+  },
+  {
+   "book": "FCOM",
+   "section": "DSC-27-20-20 — reconfiguration laws",
+   "pages": "P 3–4/20",
+   "pdf": "1614–1615",
+   "rev": "18 FEB 26"
+  },
+  {
+   "book": "FCTM",
+   "section": "PR-AEP-F_CTL — abnormal slats/flaps configuration",
+   "pages": "P 1–2/6",
+   "pdf": "428–429",
+   "rev": "26 MAY 26"
+  },
+  {
+   "book": "QRH",
+   "section": "OPS.04 — fuel penalty factors",
+   "pages": "OPS.04C, E",
+   "pdf": "275, 277",
+   "rev": "14 JUL 26"
+  }
+ ],
+ "schema": "a320-ecam-abnormal/3",
+ "generated": "2026-10-31",
+ "qrh": []
+}

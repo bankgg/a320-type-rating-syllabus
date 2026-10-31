@@ -1,0 +1,3636 @@
+{
+ "slug": "hyd-g-b-sys-lo-pr",
+ "title": "HYD G+B SYS LO PR",
+ "kind": "ecam",
+ "alert": {
+  "level": "warning",
+  "land_asap": "red",
+  "memory_items": false,
+  "qrh_summary": true,
+  "trigger": "This alert triggers when the green and blue systems pressure ≤1 450 PSI (the alert resets if pressure ≥1 750 PSI).",
+  "inhibited_phases": [
+   4,
+   5
+  ],
+  "refs": [
+   {
+    "book": "FCOM",
+    "code": "PRO-ABN-HYD",
+    "page": "P 50/76",
+    "pdf": 3739
+   }
+  ]
+ },
+ "effectivity": {
+  "branches": [
+   "HS-TXA..TXF",
+   "HS-TXG..TXU"
+  ],
+  "note": "One FCOM procedure for all HS-TX. Only the QRH fuel penalty factor differs (see HS-TX differences)."
+ },
+ "summary": "A red warning with red LAND ASAP: green and blue hydraulics are lost. The FCTM says a MAYDAY should be declared, and the ECAM actions should be completed before the approach. No AP, alternate law with protections lost, no slats and no ailerons, only the right elevator. It is a hand-flown approach with selected speed and A/THR off, flap lever 3, and a gravity gear extension at 200 kt, which gives direct law. Use the QRH summary after the ECAM.",
+ "key_limits": [
+  {
+   "label": "MAX SPEED",
+   "value": "320/0.77",
+   "applies_to": [
+    "all"
+   ],
+   "refs": [
+    {
+     "book": "FCOM",
+     "code": "PRO-ABN-HYD",
+     "page": "P 52/76",
+     "pdf": 3741
+    },
+    {
+     "book": "QRH",
+     "code": "23.02",
+     "page": "23.02A",
+     "pdf": 210
+    }
+   ]
+  },
+  {
+   "label": "MAX FL",
+   "value": "4000 FT below REC MAX FL",
+   "applies_to": [
+    "all"
+   ],
+   "refs": [
+    {
+     "book": "QRH",
+     "code": "23.02",
+     "page": "23.02A",
+     "pdf": 210
+    }
+   ]
+  },
+  {
+   "label": "MIN RAT SPD",
+   "value": "140 KT, if the RAT is out and HYD B ELEC PUMP LO PR",
+   "applies_to": [
+    "all"
+   ],
+   "refs": [
+    {
+     "book": "FCOM",
+     "code": "PRO-ABN-HYD",
+     "page": "P 51/76",
+     "pdf": 3740
+    },
+    {
+     "book": "FCOM",
+     "code": "PRO-ABN-HYD",
+     "page": "P 52/76",
+     "pdf": 3741
+    }
+   ]
+  },
+  {
+   "label": "For landing",
+   "value": "FLAP LVR 3 · VREF + 25 KT · GPWS LDG FLAP 3 ON",
+   "applies_to": [
+    "all"
+   ],
+   "refs": [
+    {
+     "book": "FCOM",
+     "code": "PRO-ABN-HYD",
+     "page": "P 52/76",
+     "pdf": 3741
+    },
+    {
+     "book": "FCOM",
+     "code": "PRO-ABN-HYD",
+     "page": "P 53/76",
+     "pdf": 3742
+    }
+   ]
+  },
+  {
+   "label": "L/G gravity extension",
+   "value": "When SPD 200 KT",
+   "applies_to": [
+    "all"
+   ],
+   "refs": [
+    {
+     "book": "FCOM",
+     "code": "PRO-ABN-HYD",
+     "page": "P 53/76",
+     "pdf": 3742
+    },
+    {
+     "book": "QRH",
+     "code": "23.02",
+     "page": "23.02A",
+     "pdf": 210
+    }
+   ]
+  },
+  {
+   "label": "Go-around",
+   "value": "MAX PITCH 15 DEG · TOGA THEN MCT · no gear retraction",
+   "applies_to": [
+    "all"
+   ],
+   "refs": [
+    {
+     "book": "FCOM",
+     "code": "PRO-ABN-HYD",
+     "page": "P 52/76",
+     "pdf": 3741
+    },
+    {
+     "book": "QRH",
+     "code": "23.02",
+     "page": "23.02B",
+     "pdf": 211
+    }
+   ]
+  }
+ ],
+ "flow": [
+  {
+   "phase": "Recognise · fly first",
+   "steps": [
+    {
+     "actor": "PF",
+     "items": [
+      {
+       "kind": "action",
+       "text": "Fly the aircraft by hand: the AP is lost; the FD and A/THR remain",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "FCTM",
+         "code": "PR-AEP-HYD",
+         "page": "P 2/4",
+         "pdf": 439
+        }
+       ]
+      },
+      {
+       "kind": "note",
+       "text": "Maneuver with care to avoid high hydraulic demand on the remaining systems",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "FCTM",
+         "code": "PR-AEP-HYD",
+         "page": "P 2/4",
+         "pdf": 439
+        }
+       ]
+      }
+     ]
+    },
+    {
+     "actor": "BOTH",
+     "items": [
+      {
+       "kind": "action",
+       "text": "First to notice: MASTER WARNING / CAUTION reset",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "FCTM",
+         "code": "AOP-30-30",
+         "page": "P 2/6",
+         "pdf": 83
+        },
+        {
+         "book": "PDP",
+         "code": "Management of abnormal operations",
+         "page": "XFTDN6ECAM00001",
+         "pdf": 424
+        }
+       ]
+      }
+     ]
+    },
+    {
+     "actor": "PM",
+     "items": [
+      {
+       "kind": "callout",
+       "text": "HYD G+B SYS LO PR",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "FCTM",
+         "code": "AOP-30-30",
+         "page": "P 2/6",
+         "pdf": 83
+        },
+        {
+         "book": "FCOM",
+         "code": "PRO-ABN-HYD",
+         "page": "P 50/76",
+         "pdf": 3739
+        },
+        {
+         "book": "PDP",
+         "code": "Management of abnormal operations",
+         "page": "XFTDN6ECAM00001",
+         "pdf": 424
+        }
+       ]
+      },
+      {
+       "kind": "action",
+       "text": "Confirm the failure on the SD page and overhead panel before acting",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "FCTM",
+         "code": "AOP-30-30",
+         "page": "P 2/6",
+         "pdf": 83
+        },
+        {
+         "book": "PDP",
+         "code": "Management of abnormal operations",
+         "page": "XFTDN6ECAM00001",
+         "pdf": 424
+        }
+       ]
+      }
+     ]
+    },
+    {
+     "actor": "PF",
+     "items": [
+      {
+       "kind": "callout",
+       "text": "ECAM ACTIONS",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "FCOM",
+         "code": "PRO-ABN-ABN-00",
+         "page": "P 8/12",
+         "pdf": 2831
+        },
+        {
+         "book": "FCTM",
+         "code": "AOP-30-30",
+         "page": "P 3/6",
+         "pdf": 84
+        },
+        {
+         "book": "PDP",
+         "code": "Management of abnormal operations",
+         "page": "XFTDN6ECAM00001",
+         "pdf": 424
+        }
+       ]
+      },
+      {
+       "kind": "note",
+       "text": "PF now flies, navigates and communicates",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "FCTM",
+         "code": "AOP-20",
+         "page": "P 1–2/10",
+         "pdf": 68
+        },
+        {
+         "book": "PDP",
+         "code": "Management of abnormal operations",
+         "page": "XFTDN6ECAM00001",
+         "pdf": 424
+        }
+       ]
+      }
+     ]
+    },
+    {
+     "actor": "PF",
+     "items": [
+      {
+       "kind": "action",
+       "text": "Declare a MAYDAY to ATC",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "FCTM",
+         "code": "PR-AEP-HYD",
+         "page": "P 2/4",
+         "pdf": 439
+        }
+       ]
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "phase": "ECAM actions",
+   "steps": [
+    {
+     "actor": "PM",
+     "items": [
+      {
+       "kind": "condition",
+       "text": "If HYD B ELEC PUMP LO PR",
+       "children": [
+        {
+         "kind": "condition",
+         "text": "If the RAT is not out",
+         "children": [
+          {
+           "kind": "ecam",
+           "item": "RAT",
+           "setting": "MAN ON",
+           "applies_to": [
+            "all"
+           ],
+           "refs": [
+            {
+             "book": "FCOM",
+             "code": "PRO-ABN-HYD",
+             "page": "P 51/76",
+             "pdf": 3740
+            }
+           ]
+          }
+         ],
+         "applies_to": [
+          "all"
+         ],
+         "refs": [
+          {
+           "book": "FCOM",
+           "code": "PRO-ABN-HYD",
+           "page": "P 51/76",
+           "pdf": 3740
+          }
+         ]
+        },
+        {
+         "kind": "condition",
+         "text": "If the RAT is out",
+         "children": [
+          {
+           "kind": "ecam",
+           "item": "MIN RAT SPD",
+           "setting": "140 KT",
+           "applies_to": [
+            "all"
+           ],
+           "refs": [
+            {
+             "book": "FCOM",
+             "code": "PRO-ABN-HYD",
+             "page": "P 51/76",
+             "pdf": 3740
+            }
+           ]
+          }
+         ],
+         "applies_to": [
+          "all"
+         ],
+         "refs": [
+          {
+           "book": "FCOM",
+           "code": "PRO-ABN-HYD",
+           "page": "P 51/76",
+           "pdf": 3740
+          }
+         ]
+        }
+       ],
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "FCOM",
+         "code": "PRO-ABN-HYD",
+         "page": "P 51/76",
+         "pdf": 3740
+        }
+       ]
+      },
+      {
+       "kind": "action",
+       "text": "AFFECTED PUMPS: the BLUE ELEC PUMP pb is guarded — crosscheck it first",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "FCOM",
+         "code": "DSC-29-20",
+         "page": "P 1/10",
+         "pdf": 1752
+        },
+        {
+         "book": "FCTM",
+         "code": "AOP-30-20",
+         "page": "P 1/2",
+         "pdf": 80
+        }
+       ]
+      }
+     ]
+    },
+    {
+     "actor": "PM",
+     "items": [
+      {
+       "kind": "callout",
+       "text": "CONFIRM?",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "PDP",
+         "code": "Management of abnormal operations",
+         "page": "XFTDN6ECAM00001",
+         "pdf": 432
+        },
+        {
+         "book": "FCOM",
+         "code": "DSC-29-20",
+         "page": "P 1/10",
+         "pdf": 1752
+        }
+       ]
+      }
+     ]
+    },
+    {
+     "actor": "PF",
+     "items": [
+      {
+       "kind": "callout",
+       "text": "CONFIRMED",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "PDP",
+         "code": "Management of abnormal operations",
+         "page": "XFTDN6ECAM00001",
+         "pdf": 432
+        }
+       ]
+      },
+      {
+       "kind": "note",
+       "text": "After verifying the control the PM points to",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "PDP",
+         "code": "Management of abnormal operations",
+         "page": "XFTDN6ECAM00001",
+         "pdf": 432
+        },
+        {
+         "book": "FCTM",
+         "code": "AOP-30-20",
+         "page": "P 1/2",
+         "pdf": 80
+        }
+       ]
+      }
+     ]
+    },
+    {
+     "actor": "PM",
+     "items": [
+      {
+       "kind": "ecam",
+       "item": "AFFECTED PUMPS",
+       "setting": "OFF",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "FCOM",
+         "code": "PRO-ABN-HYD",
+         "page": "P 51/76",
+         "pdf": 3740
+        }
+       ]
+      },
+      {
+       "kind": "ecam",
+       "item": "MANEUVER WITH CARE",
+       "setting": "—",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "FCOM",
+         "code": "PRO-ABN-HYD",
+         "page": "P 51/76",
+         "pdf": 3740
+        }
+       ]
+      },
+      {
+       "kind": "condition",
+       "text": "FOR GO-AROUND",
+       "children": [
+        {
+         "kind": "ecam",
+         "item": "MAX PITCH 15 DEG",
+         "setting": "—",
+         "applies_to": [
+          "all"
+         ],
+         "refs": [
+          {
+           "book": "FCOM",
+           "code": "PRO-ABN-HYD",
+           "page": "P 51/76",
+           "pdf": 3740
+          }
+         ]
+        },
+        {
+         "kind": "ecam",
+         "item": "THR LVR",
+         "setting": "TOGA THEN MCT",
+         "applies_to": [
+          "all"
+         ],
+         "refs": [
+          {
+           "book": "FCOM",
+           "code": "PRO-ABN-HYD",
+           "page": "P 51/76",
+           "pdf": 3740
+          }
+         ]
+        },
+        {
+         "kind": "note",
+         "text": "Not displayed if one engine is inoperative",
+         "applies_to": [
+          "all"
+         ],
+         "refs": [
+          {
+           "book": "FCOM",
+           "code": "PRO-ABN-HYD",
+           "page": "P 51/76",
+           "pdf": 3740
+          }
+         ]
+        }
+       ],
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "FCOM",
+         "code": "PRO-ABN-HYD",
+         "page": "P 51/76",
+         "pdf": 3740
+        }
+       ]
+      },
+      {
+       "kind": "ecam",
+       "item": "FUEL CONSUMPT INCRSD · FMS PRED UNRELIABLE",
+       "setting": "—",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "FCOM",
+         "code": "PRO-ABN-HYD",
+         "page": "P 51/76",
+         "pdf": 3740
+        }
+       ]
+      },
+      {
+       "kind": "ecam",
+       "item": "F/CTL ALTN LAW (PROT LOST)",
+       "setting": "Associated procedure",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "FCOM",
+         "code": "PRO-ABN-HYD",
+         "page": "P 51/76",
+         "pdf": 3740
+        },
+        {
+         "book": "FCOM",
+         "code": "PRO-ABN-F_CTL",
+         "page": "P 9/132",
+         "pdf": 3482
+        }
+       ]
+      },
+      {
+       "kind": "condition",
+       "text": "If blue system recovered",
+       "children": [
+        {
+         "kind": "ecam",
+         "item": "HYD G SYS LO PR",
+         "setting": "Associated procedure",
+         "applies_to": [
+          "all"
+         ],
+         "refs": [
+          {
+           "book": "FCOM",
+           "code": "PRO-ABN-HYD",
+           "page": "P 51/76",
+           "pdf": 3740
+          }
+         ]
+        }
+       ],
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "FCOM",
+         "code": "PRO-ABN-HYD",
+         "page": "P 51/76",
+         "pdf": 3740
+        }
+       ]
+      },
+      {
+       "kind": "note",
+       "text": "Secondary failures *WHEEL, *F/CTL: analyze each SD page and clear it",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "FCOM",
+         "code": "PRO-ABN-HYD",
+         "page": "P 51/76",
+         "pdf": 3740
+        },
+        {
+         "book": "FCTM",
+         "code": "AOP-30-30",
+         "page": "P 3/6",
+         "pdf": 84
+        }
+       ]
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "phase": "STATUS",
+   "steps": [
+    {
+     "actor": "PM",
+     "items": [
+      {
+       "kind": "callout",
+       "text": "CLEAR HYDRAULIC ?",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "FCOM",
+         "code": "PRO-ABN-ABN-00",
+         "page": "P 8/12",
+         "pdf": 2831
+        },
+        {
+         "book": "FCTM",
+         "code": "AOP-30-30",
+         "page": "P 3/6",
+         "pdf": 84
+        },
+        {
+         "book": "PDP",
+         "code": "Management of abnormal operations",
+         "page": "XFTDN6ECAM00001",
+         "pdf": 424
+        }
+       ]
+      }
+     ]
+    },
+    {
+     "actor": "PF",
+     "items": [
+      {
+       "kind": "callout",
+       "text": "CLEAR HYDRAULIC",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "FCOM",
+         "code": "PRO-ABN-ABN-00",
+         "page": "P 8/12",
+         "pdf": 2831
+        },
+        {
+         "book": "FCTM",
+         "code": "AOP-30-30",
+         "page": "P 3/6",
+         "pdf": 84
+        },
+        {
+         "book": "PDP",
+         "code": "Management of abnormal operations",
+         "page": "XFTDN6ECAM00001",
+         "pdf": 424
+        }
+       ]
+      }
+     ]
+    },
+    {
+     "actor": "PM",
+     "items": [
+      {
+       "kind": "callout",
+       "text": "STATUS",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "FCTM",
+         "code": "AOP-30-30",
+         "page": "P 3/6",
+         "pdf": 84
+        },
+        {
+         "book": "PDP",
+         "code": "Management of abnormal operations",
+         "page": "XFTDN6ECAM00001",
+         "pdf": 426
+        }
+       ]
+      }
+     ]
+    },
+    {
+     "actor": "PF",
+     "items": [
+      {
+       "kind": "callout",
+       "text": "STOP ECAM",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "FCTM",
+         "code": "AOP-30-30",
+         "page": "P 3/6",
+         "pdf": 84
+        },
+        {
+         "book": "PDP",
+         "code": "Management of abnormal operations",
+         "page": "XFTDN6ECAM00001",
+         "pdf": 426
+        }
+       ]
+      }
+     ]
+    },
+    {
+     "actor": "PM",
+     "items": [
+      {
+       "kind": "ecam",
+       "item": "ECAM ACTIONS",
+       "setting": "STOP",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "PDP",
+         "code": "Management of abnormal operations",
+         "page": "XFTDN6ECAM00001",
+         "pdf": 426
+        }
+       ]
+      }
+     ]
+    },
+    {
+     "actor": "PF",
+     "items": [
+      {
+       "kind": "action",
+       "text": "Normal C/L as applicable; system resets only per QRH",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "FCTM",
+         "code": "AOP-30-30",
+         "page": "P 4/6",
+         "pdf": 85
+        },
+        {
+         "book": "PDP",
+         "code": "Management of abnormal operations",
+         "page": "XFTDN6ECAM00001",
+         "pdf": 426
+        }
+       ]
+      },
+      {
+       "kind": "callout",
+       "text": "CONTINUE ECAM",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "FCTM",
+         "code": "AOP-30-30",
+         "page": "P 3/6",
+         "pdf": 84
+        },
+        {
+         "book": "PDP",
+         "code": "Management of abnormal operations",
+         "page": "XFTDN6ECAM00001",
+         "pdf": 426
+        }
+       ]
+      }
+     ]
+    },
+    {
+     "actor": "PM",
+     "items": [
+      {
+       "kind": "action",
+       "text": "Read the whole STATUS page; preview APPR PROC workload",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "FCTM",
+         "code": "AOP-30-30",
+         "page": "P 3/6",
+         "pdf": 84
+        },
+        {
+         "book": "PDP",
+         "code": "Management of abnormal operations",
+         "page": "XFTDN6ECAM00001",
+         "pdf": 426
+        }
+       ]
+      },
+      {
+       "kind": "callout",
+       "text": "REMOVE STATUS ?",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "FCTM",
+         "code": "AOP-30-30",
+         "page": "P 3/6",
+         "pdf": 84
+        },
+        {
+         "book": "PDP",
+         "code": "Management of abnormal operations",
+         "page": "XFTDN6ECAM00001",
+         "pdf": 426
+        }
+       ]
+      }
+     ]
+    },
+    {
+     "actor": "PF",
+     "items": [
+      {
+       "kind": "callout",
+       "text": "REMOVE STATUS",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "FCOM",
+         "code": "PRO-ABN-ABN-00",
+         "page": "P 8/12",
+         "pdf": 2831
+        },
+        {
+         "book": "FCTM",
+         "code": "AOP-30-30",
+         "page": "P 3/6",
+         "pdf": 84
+        },
+        {
+         "book": "PDP",
+         "code": "Management of abnormal operations",
+         "page": "XFTDN6ECAM00001",
+         "pdf": 426
+        }
+       ]
+      }
+     ]
+    },
+    {
+     "actor": "PM",
+     "items": [
+      {
+       "kind": "callout",
+       "text": "ECAM ACTIONS COMPLETE",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "FCOM",
+         "code": "PRO-ABN-ABN-00",
+         "page": "P 8/12",
+         "pdf": 2831
+        },
+        {
+         "book": "PDP",
+         "code": "Management of abnormal operations",
+         "page": "XFTDN6ECAM00001",
+         "pdf": 426
+        }
+       ]
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "phase": "Assess and decide",
+   "steps": [
+    {
+     "actor": "PM",
+     "items": [
+      {
+       "kind": "action",
+       "text": "After ECAM ACTIONS COMPLETE, refer to the HYD G + B SYS LO PR summary: read the CRUISE section",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "FCTM",
+         "code": "AOP-30-60",
+         "page": "P 2/4",
+         "pdf": 93
+        },
+        {
+         "book": "PDP",
+         "code": "Use of summary",
+         "page": "XFTDN1USESUMM01",
+         "pdf": 438
+        },
+        {
+         "book": "QRH",
+         "code": "23.02",
+         "page": "23.02A",
+         "pdf": 210
+        }
+       ]
+      }
+     ]
+    },
+    {
+     "actor": "BOTH",
+     "items": [
+      {
+       "kind": "action",
+       "text": "Assess the situation; select a runway. Fuel: QRH OPS fuel penalty factors, since FMS predictions are unreliable. Landing performance: EFB application",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "FCTM",
+         "code": "AOP-30-60",
+         "page": "P 2/4",
+         "pdf": 93
+        },
+        {
+         "book": "PDP",
+         "code": "Use of summary",
+         "page": "XFTDN1USESUMM01",
+         "pdf": 438
+        },
+        {
+         "book": "QRH",
+         "code": "23.02",
+         "page": "23.02A",
+         "pdf": 210
+        }
+       ]
+      }
+     ]
+    },
+    {
+     "actor": "PF",
+     "items": [
+      {
+       "kind": "action",
+       "text": "Decide; inform ATC, cabin crew, passengers and airline operations as required",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "FCTM",
+         "code": "AOP-30-30",
+         "page": "P 5/6",
+         "pdf": 86
+        },
+        {
+         "book": "PDP",
+         "code": "Management of abnormal operations",
+         "page": "XFTDN6ECAM00001",
+         "pdf": 428
+        }
+       ]
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "phase": "Approach preparation and briefing",
+   "steps": [
+    {
+     "actor": "PM",
+     "items": [
+      {
+       "kind": "action",
+       "text": "Review the STATUS page, then use the APPROACH, LANDING and GO-AROUND sections to prepare the approach and the FMS",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "FCTM",
+         "code": "AOP-30-60",
+         "page": "P 2/4",
+         "pdf": 93
+        },
+        {
+         "book": "PDP",
+         "code": "Use of summary",
+         "page": "XFTDN1USESUMM01",
+         "pdf": 439
+        },
+        {
+         "book": "QRH",
+         "code": "23.02",
+         "page": "23.02A",
+         "pdf": 210
+        }
+       ]
+      }
+     ]
+    },
+    {
+     "actor": "PF",
+     "items": [
+      {
+       "kind": "action",
+       "text": "Brief with the APPROACH, LANDING and GO-AROUND sections, crosschecking STATUS",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "FCTM",
+         "code": "AOP-30-60",
+         "page": "P 3/4",
+         "pdf": 94
+        },
+        {
+         "book": "PDP",
+         "code": "Use of summary",
+         "page": "XFTDN1USESUMM01",
+         "pdf": 441
+        }
+       ]
+      },
+      {
+       "kind": "note",
+       "text": "Selected speed, gravity gear, flap lever, VAPP, an early stabilized approach, tail strike awareness, braking and steering, go-around callout, configuration and speed",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "FCTM",
+         "code": "PR-AEP-HYD",
+         "page": "P 2/4",
+         "pdf": 439
+        }
+       ]
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "phase": "Approach",
+   "steps": [
+    {
+     "actor": "PM",
+     "items": [
+      {
+       "kind": "condition",
+       "text": "Before the approach: DUAL HYD LO PR",
+       "children": [
+        {
+         "kind": "condition",
+         "text": "If system lost by RSVR LO AIR PR",
+         "children": [
+          {
+           "kind": "ecam",
+           "item": "RELATED PUMPS",
+           "setting": "ON",
+           "applies_to": [
+            "all"
+           ],
+           "refs": [
+            {
+             "book": "FCOM",
+             "code": "PRO-ABN-HYD",
+             "page": "P 52/76",
+             "pdf": 3741
+            }
+           ]
+          }
+         ],
+         "applies_to": [
+          "all"
+         ],
+         "refs": [
+          {
+           "book": "FCOM",
+           "code": "PRO-ABN-HYD",
+           "page": "P 52/76",
+           "pdf": 3741
+          }
+         ]
+        },
+        {
+         "kind": "condition",
+         "text": "If system lost by RSVR OVHT",
+         "children": [
+          {
+           "kind": "condition",
+           "text": "IF BLUE OVHT OUT",
+           "children": [
+            {
+             "kind": "ecam",
+             "item": "BLUE ELEC PUMP",
+             "setting": "AUTO",
+             "applies_to": [
+              "all"
+             ],
+             "refs": [
+              {
+               "book": "FCOM",
+               "code": "PRO-ABN-HYD",
+               "page": "P 52/76",
+               "pdf": 3741
+              }
+             ]
+            }
+           ],
+           "applies_to": [
+            "all"
+           ],
+           "refs": [
+            {
+             "book": "FCOM",
+             "code": "PRO-ABN-HYD",
+             "page": "P 52/76",
+             "pdf": 3741
+            }
+           ]
+          },
+          {
+           "kind": "condition",
+           "text": "IF GREEN OVHT OUT",
+           "children": [
+            {
+             "kind": "ecam",
+             "item": "GREEN ENG 1 PUMP",
+             "setting": "ON",
+             "applies_to": [
+              "all"
+             ],
+             "refs": [
+              {
+               "book": "FCOM",
+               "code": "PRO-ABN-HYD",
+               "page": "P 52/76",
+               "pdf": 3741
+              }
+             ]
+            }
+           ],
+           "applies_to": [
+            "all"
+           ],
+           "refs": [
+            {
+             "book": "FCOM",
+             "code": "PRO-ABN-HYD",
+             "page": "P 52/76",
+             "pdf": 3741
+            }
+           ]
+          }
+         ],
+         "applies_to": [
+          "all"
+         ],
+         "refs": [
+          {
+           "book": "FCOM",
+           "code": "PRO-ABN-HYD",
+           "page": "P 52/76",
+           "pdf": 3741
+          }
+         ]
+        }
+       ],
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "FCOM",
+         "code": "PRO-ABN-HYD",
+         "page": "P 52/76",
+         "pdf": 3741
+        }
+       ]
+      }
+     ]
+    },
+    {
+     "actor": "PF",
+     "items": [
+      {
+       "kind": "ecam",
+       "item": "A/THR",
+       "setting": "OFF",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "FCOM",
+         "code": "PRO-ABN-HYD",
+         "page": "P 52/76",
+         "pdf": 3741
+        },
+        {
+         "book": "QRH",
+         "code": "23.02",
+         "page": "23.02A",
+         "pdf": 210
+        }
+       ]
+      },
+      {
+       "kind": "action",
+       "text": "Select the target speed on the FCU: the A/THR may not satisfactorily maintain speed",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "FCOM",
+         "code": "PRO-ABN-HYD",
+         "page": "P 52/76",
+         "pdf": 3741
+        }
+       ]
+      },
+      {
+       "kind": "condition",
+       "text": "For flaps extension",
+       "children": [
+        {
+         "kind": "ecam",
+         "item": "SPD SEL",
+         "setting": "VFE NEXT - 5 kt",
+         "applies_to": [
+          "all"
+         ],
+         "refs": [
+          {
+           "book": "QRH",
+           "code": "23.02",
+           "page": "23.02A",
+           "pdf": 210
+          }
+         ]
+        }
+       ],
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "QRH",
+         "code": "23.02",
+         "page": "23.02A",
+         "pdf": 210
+        }
+       ]
+      }
+     ]
+    },
+    {
+     "actor": "PM",
+     "items": [
+      {
+       "kind": "ecam",
+       "item": "GPWS LDG FLAP 3",
+       "setting": "ON",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "FCOM",
+         "code": "PRO-ABN-HYD",
+         "page": "P 53/76",
+         "pdf": 3742
+        },
+        {
+         "book": "QRH",
+         "code": "23.02",
+         "page": "23.02A",
+         "pdf": 210
+        }
+       ]
+      },
+      {
+       "kind": "note",
+       "text": "FOR LDG: FLAP LVR 3",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "FCOM",
+         "code": "PRO-ABN-HYD",
+         "page": "P 52/76",
+         "pdf": 3741
+        },
+        {
+         "book": "QRH",
+         "code": "23.02",
+         "page": "23.02A",
+         "pdf": 210
+        }
+       ]
+      },
+      {
+       "kind": "condition",
+       "text": "When SPD 200 KT, if L/G is not downlocked",
+       "children": [
+        {
+         "kind": "ecam",
+         "item": "GRVTY GEAR EXTN handcrank",
+         "setting": "PULL AND TURN",
+         "applies_to": [
+          "all"
+         ],
+         "refs": [
+          {
+           "book": "QRH",
+           "code": "23.02",
+           "page": "23.02A",
+           "pdf": 210
+          }
+         ]
+        },
+        {
+         "kind": "note",
+         "text": "Rotate the handle clockwise 3 turns until mechanical stop",
+         "applies_to": [
+          "all"
+         ],
+         "refs": [
+          {
+           "book": "QRH",
+           "code": "23.02",
+           "page": "23.02A",
+           "pdf": 210
+          }
+         ]
+        },
+        {
+         "kind": "ecam",
+         "item": "L/G LEVER",
+         "setting": "DOWN",
+         "applies_to": [
+          "all"
+         ],
+         "refs": [
+          {
+           "book": "QRH",
+           "code": "23.02",
+           "page": "23.02A",
+           "pdf": 210
+          }
+         ]
+        },
+        {
+         "kind": "ecam",
+         "item": "GEAR DOWN",
+         "setting": "CHECK",
+         "applies_to": [
+          "all"
+         ],
+         "refs": [
+          {
+           "book": "QRH",
+           "code": "23.02",
+           "page": "23.02A",
+           "pdf": 210
+          }
+         ]
+        }
+       ],
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "FCOM",
+         "code": "PRO-ABN-HYD",
+         "page": "P 53/76",
+         "pdf": 3742
+        },
+        {
+         "book": "QRH",
+         "code": "23.02",
+         "page": "23.02A",
+         "pdf": 210
+        }
+       ]
+      }
+     ]
+    },
+    {
+     "actor": "PF",
+     "items": [
+      {
+       "kind": "condition",
+       "text": "When L/G down",
+       "children": [
+        {
+         "kind": "action",
+         "text": "USE MAN PITCH TRIM: control is in direct law",
+         "applies_to": [
+          "all"
+         ],
+         "refs": [
+          {
+           "book": "QRH",
+           "code": "23.02",
+           "page": "23.02A",
+           "pdf": 210
+          },
+          {
+           "book": "FCOM",
+           "code": "PRO-ABN-HYD",
+           "page": "P 53/76",
+           "pdf": 3742
+          }
+         ]
+        }
+       ],
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "QRH",
+         "code": "23.02",
+         "page": "23.02A",
+         "pdf": 210
+        }
+       ]
+      },
+      {
+       "kind": "condition",
+       "text": "When in landing CONF and in final approach",
+       "children": [
+        {
+         "kind": "action",
+         "text": "DECELERATE TO CALCULATED VAPP",
+         "applies_to": [
+          "all"
+         ],
+         "refs": [
+          {
+           "book": "QRH",
+           "code": "23.02",
+           "page": "23.02B",
+           "pdf": 211
+          }
+         ]
+        }
+       ],
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "QRH",
+         "code": "23.02",
+         "page": "23.02B",
+         "pdf": 211
+        }
+       ]
+      }
+     ]
+    },
+    {
+     "actor": "PM",
+     "items": [
+      {
+       "kind": "action",
+       "text": "Before the final approach: check the STATUS page and that all APPR PROC have been completed",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "PDP",
+         "code": "Use of summary",
+         "page": "XFTDN1USESUMM01",
+         "pdf": 442
+        },
+        {
+         "book": "FCTM",
+         "code": "AOP-30-60",
+         "page": "P 4/4",
+         "pdf": 95
+        }
+       ]
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "phase": "Landing",
+   "steps": [
+    {
+     "actor": "PF",
+     "items": [
+      {
+       "kind": "action",
+       "text": "Flare: only one elevator and two spoilers per wing, no ailerons; slightly sluggish in direct law",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "QRH",
+         "code": "23.02",
+         "page": "23.02B",
+         "pdf": 211
+        }
+       ]
+      },
+      {
+       "kind": "action",
+       "text": "Reverser: only N°2. Spoilers: only 2 per wing. Braking: ALTERNATE",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "QRH",
+         "code": "23.02",
+         "page": "23.02B",
+         "pdf": 211
+        }
+       ]
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "phase": "Go-around",
+   "steps": [
+    {
+     "actor": "PF",
+     "items": [
+      {
+       "kind": "action",
+       "text": "MAX PITCH 15 DEG · THR LVR TOGA THEN MCT",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "QRH",
+         "code": "23.02",
+         "page": "23.02B",
+         "pdf": 211
+        }
+       ]
+      }
+     ]
+    },
+    {
+     "actor": "BOTH",
+     "items": [
+      {
+       "kind": "action",
+       "text": "NO GEAR RETRACTION. Increased fuel consumption",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "QRH",
+         "code": "23.02",
+         "page": "23.02B",
+         "pdf": 211
+        }
+       ]
+      },
+      {
+       "kind": "condition",
+       "text": "For circuit",
+       "children": [
+        {
+         "kind": "action",
+         "text": "MAINTAIN SLATS/FLAPS CONFIGURATION; recommended speed MAX SPD - 10 kt",
+         "applies_to": [
+          "all"
+         ],
+         "refs": [
+          {
+           "book": "QRH",
+           "code": "23.02",
+           "page": "23.02B",
+           "pdf": 211
+          }
+         ]
+        }
+       ],
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "QRH",
+         "code": "23.02",
+         "page": "23.02B",
+         "pdf": 211
+        }
+       ]
+      },
+      {
+       "kind": "condition",
+       "text": "For diversion",
+       "children": [
+        {
+         "kind": "action",
+         "text": "SELECT CLEAN CONFIGURATION",
+         "applies_to": [
+          "all"
+         ],
+         "refs": [
+          {
+           "book": "QRH",
+           "code": "23.02",
+           "page": "23.02B",
+           "pdf": 211
+          }
+         ]
+        },
+        {
+         "kind": "note",
+         "text": "Slats jammed at zero: normal operating speeds. Slats jammed above zero: recommended speed MAX SPD - 10 kt",
+         "applies_to": [
+          "all"
+         ],
+         "refs": [
+          {
+           "book": "QRH",
+           "code": "23.02",
+           "page": "23.02B",
+           "pdf": 211
+          }
+         ]
+        }
+       ],
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "QRH",
+         "code": "23.02",
+         "page": "23.02B",
+         "pdf": 211
+        }
+       ]
+      }
+     ]
+    }
+   ]
+  }
+ ],
+ "procedures": [
+  {
+   "title": "ECAM procedure",
+   "source": "FCOM PRO-ABN-HYD",
+   "lines": [
+    {
+     "kind": "note",
+     "text": "If the green hydraulic system is lost due to low level, the HYD PTU FAULT alert may appear, and requests the flight crew to switch the PTU off.",
+     "level": 0,
+     "applies_to": [
+      "all"
+     ],
+     "refs": [
+      {
+       "book": "FCOM",
+       "code": "PRO-ABN-HYD",
+       "page": "P 51/76",
+       "pdf": 3740
+      }
+     ]
+    },
+    {
+     "kind": "land_asap",
+     "text": "LAND ASAP (red)",
+     "level": 0,
+     "applies_to": [
+      "all"
+     ],
+     "refs": [
+      {
+       "book": "FCOM",
+       "code": "PRO-ABN-HYD",
+       "page": "P 51/76",
+       "pdf": 3740
+      }
+     ]
+    },
+    {
+     "kind": "condition",
+     "text": "If HYD B ELEC PUMP LO PR:",
+     "level": 0,
+     "applies_to": [
+      "all"
+     ],
+     "refs": [
+      {
+       "book": "FCOM",
+       "code": "PRO-ABN-HYD",
+       "page": "P 51/76",
+       "pdf": 3740
+      }
+     ]
+    },
+    {
+     "kind": "condition",
+     "text": "If the RAT is not out:",
+     "level": 1,
+     "applies_to": [
+      "all"
+     ],
+     "refs": [
+      {
+       "book": "FCOM",
+       "code": "PRO-ABN-HYD",
+       "page": "P 51/76",
+       "pdf": 3740
+      }
+     ]
+    },
+    {
+     "kind": "action",
+     "item": "RAT",
+     "setting": "MAN ON",
+     "text": "",
+     "level": 2,
+     "applies_to": [
+      "all"
+     ],
+     "refs": [
+      {
+       "book": "FCOM",
+       "code": "PRO-ABN-HYD",
+       "page": "P 51/76",
+       "pdf": 3740
+      }
+     ]
+    },
+    {
+     "kind": "condition",
+     "text": "If the RAT is out:",
+     "level": 1,
+     "applies_to": [
+      "all"
+     ],
+     "refs": [
+      {
+       "book": "FCOM",
+       "code": "PRO-ABN-HYD",
+       "page": "P 51/76",
+       "pdf": 3740
+      }
+     ]
+    },
+    {
+     "kind": "action",
+     "item": "MIN RAT SPD",
+     "setting": "140 KT",
+     "text": "",
+     "level": 2,
+     "applies_to": [
+      "all"
+     ],
+     "refs": [
+      {
+       "book": "FCOM",
+       "code": "PRO-ABN-HYD",
+       "page": "P 51/76",
+       "pdf": 3740
+      }
+     ]
+    },
+    {
+     "kind": "action",
+     "item": "AFFECTED PUMPS",
+     "setting": "OFF",
+     "text": "",
+     "level": 0,
+     "applies_to": [
+      "all"
+     ],
+     "refs": [
+      {
+       "book": "FCOM",
+       "code": "PRO-ABN-HYD",
+       "page": "P 51/76",
+       "pdf": 3740
+      }
+     ]
+    },
+    {
+     "kind": "info",
+     "text": "MANEUVER WITH CARE",
+     "level": 0,
+     "applies_to": [
+      "all"
+     ],
+     "refs": [
+      {
+       "book": "FCOM",
+       "code": "PRO-ABN-HYD",
+       "page": "P 51/76",
+       "pdf": 3740
+      }
+     ]
+    },
+    {
+     "kind": "condition",
+     "text": "FOR GO-AROUND",
+     "level": 0,
+     "applies_to": [
+      "all"
+     ],
+     "refs": [
+      {
+       "book": "FCOM",
+       "code": "PRO-ABN-HYD",
+       "page": "P 51/76",
+       "pdf": 3740
+      }
+     ]
+    },
+    {
+     "kind": "info",
+     "text": "MAX PITCH 15 DEG",
+     "level": 1,
+     "applies_to": [
+      "all"
+     ],
+     "refs": [
+      {
+       "book": "FCOM",
+       "code": "PRO-ABN-HYD",
+       "page": "P 51/76",
+       "pdf": 3740
+      }
+     ]
+    },
+    {
+     "kind": "action",
+     "item": "THR LVR",
+     "setting": "TOGA THEN MCT",
+     "text": "This line is not displayed if one engine is inoperative.",
+     "level": 1,
+     "applies_to": [
+      "all"
+     ],
+     "refs": [
+      {
+       "book": "FCOM",
+       "code": "PRO-ABN-HYD",
+       "page": "P 51/76",
+       "pdf": 3740
+      }
+     ]
+    },
+    {
+     "kind": "info",
+     "text": "FUEL CONSUMPT INCRSD",
+     "level": 0,
+     "applies_to": [
+      "all"
+     ],
+     "refs": [
+      {
+       "book": "FCOM",
+       "code": "PRO-ABN-HYD",
+       "page": "P 51/76",
+       "pdf": 3740
+      }
+     ]
+    },
+    {
+     "kind": "info",
+     "text": "FMS PRED UNRELIABLE",
+     "level": 0,
+     "applies_to": [
+      "all"
+     ],
+     "refs": [
+      {
+       "book": "FCOM",
+       "code": "PRO-ABN-HYD",
+       "page": "P 51/76",
+       "pdf": 3740
+      }
+     ]
+    },
+    {
+     "kind": "info",
+     "text": "ASSOCIATED PROCEDURES: F/CTL ALTN LAW (PROT LOST). HYD G SYS LO PR, if blue system recovered.",
+     "level": 0,
+     "applies_to": [
+      "all"
+     ],
+     "refs": [
+      {
+       "book": "FCOM",
+       "code": "PRO-ABN-HYD",
+       "page": "P 51/76",
+       "pdf": 3740
+      }
+     ]
+    },
+    {
+     "kind": "info",
+     "text": "SECONDARY FAILURES: *WHEEL, *F/CTL",
+     "level": 0,
+     "applies_to": [
+      "all"
+     ],
+     "refs": [
+      {
+       "book": "FCOM",
+       "code": "PRO-ABN-HYD",
+       "page": "P 51/76",
+       "pdf": 3740
+      }
+     ]
+    }
+   ]
+  }
+ ],
+ "status": {
+  "limitations": [
+   {
+    "text": "MIN RAT SPD …… 140 KT — displayed if the RAT is out and in the case of HYD B ELEC PUMP LO PR",
+    "applies_to": [
+     "all"
+    ],
+    "refs": [
+     {
+      "book": "FCOM",
+      "code": "PRO-ABN-HYD",
+      "page": "P 52/76",
+      "pdf": 3741
+     }
+    ]
+   },
+   {
+    "text": "MAX SPEED …… 320/0.77",
+    "applies_to": [
+     "all"
+    ],
+    "refs": [
+     {
+      "book": "FCOM",
+      "code": "PRO-ABN-HYD",
+      "page": "P 52/76",
+      "pdf": 3741
+     }
+    ]
+   },
+   {
+    "text": "MANEUVER WITH CARE",
+    "applies_to": [
+     "all"
+    ],
+    "refs": [
+     {
+      "book": "FCOM",
+      "code": "PRO-ABN-HYD",
+      "page": "P 52/76",
+      "pdf": 3741
+     }
+    ]
+   },
+   {
+    "text": "SPD BRK …… DO NOT USE",
+    "applies_to": [
+     "all"
+    ],
+    "refs": [
+     {
+      "book": "FCOM",
+      "code": "PRO-ABN-HYD",
+      "page": "P 52/76",
+      "pdf": 3741
+     }
+    ]
+   },
+   {
+    "text": "FOR GO-AROUND: MAX PITCH 15 DEG; THR LVR …… TOGA THEN MCT (not displayed if one engine is inoperative)",
+    "applies_to": [
+     "all"
+    ],
+    "refs": [
+     {
+      "book": "FCOM",
+      "code": "PRO-ABN-HYD",
+      "page": "P 52/76",
+      "pdf": 3741
+     }
+    ]
+   },
+   {
+    "text": "FUEL CONSUMPT INCRSD",
+    "applies_to": [
+     "all"
+    ],
+    "refs": [
+     {
+      "book": "FCOM",
+      "code": "PRO-ABN-HYD",
+      "page": "P 52/76",
+      "pdf": 3741
+     }
+    ]
+   }
+  ],
+  "info": [
+   {
+    "text": "ALTN LAW: PROT LOST",
+    "applies_to": [
+     "all"
+    ],
+    "refs": [
+     {
+      "book": "FCOM",
+      "code": "PRO-ABN-HYD",
+      "page": "P 53/76",
+      "pdf": 3742
+     }
+    ]
+   },
+   {
+    "text": "WHEN L/G DN: DIRECT LAW — at landing gear extension, control reverts to direct law in pitch, as well as in roll",
+    "applies_to": [
+     "all"
+    ],
+    "refs": [
+     {
+      "book": "FCOM",
+      "code": "PRO-ABN-HYD",
+      "page": "P 53/76",
+      "pdf": 3742
+     }
+    ]
+   },
+   {
+    "text": "FMS PRED UNRELIABLE — disregard FMS fuel predictions and refer to QRH/OPS Fuel Penalty Factors/ECAM Alert Table",
+    "applies_to": [
+     "all"
+    ],
+    "refs": [
+     {
+      "book": "FCOM",
+      "code": "PRO-ABN-HYD",
+      "page": "P 53/76",
+      "pdf": 3742
+     },
+     {
+      "book": "FCOM",
+      "code": "PRO-ABN-HYD",
+      "page": "P 54/76",
+      "pdf": 3743
+     }
+    ]
+   },
+   {
+    "text": "FLAPS SLOW",
+    "applies_to": [
+     "all"
+    ],
+    "refs": [
+     {
+      "book": "FCOM",
+      "code": "PRO-ABN-HYD",
+      "page": "P 53/76",
+      "pdf": 3742
+     }
+    ]
+   }
+  ],
+  "appr_proc": [
+   {
+    "kind": "info",
+    "text": "DUAL HYD LO PR",
+    "level": 0,
+    "applies_to": [
+     "all"
+    ],
+    "refs": [
+     {
+      "book": "FCOM",
+      "code": "PRO-ABN-HYD",
+      "page": "P 52/76",
+      "pdf": 3741
+     }
+    ]
+   },
+   {
+    "kind": "condition",
+    "text": "If system lost by RSVR LO AIR PR:",
+    "level": 0,
+    "applies_to": [
+     "all"
+    ],
+    "refs": [
+     {
+      "book": "FCOM",
+      "code": "PRO-ABN-HYD",
+      "page": "P 52/76",
+      "pdf": 3741
+     }
+    ]
+   },
+   {
+    "kind": "action",
+    "item": "RELATED PUMPS",
+    "setting": "ON",
+    "text": "",
+    "level": 1,
+    "applies_to": [
+     "all"
+    ],
+    "refs": [
+     {
+      "book": "FCOM",
+      "code": "PRO-ABN-HYD",
+      "page": "P 52/76",
+      "pdf": 3741
+     }
+    ]
+   },
+   {
+    "kind": "condition",
+    "text": "If system lost by RSVR OVHT:",
+    "level": 0,
+    "applies_to": [
+     "all"
+    ],
+    "refs": [
+     {
+      "book": "FCOM",
+      "code": "PRO-ABN-HYD",
+      "page": "P 52/76",
+      "pdf": 3741
+     }
+    ]
+   },
+   {
+    "kind": "condition",
+    "text": "IF BLUE OVHT OUT:",
+    "level": 1,
+    "applies_to": [
+     "all"
+    ],
+    "refs": [
+     {
+      "book": "FCOM",
+      "code": "PRO-ABN-HYD",
+      "page": "P 52/76",
+      "pdf": 3741
+     }
+    ]
+   },
+   {
+    "kind": "action",
+    "item": "BLUE ELEC PUMP",
+    "setting": "AUTO",
+    "text": "",
+    "level": 2,
+    "applies_to": [
+     "all"
+    ],
+    "refs": [
+     {
+      "book": "FCOM",
+      "code": "PRO-ABN-HYD",
+      "page": "P 52/76",
+      "pdf": 3741
+     }
+    ]
+   },
+   {
+    "kind": "condition",
+    "text": "IF GREEN OVHT OUT:",
+    "level": 1,
+    "applies_to": [
+     "all"
+    ],
+    "refs": [
+     {
+      "book": "FCOM",
+      "code": "PRO-ABN-HYD",
+      "page": "P 52/76",
+      "pdf": 3741
+     }
+    ]
+   },
+   {
+    "kind": "action",
+    "item": "GREEN ENG 1 PUMP",
+    "setting": "ON",
+    "text": "",
+    "level": 2,
+    "applies_to": [
+     "all"
+    ],
+    "refs": [
+     {
+      "book": "FCOM",
+      "code": "PRO-ABN-HYD",
+      "page": "P 52/76",
+      "pdf": 3741
+     }
+    ]
+   },
+   {
+    "kind": "condition",
+    "text": "IF HYD NOT RECOVERED:",
+    "level": 0,
+    "applies_to": [
+     "all"
+    ],
+    "refs": [
+     {
+      "book": "FCOM",
+      "code": "PRO-ABN-HYD",
+      "page": "P 52/76",
+      "pdf": 3741
+     }
+    ]
+   },
+   {
+    "kind": "action",
+    "item": "S/F JAMMED PROC",
+    "setting": "APPLY",
+    "text": "",
+    "level": 1,
+    "applies_to": [
+     "all"
+    ],
+    "refs": [
+     {
+      "book": "FCOM",
+      "code": "PRO-ABN-HYD",
+      "page": "P 52/76",
+      "pdf": 3741
+     }
+    ]
+   },
+   {
+    "kind": "action",
+    "item": "A/THR",
+    "setting": "OFF",
+    "text": "Select the target speed on the FCU. Due to the loss of slats and some flight control surfaces, the A/THR may not satisfactorily maintain speed.",
+    "level": 1,
+    "applies_to": [
+     "all"
+    ],
+    "refs": [
+     {
+      "book": "FCOM",
+      "code": "PRO-ABN-HYD",
+      "page": "P 52/76",
+      "pdf": 3741
+     }
+    ]
+   },
+   {
+    "kind": "action",
+    "item": "FOR LDG",
+    "setting": "FLAP LVR 3",
+    "text": "Replaced by \"FOR LDG: FLAP LVR 3\" when CONF 3 is selected, as a reminder.",
+    "level": 1,
+    "applies_to": [
+     "all"
+    ],
+    "refs": [
+     {
+      "book": "FCOM",
+      "code": "PRO-ABN-HYD",
+      "page": "P 52/76",
+      "pdf": 3741
+     }
+    ]
+   },
+   {
+    "kind": "action",
+    "item": "GPWS LDG FLAP 3",
+    "setting": "ON",
+    "text": "",
+    "level": 1,
+    "applies_to": [
+     "all"
+    ],
+    "refs": [
+     {
+      "book": "FCOM",
+      "code": "PRO-ABN-HYD",
+      "page": "P 53/76",
+      "pdf": 3742
+     }
+    ]
+   },
+   {
+    "kind": "condition",
+    "text": "If L/G is not downlocked:",
+    "level": 1,
+    "applies_to": [
+     "all"
+    ],
+    "refs": [
+     {
+      "book": "FCOM",
+      "code": "PRO-ABN-HYD",
+      "page": "P 53/76",
+      "pdf": 3742
+     }
+    ]
+   },
+   {
+    "kind": "condition",
+    "text": "WHEN SPD 200 KT (displayed when slats are retracted):",
+    "level": 2,
+    "applies_to": [
+     "all"
+    ],
+    "refs": [
+     {
+      "book": "FCOM",
+      "code": "PRO-ABN-HYD",
+      "page": "P 53/76",
+      "pdf": 3742
+     }
+    ]
+   },
+   {
+    "kind": "action",
+    "item": "L/G GRVTY PROC",
+    "setting": "APPLY",
+    "text": "Extend the landing gear at 200 kt to revert sooner in direct law. This provides, below 200 kt, a better pitch control than in alternate law with one elevator lost and all slats lost.",
+    "level": 3,
+    "applies_to": [
+     "all"
+    ],
+    "refs": [
+     {
+      "book": "FCOM",
+      "code": "PRO-ABN-HYD",
+      "page": "P 53/76",
+      "pdf": 3742
+     }
+    ]
+   },
+   {
+    "kind": "caution",
+    "text": "For flight with L/G extended, fuel consumption is increased. Refer to QRH/OPS Fuel Penalty Factors/ECAM Alert Table.",
+    "level": 3,
+    "applies_to": [
+     "all"
+    ],
+    "refs": [
+     {
+      "book": "FCOM",
+      "code": "PRO-ABN-HYD",
+      "page": "P 53/76",
+      "pdf": 3742
+     }
+    ]
+   },
+   {
+    "kind": "action",
+    "item": "APPR SPD",
+    "setting": "VREF + 25 KT",
+    "text": "Approach speed must be increased due to the loss of ailerons and slats.",
+    "level": 0,
+    "applies_to": [
+     "all"
+    ],
+    "refs": [
+     {
+      "book": "FCOM",
+      "code": "PRO-ABN-HYD",
+      "page": "P 53/76",
+      "pdf": 3742
+     }
+    ]
+   },
+   {
+    "kind": "action",
+    "item": "LDG DIST PROC",
+    "setting": "APPLY",
+    "text": "",
+    "level": 0,
+    "applies_to": [
+     "all"
+    ],
+    "refs": [
+     {
+      "book": "FCOM",
+      "code": "PRO-ABN-HYD",
+      "page": "P 53/76",
+      "pdf": 3742
+     }
+    ]
+   }
+  ],
+  "inop_sys": [
+   {
+    "text": "G+B HYD",
+    "applies_to": [
+     "all"
+    ],
+    "refs": [
+     {
+      "book": "FCOM",
+      "code": "PRO-ABN-HYD",
+      "page": "P 52/76",
+      "pdf": 3741
+     }
+    ]
+   },
+   {
+    "text": "F/CTL PROT",
+    "applies_to": [
+     "all"
+    ],
+    "refs": [
+     {
+      "book": "FCOM",
+      "code": "PRO-ABN-HYD",
+      "page": "P 52/76",
+      "pdf": 3741
+     }
+    ]
+   },
+   {
+    "text": "L ELEV",
+    "applies_to": [
+     "all"
+    ],
+    "refs": [
+     {
+      "book": "FCOM",
+      "code": "PRO-ABN-HYD",
+      "page": "P 52/76",
+      "pdf": 3741
+     }
+    ]
+   },
+   {
+    "text": "L+R AIL",
+    "applies_to": [
+     "all"
+    ],
+    "refs": [
+     {
+      "book": "FCOM",
+      "code": "PRO-ABN-HYD",
+      "page": "P 52/76",
+      "pdf": 3741
+     }
+    ]
+   },
+   {
+    "text": "SPLR 1+3+5",
+    "applies_to": [
+     "all"
+    ],
+    "refs": [
+     {
+      "book": "FCOM",
+      "code": "PRO-ABN-HYD",
+      "page": "P 52/76",
+      "pdf": 3741
+     }
+    ]
+   },
+   {
+    "text": "SLATS",
+    "applies_to": [
+     "all"
+    ],
+    "refs": [
+     {
+      "book": "FCOM",
+      "code": "PRO-ABN-HYD",
+      "page": "P 52/76",
+      "pdf": 3741
+     }
+    ]
+   },
+   {
+    "text": "AP 1+2",
+    "applies_to": [
+     "all"
+    ],
+    "refs": [
+     {
+      "book": "FCOM",
+      "code": "PRO-ABN-HYD",
+      "page": "P 52/76",
+      "pdf": 3741
+     }
+    ]
+   },
+   {
+    "text": "AUTO BRK",
+    "applies_to": [
+     "all"
+    ],
+    "refs": [
+     {
+      "book": "FCOM",
+      "code": "PRO-ABN-HYD",
+      "page": "P 52/76",
+      "pdf": 3741
+     }
+    ]
+   },
+   {
+    "text": "NORM BRK",
+    "applies_to": [
+     "all"
+    ],
+    "refs": [
+     {
+      "book": "FCOM",
+      "code": "PRO-ABN-HYD",
+      "page": "P 52/76",
+      "pdf": 3741
+     }
+    ]
+   },
+   {
+    "text": "L/G RETRACT",
+    "applies_to": [
+     "all"
+    ],
+    "refs": [
+     {
+      "book": "FCOM",
+      "code": "PRO-ABN-HYD",
+      "page": "P 52/76",
+      "pdf": 3741
+     }
+    ]
+   },
+   {
+    "text": "REVERSER 1",
+    "applies_to": [
+     "all"
+    ],
+    "refs": [
+     {
+      "book": "FCOM",
+      "code": "PRO-ABN-HYD",
+      "page": "P 52/76",
+      "pdf": 3741
+     }
+    ]
+   },
+   {
+    "text": "EMER GEN (If HYD B RSVR LO LVL)",
+    "applies_to": [
+     "all"
+    ],
+    "refs": [
+     {
+      "book": "FCOM",
+      "code": "PRO-ABN-HYD",
+      "page": "P 52/76",
+      "pdf": 3741
+     }
+    ]
+   },
+   {
+    "text": "G ENG 1 PUMP",
+    "applies_to": [
+     "all"
+    ],
+    "refs": [
+     {
+      "book": "FCOM",
+      "code": "PRO-ABN-HYD",
+      "page": "P 52/76",
+      "pdf": 3741
+     }
+    ]
+   },
+   {
+    "text": "B ELEC PUMP",
+    "applies_to": [
+     "all"
+    ],
+    "refs": [
+     {
+      "book": "FCOM",
+      "code": "PRO-ABN-HYD",
+      "page": "P 52/76",
+      "pdf": 3741
+     }
+    ]
+   },
+   {
+    "text": "YAW DAMPER 1",
+    "applies_to": [
+     "all"
+    ],
+    "refs": [
+     {
+      "book": "FCOM",
+      "code": "PRO-ABN-HYD",
+      "page": "P 52/76",
+      "pdf": 3741
+     }
+    ]
+   },
+   {
+    "text": "CAT 2",
+    "applies_to": [
+     "all"
+    ],
+    "refs": [
+     {
+      "book": "FCOM",
+      "code": "PRO-ABN-HYD",
+      "page": "P 52/76",
+      "pdf": 3741
+     }
+    ]
+   },
+   {
+    "text": "GLS AUTOLAND",
+    "applies_to": [
+     "all"
+    ],
+    "refs": [
+     {
+      "book": "FCOM",
+      "code": "PRO-ABN-HYD",
+      "page": "P 52/76",
+      "pdf": 3741
+     }
+    ]
+   },
+   {
+    "text": "STEEP APPR",
+    "applies_to": [
+     "all"
+    ],
+    "refs": [
+     {
+      "book": "FCOM",
+      "code": "PRO-ABN-HYD",
+      "page": "P 52/76",
+      "pdf": 3741
+     }
+    ]
+   }
+  ]
+ },
+ "qrh": [
+  {
+   "title": "HYD G + B SYS LO PR SUMMARY",
+   "sections": [
+    {
+     "name": "CRUISE",
+     "lines": [
+      {
+       "text": "SPD BRK : DO NOT USE",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "QRH",
+         "code": "23.02",
+         "page": "23.02A",
+         "pdf": 210
+        }
+       ]
+      },
+      {
+       "text": "MAX SPD : 320/0.77",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "QRH",
+         "code": "23.02",
+         "page": "23.02A",
+         "pdf": 210
+        }
+       ]
+      },
+      {
+       "text": "MAX FL : 4000FT BELOW REC MAX FL",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "QRH",
+         "code": "23.02",
+         "page": "23.02A",
+         "pdf": 210
+        }
+       ]
+      },
+      {
+       "text": "MANEUVER WITH CARE",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "QRH",
+         "code": "23.02",
+         "page": "23.02A",
+         "pdf": 210
+        }
+       ]
+      },
+      {
+       "text": "ALTN LAW: PROT LOST",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "QRH",
+         "code": "23.02",
+         "page": "23.02A",
+         "pdf": 210
+        }
+       ]
+      },
+      {
+       "text": "FUEL: Increased fuel consumption (Refer to OPS Use of Fuel Penalty Factor Tables)",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "QRH",
+         "code": "23.02",
+         "page": "23.02A",
+         "pdf": 210
+        }
+       ]
+      },
+      {
+       "text": "For Landing Performance assessment, use the performance application of the EFB.",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "QRH",
+         "code": "23.02",
+         "page": "23.02A",
+         "pdf": 210
+        }
+       ]
+      }
+     ]
+    },
+    {
+     "name": "APPROACH",
+     "lines": [
+      {
+       "text": "CAT 2 INOP",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "QRH",
+         "code": "23.02",
+         "page": "23.02A",
+         "pdf": 210
+        }
+       ]
+      },
+      {
+       "text": "SLATS JAMMED/FLAPS SLOW",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "QRH",
+         "code": "23.02",
+         "page": "23.02A",
+         "pdf": 210
+        }
+       ]
+      },
+      {
+       "text": "ATHR : OFF",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "QRH",
+         "code": "23.02",
+         "page": "23.02A",
+         "pdf": 210
+        }
+       ]
+      },
+      {
+       "text": "FOR LDG : FLAP LVR 3",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "QRH",
+         "code": "23.02",
+         "page": "23.02A",
+         "pdf": 210
+        }
+       ]
+      },
+      {
+       "text": "GPWS LDG FLAP 3 : ON",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "QRH",
+         "code": "23.02",
+         "page": "23.02A",
+         "pdf": 210
+        }
+       ]
+      },
+      {
+       "text": "For Flaps extension: SPD SEL : VFE NEXT - 5 kt",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "QRH",
+         "code": "23.02",
+         "page": "23.02A",
+         "pdf": 210
+        }
+       ]
+      },
+      {
+       "text": "When SPD 200 kt: L/G gravity extension: GRVTY GEAR EXTN handcrank : PULL AND TURN (Rotate the handle clockwise 3 turns until mechanical stop); L/G LEVER : DOWN; GEAR DOWN : CHECK",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "QRH",
+         "code": "23.02",
+         "page": "23.02A",
+         "pdf": 210
+        }
+       ]
+      },
+      {
+       "text": "When L/G down: USE MAN PITCH TRIM",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "QRH",
+         "code": "23.02",
+         "page": "23.02A",
+         "pdf": 210
+        }
+       ]
+      },
+      {
+       "text": "When in landing CONF and in final approach: DECELERATE TO CALCULATED VAPP",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "QRH",
+         "code": "23.02",
+         "page": "23.02B",
+         "pdf": 211
+        }
+       ]
+      }
+     ]
+    },
+    {
+     "name": "LANDING",
+     "lines": [
+      {
+       "text": "FLARE: Only one ELEV and two spoilers per wing. No ailerons. A/C slightly sluggish – Direct law",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "QRH",
+         "code": "23.02",
+         "page": "23.02B",
+         "pdf": 211
+        }
+       ]
+      },
+      {
+       "text": "SPOILERS: Only 2 per wing",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "QRH",
+         "code": "23.02",
+         "page": "23.02B",
+         "pdf": 211
+        }
+       ]
+      },
+      {
+       "text": "REVERSER: Only N°2",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "QRH",
+         "code": "23.02",
+         "page": "23.02B",
+         "pdf": 211
+        }
+       ]
+      },
+      {
+       "text": "BRAKING: ALTERNATE",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "QRH",
+         "code": "23.02",
+         "page": "23.02B",
+         "pdf": 211
+        }
+       ]
+      }
+     ]
+    },
+    {
+     "name": "GO-AROUND",
+     "lines": [
+      {
+       "text": "MAX PITCH 15 DEG",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "QRH",
+         "code": "23.02",
+         "page": "23.02B",
+         "pdf": 211
+        }
+       ]
+      },
+      {
+       "text": "THR LVR : TOGA THEN MCT",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "QRH",
+         "code": "23.02",
+         "page": "23.02B",
+         "pdf": 211
+        }
+       ]
+      },
+      {
+       "text": "NO GEAR RETRACTION",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "QRH",
+         "code": "23.02",
+         "page": "23.02B",
+         "pdf": 211
+        }
+       ]
+      },
+      {
+       "text": "FUEL: Increased fuel consumption (Refer to OPS Use of Fuel Penalty Factor Tables)",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "QRH",
+         "code": "23.02",
+         "page": "23.02B",
+         "pdf": 211
+        }
+       ]
+      },
+      {
+       "text": "For circuit: MAINTAIN SLATS/FLAPS CONFIGURATION; Recommended speed: MAX SPD - 10 kt",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "QRH",
+         "code": "23.02",
+         "page": "23.02B",
+         "pdf": 211
+        }
+       ]
+      },
+      {
+       "text": "For diversion: SELECT CLEAN CONFIGURATION. If Slats jammed at zero: Normal operating speeds. If Slats jammed above zero: Recommended speed: MAX SPD - 10 kt",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "QRH",
+         "code": "23.02",
+         "page": "23.02B",
+         "pdf": 211
+        }
+       ]
+      }
+     ]
+    }
+   ]
+  }
+ ],
+ "tables": [
+  {
+   "title": "Remaining systems",
+   "caption": "FCTM table; the third column of the FCTM table (HYD B+Y) is left out.",
+   "columns": [
+    "Phase",
+    "System",
+    "HYD G+B SYS LO PR",
+    "HYD G+Y SYS LO PR"
+   ],
+   "rows": [
+    [
+     "Cruise",
+     "Autopilot",
+     "Inop",
+     "Inop"
+    ],
+    [
+     "Cruise",
+     "Yaw damper",
+     "YD2 only",
+     "Inop"
+    ],
+    [
+     "Cruise",
+     "Control law",
+     "ALTN LAW and DIRECT LAW when L/G DN",
+     "ALTN LAW and DIRECT LAW when L/G DN"
+    ],
+    [
+     "Cruise",
+     "Stabilizer",
+     "Avail",
+     "Inop"
+    ],
+    [
+     "Cruise",
+     "Spoilers",
+     "2 SPLRS/wing",
+     "1 SPLR/wing"
+    ],
+    [
+     "Cruise",
+     "Elevator",
+     "R ELEV only",
+     "Avail"
+    ],
+    [
+     "Cruise",
+     "Aileron",
+     "Inop",
+     "Avail"
+    ],
+    [
+     "Landing",
+     "Slats/Flaps",
+     "FLAPS slow only",
+     "SLATS slow only"
+    ],
+    [
+     "Landing",
+     "L/G extension",
+     "Gravity",
+     "Gravity"
+    ],
+    [
+     "Landing",
+     "Braking",
+     "ALTN BRK only",
+     "Y ACCU PRESS only"
+    ],
+    [
+     "Landing",
+     "Anti skid",
+     "Avail",
+     "Inop"
+    ],
+    [
+     "Landing",
+     "Nose wheel steering",
+     "Avail",
+     "Inop"
+    ],
+    [
+     "Landing",
+     "Reverse",
+     "REV 2 only",
+     "Inop"
+    ],
+    [
+     "Go-around",
+     "L/G retraction",
+     "Inop",
+     "Inop"
+    ]
+   ],
+   "applies_to": [
+    "all"
+   ],
+   "refs": [
+    {
+     "book": "FCTM",
+     "code": "PR-AEP-HYD",
+     "page": "P 3/4",
+     "pdf": 440
+    },
+    {
+     "book": "FCTM",
+     "code": "PR-AEP-HYD",
+     "page": "P 4/4",
+     "pdf": 441
+    }
+   ]
+  }
+ ],
+ "background": [
+  {
+   "text": "Dual hydraulic failures bring loss of the AP, flight control law degradation, landing in an abnormal configuration, extensive ECAM procedures and significant considerations for approach and landing.",
+   "applies_to": [
+    "all"
+   ],
+   "refs": [
+    {
+     "book": "FCTM",
+     "code": "PR-AEP-HYD",
+     "page": "P 1/4",
+     "pdf": 438
+    }
+   ]
+  },
+  {
+   "text": "Pitch: with HYD G+B, alternate law has no protections; direct law applies in roll.",
+   "applies_to": [
+    "all"
+   ],
+   "refs": [
+    {
+     "book": "FCOM",
+     "code": "DSC-27-20-20",
+     "page": "P 3/20",
+     "pdf": 1614
+    },
+    {
+     "book": "FCOM",
+     "code": "DSC-27-20-20",
+     "page": "P 5/20",
+     "pdf": 1616
+    }
+   ]
+  },
+  {
+   "text": "The RAT can be extended at any time with the RAT MAN ON pushbutton.",
+   "applies_to": [
+    "all"
+   ],
+   "refs": [
+    {
+     "book": "FCOM",
+     "code": "DSC-29-20",
+     "page": "P 3/10",
+     "pdf": 1754
+    }
+   ]
+  }
+ ],
+ "technique": [
+  {
+   "text": "A double hydraulic failure is an emergency, with red LAND ASAP displayed; a MAYDAY should be declared. Land as soon as possible, but complete the ECAM actions before the approach.",
+   "applies_to": [
+    "all"
+   ],
+   "refs": [
+    {
+     "book": "FCTM",
+     "code": "PR-AEP-HYD",
+     "page": "P 2/4",
+     "pdf": 439
+    }
+   ]
+  },
+  {
+   "text": "It is a \"complex procedure\": refer to the QRH summary when the ECAM procedure is complete. A clear reading of STATUS is essential to sequence the actions during the approach.",
+   "applies_to": [
+    "all"
+   ],
+   "refs": [
+    {
+     "book": "FCTM",
+     "code": "PR-AEP-HYD",
+     "page": "P 2/4",
+     "pdf": 439
+    }
+   ]
+  },
+  {
+   "text": "The PF is very busy flying and communicating in alternate law. Handling may differ because some control surfaces are lost, so maneuver with care.",
+   "applies_to": [
+    "all"
+   ],
+   "refs": [
+    {
+     "book": "FCTM",
+     "code": "PR-AEP-HYD",
+     "page": "P 2/4",
+     "pdf": 439
+    }
+   ]
+  },
+  {
+   "text": "The G+B approach extends the gear at 200 kt: below 200 kt direct law gives better pitch control than alternate law with one elevator and all slats lost.",
+   "applies_to": [
+    "all"
+   ],
+   "refs": [
+    {
+     "book": "FCOM",
+     "code": "PRO-ABN-HYD",
+     "page": "P 53/76",
+     "pdf": 3742
+    }
+   ]
+  }
+ ],
+ "related": [
+  {
+   "title": "LANDING WITH SLATS OR FLAPS JAMMED",
+   "why": "APPR PROC: S/F JAMMED PROC APPLY",
+   "key_actions": [
+    "SPD SEL VFE NEXT - 5 kt",
+    "AT VFE NEXT: SELECT FLAPS LEVER ONE STEP DOWN",
+    "See the QRH brief"
+   ],
+   "refs": [
+    {
+     "book": "FCOM",
+     "code": "PRO-ABN-HYD",
+     "page": "P 52/76",
+     "pdf": 3741
+    },
+    {
+     "book": "FCOM",
+     "code": "PRO-ABN-F_CTL",
+     "page": "P 1/132",
+     "pdf": 3474
+    }
+   ]
+  },
+  {
+   "title": "L/G GRAVITY EXTENSION",
+   "why": "APPR PROC: L/G GRVTY PROC APPLY at 200 kt",
+   "key_actions": [
+    "See the QRH brief; the summary includes the lines"
+   ],
+   "refs": [
+    {
+     "book": "FCOM",
+     "code": "PRO-ABN-HYD",
+     "page": "P 53/76",
+     "pdf": 3742
+    },
+    {
+     "book": "FCOM",
+     "code": "PRO-ABN-LG",
+     "page": "P 7/30",
+     "pdf": 3772
+    }
+   ]
+  },
+  {
+   "title": "F/CTL ALTN LAW",
+   "why": "Associated procedure (PROT LOST)",
+   "key_actions": [
+    "See the ALTN LAW brief"
+   ],
+   "refs": [
+    {
+     "book": "FCOM",
+     "code": "PRO-ABN-HYD",
+     "page": "P 51/76",
+     "pdf": 3740
+    },
+    {
+     "book": "FCOM",
+     "code": "PRO-ABN-F_CTL",
+     "page": "P 9/132",
+     "pdf": 3482
+    }
+   ]
+  },
+  {
+   "title": "F/CTL DIRECT LAW",
+   "why": "Control reverts to direct law at landing gear extension",
+   "key_actions": [
+    "See the DIRECT LAW brief"
+   ],
+   "refs": [
+    {
+     "book": "FCOM",
+     "code": "PRO-ABN-HYD",
+     "page": "P 53/76",
+     "pdf": 3742
+    },
+    {
+     "book": "FCOM",
+     "code": "PRO-ABN-F_CTL",
+     "page": "P 18/132",
+     "pdf": 3491
+    }
+   ]
+  }
+ ],
+ "differences": [
+  {
+   "topic": "QRH fuel penalty factor, G+B SYS LO PR (L+R AIL, SPLR 1+3+5, L ELEV, RAT extended)",
+   "values": {
+    "HS-TXA..TXF": "10 % to 15 %",
+    "HS-TXG..TXU": "15 % to 20 %"
+   },
+   "refs": [
+    {
+     "book": "QRH",
+     "code": "OPS.04",
+     "page": "OPS.04E",
+     "pdf": 277
+    },
+    {
+     "book": "QRH",
+     "code": "OPS.04",
+     "page": "OPS.04C",
+     "pdf": 275
+    }
+   ]
+  }
+ ],
+ "gaps": [
+  {
+   "text": "The FCTM and PDP give the sequence but no PF/PM slide for this failure: the turns come from the AOP-20 task sharing, FCTM AOP-30-60 and the QRH summary. The manuals do not say who turns the handcrank; the PM is shown from instructor practice.",
+   "applies_to": [
+    "all"
+   ],
+   "refs": [
+    {
+     "book": "FCTM",
+     "code": "AOP-20",
+     "page": "P 1–2/10",
+     "pdf": 68
+    },
+    {
+     "book": "FCTM",
+     "code": "AOP-30-60",
+     "page": "P 1/4",
+     "pdf": 92
+    },
+    {
+     "book": "PDP",
+     "code": "Use of summary",
+     "page": "XFTDN1USESUMM01",
+     "pdf": 439
+    }
+   ]
+  },
+  {
+   "text": "The DSC does not label the RAT MAN ON pushbutton as guarded, so no crosscheck is shown for it; the BLUE ELEC PUMP pb is labelled guarded.",
+   "applies_to": [
+    "all"
+   ],
+   "refs": [
+    {
+     "book": "FCOM",
+     "code": "DSC-29-20",
+     "page": "P 3/10",
+     "pdf": 1754
+    },
+    {
+     "book": "FCOM",
+     "code": "DSC-29-20",
+     "page": "P 1/10",
+     "pdf": 1752
+    }
+   ]
+  },
+  {
+   "text": "The MAYDAY wording is not given in the supplied manuals.",
+   "applies_to": [
+    "all"
+   ],
+   "refs": [
+    {
+     "book": "FCTM",
+     "code": "PR-AEP-HYD",
+     "page": "P 2/4",
+     "pdf": 439
+    }
+   ]
+  }
+ ],
+ "sources": [
+  {
+   "book": "FCOM",
+   "section": "PRO-ABN-HYD — HYD G+B SYS LO PR (HS-TX)",
+   "pages": "P 50–54/76",
+   "pdf": "3739–3743",
+   "rev": "26 MAY 26"
+  },
+  {
+   "book": "QRH",
+   "section": "23.02 — summary; OPS.04 — fuel penalty factors",
+   "pages": "23.02A–B · OPS.04C, E",
+   "pdf": "210–211, 275, 277",
+   "rev": "18 FEB 26, 14 JUL 26"
+  },
+  {
+   "book": "FCTM",
+   "section": "PR-AEP-HYD · AOP-30-60",
+   "pages": "P 1–4/4 · P 1–4/4",
+   "pdf": "438–441, 92–95",
+   "rev": "26 MAY 26"
+  },
+  {
+   "book": "PDP",
+   "section": "Use of summary (XFTDN1USESUMM01)",
+   "pages": "—",
+   "pdf": "436–442",
+   "rev": ""
+  },
+  {
+   "book": "FCOM",
+   "section": "DSC-29-20 · DSC-27-20-20",
+   "pages": "P 1, 3/10 · P 3, 5/20",
+   "pdf": "1752, 1754, 1614, 1616",
+   "rev": "18 FEB 26"
+  }
+ ],
+ "schema": "a320-ecam-abnormal/3",
+ "generated": "2026-10-31"
+}
