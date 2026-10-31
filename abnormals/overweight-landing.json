@@ -31,7 +31,7 @@
   ],
   "note": "QRH/FCOM procedure and FCTM technique apply to all HS-TX; only the maximum landing weight differs."
  },
- "summary": "After the engine fire the aircraft must land soon, above its maximum landing weight. This is permitted only with the QRH OVERWEIGHT LANDING procedure. Plan a long, early-stabilised approach and use flaps FULL unless performance limits it. Turn the packs OFF (or supply them from the APU) for go-around thrust. Cross the threshold at VLS and touch down below 360 ft/min, then use max reverse early.",
+ "summary": "An in-flight turn back or diversion may need a landing above the maximum landing weight. This is permitted only with the QRH OVERWEIGHT LANDING procedure. Plan a long, early-stabilised approach and use flaps FULL unless performance limits it. Turn the packs OFF (or supply them from the APU) for go-around thrust. Cross the threshold at VLS and touch down below 360 ft/min, then use max reverse early.",
  "key_limits": [
   {
    "label": "Max landing weight",

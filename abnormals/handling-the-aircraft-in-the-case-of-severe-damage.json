@@ -1,0 +1,276 @@
+{
+  "slug": "handling-the-aircraft-in-the-case-of-severe-damage",
+  "title": "HANDLING THE AIRCRAFT IN THE CASE OF SEVERE DAMAGE",
+  "kind": "technique",
+  "alert": {
+    "level": "technique",
+    "land_asap": "none",
+    "memory_items": false,
+    "qrh_summary": false,
+    "trigger": "Severe damage to the aircraft, in particular if it significantly affects aerodynamics, flight controls or engines.",
+    "inhibited_phases": [],
+    "refs": [
+      {
+        "book": "FCTM",
+        "code": "PR-AEP-MISC",
+        "page": "P 10/32",
+        "pdf": 455
+      }
+    ]
+  },
+  "effectivity": {
+    "branches": [],
+    "note": "Applicable to ALL (FCTM technique)."
+  },
+  "summary": "Fly the aircraft first. Bank, pitch and thrust are the primary parameters, controlled manually, while navigation and communication continue. Assess the handling qualities as soon as possible with smooth sidestick inputs and no more than 15° of bank, and avoid the speedbrakes unless necessary.",
+  "key_limits": [
+    {
+      "label": "Bank during assessment",
+      "value": "Limit to 15°",
+      "applies_to": [
+        "all"
+      ],
+      "refs": [
+        {
+          "book": "FCTM",
+          "code": "PR-AEP-MISC",
+          "page": "P 10/32",
+          "pdf": 455
+        }
+      ]
+    },
+    {
+      "label": "Speedbrakes",
+      "value": "Avoid before the end of the flight, unless necessary",
+      "applies_to": [
+        "all"
+      ],
+      "refs": [
+        {
+          "book": "FCTM",
+          "code": "PR-AEP-MISC",
+          "page": "P 10/32",
+          "pdf": 455
+        }
+      ]
+    }
+  ],
+  "flow": [
+    {
+      "phase": "Fly",
+      "steps": [
+        {
+          "actor": "PF",
+          "items": [
+            {
+              "kind": "action",
+              "text": "Fly the aircraft",
+              "applies_to": [
+                "all"
+              ],
+              "refs": [
+                {
+                  "book": "FCTM",
+                  "code": "PR-AEP-MISC",
+                  "page": "P 10/32",
+                  "pdf": 455
+                }
+              ]
+            },
+            {
+              "kind": "action",
+              "text": "Revert to \"back to basics\" flying if necessary: bank, pitch and thrust are the primary parameters to control manually",
+              "applies_to": [
+                "all"
+              ],
+              "refs": [
+                {
+                  "book": "FCTM",
+                  "code": "PR-AEP-MISC",
+                  "page": "P 10/32",
+                  "pdf": 455
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "actor": "BOTH",
+          "items": [
+            {
+              "kind": "action",
+              "text": "Continue all navigation and communication tasks",
+              "applies_to": [
+                "all"
+              ],
+              "refs": [
+                {
+                  "book": "FCTM",
+                  "code": "PR-AEP-MISC",
+                  "page": "P 10/32",
+                  "pdf": 455
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "phase": "Assess handling qualities",
+      "steps": [
+        {
+          "actor": "PF",
+          "items": [
+            {
+              "kind": "action",
+              "text": "As soon as possible, identify how pitch, roll and yaw are controllable",
+              "applies_to": [
+                "all"
+              ],
+              "refs": [
+                {
+                  "book": "FCTM",
+                  "code": "PR-AEP-MISC",
+                  "page": "P 10/32",
+                  "pdf": 455
+                }
+              ]
+            },
+            {
+              "kind": "action",
+              "text": "Apply smooth sidestick inputs and limit the bank angle to 15°",
+              "applies_to": [
+                "all"
+              ],
+              "refs": [
+                {
+                  "book": "FCTM",
+                  "code": "PR-AEP-MISC",
+                  "page": "P 10/32",
+                  "pdf": 455
+                }
+              ]
+            },
+            {
+              "kind": "note",
+              "text": "This prevents possible destabilization of the aircraft",
+              "applies_to": [
+                "all"
+              ],
+              "refs": [
+                {
+                  "book": "FCTM",
+                  "code": "PR-AEP-MISC",
+                  "page": "P 10/32",
+                  "pdf": 455
+                }
+              ]
+            },
+            {
+              "kind": "action",
+              "text": "Avoid the speedbrakes before the end of the flight, unless necessary",
+              "applies_to": [
+                "all"
+              ],
+              "refs": [
+                {
+                  "book": "FCTM",
+                  "code": "PR-AEP-MISC",
+                  "page": "P 10/32",
+                  "pdf": 455
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "procedures": [],
+  "status": null,
+  "background": [
+    {
+      "text": "If the damage significantly affects aircraft aerodynamics, flight controls, or engines, then aircraft handling qualities may be affected.",
+      "applies_to": [
+        "all"
+      ],
+      "refs": [
+        {
+          "book": "FCTM",
+          "code": "PR-AEP-MISC",
+          "page": "P 10/32",
+          "pdf": 455
+        }
+      ]
+    }
+  ],
+  "related": [
+    {
+      "title": "ENG 1(2) FAIL",
+      "why": "Engine damage: the ECAM procedure has its own damage branch.",
+      "key_actions": [
+        "See the ENG 1(2) FAIL brief"
+      ],
+      "refs": [
+        {
+          "book": "FCOM",
+          "code": "PRO-ABN-ENG",
+          "page": "P 86/226",
+          "pdf": 3333
+        }
+      ]
+    }
+  ],
+  "gaps": [
+    {
+      "text": "The manuals have no separate procedure or alert for an engine separation. Applying the ENG 1(2) FAIL damage branch and this FCTM paragraph to one is a reading of the manuals, confirmed by the user. This FCTM paragraph is the only general guidance on severe damage.",
+      "applies_to": [
+        "all"
+      ],
+      "refs": [
+        {
+          "book": "FCTM",
+          "code": "PR-AEP-MISC",
+          "page": "P 10/32",
+          "pdf": 455
+        },
+        {
+          "book": "FCOM",
+          "code": "PRO-ABN-ENG",
+          "page": "P 86/226",
+          "pdf": 3333
+        }
+      ]
+    },
+    {
+      "text": "The FCTM does not split these items between PF and PM. The flying items are shown for the PF; the assessment is the \"flight crew\" in the source. This split is confirmed by the user.",
+      "applies_to": [
+        "all"
+      ],
+      "refs": [
+        {
+          "book": "FCTM",
+          "code": "PR-AEP-MISC",
+          "page": "P 10/32",
+          "pdf": 455
+        }
+      ]
+    }
+  ],
+  "sources": [
+    {
+      "book": "FCTM",
+      "section": "PR-AEP-MISC — HANDLING THE AIRCRAFT IN THE CASE OF SEVERE DAMAGE",
+      "pages": "P 10/32",
+      "pdf": "455",
+      "rev": "26 MAY 26"
+    }
+  ],
+  "schema": "a320-ecam-abnormal/3",
+  "generated": "2026-10-31",
+  "qrh": [],
+  "tables": [],
+  "technique": [],
+  "differences": []
+}

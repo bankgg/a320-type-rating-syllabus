@@ -1,0 +1,865 @@
+{
+  "slug": "loss-of-braking",
+  "title": "LOSS OF BRAKING",
+  "kind": "qrh",
+  "alert": {
+    "level": "memory",
+    "land_asap": "none",
+    "memory_items": true,
+    "qrh_summary": false,
+    "trigger": "No perceived effect on the deceleration when applying manual braking, after the PF took over the autobrake (if used), during a RTO, the landing roll or taxi.",
+    "inhibited_phases": [],
+    "refs": [
+      {
+        "book": "FCOM",
+        "code": "PRO-ABN-BRAKES",
+        "page": "P 1/22",
+        "pdf": 3024
+      },
+      {
+        "book": "FCTM",
+        "code": "PR-AEP-BRK",
+        "page": "P 1/2",
+        "pdf": 396
+      }
+    ]
+  },
+  "effectivity": {
+    "branches": [],
+    "note": "Applicable to ALL."
+  },
+  "summary": "Memory items for no braking on the ground. Set maximum reverse, release the pedals, then have the PM switch A/SKID & N/W STRG OFF so the ABCU gives alternate braking. Only then press the pedals again, with brake pressure limited to 1 000 PSI. If there is still no braking, use short successive parking brake applications. Nosewheel steering and antiskid are lost, so steer with the rudder and differential braking.",
+  "key_limits": [
+    {
+      "label": "MAX BRK PR",
+      "value": "1 000 PSI",
+      "applies_to": [
+        "all"
+      ],
+      "refs": [
+        {
+          "book": "FCOM",
+          "code": "PRO-ABN-BRAKES",
+          "page": "P 1/22",
+          "pdf": 3024
+        },
+        {
+          "book": "FCTM",
+          "code": "PR-AEP-BRK",
+          "page": "P 2/2",
+          "pdf": 397
+        }
+      ]
+    },
+    {
+      "label": "REV",
+      "value": "MAX; may be kept to full stop if needed",
+      "applies_to": [
+        "all"
+      ],
+      "refs": [
+        {
+          "book": "FCOM",
+          "code": "PRO-ABN-BRAKES",
+          "page": "P 1/22",
+          "pdf": 3024
+        }
+      ]
+    },
+    {
+      "label": "Below 70 kt",
+      "value": "Idle reverse once the aircraft can stop on the runway",
+      "applies_to": [
+        "all"
+      ],
+      "refs": [
+        {
+          "book": "FCTM",
+          "code": "PR-AEP-BRK",
+          "page": "P 1/2",
+          "pdf": 396
+        }
+      ]
+    },
+    {
+      "label": "Accumulator",
+      "value": "At least 7 full brake applications",
+      "applies_to": [
+        "all"
+      ],
+      "refs": [
+        {
+          "book": "FCOM",
+          "code": "DSC-32-30-10",
+          "page": "P 6/8",
+          "pdf": 2047
+        }
+      ]
+    }
+  ],
+  "flow": [
+    {
+      "phase": "Recognise",
+      "steps": [
+        {
+          "actor": "PF",
+          "items": [
+            {
+              "kind": "action",
+              "text": "Take over the autobrake (if used) and apply manual braking",
+              "applies_to": [
+                "all"
+              ],
+              "refs": [
+                {
+                  "book": "FCTM",
+                  "code": "PR-AEP-BRK",
+                  "page": "P 1/2",
+                  "pdf": 396
+                },
+                {
+                  "book": "FCTM",
+                  "code": "PR-AEP-MISC",
+                  "page": "P 21/32",
+                  "pdf": 466
+                }
+              ]
+            },
+            {
+              "kind": "note",
+              "text": "Apply this procedure only if no effect is felt on the deceleration. On a wet or contaminated runway the felt deceleration may be lower and antiskid cycling can be felt: an undue application can affect landing performance",
+              "applies_to": [
+                "all"
+              ],
+              "refs": [
+                {
+                  "book": "FCTM",
+                  "code": "PR-AEP-BRK",
+                  "page": "P 1/2",
+                  "pdf": 396
+                }
+              ]
+            },
+            {
+              "kind": "callout",
+              "text": "LOSS OF BRAKING",
+              "applies_to": [
+                "all"
+              ],
+              "refs": [
+                {
+                  "book": "FCOM",
+                  "code": "PRO-ABN-ABN-00",
+                  "page": "P 10/12",
+                  "pdf": 2833
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "phase": "Memory items",
+      "steps": [
+        {
+          "actor": "PF",
+          "items": [
+            {
+              "kind": "ecam",
+              "item": "REV",
+              "setting": "MAX",
+              "applies_to": [
+                "all"
+              ],
+              "refs": [
+                {
+                  "book": "FCOM",
+                  "code": "PRO-ABN-BRAKES",
+                  "page": "P 1/22",
+                  "pdf": 3024
+                }
+              ]
+            },
+            {
+              "kind": "ecam",
+              "item": "BRAKE PEDALS",
+              "setting": "RELEASE",
+              "applies_to": [
+                "all"
+              ],
+              "refs": [
+                {
+                  "book": "FCOM",
+                  "code": "PRO-ABN-BRAKES",
+                  "page": "P 1/22",
+                  "pdf": 3024
+                },
+                {
+                  "book": "FCTM",
+                  "code": "PR-AEP-BRK",
+                  "page": "P 2/2",
+                  "pdf": 397
+                }
+              ]
+            },
+            {
+              "kind": "note",
+              "text": "Release before the PM selects A/SKID off: this avoids brutal braking application",
+              "applies_to": [
+                "all"
+              ],
+              "refs": [
+                {
+                  "book": "FCOM",
+                  "code": "PRO-ABN-BRAKES",
+                  "page": "P 1/22",
+                  "pdf": 3024
+                }
+              ]
+            },
+            {
+              "kind": "callout",
+              "text": "A/SKID OFF",
+              "applies_to": [
+                "all"
+              ],
+              "refs": [
+                {
+                  "book": "FCOM",
+                  "code": "PRO-ABN-BRAKES",
+                  "page": "P 1/22",
+                  "pdf": 3024
+                },
+                {
+                  "book": "FCTM",
+                  "code": "PR-AEP-BRK",
+                  "page": "P 2/2",
+                  "pdf": 397
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "actor": "PM",
+          "items": [
+            {
+              "kind": "ecam",
+              "item": "A/SKID & N/W STRG",
+              "setting": "OFF",
+              "applies_to": [
+                "all"
+              ],
+              "refs": [
+                {
+                  "book": "FCOM",
+                  "code": "PRO-ABN-BRAKES",
+                  "page": "P 1/22",
+                  "pdf": 3024
+                },
+                {
+                  "book": "FCTM",
+                  "code": "PR-AEP-BRK",
+                  "page": "P 2/2",
+                  "pdf": 397
+                }
+              ]
+            },
+            {
+              "kind": "note",
+              "text": "Braking transfers from the BSCU to the ABCU: alternate braking mode",
+              "applies_to": [
+                "all"
+              ],
+              "refs": [
+                {
+                  "book": "FCOM",
+                  "code": "PRO-ABN-BRAKES",
+                  "page": "P 1/22",
+                  "pdf": 3024
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "actor": "PF",
+          "items": [
+            {
+              "kind": "ecam",
+              "item": "BRAKE PEDALS",
+              "setting": "PRESS",
+              "applies_to": [
+                "all"
+              ],
+              "refs": [
+                {
+                  "book": "FCOM",
+                  "code": "PRO-ABN-BRAKES",
+                  "page": "P 1/22",
+                  "pdf": 3024
+                },
+                {
+                  "book": "FCTM",
+                  "code": "PR-AEP-BRK",
+                  "page": "P 2/2",
+                  "pdf": 397
+                }
+              ]
+            },
+            {
+              "kind": "note",
+              "text": "Only after the PM has set the switch OFF",
+              "applies_to": [
+                "all"
+              ],
+              "refs": [
+                {
+                  "book": "FCTM",
+                  "code": "PR-AEP-BRK",
+                  "page": "P 2/2",
+                  "pdf": 397
+                }
+              ]
+            },
+            {
+              "kind": "ecam",
+              "item": "MAX BRK PR",
+              "setting": "1000 PSI",
+              "applies_to": [
+                "all"
+              ],
+              "refs": [
+                {
+                  "book": "FCOM",
+                  "code": "PRO-ABN-BRAKES",
+                  "page": "P 1/22",
+                  "pdf": 3024
+                }
+              ]
+            },
+            {
+              "kind": "action",
+              "text": "Monitor brake pressure on the BRAKES PRESS indicator",
+              "applies_to": [
+                "all"
+              ],
+              "refs": [
+                {
+                  "book": "FCOM",
+                  "code": "PRO-ABN-BRAKES",
+                  "page": "P 1/22",
+                  "pdf": 3024
+                },
+                {
+                  "book": "FCTM",
+                  "code": "PR-AEP-BRK",
+                  "page": "P 2/2",
+                  "pdf": 397
+                }
+              ]
+            },
+            {
+              "kind": "action",
+              "text": "Directional control: rudder at high speed, then differential braking (if recovered)",
+              "applies_to": [
+                "all"
+              ],
+              "refs": [
+                {
+                  "book": "FCTM",
+                  "code": "PR-AEP-BRK",
+                  "page": "P 1/2",
+                  "pdf": 396
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "phase": "If still no braking",
+      "steps": [
+        {
+          "actor": "PF",
+          "items": [
+            {
+              "kind": "ecam",
+              "item": "PARK BRAKE",
+              "setting": "USE",
+              "applies_to": [
+                "all"
+              ],
+              "refs": [
+                {
+                  "book": "FCOM",
+                  "code": "PRO-ABN-BRAKES",
+                  "page": "P 1/22",
+                  "pdf": 3024
+                }
+              ]
+            },
+            {
+              "kind": "action",
+              "text": "Short successive parking brake applications. Delay until low speed if possible, to reduce the risk of tire burst and lateral control difficulties",
+              "applies_to": [
+                "all"
+              ],
+              "refs": [
+                {
+                  "book": "FCOM",
+                  "code": "PRO-ABN-BRAKES",
+                  "page": "P 1/22",
+                  "pdf": 3024
+                },
+                {
+                  "book": "FCTM",
+                  "code": "PR-AEP-BRK",
+                  "page": "P 2/2",
+                  "pdf": 397
+                }
+              ]
+            },
+            {
+              "kind": "note",
+              "text": "Brake onset asymmetry may be felt at each application",
+              "applies_to": [
+                "all"
+              ],
+              "refs": [
+                {
+                  "book": "FCTM",
+                  "code": "PR-AEP-BRK",
+                  "page": "P 2/2",
+                  "pdf": 397
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "procedures": [
+    {
+      "title": "[MEM] LOSS OF BRAKING",
+      "source": "FCOM PRO-ABN-BRAKES P 1/22",
+      "lines": [
+        {
+          "kind": "condition",
+          "text": "If no braking:",
+          "level": 0,
+          "applies_to": [
+            "all"
+          ],
+          "refs": [
+            {
+              "book": "FCOM",
+              "code": "PRO-ABN-BRAKES",
+              "page": "P 1/22",
+              "pdf": 3024
+            }
+          ]
+        },
+        {
+          "kind": "action",
+          "item": "REV",
+          "setting": "MAX",
+          "text": "",
+          "level": 1,
+          "applies_to": [
+            "all"
+          ],
+          "refs": [
+            {
+              "book": "FCOM",
+              "code": "PRO-ABN-BRAKES",
+              "page": "P 1/22",
+              "pdf": 3024
+            }
+          ]
+        },
+        {
+          "kind": "note",
+          "text": "If needed, the flight crew may keep maximum reverse thrust until full aircraft stop.",
+          "level": 1,
+          "applies_to": [
+            "all"
+          ],
+          "refs": [
+            {
+              "book": "FCOM",
+              "code": "PRO-ABN-BRAKES",
+              "page": "P 1/22",
+              "pdf": 3024
+            }
+          ]
+        },
+        {
+          "kind": "action",
+          "item": "BRAKE PEDALS",
+          "setting": "RELEASE",
+          "text": "",
+          "level": 1,
+          "applies_to": [
+            "all"
+          ],
+          "refs": [
+            {
+              "book": "FCOM",
+              "code": "PRO-ABN-BRAKES",
+              "page": "P 1/22",
+              "pdf": 3024
+            }
+          ]
+        },
+        {
+          "kind": "note",
+          "text": "When the flight crew sets the A/SKID & N/W STRG sw to OFF, the control of the braking system is transferred from the BSCU to the ABCU, and the alternate braking mode is activated. Consequently the PF should release the brake pedals before the PM selects the A/SKID off. This action avoids brutal braking application.",
+          "level": 1,
+          "applies_to": [
+            "all"
+          ],
+          "refs": [
+            {
+              "book": "FCOM",
+              "code": "PRO-ABN-BRAKES",
+              "page": "P 1/22",
+              "pdf": 3024
+            }
+          ]
+        },
+        {
+          "kind": "action",
+          "item": "A/SKID OFF",
+          "setting": "ORDER",
+          "text": "",
+          "level": 1,
+          "applies_to": [
+            "all"
+          ],
+          "refs": [
+            {
+              "book": "FCOM",
+              "code": "PRO-ABN-BRAKES",
+              "page": "P 1/22",
+              "pdf": 3024
+            }
+          ]
+        },
+        {
+          "kind": "note",
+          "text": "The PF orders the PM to set the A/SKID & N/W STRG sw to OFF.",
+          "level": 1,
+          "applies_to": [
+            "all"
+          ],
+          "refs": [
+            {
+              "book": "FCOM",
+              "code": "PRO-ABN-BRAKES",
+              "page": "P 1/22",
+              "pdf": 3024
+            }
+          ]
+        },
+        {
+          "kind": "action",
+          "item": "A/SKID & N/W STRG",
+          "setting": "OFF",
+          "text": "",
+          "level": 1,
+          "applies_to": [
+            "all"
+          ],
+          "refs": [
+            {
+              "book": "FCOM",
+              "code": "PRO-ABN-BRAKES",
+              "page": "P 1/22",
+              "pdf": 3024
+            }
+          ]
+        },
+        {
+          "kind": "action",
+          "item": "BRAKE PEDALS",
+          "setting": "PRESS",
+          "text": "",
+          "level": 1,
+          "applies_to": [
+            "all"
+          ],
+          "refs": [
+            {
+              "book": "FCOM",
+              "code": "PRO-ABN-BRAKES",
+              "page": "P 1/22",
+              "pdf": 3024
+            }
+          ]
+        },
+        {
+          "kind": "action",
+          "item": "MAX BRK PR",
+          "setting": "1000 PSI",
+          "text": "",
+          "level": 1,
+          "applies_to": [
+            "all"
+          ],
+          "refs": [
+            {
+              "book": "FCOM",
+              "code": "PRO-ABN-BRAKES",
+              "page": "P 1/22",
+              "pdf": 3024
+            }
+          ]
+        },
+        {
+          "kind": "note",
+          "text": "The ABCU automatically limits the brake pressure to 1 000 PSI. Monitor brake pressure on the BRAKES PRESS indicator.",
+          "level": 1,
+          "applies_to": [
+            "all"
+          ],
+          "refs": [
+            {
+              "book": "FCOM",
+              "code": "PRO-ABN-BRAKES",
+              "page": "P 1/22",
+              "pdf": 3024
+            }
+          ]
+        },
+        {
+          "kind": "condition",
+          "text": "If still no braking:",
+          "level": 1,
+          "applies_to": [
+            "all"
+          ],
+          "refs": [
+            {
+              "book": "FCOM",
+              "code": "PRO-ABN-BRAKES",
+              "page": "P 1/22",
+              "pdf": 3024
+            }
+          ]
+        },
+        {
+          "kind": "action",
+          "item": "PARK BRAKE",
+          "setting": "USE",
+          "text": "",
+          "level": 2,
+          "applies_to": [
+            "all"
+          ],
+          "refs": [
+            {
+              "book": "FCOM",
+              "code": "PRO-ABN-BRAKES",
+              "page": "P 1/22",
+              "pdf": 3024
+            }
+          ]
+        },
+        {
+          "kind": "info",
+          "text": "Use short successive parking brake applications to stop the aircraft.",
+          "level": 2,
+          "applies_to": [
+            "all"
+          ],
+          "refs": [
+            {
+              "book": "FCOM",
+              "code": "PRO-ABN-BRAKES",
+              "page": "P 1/22",
+              "pdf": 3024
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "status": null,
+  "background": [
+    {
+      "text": "The procedure lets the crew manually activate alternate braking without antiskid when the normal braking mode has failed and the automatic switch to alternate braking has also failed. If that fails too, it asks for the parking brake.",
+      "applies_to": [
+        "all"
+      ],
+      "refs": [
+        {
+          "book": "FCTM",
+          "code": "PR-AEP-BRK",
+          "page": "P 1/2",
+          "pdf": 396
+        }
+      ]
+    },
+    {
+      "text": "It results in the loss of nosewheel steering and of the antiskid function.",
+      "applies_to": [
+        "all"
+      ],
+      "refs": [
+        {
+          "book": "FCTM",
+          "code": "PR-AEP-BRK",
+          "page": "P 1/2",
+          "pdf": 396
+        }
+      ]
+    },
+    {
+      "text": "In alternate braking without antiskid, autobrake and antiskid are inoperative. Brake pressure is limited to 1 000 PSI automatically, to limit the risk of wheel locking and tire burst.",
+      "applies_to": [
+        "all"
+      ],
+      "refs": [
+        {
+          "book": "FCOM",
+          "code": "DSC-32-30-10",
+          "page": "P 6/8",
+          "pdf": 2047
+        }
+      ]
+    }
+  ],
+  "technique": [
+    {
+      "text": "Sequence the switch to alternate braking in three steps. The PF should: 1. Release the brake pedals. 2. Request the PM to set the A/SKID & N/W STRG sw to OFF. 3. Press the brake pedals, only after the PM has set the sw to OFF.",
+      "applies_to": [
+        "all"
+      ],
+      "refs": [
+        {
+          "book": "FCTM",
+          "code": "PR-AEP-BRK",
+          "page": "P 1/2",
+          "pdf": 396
+        },
+        {
+          "book": "FCTM",
+          "code": "PR-AEP-BRK",
+          "page": "P 2/2",
+          "pdf": 397
+        }
+      ]
+    },
+    {
+      "text": "Full reverse may be used to a complete stop if needed. Below 70 kt, when the crew considers that the aircraft can stop on the runway, set idle reverse. Unless required by an emergency, avoid high reverse thrust at low speed, to avoid engine stall and excessive EGT.",
+      "applies_to": [
+        "all"
+      ],
+      "refs": [
+        {
+          "book": "FCTM",
+          "code": "PR-AEP-BRK",
+          "page": "P 1/2",
+          "pdf": 396
+        }
+      ]
+    },
+    {
+      "text": "When reverse is reduced from REV MAX to REV IDLE, be prepared to perceive a change in the felt deceleration.",
+      "applies_to": [
+        "all"
+      ],
+      "refs": [
+        {
+          "book": "FCTM",
+          "code": "PR-AEP-BRK",
+          "page": "P 1/2",
+          "pdf": 396
+        }
+      ]
+    },
+    {
+      "text": "During a RTO: if normal braking is inoperative, immediately apply the LOSS OF BRAKING memory items.",
+      "applies_to": [
+        "all"
+      ],
+      "refs": [
+        {
+          "book": "FCTM",
+          "code": "PR-AEP-MISC",
+          "page": "P 21/32",
+          "pdf": 466
+        }
+      ]
+    }
+  ],
+  "gaps": [
+    {
+      "text": "The FCOM gives the callout \"LOSS OF BRAKING\" and PARK BRAKE USE without naming a pilot. The brief shows the PF for both, confirmed by the user.",
+      "applies_to": [
+        "all"
+      ],
+      "refs": [
+        {
+          "book": "FCOM",
+          "code": "PRO-ABN-ABN-00",
+          "page": "P 10/12",
+          "pdf": 2833
+        },
+        {
+          "book": "FCOM",
+          "code": "PRO-ABN-BRAKES",
+          "page": "P 1/22",
+          "pdf": 3024
+        }
+      ]
+    },
+    {
+      "text": "The PDP has no module for this procedure.",
+      "applies_to": [
+        "all"
+      ],
+      "refs": [
+        {
+          "book": "FCOM",
+          "code": "PRO-ABN-BRAKES",
+          "page": "P 1/22",
+          "pdf": 3024
+        }
+      ]
+    }
+  ],
+  "sources": [
+    {
+      "book": "FCOM",
+      "section": "PRO-ABN-BRAKES — [MEM] LOSS OF BRAKING",
+      "pages": "P 1/22",
+      "pdf": "3024",
+      "rev": "18 FEB 26"
+    },
+    {
+      "book": "FCTM",
+      "section": "PR-AEP-BRK — LOSS OF BRAKING; PR-AEP-MISC — RTO",
+      "pages": "P 1–2/2; P 21/32",
+      "pdf": "396–397, 466",
+      "rev": "26 MAY 26"
+    },
+    {
+      "book": "FCOM",
+      "section": "DSC-32-30-10 — braking modes; PRO-ABN-ABN-00 — memory callouts",
+      "pages": "P 6/8; P 10/12",
+      "pdf": "2047, 2833",
+      "rev": "26 MAY 26"
+    }
+  ],
+  "schema": "a320-ecam-abnormal/3",
+  "generated": "2026-10-31",
+  "qrh": [],
+  "tables": [],
+  "related": [],
+  "differences": []
+}

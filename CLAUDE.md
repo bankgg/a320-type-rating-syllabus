@@ -34,6 +34,8 @@ sh .claude/skills/syllabus-session-briefs/scripts/run_check.sh <session-id>   # 
    - `FAILURE_SUMMARIES`: the failure subjects in each session's summary line. An empty tuple means "No failure exercises" (mftd-2, ffs-1, ffs-2, ffs-8).
    - `PROCEDURE_GROUPS[sid]`: `(summary label, ((slug, tab_label[, session_note]), …))`. The label must equal a `FAILURE_SUMMARIES` entry exactly.
    - `EXERCISE_BRIEFS`: exercise id → brief slug. Schedule topics link automatically through their `exercise_ids`, and a linked row gets the dotted-underline "opens a procedure" cue.
+   - `SUMMARY_GROUP_ALIASES`: a summary subject that opens another subject's group, because a brief can sit in only one group per session (ffs-7: engine severe damage/separation and engine failure share `eng-1-2-fail`).
+   - `COMPANION_EXERCISES`: the exercise rows that decide a companion brief's trainee badges, when only some of its group's trainees practise it (ffs-7: severe damage is Trainee A only).
 
    The build loads every `abnormals/*.json` through `render_md.validate`. It rejects any brief that mentions MFTD/FFS/FBS, because briefs are session-neutral and shared.
 3. `comparison_template.html.j2` is one file holding all CSS and JS inline:

@@ -1,0 +1,3038 @@
+{
+  "slug": "smoke-fumes-avncs-smoke",
+  "title": "SMOKE / FUMES / AVNCS SMOKE",
+  "kind": "qrh",
+  "alert": {
+    "level": "qrh",
+    "land_asap": "red",
+    "memory_items": false,
+    "qrh_summary": false,
+    "trigger": "Flight or cabin crew suspect smoke/fumes from the avionics, the air conditioning or the cabin equipment; the AVIONICS SMOKE alert triggers; or there is a smell of smoke/fumes in the cockpit. For another ECAM SMOKE alert (cargo, lavatory), apply the ECAM first.",
+    "inhibited_phases": [],
+    "refs": [
+      {
+        "book": "FCOM",
+        "code": "PRO-ABN-SMOKE",
+        "page": "P 1/50",
+        "pdf": 3958
+      },
+      {
+        "book": "FCTM",
+        "code": "PR-AEP-SMOKE",
+        "page": "P 1/10",
+        "pdf": 498
+      },
+      {
+        "book": "PDP",
+        "code": "Smoke",
+        "page": "XFTDA1SMOKE0001",
+        "pdf": 536
+      }
+    ]
+  },
+  "effectivity": {
+    "branches": [
+      "HS-TXA..TXO",
+      "HS-TXP..TXU"
+    ],
+    "note": "The QRH lines are the same for all HS-TX. Only the FCOM STATUS after a smoke ELEC EMER CONFIG differs slightly."
+  },
+  "summary": "Time is critical: red LAND ASAP, and be prepared to divert immediately. Immediate actions protect the crew, stop further contamination and open communication with the cabin. If the source is not immediately isolated, start the diversion and the descent to FL 100 / MEA-MORA. Then identify the source: air conditioning, cabin equipment, or avionics/electrical. At any time after the immediate actions, consider REMOVAL OF SMOKE / FUMES, ELEC EMER CONFIG or an immediate landing.",
+  "key_limits": [
+    {
+      "label": "Landing",
+      "value": "LAND ASAP (red)",
+      "applies_to": [
+        "all"
+      ],
+      "refs": [
+        {
+          "book": "QRH",
+          "code": "27.01",
+          "page": "27.01B",
+          "pdf": 245
+        }
+      ]
+    },
+    {
+      "label": "Descent if not isolated",
+      "value": "FL 100 / MEA-MORA",
+      "applies_to": [
+        "all"
+      ],
+      "refs": [
+        {
+          "book": "QRH",
+          "code": "27.01",
+          "page": "27.01B",
+          "pdf": 245
+        }
+      ]
+    },
+    {
+      "label": "Smoke gone within",
+      "value": "5 min: restore normal ventilation",
+      "applies_to": [
+        "all"
+      ],
+      "refs": [
+        {
+          "book": "QRH",
+          "code": "27.01",
+          "page": "27.01D",
+          "pdf": 247
+        }
+      ]
+    },
+    {
+      "label": "Generators restored",
+      "value": "3 min or 2 000 ft AAL before landing",
+      "applies_to": [
+        "all"
+      ],
+      "refs": [
+        {
+          "book": "QRH",
+          "code": "27.01",
+          "page": "27.01E",
+          "pdf": 248
+        }
+      ]
+    }
+  ],
+  "flow": [
+    {
+      "phase": "Order",
+      "steps": [
+        {
+          "actor": "BOTH",
+          "items": [
+            {
+              "kind": "action",
+              "text": "Smoke or fumes perceptible: confirmed visually or by smell",
+              "applies_to": [
+                "all"
+              ],
+              "refs": [
+                {
+                  "book": "FCTM",
+                  "code": "PR-AEP-SMOKE",
+                  "page": "P 1/10",
+                  "pdf": 498
+                },
+                {
+                  "book": "PDP",
+                  "code": "Smoke",
+                  "page": "XFTDA1SMOKE0001",
+                  "pdf": 535
+                }
+              ]
+            },
+            {
+              "kind": "note",
+              "text": "No ECAM alert: refer directly to this procedure. AVIONICS SMOKE: refer to it directly, or apply the ECAM first. Other ECAM SMOKE alert: apply the ECAM, then this procedure if in doubt about the origin",
+              "applies_to": [
+                "all"
+              ],
+              "refs": [
+                {
+                  "book": "FCTM",
+                  "code": "PR-AEP-SMOKE",
+                  "page": "P 1/10",
+                  "pdf": 498
+                },
+                {
+                  "book": "PDP",
+                  "code": "Smoke",
+                  "page": "XFTDA1SMOKE0001",
+                  "pdf": 535
+                },
+                {
+                  "book": "PDP",
+                  "code": "Smoke",
+                  "page": "XFTDA1SMOKE0001",
+                  "pdf": 536
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "actor": "PF",
+          "items": [
+            {
+              "kind": "callout",
+              "text": "SMOKE / FUMES / AVNCS SMOKE PROCEDURE",
+              "applies_to": [
+                "all"
+              ],
+              "refs": [
+                {
+                  "book": "PDP",
+                  "code": "Management of abnormal operations",
+                  "page": "XFTDN6ECAM00001",
+                  "pdf": 427
+                }
+              ]
+            },
+            {
+              "kind": "note",
+              "text": "Red LAND ASAP: anticipate the diversion, time is critical",
+              "applies_to": [
+                "all"
+              ],
+              "refs": [
+                {
+                  "book": "QRH",
+                  "code": "27.01",
+                  "page": "27.01B",
+                  "pdf": 245
+                },
+                {
+                  "book": "FCTM",
+                  "code": "PR-AEP-SMOKE",
+                  "page": "P 4/10",
+                  "pdf": 501
+                },
+                {
+                  "book": "PDP",
+                  "code": "Smoke",
+                  "page": "XFTDA1SMOKE0001",
+                  "pdf": 537
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "actor": "PM",
+          "items": [
+            {
+              "kind": "action",
+              "text": "READ AND DO the QRH lines aloud",
+              "applies_to": [
+                "all"
+              ],
+              "refs": [
+                {
+                  "book": "PDP",
+                  "code": "Management of abnormal operations",
+                  "page": "XFTDN6ECAM00001",
+                  "pdf": 427
+                },
+                {
+                  "book": "FCTM",
+                  "code": "AOP-30-30",
+                  "page": "P 5/6",
+                  "pdf": 86
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "phase": "Immediate actions",
+      "steps": [
+        {
+          "actor": "BOTH",
+          "items": [
+            {
+              "kind": "ecam",
+              "item": "CREW OXY MASKS (if required)",
+              "setting": "USE/100%/EMERG",
+              "applies_to": [
+                "all"
+              ],
+              "refs": [
+                {
+                  "book": "QRH",
+                  "code": "27.01",
+                  "page": "27.01B",
+                  "pdf": 245
+                }
+              ]
+            },
+            {
+              "kind": "note",
+              "text": "If required, or if not sure, all flight crew must don the mask. Establish crew communication; turn the emergency knob to clear condensation or smoke from the mask",
+              "applies_to": [
+                "all"
+              ],
+              "refs": [
+                {
+                  "book": "FCTM",
+                  "code": "PR-AEP-SMOKE",
+                  "page": "P 6/10",
+                  "pdf": 503
+                },
+                {
+                  "book": "FCOM",
+                  "code": "PRO-ABN-SMOKE",
+                  "page": "P 2/50",
+                  "pdf": 3959
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "actor": "PM",
+          "items": [
+            {
+              "kind": "ecam",
+              "item": "VENTILATION BLOWER",
+              "setting": "OVRD",
+              "applies_to": [
+                "all"
+              ],
+              "refs": [
+                {
+                  "book": "QRH",
+                  "code": "27.01",
+                  "page": "27.01B",
+                  "pdf": 245
+                }
+              ]
+            },
+            {
+              "kind": "ecam",
+              "item": "VENTILATION EXTRACT",
+              "setting": "OVRD",
+              "applies_to": [
+                "all"
+              ],
+              "refs": [
+                {
+                  "book": "QRH",
+                  "code": "27.01",
+                  "page": "27.01B",
+                  "pdf": 245
+                }
+              ]
+            },
+            {
+              "kind": "note",
+              "text": "Avionics ventilation air is extracted overboard",
+              "applies_to": [
+                "all"
+              ],
+              "refs": [
+                {
+                  "book": "FCOM",
+                  "code": "PRO-ABN-SMOKE",
+                  "page": "P 2/50",
+                  "pdf": 3959
+                }
+              ]
+            },
+            {
+              "kind": "ecam",
+              "item": "CAB FANS",
+              "setting": "OFF",
+              "applies_to": [
+                "all"
+              ],
+              "refs": [
+                {
+                  "book": "QRH",
+                  "code": "27.01",
+                  "page": "27.01B",
+                  "pdf": 245
+                }
+              ]
+            },
+            {
+              "kind": "note",
+              "text": "Prevents smoke/fumes from entering the cockpit and cabin",
+              "applies_to": [
+                "all"
+              ],
+              "refs": [
+                {
+                  "book": "FCOM",
+                  "code": "PRO-ABN-SMOKE",
+                  "page": "P 2/50",
+                  "pdf": 3959
+                }
+              ]
+            },
+            {
+              "kind": "ecam",
+              "item": "GALY & CAB",
+              "setting": "OFF",
+              "applies_to": [
+                "all"
+              ],
+              "refs": [
+                {
+                  "book": "QRH",
+                  "code": "27.01",
+                  "page": "27.01B",
+                  "pdf": 245
+                }
+              ]
+            },
+            {
+              "kind": "ecam",
+              "item": "SIGNS",
+              "setting": "ON",
+              "applies_to": [
+                "all"
+              ],
+              "refs": [
+                {
+                  "book": "QRH",
+                  "code": "27.01",
+                  "page": "27.01B",
+                  "pdf": 245
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "actor": "PF",
+          "items": [
+            {
+              "kind": "ecam",
+              "item": "CKPT / CAB COM",
+              "setting": "ESTABLISH",
+              "applies_to": [
+                "all"
+              ],
+              "refs": [
+                {
+                  "book": "QRH",
+                  "code": "27.01",
+                  "page": "27.01B",
+                  "pdf": 245
+                }
+              ]
+            },
+            {
+              "kind": "note",
+              "text": "The cabin crew estimate and report the density of the smoke/fumes and the severity of the situation",
+              "applies_to": [
+                "all"
+              ],
+              "refs": [
+                {
+                  "book": "FCTM",
+                  "code": "PR-AEP-SMOKE",
+                  "page": "P 2/10",
+                  "pdf": 499
+                },
+                {
+                  "book": "FCOM",
+                  "code": "PRO-ABN-SMOKE",
+                  "page": "P 2/50",
+                  "pdf": 3959
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "phase": "Isolate or divert",
+      "steps": [
+        {
+          "actor": "PM",
+          "items": [
+            {
+              "kind": "condition",
+              "text": "If smoke/fumes source immediately obvious, accessible, and extinguishable",
+              "children": [
+                {
+                  "kind": "ecam",
+                  "item": "FAULTY EQPT",
+                  "setting": "ISOLATE",
+                  "applies_to": [
+                    "all"
+                  ],
+                  "refs": [
+                    {
+                      "book": "QRH",
+                      "code": "27.01",
+                      "page": "27.01B",
+                      "pdf": 245
+                    }
+                  ]
+                }
+              ],
+              "applies_to": [
+                "all"
+              ],
+              "refs": [
+                {
+                  "book": "QRH",
+                  "code": "27.01",
+                  "page": "27.01B",
+                  "pdf": 245
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "actor": "PF",
+          "items": [
+            {
+              "kind": "condition",
+              "text": "If smoke/fumes source not immediately isolated",
+              "children": [
+                {
+                  "kind": "ecam",
+                  "item": "DIVERSION",
+                  "setting": "INITIATE",
+                  "applies_to": [
+                    "all"
+                  ],
+                  "refs": [
+                    {
+                      "book": "QRH",
+                      "code": "27.01",
+                      "page": "27.01B",
+                      "pdf": 245
+                    }
+                  ]
+                },
+                {
+                  "kind": "ecam",
+                  "item": "DESCENT TO FL 100 / MEA-MORA",
+                  "setting": "INITIATE",
+                  "applies_to": [
+                    "all"
+                  ],
+                  "refs": [
+                    {
+                      "book": "QRH",
+                      "code": "27.01",
+                      "page": "27.01B",
+                      "pdf": 245
+                    }
+                  ]
+                },
+                {
+                  "kind": "note",
+                  "text": "Initiate the diversion before entering the identification part of the procedure",
+                  "applies_to": [
+                    "all"
+                  ],
+                  "refs": [
+                    {
+                      "book": "FCTM",
+                      "code": "PR-AEP-SMOKE",
+                      "page": "P 5/10",
+                      "pdf": 502
+                    }
+                  ]
+                }
+              ],
+              "applies_to": [
+                "all"
+              ],
+              "refs": [
+                {
+                  "book": "QRH",
+                  "code": "27.01",
+                  "page": "27.01B",
+                  "pdf": 245
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "phase": "At any time after the immediate actions",
+      "steps": [
+        {
+          "actor": "BOTH",
+          "items": [
+            {
+              "kind": "condition",
+              "text": "If smoke/fumes become the GREATEST THREAT",
+              "children": [
+                {
+                  "kind": "ecam",
+                  "item": "REMOVAL OF SMOKE / FUMES",
+                  "setting": "CONSIDER",
+                  "applies_to": [
+                    "all"
+                  ],
+                  "refs": [
+                    {
+                      "book": "QRH",
+                      "code": "27.01",
+                      "page": "27.01B",
+                      "pdf": 245
+                    }
+                  ]
+                },
+                {
+                  "kind": "ecam",
+                  "item": "ELEC EMER CONFIG",
+                  "setting": "CONSIDER",
+                  "applies_to": [
+                    "all"
+                  ],
+                  "refs": [
+                    {
+                      "book": "QRH",
+                      "code": "27.01",
+                      "page": "27.01C",
+                      "pdf": 246
+                    }
+                  ]
+                },
+                {
+                  "kind": "note",
+                  "text": "See the REMOVAL OF SMOKE / FUMES brief, and TO SET ELEC EMER CONFIG below",
+                  "applies_to": [
+                    "all"
+                  ],
+                  "refs": [
+                    {
+                      "book": "QRH",
+                      "code": "27.01",
+                      "page": "27.01B",
+                      "pdf": 245
+                    },
+                    {
+                      "book": "QRH",
+                      "code": "27.01",
+                      "page": "27.01C",
+                      "pdf": 246
+                    },
+                    {
+                      "book": "PDP",
+                      "code": "Smoke",
+                      "page": "XFTDA1SMOKE0001",
+                      "pdf": 539
+                    },
+                    {
+                      "book": "PDP",
+                      "code": "Smoke",
+                      "page": "XFTDA1SMOKE0001",
+                      "pdf": 540
+                    }
+                  ]
+                }
+              ],
+              "applies_to": [
+                "all"
+              ],
+              "refs": [
+                {
+                  "book": "QRH",
+                  "code": "27.01",
+                  "page": "27.01B",
+                  "pdf": 245
+                }
+              ]
+            },
+            {
+              "kind": "condition",
+              "text": "If situation becomes UNMANAGEABLE",
+              "children": [
+                {
+                  "kind": "ecam",
+                  "item": "IMMEDIATE LANDING",
+                  "setting": "CONSIDER",
+                  "applies_to": [
+                    "all"
+                  ],
+                  "refs": [
+                    {
+                      "book": "QRH",
+                      "code": "27.01",
+                      "page": "27.01C",
+                      "pdf": 246
+                    }
+                  ]
+                },
+                {
+                  "kind": "note",
+                  "text": "The Captain can consider an overweight landing, a tailwind landing, a ditching, a forced landing, etc.",
+                  "applies_to": [
+                    "all"
+                  ],
+                  "refs": [
+                    {
+                      "book": "FCOM",
+                      "code": "PRO-ABN-SMOKE",
+                      "page": "P 2/50",
+                      "pdf": 3959
+                    }
+                  ]
+                }
+              ],
+              "applies_to": [
+                "all"
+              ],
+              "refs": [
+                {
+                  "book": "QRH",
+                  "code": "27.01",
+                  "page": "27.01C",
+                  "pdf": 246
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "phase": "Identify and fight the source",
+      "steps": [
+        {
+          "actor": "PM",
+          "items": [
+            {
+              "kind": "condition",
+              "text": "If AIR COND smoke/fumes suspected",
+              "children": [
+                {
+                  "kind": "ecam",
+                  "item": "APU BLEED",
+                  "setting": "OFF",
+                  "applies_to": [
+                    "all"
+                  ],
+                  "refs": [
+                    {
+                      "book": "QRH",
+                      "code": "27.01",
+                      "page": "27.01C",
+                      "pdf": 246
+                    }
+                  ]
+                },
+                {
+                  "kind": "ecam",
+                  "item": "VENTILATION BLOWER",
+                  "setting": "AUTO",
+                  "applies_to": [
+                    "all"
+                  ],
+                  "refs": [
+                    {
+                      "book": "QRH",
+                      "code": "27.01",
+                      "page": "27.01C",
+                      "pdf": 246
+                    }
+                  ]
+                },
+                {
+                  "kind": "ecam",
+                  "item": "VENTILATION EXTRACT",
+                  "setting": "AUTO",
+                  "applies_to": [
+                    "all"
+                  ],
+                  "refs": [
+                    {
+                      "book": "QRH",
+                      "code": "27.01",
+                      "page": "27.01C",
+                      "pdf": 246
+                    }
+                  ]
+                },
+                {
+                  "kind": "ecam",
+                  "item": "CARGO AFT ISOL VALVE",
+                  "setting": "OFF",
+                  "applies_to": [
+                    "all"
+                  ],
+                  "refs": [
+                    {
+                      "book": "QRH",
+                      "code": "27.01",
+                      "page": "27.01C",
+                      "pdf": 246
+                    }
+                  ]
+                },
+                {
+                  "kind": "ecam",
+                  "item": "PACK 1",
+                  "setting": "OFF",
+                  "applies_to": [
+                    "all"
+                  ],
+                  "refs": [
+                    {
+                      "book": "QRH",
+                      "code": "27.01",
+                      "page": "27.01C",
+                      "pdf": 246
+                    }
+                  ]
+                },
+                {
+                  "kind": "condition",
+                  "text": "If smoke/fumes continue",
+                  "children": [
+                    {
+                      "kind": "ecam",
+                      "item": "PACK 1",
+                      "setting": "ON",
+                      "applies_to": [
+                        "all"
+                      ],
+                      "refs": [
+                        {
+                          "book": "QRH",
+                          "code": "27.01",
+                          "page": "27.01C",
+                          "pdf": 246
+                        }
+                      ]
+                    },
+                    {
+                      "kind": "ecam",
+                      "item": "PACK 2",
+                      "setting": "OFF",
+                      "applies_to": [
+                        "all"
+                      ],
+                      "refs": [
+                        {
+                          "book": "QRH",
+                          "code": "27.01",
+                          "page": "27.01C",
+                          "pdf": 246
+                        }
+                      ]
+                    },
+                    {
+                      "kind": "condition",
+                      "text": "If smoke/fumes persist",
+                      "children": [
+                        {
+                          "kind": "ecam",
+                          "item": "PACK 2",
+                          "setting": "ON",
+                          "applies_to": [
+                            "all"
+                          ],
+                          "refs": [
+                            {
+                              "book": "QRH",
+                              "code": "27.01",
+                              "page": "27.01C",
+                              "pdf": 246
+                            }
+                          ]
+                        },
+                        {
+                          "kind": "ecam",
+                          "item": "VENTILATION BLOWER",
+                          "setting": "OVRD",
+                          "applies_to": [
+                            "all"
+                          ],
+                          "refs": [
+                            {
+                              "book": "QRH",
+                              "code": "27.01",
+                              "page": "27.01C",
+                              "pdf": 246
+                            }
+                          ]
+                        },
+                        {
+                          "kind": "ecam",
+                          "item": "VENTILATION EXTRACT",
+                          "setting": "OVRD",
+                          "applies_to": [
+                            "all"
+                          ],
+                          "refs": [
+                            {
+                              "book": "QRH",
+                              "code": "27.01",
+                              "page": "27.01C",
+                              "pdf": 246
+                            }
+                          ]
+                        }
+                      ],
+                      "applies_to": [
+                        "all"
+                      ],
+                      "refs": [
+                        {
+                          "book": "QRH",
+                          "code": "27.01",
+                          "page": "27.01C",
+                          "pdf": 246
+                        }
+                      ]
+                    }
+                  ],
+                  "applies_to": [
+                    "all"
+                  ],
+                  "refs": [
+                    {
+                      "book": "QRH",
+                      "code": "27.01",
+                      "page": "27.01C",
+                      "pdf": 246
+                    }
+                  ]
+                },
+                {
+                  "kind": "ecam",
+                  "item": "REMOVAL OF SMOKE / FUMES",
+                  "setting": "CONSIDER",
+                  "applies_to": [
+                    "all"
+                  ],
+                  "refs": [
+                    {
+                      "book": "QRH",
+                      "code": "27.01",
+                      "page": "27.01C",
+                      "pdf": 246
+                    }
+                  ]
+                }
+              ],
+              "applies_to": [
+                "all"
+              ],
+              "refs": [
+                {
+                  "book": "QRH",
+                  "code": "27.01",
+                  "page": "27.01C",
+                  "pdf": 246
+                }
+              ]
+            },
+            {
+              "kind": "condition",
+              "text": "If CABIN EQPT smoke/fumes suspected",
+              "children": [
+                {
+                  "kind": "condition",
+                  "text": "If smoke/fumes continue",
+                  "children": [
+                    {
+                      "kind": "ecam",
+                      "item": "EMER EXIT LIGHT",
+                      "setting": "ON",
+                      "applies_to": [
+                        "all"
+                      ],
+                      "refs": [
+                        {
+                          "book": "QRH",
+                          "code": "27.01",
+                          "page": "27.01C",
+                          "pdf": 246
+                        }
+                      ]
+                    },
+                    {
+                      "kind": "ecam",
+                      "item": "COMMERCIAL",
+                      "setting": "OFF",
+                      "applies_to": [
+                        "all"
+                      ],
+                      "refs": [
+                        {
+                          "book": "QRH",
+                          "code": "27.01",
+                          "page": "27.01C",
+                          "pdf": 246
+                        }
+                      ]
+                    },
+                    {
+                      "kind": "ecam",
+                      "item": "SMOKE / FUMES DISSIPATION",
+                      "setting": "CHECK",
+                      "applies_to": [
+                        "all"
+                      ],
+                      "refs": [
+                        {
+                          "book": "QRH",
+                          "code": "27.01",
+                          "page": "27.01D",
+                          "pdf": 247
+                        }
+                      ]
+                    },
+                    {
+                      "kind": "ecam",
+                      "item": "FAULTY EQPT",
+                      "setting": "SEARCH / ISOLATE",
+                      "applies_to": [
+                        "all"
+                      ],
+                      "refs": [
+                        {
+                          "book": "QRH",
+                          "code": "27.01",
+                          "page": "27.01D",
+                          "pdf": 247
+                        }
+                      ]
+                    },
+                    {
+                      "kind": "condition",
+                      "text": "If smoke/fumes persist or when faulty equipment confirmed isolated",
+                      "children": [
+                        {
+                          "kind": "ecam",
+                          "item": "COMMERCIAL",
+                          "setting": "NORM",
+                          "applies_to": [
+                            "all"
+                          ],
+                          "refs": [
+                            {
+                              "book": "QRH",
+                              "code": "27.01",
+                              "page": "27.01D",
+                              "pdf": 247
+                            }
+                          ]
+                        }
+                      ],
+                      "applies_to": [
+                        "all"
+                      ],
+                      "refs": [
+                        {
+                          "book": "QRH",
+                          "code": "27.01",
+                          "page": "27.01D",
+                          "pdf": 247
+                        }
+                      ]
+                    },
+                    {
+                      "kind": "ecam",
+                      "item": "REMOVAL OF SMOKE / FUMES",
+                      "setting": "CONSIDER",
+                      "applies_to": [
+                        "all"
+                      ],
+                      "refs": [
+                        {
+                          "book": "QRH",
+                          "code": "27.01",
+                          "page": "27.01D",
+                          "pdf": 247
+                        }
+                      ]
+                    }
+                  ],
+                  "applies_to": [
+                    "all"
+                  ],
+                  "refs": [
+                    {
+                      "book": "QRH",
+                      "code": "27.01",
+                      "page": "27.01C",
+                      "pdf": 246
+                    }
+                  ]
+                }
+              ],
+              "applies_to": [
+                "all"
+              ],
+              "refs": [
+                {
+                  "book": "QRH",
+                  "code": "27.01",
+                  "page": "27.01C",
+                  "pdf": 246
+                }
+              ]
+            },
+            {
+              "kind": "condition",
+              "text": "If smoke/fumes source cannot be determined and persist or AVNCS / ELECTRICAL smoke/fumes suspected",
+              "children": [
+                {
+                  "kind": "ecam",
+                  "item": "ELEC EMER CONFIG",
+                  "setting": "CONSIDER",
+                  "applies_to": [
+                    "all"
+                  ],
+                  "refs": [
+                    {
+                      "book": "QRH",
+                      "code": "27.01",
+                      "page": "27.01D",
+                      "pdf": 247
+                    }
+                  ]
+                },
+                {
+                  "kind": "note",
+                  "text": "Also enter this paragraph if the source is not identified, or if the air conditioning or cabin equipment paragraphs were unsuccessful",
+                  "applies_to": [
+                    "all"
+                  ],
+                  "refs": [
+                    {
+                      "book": "FCTM",
+                      "code": "PR-AEP-SMOKE",
+                      "page": "P 7/10",
+                      "pdf": 504
+                    }
+                  ]
+                }
+              ],
+              "applies_to": [
+                "all"
+              ],
+              "refs": [
+                {
+                  "book": "QRH",
+                  "code": "27.01",
+                  "page": "27.01D",
+                  "pdf": 247
+                }
+              ]
+            },
+            {
+              "kind": "condition",
+              "text": "If smoke/fumes disappear within 5 minutes",
+              "children": [
+                {
+                  "kind": "ecam",
+                  "item": "NORMAL VENTILATION",
+                  "setting": "RESTORE",
+                  "applies_to": [
+                    "all"
+                  ],
+                  "refs": [
+                    {
+                      "book": "QRH",
+                      "code": "27.01",
+                      "page": "27.01D",
+                      "pdf": 247
+                    }
+                  ]
+                }
+              ],
+              "applies_to": [
+                "all"
+              ],
+              "refs": [
+                {
+                  "book": "QRH",
+                  "code": "27.01",
+                  "page": "27.01D",
+                  "pdf": 247
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "phase": "To set ELEC EMER CONFIG",
+      "steps": [
+        {
+          "actor": "PF",
+          "items": [
+            {
+              "kind": "action",
+              "text": "Decide to set it: shed as much equipment as possible to try to isolate the source",
+              "applies_to": [
+                "all"
+              ],
+              "refs": [
+                {
+                  "book": "FCTM",
+                  "code": "PR-AEP-SMOKE",
+                  "page": "P 7/10",
+                  "pdf": 504
+                },
+                {
+                  "book": "PDP",
+                  "code": "Smoke",
+                  "page": "XFTDA1SMOKE0001",
+                  "pdf": 540
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "actor": "PM",
+          "items": [
+            {
+              "kind": "action",
+              "text": "Read the QRH line and point to the guarded control",
+              "applies_to": [
+                "all"
+              ],
+              "refs": [
+                {
+                  "book": "QRH",
+                  "code": "27.01",
+                  "page": "27.01D",
+                  "pdf": 247
+                },
+                {
+                  "book": "FCTM",
+                  "code": "AOP-30-20",
+                  "page": "P 1/2",
+                  "pdf": 80
+                },
+                {
+                  "book": "PDP",
+                  "code": "Management of abnormal operations",
+                  "page": "XFTDN6ECAM00001",
+                  "pdf": 432
+                }
+              ]
+            },
+            {
+              "kind": "callout",
+              "text": "CONFIRM?",
+              "applies_to": [
+                "all"
+              ],
+              "refs": [
+                {
+                  "book": "PDP",
+                  "code": "Management of abnormal operations",
+                  "page": "XFTDN6ECAM00001",
+                  "pdf": 432
+                },
+                {
+                  "book": "FCTM",
+                  "code": "AOP-30-20",
+                  "page": "P 1/2",
+                  "pdf": 80
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "actor": "PF",
+          "items": [
+            {
+              "kind": "callout",
+              "text": "CONFIRMED",
+              "applies_to": [
+                "all"
+              ],
+              "refs": [
+                {
+                  "book": "PDP",
+                  "code": "Management of abnormal operations",
+                  "page": "XFTDN6ECAM00001",
+                  "pdf": 432
+                }
+              ]
+            },
+            {
+              "kind": "note",
+              "text": "After verifying the control the PM points to",
+              "applies_to": [
+                "all"
+              ],
+              "refs": [
+                {
+                  "book": "PDP",
+                  "code": "Management of abnormal operations",
+                  "page": "XFTDN6ECAM00001",
+                  "pdf": 432
+                },
+                {
+                  "book": "FCTM",
+                  "code": "AOP-30-20",
+                  "page": "P 1/2",
+                  "pdf": 80
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "actor": "PM",
+          "items": [
+            {
+              "kind": "ecam",
+              "item": "EMER ELEC GEN 1 LINE",
+              "setting": "OFF",
+              "applies_to": [
+                "all"
+              ],
+              "refs": [
+                {
+                  "book": "QRH",
+                  "code": "27.01",
+                  "page": "27.01D",
+                  "pdf": 247
+                }
+              ]
+            },
+            {
+              "kind": "ecam",
+              "item": "EMER ELEC PWR",
+              "setting": "MAN ON",
+              "applies_to": [
+                "all"
+              ],
+              "refs": [
+                {
+                  "book": "QRH",
+                  "code": "27.01",
+                  "page": "27.01D",
+                  "pdf": 247
+                }
+              ]
+            },
+            {
+              "kind": "condition",
+              "text": "When EMER GEN AVAIL",
+              "children": [
+                {
+                  "kind": "ecam",
+                  "item": "APU GEN",
+                  "setting": "OFF",
+                  "applies_to": [
+                    "all"
+                  ],
+                  "refs": [
+                    {
+                      "book": "QRH",
+                      "code": "27.01",
+                      "page": "27.01D",
+                      "pdf": 247
+                    }
+                  ]
+                },
+                {
+                  "kind": "ecam",
+                  "item": "GEN 2",
+                  "setting": "OFF",
+                  "applies_to": [
+                    "all"
+                  ],
+                  "refs": [
+                    {
+                      "book": "QRH",
+                      "code": "27.01",
+                      "page": "27.01D",
+                      "pdf": 247
+                    }
+                  ]
+                },
+                {
+                  "kind": "action",
+                  "text": "APPLY ELEC EMER CONFIG PROCEDURE, BUT DO NOT RESET GEN, EVEN IF REQUESTED BY ECAM",
+                  "applies_to": [
+                    "all"
+                  ],
+                  "refs": [
+                    {
+                      "book": "QRH",
+                      "code": "27.01",
+                      "page": "27.01D",
+                      "pdf": 247
+                    }
+                  ]
+                }
+              ],
+              "applies_to": [
+                "all"
+              ],
+              "refs": [
+                {
+                  "book": "QRH",
+                  "code": "27.01",
+                  "page": "27.01D",
+                  "pdf": 247
+                }
+              ]
+            },
+            {
+              "kind": "note",
+              "text": "If AVIONICS SMOKE was triggered first, the ECAM shows its specific ELEC EMER CONFIG procedure instead. See the ELEC EMER CONFIG brief for handling the ECAM and its STATUS",
+              "applies_to": [
+                "all"
+              ],
+              "refs": [
+                {
+                  "book": "FCOM",
+                  "code": "PRO-ABN-SMOKE",
+                  "page": "P 6/50",
+                  "pdf": 3963
+                },
+                {
+                  "book": "FCTM",
+                  "code": "PR-AEP-SMOKE",
+                  "page": "P 8/10",
+                  "pdf": 505
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "phase": "Before landing",
+      "steps": [
+        {
+          "actor": "PM",
+          "items": [
+            {
+              "kind": "condition",
+              "text": "At 3 min or 2 000 ft AAL before landing",
+              "children": [
+                {
+                  "kind": "ecam",
+                  "item": "GEN 2",
+                  "setting": "ON",
+                  "applies_to": [
+                    "all"
+                  ],
+                  "refs": [
+                    {
+                      "book": "QRH",
+                      "code": "27.01",
+                      "page": "27.01E",
+                      "pdf": 248
+                    }
+                  ]
+                },
+                {
+                  "kind": "ecam",
+                  "item": "EMER ELEC GEN 1 LINE",
+                  "setting": "ON",
+                  "applies_to": [
+                    "all"
+                  ],
+                  "refs": [
+                    {
+                      "book": "QRH",
+                      "code": "27.01",
+                      "page": "27.01E",
+                      "pdf": 248
+                    }
+                  ]
+                },
+                {
+                  "kind": "note",
+                  "text": "Restored this late to recover normal braking while minimizing possible reactivation of a smoke source",
+                  "applies_to": [
+                    "all"
+                  ],
+                  "refs": [
+                    {
+                      "book": "FCOM",
+                      "code": "PRO-ABN-SMOKE",
+                      "page": "P 6/50",
+                      "pdf": 3963
+                    }
+                  ]
+                }
+              ],
+              "applies_to": [
+                "all"
+              ],
+              "refs": [
+                {
+                  "book": "QRH",
+                  "code": "27.01",
+                  "page": "27.01E",
+                  "pdf": 248
+                }
+              ]
+            },
+            {
+              "kind": "condition",
+              "text": "When aircraft stopped",
+              "children": [
+                {
+                  "kind": "ecam",
+                  "item": "ALL GENs",
+                  "setting": "OFF",
+                  "applies_to": [
+                    "all"
+                  ],
+                  "refs": [
+                    {
+                      "book": "QRH",
+                      "code": "27.01",
+                      "page": "27.01E",
+                      "pdf": 248
+                    }
+                  ]
+                }
+              ],
+              "applies_to": [
+                "all"
+              ],
+              "refs": [
+                {
+                  "book": "QRH",
+                  "code": "27.01",
+                  "page": "27.01E",
+                  "pdf": 248
+                }
+              ]
+            },
+            {
+              "kind": "callout",
+              "text": "SMOKE / FUMES / AVNCS SMOKE PROCEDURE COMPLETED",
+              "applies_to": [
+                "all"
+              ],
+              "refs": [
+                {
+                  "book": "PDP",
+                  "code": "Management of abnormal operations",
+                  "page": "XFTDN6ECAM00001",
+                  "pdf": 427
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "procedures": [
+    {
+      "title": "SMOKE / FUMES / AVNCS SMOKE (QRH 27.01B–E)",
+      "source": "QRH 27.01B–E",
+      "lines": [
+        {
+          "kind": "land_asap",
+          "text": "LAND ASAP (red)",
+          "level": 0,
+          "applies_to": [
+            "all"
+          ],
+          "refs": [
+            {
+              "book": "QRH",
+              "code": "27.01",
+              "page": "27.01B",
+              "pdf": 245
+            }
+          ]
+        },
+        {
+          "kind": "condition",
+          "text": "IF PERCEPTIBLE SMOKE / FUMES APPLY IMMEDIATELY:",
+          "level": 0,
+          "applies_to": [
+            "all"
+          ],
+          "refs": [
+            {
+              "book": "QRH",
+              "code": "27.01",
+              "page": "27.01B",
+              "pdf": 245
+            }
+          ]
+        },
+        {
+          "kind": "action",
+          "item": "CREW OXY MASKS (if required)",
+          "setting": "USE/100%/EMERG",
+          "text": "",
+          "level": 0,
+          "applies_to": [
+            "all"
+          ],
+          "refs": [
+            {
+              "book": "QRH",
+              "code": "27.01",
+              "page": "27.01B",
+              "pdf": 245
+            }
+          ]
+        },
+        {
+          "kind": "action",
+          "item": "VENTILATION BLOWER",
+          "setting": "OVRD",
+          "text": "",
+          "level": 0,
+          "applies_to": [
+            "all"
+          ],
+          "refs": [
+            {
+              "book": "QRH",
+              "code": "27.01",
+              "page": "27.01B",
+              "pdf": 245
+            }
+          ]
+        },
+        {
+          "kind": "action",
+          "item": "VENTILATION EXTRACT",
+          "setting": "OVRD",
+          "text": "",
+          "level": 0,
+          "applies_to": [
+            "all"
+          ],
+          "refs": [
+            {
+              "book": "QRH",
+              "code": "27.01",
+              "page": "27.01B",
+              "pdf": 245
+            }
+          ]
+        },
+        {
+          "kind": "action",
+          "item": "CAB FANS",
+          "setting": "OFF",
+          "text": "",
+          "level": 0,
+          "applies_to": [
+            "all"
+          ],
+          "refs": [
+            {
+              "book": "QRH",
+              "code": "27.01",
+              "page": "27.01B",
+              "pdf": 245
+            }
+          ]
+        },
+        {
+          "kind": "action",
+          "item": "GALY & CAB",
+          "setting": "OFF",
+          "text": "",
+          "level": 0,
+          "applies_to": [
+            "all"
+          ],
+          "refs": [
+            {
+              "book": "QRH",
+              "code": "27.01",
+              "page": "27.01B",
+              "pdf": 245
+            }
+          ]
+        },
+        {
+          "kind": "action",
+          "item": "SIGNS",
+          "setting": "ON",
+          "text": "",
+          "level": 0,
+          "applies_to": [
+            "all"
+          ],
+          "refs": [
+            {
+              "book": "QRH",
+              "code": "27.01",
+              "page": "27.01B",
+              "pdf": 245
+            }
+          ]
+        },
+        {
+          "kind": "action",
+          "item": "CKPT / CAB COM",
+          "setting": "ESTABLISH",
+          "text": "",
+          "level": 0,
+          "applies_to": [
+            "all"
+          ],
+          "refs": [
+            {
+              "book": "QRH",
+              "code": "27.01",
+              "page": "27.01B",
+              "pdf": 245
+            }
+          ]
+        },
+        {
+          "kind": "condition",
+          "text": "If smoke/fumes source immediately obvious, accessible, and extinguishable:",
+          "level": 0,
+          "applies_to": [
+            "all"
+          ],
+          "refs": [
+            {
+              "book": "QRH",
+              "code": "27.01",
+              "page": "27.01B",
+              "pdf": 245
+            }
+          ]
+        },
+        {
+          "kind": "action",
+          "item": "FAULTY EQPT",
+          "setting": "ISOLATE",
+          "text": "",
+          "level": 1,
+          "applies_to": [
+            "all"
+          ],
+          "refs": [
+            {
+              "book": "QRH",
+              "code": "27.01",
+              "page": "27.01B",
+              "pdf": 245
+            }
+          ]
+        },
+        {
+          "kind": "condition",
+          "text": "If smoke/fumes source not immediately isolated:",
+          "level": 0,
+          "applies_to": [
+            "all"
+          ],
+          "refs": [
+            {
+              "book": "QRH",
+              "code": "27.01",
+              "page": "27.01B",
+              "pdf": 245
+            }
+          ]
+        },
+        {
+          "kind": "action",
+          "item": "DIVERSION",
+          "setting": "INITIATE",
+          "text": "",
+          "level": 1,
+          "applies_to": [
+            "all"
+          ],
+          "refs": [
+            {
+              "book": "QRH",
+              "code": "27.01",
+              "page": "27.01B",
+              "pdf": 245
+            }
+          ]
+        },
+        {
+          "kind": "action",
+          "item": "DESCENT TO FL 100 / MEA-MORA",
+          "setting": "INITIATE",
+          "text": "",
+          "level": 1,
+          "applies_to": [
+            "all"
+          ],
+          "refs": [
+            {
+              "book": "QRH",
+              "code": "27.01",
+              "page": "27.01B",
+              "pdf": 245
+            }
+          ]
+        },
+        {
+          "kind": "condition",
+          "text": "At ANY TIME of the procedure, if SMOKE / FUMES become the GREATEST THREAT:",
+          "level": 0,
+          "applies_to": [
+            "all"
+          ],
+          "refs": [
+            {
+              "book": "QRH",
+              "code": "27.01",
+              "page": "27.01B",
+              "pdf": 245
+            }
+          ]
+        },
+        {
+          "kind": "action",
+          "item": "REMOVAL OF SMOKE / FUMES",
+          "setting": "CONSIDER",
+          "text": "Refer to ABN-27 Removal of Smoke / Fumes",
+          "level": 1,
+          "applies_to": [
+            "all"
+          ],
+          "refs": [
+            {
+              "book": "QRH",
+              "code": "27.01",
+              "page": "27.01B",
+              "pdf": 245
+            }
+          ]
+        },
+        {
+          "kind": "action",
+          "item": "ELEC EMER CONFIG",
+          "setting": "CONSIDER",
+          "text": "Refer to the end of the procedure to set ELEC EMER CONFIG.",
+          "level": 1,
+          "applies_to": [
+            "all"
+          ],
+          "refs": [
+            {
+              "book": "QRH",
+              "code": "27.01",
+              "page": "27.01C",
+              "pdf": 246
+            }
+          ]
+        },
+        {
+          "kind": "condition",
+          "text": "At ANY TIME of the procedure, if situation becomes UNMANAGEABLE:",
+          "level": 0,
+          "applies_to": [
+            "all"
+          ],
+          "refs": [
+            {
+              "book": "QRH",
+              "code": "27.01",
+              "page": "27.01C",
+              "pdf": 246
+            }
+          ]
+        },
+        {
+          "kind": "action",
+          "item": "IMMEDIATE LANDING",
+          "setting": "CONSIDER",
+          "text": "",
+          "level": 1,
+          "applies_to": [
+            "all"
+          ],
+          "refs": [
+            {
+              "book": "QRH",
+              "code": "27.01",
+              "page": "27.01C",
+              "pdf": 246
+            }
+          ]
+        },
+        {
+          "kind": "condition",
+          "text": "If AIR COND smoke/fumes suspected:",
+          "level": 0,
+          "applies_to": [
+            "all"
+          ],
+          "refs": [
+            {
+              "book": "QRH",
+              "code": "27.01",
+              "page": "27.01C",
+              "pdf": 246
+            }
+          ]
+        },
+        {
+          "kind": "action",
+          "item": "APU BLEED",
+          "setting": "OFF",
+          "text": "",
+          "level": 1,
+          "applies_to": [
+            "all"
+          ],
+          "refs": [
+            {
+              "book": "QRH",
+              "code": "27.01",
+              "page": "27.01C",
+              "pdf": 246
+            }
+          ]
+        },
+        {
+          "kind": "action",
+          "item": "VENTILATION BLOWER",
+          "setting": "AUTO",
+          "text": "",
+          "level": 1,
+          "applies_to": [
+            "all"
+          ],
+          "refs": [
+            {
+              "book": "QRH",
+              "code": "27.01",
+              "page": "27.01C",
+              "pdf": 246
+            }
+          ]
+        },
+        {
+          "kind": "action",
+          "item": "VENTILATION EXTRACT",
+          "setting": "AUTO",
+          "text": "",
+          "level": 1,
+          "applies_to": [
+            "all"
+          ],
+          "refs": [
+            {
+              "book": "QRH",
+              "code": "27.01",
+              "page": "27.01C",
+              "pdf": 246
+            }
+          ]
+        },
+        {
+          "kind": "action",
+          "item": "CARGO AFT ISOL VALVE",
+          "setting": "OFF",
+          "text": "",
+          "level": 1,
+          "applies_to": [
+            "all"
+          ],
+          "refs": [
+            {
+              "book": "QRH",
+              "code": "27.01",
+              "page": "27.01C",
+              "pdf": 246
+            }
+          ]
+        },
+        {
+          "kind": "action",
+          "item": "PACK 1",
+          "setting": "OFF",
+          "text": "",
+          "level": 1,
+          "applies_to": [
+            "all"
+          ],
+          "refs": [
+            {
+              "book": "QRH",
+              "code": "27.01",
+              "page": "27.01C",
+              "pdf": 246
+            }
+          ]
+        },
+        {
+          "kind": "condition",
+          "text": "If smoke/fumes continue:",
+          "level": 1,
+          "applies_to": [
+            "all"
+          ],
+          "refs": [
+            {
+              "book": "QRH",
+              "code": "27.01",
+              "page": "27.01C",
+              "pdf": 246
+            }
+          ]
+        },
+        {
+          "kind": "action",
+          "item": "PACK 1",
+          "setting": "ON",
+          "text": "",
+          "level": 2,
+          "applies_to": [
+            "all"
+          ],
+          "refs": [
+            {
+              "book": "QRH",
+              "code": "27.01",
+              "page": "27.01C",
+              "pdf": 246
+            }
+          ]
+        },
+        {
+          "kind": "action",
+          "item": "PACK 2",
+          "setting": "OFF",
+          "text": "",
+          "level": 2,
+          "applies_to": [
+            "all"
+          ],
+          "refs": [
+            {
+              "book": "QRH",
+              "code": "27.01",
+              "page": "27.01C",
+              "pdf": 246
+            }
+          ]
+        },
+        {
+          "kind": "condition",
+          "text": "If smoke/fumes persist:",
+          "level": 2,
+          "applies_to": [
+            "all"
+          ],
+          "refs": [
+            {
+              "book": "QRH",
+              "code": "27.01",
+              "page": "27.01C",
+              "pdf": 246
+            }
+          ]
+        },
+        {
+          "kind": "action",
+          "item": "PACK 2",
+          "setting": "ON",
+          "text": "",
+          "level": 3,
+          "applies_to": [
+            "all"
+          ],
+          "refs": [
+            {
+              "book": "QRH",
+              "code": "27.01",
+              "page": "27.01C",
+              "pdf": 246
+            }
+          ]
+        },
+        {
+          "kind": "action",
+          "item": "VENTILATION BLOWER",
+          "setting": "OVRD",
+          "text": "",
+          "level": 3,
+          "applies_to": [
+            "all"
+          ],
+          "refs": [
+            {
+              "book": "QRH",
+              "code": "27.01",
+              "page": "27.01C",
+              "pdf": 246
+            }
+          ]
+        },
+        {
+          "kind": "action",
+          "item": "VENTILATION EXTRACT",
+          "setting": "OVRD",
+          "text": "",
+          "level": 3,
+          "applies_to": [
+            "all"
+          ],
+          "refs": [
+            {
+              "book": "QRH",
+              "code": "27.01",
+              "page": "27.01C",
+              "pdf": 246
+            }
+          ]
+        },
+        {
+          "kind": "action",
+          "item": "REMOVAL OF SMOKE / FUMES",
+          "setting": "CONSIDER",
+          "text": "Refer to ABN-27 Removal of Smoke / Fumes",
+          "level": 1,
+          "applies_to": [
+            "all"
+          ],
+          "refs": [
+            {
+              "book": "QRH",
+              "code": "27.01",
+              "page": "27.01C",
+              "pdf": 246
+            }
+          ]
+        },
+        {
+          "kind": "condition",
+          "text": "If CABIN EQPT smoke/fumes suspected:",
+          "level": 0,
+          "applies_to": [
+            "all"
+          ],
+          "refs": [
+            {
+              "book": "QRH",
+              "code": "27.01",
+              "page": "27.01C",
+              "pdf": 246
+            }
+          ]
+        },
+        {
+          "kind": "condition",
+          "text": "If smoke/fumes continue:",
+          "level": 1,
+          "applies_to": [
+            "all"
+          ],
+          "refs": [
+            {
+              "book": "QRH",
+              "code": "27.01",
+              "page": "27.01C",
+              "pdf": 246
+            }
+          ]
+        },
+        {
+          "kind": "action",
+          "item": "EMER EXIT LIGHT",
+          "setting": "ON",
+          "text": "",
+          "level": 2,
+          "applies_to": [
+            "all"
+          ],
+          "refs": [
+            {
+              "book": "QRH",
+              "code": "27.01",
+              "page": "27.01C",
+              "pdf": 246
+            }
+          ]
+        },
+        {
+          "kind": "action",
+          "item": "COMMERCIAL",
+          "setting": "OFF",
+          "text": "",
+          "level": 2,
+          "applies_to": [
+            "all"
+          ],
+          "refs": [
+            {
+              "book": "QRH",
+              "code": "27.01",
+              "page": "27.01C",
+              "pdf": 246
+            }
+          ]
+        },
+        {
+          "kind": "action",
+          "item": "SMOKE / FUMES DISSIPATION",
+          "setting": "CHECK",
+          "text": "",
+          "level": 2,
+          "applies_to": [
+            "all"
+          ],
+          "refs": [
+            {
+              "book": "QRH",
+              "code": "27.01",
+              "page": "27.01D",
+              "pdf": 247
+            }
+          ]
+        },
+        {
+          "kind": "action",
+          "item": "FAULTY EQPT",
+          "setting": "SEARCH / ISOLATE",
+          "text": "",
+          "level": 2,
+          "applies_to": [
+            "all"
+          ],
+          "refs": [
+            {
+              "book": "QRH",
+              "code": "27.01",
+              "page": "27.01D",
+              "pdf": 247
+            }
+          ]
+        },
+        {
+          "kind": "condition",
+          "text": "If smoke/fumes persist or when faulty equipment confirmed isolated:",
+          "level": 2,
+          "applies_to": [
+            "all"
+          ],
+          "refs": [
+            {
+              "book": "QRH",
+              "code": "27.01",
+              "page": "27.01D",
+              "pdf": 247
+            }
+          ]
+        },
+        {
+          "kind": "action",
+          "item": "COMMERCIAL",
+          "setting": "NORM",
+          "text": "",
+          "level": 3,
+          "applies_to": [
+            "all"
+          ],
+          "refs": [
+            {
+              "book": "QRH",
+              "code": "27.01",
+              "page": "27.01D",
+              "pdf": 247
+            }
+          ]
+        },
+        {
+          "kind": "action",
+          "item": "REMOVAL OF SMOKE / FUMES",
+          "setting": "CONSIDER",
+          "text": "Refer to ABN-27 Removal of Smoke / Fumes",
+          "level": 2,
+          "applies_to": [
+            "all"
+          ],
+          "refs": [
+            {
+              "book": "QRH",
+              "code": "27.01",
+              "page": "27.01D",
+              "pdf": 247
+            }
+          ]
+        },
+        {
+          "kind": "condition",
+          "text": "If smoke/fumes source cannot be determined and persist or AVNCS / ELECTRICAL smoke/fumes suspected:",
+          "level": 0,
+          "applies_to": [
+            "all"
+          ],
+          "refs": [
+            {
+              "book": "QRH",
+              "code": "27.01",
+              "page": "27.01D",
+              "pdf": 247
+            }
+          ]
+        },
+        {
+          "kind": "action",
+          "item": "ELEC EMER CONFIG",
+          "setting": "CONSIDER",
+          "text": "Refer to the end of the procedure to set ELEC EMER CONFIG.",
+          "level": 1,
+          "applies_to": [
+            "all"
+          ],
+          "refs": [
+            {
+              "book": "QRH",
+              "code": "27.01",
+              "page": "27.01D",
+              "pdf": 247
+            }
+          ]
+        },
+        {
+          "kind": "condition",
+          "text": "If smoke/fumes disappear within 5 minutes:",
+          "level": 0,
+          "applies_to": [
+            "all"
+          ],
+          "refs": [
+            {
+              "book": "QRH",
+              "code": "27.01",
+              "page": "27.01D",
+              "pdf": 247
+            }
+          ]
+        },
+        {
+          "kind": "action",
+          "item": "NORMAL VENTILATION",
+          "setting": "RESTORE",
+          "text": "",
+          "level": 1,
+          "applies_to": [
+            "all"
+          ],
+          "refs": [
+            {
+              "book": "QRH",
+              "code": "27.01",
+              "page": "27.01D",
+              "pdf": 247
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "TO SET ELEC EMER CONFIG",
+      "source": "QRH 27.01D–E",
+      "lines": [
+        {
+          "kind": "action",
+          "item": "EMER ELEC GEN 1 LINE",
+          "setting": "OFF",
+          "text": "",
+          "level": 0,
+          "applies_to": [
+            "all"
+          ],
+          "refs": [
+            {
+              "book": "QRH",
+              "code": "27.01",
+              "page": "27.01D",
+              "pdf": 247
+            }
+          ]
+        },
+        {
+          "kind": "action",
+          "item": "EMER ELEC PWR",
+          "setting": "MAN ON",
+          "text": "",
+          "level": 0,
+          "applies_to": [
+            "all"
+          ],
+          "refs": [
+            {
+              "book": "QRH",
+              "code": "27.01",
+              "page": "27.01D",
+              "pdf": 247
+            }
+          ]
+        },
+        {
+          "kind": "condition",
+          "text": "When EMER GEN AVAIL:",
+          "level": 0,
+          "applies_to": [
+            "all"
+          ],
+          "refs": [
+            {
+              "book": "QRH",
+              "code": "27.01",
+              "page": "27.01D",
+              "pdf": 247
+            }
+          ]
+        },
+        {
+          "kind": "action",
+          "item": "APU GEN",
+          "setting": "OFF",
+          "text": "",
+          "level": 1,
+          "applies_to": [
+            "all"
+          ],
+          "refs": [
+            {
+              "book": "QRH",
+              "code": "27.01",
+              "page": "27.01D",
+              "pdf": 247
+            }
+          ]
+        },
+        {
+          "kind": "action",
+          "item": "GEN 2",
+          "setting": "OFF",
+          "text": "",
+          "level": 1,
+          "applies_to": [
+            "all"
+          ],
+          "refs": [
+            {
+              "book": "QRH",
+              "code": "27.01",
+              "page": "27.01D",
+              "pdf": 247
+            }
+          ]
+        },
+        {
+          "kind": "info",
+          "text": "APPLY ELEC EMER CONFIG PROCEDURE, BUT DO NOT RESET GEN, EVEN IF REQUESTED BY ECAM.",
+          "level": 1,
+          "applies_to": [
+            "all"
+          ],
+          "refs": [
+            {
+              "book": "QRH",
+              "code": "27.01",
+              "page": "27.01D",
+              "pdf": 247
+            }
+          ]
+        },
+        {
+          "kind": "condition",
+          "text": "At 3 min or 2 000 ft AAL before landing:",
+          "level": 1,
+          "applies_to": [
+            "all"
+          ],
+          "refs": [
+            {
+              "book": "QRH",
+              "code": "27.01",
+              "page": "27.01E",
+              "pdf": 248
+            }
+          ]
+        },
+        {
+          "kind": "action",
+          "item": "GEN 2",
+          "setting": "ON",
+          "text": "",
+          "level": 2,
+          "applies_to": [
+            "all"
+          ],
+          "refs": [
+            {
+              "book": "QRH",
+              "code": "27.01",
+              "page": "27.01E",
+              "pdf": 248
+            }
+          ]
+        },
+        {
+          "kind": "action",
+          "item": "EMER ELEC GEN 1 LINE",
+          "setting": "ON",
+          "text": "",
+          "level": 2,
+          "applies_to": [
+            "all"
+          ],
+          "refs": [
+            {
+              "book": "QRH",
+              "code": "27.01",
+              "page": "27.01E",
+              "pdf": 248
+            }
+          ]
+        },
+        {
+          "kind": "condition",
+          "text": "When aircraft stopped:",
+          "level": 1,
+          "applies_to": [
+            "all"
+          ],
+          "refs": [
+            {
+              "book": "QRH",
+              "code": "27.01",
+              "page": "27.01E",
+              "pdf": 248
+            }
+          ]
+        },
+        {
+          "kind": "action",
+          "item": "ALL GENs",
+          "setting": "OFF",
+          "text": "",
+          "level": 2,
+          "applies_to": [
+            "all"
+          ],
+          "refs": [
+            {
+              "book": "QRH",
+              "code": "27.01",
+              "page": "27.01E",
+              "pdf": 248
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "status": null,
+  "tables": [
+    {
+      "title": "Fumes with odors and suspected causes",
+      "caption": "Most reported cause listed first.",
+      "columns": [
+        "Odor",
+        "Suspected cause"
+      ],
+      "rows": [
+        [
+          "Acrid",
+          "Electrical equipment/IFE; engine oil leak"
+        ],
+        [
+          "Burning",
+          "Electrical equipment; galley equipment; bird ingestion"
+        ],
+        [
+          "Chemical",
+          "Contaminated bleed ducts; APU ingestion"
+        ],
+        [
+          "Chlorine",
+          "Smoke hood; blocked door area drain"
+        ],
+        [
+          "Electrical",
+          "Electrical equipment"
+        ],
+        [
+          "Dirty socks",
+          "APU or engine oil leaks"
+        ],
+        [
+          "Foul",
+          "Lavatories"
+        ],
+        [
+          "Fuel",
+          "APU FCU/fuel line"
+        ],
+        [
+          "Oil",
+          "Engine or APU oil leak"
+        ],
+        [
+          "Skydrol",
+          "Engine hydraulic"
+        ],
+        [
+          "Sulphur",
+          "Wiring; avionics filter water contamination; light bulb"
+        ]
+      ],
+      "applies_to": [
+        "all"
+      ],
+      "refs": [
+        {
+          "book": "FCTM",
+          "code": "PR-AEP-SMOKE",
+          "page": "P 7/10",
+          "pdf": 504
+        }
+      ]
+    }
+  ],
+  "background": [
+    {
+      "text": "This procedure includes all the steps of the AVIONICS SMOKE procedure.",
+      "applies_to": [
+        "all"
+      ],
+      "refs": [
+        {
+          "book": "FCOM",
+          "code": "PRO-ABN-SMOKE",
+          "page": "P 1/50",
+          "pdf": 3958
+        },
+        {
+          "book": "PDP",
+          "code": "Smoke",
+          "page": "XFTDA1SMOKE0001",
+          "pdf": 536
+        }
+      ]
+    },
+    {
+      "text": "The immediate actions are common to all cases of smoke or fumes, whatever the source. Their objectives are flight crew protection, avoiding further contamination of the cockpit/cabin, and communication with the cabin crew.",
+      "applies_to": [
+        "all"
+      ],
+      "refs": [
+        {
+          "book": "FCTM",
+          "code": "PR-AEP-SMOKE",
+          "page": "P 5/10",
+          "pdf": 502
+        },
+        {
+          "book": "PDP",
+          "code": "Smoke",
+          "page": "XFTDA1SMOKE0001",
+          "pdf": 537
+        }
+      ]
+    },
+    {
+      "text": "A diversion may be avoided if the source is obvious, accessible and extinguishable, or confirmed isolated after the immediate actions.",
+      "applies_to": [
+        "all"
+      ],
+      "refs": [
+        {
+          "book": "FCOM",
+          "code": "PRO-ABN-SMOKE",
+          "page": "P 1/50",
+          "pdf": 3958
+        }
+      ]
+    },
+    {
+      "text": "Guidelines for the source: smoke/fumes first from the ventilation outlets, or detected in the cabin, suggest air conditioning, and several SMOKE alerts will follow shortly (apply the ECAM procedures). After an ENG or APU failure they may come through the bleed system and recirculate until they disappear. Only the AVIONICS SMOKE alert suggests avionics. Smoke while an equipment is declared faulty suggests that equipment.",
+      "applies_to": [
+        "all"
+      ],
+      "refs": [
+        {
+          "book": "FCOM",
+          "code": "PRO-ABN-SMOKE",
+          "page": "P 3/50",
+          "pdf": 3960
+        },
+        {
+          "book": "FCTM",
+          "code": "PR-AEP-SMOKE",
+          "page": "P 6/10",
+          "pdf": 503
+        },
+        {
+          "book": "FCTM",
+          "code": "PR-AEP-SMOKE",
+          "page": "P 7/10",
+          "pdf": 504
+        }
+      ]
+    },
+    {
+      "text": "A smell of smoke/fumes similar to orange peels: suspect a toxic leak of rain repellent fluid. Similar to pine needles: suspect a non-toxic leak.",
+      "applies_to": [
+        "all"
+      ],
+      "refs": [
+        {
+          "book": "FCOM",
+          "code": "PRO-ABN-SMOKE",
+          "page": "P 1/50",
+          "pdf": 3958
+        }
+      ]
+    },
+    {
+      "text": "With VENTILATION BLOWER and EXTRACT both in OVRD, a single pack may not be able to maintain the cabin pressure. Restore normal configuration if PACK 2 is not suspected to cause smoke/fumes.",
+      "applies_to": [
+        "all"
+      ],
+      "refs": [
+        {
+          "book": "FCOM",
+          "code": "PRO-ABN-SMOKE",
+          "page": "P 4/50",
+          "pdf": 3961
+        }
+      ]
+    },
+    {
+      "text": "CARGO AFT ISOL VALVE OFF prevents a cargo smoke warning from being triggered by cabin smoke.",
+      "applies_to": [
+        "all"
+      ],
+      "refs": [
+        {
+          "book": "FCOM",
+          "code": "PRO-ABN-SMOKE",
+          "page": "P 4/50",
+          "pdf": 3961
+        }
+      ]
+    },
+    {
+      "text": "Partial shedding was removed from the procedure: shedding one side and then the other with a battery charging leaves DC 1, DC 2 and the BAT bus bars inoperative for the rest of the flight. Full ELEC EMER CONFIG lets the crew recover the normal electrical configuration for landing, particularly normal braking.",
+      "applies_to": [
+        "all"
+      ],
+      "refs": [
+        {
+          "book": "FCTM",
+          "code": "PR-AEP-SMOKE",
+          "page": "P 7/10",
+          "pdf": 504
+        }
+      ]
+    },
+    {
+      "text": "EMER ELEC GEN 1 LINE OFF opens the GEN 1 line contactor: GEN 1 keeps running and supplies one fuel pump in each wing tank, and AC BUS 1 is supplied by GEN 2 through the bus tie contactor.",
+      "applies_to": [
+        "all"
+      ],
+      "refs": [
+        {
+          "book": "FCOM",
+          "code": "PRO-ABN-SMOKE",
+          "page": "P 6/50",
+          "pdf": 3963
+        }
+      ]
+    }
+  ],
+  "technique": [
+    {
+      "text": "An immediate diversion should be considered as soon as smoke/fumes are detected. If the source is not immediately obvious, accessible and extinguishable, initiate it without delay.",
+      "applies_to": [
+        "all"
+      ],
+      "refs": [
+        {
+          "book": "FCTM",
+          "code": "PR-AEP-SMOKE",
+          "page": "P 1/10",
+          "pdf": 498
+        }
+      ]
+    },
+    {
+      "text": "The boxed items may be applied at any time in the procedure, but not before the immediate actions. After the first steps of REMOVAL OF SMOKE / FUMES, come back here for the suspected source while descending to FL 100; reaching FL 100, complete REMOVAL OF SMOKE / FUMES.",
+      "applies_to": [
+        "all"
+      ],
+      "refs": [
+        {
+          "book": "FCTM",
+          "code": "PR-AEP-SMOKE",
+          "page": "P 8/10",
+          "pdf": 505
+        },
+        {
+          "book": "PDP",
+          "code": "Smoke",
+          "page": "XFTDA1SMOKE0001",
+          "pdf": 539
+        }
+      ]
+    },
+    {
+      "text": "Remain in ELEC EMER CONFIG until a late stage, and restore some generation a few minutes before landing.",
+      "applies_to": [
+        "all"
+      ],
+      "refs": [
+        {
+          "book": "PDP",
+          "code": "Smoke",
+          "page": "XFTDA1SMOKE0001",
+          "pdf": 540
+        },
+        {
+          "book": "FCTM",
+          "code": "PR-AEP-SMOKE",
+          "page": "P 8/10",
+          "pdf": 505
+        }
+      ]
+    },
+    {
+      "text": "Coordination with the cabin crew is a key element.",
+      "applies_to": [
+        "all"
+      ],
+      "refs": [
+        {
+          "book": "FCTM",
+          "code": "PR-AEP-SMOKE",
+          "page": "P 2/10",
+          "pdf": 499
+        }
+      ]
+    }
+  ],
+  "related": [
+    {
+      "title": "REMOVAL OF SMOKE / FUMES",
+      "why": "Boxed item: when smoke/fumes become the greatest threat.",
+      "key_actions": [
+        "See the REMOVAL OF SMOKE / FUMES brief"
+      ],
+      "refs": [
+        {
+          "book": "QRH",
+          "code": "27.01",
+          "page": "27.01B",
+          "pdf": 245
+        }
+      ]
+    },
+    {
+      "title": "ELEC EMER CONFIG",
+      "why": "Boxed item, and the AVNCS / ELECTRICAL or unknown-source paragraph.",
+      "key_actions": [
+        "See the ELEC EMER CONFIG brief",
+        "Do not reset the generators, even if requested by ECAM"
+      ],
+      "refs": [
+        {
+          "book": "QRH",
+          "code": "27.01",
+          "page": "27.01D",
+          "pdf": 247
+        },
+        {
+          "book": "FCOM",
+          "code": "PRO-ABN-SMOKE",
+          "page": "P 6/50",
+          "pdf": 3963
+        },
+        {
+          "book": "FCOM",
+          "code": "PRO-ABN-SMOKE",
+          "page": "P 8/50",
+          "pdf": 3965
+        }
+      ]
+    },
+    {
+      "title": "SMOKE AFT CARGO SMOKE",
+      "why": "Other ECAM SMOKE alerts: apply the ECAM procedure first.",
+      "key_actions": [
+        "See the SMOKE AFT CARGO SMOKE brief"
+      ],
+      "refs": [
+        {
+          "book": "FCOM",
+          "code": "PRO-ABN-SMOKE",
+          "page": "P 1/50",
+          "pdf": 3958
+        },
+        {
+          "book": "FCTM",
+          "code": "PR-AEP-SMOKE",
+          "page": "P 1/10",
+          "pdf": 498
+        }
+      ]
+    }
+  ],
+  "differences": [
+    {
+      "topic": "FCOM STATUS after a smoke ELEC EMER CONFIG",
+      "values": {
+        "HS-TXA..TXO": "Lists CTR TK FUEL UNUSABLE; ENG 1+2 N1 DEGRADED MODE marked \"IAE-powered aircraft\"",
+        "HS-TXP..TXU": "No CTR TK FUEL UNUSABLE line; no IAE marking"
+      },
+      "refs": [
+        {
+          "book": "FCOM",
+          "code": "PRO-ABN-SMOKE",
+          "page": "P 8/50",
+          "pdf": 3965
+        },
+        {
+          "book": "FCOM",
+          "code": "PRO-ABN-SMOKE",
+          "page": "P 17/50",
+          "pdf": 3974
+        }
+      ]
+    }
+  ],
+  "gaps": [
+    {
+      "text": "The QRH line \"CKPT / CAB COM\" names no pilot; the PF is shown because the PF communicates, confirmed by the user. The PM is shown for the panel lines as read & do.",
+      "applies_to": [
+        "all"
+      ],
+      "refs": [
+        {
+          "book": "QRH",
+          "code": "27.01",
+          "page": "27.01B",
+          "pdf": 245
+        },
+        {
+          "book": "FCTM",
+          "code": "AOP-20",
+          "page": "P 1–2/10",
+          "pdf": 68
+        }
+      ]
+    },
+    {
+      "text": "The HS-TO-only version (QRH 27.01A, FCOM P 19–27/50) is excluded, including its PACK (AFFECTED SIDE) line.",
+      "applies_to": [
+        "all"
+      ],
+      "refs": [
+        {
+          "book": "QRH",
+          "code": "27.01",
+          "page": "27.01A",
+          "pdf": 244
+        },
+        {
+          "book": "FCOM",
+          "code": "PRO-ABN-SMOKE",
+          "page": "P 19/50",
+          "pdf": 3976
+        }
+      ]
+    },
+    {
+      "text": "The manuals have no paragraph specific to smoke in the aft cabin. Cabin smoke is treated by the suspected source, confirmed by the user: FCTM says smoke/fumes detected in the cabin may suggest AIR COND, otherwise CABIN EQPT.",
+      "applies_to": [
+        "all"
+      ],
+      "refs": [
+        {
+          "book": "FCTM",
+          "code": "PR-AEP-SMOKE",
+          "page": "P 6/10",
+          "pdf": 503
+        },
+        {
+          "book": "QRH",
+          "code": "27.01",
+          "page": "27.01C",
+          "pdf": 246
+        }
+      ]
+    },
+    {
+      "text": "FCOM and QRH line wording differs slightly (OXY MASK / GOGGLE, CKPT / CABIN COM, \"within 5 min\"). The brief quotes the QRH.",
+      "applies_to": [
+        "all"
+      ],
+      "refs": [
+        {
+          "book": "FCOM",
+          "code": "PRO-ABN-SMOKE",
+          "page": "P 2/50",
+          "pdf": 3959
+        },
+        {
+          "book": "QRH",
+          "code": "27.01",
+          "page": "27.01B",
+          "pdf": 245
+        }
+      ]
+    }
+  ],
+  "sources": [
+    {
+      "book": "QRH",
+      "section": "27.01 SMOKE / FUMES / AVNCS SMOKE",
+      "pages": "27.01B–E",
+      "pdf": "245–248",
+      "rev": "14 JUL 26"
+    },
+    {
+      "book": "FCOM",
+      "section": "PRO-ABN-SMOKE — [QRH] SMOKE / FUMES / AVNCS SMOKE",
+      "pages": "P 1–18/50",
+      "pdf": "3958–3975",
+      "rev": "14 JUL 26"
+    },
+    {
+      "book": "FCTM",
+      "section": "PR-AEP-SMOKE — smoke/fumes procedure",
+      "pages": "P 1–8/10",
+      "pdf": "498–505",
+      "rev": "24 NOV 25"
+    },
+    {
+      "book": "PDP",
+      "section": "Smoke (XFTDA1SMOKE0001)",
+      "pages": "ECAM alerts, immediate actions, procedure",
+      "pdf": "534–540",
+      "rev": "JAN 2024"
+    },
+    {
+      "book": "FCTM",
+      "section": "AOP-20 / AOP-30 — task sharing and ECAM handling",
+      "pages": "AOP-20 P 1–2/10, AOP-30 P 1–6/6",
+      "pdf": "68–69, 79–86",
+      "rev": "26 MAY 26"
+    },
+    {
+      "book": "PDP",
+      "section": "Management of abnormal operations (XFTDN6ECAM00001)",
+      "pages": "ECAM actions, STATUS, QRH, confirm",
+      "pdf": "424–432",
+      "rev": "JAN 2024"
+    }
+  ],
+  "schema": "a320-ecam-abnormal/3",
+  "generated": "2026-10-31",
+  "qrh": []
+}

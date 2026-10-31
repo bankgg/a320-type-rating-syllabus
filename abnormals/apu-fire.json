@@ -1,0 +1,1017 @@
+{
+ "slug": "apu-fire",
+ "title": "APU FIRE",
+ "kind": "ecam",
+ "alert": {
+  "level": "warning",
+  "land_asap": "red",
+  "memory_items": false,
+  "qrh_summary": false,
+  "trigger": "Fire detected by both loops, or by one loop when the other loop is faulty, or a rupture in both loops within 5 s.",
+  "inhibited_phases": [],
+  "refs": [
+   {
+    "book": "FCOM",
+    "code": "PRO-ABN-APUF",
+    "page": "P 1/2",
+    "pdf": 2976
+   }
+  ]
+ },
+ "effectivity": {
+  "branches": [],
+  "note": "Applicable to ALL."
+ },
+ "summary": "Red warning with red LAND ASAP. Push the APU FIRE pb after both pilots confirm it, discharge the agent after 10 s, and switch the APU MASTER SW OFF. Do not attempt to restart the APU. Pushing the APU FIRE pb also triggers APU EMER SHUT DOWN.",
+ "key_limits": [
+  {
+   "label": "Agent",
+   "value": "After 10 s",
+   "applies_to": [
+    "all"
+   ],
+   "refs": [
+    {
+     "book": "FCOM",
+     "code": "PRO-ABN-APUF",
+     "page": "P 1/2",
+     "pdf": 2976
+    }
+   ]
+  },
+  {
+   "label": "Landing",
+   "value": "LAND ASAP (red)",
+   "applies_to": [
+    "all"
+   ],
+   "refs": [
+    {
+     "book": "FCOM",
+     "code": "PRO-ABN-APUF",
+     "page": "P 1/2",
+     "pdf": 2976
+    }
+   ]
+  },
+  {
+   "label": "APU restart",
+   "value": "Do not attempt",
+   "applies_to": [
+    "all"
+   ],
+   "refs": [
+    {
+     "book": "FCOM",
+     "code": "PRO-ABN-APUF",
+     "page": "P 1/2",
+     "pdf": 2976
+    }
+   ]
+  }
+ ],
+ "flow": [
+  {
+   "phase": "Detection",
+   "steps": [
+    {
+     "actor": "BOTH",
+     "items": [
+      {
+       "kind": "action",
+       "text": "First to notice: MASTER WARNING reset",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "FCTM",
+         "code": "AOP-30-30",
+         "page": "P 2/6",
+         "pdf": 83
+        },
+        {
+         "book": "PDP",
+         "code": "Management of abnormal operations",
+         "page": "XFTDN6ECAM00001",
+         "pdf": 424
+        }
+       ]
+      }
+     ]
+    },
+    {
+     "actor": "PM",
+     "items": [
+      {
+       "kind": "callout",
+       "text": "APU FIRE",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "FCTM",
+         "code": "AOP-30-30",
+         "page": "P 2/6",
+         "pdf": 83
+        },
+        {
+         "book": "FCOM",
+         "code": "PRO-ABN-APUF",
+         "page": "P 1/2",
+         "pdf": 2976
+        },
+        {
+         "book": "PDP",
+         "code": "Management of abnormal operations",
+         "page": "XFTDN6ECAM00001",
+         "pdf": 424
+        }
+       ]
+      },
+      {
+       "kind": "action",
+       "text": "Confirm the failure on the SD page and overhead panel before acting",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "FCTM",
+         "code": "AOP-30-30",
+         "page": "P 2/6",
+         "pdf": 83
+        },
+        {
+         "book": "PDP",
+         "code": "Management of abnormal operations",
+         "page": "XFTDN6ECAM00001",
+         "pdf": 424
+        }
+       ]
+      }
+     ]
+    },
+    {
+     "actor": "PF",
+     "items": [
+      {
+       "kind": "callout",
+       "text": "ECAM ACTIONS",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "FCOM",
+         "code": "PRO-ABN-ABN-00",
+         "page": "P 8/12",
+         "pdf": 2831
+        },
+        {
+         "book": "FCTM",
+         "code": "AOP-30-30",
+         "page": "P 3/6",
+         "pdf": 84
+        },
+        {
+         "book": "PDP",
+         "code": "Management of abnormal operations",
+         "page": "XFTDN6ECAM00001",
+         "pdf": 424
+        }
+       ]
+      },
+      {
+       "kind": "note",
+       "text": "PF now flies, navigates and communicates",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "FCTM",
+         "code": "AOP-20",
+         "page": "P 1–2/10",
+         "pdf": 68
+        },
+        {
+         "book": "PDP",
+         "code": "Management of abnormal operations",
+         "page": "XFTDN6ECAM00001",
+         "pdf": 424
+        }
+       ]
+      },
+      {
+       "kind": "note",
+       "text": "Red LAND ASAP: land at the nearest airport at which a safe landing can be made",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "FCOM",
+         "code": "PRO-ABN-APUF",
+         "page": "P 1/2",
+         "pdf": 2976
+        },
+        {
+         "book": "FCTM",
+         "code": "AOP-30-10",
+         "page": "P 2/2",
+         "pdf": 79
+        }
+       ]
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "phase": "Fire procedure",
+   "steps": [
+    {
+     "actor": "PM",
+     "items": [
+      {
+       "kind": "action",
+       "text": "Read the ECAM line and point to the APU FIRE pb (guarded control)",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "FCOM",
+         "code": "PRO-ABN-APUF",
+         "page": "P 1/2",
+         "pdf": 2976
+        },
+        {
+         "book": "FCTM",
+         "code": "AOP-30-20",
+         "page": "P 1/2",
+         "pdf": 80
+        },
+        {
+         "book": "PDP",
+         "code": "Management of abnormal operations",
+         "page": "XFTDN6ECAM00001",
+         "pdf": 432
+        }
+       ]
+      },
+      {
+       "kind": "callout",
+       "text": "CONFIRM?",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "PDP",
+         "code": "Management of abnormal operations",
+         "page": "XFTDN6ECAM00001",
+         "pdf": 432
+        },
+        {
+         "book": "FCTM",
+         "code": "AOP-30-20",
+         "page": "P 1/2",
+         "pdf": 80
+        }
+       ]
+      }
+     ]
+    },
+    {
+     "actor": "PF",
+     "items": [
+      {
+       "kind": "callout",
+       "text": "CONFIRMED",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "PDP",
+         "code": "Management of abnormal operations",
+         "page": "XFTDN6ECAM00001",
+         "pdf": 432
+        }
+       ]
+      },
+      {
+       "kind": "note",
+       "text": "After verifying the control the PM points to",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "PDP",
+         "code": "Management of abnormal operations",
+         "page": "XFTDN6ECAM00001",
+         "pdf": 432
+        },
+        {
+         "book": "FCTM",
+         "code": "AOP-30-20",
+         "page": "P 1/2",
+         "pdf": 80
+        }
+       ]
+      }
+     ]
+    },
+    {
+     "actor": "PM",
+     "items": [
+      {
+       "kind": "ecam",
+       "item": "APU FIRE P/B",
+       "setting": "PUSH",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "FCOM",
+         "code": "PRO-ABN-APUF",
+         "page": "P 1/2",
+         "pdf": 2976
+        }
+       ]
+      },
+      {
+       "kind": "note",
+       "text": "APU LP valve closes, the aural warning stops, and the pb-sw stays on as long as a fire is detected",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "FCOM",
+         "code": "PRO-ABN-APUF",
+         "page": "P 1/2",
+         "pdf": 2976
+        }
+       ]
+      },
+      {
+       "kind": "ecam",
+       "item": "AGENT AFTER 10 S",
+       "setting": "DISCH",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "FCOM",
+         "code": "PRO-ABN-APUF",
+         "page": "P 1/2",
+         "pdf": 2976
+        }
+       ]
+      },
+      {
+       "kind": "note",
+       "text": "The ECAM counts down automatically. The delay lets the airflow decrease, which makes the agent more effective",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "FCOM",
+         "code": "PRO-ABN-APUF",
+         "page": "P 1/2",
+         "pdf": 2976
+        }
+       ]
+      },
+      {
+       "kind": "ecam",
+       "item": "MASTER SW",
+       "setting": "OFF",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "FCOM",
+         "code": "PRO-ABN-APUF",
+         "page": "P 1/2",
+         "pdf": 2976
+        }
+       ]
+      },
+      {
+       "kind": "note",
+       "text": "Do not attempt to restart the APU",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "FCOM",
+         "code": "PRO-ABN-APUF",
+         "page": "P 1/2",
+         "pdf": 2976
+        }
+       ]
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "phase": "STATUS",
+   "steps": [
+    {
+     "actor": "PM",
+     "items": [
+      {
+       "kind": "callout",
+       "text": "CLEAR APU ?",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "FCOM",
+         "code": "PRO-ABN-ABN-00",
+         "page": "P 8/12",
+         "pdf": 2831
+        },
+        {
+         "book": "FCTM",
+         "code": "AOP-30-30",
+         "page": "P 3/6",
+         "pdf": 84
+        },
+        {
+         "book": "PDP",
+         "code": "Management of abnormal operations",
+         "page": "XFTDN6ECAM00001",
+         "pdf": 424
+        }
+       ]
+      }
+     ]
+    },
+    {
+     "actor": "PF",
+     "items": [
+      {
+       "kind": "callout",
+       "text": "CLEAR APU",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "FCOM",
+         "code": "PRO-ABN-ABN-00",
+         "page": "P 8/12",
+         "pdf": 2831
+        },
+        {
+         "book": "FCTM",
+         "code": "AOP-30-30",
+         "page": "P 3/6",
+         "pdf": 84
+        },
+        {
+         "book": "PDP",
+         "code": "Management of abnormal operations",
+         "page": "XFTDN6ECAM00001",
+         "pdf": 424
+        }
+       ]
+      }
+     ]
+    },
+    {
+     "actor": "PM",
+     "items": [
+      {
+       "kind": "callout",
+       "text": "STATUS",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "FCTM",
+         "code": "AOP-30-30",
+         "page": "P 3/6",
+         "pdf": 84
+        },
+        {
+         "book": "PDP",
+         "code": "Management of abnormal operations",
+         "page": "XFTDN6ECAM00001",
+         "pdf": 426
+        }
+       ]
+      }
+     ]
+    },
+    {
+     "actor": "PF",
+     "items": [
+      {
+       "kind": "callout",
+       "text": "STOP ECAM",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "FCTM",
+         "code": "AOP-30-30",
+         "page": "P 3/6",
+         "pdf": 84
+        },
+        {
+         "book": "PDP",
+         "code": "Management of abnormal operations",
+         "page": "XFTDN6ECAM00001",
+         "pdf": 426
+        }
+       ]
+      }
+     ]
+    },
+    {
+     "actor": "PM",
+     "items": [
+      {
+       "kind": "ecam",
+       "item": "ECAM ACTIONS",
+       "setting": "STOP",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "PDP",
+         "code": "Management of abnormal operations",
+         "page": "XFTDN6ECAM00001",
+         "pdf": 426
+        }
+       ]
+      }
+     ]
+    },
+    {
+     "actor": "PF",
+     "items": [
+      {
+       "kind": "action",
+       "text": "Normal C/L as applicable; system resets only per QRH",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "FCTM",
+         "code": "AOP-30-30",
+         "page": "P 4/6",
+         "pdf": 85
+        },
+        {
+         "book": "PDP",
+         "code": "Management of abnormal operations",
+         "page": "XFTDN6ECAM00001",
+         "pdf": 426
+        }
+       ]
+      },
+      {
+       "kind": "callout",
+       "text": "CONTINUE ECAM",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "FCTM",
+         "code": "AOP-30-30",
+         "page": "P 3/6",
+         "pdf": 84
+        },
+        {
+         "book": "PDP",
+         "code": "Management of abnormal operations",
+         "page": "XFTDN6ECAM00001",
+         "pdf": 426
+        }
+       ]
+      }
+     ]
+    },
+    {
+     "actor": "PM",
+     "items": [
+      {
+       "kind": "action",
+       "text": "Read the whole STATUS page; preview APPR PROC workload",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "FCTM",
+         "code": "AOP-30-30",
+         "page": "P 3/6",
+         "pdf": 84
+        },
+        {
+         "book": "PDP",
+         "code": "Management of abnormal operations",
+         "page": "XFTDN6ECAM00001",
+         "pdf": 426
+        }
+       ]
+      },
+      {
+       "kind": "callout",
+       "text": "REMOVE STATUS ?",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "FCTM",
+         "code": "AOP-30-30",
+         "page": "P 3/6",
+         "pdf": 84
+        },
+        {
+         "book": "PDP",
+         "code": "Management of abnormal operations",
+         "page": "XFTDN6ECAM00001",
+         "pdf": 426
+        }
+       ]
+      }
+     ]
+    },
+    {
+     "actor": "PF",
+     "items": [
+      {
+       "kind": "callout",
+       "text": "REMOVE STATUS",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "FCOM",
+         "code": "PRO-ABN-ABN-00",
+         "page": "P 8/12",
+         "pdf": 2831
+        },
+        {
+         "book": "FCTM",
+         "code": "AOP-30-30",
+         "page": "P 3/6",
+         "pdf": 84
+        },
+        {
+         "book": "PDP",
+         "code": "Management of abnormal operations",
+         "page": "XFTDN6ECAM00001",
+         "pdf": 426
+        }
+       ]
+      }
+     ]
+    },
+    {
+     "actor": "PM",
+     "items": [
+      {
+       "kind": "callout",
+       "text": "ECAM ACTIONS COMPLETE",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "FCOM",
+         "code": "PRO-ABN-ABN-00",
+         "page": "P 8/12",
+         "pdf": 2831
+        },
+        {
+         "book": "PDP",
+         "code": "Management of abnormal operations",
+         "page": "XFTDN6ECAM00001",
+         "pdf": 426
+        }
+       ]
+      }
+     ]
+    }
+   ]
+  }
+ ],
+ "procedures": [
+  {
+   "title": "APU FIRE",
+   "source": "FCOM PRO-ABN-APUF P 1/2",
+   "lines": [
+    {
+     "kind": "land_asap",
+     "text": "LAND ASAP (red)",
+     "level": 0,
+     "applies_to": [
+      "all"
+     ],
+     "refs": [
+      {
+       "book": "FCOM",
+       "code": "PRO-ABN-APUF",
+       "page": "P 1/2",
+       "pdf": 2976
+      }
+     ]
+    },
+    {
+     "kind": "action",
+     "item": "APU FIRE P/B",
+     "setting": "PUSH",
+     "text": "",
+     "level": 0,
+     "applies_to": [
+      "all"
+     ],
+     "refs": [
+      {
+       "book": "FCOM",
+       "code": "PRO-ABN-APUF",
+       "page": "P 1/2",
+       "pdf": 2976
+      }
+     ]
+    },
+    {
+     "kind": "note",
+     "text": "APU LP valve closes. Aural warning stops. APU FIRE pb-sw remains on, as long as a fire is detected.",
+     "level": 0,
+     "applies_to": [
+      "all"
+     ],
+     "refs": [
+      {
+       "book": "FCOM",
+       "code": "PRO-ABN-APUF",
+       "page": "P 1/2",
+       "pdf": 2976
+      }
+     ]
+    },
+    {
+     "kind": "action",
+     "item": "AGENT AFTER 10 S",
+     "setting": "DISCH",
+     "text": "",
+     "level": 0,
+     "applies_to": [
+      "all"
+     ],
+     "refs": [
+      {
+       "book": "FCOM",
+       "code": "PRO-ABN-APUF",
+       "page": "P 1/2",
+       "pdf": 2976
+      }
+     ]
+    },
+    {
+     "kind": "note",
+     "text": "The 10 s delay allows the airflow to decrease, which increases the effect of the agent. Automatic countdown on the ECAM.",
+     "level": 0,
+     "applies_to": [
+      "all"
+     ],
+     "refs": [
+      {
+       "book": "FCOM",
+       "code": "PRO-ABN-APUF",
+       "page": "P 1/2",
+       "pdf": 2976
+      }
+     ]
+    },
+    {
+     "kind": "action",
+     "item": "MASTER SW",
+     "setting": "OFF",
+     "text": "",
+     "level": 0,
+     "applies_to": [
+      "all"
+     ],
+     "refs": [
+      {
+       "book": "FCOM",
+       "code": "PRO-ABN-APUF",
+       "page": "P 1/2",
+       "pdf": 2976
+      }
+     ]
+    },
+    {
+     "kind": "note",
+     "text": "Do not attempt to restart the APU.",
+     "level": 0,
+     "applies_to": [
+      "all"
+     ],
+     "refs": [
+      {
+       "book": "FCOM",
+       "code": "PRO-ABN-APUF",
+       "page": "P 1/2",
+       "pdf": 2976
+      }
+     ]
+    }
+   ]
+  }
+ ],
+ "status": {
+  "limitations": [],
+  "info": [],
+  "appr_proc": [],
+  "inop_sys": [
+   {
+    "text": "APU",
+    "applies_to": [
+     "all"
+    ],
+    "refs": [
+     {
+      "book": "FCOM",
+      "code": "PRO-ABN-APUF",
+      "page": "P 2/2",
+      "pdf": 2977
+     }
+    ]
+   }
+  ]
+ },
+ "background": [
+  {
+   "text": "The APU has one fire extinguisher bottle with two electrically-operated squibs. The flight crew controls the discharge from the FIRE panel in the cockpit.",
+   "applies_to": [
+    "all"
+   ],
+   "refs": [
+    {
+     "book": "FCOM",
+     "code": "DSC-26-20-10",
+     "page": "P 2/2",
+     "pdf": 1531
+    }
+   ]
+  },
+  {
+   "text": "The APU AGENT pb becomes active when the flight crew releases the APU FIRE pb-sw.",
+   "applies_to": [
+    "all"
+   ],
+   "refs": [
+    {
+     "book": "FCOM",
+     "code": "DSC-26-20-20",
+     "page": "P 3/6",
+     "pdf": 1534
+    }
+   ]
+  },
+  {
+   "text": "When an APU fire is detected on the ground, the APU automatically shuts down and the bottle discharges automatically, 3 s after the fire warning appears. The red APU FIRE light on the external power panel and an external horn also come on.",
+   "applies_to": [
+    "all"
+   ],
+   "refs": [
+    {
+     "book": "FCOM",
+     "code": "DSC-26-20-10",
+     "page": "P 2/2",
+     "pdf": 1531
+    },
+    {
+     "book": "FCOM",
+     "code": "DSC-26-20-20",
+     "page": "P 5/6",
+     "pdf": 1536
+    }
+   ]
+  }
+ ],
+ "related": [
+  {
+   "title": "APU AUTO (EMER) SHUT DOWN",
+   "why": "Triggers when the APU FIRE pb is pushed or an APU fire on ground is detected.",
+   "key_actions": [
+    "MASTER SW: OFF",
+    "Do not attempt a restart after a fire"
+   ],
+   "refs": [
+    {
+     "book": "FCOM",
+     "code": "PRO-ABN-APU",
+     "page": "P 1/4",
+     "pdf": 2972
+    },
+    {
+     "book": "FCOM",
+     "code": "PRO-ABN-APUF",
+     "page": "P 1/2",
+     "pdf": 2976
+    }
+   ]
+  }
+ ],
+ "gaps": [
+  {
+   "text": "The FCOM gives no further action if the APU FIRE pb-sw stays on after the agent is discharged.",
+   "applies_to": [
+    "all"
+   ],
+   "refs": [
+    {
+     "book": "FCOM",
+     "code": "PRO-ABN-APUF",
+     "page": "P 1/2",
+     "pdf": 2976
+    }
+   ]
+  },
+  {
+   "text": "The FCTM and the PDP have no technique specific to this warning; the flow is the standard ECAM sequence with the crosscheck for guarded controls.",
+   "applies_to": [
+    "all"
+   ],
+   "refs": [
+    {
+     "book": "FCTM",
+     "code": "AOP-30-20",
+     "page": "P 1/2",
+     "pdf": 80
+    },
+    {
+     "book": "PDP",
+     "code": "Management of abnormal operations",
+     "page": "XFTDN6ECAM00001",
+     "pdf": 432
+    }
+   ]
+  }
+ ],
+ "sources": [
+  {
+   "book": "FCOM",
+   "section": "PRO-ABN-APUF — APU FIRE",
+   "pages": "P 1–2/2",
+   "pdf": "2976–2977",
+   "rev": "22 MAR 17"
+  },
+  {
+   "book": "FCOM",
+   "section": "DSC-26-20 — engines and APU fire protection",
+   "pages": "P 2/2; P 3/6, 5/6",
+   "pdf": "1531, 1534, 1536",
+   "rev": "17 AUG 22"
+  },
+  {
+   "book": "FCTM",
+   "section": "AOP-20 / AOP-30 — task sharing and ECAM handling",
+   "pages": "AOP-20 P 1–2/10, AOP-30 P 1–6/6",
+   "pdf": "68–69, 79–86",
+   "rev": "26 MAY 26"
+  },
+  {
+   "book": "PDP",
+   "section": "Management of abnormal operations (XFTDN6ECAM00001)",
+   "pages": "ECAM actions, STATUS, QRH, confirm",
+   "pdf": "424–432",
+   "rev": "JAN 2024"
+  }
+ ],
+ "schema": "a320-ecam-abnormal/3",
+ "generated": "2026-10-31",
+ "qrh": [],
+ "tables": [],
+ "technique": [],
+ "differences": []
+}

@@ -18,7 +18,7 @@ Reference implementations: **MFTD/FBS 8** (11 briefs) and **MFTD/FBS 9** (9 brie
 - **No brief for recovery manoeuvres** (OEI approach, go-around, landing, autoland). They stay plain orange rows.
 - Group the briefs by the session's `FAILURE_SUMMARIES` subjects. A group may hold several briefs (e.g. Engine fire → on ground · RTO / in flight). A relight belongs with Engine failure.
 - **Sessions without failure items:** if `FAILURE_SUMMARIES[sid]` is empty (currently `mftd-2`, `ffs-1`, `ffs-2`, `ffs-8`), there is nothing to add. Stop and tell the user so, listing the session's "Failures & systems" rows (normal-system demonstrations such as AP/FD logic or sidestick priority) and explaining why they get no brief. Do not create briefs or mappings for normal or demo exercises. Do not edit `FAILURE_SUMMARIES` / `FAILURE_NUMBERS` unless the user asks.
-- Present the planned group → brief → exercise-row mapping in one short message before researching. Ask the user only if a subject is genuinely ambiguous.
+- Present the planned group → brief → exercise-row mapping in one short message before researching. Ask the user to confirm any subject or mapping you are unsure of.
 
 ## 2. Produce the briefs — reuse first
 Briefs are **shared between sessions**: one `abnormals/<slug>.json` is one pop-up, identical wherever it appears. Only the "Practised by" badges and the optional session note differ per session. MFTD 8 and MFTD 9 share `emer-evac`, `eng-1-2-fail`, `eng-1-2-fire-in-flight` and `eng-1-2-fire-on-ground`.
@@ -38,11 +38,12 @@ Every brief must validate: `python3 -I .claude/skills/a320-ecam-abnormal/scripts
 ## 3. Map them in `build_comparison.py`
 - **`PROCEDURE_GROUPS[sid]`:** a list of `(label, (member, …))`. Each member is `(slug, tab_label)` or `(slug, tab_label, session_note)`.
   - `label` must equal one of `FAILURE_SUMMARIES[sid]` **exactly**; it becomes the tappable summary link.
+  - A slug can sit in only one group per session. If two subjects need the same brief, put it in one group and add the other subject to `SUMMARY_GROUP_ALIASES[sid]` so its summary link opens that group.
   - Keep `tab_label` short and distinct (e.g. "On ground · RTO", "In flight", "Drift down"). Trainee badges are added automatically.
   - `session_note` holds this session's scenario context, shown in the pop-up as "In <session>: …". Examples: "Fire extinguished after the second agent." or "Fire in cruise (FL 290): after the fire drill, drift down using the standard strategy (see Drift down)." Take it only from the syllabus wording; never invent scenario details.
 - **`EXERCISE_BRIEFS`:** map each failure-related exercise id (`<sid>-eNN`) that has a brief to its main slug. Each id must be in `FAILURE_IDS`.
   - Every group needs at least one exercise-mapped member.
-  - Companion briefs need no exercise of their own; they inherit the group's trainees and open from the group's tabs.
+  - Companion briefs need no exercise of their own; they inherit the group's trainees and open from the group's tabs. If only some of those trainees practise it, name the deciding exercise rows in `COMPANION_EXERCISES[sid]`.
 - Schedule rows link automatically through their `exercise_ids`. Every linked row — an Exercises title or a Schedule topic — shows a dotted blue underline (the page's only "opens a procedure" cue, keyed in each table's key); an orange row with no mapped exercise stays plain. So the mapping **is** the cue: map every failure exercise that has an ECAM/QRH brief, and never map a recovery row just to make it tappable.
 - Never edit `syllabus_sessions.json` facts or `index.html` directly. Rebuild with `python3 build_comparison.py`. Its validation fails clearly on bad labels, ids, unreachable groups, session-naming briefs or invalid briefs.
 
@@ -56,6 +57,7 @@ Run `sh .claude/skills/syllabus-session-briefs/scripts/run_check.sh <sid>`. It f
 - **Reuse check:** for each reused brief, confirm the content is identical in both sessions. Only the badges and the session note may differ.
 
 ## 5. Finish
+- **If anything is uncertain, ask the user to confirm before reporting (user rule).** Listing it as a gap is not enough. Use `AskUserQuestion` for source conflicts, roles or callouts the manuals don't name, scenarios they don't cover, your own readings of a procedure, and mapping or presentation choices that change what the trainee sees. Say what each source says, with locators, and put your recommendation first. Apply the answers, record them under the brief's Gaps as "Confirmed by the user" (rule 11 of `a320-ecam-abnormal`), and rerun the check if a brief or mapping changed.
 - Update `PRODUCT.md` (which sessions have briefs) and the memory note about abnormal briefs.
 - Report:
   - the groups and briefs per subject, marking each as **reused unchanged**, **companion** or **new** (and any shared brief that was corrected, with the sessions rechecked);

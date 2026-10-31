@@ -151,7 +151,29 @@ PROCEDURE_GROUPS = {
         ('Engine fire', (('eng-1-2-fire-on-ground', 'On ground · RTO', 'Engine fire below V1; the emergency evacuation follows.'),)),
         ('Emergency evacuation', (('emer-evac', 'Emergency evacuation', 'After the rejected take-off for the engine fire.'),)),
     ],
+    'ffs-7': [
+        ('Crew incapacitation', (('flight-crew-incapacitation', 'Crew incapacitation', 'During the rejected take-off for predictive windshear. The manuals have no procedure specific to this case (see Gaps).'),)),
+        ('FCU fault', (('auto-flt-fcu-1-2-fault', 'FCU 1+2 FAULT', 'Trainee A: followed by the raw data ILS to 200 ft DH/A and the go-around (both overweight), the ILS manually without FD and the overweight landing. Trainee B: followed by the ILS manually without FD and the overweight landing.'),
+                       ('overweight-landing', 'Overweight landing', 'The landing after AUTO FLT FCU 1+2 FAULT. Trainee B combines it with the ILS manually without FD.'))),
+        ('Fuel imbalance', (('fuel-imbalance', 'Fuel imbalance'),)),
+        ('RNP degradation', (('rnp-approach-degraded-navigation', 'Degraded navigation', '3D RNP approach with AP and LNAV/VNAV minima. Trainee A: the degradation leads to a go-around. Trainee B: "RNP degradation or system malfunction", then the one-engine-inoperative go-around at minima.'),)),
+        ('APU shutdown/fire', (('apu-auto-emer-shut-down', 'APU AUTO (EMER) SHUT DOWN', 'Trainee A: before the ILS manually with FD, one engine inoperative. Trainee B: listed together with APU FIRE.'),
+                               ('apu-fire', 'APU FIRE', 'Trainee B only: listed together with APU AUTO (EMER) SHUT DOWN.'))),
+        ('Loss of braking', (('loss-of-braking', 'Loss of braking', 'Trainee A: after the one-engine-inoperative crosswind landing. Trainee B: after the overweight landing.'),)),
+        ('Fuel leak', (('fuel-leak', 'Fuel leak'),)),
+        ('APU generator fault', (('elec-apu-gen-fault', 'APU GEN FAULT', 'Before the APU shutdown and fire.'),)),
+        ('Cabin smoke', (('smoke-fumes-avncs-smoke', 'SMOKE / FUMES', 'Smoke in the AFT cabin, then the removal of smoke/fumes (see Removal).'),
+                         ('removal-of-smoke-fumes', 'Removal', 'Listed in the syllabus as "Removal of smoke/fumes, due to smoke in AFT cabin".'))),
+        ('Emergency evacuation', (('emer-evac', 'Emergency evacuation', 'After the one-engine-inoperative crosswind landing.'),)),
+        ('Engine failure', (('eng-1-2-fail', 'Engine failure', 'Trainee A: engine severe damage/separation between V1 and V2, at night. The manuals have no separate procedure for an engine separation, so use the damage branch here (see Severe damage). Trainee B: engine failure between V1 and V2, at night.'),
+                            ('handling-the-aircraft-in-the-case-of-severe-damage', 'Severe damage', 'Trainee A only: engine severe damage/separation between V1 and V2, at night.'),
+                            ('eng-relight-in-flight', 'Relight in flight', 'Trainee B only.'))),
+    ],
 }
+# A summary subject that opens another subject's group, because a brief can only sit in one group per session.
+SUMMARY_GROUP_ALIASES = {'ffs-7': {'Engine severe damage/separation': 'Engine failure'}}
+# The exercise rows that decide a companion brief's trainees, when only some of its group's trainees practise it.
+COMPANION_EXERCISES = {'ffs-7': {'handling-the-aircraft-in-the-case-of-severe-damage': ('ffs-7-e10',)}}
 # Exercise rows that open a brief. Recovery manoeuvres (OEI approach,
 # go-around, autoland) are failure-related but have no ECAM/QRH brief.
 EXERCISE_BRIEFS = {
@@ -184,6 +206,12 @@ EXERCISE_BRIEFS = {
     'ffs-6-e08': 'landing-with-slats-or-flaps-jammed',
     'ffs-6-e13': 'f-ctl-stabilizer-jam', 'ffs-6-e15': 'f-ctl-stabilizer-jam',
     'ffs-6-e16': 'eng-1-2-fire-on-ground', 'ffs-6-e17': 'emer-evac',
+    'ffs-7-e02': 'flight-crew-incapacitation', 'ffs-7-e05': 'auto-flt-fcu-1-2-fault',
+    'ffs-7-e09': 'overweight-landing', 'ffs-7-e10': 'eng-1-2-fail', 'ffs-7-e12': 'fuel-imbalance',
+    'ffs-7-e13': 'rnp-approach-degraded-navigation', 'ffs-7-e15': 'apu-auto-emer-shut-down',
+    'ffs-7-apu-fire': 'apu-fire', 'ffs-7-e18': 'loss-of-braking', 'ffs-7-e20': 'fuel-leak',
+    'ffs-7-e22': 'elec-apu-gen-fault', 'ffs-7-e23': 'removal-of-smoke-fumes', 'ffs-7-e24': 'emer-evac',
+    'ffs-7-e25': 'eng-1-2-fail', 'ffs-7-e26': 'eng-relight-in-flight',
 }
 ALERT_LABELS = {'warning': 'Red warning', 'caution': 'Amber caution', 'qrh': 'QRH procedure',
                 'memory': 'Memory items', 'technique': 'Technique'}
@@ -304,7 +332,7 @@ def validate(data):
             assert any(EXERCISE_BRIEFS.get(eid) in {e[0] for e in entries} for eid in session_ids), (sid, label)
     mapped = {slug for groups in PROCEDURE_GROUPS.values() for slug, _, _ in members(groups)}
     for exercise_id, slug in EXERCISE_BRIEFS.items():
-        sid = exercise_id.rsplit('-e', 1)[0]
+        sid = next(s for s in by_id if exercise_id.startswith(f'{s}-'))
         assert exercise_id in FAILURE_IDS, exercise_id
         assert exercise_id in {e['id'] for e in by_id[sid]['exercises']}, exercise_id
         assert slug in mapped, slug
@@ -340,14 +368,16 @@ def procedure_view(session, briefs):
         items = []
         for slug, tab_label, note in members([entry]):
             exercises = [by_exercise[eid] for eid, s in EXERCISE_BRIEFS.items() if s == slug and eid in by_exercise]
+            companion = [by_exercise[eid] for eid in COMPANION_EXERCISES.get(sid, {}).get(slug, ())]
             # a companion brief (no exercise row of its own) is practised by the group's trainees
-            trainees = [side for side in ('A', 'B') if any(e[side] for e in (exercises or group_exercises))]
+            trainees = [side for side in ('A', 'B') if any(e[side] for e in (exercises or companion or group_exercises))]
             items.append(brief_view(briefs[slug], tab_label, trainees, note))
         groups.append({'id': f'{sid}-procedures-{index + 1}', 'label': label, 'briefs': items})
     group_of = {b['slug']: g for g in groups for b in g['briefs']}
+    aliases = SUMMARY_GROUP_ALIASES.get(sid, {})
     session['procedure_groups'] = groups
     session['summary_items'] = [
-        {'label': label, 'group': next((g for g in groups if g['label'] == label), None)}
+        {'label': label, 'group': next((g for g in groups if g['label'] == aliases.get(label, label)), None)}
         for label in FAILURE_SUMMARIES[sid]]
     for exercise in session['exercises']:
         slug = EXERCISE_BRIEFS.get(exercise['id'])

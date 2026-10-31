@@ -1,0 +1,1113 @@
+{
+  "slug": "fuel-imbalance",
+  "title": "FUEL IMBALANCE",
+  "kind": "qrh",
+  "alert": {
+    "level": "qrh",
+    "land_asap": "none",
+    "memory_items": false,
+    "qrh_summary": false,
+    "trigger": "QRH procedure with no ECAM alert. There is no requirement to correct an imbalance until the ECAM fuel advisory is displayed (difference between wing fuel quantities greater than 1 500 kg).",
+    "inhibited_phases": [],
+    "refs": [
+      {
+        "book": "FCOM",
+        "code": "PRO-ABN-FUEL",
+        "page": "P 2/76",
+        "pdf": 3607
+      },
+      {
+        "book": "FCOM",
+        "code": "PRO-ABN-ABN-ADV",
+        "page": "P 6/6",
+        "pdf": 2841
+      }
+    ]
+  },
+  "effectivity": {
+    "branches": [
+      "HS-TXA..TXO",
+      "HS-TXP..TXU"
+    ],
+    "note": "The center tank lines differ: CTR TK PUMP 1 and 2 on HS-TXA..TXO, CTR TK L and R XFR on HS-TXP..TXU."
+  },
+  "summary": "A fuel imbalance may be a fuel leak, so check the fuel first: compare FOB + FU with the FOB at departure, and do not apply this procedure if a leak is suspected. Otherwise open the crossfeed, stop the center tank feed and switch OFF the pumps on the lighter side. When balanced, restore the pumps and close the crossfeed.",
+  "key_limits": [
+    {
+      "label": "ECAM fuel advisory",
+      "value": "Wing difference > 1 500 kg",
+      "applies_to": [
+        "all"
+      ],
+      "refs": [
+        {
+          "book": "FCOM",
+          "code": "PRO-ABN-ABN-ADV",
+          "page": "P 6/6",
+          "pdf": 2841
+        }
+      ]
+    },
+    {
+      "label": "Correct before the advisory",
+      "value": "No requirement",
+      "applies_to": [
+        "all"
+      ],
+      "refs": [
+        {
+          "book": "FCOM",
+          "code": "PRO-ABN-FUEL",
+          "page": "P 2/76",
+          "pdf": 3607
+        },
+        {
+          "book": "FCOM",
+          "code": "PRO-ABN-FUEL",
+          "page": "P 3/76",
+          "pdf": 3608
+        }
+      ]
+    },
+    {
+      "label": "Leak suspected",
+      "value": "Do not apply; apply FUEL LEAK",
+      "applies_to": [
+        "all"
+      ],
+      "refs": [
+        {
+          "book": "QRH",
+          "code": "21.05",
+          "page": "21.05A",
+          "pdf": 198
+        }
+      ]
+    },
+    {
+      "label": "Max imbalance, tank full",
+      "value": "1 500 kg in flight and at landing",
+      "applies_to": [
+        "all"
+      ],
+      "refs": [
+        {
+          "book": "FCOM",
+          "code": "LIM-FUEL",
+          "page": "P 3/4",
+          "pdf": 4722
+        }
+      ]
+    }
+  ],
+  "flow": [
+    {
+      "phase": "Detection",
+      "steps": [
+        {
+          "actor": "PM",
+          "items": [
+            {
+              "kind": "callout",
+              "text": "ADVISORY ON FUEL SYSTEM",
+              "applies_to": [
+                "all"
+              ],
+              "refs": [
+                {
+                  "book": "FCTM",
+                  "code": "AOP-30-40",
+                  "page": "P 1/2",
+                  "pdf": 88
+                },
+                {
+                  "book": "PDP",
+                  "code": "Management of abnormal operations",
+                  "page": "XFTDN6ECAM00001",
+                  "pdf": 421
+                }
+              ]
+            },
+            {
+              "kind": "ecam",
+              "item": "FUEL MANAGEMENT",
+              "setting": "CHECK",
+              "applies_to": [
+                "all"
+              ],
+              "refs": [
+                {
+                  "book": "FCOM",
+                  "code": "PRO-ABN-ABN-ADV",
+                  "page": "P 6/6",
+                  "pdf": 2841
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "actor": "PF",
+          "items": [
+            {
+              "kind": "action",
+              "text": "Asks the PM to monitor the drifting parameter",
+              "applies_to": [
+                "all"
+              ],
+              "refs": [
+                {
+                  "book": "FCTM",
+                  "code": "AOP-30-40",
+                  "page": "P 1/2",
+                  "pdf": 88
+                },
+                {
+                  "book": "PDP",
+                  "code": "Management of abnormal operations",
+                  "page": "XFTDN6ECAM00001",
+                  "pdf": 421
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "phase": "Rule out a fuel leak",
+      "steps": [
+        {
+          "actor": "PM",
+          "items": [
+            {
+              "kind": "ecam",
+              "item": "FOB",
+              "setting": "CHECK",
+              "applies_to": [
+                "all"
+              ],
+              "refs": [
+                {
+                  "book": "QRH",
+                  "code": "21.05",
+                  "page": "21.05A",
+                  "pdf": 198
+                }
+              ]
+            },
+            {
+              "kind": "action",
+              "text": "Compare the FOB + FU with the FOB at departure",
+              "applies_to": [
+                "all"
+              ],
+              "refs": [
+                {
+                  "book": "FCOM",
+                  "code": "PRO-ABN-FUEL",
+                  "page": "P 2/76",
+                  "pdf": 3607
+                },
+                {
+                  "book": "FCOM",
+                  "code": "PRO-ABN-FUEL",
+                  "page": "P 3/76",
+                  "pdf": 3608
+                },
+                {
+                  "book": "FCOM",
+                  "code": "PRO-NOR-SOP-15",
+                  "page": "P 2/4",
+                  "pdf": 4199
+                }
+              ]
+            },
+            {
+              "kind": "condition",
+              "text": "If the difference is significant, or if the FOB + FU decreases",
+              "children": [
+                {
+                  "kind": "action",
+                  "text": "Suspect a fuel leak: do not apply this procedure. Apply FUEL LEAK",
+                  "applies_to": [
+                    "all"
+                  ],
+                  "refs": [
+                    {
+                      "book": "FCOM",
+                      "code": "PRO-ABN-FUEL",
+                      "page": "P 2/76",
+                      "pdf": 3607
+                    },
+                    {
+                      "book": "FCOM",
+                      "code": "PRO-ABN-FUEL",
+                      "page": "P 3/76",
+                      "pdf": 3608
+                    },
+                    {
+                      "book": "FCOM",
+                      "code": "PRO-NOR-SOP-15",
+                      "page": "P 2/4",
+                      "pdf": 4199
+                    }
+                  ]
+                }
+              ],
+              "applies_to": [
+                "all"
+              ],
+              "refs": [
+                {
+                  "book": "FCOM",
+                  "code": "PRO-ABN-FUEL",
+                  "page": "P 2/76",
+                  "pdf": 3607
+                },
+                {
+                  "book": "FCOM",
+                  "code": "PRO-ABN-FUEL",
+                  "page": "P 3/76",
+                  "pdf": 3608
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "phase": "Order",
+      "steps": [
+        {
+          "actor": "PF",
+          "items": [
+            {
+              "kind": "callout",
+              "text": "FUEL IMBALANCE PROCEDURE",
+              "applies_to": [
+                "all"
+              ],
+              "refs": [
+                {
+                  "book": "PDP",
+                  "code": "Management of abnormal operations",
+                  "page": "XFTDN6ECAM00001",
+                  "pdf": 427
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "actor": "PM",
+          "items": [
+            {
+              "kind": "action",
+              "text": "READ AND DO the QRH lines aloud",
+              "applies_to": [
+                "all"
+              ],
+              "refs": [
+                {
+                  "book": "PDP",
+                  "code": "Management of abnormal operations",
+                  "page": "XFTDN6ECAM00001",
+                  "pdf": 427
+                },
+                {
+                  "book": "FCTM",
+                  "code": "AOP-30-30",
+                  "page": "P 5/6",
+                  "pdf": 86
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "phase": "Balance",
+      "steps": [
+        {
+          "actor": "PM",
+          "items": [
+            {
+              "kind": "ecam",
+              "item": "FUEL X FEED",
+              "setting": "ON",
+              "applies_to": [
+                "all"
+              ],
+              "refs": [
+                {
+                  "book": "QRH",
+                  "code": "21.05",
+                  "page": "21.05A",
+                  "pdf": 198
+                }
+              ]
+            },
+            {
+              "kind": "ecam",
+              "item": "CTR TK PUMP 1",
+              "setting": "OFF",
+              "applies_to": [
+                "HS-TXA..TXO"
+              ],
+              "refs": [
+                {
+                  "book": "QRH",
+                  "code": "21.05",
+                  "page": "21.05A",
+                  "pdf": 198
+                }
+              ]
+            },
+            {
+              "kind": "ecam",
+              "item": "CTR TK PUMP 2",
+              "setting": "OFF",
+              "applies_to": [
+                "HS-TXA..TXO"
+              ],
+              "refs": [
+                {
+                  "book": "QRH",
+                  "code": "21.05",
+                  "page": "21.05A",
+                  "pdf": 198
+                }
+              ]
+            },
+            {
+              "kind": "ecam",
+              "item": "CTR TK L XFR",
+              "setting": "OFF",
+              "applies_to": [
+                "HS-TXP..TXU"
+              ],
+              "refs": [
+                {
+                  "book": "QRH",
+                  "code": "21.05",
+                  "page": "21.05A",
+                  "pdf": 198
+                }
+              ]
+            },
+            {
+              "kind": "ecam",
+              "item": "CTR TK R XFR",
+              "setting": "OFF",
+              "applies_to": [
+                "HS-TXP..TXU"
+              ],
+              "refs": [
+                {
+                  "book": "QRH",
+                  "code": "21.05",
+                  "page": "21.05A",
+                  "pdf": 198
+                }
+              ]
+            },
+            {
+              "kind": "condition",
+              "text": "On lighter side",
+              "children": [
+                {
+                  "kind": "ecam",
+                  "item": "FUEL PUMPS",
+                  "setting": "OFF",
+                  "applies_to": [
+                    "all"
+                  ],
+                  "refs": [
+                    {
+                      "book": "QRH",
+                      "code": "21.05",
+                      "page": "21.05A",
+                      "pdf": 198
+                    }
+                  ]
+                }
+              ],
+              "applies_to": [
+                "all"
+              ],
+              "refs": [
+                {
+                  "book": "QRH",
+                  "code": "21.05",
+                  "page": "21.05A",
+                  "pdf": 198
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "phase": "When fuel balanced",
+      "steps": [
+        {
+          "actor": "PM",
+          "items": [
+            {
+              "kind": "ecam",
+              "item": "ALL FUEL PUMPS",
+              "setting": "ON",
+              "applies_to": [
+                "HS-TXA..TXO"
+              ],
+              "refs": [
+                {
+                  "book": "QRH",
+                  "code": "21.05",
+                  "page": "21.05A",
+                  "pdf": 198
+                }
+              ]
+            },
+            {
+              "kind": "ecam",
+              "item": "FUEL PUMPS",
+              "setting": "ON",
+              "applies_to": [
+                "HS-TXP..TXU"
+              ],
+              "refs": [
+                {
+                  "book": "QRH",
+                  "code": "21.05",
+                  "page": "21.05A",
+                  "pdf": 198
+                }
+              ]
+            },
+            {
+              "kind": "ecam",
+              "item": "CTR TK L XFR",
+              "setting": "ON",
+              "applies_to": [
+                "HS-TXP..TXU"
+              ],
+              "refs": [
+                {
+                  "book": "QRH",
+                  "code": "21.05",
+                  "page": "21.05A",
+                  "pdf": 198
+                }
+              ]
+            },
+            {
+              "kind": "ecam",
+              "item": "CTR TK R XFR",
+              "setting": "ON",
+              "applies_to": [
+                "HS-TXP..TXU"
+              ],
+              "refs": [
+                {
+                  "book": "QRH",
+                  "code": "21.05",
+                  "page": "21.05A",
+                  "pdf": 198
+                }
+              ]
+            },
+            {
+              "kind": "ecam",
+              "item": "FUEL X FEED",
+              "setting": "OFF",
+              "applies_to": [
+                "all"
+              ],
+              "refs": [
+                {
+                  "book": "QRH",
+                  "code": "21.05",
+                  "page": "21.05A",
+                  "pdf": 198
+                }
+              ]
+            },
+            {
+              "kind": "callout",
+              "text": "FUEL IMBALANCE PROCEDURE COMPLETED",
+              "applies_to": [
+                "all"
+              ],
+              "refs": [
+                {
+                  "book": "PDP",
+                  "code": "Management of abnormal operations",
+                  "page": "XFTDN6ECAM00001",
+                  "pdf": 427
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "procedures": [
+    {
+      "title": "FUEL IMBALANCE",
+      "source": "QRH 21.05A; FCOM PRO-ABN-FUEL P 2–3/76",
+      "lines": [
+        {
+          "kind": "action",
+          "item": "FOB",
+          "setting": "CHECK",
+          "text": "",
+          "level": 0,
+          "applies_to": [
+            "all"
+          ],
+          "refs": [
+            {
+              "book": "QRH",
+              "code": "21.05",
+              "page": "21.05A",
+              "pdf": 198
+            }
+          ]
+        },
+        {
+          "kind": "caution",
+          "text": "A fuel imbalance may indicate a fuel leak. Do not apply this procedure, if a fuel leak is suspected. Refer to ABN-21 Fuel Leak",
+          "level": 0,
+          "applies_to": [
+            "all"
+          ],
+          "refs": [
+            {
+              "book": "QRH",
+              "code": "21.05",
+              "page": "21.05A",
+              "pdf": 198
+            }
+          ]
+        },
+        {
+          "kind": "action",
+          "item": "FUEL X FEED",
+          "setting": "ON",
+          "text": "",
+          "level": 0,
+          "applies_to": [
+            "all"
+          ],
+          "refs": [
+            {
+              "book": "QRH",
+              "code": "21.05",
+              "page": "21.05A",
+              "pdf": 198
+            }
+          ]
+        },
+        {
+          "kind": "action",
+          "item": "CTR TK PUMP 1",
+          "setting": "OFF",
+          "text": "",
+          "level": 0,
+          "applies_to": [
+            "HS-TXA..TXO"
+          ],
+          "refs": [
+            {
+              "book": "QRH",
+              "code": "21.05",
+              "page": "21.05A",
+              "pdf": 198
+            }
+          ]
+        },
+        {
+          "kind": "action",
+          "item": "CTR TK PUMP 2",
+          "setting": "OFF",
+          "text": "",
+          "level": 0,
+          "applies_to": [
+            "HS-TXA..TXO"
+          ],
+          "refs": [
+            {
+              "book": "QRH",
+              "code": "21.05",
+              "page": "21.05A",
+              "pdf": 198
+            }
+          ]
+        },
+        {
+          "kind": "action",
+          "item": "CTR TK L XFR",
+          "setting": "OFF",
+          "text": "",
+          "level": 0,
+          "applies_to": [
+            "HS-TXP..TXU"
+          ],
+          "refs": [
+            {
+              "book": "QRH",
+              "code": "21.05",
+              "page": "21.05A",
+              "pdf": 198
+            }
+          ]
+        },
+        {
+          "kind": "action",
+          "item": "CTR TK R XFR",
+          "setting": "OFF",
+          "text": "",
+          "level": 0,
+          "applies_to": [
+            "HS-TXP..TXU"
+          ],
+          "refs": [
+            {
+              "book": "QRH",
+              "code": "21.05",
+              "page": "21.05A",
+              "pdf": 198
+            }
+          ]
+        },
+        {
+          "kind": "condition",
+          "text": "On lighter side:",
+          "level": 0,
+          "applies_to": [
+            "all"
+          ],
+          "refs": [
+            {
+              "book": "QRH",
+              "code": "21.05",
+              "page": "21.05A",
+              "pdf": 198
+            }
+          ]
+        },
+        {
+          "kind": "action",
+          "item": "FUEL PUMPS",
+          "setting": "OFF",
+          "text": "",
+          "level": 1,
+          "applies_to": [
+            "all"
+          ],
+          "refs": [
+            {
+              "book": "QRH",
+              "code": "21.05",
+              "page": "21.05A",
+              "pdf": 198
+            }
+          ]
+        },
+        {
+          "kind": "condition",
+          "text": "When fuel balanced:",
+          "level": 0,
+          "applies_to": [
+            "all"
+          ],
+          "refs": [
+            {
+              "book": "QRH",
+              "code": "21.05",
+              "page": "21.05A",
+              "pdf": 198
+            }
+          ]
+        },
+        {
+          "kind": "action",
+          "item": "ALL FUEL PUMPS",
+          "setting": "ON",
+          "text": "",
+          "level": 1,
+          "applies_to": [
+            "HS-TXA..TXO"
+          ],
+          "refs": [
+            {
+              "book": "QRH",
+              "code": "21.05",
+              "page": "21.05A",
+              "pdf": 198
+            }
+          ]
+        },
+        {
+          "kind": "action",
+          "item": "FUEL PUMPS",
+          "setting": "ON",
+          "text": "",
+          "level": 1,
+          "applies_to": [
+            "HS-TXP..TXU"
+          ],
+          "refs": [
+            {
+              "book": "QRH",
+              "code": "21.05",
+              "page": "21.05A",
+              "pdf": 198
+            }
+          ]
+        },
+        {
+          "kind": "action",
+          "item": "CTR TK L XFR",
+          "setting": "ON",
+          "text": "",
+          "level": 1,
+          "applies_to": [
+            "HS-TXP..TXU"
+          ],
+          "refs": [
+            {
+              "book": "QRH",
+              "code": "21.05",
+              "page": "21.05A",
+              "pdf": 198
+            }
+          ]
+        },
+        {
+          "kind": "action",
+          "item": "CTR TK R XFR",
+          "setting": "ON",
+          "text": "",
+          "level": 1,
+          "applies_to": [
+            "HS-TXP..TXU"
+          ],
+          "refs": [
+            {
+              "book": "QRH",
+              "code": "21.05",
+              "page": "21.05A",
+              "pdf": 198
+            }
+          ]
+        },
+        {
+          "kind": "action",
+          "item": "FUEL X FEED",
+          "setting": "OFF",
+          "text": "",
+          "level": 1,
+          "applies_to": [
+            "all"
+          ],
+          "refs": [
+            {
+              "book": "QRH",
+              "code": "21.05",
+              "page": "21.05A",
+              "pdf": 198
+            }
+          ]
+        },
+        {
+          "kind": "note",
+          "text": "There is no requirement to correct an imbalance, until the ECAM fuel advisory is displayed.",
+          "level": 0,
+          "applies_to": [
+            "all"
+          ],
+          "refs": [
+            {
+              "book": "FCOM",
+              "code": "PRO-ABN-FUEL",
+              "page": "P 2/76",
+              "pdf": 3607
+            },
+            {
+              "book": "FCOM",
+              "code": "PRO-ABN-FUEL",
+              "page": "P 3/76",
+              "pdf": 3608
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "status": null,
+  "tables": [
+    {
+      "title": "Maximum fuel imbalance in flight and at landing",
+      "caption": "Inner tanks, outer tanks balanced. The variation is linear between these values, and there is no limitation below 2 250 kg.",
+      "columns": [
+        "Heavier tank fuel quantity",
+        "Maximum asymmetry"
+      ],
+      "rows": [
+        [
+          "Full",
+          "1 500 kg"
+        ],
+        [
+          "4 300 kg",
+          "1 600 kg"
+        ],
+        [
+          "2 250 kg",
+          "2 250 kg"
+        ],
+        [
+          "Outer tanks",
+          "690 kg, with the conditions in the FCOM"
+        ]
+      ],
+      "applies_to": [
+        "all"
+      ],
+      "refs": [
+        {
+          "book": "FCOM",
+          "code": "LIM-FUEL",
+          "page": "P 3/4",
+          "pdf": 4722
+        }
+      ]
+    },
+    {
+      "title": "Maximum fuel imbalance at takeoff",
+      "caption": "Inner tanks, outer tanks balanced. The variation is linear between these values.",
+      "columns": [
+        "Heavier tank fuel quantity",
+        "Maximum asymmetry"
+      ],
+      "rows": [
+        [
+          "Full",
+          "500 kg"
+        ],
+        [
+          "3 000 kg",
+          "1 050 kg"
+        ],
+        [
+          "1 450 kg",
+          "1 450 kg"
+        ],
+        [
+          "Outer tanks (inner balanced)",
+          "370 kg"
+        ]
+      ],
+      "applies_to": [
+        "all"
+      ],
+      "refs": [
+        {
+          "book": "FCOM",
+          "code": "LIM-FUEL",
+          "page": "P 3/4",
+          "pdf": 4722
+        }
+      ]
+    }
+  ],
+  "background": [
+    {
+      "text": "In exceptional conditions (i.e. fuel system failure), the maximum imbalance values may be exceeded without significant effect to the aircraft handling qualities. The aircraft remains fully controllable in all flight phases.",
+      "applies_to": [
+        "all"
+      ],
+      "refs": [
+        {
+          "book": "FCOM",
+          "code": "LIM-FUEL",
+          "page": "P 3/4",
+          "pdf": 4722
+        }
+      ]
+    },
+    {
+      "text": "The fuel check (FOB + FU against the FOB at departure) must also be performed each time a FUEL IMBALANCE procedure is necessary, before applying it. An abnormally negative value suggests a leak; an abnormally positive value, a fuel quantity overread.",
+      "applies_to": [
+        "all"
+      ],
+      "refs": [
+        {
+          "book": "FCOM",
+          "code": "PRO-NOR-SOP-15",
+          "page": "P 2/4",
+          "pdf": 4199
+        }
+      ]
+    }
+  ],
+  "technique": [
+    {
+      "text": "For any message or alert related to the fuel leak, fuel quantity or fuel imbalance, the flight crew should consider a fuel leak as a possible cause.",
+      "applies_to": [
+        "all"
+      ],
+      "refs": [
+        {
+          "book": "FCTM",
+          "code": "PR-AEP-FUEL",
+          "page": "P 1/4",
+          "pdf": 434
+        }
+      ]
+    }
+  ],
+  "related": [
+    {
+      "title": "FUEL LEAK",
+      "why": "A fuel imbalance may indicate a fuel leak. If a wing leak is suspected, the FUEL LEAK procedure says not to apply FUEL IMBALANCE.",
+      "key_actions": [
+        "See the FUEL LEAK brief"
+      ],
+      "refs": [
+        {
+          "book": "QRH",
+          "code": "21.05",
+          "page": "21.05A",
+          "pdf": 198
+        },
+        {
+          "book": "QRH",
+          "code": "21.06",
+          "page": "21.06A",
+          "pdf": 199
+        }
+      ]
+    }
+  ],
+  "differences": [
+    {
+      "topic": "Center tank lines",
+      "values": {
+        "HS-TXA..TXO": "CTR TK PUMP 1 and 2 OFF; ALL FUEL PUMPS ON when balanced",
+        "HS-TXP..TXU": "CTR TK L and R XFR OFF; FUEL PUMPS ON and CTR TK L and R XFR ON when balanced"
+      },
+      "refs": [
+        {
+          "book": "QRH",
+          "code": "21.05",
+          "page": "21.05A",
+          "pdf": 198
+        }
+      ]
+    }
+  ],
+  "gaps": [
+    {
+      "text": "The FCTM has no technique for this procedure beyond considering a fuel leak; the PDP has no module for it. The flow is the standard advisory and QRH sequence.",
+      "applies_to": [
+        "all"
+      ],
+      "refs": [
+        {
+          "book": "FCTM",
+          "code": "PR-AEP-FUEL",
+          "page": "P 1/4",
+          "pdf": 434
+        },
+        {
+          "book": "PDP",
+          "code": "Management of abnormal operations",
+          "page": "XFTDN6ECAM00001",
+          "pdf": 427
+        }
+      ]
+    },
+    {
+      "text": "The outer tank limit (690 kg in flight and at landing) has conditions on the inner tank quantities; see FCOM LIM-FUEL.",
+      "applies_to": [
+        "all"
+      ],
+      "refs": [
+        {
+          "book": "FCOM",
+          "code": "LIM-FUEL",
+          "page": "P 3/4",
+          "pdf": 4722
+        }
+      ]
+    },
+    {
+      "text": "The manuals print a separate version for each HS-TX group. \"From the manuals\" merges them into one procedure, with a chip on the lines that differ, confirmed by the user.",
+      "applies_to": [
+        "all"
+      ],
+      "refs": [
+        {
+          "book": "FCOM",
+          "code": "PRO-ABN-FUEL",
+          "page": "P 2/76",
+          "pdf": 3607
+        },
+        {
+          "book": "FCOM",
+          "code": "PRO-ABN-FUEL",
+          "page": "P 3/76",
+          "pdf": 3608
+        }
+      ]
+    }
+  ],
+  "sources": [
+    {
+      "book": "QRH",
+      "section": "21.05 FUEL IMBALANCE",
+      "pages": "21.05A",
+      "pdf": "198",
+      "rev": "18 FEB 26"
+    },
+    {
+      "book": "FCOM",
+      "section": "PRO-ABN-FUEL — [QRH] FUEL IMBALANCE",
+      "pages": "P 2–3/76",
+      "pdf": "3607–3608",
+      "rev": "26 MAY 26"
+    },
+    {
+      "book": "FCOM",
+      "section": "PRO-ABN-ABN-ADV; PRO-NOR-SOP-15; LIM-FUEL",
+      "pages": "P 6/6; P 2/4; P 3/4",
+      "pdf": "2841, 4199, 4722",
+      "rev": "18 FEB 26"
+    },
+    {
+      "book": "FCTM",
+      "section": "AOP-30-40 advisory; PR-AEP-FUEL",
+      "pages": "P 1/2; P 1/4",
+      "pdf": "88, 434",
+      "rev": "24 NOV 25"
+    },
+    {
+      "book": "PDP",
+      "section": "Management of abnormal operations (XFTDN6ECAM00001)",
+      "pages": "ECAM actions, STATUS, QRH, confirm",
+      "pdf": "424–432",
+      "rev": "JAN 2024"
+    }
+  ],
+  "schema": "a320-ecam-abnormal/3",
+  "generated": "2026-10-31",
+  "qrh": []
+}

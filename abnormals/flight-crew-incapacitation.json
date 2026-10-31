@@ -1,0 +1,691 @@
+{
+  "slug": "flight-crew-incapacitation",
+  "title": "FLIGHT CREW INCAPACITATION",
+  "kind": "technique",
+  "alert": {
+    "level": "technique",
+    "land_asap": "none",
+    "memory_items": false,
+    "qrh_summary": false,
+    "trigger": "No ECAM alert. Absence of standard callouts at the appropriate time, a crewmember reporting feeling unwell, incoherent speech, a pale and(or) fixed facial expression, or irregular breathing.",
+    "inhibited_phases": [],
+    "refs": [
+      {
+        "book": "FCTM",
+        "code": "PR-AEP-MISC",
+        "page": "P 9/32",
+        "pdf": 454
+      },
+      {
+        "book": "PDP",
+        "code": "Crew incapacitation",
+        "page": "XFTDA1INCAPAC01",
+        "pdf": 518
+      }
+    ]
+  },
+  "effectivity": {
+    "branches": [],
+    "note": "Applicable to ALL (FCTM technique)."
+  },
+  "summary": "The fit pilot takes over with \"I HAVE CONTROL\" and secures the flight path. If the incapacitated pilot interferes with the controls, press the sidestick pb for 40 s. Declare the emergency to ATC, call the purser to help contain the incapacitated pilot, reduce the workload, and land at the nearest suitable airport with medical assistance arranged.",
+  "key_limits": [
+    {
+      "label": "Sidestick pb",
+      "value": "40 s, if the controls are interfered with",
+      "applies_to": [
+        "all"
+      ],
+      "refs": [
+        {
+          "book": "FCTM",
+          "code": "PR-AEP-MISC",
+          "page": "P 10/32",
+          "pdf": 455
+        },
+        {
+          "book": "PDP",
+          "code": "Crew incapacitation",
+          "page": "XFTDA1INCAPAC01",
+          "pdf": 520
+        }
+      ]
+    },
+    {
+      "label": "Landing",
+      "value": "Nearest suitable airport",
+      "applies_to": [
+        "all"
+      ],
+      "refs": [
+        {
+          "book": "FCTM",
+          "code": "PR-AEP-MISC",
+          "page": "P 10/32",
+          "pdf": 455
+        },
+        {
+          "book": "PDP",
+          "code": "Crew incapacitation",
+          "page": "XFTDA1INCAPAC01",
+          "pdf": 521
+        }
+      ]
+    }
+  ],
+  "flow": [
+    {
+      "phase": "Detect",
+      "steps": [
+        {
+          "actor": "BOTH",
+          "items": [
+            {
+              "kind": "action",
+              "text": "Routine monitoring and aural crosschecks: absence of a standard callout may mean incapacitation",
+              "applies_to": [
+                "all"
+              ],
+              "refs": [
+                {
+                  "book": "FCTM",
+                  "code": "PR-AEP-MISC",
+                  "page": "P 9/32",
+                  "pdf": 454
+                },
+                {
+                  "book": "PDP",
+                  "code": "Crew incapacitation",
+                  "page": "XFTDA1INCAPAC01",
+                  "pdf": 518
+                }
+              ]
+            },
+            {
+              "kind": "action",
+              "text": "If you do not feel well, tell the other crewmember",
+              "applies_to": [
+                "all"
+              ],
+              "refs": [
+                {
+                  "book": "FCTM",
+                  "code": "PR-AEP-MISC",
+                  "page": "P 9/32",
+                  "pdf": 454
+                }
+              ]
+            },
+            {
+              "kind": "note",
+              "text": "Other clues: no appropriate response to a verbal communication, incoherent speech, strange behavior, irregular breathing, pale fixed facial expression, jerky motions",
+              "applies_to": [
+                "all"
+              ],
+              "refs": [
+                {
+                  "book": "FCTM",
+                  "code": "PR-AEP-MISC",
+                  "page": "P 9/32",
+                  "pdf": 454
+                },
+                {
+                  "book": "PDP",
+                  "code": "Crew incapacitation",
+                  "page": "XFTDA1INCAPAC01",
+                  "pdf": 518
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "actor": "BOTH",
+          "items": [
+            {
+              "kind": "note",
+              "text": "During takeoff the PM must be ready to take over",
+              "applies_to": [
+                "all"
+              ],
+              "refs": [
+                {
+                  "book": "PDP",
+                  "code": "Low visibility operations",
+                  "page": "XFSNB10000LVO00",
+                  "pdf": 379
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "phase": "Take over",
+      "steps": [
+        {
+          "actor": "PF",
+          "items": [
+            {
+              "kind": "note",
+              "text": "The fit pilot is the PF from here",
+              "applies_to": [
+                "all"
+              ],
+              "refs": [
+                {
+                  "book": "FCTM",
+                  "code": "PR-AEP-MISC",
+                  "page": "P 10/32",
+                  "pdf": 455
+                },
+                {
+                  "book": "PDP",
+                  "code": "Crew incapacitation",
+                  "page": "XFTDA1INCAPAC01",
+                  "pdf": 519
+                }
+              ]
+            },
+            {
+              "kind": "callout",
+              "text": "I HAVE CONTROL",
+              "applies_to": [
+                "all"
+              ],
+              "refs": [
+                {
+                  "book": "FCTM",
+                  "code": "PR-AEP-MISC",
+                  "page": "P 10/32",
+                  "pdf": 455
+                },
+                {
+                  "book": "PDP",
+                  "code": "Crew incapacitation",
+                  "page": "XFTDA1INCAPAC01",
+                  "pdf": 519
+                }
+              ]
+            },
+            {
+              "kind": "condition",
+              "text": "If the incapacitated pilot interferes with the handling of the aircraft",
+              "children": [
+                {
+                  "kind": "action",
+                  "text": "Press and keep pressed the sidestick pb for 40 s",
+                  "applies_to": [
+                    "all"
+                  ],
+                  "refs": [
+                    {
+                      "book": "FCTM",
+                      "code": "PR-AEP-MISC",
+                      "page": "P 10/32",
+                      "pdf": 455
+                    },
+                    {
+                      "book": "PDP",
+                      "code": "Crew incapacitation",
+                      "page": "XFTDA1INCAPAC01",
+                      "pdf": 519
+                    },
+                    {
+                      "book": "PDP",
+                      "code": "Crew incapacitation",
+                      "page": "XFTDA1INCAPAC01",
+                      "pdf": 520
+                    }
+                  ]
+                },
+                {
+                  "kind": "note",
+                  "text": "The 40 s includes the time to deactivate the AP (if engaged) and the offside sidestick",
+                  "applies_to": [
+                    "all"
+                  ],
+                  "refs": [
+                    {
+                      "book": "FCTM",
+                      "code": "PR-AEP-MISC",
+                      "page": "P 10/32",
+                      "pdf": 455
+                    }
+                  ]
+                }
+              ],
+              "applies_to": [
+                "all"
+              ],
+              "refs": [
+                {
+                  "book": "FCTM",
+                  "code": "PR-AEP-MISC",
+                  "page": "P 10/32",
+                  "pdf": 455
+                },
+                {
+                  "book": "PDP",
+                  "code": "Crew incapacitation",
+                  "page": "XFTDA1INCAPAC01",
+                  "pdf": 519
+                }
+              ]
+            },
+            {
+              "kind": "action",
+              "text": "Keep or engage the onside AP, as required",
+              "applies_to": [
+                "all"
+              ],
+              "refs": [
+                {
+                  "book": "FCTM",
+                  "code": "PR-AEP-MISC",
+                  "page": "P 10/32",
+                  "pdf": 455
+                },
+                {
+                  "book": "PDP",
+                  "code": "Crew incapacitation",
+                  "page": "XFTDA1INCAPAC01",
+                  "pdf": 519
+                }
+              ]
+            },
+            {
+              "kind": "action",
+              "text": "Perform callouts (challenge and response included) and checklists aloud",
+              "applies_to": [
+                "all"
+              ],
+              "refs": [
+                {
+                  "book": "FCTM",
+                  "code": "PR-AEP-MISC",
+                  "page": "P 10/32",
+                  "pdf": 455
+                },
+                {
+                  "book": "PDP",
+                  "code": "Crew incapacitation",
+                  "page": "XFTDA1INCAPAC01",
+                  "pdf": 519
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "phase": "Inform and contain",
+      "steps": [
+        {
+          "actor": "PF",
+          "items": [
+            {
+              "kind": "callout",
+              "text": "MAYDAY, MAYDAY, MAYDAY",
+              "applies_to": [
+                "all"
+              ],
+              "refs": [
+                {
+                  "book": "PDP",
+                  "code": "Crew incapacitation",
+                  "page": "XFTDA1INCAPAC01",
+                  "pdf": 519
+                }
+              ]
+            },
+            {
+              "kind": "note",
+              "text": "On the radio, to inform ATC of the emergency",
+              "applies_to": [
+                "all"
+              ],
+              "refs": [
+                {
+                  "book": "FCTM",
+                  "code": "PR-AEP-MISC",
+                  "page": "P 10/32",
+                  "pdf": 455
+                },
+                {
+                  "book": "PDP",
+                  "code": "Crew incapacitation",
+                  "page": "XFTDA1INCAPAC01",
+                  "pdf": 519
+                }
+              ]
+            },
+            {
+              "kind": "callout",
+              "text": "PURSER TO COCKPIT, PLEASE!",
+              "applies_to": [
+                "all"
+              ],
+              "refs": [
+                {
+                  "book": "FCOM",
+                  "code": "PRO-ABN-ABN-00",
+                  "page": "P 9/12",
+                  "pdf": 2832
+                }
+              ]
+            },
+            {
+              "kind": "note",
+              "text": "On the PA",
+              "applies_to": [
+                "all"
+              ],
+              "refs": [
+                {
+                  "book": "FCOM",
+                  "code": "PRO-ABN-ABN-00",
+                  "page": "P 9/12",
+                  "pdf": 2832
+                }
+              ]
+            },
+            {
+              "kind": "action",
+              "text": "Take any steps possible to contain the incapacitated pilot; these may involve the cabin crew",
+              "applies_to": [
+                "all"
+              ],
+              "refs": [
+                {
+                  "book": "FCTM",
+                  "code": "PR-AEP-MISC",
+                  "page": "P 10/32",
+                  "pdf": 455
+                },
+                {
+                  "book": "PDP",
+                  "code": "Crew incapacitation",
+                  "page": "XFTDA1INCAPAC01",
+                  "pdf": 519
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "phase": "Reduce workload and land",
+      "steps": [
+        {
+          "actor": "PF",
+          "items": [
+            {
+              "kind": "action",
+              "text": "Consider early approach preparation and checklists reading, automatic landing, and radar vectoring with a long approach",
+              "applies_to": [
+                "all"
+              ],
+              "refs": [
+                {
+                  "book": "FCTM",
+                  "code": "PR-AEP-MISC",
+                  "page": "P 10/32",
+                  "pdf": 455
+                },
+                {
+                  "book": "PDP",
+                  "code": "Crew incapacitation",
+                  "page": "XFTDA1INCAPAC01",
+                  "pdf": 521
+                }
+              ]
+            },
+            {
+              "kind": "action",
+              "text": "Land at the nearest suitable airport after consideration of all pertinent factors",
+              "applies_to": [
+                "all"
+              ],
+              "refs": [
+                {
+                  "book": "FCTM",
+                  "code": "PR-AEP-MISC",
+                  "page": "P 10/32",
+                  "pdf": 455
+                },
+                {
+                  "book": "PDP",
+                  "code": "Crew incapacitation",
+                  "page": "XFTDA1INCAPAC01",
+                  "pdf": 521
+                }
+              ]
+            },
+            {
+              "kind": "action",
+              "text": "Arrange medical assistance onboard and after landing, with as many details as possible about the condition",
+              "applies_to": [
+                "all"
+              ],
+              "refs": [
+                {
+                  "book": "FCTM",
+                  "code": "PR-AEP-MISC",
+                  "page": "P 10/32",
+                  "pdf": 455
+                },
+                {
+                  "book": "PDP",
+                  "code": "Crew incapacitation",
+                  "page": "XFTDA1INCAPAC01",
+                  "pdf": 521
+                }
+              ]
+            },
+            {
+              "kind": "action",
+              "text": "Request assistance from any medically qualified passenger (not on a flight with only two flight crewmembers onboard)",
+              "applies_to": [
+                "all"
+              ],
+              "refs": [
+                {
+                  "book": "FCTM",
+                  "code": "PR-AEP-MISC",
+                  "page": "P 10/32",
+                  "pdf": 455
+                },
+                {
+                  "book": "PDP",
+                  "code": "Crew incapacitation",
+                  "page": "XFTDA1INCAPAC01",
+                  "pdf": 521
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "procedures": [],
+  "status": null,
+  "background": [
+    {
+      "text": "Incapacitation is a real safety hazard that occurs more frequently than many other emergencies. It ranges from sudden death to partial loss of function, sometimes without any symptom beforehand.",
+      "applies_to": [
+        "all"
+      ],
+      "refs": [
+        {
+          "book": "FCTM",
+          "code": "PR-AEP-MISC",
+          "page": "P 9/32",
+          "pdf": 454
+        }
+      ]
+    },
+    {
+      "text": "Definition: any condition which affects the health of a crew member during the performance of duties which renders him incapable of performing the assigned duties.",
+      "applies_to": [
+        "all"
+      ],
+      "refs": [
+        {
+          "book": "PDP",
+          "code": "Crew incapacitation",
+          "page": "XFTDA1INCAPAC01",
+          "pdf": 517
+        }
+      ]
+    },
+    {
+      "text": "Pressing the sidestick pb gives priority to that sidestick: the aural \"PRIORITY LEFT\" sounds on a captain takeover, and the other sidestick is inoperative.",
+      "applies_to": [
+        "all"
+      ],
+      "refs": [
+        {
+          "book": "PDP",
+          "code": "Crew incapacitation",
+          "page": "XFTDA1INCAPAC01",
+          "pdf": 520
+        }
+      ]
+    }
+  ],
+  "technique": [
+    {
+      "text": "The decision to reject the takeoff and the stop action are the responsibility of the Captain. The \"STOP\" call both confirms the decision and states that the Captain now has control; it is the only hand-over of control not accompanied by \"I have control\".",
+      "applies_to": [
+        "all"
+      ],
+      "refs": [
+        {
+          "book": "FCTM",
+          "code": "PR-AEP-MISC",
+          "page": "P 19/32",
+          "pdf": 464
+        }
+      ]
+    }
+  ],
+  "related": [
+    {
+      "title": "Emergency evacuation",
+      "why": "If an evacuation becomes necessary on the ground.",
+      "key_actions": [
+        "See the Emergency evacuation brief"
+      ],
+      "refs": [
+        {
+          "book": "FCTM",
+          "code": "PR-AEP-MISC",
+          "page": "P 21/32",
+          "pdf": 466
+        }
+      ]
+    }
+  ],
+  "gaps": [
+    {
+      "text": "The manuals have no specific procedure for incapacitation during a rejected takeoff, including who continues the stop if the Captain is the one incapacitated. The brief follows the general rule that the fit pilot takes over, confirmed by the user.",
+      "applies_to": [
+        "all"
+      ],
+      "refs": [
+        {
+          "book": "FCTM",
+          "code": "PR-AEP-MISC",
+          "page": "P 10/32",
+          "pdf": 455
+        },
+        {
+          "book": "FCTM",
+          "code": "PR-AEP-MISC",
+          "page": "P 19/32",
+          "pdf": 464
+        }
+      ]
+    },
+    {
+      "text": "The PA wording differs: FCOM \"PURSER TO COCKPIT, PLEASE!\", PDP \"ATTENTION, PURSER TO COCKPIT PLEASE\". The brief uses the FCOM wording, confirmed by the user.",
+      "applies_to": [
+        "all"
+      ],
+      "refs": [
+        {
+          "book": "FCOM",
+          "code": "PRO-ABN-ABN-00",
+          "page": "P 9/12",
+          "pdf": 2832
+        },
+        {
+          "book": "PDP",
+          "code": "Crew incapacitation",
+          "page": "XFTDA1INCAPAC01",
+          "pdf": 519
+        }
+      ]
+    },
+    {
+      "text": "The FCTM says press the sidestick pb \"for 40 seconds\"; the PDP says \"at least 40 seconds\". The brief uses the FCTM wording, confirmed by the user.",
+      "applies_to": [
+        "all"
+      ],
+      "refs": [
+        {
+          "book": "FCTM",
+          "code": "PR-AEP-MISC",
+          "page": "P 10/32",
+          "pdf": 455
+        },
+        {
+          "book": "PDP",
+          "code": "Crew incapacitation",
+          "page": "XFTDA1INCAPAC01",
+          "pdf": 519
+        }
+      ]
+    }
+  ],
+  "sources": [
+    {
+      "book": "FCTM",
+      "section": "PR-AEP-MISC — FLIGHT CREW INCAPACITATION; rejected takeoff",
+      "pages": "P 9–10/32, 19/32",
+      "pdf": "454–455, 464",
+      "rev": "26 MAY 26"
+    },
+    {
+      "book": "PDP",
+      "section": "Crew incapacitation (XFTDA1INCAPAC01)",
+      "pages": "Definition, detection, reaction",
+      "pdf": "517–521",
+      "rev": "OCT 2018"
+    },
+    {
+      "book": "PDP",
+      "section": "Low visibility operations (XFSNB10000LVO00)",
+      "pages": "Takeoff: crew incapacitation",
+      "pdf": "379",
+      "rev": "JAN 2024"
+    },
+    {
+      "book": "FCOM",
+      "section": "PRO-ABN-ABN-00 — emergency calls",
+      "pages": "P 9/12",
+      "pdf": "2832",
+      "rev": "26 MAY 26"
+    }
+  ],
+  "schema": "a320-ecam-abnormal/3",
+  "generated": "2026-10-31",
+  "qrh": [],
+  "tables": [],
+  "differences": []
+}

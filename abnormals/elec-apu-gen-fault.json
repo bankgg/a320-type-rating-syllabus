@@ -1,0 +1,755 @@
+{
+ "slug": "elec-apu-gen-fault",
+ "title": "ELEC APU GEN FAULT",
+ "kind": "ecam",
+ "alert": {
+  "level": "caution",
+  "land_asap": "none",
+  "memory_items": false,
+  "qrh_summary": false,
+  "trigger": "The protection trip is initiated by the associated GCU, or the line contactor is open with APU GEN pb-sw set to ON.",
+  "inhibited_phases": [
+   4,
+   5,
+   7,
+   8
+  ],
+  "refs": [
+   {
+    "book": "FCOM",
+    "code": "PRO-ABN-ELEC",
+    "page": "P 27/122",
+    "pdf": 3152
+   }
+  ]
+ },
+ "effectivity": {
+  "branches": [],
+  "note": "One version for all HS-TX."
+ },
+ "summary": "The APU generator has tripped or its line contactor is open. Cycle the APU GEN pb-sw OFF then ON, and leave it OFF if that does not work. The MAIN GALLEY is shown inoperative only when one generator is operating.",
+ "key_limits": [
+  {
+   "label": "APU GEN",
+   "value": "OFF THEN ON; OFF if unsuccessful",
+   "applies_to": [
+    "all"
+   ],
+   "refs": [
+    {
+     "book": "FCOM",
+     "code": "PRO-ABN-ELEC",
+     "page": "P 27/122",
+     "pdf": 3152
+    }
+   ]
+  }
+ ],
+ "flow": [
+  {
+   "phase": "Detection and ECAM actions",
+   "steps": [
+    {
+     "actor": "BOTH",
+     "items": [
+      {
+       "kind": "action",
+       "text": "First to notice: MASTER CAUTION reset",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "FCTM",
+         "code": "AOP-30-30",
+         "page": "P 2/6",
+         "pdf": 83
+        },
+        {
+         "book": "PDP",
+         "code": "Management of abnormal operations",
+         "page": "XFTDN6ECAM00001",
+         "pdf": 424
+        }
+       ]
+      }
+     ]
+    },
+    {
+     "actor": "PM",
+     "items": [
+      {
+       "kind": "callout",
+       "text": "ELEC APU GEN FAULT",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "FCTM",
+         "code": "AOP-30-30",
+         "page": "P 2/6",
+         "pdf": 83
+        },
+        {
+         "book": "FCOM",
+         "code": "PRO-ABN-ELEC",
+         "page": "P 27/122",
+         "pdf": 3152
+        },
+        {
+         "book": "PDP",
+         "code": "Management of abnormal operations",
+         "page": "XFTDN6ECAM00001",
+         "pdf": 424
+        }
+       ]
+      },
+      {
+       "kind": "action",
+       "text": "Confirm the failure on the SD page and overhead panel before acting",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "FCTM",
+         "code": "AOP-30-30",
+         "page": "P 2/6",
+         "pdf": 83
+        },
+        {
+         "book": "PDP",
+         "code": "Management of abnormal operations",
+         "page": "XFTDN6ECAM00001",
+         "pdf": 424
+        }
+       ]
+      }
+     ]
+    },
+    {
+     "actor": "PF",
+     "items": [
+      {
+       "kind": "callout",
+       "text": "ECAM ACTIONS",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "FCOM",
+         "code": "PRO-ABN-ABN-00",
+         "page": "P 8/12",
+         "pdf": 2831
+        },
+        {
+         "book": "FCTM",
+         "code": "AOP-30-30",
+         "page": "P 3/6",
+         "pdf": 84
+        },
+        {
+         "book": "PDP",
+         "code": "Management of abnormal operations",
+         "page": "XFTDN6ECAM00001",
+         "pdf": 424
+        }
+       ]
+      },
+      {
+       "kind": "note",
+       "text": "PF now flies, navigates and communicates",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "FCTM",
+         "code": "AOP-20",
+         "page": "P 1–2/10",
+         "pdf": 68
+        },
+        {
+         "book": "PDP",
+         "code": "Management of abnormal operations",
+         "page": "XFTDN6ECAM00001",
+         "pdf": 424
+        }
+       ]
+      }
+     ]
+    },
+    {
+     "actor": "PM",
+     "items": [
+      {
+       "kind": "ecam",
+       "item": "APU GEN",
+       "setting": "OFF THEN ON",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "FCOM",
+         "code": "PRO-ABN-ELEC",
+         "page": "P 27/122",
+         "pdf": 3152
+        }
+       ]
+      },
+      {
+       "kind": "condition",
+       "text": "IF UNSUCCESSFUL",
+       "children": [
+        {
+         "kind": "ecam",
+         "item": "APU GEN",
+         "setting": "OFF",
+         "applies_to": [
+          "all"
+         ],
+         "refs": [
+          {
+           "book": "FCOM",
+           "code": "PRO-ABN-ELEC",
+           "page": "P 27/122",
+           "pdf": 3152
+          }
+         ]
+        }
+       ],
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "FCOM",
+         "code": "PRO-ABN-ELEC",
+         "page": "P 27/122",
+         "pdf": 3152
+        }
+       ]
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "phase": "STATUS",
+   "steps": [
+    {
+     "actor": "PM",
+     "items": [
+      {
+       "kind": "callout",
+       "text": "CLEAR ELEC ?",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "FCOM",
+         "code": "PRO-ABN-ABN-00",
+         "page": "P 8/12",
+         "pdf": 2831
+        },
+        {
+         "book": "FCTM",
+         "code": "AOP-30-30",
+         "page": "P 3/6",
+         "pdf": 84
+        },
+        {
+         "book": "PDP",
+         "code": "Management of abnormal operations",
+         "page": "XFTDN6ECAM00001",
+         "pdf": 424
+        }
+       ]
+      }
+     ]
+    },
+    {
+     "actor": "PF",
+     "items": [
+      {
+       "kind": "callout",
+       "text": "CLEAR ELEC",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "FCOM",
+         "code": "PRO-ABN-ABN-00",
+         "page": "P 8/12",
+         "pdf": 2831
+        },
+        {
+         "book": "FCTM",
+         "code": "AOP-30-30",
+         "page": "P 3/6",
+         "pdf": 84
+        },
+        {
+         "book": "PDP",
+         "code": "Management of abnormal operations",
+         "page": "XFTDN6ECAM00001",
+         "pdf": 424
+        }
+       ]
+      }
+     ]
+    },
+    {
+     "actor": "PM",
+     "items": [
+      {
+       "kind": "callout",
+       "text": "STATUS",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "FCTM",
+         "code": "AOP-30-30",
+         "page": "P 3/6",
+         "pdf": 84
+        },
+        {
+         "book": "PDP",
+         "code": "Management of abnormal operations",
+         "page": "XFTDN6ECAM00001",
+         "pdf": 426
+        }
+       ]
+      }
+     ]
+    },
+    {
+     "actor": "PF",
+     "items": [
+      {
+       "kind": "callout",
+       "text": "STOP ECAM",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "FCTM",
+         "code": "AOP-30-30",
+         "page": "P 3/6",
+         "pdf": 84
+        },
+        {
+         "book": "PDP",
+         "code": "Management of abnormal operations",
+         "page": "XFTDN6ECAM00001",
+         "pdf": 426
+        }
+       ]
+      }
+     ]
+    },
+    {
+     "actor": "PM",
+     "items": [
+      {
+       "kind": "ecam",
+       "item": "ECAM ACTIONS",
+       "setting": "STOP",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "PDP",
+         "code": "Management of abnormal operations",
+         "page": "XFTDN6ECAM00001",
+         "pdf": 426
+        }
+       ]
+      }
+     ]
+    },
+    {
+     "actor": "PF",
+     "items": [
+      {
+       "kind": "action",
+       "text": "Normal C/L as applicable; system resets only per QRH",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "FCTM",
+         "code": "AOP-30-30",
+         "page": "P 4/6",
+         "pdf": 85
+        },
+        {
+         "book": "PDP",
+         "code": "Management of abnormal operations",
+         "page": "XFTDN6ECAM00001",
+         "pdf": 426
+        }
+       ]
+      },
+      {
+       "kind": "callout",
+       "text": "CONTINUE ECAM",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "FCTM",
+         "code": "AOP-30-30",
+         "page": "P 3/6",
+         "pdf": 84
+        },
+        {
+         "book": "PDP",
+         "code": "Management of abnormal operations",
+         "page": "XFTDN6ECAM00001",
+         "pdf": 426
+        }
+       ]
+      }
+     ]
+    },
+    {
+     "actor": "PM",
+     "items": [
+      {
+       "kind": "action",
+       "text": "Read the whole STATUS page; preview APPR PROC workload",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "FCTM",
+         "code": "AOP-30-30",
+         "page": "P 3/6",
+         "pdf": 84
+        },
+        {
+         "book": "PDP",
+         "code": "Management of abnormal operations",
+         "page": "XFTDN6ECAM00001",
+         "pdf": 426
+        }
+       ]
+      },
+      {
+       "kind": "callout",
+       "text": "REMOVE STATUS ?",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "FCTM",
+         "code": "AOP-30-30",
+         "page": "P 3/6",
+         "pdf": 84
+        },
+        {
+         "book": "PDP",
+         "code": "Management of abnormal operations",
+         "page": "XFTDN6ECAM00001",
+         "pdf": 426
+        }
+       ]
+      }
+     ]
+    },
+    {
+     "actor": "PF",
+     "items": [
+      {
+       "kind": "callout",
+       "text": "REMOVE STATUS",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "FCOM",
+         "code": "PRO-ABN-ABN-00",
+         "page": "P 8/12",
+         "pdf": 2831
+        },
+        {
+         "book": "FCTM",
+         "code": "AOP-30-30",
+         "page": "P 3/6",
+         "pdf": 84
+        },
+        {
+         "book": "PDP",
+         "code": "Management of abnormal operations",
+         "page": "XFTDN6ECAM00001",
+         "pdf": 426
+        }
+       ]
+      }
+     ]
+    },
+    {
+     "actor": "PM",
+     "items": [
+      {
+       "kind": "callout",
+       "text": "ECAM ACTIONS COMPLETE",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "FCOM",
+         "code": "PRO-ABN-ABN-00",
+         "page": "P 8/12",
+         "pdf": 2831
+        },
+        {
+         "book": "PDP",
+         "code": "Management of abnormal operations",
+         "page": "XFTDN6ECAM00001",
+         "pdf": 426
+        }
+       ]
+      }
+     ]
+    }
+   ]
+  }
+ ],
+ "procedures": [
+  {
+   "title": "ELEC APU GEN FAULT",
+   "source": "FCOM PRO-ABN-ELEC P 27/122",
+   "lines": [
+    {
+     "kind": "action",
+     "item": "APU GEN",
+     "setting": "OFF THEN ON",
+     "text": "",
+     "level": 0,
+     "applies_to": [
+      "all"
+     ],
+     "refs": [
+      {
+       "book": "FCOM",
+       "code": "PRO-ABN-ELEC",
+       "page": "P 27/122",
+       "pdf": 3152
+      }
+     ]
+    },
+    {
+     "kind": "condition",
+     "text": "IF UNSUCCESSFUL:",
+     "level": 0,
+     "applies_to": [
+      "all"
+     ],
+     "refs": [
+      {
+       "book": "FCOM",
+       "code": "PRO-ABN-ELEC",
+       "page": "P 27/122",
+       "pdf": 3152
+      }
+     ]
+    },
+    {
+     "kind": "action",
+     "item": "APU GEN",
+     "setting": "OFF",
+     "text": "",
+     "level": 1,
+     "applies_to": [
+      "all"
+     ],
+     "refs": [
+      {
+       "book": "FCOM",
+       "code": "PRO-ABN-ELEC",
+       "page": "P 27/122",
+       "pdf": 3152
+      }
+     ]
+    }
+   ]
+  }
+ ],
+ "status": {
+  "limitations": [],
+  "info": [],
+  "appr_proc": [],
+  "inop_sys": [
+   {
+    "text": "MAIN GALLEY (when only one GEN operating)",
+    "applies_to": [
+     "all"
+    ],
+    "refs": [
+     {
+      "book": "FCOM",
+      "code": "PRO-ABN-ELEC",
+      "page": "P 28/122",
+      "pdf": 3153
+     }
+    ]
+   },
+   {
+    "text": "APU GEN",
+    "applies_to": [
+     "all"
+    ],
+    "refs": [
+     {
+      "book": "FCOM",
+      "code": "PRO-ABN-ELEC",
+      "page": "P 28/122",
+      "pdf": 3153
+     }
+    ]
+   }
+  ]
+ },
+ "background": [
+  {
+   "text": "APU GEN pb-sw OFF de-energizes the generator field, opens the line contactor and resets the fault circuit.",
+   "applies_to": [
+    "all"
+   ],
+   "refs": [
+    {
+     "book": "FCOM",
+     "code": "DSC-24-20",
+     "page": "P 4/22",
+     "pdf": 1467
+    }
+   ]
+  },
+  {
+   "text": "The APU GEN FAULT light is inhibited when APU speed is too low, or when the APU GEN line contactor opens after EXT PWR or an engine generator takes over.",
+   "applies_to": [
+    "all"
+   ],
+   "refs": [
+    {
+     "book": "FCOM",
+     "code": "DSC-24-20",
+     "page": "P 4/22",
+     "pdf": 1467
+    }
+   ]
+  }
+ ],
+ "related": [
+  {
+   "title": "APU AUTO (EMER) SHUT DOWN",
+   "why": "A different alert: the APU itself has stopped, not only its generator.",
+   "key_actions": [
+    "See the APU AUTO (EMER) SHUT DOWN brief"
+   ],
+   "refs": [
+    {
+     "book": "FCOM",
+     "code": "PRO-ABN-APU",
+     "page": "P 1/4",
+     "pdf": 2972
+    }
+   ]
+  }
+ ],
+ "gaps": [
+  {
+   "text": "HS-TO-only version of this procedure is excluded.",
+   "applies_to": [
+    "all"
+   ],
+   "refs": [
+    {
+     "book": "FCOM",
+     "code": "PRO-ABN-ELEC",
+     "page": "P 28/122",
+     "pdf": 3153
+    }
+   ]
+  },
+  {
+   "text": "The FCTM and the PDP have no technique specific to this alert, and the QRH reset table does not list it; the OFF THEN ON line is the procedure's own. The flow is the standard ECAM sequence.",
+   "applies_to": [
+    "all"
+   ],
+   "refs": [
+    {
+     "book": "FCOM",
+     "code": "PRO-ABN-ELEC",
+     "page": "P 27/122",
+     "pdf": 3152
+    },
+    {
+     "book": "FCTM",
+     "code": "AOP-30-30",
+     "page": "P 2/6",
+     "pdf": 83
+    },
+    {
+     "book": "PDP",
+     "code": "Management of abnormal operations",
+     "page": "XFTDN6ECAM00001",
+     "pdf": 424
+    }
+   ]
+  }
+ ],
+ "sources": [
+  {
+   "book": "FCOM",
+   "section": "PRO-ABN-ELEC — ELEC APU GEN FAULT",
+   "pages": "P 27–28/122",
+   "pdf": "3152–3153",
+   "rev": "26 MAY 26"
+  },
+  {
+   "book": "FCOM",
+   "section": "DSC-24-20 — electrical controls",
+   "pages": "P 4/22",
+   "pdf": "1467",
+   "rev": "21 MAY 25"
+  },
+  {
+   "book": "FCTM",
+   "section": "AOP-20 / AOP-30 — task sharing and ECAM handling",
+   "pages": "AOP-20 P 1–2/10, AOP-30 P 1–6/6",
+   "pdf": "68–69, 79–86",
+   "rev": "26 MAY 26"
+  },
+  {
+   "book": "PDP",
+   "section": "Management of abnormal operations (XFTDN6ECAM00001)",
+   "pages": "ECAM actions, STATUS, QRH, confirm",
+   "pdf": "424–432",
+   "rev": "JAN 2024"
+  }
+ ],
+ "schema": "a320-ecam-abnormal/3",
+ "generated": "2026-10-31",
+ "qrh": [],
+ "tables": [],
+ "technique": [],
+ "differences": []
+}

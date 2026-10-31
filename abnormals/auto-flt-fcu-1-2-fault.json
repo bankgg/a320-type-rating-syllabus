@@ -1,0 +1,1937 @@
+{
+  "slug": "auto-flt-fcu-1-2-fault",
+  "title": "AUTO FLT FCU 1 + 2 FAULT",
+  "kind": "ecam",
+  "alert": {
+    "level": "caution",
+    "land_asap": "none",
+    "memory_items": false,
+    "qrh_summary": false,
+    "trigger": "The FCU is completely lost (both channels failed).",
+    "inhibited_phases": [
+      3,
+      4,
+      5,
+      7,
+      8
+    ],
+    "refs": [
+      {
+        "book": "FCOM",
+        "code": "PRO-ABN-AUTO_FLT",
+        "page": "P 21/42",
+        "pdf": 2998
+      }
+    ]
+  },
+  "effectivity": {
+    "branches": [],
+    "note": "FCOM procedure applies to ALL; the QRH reset used here is the all HS-TX version."
+  },
+  "summary": "Both FCU channels are lost, so every FCU control is inoperative. A/THR, both APs and both FDs are not available, except in LAND or GO AROUND mode where only A/THR is lost. The PFD barometric reference goes to 1 013 hPa, so set the actual setting on the standby altimeter and make the minimum callouts from it. The QRH reset table lists this alert, so consider the C/B reset at the STOP ECAM pause.",
+  "key_limits": [
+    {
+      "label": "PFD BARO REF",
+      "value": "STD ONLY",
+      "applies_to": [
+        "all"
+      ],
+      "refs": [
+        {
+          "book": "FCOM",
+          "code": "PRO-ABN-AUTO_FLT",
+          "page": "P 22/42",
+          "pdf": 2999
+        },
+        {
+          "book": "FCOM",
+          "code": "PRO-ABN-AUTO_FLT",
+          "page": "P 23/42",
+          "pdf": 3000
+        }
+      ]
+    },
+    {
+      "label": "Standby altimeter",
+      "value": "Set the actual barometer setting",
+      "applies_to": [
+        "all"
+      ],
+      "refs": [
+        {
+          "book": "FCOM",
+          "code": "PRO-ABN-AUTO_FLT",
+          "page": "P 22/42",
+          "pdf": 2999
+        }
+      ]
+    },
+    {
+      "label": "MDA (MDH)",
+      "value": "Do not insert on PERF APPR",
+      "applies_to": [
+        "all"
+      ],
+      "refs": [
+        {
+          "book": "FCOM",
+          "code": "PRO-ABN-AUTO_FLT",
+          "page": "P 22/42",
+          "pdf": 2999
+        }
+      ]
+    },
+    {
+      "label": "In LAND or GA",
+      "value": "CAT 2 ONLY",
+      "applies_to": [
+        "all"
+      ],
+      "refs": [
+        {
+          "book": "FCOM",
+          "code": "PRO-ABN-AUTO_FLT",
+          "page": "P 23/42",
+          "pdf": 3000
+        }
+      ]
+    },
+    {
+      "label": "Reset in flight",
+      "value": "Both C/Bs pulled, wait 5 s",
+      "applies_to": [
+        "all"
+      ],
+      "refs": [
+        {
+          "book": "QRH",
+          "code": "02.15",
+          "page": "02.15B",
+          "pdf": 74
+        }
+      ]
+    }
+  ],
+  "flow": [
+    {
+      "phase": "Detection",
+      "steps": [
+        {
+          "actor": "BOTH",
+          "items": [
+            {
+              "kind": "action",
+              "text": "First to notice: MASTER CAUTION reset",
+              "applies_to": [
+                "all"
+              ],
+              "refs": [
+                {
+                  "book": "FCTM",
+                  "code": "AOP-30-30",
+                  "page": "P 2/6",
+                  "pdf": 83
+                },
+                {
+                  "book": "PDP",
+                  "code": "Management of abnormal operations",
+                  "page": "XFTDN6ECAM00001",
+                  "pdf": 424
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "actor": "PF",
+          "items": [
+            {
+              "kind": "action",
+              "text": "Fly the aircraft: AP 1 + 2 and FD 1 + 2 are not available, except in LAND or GO AROUND mode",
+              "applies_to": [
+                "all"
+              ],
+              "refs": [
+                {
+                  "book": "FCOM",
+                  "code": "PRO-ABN-AUTO_FLT",
+                  "page": "P 22/42",
+                  "pdf": 2999
+                },
+                {
+                  "book": "FCTM",
+                  "code": "AOP-30-30",
+                  "page": "P 1/6",
+                  "pdf": 82
+                }
+              ]
+            },
+            {
+              "kind": "action",
+              "text": "A/THR is lost: move the thrust levers. Thrust stays frozen at its last value until they are moved",
+              "applies_to": [
+                "all"
+              ],
+              "refs": [
+                {
+                  "book": "FCOM",
+                  "code": "PRO-ABN-AUTO_FLT",
+                  "page": "P 22/42",
+                  "pdf": 2999
+                },
+                {
+                  "book": "FCOM",
+                  "code": "DSC-22_30-50-40",
+                  "page": "P 2/4",
+                  "pdf": 1193
+                },
+                {
+                  "book": "FCOM",
+                  "code": "PRO-ABN-ENG",
+                  "page": "P 224/226",
+                  "pdf": 3471
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "actor": "PM",
+          "items": [
+            {
+              "kind": "callout",
+              "text": "AUTO FLT FCU 1 + 2 FAULT",
+              "applies_to": [
+                "all"
+              ],
+              "refs": [
+                {
+                  "book": "FCTM",
+                  "code": "AOP-30-30",
+                  "page": "P 2/6",
+                  "pdf": 83
+                },
+                {
+                  "book": "FCOM",
+                  "code": "PRO-ABN-AUTO_FLT",
+                  "page": "P 21/42",
+                  "pdf": 2998
+                },
+                {
+                  "book": "PDP",
+                  "code": "Management of abnormal operations",
+                  "page": "XFTDN6ECAM00001",
+                  "pdf": 424
+                }
+              ]
+            },
+            {
+              "kind": "action",
+              "text": "Confirm the failure on the SD page and overhead panel before acting",
+              "applies_to": [
+                "all"
+              ],
+              "refs": [
+                {
+                  "book": "FCTM",
+                  "code": "AOP-30-30",
+                  "page": "P 2/6",
+                  "pdf": 83
+                },
+                {
+                  "book": "PDP",
+                  "code": "Management of abnormal operations",
+                  "page": "XFTDN6ECAM00001",
+                  "pdf": 424
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "actor": "PF",
+          "items": [
+            {
+              "kind": "callout",
+              "text": "ECAM ACTIONS",
+              "applies_to": [
+                "all"
+              ],
+              "refs": [
+                {
+                  "book": "FCOM",
+                  "code": "PRO-ABN-ABN-00",
+                  "page": "P 8/12",
+                  "pdf": 2831
+                },
+                {
+                  "book": "FCTM",
+                  "code": "AOP-30-30",
+                  "page": "P 3/6",
+                  "pdf": 84
+                },
+                {
+                  "book": "PDP",
+                  "code": "Management of abnormal operations",
+                  "page": "XFTDN6ECAM00001",
+                  "pdf": 424
+                }
+              ]
+            },
+            {
+              "kind": "note",
+              "text": "PF now flies, navigates and communicates",
+              "applies_to": [
+                "all"
+              ],
+              "refs": [
+                {
+                  "book": "FCTM",
+                  "code": "AOP-20",
+                  "page": "P 1–2/10",
+                  "pdf": 68
+                },
+                {
+                  "book": "PDP",
+                  "code": "Management of abnormal operations",
+                  "page": "XFTDN6ECAM00001",
+                  "pdf": 424
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "phase": "ECAM actions",
+      "steps": [
+        {
+          "actor": "PM",
+          "items": [
+            {
+              "kind": "ecam",
+              "item": "PFD BARO REF",
+              "setting": "STD ONLY",
+              "applies_to": [
+                "all"
+              ],
+              "refs": [
+                {
+                  "book": "FCOM",
+                  "code": "PRO-ABN-AUTO_FLT",
+                  "page": "P 22/42",
+                  "pdf": 2999
+                }
+              ]
+            },
+            {
+              "kind": "action",
+              "text": "Use the standby altimeter and change it to the actual barometer setting",
+              "applies_to": [
+                "all"
+              ],
+              "refs": [
+                {
+                  "book": "FCOM",
+                  "code": "PRO-ABN-AUTO_FLT",
+                  "page": "P 22/42",
+                  "pdf": 2999
+                }
+              ]
+            },
+            {
+              "kind": "note",
+              "text": "The barometer reference on the PFD has gone to 1 013 hPa automatically",
+              "applies_to": [
+                "all"
+              ],
+              "refs": [
+                {
+                  "book": "FCOM",
+                  "code": "PRO-ABN-AUTO_FLT",
+                  "page": "P 22/42",
+                  "pdf": 2999
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "phase": "Stop ECAM",
+      "steps": [
+        {
+          "actor": "PM",
+          "items": [
+            {
+              "kind": "callout",
+              "text": "CLEAR AUTO FLT ?",
+              "applies_to": [
+                "all"
+              ],
+              "refs": [
+                {
+                  "book": "FCOM",
+                  "code": "PRO-ABN-ABN-00",
+                  "page": "P 8/12",
+                  "pdf": 2831
+                },
+                {
+                  "book": "FCTM",
+                  "code": "AOP-30-30",
+                  "page": "P 3/6",
+                  "pdf": 84
+                },
+                {
+                  "book": "PDP",
+                  "code": "Management of abnormal operations",
+                  "page": "XFTDN6ECAM00001",
+                  "pdf": 424
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "actor": "PF",
+          "items": [
+            {
+              "kind": "callout",
+              "text": "CLEAR AUTO FLT",
+              "applies_to": [
+                "all"
+              ],
+              "refs": [
+                {
+                  "book": "FCOM",
+                  "code": "PRO-ABN-ABN-00",
+                  "page": "P 8/12",
+                  "pdf": 2831
+                },
+                {
+                  "book": "FCTM",
+                  "code": "AOP-30-30",
+                  "page": "P 3/6",
+                  "pdf": 84
+                },
+                {
+                  "book": "PDP",
+                  "code": "Management of abnormal operations",
+                  "page": "XFTDN6ECAM00001",
+                  "pdf": 424
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "actor": "PM",
+          "items": [
+            {
+              "kind": "callout",
+              "text": "STATUS",
+              "applies_to": [
+                "all"
+              ],
+              "refs": [
+                {
+                  "book": "FCTM",
+                  "code": "AOP-30-30",
+                  "page": "P 3/6",
+                  "pdf": 84
+                },
+                {
+                  "book": "PDP",
+                  "code": "Management of abnormal operations",
+                  "page": "XFTDN6ECAM00001",
+                  "pdf": 426
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "actor": "PF",
+          "items": [
+            {
+              "kind": "callout",
+              "text": "STOP ECAM",
+              "applies_to": [
+                "all"
+              ],
+              "refs": [
+                {
+                  "book": "FCTM",
+                  "code": "AOP-30-30",
+                  "page": "P 3/6",
+                  "pdf": 84
+                },
+                {
+                  "book": "PDP",
+                  "code": "Management of abnormal operations",
+                  "page": "XFTDN6ECAM00001",
+                  "pdf": 426
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "actor": "PM",
+          "items": [
+            {
+              "kind": "ecam",
+              "item": "ECAM ACTIONS",
+              "setting": "STOP",
+              "applies_to": [
+                "all"
+              ],
+              "refs": [
+                {
+                  "book": "PDP",
+                  "code": "Management of abnormal operations",
+                  "page": "XFTDN6ECAM00001",
+                  "pdf": 426
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "phase": "QRH reset",
+      "steps": [
+        {
+          "actor": "PF",
+          "items": [
+            {
+              "kind": "action",
+              "text": "Consider the reset: the QRH reset table lists AUTO FLT FCU 1 + 2 FAULT, so it is authorized in flight",
+              "applies_to": [
+                "all"
+              ],
+              "refs": [
+                {
+                  "book": "QRH",
+                  "code": "02.02",
+                  "page": "02.02B",
+                  "pdf": 52
+                },
+                {
+                  "book": "QRH",
+                  "code": "02.01",
+                  "page": "02.01A",
+                  "pdf": 50
+                },
+                {
+                  "book": "FCTM",
+                  "code": "AOP-30-30",
+                  "page": "P 4/6",
+                  "pdf": 85
+                },
+                {
+                  "book": "PDP",
+                  "code": "Management of abnormal operations",
+                  "page": "XFTDN6ECAM00001",
+                  "pdf": 426
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "actor": "PM",
+          "items": [
+            {
+              "kind": "action",
+              "text": "Read the QRH lines; point to each cockpit C/B",
+              "applies_to": [
+                "all"
+              ],
+              "refs": [
+                {
+                  "book": "QRH",
+                  "code": "02.15",
+                  "page": "02.15B",
+                  "pdf": 74
+                },
+                {
+                  "book": "FCTM",
+                  "code": "AOP-30-20",
+                  "page": "P 1/2",
+                  "pdf": 80
+                },
+                {
+                  "book": "PDP",
+                  "code": "Management of abnormal operations",
+                  "page": "XFTDN6ECAM00001",
+                  "pdf": 432
+                }
+              ]
+            },
+            {
+              "kind": "callout",
+              "text": "CONFIRM?",
+              "applies_to": [
+                "all"
+              ],
+              "refs": [
+                {
+                  "book": "PDP",
+                  "code": "Management of abnormal operations",
+                  "page": "XFTDN6ECAM00001",
+                  "pdf": 432
+                },
+                {
+                  "book": "FCTM",
+                  "code": "AOP-30-20",
+                  "page": "P 1/2",
+                  "pdf": 80
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "actor": "PF",
+          "items": [
+            {
+              "kind": "callout",
+              "text": "CONFIRMED",
+              "applies_to": [
+                "all"
+              ],
+              "refs": [
+                {
+                  "book": "PDP",
+                  "code": "Management of abnormal operations",
+                  "page": "XFTDN6ECAM00001",
+                  "pdf": 432
+                }
+              ]
+            },
+            {
+              "kind": "note",
+              "text": "After verifying the C/B the PM points to",
+              "applies_to": [
+                "all"
+              ],
+              "refs": [
+                {
+                  "book": "PDP",
+                  "code": "Management of abnormal operations",
+                  "page": "XFTDN6ECAM00001",
+                  "pdf": 432
+                },
+                {
+                  "book": "FCTM",
+                  "code": "AOP-30-20",
+                  "page": "P 1/2",
+                  "pdf": 80
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "actor": "PM",
+          "items": [
+            {
+              "kind": "ecam",
+              "item": "C/B B05 (AUTO FLT / FCU / 1) on 49VU",
+              "setting": "PULL",
+              "applies_to": [
+                "all"
+              ],
+              "refs": [
+                {
+                  "book": "QRH",
+                  "code": "02.15",
+                  "page": "02.15B",
+                  "pdf": 74
+                }
+              ]
+            },
+            {
+              "kind": "ecam",
+              "item": "C/B M21 (AUTO FLT / FCU / 2) on 121VU",
+              "setting": "PULL",
+              "applies_to": [
+                "all"
+              ],
+              "refs": [
+                {
+                  "book": "QRH",
+                  "code": "02.15",
+                  "page": "02.15B",
+                  "pdf": 74
+                }
+              ]
+            },
+            {
+              "kind": "action",
+              "text": "Wait 5 s",
+              "applies_to": [
+                "all"
+              ],
+              "refs": [
+                {
+                  "book": "QRH",
+                  "code": "02.15",
+                  "page": "02.15B",
+                  "pdf": 74
+                }
+              ]
+            },
+            {
+              "kind": "ecam",
+              "item": "C/B B05 (AUTO FLT / FCU / 1) on 49VU",
+              "setting": "PUSH",
+              "applies_to": [
+                "all"
+              ],
+              "refs": [
+                {
+                  "book": "QRH",
+                  "code": "02.15",
+                  "page": "02.15B",
+                  "pdf": 74
+                }
+              ]
+            },
+            {
+              "kind": "ecam",
+              "item": "C/B M21 (AUTO FLT / FCU / 2) on 121VU",
+              "setting": "PUSH",
+              "applies_to": [
+                "all"
+              ],
+              "refs": [
+                {
+                  "book": "QRH",
+                  "code": "02.15",
+                  "page": "02.15B",
+                  "pdf": 74
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "actor": "BOTH",
+          "items": [
+            {
+              "kind": "ecam",
+              "item": "FCU TARGETS AND SELECTIONS",
+              "setting": "CHECK",
+              "applies_to": [
+                "all"
+              ],
+              "refs": [
+                {
+                  "book": "QRH",
+                  "code": "02.15",
+                  "page": "02.15B",
+                  "pdf": 74
+                }
+              ]
+            },
+            {
+              "kind": "ecam",
+              "item": "BAROMETRIC REFERENCE",
+              "setting": "SET/CROSSCHECK",
+              "applies_to": [
+                "all"
+              ],
+              "refs": [
+                {
+                  "book": "QRH",
+                  "code": "02.15",
+                  "page": "02.15B",
+                  "pdf": 74
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "phase": "Continue ECAM",
+      "steps": [
+        {
+          "actor": "PF",
+          "items": [
+            {
+              "kind": "action",
+              "text": "Normal C/L as applicable; system resets only per QRH",
+              "applies_to": [
+                "all"
+              ],
+              "refs": [
+                {
+                  "book": "FCTM",
+                  "code": "AOP-30-30",
+                  "page": "P 4/6",
+                  "pdf": 85
+                },
+                {
+                  "book": "PDP",
+                  "code": "Management of abnormal operations",
+                  "page": "XFTDN6ECAM00001",
+                  "pdf": 426
+                }
+              ]
+            },
+            {
+              "kind": "callout",
+              "text": "CONTINUE ECAM",
+              "applies_to": [
+                "all"
+              ],
+              "refs": [
+                {
+                  "book": "FCTM",
+                  "code": "AOP-30-30",
+                  "page": "P 3/6",
+                  "pdf": 84
+                },
+                {
+                  "book": "PDP",
+                  "code": "Management of abnormal operations",
+                  "page": "XFTDN6ECAM00001",
+                  "pdf": 426
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "actor": "PM",
+          "items": [
+            {
+              "kind": "action",
+              "text": "Read the whole STATUS page; preview APPR PROC workload",
+              "applies_to": [
+                "all"
+              ],
+              "refs": [
+                {
+                  "book": "FCTM",
+                  "code": "AOP-30-30",
+                  "page": "P 3/6",
+                  "pdf": 84
+                },
+                {
+                  "book": "PDP",
+                  "code": "Management of abnormal operations",
+                  "page": "XFTDN6ECAM00001",
+                  "pdf": 426
+                }
+              ]
+            },
+            {
+              "kind": "callout",
+              "text": "REMOVE STATUS ?",
+              "applies_to": [
+                "all"
+              ],
+              "refs": [
+                {
+                  "book": "FCTM",
+                  "code": "AOP-30-30",
+                  "page": "P 3/6",
+                  "pdf": 84
+                },
+                {
+                  "book": "PDP",
+                  "code": "Management of abnormal operations",
+                  "page": "XFTDN6ECAM00001",
+                  "pdf": 426
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "actor": "PF",
+          "items": [
+            {
+              "kind": "callout",
+              "text": "REMOVE STATUS",
+              "applies_to": [
+                "all"
+              ],
+              "refs": [
+                {
+                  "book": "FCOM",
+                  "code": "PRO-ABN-ABN-00",
+                  "page": "P 8/12",
+                  "pdf": 2831
+                },
+                {
+                  "book": "FCTM",
+                  "code": "AOP-30-30",
+                  "page": "P 3/6",
+                  "pdf": 84
+                },
+                {
+                  "book": "PDP",
+                  "code": "Management of abnormal operations",
+                  "page": "XFTDN6ECAM00001",
+                  "pdf": 426
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "actor": "PM",
+          "items": [
+            {
+              "kind": "callout",
+              "text": "ECAM ACTIONS COMPLETE",
+              "applies_to": [
+                "all"
+              ],
+              "refs": [
+                {
+                  "book": "FCOM",
+                  "code": "PRO-ABN-ABN-00",
+                  "page": "P 8/12",
+                  "pdf": 2831
+                },
+                {
+                  "book": "PDP",
+                  "code": "Management of abnormal operations",
+                  "page": "XFTDN6ECAM00001",
+                  "pdf": 426
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "phase": "Approach",
+      "steps": [
+        {
+          "actor": "BOTH",
+          "items": [
+            {
+              "kind": "action",
+              "text": "Do not insert the MDA (MDH) on the PERF APPR page: PFD altitude is referenced to STD",
+              "applies_to": [
+                "all"
+              ],
+              "refs": [
+                {
+                  "book": "FCOM",
+                  "code": "PRO-ABN-AUTO_FLT",
+                  "page": "P 22/42",
+                  "pdf": 2999
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "actor": "PM",
+          "items": [
+            {
+              "kind": "action",
+              "text": "Make the standard callouts using the STBY altimeter",
+              "applies_to": [
+                "all"
+              ],
+              "refs": [
+                {
+                  "book": "FCOM",
+                  "code": "PRO-ABN-AUTO_FLT",
+                  "page": "P 22/42",
+                  "pdf": 2999
+                }
+              ]
+            },
+            {
+              "kind": "callout",
+              "text": "HUNDRED ABOVE",
+              "applies_to": [
+                "all"
+              ],
+              "refs": [
+                {
+                  "book": "FCOM",
+                  "code": "PRO-ABN-AUTO_FLT",
+                  "page": "P 22/42",
+                  "pdf": 2999
+                }
+              ]
+            },
+            {
+              "kind": "callout",
+              "text": "MINIMUM",
+              "applies_to": [
+                "all"
+              ],
+              "refs": [
+                {
+                  "book": "FCOM",
+                  "code": "PRO-ABN-AUTO_FLT",
+                  "page": "P 22/42",
+                  "pdf": 2999
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "procedures": [
+    {
+      "title": "AUTO FLT FCU 1 + 2 FAULT (ECAM)",
+      "source": "FCOM PRO-ABN-AUTO_FLT P 22/42",
+      "lines": [
+        {
+          "kind": "info",
+          "text": "PFD BARO REF: STD ONLY",
+          "level": 0,
+          "applies_to": [
+            "all"
+          ],
+          "refs": [
+            {
+              "book": "FCOM",
+              "code": "PRO-ABN-AUTO_FLT",
+              "page": "P 22/42",
+              "pdf": 2999
+            }
+          ]
+        },
+        {
+          "kind": "note",
+          "text": "With both FCU channels failed, the barometer reference automatically goes to 1 013 hPa. Use standby altimeter, and change this to the actual barometer setting.",
+          "level": 0,
+          "applies_to": [
+            "all"
+          ],
+          "refs": [
+            {
+              "book": "FCOM",
+              "code": "PRO-ABN-AUTO_FLT",
+              "page": "P 22/42",
+              "pdf": 2999
+            }
+          ]
+        },
+        {
+          "kind": "note",
+          "text": "Do not insert the MDA (MDH) value on the PERF APPR page (because the PFD altitude is referenced to STD, and not to the correct barometric value).",
+          "level": 0,
+          "applies_to": [
+            "all"
+          ],
+          "refs": [
+            {
+              "book": "FCOM",
+              "code": "PRO-ABN-AUTO_FLT",
+              "page": "P 22/42",
+              "pdf": 2999
+            }
+          ]
+        },
+        {
+          "kind": "note",
+          "text": "The PM must then perform the standard callouts (\"HUNDRED ABOVE\" and \"MINIMUM\"), using the STBY altimeter.",
+          "level": 0,
+          "applies_to": [
+            "all"
+          ],
+          "refs": [
+            {
+              "book": "FCOM",
+              "code": "PRO-ABN-AUTO_FLT",
+              "page": "P 22/42",
+              "pdf": 2999
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "AUTO FLT FCU 1+2 FAULT — reset (QRH 02.15B–C)",
+      "source": "QRH 02.15B–C",
+      "lines": [
+        {
+          "kind": "condition",
+          "text": "In flight:",
+          "level": 0,
+          "applies_to": [
+            "all"
+          ],
+          "refs": [
+            {
+              "book": "QRH",
+              "code": "02.15",
+              "page": "02.15B",
+              "pdf": 74
+            }
+          ]
+        },
+        {
+          "kind": "action",
+          "item": "C/B B05 (AUTO FLT / FCU / 1), on 49VU",
+          "setting": "PULL",
+          "text": "",
+          "level": 1,
+          "applies_to": [
+            "all"
+          ],
+          "refs": [
+            {
+              "book": "QRH",
+              "code": "02.15",
+              "page": "02.15B",
+              "pdf": 74
+            }
+          ]
+        },
+        {
+          "kind": "action",
+          "item": "C/B M21 (AUTO FLT / FCU / 2), on 121VU",
+          "setting": "PULL",
+          "text": "",
+          "level": 1,
+          "applies_to": [
+            "all"
+          ],
+          "refs": [
+            {
+              "book": "QRH",
+              "code": "02.15",
+              "page": "02.15B",
+              "pdf": 74
+            }
+          ]
+        },
+        {
+          "kind": "info",
+          "text": "Wait 5 s",
+          "level": 1,
+          "applies_to": [
+            "all"
+          ],
+          "refs": [
+            {
+              "book": "QRH",
+              "code": "02.15",
+              "page": "02.15B",
+              "pdf": 74
+            }
+          ]
+        },
+        {
+          "kind": "action",
+          "item": "C/B B05 (AUTO FLT / FCU / 1), on 49VU",
+          "setting": "PUSH",
+          "text": "",
+          "level": 1,
+          "applies_to": [
+            "all"
+          ],
+          "refs": [
+            {
+              "book": "QRH",
+              "code": "02.15",
+              "page": "02.15B",
+              "pdf": 74
+            }
+          ]
+        },
+        {
+          "kind": "action",
+          "item": "C/B M21 (AUTO FLT / FCU / 2), on 121VU",
+          "setting": "PUSH",
+          "text": "",
+          "level": 1,
+          "applies_to": [
+            "all"
+          ],
+          "refs": [
+            {
+              "book": "QRH",
+              "code": "02.15",
+              "page": "02.15B",
+              "pdf": 74
+            }
+          ]
+        },
+        {
+          "kind": "action",
+          "item": "FCU TARGETS AND SELECTIONS",
+          "setting": "CHECK",
+          "text": "",
+          "level": 1,
+          "applies_to": [
+            "all"
+          ],
+          "refs": [
+            {
+              "book": "QRH",
+              "code": "02.15",
+              "page": "02.15B",
+              "pdf": 74
+            }
+          ]
+        },
+        {
+          "kind": "action",
+          "item": "BAROMETRIC REFERENCE",
+          "setting": "SET/CROSSCHECK",
+          "text": "",
+          "level": 1,
+          "applies_to": [
+            "all"
+          ],
+          "refs": [
+            {
+              "book": "QRH",
+              "code": "02.15",
+              "page": "02.15B",
+              "pdf": 74
+            }
+          ]
+        },
+        {
+          "kind": "condition",
+          "text": "On ground:",
+          "level": 0,
+          "applies_to": [
+            "all"
+          ],
+          "refs": [
+            {
+              "book": "QRH",
+              "code": "02.15",
+              "page": "02.15B",
+              "pdf": 74
+            }
+          ]
+        },
+        {
+          "kind": "action",
+          "item": "C/B B05 (AUTO FLT / FCU / 1), on 49VU",
+          "setting": "PULL",
+          "text": "",
+          "level": 1,
+          "applies_to": [
+            "all"
+          ],
+          "refs": [
+            {
+              "book": "QRH",
+              "code": "02.15",
+              "page": "02.15B",
+              "pdf": 74
+            }
+          ]
+        },
+        {
+          "kind": "action",
+          "item": "C/B M21 (AUTO FLT / FCU / 2), on 121VU",
+          "setting": "PULL",
+          "text": "",
+          "level": 1,
+          "applies_to": [
+            "all"
+          ],
+          "refs": [
+            {
+              "book": "QRH",
+              "code": "02.15",
+              "page": "02.15B",
+              "pdf": 74
+            }
+          ]
+        },
+        {
+          "kind": "info",
+          "text": "Wait 5 s",
+          "level": 1,
+          "applies_to": [
+            "all"
+          ],
+          "refs": [
+            {
+              "book": "QRH",
+              "code": "02.15",
+              "page": "02.15B",
+              "pdf": 74
+            }
+          ]
+        },
+        {
+          "kind": "action",
+          "item": "C/B B05 (AUTO FLT / FCU / 1), on 49VU",
+          "setting": "PUSH",
+          "text": "",
+          "level": 1,
+          "applies_to": [
+            "all"
+          ],
+          "refs": [
+            {
+              "book": "QRH",
+              "code": "02.15",
+              "page": "02.15B",
+              "pdf": 74
+            }
+          ]
+        },
+        {
+          "kind": "action",
+          "item": "C/B M21 (AUTO FLT / FCU / 2), on 121VU",
+          "setting": "PUSH",
+          "text": "",
+          "level": 1,
+          "applies_to": [
+            "all"
+          ],
+          "refs": [
+            {
+              "book": "QRH",
+              "code": "02.15",
+              "page": "02.15B",
+              "pdf": 74
+            }
+          ]
+        },
+        {
+          "kind": "condition",
+          "text": "If AUTO FLT FCU 1+2 FAULT disappears:",
+          "level": 1,
+          "applies_to": [
+            "all"
+          ],
+          "refs": [
+            {
+              "book": "QRH",
+              "code": "02.15",
+              "page": "02.15B",
+              "pdf": 74
+            }
+          ]
+        },
+        {
+          "kind": "action",
+          "item": "FCU TARGETS AND SELECTIONS",
+          "setting": "CHECK",
+          "text": "",
+          "level": 2,
+          "applies_to": [
+            "all"
+          ],
+          "refs": [
+            {
+              "book": "QRH",
+              "code": "02.15",
+              "page": "02.15B",
+              "pdf": 74
+            }
+          ]
+        },
+        {
+          "kind": "action",
+          "item": "BAROMETRIC REFERENCE",
+          "setting": "SET/CROSSCHECK",
+          "text": "",
+          "level": 2,
+          "applies_to": [
+            "all"
+          ],
+          "refs": [
+            {
+              "book": "QRH",
+              "code": "02.15",
+              "page": "02.15B",
+              "pdf": 74
+            }
+          ]
+        },
+        {
+          "kind": "condition",
+          "text": "If AUTO FLT FCU 1+2 FAULT remains:",
+          "level": 1,
+          "applies_to": [
+            "all"
+          ],
+          "refs": [
+            {
+              "book": "QRH",
+              "code": "02.15",
+              "page": "02.15B",
+              "pdf": 74
+            }
+          ]
+        },
+        {
+          "kind": "action",
+          "item": "C/B B05 (AUTO FLT / FCU / 1), on 49VU",
+          "setting": "PULL",
+          "text": "",
+          "level": 2,
+          "applies_to": [
+            "all"
+          ],
+          "refs": [
+            {
+              "book": "QRH",
+              "code": "02.15",
+              "page": "02.15B",
+              "pdf": 74
+            }
+          ]
+        },
+        {
+          "kind": "action",
+          "item": "C/B M21 (AUTO FLT / FCU / 2), on 121VU",
+          "setting": "PULL",
+          "text": "",
+          "level": 2,
+          "applies_to": [
+            "all"
+          ],
+          "refs": [
+            {
+              "book": "QRH",
+              "code": "02.15",
+              "page": "02.15B",
+              "pdf": 74
+            }
+          ]
+        },
+        {
+          "kind": "info",
+          "text": "Wait 7 min",
+          "level": 2,
+          "applies_to": [
+            "all"
+          ],
+          "refs": [
+            {
+              "book": "QRH",
+              "code": "02.15",
+              "page": "02.15B",
+              "pdf": 74
+            }
+          ]
+        },
+        {
+          "kind": "action",
+          "item": "C/B B05 (AUTO FLT / FCU / 1), on 49VU",
+          "setting": "PUSH",
+          "text": "",
+          "level": 2,
+          "applies_to": [
+            "all"
+          ],
+          "refs": [
+            {
+              "book": "QRH",
+              "code": "02.15",
+              "page": "02.15C",
+              "pdf": 75
+            }
+          ]
+        },
+        {
+          "kind": "info",
+          "text": "Within 5 s, on 121VU:",
+          "level": 2,
+          "applies_to": [
+            "all"
+          ],
+          "refs": [
+            {
+              "book": "QRH",
+              "code": "02.15",
+              "page": "02.15C",
+              "pdf": 75
+            }
+          ]
+        },
+        {
+          "kind": "action",
+          "item": "C/B M21 (AUTO FLT / FCU / 2)",
+          "setting": "PUSH",
+          "text": "",
+          "level": 2,
+          "applies_to": [
+            "all"
+          ],
+          "refs": [
+            {
+              "book": "QRH",
+              "code": "02.15",
+              "page": "02.15C",
+              "pdf": 75
+            }
+          ]
+        },
+        {
+          "kind": "info",
+          "text": "Wait at least 30 s for FCU 1 and FCU 2 safety tests completion.",
+          "level": 2,
+          "applies_to": [
+            "all"
+          ],
+          "refs": [
+            {
+              "book": "QRH",
+              "code": "02.15",
+              "page": "02.15C",
+              "pdf": 75
+            }
+          ]
+        },
+        {
+          "kind": "action",
+          "item": "FCU TARGETS AND SELECTIONS",
+          "setting": "CHECK",
+          "text": "",
+          "level": 2,
+          "applies_to": [
+            "all"
+          ],
+          "refs": [
+            {
+              "book": "QRH",
+              "code": "02.15",
+              "page": "02.15C",
+              "pdf": 75
+            }
+          ]
+        },
+        {
+          "kind": "action",
+          "item": "BAROMETRIC REFERENCE",
+          "setting": "SET/CROSSCHECK",
+          "text": "",
+          "level": 2,
+          "applies_to": [
+            "all"
+          ],
+          "refs": [
+            {
+              "book": "QRH",
+              "code": "02.15",
+              "page": "02.15C",
+              "pdf": 75
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "status": {
+    "limitations": [
+      {
+        "text": "PFD BARO REF : STD ONLY",
+        "applies_to": [
+          "all"
+        ],
+        "refs": [
+          {
+            "book": "FCOM",
+            "code": "PRO-ABN-AUTO_FLT",
+            "page": "P 23/42",
+            "pdf": 3000
+          }
+        ]
+      },
+      {
+        "text": "If in LAND or GA: CAT 2 ONLY",
+        "applies_to": [
+          "all"
+        ],
+        "refs": [
+          {
+            "book": "FCOM",
+            "code": "PRO-ABN-AUTO_FLT",
+            "page": "P 23/42",
+            "pdf": 3000
+          }
+        ]
+      }
+    ],
+    "info": [],
+    "appr_proc": [],
+    "inop_sys": [
+      {
+        "text": "FCU 1 + 2",
+        "applies_to": [
+          "all"
+        ],
+        "refs": [
+          {
+            "book": "FCOM",
+            "code": "PRO-ABN-AUTO_FLT",
+            "page": "P 23/42",
+            "pdf": 3000
+          }
+        ]
+      },
+      {
+        "text": "AP 1 + 2 (if not LAND or GA)",
+        "applies_to": [
+          "all"
+        ],
+        "refs": [
+          {
+            "book": "FCOM",
+            "code": "PRO-ABN-AUTO_FLT",
+            "page": "P 23/42",
+            "pdf": 3000
+          }
+        ]
+      },
+      {
+        "text": "A/THR",
+        "applies_to": [
+          "all"
+        ],
+        "refs": [
+          {
+            "book": "FCOM",
+            "code": "PRO-ABN-AUTO_FLT",
+            "page": "P 23/42",
+            "pdf": 3000
+          }
+        ]
+      },
+      {
+        "text": "CAT 3 (if in LAND or GA mode)",
+        "applies_to": [
+          "all"
+        ],
+        "refs": [
+          {
+            "book": "FCOM",
+            "code": "PRO-ABN-AUTO_FLT",
+            "page": "P 23/42",
+            "pdf": 3000
+          }
+        ]
+      },
+      {
+        "text": "CAT 2 (if not LAND or GA)",
+        "applies_to": [
+          "all"
+        ],
+        "refs": [
+          {
+            "book": "FCOM",
+            "code": "PRO-ABN-AUTO_FLT",
+            "page": "P 23/42",
+            "pdf": 3000
+          }
+        ]
+      },
+      {
+        "text": "GPWS TERR",
+        "applies_to": [
+          "all"
+        ],
+        "refs": [
+          {
+            "book": "FCOM",
+            "code": "PRO-ABN-AUTO_FLT",
+            "page": "P 23/42",
+            "pdf": 3000
+          }
+        ]
+      },
+      {
+        "text": "ROW/ROP",
+        "applies_to": [
+          "all"
+        ],
+        "refs": [
+          {
+            "book": "FCOM",
+            "code": "PRO-ABN-AUTO_FLT",
+            "page": "P 23/42",
+            "pdf": 3000
+          }
+        ]
+      }
+    ]
+  },
+  "background": [
+    {
+      "text": "All FCU controls are inoperative. A/THR, AP 1 + 2 and FD 1 + 2 are not available (except in LAND or GO AROUND mode, where only A/THR is lost).",
+      "applies_to": [
+        "all"
+      ],
+      "refs": [
+        {
+          "book": "FCOM",
+          "code": "PRO-ABN-AUTO_FLT",
+          "page": "P 22/42",
+          "pdf": 2999
+        }
+      ]
+    },
+    {
+      "text": "On the PFD: altitude alert inoperative; ILS/GLS/MLS deviation scales displayed; flight path vector displayed; Mach indication inoperative; FMA lost except in LAND or GA mode.",
+      "applies_to": [
+        "all"
+      ],
+      "refs": [
+        {
+          "book": "FCOM",
+          "code": "PRO-ABN-AUTO_FLT",
+          "page": "P 22/42",
+          "pdf": 2999
+        }
+      ]
+    },
+    {
+      "text": "On the ND: ARC mode with map (20 NM range) is displayed. Needle 1 is related to VOR1 only; needle 2 to ADF 2 only. The weather radar image may be lost; if it remains displayed it must be disregarded. In all cases the WXR RNG message is displayed.",
+      "applies_to": [
+        "all"
+      ],
+      "refs": [
+        {
+          "book": "FCOM",
+          "code": "PRO-ABN-AUTO_FLT",
+          "page": "P 22/42",
+          "pdf": 2999
+        }
+      ]
+    },
+    {
+      "text": "An A/THR disconnection caused by a failure is a non-standard disconnection: the engines hold the thrust set before it, THR LK flashes on the FMA and ENG THRUST LOCKED appears every 5 s. The lock ends as soon as the thrust levers are moved.",
+      "applies_to": [
+        "all"
+      ],
+      "refs": [
+        {
+          "book": "FCOM",
+          "code": "DSC-22_30-50-40",
+          "page": "P 2/4",
+          "pdf": 1193
+        },
+        {
+          "book": "FCOM",
+          "code": "PRO-ABN-ENG",
+          "page": "P 224/226",
+          "pdf": 3471
+        },
+        {
+          "book": "FCOM",
+          "code": "DSC-22_30-80-20",
+          "page": "P 34/36",
+          "pdf": 1259
+        }
+      ]
+    },
+    {
+      "text": "Alpha-floor protection is inhibited when both FCU channels are failed.",
+      "applies_to": [
+        "all"
+      ],
+      "refs": [
+        {
+          "book": "FCOM",
+          "code": "DSC-22_40-30",
+          "page": "P 4/4",
+          "pdf": 1279
+        }
+      ]
+    }
+  ],
+  "technique": [
+    {
+      "text": "STOP ECAM before reading STATUS to consider system resets, from the QRH reset table only. Baro setting is one of the actions that needs both pilots.",
+      "applies_to": [
+        "all"
+      ],
+      "refs": [
+        {
+          "book": "FCTM",
+          "code": "AOP-30-30",
+          "page": "P 3/6",
+          "pdf": 84
+        },
+        {
+          "book": "FCTM",
+          "code": "AOP-30-30",
+          "page": "P 4/6",
+          "pdf": 85
+        },
+        {
+          "book": "PDP",
+          "code": "Management of abnormal operations",
+          "page": "XFTDN6ECAM00001",
+          "pdf": 430
+        }
+      ]
+    }
+  ],
+  "related": [
+    {
+      "title": "ENG THRUST LOCKED",
+      "why": "Triggers if the thrust levers are not moved within 5 s after an involuntary A/THR disconnection.",
+      "key_actions": [
+        "THR LEVERS: MOVE"
+      ],
+      "refs": [
+        {
+          "book": "FCOM",
+          "code": "PRO-ABN-ENG",
+          "page": "P 224/226",
+          "pdf": 3471
+        }
+      ]
+    },
+    {
+      "title": "AUTO FLT FCU 1(2) FAULT",
+      "why": "One channel only remains operative. A separate alert with its own QRH reset (02.14).",
+      "key_actions": [
+        "BARO REF: X CHECK"
+      ],
+      "refs": [
+        {
+          "book": "FCOM",
+          "code": "PRO-ABN-AUTO_FLT",
+          "page": "P 20/42",
+          "pdf": 2997
+        },
+        {
+          "book": "QRH",
+          "code": "02.14",
+          "page": "02.14A",
+          "pdf": 69
+        }
+      ]
+    }
+  ],
+  "gaps": [
+    {
+      "text": "The FCTM has no technique for this failure (PR-AEP-AUTOFLT covers FMGC failure only), and the PDP has no module for it. Fly/thrust items come from the FCOM layer 2 text and the DSC thrust-lock description.",
+      "applies_to": [
+        "all"
+      ],
+      "refs": [
+        {
+          "book": "FCTM",
+          "code": "PR-AEP-AUTOFLT",
+          "page": "P 1/2",
+          "pdf": 394
+        },
+        {
+          "book": "FCOM",
+          "code": "DSC-22_30-50-40",
+          "page": "P 2/4",
+          "pdf": 1193
+        }
+      ]
+    },
+    {
+      "text": "The FCOM names no pilot for changing the standby altimeter; the brief shows the PM, confirmed by the user. It names no pilot for not inserting the MDA (MDH), shown for both pilots. It names the PM only for the callouts.",
+      "applies_to": [
+        "all"
+      ],
+      "refs": [
+        {
+          "book": "FCOM",
+          "code": "PRO-ABN-AUTO_FLT",
+          "page": "P 22/42",
+          "pdf": 2999
+        }
+      ]
+    },
+    {
+      "text": "The FCOM says the FMA is lost except in LAND or GA mode, and also that THR LK flashes on the FMA. The manuals do not reconcile the two. The brief only states the conflict, confirmed by the user.",
+      "applies_to": [
+        "all"
+      ],
+      "refs": [
+        {
+          "book": "FCOM",
+          "code": "PRO-ABN-AUTO_FLT",
+          "page": "P 22/42",
+          "pdf": 2999
+        },
+        {
+          "book": "FCOM",
+          "code": "DSC-22_30-50-40",
+          "page": "P 2/4",
+          "pdf": 1193
+        }
+      ]
+    },
+    {
+      "text": "HS-TO-only QRH version of the reset (02.15A) is excluded.",
+      "applies_to": [
+        "all"
+      ],
+      "refs": [
+        {
+          "book": "QRH",
+          "code": "02.15",
+          "page": "02.15A",
+          "pdf": 73
+        }
+      ]
+    }
+  ],
+  "sources": [
+    {
+      "book": "FCOM",
+      "section": "PRO-ABN-AUTO_FLT — AUTO FLT FCU 1 + 2 FAULT",
+      "pages": "P 21–23/42",
+      "pdf": "2998–3000",
+      "rev": "26 MAY 26"
+    },
+    {
+      "book": "QRH",
+      "section": "02.15 AUTO FLT FCU 1+2 FAULT; 02.02 reset table",
+      "pages": "02.15B–C, 02.02B, 02.01A",
+      "pdf": "50, 52, 74–75",
+      "rev": "26 MAY 26"
+    },
+    {
+      "book": "FCOM",
+      "section": "DSC-22_30-50-40 thrust lock; DSC-22_40-30 alpha-floor; PRO-ABN-ENG ENG THRUST LOCKED",
+      "pages": "P 2/4; P 4/4; P 224/226",
+      "pdf": "1193, 1279, 3471",
+      "rev": "26 MAY 26"
+    },
+    {
+      "book": "FCTM",
+      "section": "AOP-20 / AOP-30 — task sharing and ECAM handling",
+      "pages": "AOP-20 P 1–2/10, AOP-30 P 1–6/6",
+      "pdf": "68–69, 79–86",
+      "rev": "26 MAY 26"
+    },
+    {
+      "book": "PDP",
+      "section": "Management of abnormal operations (XFTDN6ECAM00001)",
+      "pages": "ECAM actions, STATUS, QRH, confirm",
+      "pdf": "424–432",
+      "rev": "JAN 2024"
+    }
+  ],
+  "schema": "a320-ecam-abnormal/3",
+  "generated": "2026-10-31",
+  "qrh": [],
+  "tables": [],
+  "differences": []
+}

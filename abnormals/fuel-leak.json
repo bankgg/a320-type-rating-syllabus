@@ -1,0 +1,2665 @@
+{
+  "slug": "fuel-leak",
+  "title": "FUEL LEAK",
+  "kind": "qrh",
+  "alert": {
+    "level": "qrh",
+    "land_asap": "amber",
+    "memory_items": false,
+    "qrh_summary": false,
+    "trigger": "FOB + FU significantly less than FOB at engine start or decreasing; fuel spray seen from an engine, pylon or wingtip/sharklet; total fuel decreasing abnormally; a developing imbalance; a tank decreasing too fast; excessive fuel flow with low N1; fuel smell in the cabin; destination EFOB amber or \"DEST EFOB BELOW MIN\"; depending on the FWC standard, the FUEL F.USED/FOB DISAGREE alert.",
+    "inhibited_phases": [],
+    "refs": [
+      {
+        "book": "FCOM",
+        "code": "PRO-ABN-FUEL",
+        "page": "P 4/76",
+        "pdf": 3609
+      },
+      {
+        "book": "FCOM",
+        "code": "PRO-ABN-FUEL",
+        "page": "P 6/76",
+        "pdf": 3611
+      },
+      {
+        "book": "FCTM",
+        "code": "PR-AEP-FUEL",
+        "page": "P 4/4",
+        "pdf": 437
+      }
+    ]
+  },
+  "effectivity": {
+    "branches": [
+      "HS-TXA..TXO",
+      "HS-TXP..TXU"
+    ],
+    "note": "The center tank lines differ: CTR TK PUMP 1 and 2 on HS-TXA..TXO, CTR TK L and R XFR on HS-TXP..TXU."
+  },
+  "summary": "When a leak is confirmed: amber LAND ASAP. If the leak is confirmed from an engine or pylon, shut that engine down and do not restart it. If not, keep the crossfeed closed, stop the center tank feed and watch the inner tanks. One tank depleting faster by at least 300 kg in less than 30 min: shut down that engine to tell an engine leak from a wing leak. Both depleting alike: suspect the center tank or APU feed line. Do not use the reversers for landing.",
+  "key_limits": [
+    {
+      "label": "Landing",
+      "value": "LAND ASAP (amber)",
+      "applies_to": [
+        "all"
+      ],
+      "refs": [
+        {
+          "book": "QRH",
+          "code": "21.06",
+          "page": "21.06A",
+          "pdf": 199
+        },
+        {
+          "book": "QRH",
+          "code": "21.06",
+          "page": "21.06C",
+          "pdf": 201
+        }
+      ]
+    },
+    {
+      "label": "Asymmetric depletion",
+      "value": "≥ 300 kg in less than 30 min",
+      "applies_to": [
+        "all"
+      ],
+      "refs": [
+        {
+          "book": "QRH",
+          "code": "21.06",
+          "page": "21.06A",
+          "pdf": 199
+        },
+        {
+          "book": "QRH",
+          "code": "21.06",
+          "page": "21.06C",
+          "pdf": 201
+        }
+      ]
+    },
+    {
+      "label": "Center tank feed restored",
+      "value": "Inner tank below 3 000 kg",
+      "applies_to": [
+        "all"
+      ],
+      "refs": [
+        {
+          "book": "QRH",
+          "code": "21.06",
+          "page": "21.06A",
+          "pdf": 199
+        },
+        {
+          "book": "QRH",
+          "code": "21.06",
+          "page": "21.06D",
+          "pdf": 202
+        }
+      ]
+    },
+    {
+      "label": "Reversers",
+      "value": "Do not use for landing; not available for landing performance",
+      "applies_to": [
+        "all"
+      ],
+      "refs": [
+        {
+          "book": "QRH",
+          "code": "21.06",
+          "page": "21.06A",
+          "pdf": 199
+        },
+        {
+          "book": "QRH",
+          "code": "21.06",
+          "page": "21.06D",
+          "pdf": 202
+        },
+        {
+          "book": "FCTM",
+          "code": "PR-AEP-FUEL",
+          "page": "P 3/4",
+          "pdf": 436
+        }
+      ]
+    },
+    {
+      "label": "Fuel checks",
+      "value": "Each waypoint or at least every 30 min",
+      "applies_to": [
+        "all"
+      ],
+      "refs": [
+        {
+          "book": "FCTM",
+          "code": "PR-AEP-FUEL",
+          "page": "P 1/4",
+          "pdf": 434
+        }
+      ]
+    }
+  ],
+  "flow": [
+    {
+      "phase": "Detect",
+      "steps": [
+        {
+          "actor": "BOTH",
+          "items": [
+            {
+              "kind": "action",
+              "text": "Fuel checks at each waypoint or at least every 30 min; investigate any difference without delay",
+              "applies_to": [
+                "all"
+              ],
+              "refs": [
+                {
+                  "book": "FCTM",
+                  "code": "PR-AEP-FUEL",
+                  "page": "P 1/4",
+                  "pdf": 434
+                }
+              ]
+            },
+            {
+              "kind": "action",
+              "text": "If visibility permits, identify the leak source by a visual check from the cabin",
+              "applies_to": [
+                "all"
+              ],
+              "refs": [
+                {
+                  "book": "FCOM",
+                  "code": "PRO-ABN-FUEL",
+                  "page": "P 4/76",
+                  "pdf": 3609
+                },
+                {
+                  "book": "FCOM",
+                  "code": "PRO-ABN-FUEL",
+                  "page": "P 6/76",
+                  "pdf": 3611
+                }
+              ]
+            },
+            {
+              "kind": "note",
+              "text": "Consider a fuel leak for any message or alert on fuel quantity or imbalance",
+              "applies_to": [
+                "all"
+              ],
+              "refs": [
+                {
+                  "book": "FCTM",
+                  "code": "PR-AEP-FUEL",
+                  "page": "P 1/4",
+                  "pdf": 434
+                }
+              ]
+            },
+            {
+              "kind": "note",
+              "text": "Depending on the FWC standard, the FUEL F.USED/FOB DISAGREE alert may address both cases of fuel leak and fuel over read",
+              "applies_to": [
+                "all"
+              ],
+              "refs": [
+                {
+                  "book": "FCTM",
+                  "code": "PR-AEP-FUEL",
+                  "page": "P 4/4",
+                  "pdf": 437
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "phase": "Order",
+      "steps": [
+        {
+          "actor": "PF",
+          "items": [
+            {
+              "kind": "callout",
+              "text": "FUEL LEAK PROCEDURE",
+              "applies_to": [
+                "all"
+              ],
+              "refs": [
+                {
+                  "book": "PDP",
+                  "code": "Management of abnormal operations",
+                  "page": "XFTDN6ECAM00001",
+                  "pdf": 427
+                }
+              ]
+            },
+            {
+              "kind": "note",
+              "text": "PF flies, navigates and communicates. Amber LAND ASAP: consider landing at the nearest suitable airport",
+              "applies_to": [
+                "all"
+              ],
+              "refs": [
+                {
+                  "book": "FCTM",
+                  "code": "AOP-20",
+                  "page": "P 1–2/10",
+                  "pdf": 68
+                },
+                {
+                  "book": "FCTM",
+                  "code": "AOP-30-10",
+                  "page": "P 2/2",
+                  "pdf": 79
+                },
+                {
+                  "book": "QRH",
+                  "code": "21.06",
+                  "page": "21.06A",
+                  "pdf": 199
+                },
+                {
+                  "book": "QRH",
+                  "code": "21.06",
+                  "page": "21.06C",
+                  "pdf": 201
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "actor": "PM",
+          "items": [
+            {
+              "kind": "action",
+              "text": "READ AND DO the QRH lines aloud",
+              "applies_to": [
+                "all"
+              ],
+              "refs": [
+                {
+                  "book": "PDP",
+                  "code": "Management of abnormal operations",
+                  "page": "XFTDN6ECAM00001",
+                  "pdf": 427
+                },
+                {
+                  "book": "FCTM",
+                  "code": "AOP-30-30",
+                  "page": "P 5/6",
+                  "pdf": 86
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "phase": "Leak from engine/pylon confirmed",
+      "steps": [
+        {
+          "actor": "BOTH",
+          "items": [
+            {
+              "kind": "note",
+              "text": "Confirmed by excessive fuel flow, low N1, or visual check",
+              "applies_to": [
+                "all"
+              ],
+              "refs": [
+                {
+                  "book": "QRH",
+                  "code": "21.06",
+                  "page": "21.06A",
+                  "pdf": 199
+                },
+                {
+                  "book": "QRH",
+                  "code": "21.06",
+                  "page": "21.06C",
+                  "pdf": 201
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "actor": "PM",
+          "items": [
+            {
+              "kind": "ecam",
+              "item": "THR LEVER (affected engine)",
+              "setting": "IDLE",
+              "applies_to": [
+                "all"
+              ],
+              "refs": [
+                {
+                  "book": "QRH",
+                  "code": "21.06",
+                  "page": "21.06A",
+                  "pdf": 199
+                },
+                {
+                  "book": "QRH",
+                  "code": "21.06",
+                  "page": "21.06C",
+                  "pdf": 201
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "actor": "PF",
+          "items": [
+            {
+              "kind": "action",
+              "text": "Moves it to IDLE after the PM confirms the lever",
+              "applies_to": [
+                "all"
+              ],
+              "refs": [
+                {
+                  "book": "PDP",
+                  "code": "Management of abnormal operations",
+                  "page": "XFTDN6ECAM00001",
+                  "pdf": 432
+                },
+                {
+                  "book": "FCTM",
+                  "code": "AOP-30-20",
+                  "page": "P 1/2",
+                  "pdf": 80
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "actor": "PM",
+          "items": [
+            {
+              "kind": "callout",
+              "text": "ENGINE MASTER 1 OFF — CONFIRM?",
+              "applies_to": [
+                "all"
+              ],
+              "refs": [
+                {
+                  "book": "PDP",
+                  "code": "Management of abnormal operations",
+                  "page": "XFTDN6ECAM00001",
+                  "pdf": 432
+                },
+                {
+                  "book": "QRH",
+                  "code": "21.06",
+                  "page": "21.06A",
+                  "pdf": 199
+                },
+                {
+                  "book": "QRH",
+                  "code": "21.06",
+                  "page": "21.06C",
+                  "pdf": 201
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "actor": "PF",
+          "items": [
+            {
+              "kind": "callout",
+              "text": "CONFIRMED",
+              "applies_to": [
+                "all"
+              ],
+              "refs": [
+                {
+                  "book": "PDP",
+                  "code": "Management of abnormal operations",
+                  "page": "XFTDN6ECAM00001",
+                  "pdf": 432
+                }
+              ]
+            },
+            {
+              "kind": "note",
+              "text": "After verifying the control the PM points to",
+              "applies_to": [
+                "all"
+              ],
+              "refs": [
+                {
+                  "book": "PDP",
+                  "code": "Management of abnormal operations",
+                  "page": "XFTDN6ECAM00001",
+                  "pdf": 432
+                },
+                {
+                  "book": "FCTM",
+                  "code": "AOP-30-20",
+                  "page": "P 1/2",
+                  "pdf": 80
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "actor": "PM",
+          "items": [
+            {
+              "kind": "ecam",
+              "item": "ENG MASTER (affected engine)",
+              "setting": "OFF",
+              "applies_to": [
+                "all"
+              ],
+              "refs": [
+                {
+                  "book": "QRH",
+                  "code": "21.06",
+                  "page": "21.06A",
+                  "pdf": 199
+                },
+                {
+                  "book": "QRH",
+                  "code": "21.06",
+                  "page": "21.06C",
+                  "pdf": 201
+                }
+              ]
+            },
+            {
+              "kind": "ecam",
+              "item": "FUEL X FEED",
+              "setting": "AS RQRD",
+              "applies_to": [
+                "all"
+              ],
+              "refs": [
+                {
+                  "book": "QRH",
+                  "code": "21.06",
+                  "page": "21.06A",
+                  "pdf": 199
+                },
+                {
+                  "book": "QRH",
+                  "code": "21.06",
+                  "page": "21.06C",
+                  "pdf": 201
+                }
+              ]
+            },
+            {
+              "kind": "note",
+              "text": "If the leak stops, the crossfeed can be opened to re-balance fuel or use fuel from both wings",
+              "applies_to": [
+                "all"
+              ],
+              "refs": [
+                {
+                  "book": "FCOM",
+                  "code": "PRO-ABN-FUEL",
+                  "page": "P 4/76",
+                  "pdf": 3609
+                },
+                {
+                  "book": "FCOM",
+                  "code": "PRO-ABN-FUEL",
+                  "page": "P 6/76",
+                  "pdf": 3611
+                }
+              ]
+            },
+            {
+              "kind": "action",
+              "text": "DO NOT RESTART AFFECTED ENGINE",
+              "applies_to": [
+                "all"
+              ],
+              "refs": [
+                {
+                  "book": "QRH",
+                  "code": "21.06",
+                  "page": "21.06A",
+                  "pdf": 199
+                },
+                {
+                  "book": "QRH",
+                  "code": "21.06",
+                  "page": "21.06C",
+                  "pdf": 201
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "phase": "Leak not confirmed or not located",
+      "steps": [
+        {
+          "actor": "PM",
+          "items": [
+            {
+              "kind": "ecam",
+              "item": "FUEL X FEED",
+              "setting": "MAINTAIN CLOSED",
+              "applies_to": [
+                "all"
+              ],
+              "refs": [
+                {
+                  "book": "QRH",
+                  "code": "21.06",
+                  "page": "21.06A",
+                  "pdf": 199
+                },
+                {
+                  "book": "QRH",
+                  "code": "21.06",
+                  "page": "21.06C",
+                  "pdf": 201
+                }
+              ]
+            },
+            {
+              "kind": "note",
+              "text": "Stops the leak from affecting both sides",
+              "applies_to": [
+                "all"
+              ],
+              "refs": [
+                {
+                  "book": "FCOM",
+                  "code": "PRO-ABN-FUEL",
+                  "page": "P 4/76",
+                  "pdf": 3609
+                },
+                {
+                  "book": "FCOM",
+                  "code": "PRO-ABN-FUEL",
+                  "page": "P 6/76",
+                  "pdf": 3611
+                }
+              ]
+            },
+            {
+              "kind": "ecam",
+              "item": "CTR TK PUMP 1",
+              "setting": "OFF",
+              "applies_to": [
+                "HS-TXA..TXO"
+              ],
+              "refs": [
+                {
+                  "book": "QRH",
+                  "code": "21.06",
+                  "page": "21.06A",
+                  "pdf": 199
+                }
+              ]
+            },
+            {
+              "kind": "ecam",
+              "item": "CTR TK PUMP 2",
+              "setting": "OFF",
+              "applies_to": [
+                "HS-TXA..TXO"
+              ],
+              "refs": [
+                {
+                  "book": "QRH",
+                  "code": "21.06",
+                  "page": "21.06A",
+                  "pdf": 199
+                }
+              ]
+            },
+            {
+              "kind": "ecam",
+              "item": "CTR TK L XFR",
+              "setting": "OFF",
+              "applies_to": [
+                "HS-TXP..TXU"
+              ],
+              "refs": [
+                {
+                  "book": "QRH",
+                  "code": "21.06",
+                  "page": "21.06C",
+                  "pdf": 201
+                }
+              ]
+            },
+            {
+              "kind": "ecam",
+              "item": "CTR TK R XFR",
+              "setting": "OFF",
+              "applies_to": [
+                "HS-TXP..TXU"
+              ],
+              "refs": [
+                {
+                  "book": "QRH",
+                  "code": "21.06",
+                  "page": "21.06C",
+                  "pdf": 201
+                }
+              ]
+            },
+            {
+              "kind": "ecam",
+              "item": "INNER TANK FUEL QUANTITIES",
+              "setting": "MONITOR",
+              "applies_to": [
+                "all"
+              ],
+              "refs": [
+                {
+                  "book": "QRH",
+                  "code": "21.06",
+                  "page": "21.06A",
+                  "pdf": 199
+                },
+                {
+                  "book": "QRH",
+                  "code": "21.06",
+                  "page": "21.06C",
+                  "pdf": 201
+                }
+              ]
+            },
+            {
+              "kind": "note",
+              "text": "Each engine is now fed by its own inner tank only: monitor the depletion rate of each",
+              "applies_to": [
+                "all"
+              ],
+              "refs": [
+                {
+                  "book": "FCOM",
+                  "code": "PRO-ABN-FUEL",
+                  "page": "P 4/76",
+                  "pdf": 3609
+                },
+                {
+                  "book": "FCOM",
+                  "code": "PRO-ABN-FUEL",
+                  "page": "P 6/76",
+                  "pdf": 3611
+                },
+                {
+                  "book": "FCOM",
+                  "code": "PRO-ABN-FUEL",
+                  "page": "P 7/76",
+                  "pdf": 3612
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "phase": "One inner tank depletes faster (≥ 300 kg in < 30 min)",
+      "steps": [
+        {
+          "actor": "PM",
+          "items": [
+            {
+              "kind": "ecam",
+              "item": "THR LEVER (engine on leaking side)",
+              "setting": "IDLE",
+              "applies_to": [
+                "all"
+              ],
+              "refs": [
+                {
+                  "book": "QRH",
+                  "code": "21.06",
+                  "page": "21.06A",
+                  "pdf": 199
+                },
+                {
+                  "book": "QRH",
+                  "code": "21.06",
+                  "page": "21.06C",
+                  "pdf": 201
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "actor": "PF",
+          "items": [
+            {
+              "kind": "action",
+              "text": "Moves it to IDLE after the PM confirms the lever",
+              "applies_to": [
+                "all"
+              ],
+              "refs": [
+                {
+                  "book": "PDP",
+                  "code": "Management of abnormal operations",
+                  "page": "XFTDN6ECAM00001",
+                  "pdf": 432
+                },
+                {
+                  "book": "FCTM",
+                  "code": "AOP-30-20",
+                  "page": "P 1/2",
+                  "pdf": 80
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "actor": "PM",
+          "items": [
+            {
+              "kind": "callout",
+              "text": "ENGINE MASTER 1 OFF — CONFIRM?",
+              "applies_to": [
+                "all"
+              ],
+              "refs": [
+                {
+                  "book": "PDP",
+                  "code": "Management of abnormal operations",
+                  "page": "XFTDN6ECAM00001",
+                  "pdf": 432
+                },
+                {
+                  "book": "QRH",
+                  "code": "21.06",
+                  "page": "21.06A",
+                  "pdf": 199
+                },
+                {
+                  "book": "QRH",
+                  "code": "21.06",
+                  "page": "21.06C",
+                  "pdf": 201
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "actor": "PF",
+          "items": [
+            {
+              "kind": "callout",
+              "text": "CONFIRMED",
+              "applies_to": [
+                "all"
+              ],
+              "refs": [
+                {
+                  "book": "PDP",
+                  "code": "Management of abnormal operations",
+                  "page": "XFTDN6ECAM00001",
+                  "pdf": 432
+                }
+              ]
+            },
+            {
+              "kind": "note",
+              "text": "After verifying the control the PM points to",
+              "applies_to": [
+                "all"
+              ],
+              "refs": [
+                {
+                  "book": "PDP",
+                  "code": "Management of abnormal operations",
+                  "page": "XFTDN6ECAM00001",
+                  "pdf": 432
+                },
+                {
+                  "book": "FCTM",
+                  "code": "AOP-30-20",
+                  "page": "P 1/2",
+                  "pdf": 80
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "actor": "PM",
+          "items": [
+            {
+              "kind": "ecam",
+              "item": "ENG MASTER (engine on leaking side)",
+              "setting": "OFF",
+              "applies_to": [
+                "all"
+              ],
+              "refs": [
+                {
+                  "book": "QRH",
+                  "code": "21.06",
+                  "page": "21.06A",
+                  "pdf": 199
+                },
+                {
+                  "book": "QRH",
+                  "code": "21.06",
+                  "page": "21.06C",
+                  "pdf": 201
+                }
+              ]
+            },
+            {
+              "kind": "ecam",
+              "item": "CTR TK PUMP 1",
+              "setting": "ON",
+              "applies_to": [
+                "HS-TXA..TXO"
+              ],
+              "refs": [
+                {
+                  "book": "QRH",
+                  "code": "21.06",
+                  "page": "21.06A",
+                  "pdf": 199
+                }
+              ]
+            },
+            {
+              "kind": "ecam",
+              "item": "CTR TK PUMP 2",
+              "setting": "ON",
+              "applies_to": [
+                "HS-TXA..TXO"
+              ],
+              "refs": [
+                {
+                  "book": "QRH",
+                  "code": "21.06",
+                  "page": "21.06A",
+                  "pdf": 199
+                }
+              ]
+            },
+            {
+              "kind": "ecam",
+              "item": "FUEL LEAK",
+              "setting": "MONITOR",
+              "applies_to": [
+                "all"
+              ],
+              "refs": [
+                {
+                  "book": "QRH",
+                  "code": "21.06",
+                  "page": "21.06A",
+                  "pdf": 199
+                },
+                {
+                  "book": "QRH",
+                  "code": "21.06",
+                  "page": "21.06C",
+                  "pdf": 201
+                }
+              ]
+            },
+            {
+              "kind": "condition",
+              "text": "If leak stops: ENGINE LEAK CONFIRMED",
+              "children": [
+                {
+                  "kind": "ecam",
+                  "item": "CTR TK L XFR",
+                  "setting": "ON",
+                  "applies_to": [
+                    "HS-TXP..TXU"
+                  ],
+                  "refs": [
+                    {
+                      "book": "QRH",
+                      "code": "21.06",
+                      "page": "21.06C",
+                      "pdf": 201
+                    }
+                  ]
+                },
+                {
+                  "kind": "ecam",
+                  "item": "CTR TK R XFR",
+                  "setting": "ON",
+                  "applies_to": [
+                    "HS-TXP..TXU"
+                  ],
+                  "refs": [
+                    {
+                      "book": "QRH",
+                      "code": "21.06",
+                      "page": "21.06C",
+                      "pdf": 201
+                    }
+                  ]
+                },
+                {
+                  "kind": "ecam",
+                  "item": "FUEL X FEED",
+                  "setting": "AS RQRD",
+                  "applies_to": [
+                    "all"
+                  ],
+                  "refs": [
+                    {
+                      "book": "QRH",
+                      "code": "21.06",
+                      "page": "21.06A",
+                      "pdf": 199
+                    },
+                    {
+                      "book": "QRH",
+                      "code": "21.06",
+                      "page": "21.06C",
+                      "pdf": 201
+                    }
+                  ]
+                },
+                {
+                  "kind": "action",
+                  "text": "DO NOT RESTART AFFECTED ENGINE",
+                  "applies_to": [
+                    "all"
+                  ],
+                  "refs": [
+                    {
+                      "book": "QRH",
+                      "code": "21.06",
+                      "page": "21.06A",
+                      "pdf": 199
+                    },
+                    {
+                      "book": "QRH",
+                      "code": "21.06",
+                      "page": "21.06C",
+                      "pdf": 201
+                    }
+                  ]
+                }
+              ],
+              "applies_to": [
+                "all"
+              ],
+              "refs": [
+                {
+                  "book": "QRH",
+                  "code": "21.06",
+                  "page": "21.06A",
+                  "pdf": 199
+                },
+                {
+                  "book": "QRH",
+                  "code": "21.06",
+                  "page": "21.06C",
+                  "pdf": 201
+                }
+              ]
+            },
+            {
+              "kind": "condition",
+              "text": "If leak continues (after engine shutdown): WING LEAK SUSPECTED",
+              "children": [
+                {
+                  "kind": "ecam",
+                  "item": "ENGINE RESTART",
+                  "setting": "CONSIDER",
+                  "applies_to": [
+                    "all"
+                  ],
+                  "refs": [
+                    {
+                      "book": "QRH",
+                      "code": "21.06",
+                      "page": "21.06A",
+                      "pdf": 199
+                    },
+                    {
+                      "book": "QRH",
+                      "code": "21.06",
+                      "page": "21.06C",
+                      "pdf": 201
+                    }
+                  ]
+                },
+                {
+                  "kind": "ecam",
+                  "item": "CTR TK XFR (non-leaking side)",
+                  "setting": "ON",
+                  "applies_to": [
+                    "HS-TXP..TXU"
+                  ],
+                  "refs": [
+                    {
+                      "book": "QRH",
+                      "code": "21.06",
+                      "page": "21.06C",
+                      "pdf": 201
+                    }
+                  ]
+                },
+                {
+                  "kind": "note",
+                  "text": "Do not apply the FUEL IMBALANCE procedure. Approach and landing can be done, even with one full wing/one empty wing",
+                  "applies_to": [
+                    "all"
+                  ],
+                  "refs": [
+                    {
+                      "book": "QRH",
+                      "code": "21.06",
+                      "page": "21.06A",
+                      "pdf": 199
+                    },
+                    {
+                      "book": "QRH",
+                      "code": "21.06",
+                      "page": "21.06C",
+                      "pdf": 201
+                    }
+                  ]
+                }
+              ],
+              "applies_to": [
+                "all"
+              ],
+              "refs": [
+                {
+                  "book": "QRH",
+                  "code": "21.06",
+                  "page": "21.06A",
+                  "pdf": 199
+                },
+                {
+                  "book": "QRH",
+                  "code": "21.06",
+                  "page": "21.06C",
+                  "pdf": 201
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "phase": "Both inner tanks deplete at a similar rate",
+      "steps": [
+        {
+          "actor": "PM",
+          "items": [
+            {
+              "kind": "action",
+              "text": "LEAK FROM CENTER TANK OR APU FEEDING LINE SUSPECTED",
+              "applies_to": [
+                "all"
+              ],
+              "refs": [
+                {
+                  "book": "QRH",
+                  "code": "21.06",
+                  "page": "21.06A",
+                  "pdf": 199
+                },
+                {
+                  "book": "QRH",
+                  "code": "21.06",
+                  "page": "21.06C",
+                  "pdf": 201
+                }
+              ]
+            },
+            {
+              "kind": "condition",
+              "text": "If fuel smell in cabin",
+              "children": [
+                {
+                  "kind": "ecam",
+                  "item": "APU",
+                  "setting": "OFF",
+                  "applies_to": [
+                    "all"
+                  ],
+                  "refs": [
+                    {
+                      "book": "QRH",
+                      "code": "21.06",
+                      "page": "21.06A",
+                      "pdf": 199
+                    },
+                    {
+                      "book": "QRH",
+                      "code": "21.06",
+                      "page": "21.06D",
+                      "pdf": 202
+                    }
+                  ]
+                }
+              ],
+              "applies_to": [
+                "all"
+              ],
+              "refs": [
+                {
+                  "book": "QRH",
+                  "code": "21.06",
+                  "page": "21.06A",
+                  "pdf": 199
+                },
+                {
+                  "book": "QRH",
+                  "code": "21.06",
+                  "page": "21.06D",
+                  "pdf": 202
+                }
+              ]
+            },
+            {
+              "kind": "condition",
+              "text": "When fuel quantity in one inner tank less than 3 000 kg (6 600 lb)",
+              "children": [
+                {
+                  "kind": "ecam",
+                  "item": "CTR TK PUMP 1",
+                  "setting": "ON",
+                  "applies_to": [
+                    "HS-TXA..TXO"
+                  ],
+                  "refs": [
+                    {
+                      "book": "QRH",
+                      "code": "21.06",
+                      "page": "21.06A",
+                      "pdf": 199
+                    }
+                  ]
+                },
+                {
+                  "kind": "ecam",
+                  "item": "CTR TK PUMP 2",
+                  "setting": "ON",
+                  "applies_to": [
+                    "HS-TXA..TXO"
+                  ],
+                  "refs": [
+                    {
+                      "book": "QRH",
+                      "code": "21.06",
+                      "page": "21.06A",
+                      "pdf": 199
+                    }
+                  ]
+                },
+                {
+                  "kind": "ecam",
+                  "item": "CTR TK L XFR",
+                  "setting": "ON",
+                  "applies_to": [
+                    "HS-TXP..TXU"
+                  ],
+                  "refs": [
+                    {
+                      "book": "QRH",
+                      "code": "21.06",
+                      "page": "21.06D",
+                      "pdf": 202
+                    }
+                  ]
+                },
+                {
+                  "kind": "ecam",
+                  "item": "CTR TK R XFR",
+                  "setting": "ON",
+                  "applies_to": [
+                    "HS-TXP..TXU"
+                  ],
+                  "refs": [
+                    {
+                      "book": "QRH",
+                      "code": "21.06",
+                      "page": "21.06D",
+                      "pdf": 202
+                    }
+                  ]
+                }
+              ],
+              "applies_to": [
+                "all"
+              ],
+              "refs": [
+                {
+                  "book": "QRH",
+                  "code": "21.06",
+                  "page": "21.06A",
+                  "pdf": 199
+                },
+                {
+                  "book": "QRH",
+                  "code": "21.06",
+                  "page": "21.06D",
+                  "pdf": 202
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "phase": "For landing",
+      "steps": [
+        {
+          "actor": "PF",
+          "items": [
+            {
+              "kind": "action",
+              "text": "DO NOT USE REVERSERS, even if they are available",
+              "applies_to": [
+                "all"
+              ],
+              "refs": [
+                {
+                  "book": "QRH",
+                  "code": "21.06",
+                  "page": "21.06A",
+                  "pdf": 199
+                },
+                {
+                  "book": "QRH",
+                  "code": "21.06",
+                  "page": "21.06D",
+                  "pdf": 202
+                },
+                {
+                  "book": "FCTM",
+                  "code": "PR-AEP-FUEL",
+                  "page": "P 3/4",
+                  "pdf": 436
+                }
+              ]
+            },
+            {
+              "kind": "action",
+              "text": "Consider the thrust reversers not available when computing landing performance",
+              "applies_to": [
+                "all"
+              ],
+              "refs": [
+                {
+                  "book": "FCTM",
+                  "code": "PR-AEP-FUEL",
+                  "page": "P 3/4",
+                  "pdf": 436
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "actor": "PM",
+          "items": [
+            {
+              "kind": "callout",
+              "text": "FUEL LEAK PROCEDURE COMPLETED",
+              "applies_to": [
+                "all"
+              ],
+              "refs": [
+                {
+                  "book": "PDP",
+                  "code": "Management of abnormal operations",
+                  "page": "XFTDN6ECAM00001",
+                  "pdf": 427
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "procedures": [
+    {
+      "title": "FUEL LEAK",
+      "source": "QRH 21.06A, 21.06C–D; FCOM PRO-ABN-FUEL P 4–7/76",
+      "lines": [
+        {
+          "kind": "condition",
+          "text": "WHEN A LEAK IS CONFIRMED",
+          "level": 0,
+          "applies_to": [
+            "all"
+          ],
+          "refs": [
+            {
+              "book": "QRH",
+              "code": "21.06",
+              "page": "21.06A",
+              "pdf": 199
+            },
+            {
+              "book": "QRH",
+              "code": "21.06",
+              "page": "21.06C",
+              "pdf": 201
+            }
+          ]
+        },
+        {
+          "kind": "land_asap",
+          "text": "LAND ASAP (amber)",
+          "level": 0,
+          "applies_to": [
+            "all"
+          ],
+          "refs": [
+            {
+              "book": "QRH",
+              "code": "21.06",
+              "page": "21.06A",
+              "pdf": 199
+            },
+            {
+              "book": "QRH",
+              "code": "21.06",
+              "page": "21.06C",
+              "pdf": 201
+            }
+          ]
+        },
+        {
+          "kind": "condition",
+          "text": "Leak from engine/pylon confirmed by excessive fuel flow, low N1, or visual check:",
+          "level": 0,
+          "applies_to": [
+            "all"
+          ],
+          "refs": [
+            {
+              "book": "QRH",
+              "code": "21.06",
+              "page": "21.06A",
+              "pdf": 199
+            },
+            {
+              "book": "QRH",
+              "code": "21.06",
+              "page": "21.06C",
+              "pdf": 201
+            }
+          ]
+        },
+        {
+          "kind": "action",
+          "item": "THR LEVER (affected engine)",
+          "setting": "IDLE",
+          "text": "",
+          "level": 1,
+          "applies_to": [
+            "all"
+          ],
+          "refs": [
+            {
+              "book": "QRH",
+              "code": "21.06",
+              "page": "21.06A",
+              "pdf": 199
+            },
+            {
+              "book": "QRH",
+              "code": "21.06",
+              "page": "21.06C",
+              "pdf": 201
+            }
+          ]
+        },
+        {
+          "kind": "action",
+          "item": "ENG MASTER (affected engine)",
+          "setting": "OFF",
+          "text": "",
+          "level": 1,
+          "applies_to": [
+            "all"
+          ],
+          "refs": [
+            {
+              "book": "QRH",
+              "code": "21.06",
+              "page": "21.06A",
+              "pdf": 199
+            },
+            {
+              "book": "QRH",
+              "code": "21.06",
+              "page": "21.06C",
+              "pdf": 201
+            }
+          ]
+        },
+        {
+          "kind": "action",
+          "item": "FUEL X FEED",
+          "setting": "AS RQRD",
+          "text": "",
+          "level": 1,
+          "applies_to": [
+            "all"
+          ],
+          "refs": [
+            {
+              "book": "QRH",
+              "code": "21.06",
+              "page": "21.06A",
+              "pdf": 199
+            },
+            {
+              "book": "QRH",
+              "code": "21.06",
+              "page": "21.06C",
+              "pdf": 201
+            }
+          ]
+        },
+        {
+          "kind": "info",
+          "text": "DO NOT RESTART AFFECTED ENGINE",
+          "level": 1,
+          "applies_to": [
+            "all"
+          ],
+          "refs": [
+            {
+              "book": "QRH",
+              "code": "21.06",
+              "page": "21.06A",
+              "pdf": 199
+            },
+            {
+              "book": "QRH",
+              "code": "21.06",
+              "page": "21.06C",
+              "pdf": 201
+            }
+          ]
+        },
+        {
+          "kind": "condition",
+          "text": "Leak from engine/pylon not confirmed or leak not located:",
+          "level": 0,
+          "applies_to": [
+            "all"
+          ],
+          "refs": [
+            {
+              "book": "QRH",
+              "code": "21.06",
+              "page": "21.06A",
+              "pdf": 199
+            },
+            {
+              "book": "QRH",
+              "code": "21.06",
+              "page": "21.06C",
+              "pdf": 201
+            }
+          ]
+        },
+        {
+          "kind": "action",
+          "item": "FUEL X FEED",
+          "setting": "MAINTAIN CLOSED",
+          "text": "",
+          "level": 1,
+          "applies_to": [
+            "all"
+          ],
+          "refs": [
+            {
+              "book": "QRH",
+              "code": "21.06",
+              "page": "21.06A",
+              "pdf": 199
+            },
+            {
+              "book": "QRH",
+              "code": "21.06",
+              "page": "21.06C",
+              "pdf": 201
+            }
+          ]
+        },
+        {
+          "kind": "action",
+          "item": "CTR TK PUMP 1",
+          "setting": "OFF",
+          "text": "",
+          "level": 1,
+          "applies_to": [
+            "HS-TXA..TXO"
+          ],
+          "refs": [
+            {
+              "book": "QRH",
+              "code": "21.06",
+              "page": "21.06A",
+              "pdf": 199
+            }
+          ]
+        },
+        {
+          "kind": "action",
+          "item": "CTR TK PUMP 2",
+          "setting": "OFF",
+          "text": "",
+          "level": 1,
+          "applies_to": [
+            "HS-TXA..TXO"
+          ],
+          "refs": [
+            {
+              "book": "QRH",
+              "code": "21.06",
+              "page": "21.06A",
+              "pdf": 199
+            }
+          ]
+        },
+        {
+          "kind": "action",
+          "item": "CTR TK L XFR",
+          "setting": "OFF",
+          "text": "",
+          "level": 1,
+          "applies_to": [
+            "HS-TXP..TXU"
+          ],
+          "refs": [
+            {
+              "book": "QRH",
+              "code": "21.06",
+              "page": "21.06C",
+              "pdf": 201
+            }
+          ]
+        },
+        {
+          "kind": "action",
+          "item": "CTR TK R XFR",
+          "setting": "OFF",
+          "text": "",
+          "level": 1,
+          "applies_to": [
+            "HS-TXP..TXU"
+          ],
+          "refs": [
+            {
+              "book": "QRH",
+              "code": "21.06",
+              "page": "21.06C",
+              "pdf": 201
+            }
+          ]
+        },
+        {
+          "kind": "action",
+          "item": "INNER TANK FUEL QUANTITIES",
+          "setting": "MONITOR",
+          "text": "",
+          "level": 1,
+          "applies_to": [
+            "all"
+          ],
+          "refs": [
+            {
+              "book": "QRH",
+              "code": "21.06",
+              "page": "21.06A",
+              "pdf": 199
+            },
+            {
+              "book": "QRH",
+              "code": "21.06",
+              "page": "21.06C",
+              "pdf": 201
+            }
+          ]
+        },
+        {
+          "kind": "condition",
+          "text": "If one inner tank depletes faster than other by at least 300 kg (660 lb) in less than 30 min:",
+          "level": 1,
+          "applies_to": [
+            "all"
+          ],
+          "refs": [
+            {
+              "book": "QRH",
+              "code": "21.06",
+              "page": "21.06A",
+              "pdf": 199
+            },
+            {
+              "book": "QRH",
+              "code": "21.06",
+              "page": "21.06C",
+              "pdf": 201
+            }
+          ]
+        },
+        {
+          "kind": "action",
+          "item": "THR LEVER (engine on leaking side)",
+          "setting": "IDLE",
+          "text": "",
+          "level": 2,
+          "applies_to": [
+            "all"
+          ],
+          "refs": [
+            {
+              "book": "QRH",
+              "code": "21.06",
+              "page": "21.06A",
+              "pdf": 199
+            },
+            {
+              "book": "QRH",
+              "code": "21.06",
+              "page": "21.06C",
+              "pdf": 201
+            }
+          ]
+        },
+        {
+          "kind": "action",
+          "item": "ENG MASTER (engine on leaking side)",
+          "setting": "OFF",
+          "text": "",
+          "level": 2,
+          "applies_to": [
+            "all"
+          ],
+          "refs": [
+            {
+              "book": "QRH",
+              "code": "21.06",
+              "page": "21.06A",
+              "pdf": 199
+            },
+            {
+              "book": "QRH",
+              "code": "21.06",
+              "page": "21.06C",
+              "pdf": 201
+            }
+          ]
+        },
+        {
+          "kind": "action",
+          "item": "CTR TK PUMP 1",
+          "setting": "ON",
+          "text": "",
+          "level": 2,
+          "applies_to": [
+            "HS-TXA..TXO"
+          ],
+          "refs": [
+            {
+              "book": "QRH",
+              "code": "21.06",
+              "page": "21.06A",
+              "pdf": 199
+            }
+          ]
+        },
+        {
+          "kind": "action",
+          "item": "CTR TK PUMP 2",
+          "setting": "ON",
+          "text": "",
+          "level": 2,
+          "applies_to": [
+            "HS-TXA..TXO"
+          ],
+          "refs": [
+            {
+              "book": "QRH",
+              "code": "21.06",
+              "page": "21.06A",
+              "pdf": 199
+            }
+          ]
+        },
+        {
+          "kind": "action",
+          "item": "FUEL LEAK",
+          "setting": "MONITOR",
+          "text": "",
+          "level": 2,
+          "applies_to": [
+            "all"
+          ],
+          "refs": [
+            {
+              "book": "QRH",
+              "code": "21.06",
+              "page": "21.06A",
+              "pdf": 199
+            },
+            {
+              "book": "QRH",
+              "code": "21.06",
+              "page": "21.06C",
+              "pdf": 201
+            }
+          ]
+        },
+        {
+          "kind": "condition",
+          "text": "If leak stops:",
+          "level": 2,
+          "applies_to": [
+            "all"
+          ],
+          "refs": [
+            {
+              "book": "QRH",
+              "code": "21.06",
+              "page": "21.06A",
+              "pdf": 199
+            },
+            {
+              "book": "QRH",
+              "code": "21.06",
+              "page": "21.06C",
+              "pdf": 201
+            }
+          ]
+        },
+        {
+          "kind": "info",
+          "text": "ENGINE LEAK CONFIRMED",
+          "level": 3,
+          "applies_to": [
+            "all"
+          ],
+          "refs": [
+            {
+              "book": "QRH",
+              "code": "21.06",
+              "page": "21.06A",
+              "pdf": 199
+            },
+            {
+              "book": "QRH",
+              "code": "21.06",
+              "page": "21.06C",
+              "pdf": 201
+            }
+          ]
+        },
+        {
+          "kind": "action",
+          "item": "CTR TK L XFR",
+          "setting": "ON",
+          "text": "",
+          "level": 3,
+          "applies_to": [
+            "HS-TXP..TXU"
+          ],
+          "refs": [
+            {
+              "book": "QRH",
+              "code": "21.06",
+              "page": "21.06C",
+              "pdf": 201
+            }
+          ]
+        },
+        {
+          "kind": "action",
+          "item": "CTR TK R XFR",
+          "setting": "ON",
+          "text": "",
+          "level": 3,
+          "applies_to": [
+            "HS-TXP..TXU"
+          ],
+          "refs": [
+            {
+              "book": "QRH",
+              "code": "21.06",
+              "page": "21.06C",
+              "pdf": 201
+            }
+          ]
+        },
+        {
+          "kind": "action",
+          "item": "FUEL X FEED",
+          "setting": "AS RQRD",
+          "text": "",
+          "level": 3,
+          "applies_to": [
+            "all"
+          ],
+          "refs": [
+            {
+              "book": "QRH",
+              "code": "21.06",
+              "page": "21.06A",
+              "pdf": 199
+            },
+            {
+              "book": "QRH",
+              "code": "21.06",
+              "page": "21.06C",
+              "pdf": 201
+            }
+          ]
+        },
+        {
+          "kind": "info",
+          "text": "DO NOT RESTART AFFECTED ENGINE",
+          "level": 3,
+          "applies_to": [
+            "all"
+          ],
+          "refs": [
+            {
+              "book": "QRH",
+              "code": "21.06",
+              "page": "21.06A",
+              "pdf": 199
+            },
+            {
+              "book": "QRH",
+              "code": "21.06",
+              "page": "21.06C",
+              "pdf": 201
+            }
+          ]
+        },
+        {
+          "kind": "condition",
+          "text": "If leak continues (after engine shutdown):",
+          "level": 2,
+          "applies_to": [
+            "all"
+          ],
+          "refs": [
+            {
+              "book": "QRH",
+              "code": "21.06",
+              "page": "21.06A",
+              "pdf": 199
+            },
+            {
+              "book": "QRH",
+              "code": "21.06",
+              "page": "21.06C",
+              "pdf": 201
+            }
+          ]
+        },
+        {
+          "kind": "info",
+          "text": "WING LEAK SUSPECTED",
+          "level": 3,
+          "applies_to": [
+            "all"
+          ],
+          "refs": [
+            {
+              "book": "QRH",
+              "code": "21.06",
+              "page": "21.06A",
+              "pdf": 199
+            },
+            {
+              "book": "QRH",
+              "code": "21.06",
+              "page": "21.06C",
+              "pdf": 201
+            }
+          ]
+        },
+        {
+          "kind": "action",
+          "item": "ENGINE RESTART",
+          "setting": "CONSIDER",
+          "text": "",
+          "level": 3,
+          "applies_to": [
+            "all"
+          ],
+          "refs": [
+            {
+              "book": "QRH",
+              "code": "21.06",
+              "page": "21.06A",
+              "pdf": 199
+            },
+            {
+              "book": "QRH",
+              "code": "21.06",
+              "page": "21.06C",
+              "pdf": 201
+            }
+          ]
+        },
+        {
+          "kind": "action",
+          "item": "CTR TK XFR (non-leaking side)",
+          "setting": "ON",
+          "text": "",
+          "level": 3,
+          "applies_to": [
+            "HS-TXP..TXU"
+          ],
+          "refs": [
+            {
+              "book": "QRH",
+              "code": "21.06",
+              "page": "21.06C",
+              "pdf": 201
+            }
+          ]
+        },
+        {
+          "kind": "caution",
+          "text": "Do not apply the FUEL IMBALANCE procedure. Approach and landing can be done, even with one full wing/one empty wing.",
+          "level": 3,
+          "applies_to": [
+            "all"
+          ],
+          "refs": [
+            {
+              "book": "QRH",
+              "code": "21.06",
+              "page": "21.06A",
+              "pdf": 199
+            },
+            {
+              "book": "QRH",
+              "code": "21.06",
+              "page": "21.06C",
+              "pdf": 201
+            }
+          ]
+        },
+        {
+          "kind": "condition",
+          "text": "If both inner tanks deplete at a similar rate:",
+          "level": 1,
+          "applies_to": [
+            "all"
+          ],
+          "refs": [
+            {
+              "book": "QRH",
+              "code": "21.06",
+              "page": "21.06A",
+              "pdf": 199
+            },
+            {
+              "book": "QRH",
+              "code": "21.06",
+              "page": "21.06C",
+              "pdf": 201
+            }
+          ]
+        },
+        {
+          "kind": "info",
+          "text": "LEAK FROM CENTER TANK OR APU FEEDING LINE SUSPECTED",
+          "level": 2,
+          "applies_to": [
+            "all"
+          ],
+          "refs": [
+            {
+              "book": "QRH",
+              "code": "21.06",
+              "page": "21.06A",
+              "pdf": 199
+            },
+            {
+              "book": "QRH",
+              "code": "21.06",
+              "page": "21.06C",
+              "pdf": 201
+            }
+          ]
+        },
+        {
+          "kind": "condition",
+          "text": "If fuel smell in cabin:",
+          "level": 2,
+          "applies_to": [
+            "all"
+          ],
+          "refs": [
+            {
+              "book": "QRH",
+              "code": "21.06",
+              "page": "21.06A",
+              "pdf": 199
+            },
+            {
+              "book": "QRH",
+              "code": "21.06",
+              "page": "21.06D",
+              "pdf": 202
+            }
+          ]
+        },
+        {
+          "kind": "action",
+          "item": "APU",
+          "setting": "OFF",
+          "text": "",
+          "level": 3,
+          "applies_to": [
+            "all"
+          ],
+          "refs": [
+            {
+              "book": "QRH",
+              "code": "21.06",
+              "page": "21.06A",
+              "pdf": 199
+            },
+            {
+              "book": "QRH",
+              "code": "21.06",
+              "page": "21.06D",
+              "pdf": 202
+            }
+          ]
+        },
+        {
+          "kind": "condition",
+          "text": "When fuel quantity in one inner tank less than 3 000 kg (6 600 lb):",
+          "level": 2,
+          "applies_to": [
+            "all"
+          ],
+          "refs": [
+            {
+              "book": "QRH",
+              "code": "21.06",
+              "page": "21.06A",
+              "pdf": 199
+            },
+            {
+              "book": "QRH",
+              "code": "21.06",
+              "page": "21.06D",
+              "pdf": 202
+            }
+          ]
+        },
+        {
+          "kind": "action",
+          "item": "CTR TK PUMP 1",
+          "setting": "ON",
+          "text": "",
+          "level": 3,
+          "applies_to": [
+            "HS-TXA..TXO"
+          ],
+          "refs": [
+            {
+              "book": "QRH",
+              "code": "21.06",
+              "page": "21.06A",
+              "pdf": 199
+            }
+          ]
+        },
+        {
+          "kind": "action",
+          "item": "CTR TK PUMP 2",
+          "setting": "ON",
+          "text": "",
+          "level": 3,
+          "applies_to": [
+            "HS-TXA..TXO"
+          ],
+          "refs": [
+            {
+              "book": "QRH",
+              "code": "21.06",
+              "page": "21.06A",
+              "pdf": 199
+            }
+          ]
+        },
+        {
+          "kind": "action",
+          "item": "CTR TK L XFR",
+          "setting": "ON",
+          "text": "",
+          "level": 3,
+          "applies_to": [
+            "HS-TXP..TXU"
+          ],
+          "refs": [
+            {
+              "book": "QRH",
+              "code": "21.06",
+              "page": "21.06D",
+              "pdf": 202
+            }
+          ]
+        },
+        {
+          "kind": "action",
+          "item": "CTR TK R XFR",
+          "setting": "ON",
+          "text": "",
+          "level": 3,
+          "applies_to": [
+            "HS-TXP..TXU"
+          ],
+          "refs": [
+            {
+              "book": "QRH",
+              "code": "21.06",
+              "page": "21.06D",
+              "pdf": 202
+            }
+          ]
+        },
+        {
+          "kind": "condition",
+          "text": "For landing: DO NOT USE REVERSERS",
+          "level": 0,
+          "applies_to": [
+            "all"
+          ],
+          "refs": [
+            {
+              "book": "QRH",
+              "code": "21.06",
+              "page": "21.06A",
+              "pdf": 199
+            },
+            {
+              "book": "QRH",
+              "code": "21.06",
+              "page": "21.06D",
+              "pdf": 202
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "status": null,
+  "tables": [
+    {
+      "title": "Indications and probable source",
+      "caption": "FCTM table of indications and observations.",
+      "columns": [
+        "Indications and observations",
+        "Symmetry",
+        "Probable source"
+      ],
+      "rows": [
+        [
+          "Fuel spray from an engine/pylon. For one engine side only: excessive fuel flow or significant N1 decrease. One wing tank decreases abnormally fast.",
+          "Asymmetric",
+          "Engine"
+        ],
+        [
+          "Fuel spray from the wing. One wing decreases abnormally fast.",
+          "Asymmetric & symmetric",
+          "Hole in a tank"
+        ],
+        [
+          "Sudden overflow in one of the tanks.",
+          "Asymmetric & symmetric",
+          "Hole in a pipe"
+        ],
+        [
+          "Developing imbalance. Burnt fuel smell in the cabin. Abnormal decrease of total fuel. [FOB + FU] < BLOCK. FOB differs from the flight plan at a waypoint. Destination EFOB decreasing or amber.",
+          "Asymmetric & symmetric",
+          "Engine, hole in a tank, hole in a pipe, APU"
+        ]
+      ],
+      "applies_to": [
+        "all"
+      ],
+      "refs": [
+        {
+          "book": "FCTM",
+          "code": "PR-AEP-FUEL",
+          "page": "P 1/4",
+          "pdf": 434
+        },
+        {
+          "book": "FCTM",
+          "code": "PR-AEP-FUEL",
+          "page": "P 2/4",
+          "pdf": 435
+        }
+      ]
+    }
+  ],
+  "background": [
+    {
+      "text": "A fuel leak may be detected if the FOB + FU is significantly less than the FOB at engine start or decreasing, a passenger observes fuel spray, the total fuel decreases at an abnormal rate, an imbalance develops, a tank decreases too fast, fuel flow is excessive with low N1, fuel is smelt in the cabin, or the destination EFOB turns amber or \"DEST EFOB BELOW MIN\" appears.",
+      "applies_to": [
+        "all"
+      ],
+      "refs": [
+        {
+          "book": "FCOM",
+          "code": "PRO-ABN-FUEL",
+          "page": "P 4/76",
+          "pdf": 3609
+        },
+        {
+          "book": "FCOM",
+          "code": "PRO-ABN-FUEL",
+          "page": "P 6/76",
+          "pdf": 3611
+        }
+      ]
+    },
+    {
+      "text": "On HS-TXP..TXU a tank overflowing (pipe rupture in a tank) is also listed as a way to detect a leak.",
+      "applies_to": [
+        "HS-TXP..TXU"
+      ],
+      "refs": [
+        {
+          "book": "FCOM",
+          "code": "PRO-ABN-FUEL",
+          "page": "P 6/76",
+          "pdf": 3611
+        }
+      ]
+    },
+    {
+      "text": "APU OFF for a fuel smell in the cabin prevents additional fuel loss through the APU feeding line.",
+      "applies_to": [
+        "all"
+      ],
+      "refs": [
+        {
+          "book": "FCOM",
+          "code": "PRO-ABN-FUEL",
+          "page": "P 5/76",
+          "pdf": 3610
+        },
+        {
+          "book": "FCOM",
+          "code": "PRO-ABN-FUEL",
+          "page": "P 7/76",
+          "pdf": 3612
+        }
+      ]
+    }
+  ],
+  "technique": [
+    {
+      "text": "If the leak is confirmed from the engine or pylon, the engine is shut down to stop the leak and to prevent a fire hazard from fuel leaking onto hot engine surfaces.",
+      "applies_to": [
+        "all"
+      ],
+      "refs": [
+        {
+          "book": "FCTM",
+          "code": "PR-AEP-FUEL",
+          "page": "P 2/4",
+          "pdf": 435
+        }
+      ]
+    },
+    {
+      "text": "If it is not confirmed, each tank is isolated so each wing tank feeds its own engine. If one wing tank decreases faster, its engine is shut down to confirm whether the leak is from the wing tank or the engine.",
+      "applies_to": [
+        "all"
+      ],
+      "refs": [
+        {
+          "book": "FCTM",
+          "code": "PR-AEP-FUEL",
+          "page": "P 2/4",
+          "pdf": 435
+        }
+      ]
+    },
+    {
+      "text": "The 300 kg threshold allows for fuel system accuracy. A leak rate that is constant or increasing below it indicates a permanent asymmetric leak developing over time, and should be considered a leak from a wing or an engine.",
+      "applies_to": [
+        "all"
+      ],
+      "refs": [
+        {
+          "book": "FCTM",
+          "code": "PR-AEP-FUEL",
+          "page": "P 2/4",
+          "pdf": 435
+        }
+      ]
+    },
+    {
+      "text": "If both wing tanks decrease symmetrically and the center tank quantity decreases, the leak comes from the center tank or the APU feed line.",
+      "applies_to": [
+        "all"
+      ],
+      "refs": [
+        {
+          "book": "FCTM",
+          "code": "PR-AEP-FUEL",
+          "page": "P 2/4",
+          "pdf": 435
+        }
+      ]
+    },
+    {
+      "text": "Do not use the reversers at landing even if available: their airflow blows leaking fuel toward the engine air inlet or the brakes, which may overheat the engine or start a fire, or reduce brake performance or start a fire on hot brakes.",
+      "applies_to": [
+        "all"
+      ],
+      "refs": [
+        {
+          "book": "FCTM",
+          "code": "PR-AEP-FUEL",
+          "page": "P 3/4",
+          "pdf": 436
+        }
+      ]
+    },
+    {
+      "text": "If the crew detects a fuel leak before the ECAM alert is triggered, the crew can activate the QRH FUEL LEAK procedure.",
+      "applies_to": [
+        "all"
+      ],
+      "refs": [
+        {
+          "book": "FCTM",
+          "code": "PR-AEP-FUEL",
+          "page": "P 1/4",
+          "pdf": 434
+        }
+      ]
+    }
+  ],
+  "related": [
+    {
+      "title": "ENG 1(2) SHUT DOWN",
+      "why": "The QRH does not name it here. Apply it after the engine shutdown in this procedure, as confirmed by the user.",
+      "key_actions": [
+        "See the ENG 1(2) FAIL brief, which holds this procedure"
+      ],
+      "refs": [
+        {
+          "book": "FCOM",
+          "code": "PRO-ABN-ENG",
+          "page": "P 169/226",
+          "pdf": 3416
+        }
+      ]
+    },
+    {
+      "title": "FUEL IMBALANCE",
+      "why": "A fuel imbalance may indicate a leak; do not apply FUEL IMBALANCE if a leak is suspected.",
+      "key_actions": [
+        "See the FUEL IMBALANCE brief"
+      ],
+      "refs": [
+        {
+          "book": "QRH",
+          "code": "21.05",
+          "page": "21.05A",
+          "pdf": 198
+        }
+      ]
+    },
+    {
+      "title": "ENG RELIGHT IN FLIGHT",
+      "why": "ENGINE RESTART: CONSIDER if the leak continues after the engine shutdown (wing leak suspected).",
+      "key_actions": [
+        "See the ENG RELIGHT IN FLIGHT brief"
+      ],
+      "refs": [
+        {
+          "book": "QRH",
+          "code": "21.06",
+          "page": "21.06A",
+          "pdf": 199
+        },
+        {
+          "book": "QRH",
+          "code": "21.06",
+          "page": "21.06C",
+          "pdf": 201
+        }
+      ]
+    },
+    {
+      "title": "FUEL OVERREAD",
+      "why": "The opposite indication: FOB + FU significantly more than the FOB at engine start, or increasing.",
+      "key_actions": [
+        "Apply the QRH FUEL OVERREAD procedure"
+      ],
+      "refs": [
+        {
+          "book": "FCTM",
+          "code": "PR-AEP-FUEL",
+          "page": "P 4/4",
+          "pdf": 437
+        }
+      ]
+    }
+  ],
+  "differences": [
+    {
+      "topic": "Center tank lines",
+      "values": {
+        "HS-TXA..TXO": "CTR TK PUMP 1 and 2",
+        "HS-TXP..TXU": "CTR TK L and R XFR"
+      },
+      "refs": [
+        {
+          "book": "QRH",
+          "code": "21.06",
+          "page": "21.06A",
+          "pdf": 199
+        },
+        {
+          "book": "QRH",
+          "code": "21.06",
+          "page": "21.06C",
+          "pdf": 201
+        }
+      ]
+    },
+    {
+      "topic": "After shutdown of the engine on the leaking side",
+      "values": {
+        "HS-TXA..TXO": "CTR TK PUMP 1 and 2 ON immediately",
+        "HS-TXP..TXU": "CTR TK L and R XFR ON if the leak stops; CTR TK XFR (non-leaking side) ON if it continues"
+      },
+      "refs": [
+        {
+          "book": "QRH",
+          "code": "21.06",
+          "page": "21.06A",
+          "pdf": 199
+        },
+        {
+          "book": "QRH",
+          "code": "21.06",
+          "page": "21.06C",
+          "pdf": 201
+        }
+      ]
+    }
+  ],
+  "gaps": [
+    {
+      "text": "The QRH does not say which ECAM procedure follows the engine shutdown. The brief points to ENG 1(2) SHUT DOWN under Related procedures, confirmed by the user. HS-TO-only versions (QRH 21.06B, FCOM ENG 1(2) FUEL LEAK P 103/226) are excluded.",
+      "applies_to": [
+        "all"
+      ],
+      "refs": [
+        {
+          "book": "QRH",
+          "code": "21.06",
+          "page": "21.06A",
+          "pdf": 199
+        },
+        {
+          "book": "QRH",
+          "code": "21.06",
+          "page": "21.06B",
+          "pdf": 200
+        },
+        {
+          "book": "FCOM",
+          "code": "PRO-ABN-ENG",
+          "page": "P 103/226",
+          "pdf": 3350
+        }
+      ]
+    },
+    {
+      "text": "The FCTM mentions a FUEL F.USED/FOB DISAGREE alert \"depending on the FWC standard\". The HS-TX FCOM procedures do not list it. The brief shows it as a possible trigger, confirmed by the user.",
+      "applies_to": [
+        "all"
+      ],
+      "refs": [
+        {
+          "book": "FCTM",
+          "code": "PR-AEP-FUEL",
+          "page": "P 4/4",
+          "pdf": 437
+        }
+      ]
+    },
+    {
+      "text": "\"ENGINE MASTER 1 OFF\" is the PDP example of the crosscheck wording: apply it to the engine concerned. The PDP has no fuel module; the flow is the standard QRH sequence.",
+      "applies_to": [
+        "all"
+      ],
+      "refs": [
+        {
+          "book": "PDP",
+          "code": "Management of abnormal operations",
+          "page": "XFTDN6ECAM00001",
+          "pdf": 432
+        },
+        {
+          "book": "PDP",
+          "code": "Management of abnormal operations",
+          "page": "XFTDN6ECAM00001",
+          "pdf": 427
+        }
+      ]
+    },
+    {
+      "text": "The manuals print a separate version for each HS-TX group. \"From the manuals\" merges them into one procedure, with a chip on the lines that differ, confirmed by the user.",
+      "applies_to": [
+        "all"
+      ],
+      "refs": [
+        {
+          "book": "QRH",
+          "code": "21.06",
+          "page": "21.06A",
+          "pdf": 199
+        },
+        {
+          "book": "QRH",
+          "code": "21.06",
+          "page": "21.06C",
+          "pdf": 201
+        }
+      ]
+    }
+  ],
+  "sources": [
+    {
+      "book": "QRH",
+      "section": "21.06 FUEL LEAK",
+      "pages": "21.06A, 21.06C–D",
+      "pdf": "199, 201–202",
+      "rev": "18 FEB 26"
+    },
+    {
+      "book": "FCOM",
+      "section": "PRO-ABN-FUEL — [QRH] FUEL LEAK",
+      "pages": "P 4–7/76",
+      "pdf": "3609–3612",
+      "rev": "26 MAY 26"
+    },
+    {
+      "book": "FCTM",
+      "section": "PR-AEP-FUEL — fuel leak, troubleshooting, overread",
+      "pages": "P 1–4/4",
+      "pdf": "434–437",
+      "rev": "24 NOV 25"
+    },
+    {
+      "book": "FCTM",
+      "section": "AOP-20 / AOP-30 — task sharing and ECAM handling",
+      "pages": "AOP-20 P 1–2/10, AOP-30 P 1–6/6",
+      "pdf": "68–69, 79–86",
+      "rev": "26 MAY 26"
+    },
+    {
+      "book": "PDP",
+      "section": "Management of abnormal operations (XFTDN6ECAM00001)",
+      "pages": "ECAM actions, STATUS, QRH, confirm",
+      "pdf": "424–432",
+      "rev": "JAN 2024"
+    },
+    {
+      "book": "FCOM",
+      "section": "PRO-ABN-ENG — ENG 1(2) SHUT DOWN",
+      "pages": "P 169–173/226",
+      "pdf": "3416–3420",
+      "rev": "26 MAY 26"
+    }
+  ],
+  "schema": "a320-ecam-abnormal/3",
+  "generated": "2026-10-31",
+  "qrh": []
+}
