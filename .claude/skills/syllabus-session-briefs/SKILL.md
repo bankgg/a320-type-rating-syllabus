@@ -17,7 +17,7 @@ Reference implementations: **MFTD/FBS 8** (11 briefs) and **MFTD/FBS 9** (9 brie
   - failure handling that has no ECAM procedure, using FCTM technique, FCOM DSC and the QRH reset table (as with FMGC faults).
 - **No brief for recovery manoeuvres** (OEI approach, go-around, landing, autoland). They stay plain orange rows.
 - Group the briefs by the session's `FAILURE_SUMMARIES` subjects. A group may hold several briefs (e.g. Engine fire → on ground · RTO / in flight). A relight belongs with Engine failure.
-- **Sessions without failure items:** if `FAILURE_SUMMARIES[sid]` is empty (currently `mftd-2`, `ffs-1`, `ffs-2`, `ffs-8`), there is nothing to add. Stop and tell the user so, listing the session's "Failures & systems" rows (normal-system demonstrations such as AP/FD logic or sidestick priority) and explaining why they get no brief. Do not create briefs or mappings for normal or demo exercises. Do not edit `FAILURE_SUMMARIES` / `FAILURE_NUMBERS` unless the user asks.
+- **Sessions without failure items:** if `FAILURE_SUMMARIES[sid]` is empty (currently `mftd-2`, `ffs-1`, `ffs-2`), there is nothing to add. Stop and tell the user so, listing the session's "Failures & systems" rows (normal-system demonstrations such as AP/FD logic or sidestick priority) and explaining why they get no brief. Do not create briefs or mappings for normal or demo exercises. Do not edit `FAILURE_SUMMARIES` / `FAILURE_NUMBERS` unless the user asks.
 - Present the planned group → brief → exercise-row mapping in one short message before researching. Ask the user to confirm any subject or mapping you are unsure of.
 
 ## 2. Produce the briefs — reuse first

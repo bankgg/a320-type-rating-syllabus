@@ -1,0 +1,1628 @@
+{
+ "slug": "upset-prevention-and-recovery",
+ "title": "UPSET PREVENTION AND RECOVERY",
+ "kind": "technique",
+ "alert": {
+  "level": "technique",
+  "land_asap": "none",
+  "memory_items": false,
+  "qrh_summary": false,
+  "trigger": "An upset condition exists any time an aircraft diverges from what the flight crew is intending to do.",
+  "inhibited_phases": [],
+  "refs": [
+   {
+    "book": "FCTM",
+    "code": "PR-AEP-MISC",
+    "page": "P 28/32",
+    "pdf": 473
+   }
+  ]
+ },
+ "effectivity": {
+  "branches": [],
+  "note": "Applicable to ALL (FCTM technique)."
+ },
+ "summary": "A technique, with no ECAM or QRH procedure. The first pilot to see the divergence calls \"NOSE HIGH\" or \"NOSE LOW\". Assess the energy, confirm the attitude on the PFD and recover from any stall first. Then use the nose high or nose low actions as needed and recover the level flight at a sufficient airspeed.",
+ "key_limits": [
+  {
+   "label": "Callout",
+   "value": "NOSE HIGH or NOSE LOW",
+   "applies_to": [
+    "all"
+   ],
+   "refs": [
+    {
+     "book": "FCTM",
+     "code": "PR-AEP-MISC",
+     "page": "P 29/32",
+     "pdf": 474
+    }
+   ]
+  },
+  {
+   "label": "Primary reference",
+   "value": "PFD",
+   "applies_to": [
+    "all"
+   ],
+   "refs": [
+    {
+     "book": "FCTM",
+     "code": "PR-AEP-MISC",
+     "page": "P 29/32",
+     "pdf": 474
+    },
+    {
+     "book": "PDP",
+     "code": "Unreliable speed indication (and UPRT)",
+     "page": "XFTDA6UNRASPD01",
+     "pdf": 608
+    }
+   ]
+  },
+  {
+   "label": "Nose high: bank",
+   "value": "Must not exceed 60°",
+   "applies_to": [
+    "all"
+   ],
+   "refs": [
+    {
+     "book": "FCTM",
+     "code": "PR-AEP-MISC",
+     "page": "P 31/32",
+     "pdf": 476
+    }
+   ]
+  },
+  {
+   "label": "Nose low: roll",
+   "value": "Shortest direction to wings level",
+   "applies_to": [
+    "all"
+   ],
+   "refs": [
+    {
+     "book": "FCTM",
+     "code": "PR-AEP-MISC",
+     "page": "P 31/32",
+     "pdf": 476
+    }
+   ]
+  }
+ ],
+ "flow": [
+  {
+   "phase": "Recognise and confirm",
+   "steps": [
+    {
+     "actor": "BOTH",
+     "items": [
+      {
+       "kind": "condition",
+       "text": "First pilot to observe the divergence",
+       "children": [
+        {
+         "kind": "callout",
+         "text": "NOSE HIGH",
+         "applies_to": [
+          "all"
+         ],
+         "refs": [
+          {
+           "book": "FCTM",
+           "code": "PR-AEP-MISC",
+           "page": "P 29/32",
+           "pdf": 474
+          },
+          {
+           "book": "PDP",
+           "code": "Unreliable speed indication (and UPRT)",
+           "page": "XFTDA6UNRASPD01",
+           "pdf": 611
+          }
+         ]
+        },
+        {
+         "kind": "callout",
+         "text": "NOSE LOW",
+         "applies_to": [
+          "all"
+         ],
+         "refs": [
+          {
+           "book": "FCTM",
+           "code": "PR-AEP-MISC",
+           "page": "P 29/32",
+           "pdf": 474
+          },
+          {
+           "book": "PDP",
+           "code": "Unreliable speed indication (and UPRT)",
+           "page": "XFTDA6UNRASPD01",
+           "pdf": 625
+          }
+         ]
+        }
+       ],
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "FCTM",
+         "code": "PR-AEP-MISC",
+         "page": "P 29/32",
+         "pdf": 474
+        }
+       ]
+      },
+      {
+       "kind": "action",
+       "text": "Assess the energy: airspeed, altitude, attitude, load factor, thrust setting, position of drag and high-lift devices, and the rate of change of those conditions",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "FCTM",
+         "code": "PR-AEP-MISC",
+         "page": "P 29/32",
+         "pdf": 474
+        }
+       ]
+      },
+      {
+       "kind": "action",
+       "text": "Determine the pitch and bank angle on the PFD, and communicate with the other crew member",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "FCTM",
+         "code": "PR-AEP-MISC",
+         "page": "P 29/32",
+         "pdf": 474
+        }
+       ]
+      },
+      {
+       "kind": "action",
+       "text": "Confirm the attitude: nose low, normally airspeed increasing, altitude decreasing, VSI descent; nose high, normally airspeed decreasing, altitude increasing, VSI climb",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "FCTM",
+         "code": "PR-AEP-MISC",
+         "page": "P 29/32",
+         "pdf": 474
+        }
+       ]
+      },
+      {
+       "kind": "action",
+       "text": "Check other attitude sources: standby attitude indications, the PM instruments, references outside the cockpit when possible",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "FCTM",
+         "code": "PR-AEP-MISC",
+         "page": "P 30/32",
+         "pdf": 475
+        }
+       ]
+      },
+      {
+       "kind": "condition",
+       "text": "If stalled (stall buffet and/or stall aural alert)",
+       "children": [
+        {
+         "kind": "action",
+         "text": "Apply the stall recovery procedure first",
+         "applies_to": [
+          "all"
+         ],
+         "refs": [
+          {
+           "book": "FCTM",
+           "code": "PR-AEP-MISC",
+           "page": "P 29/32",
+           "pdf": 474
+          },
+          {
+           "book": "PDP",
+           "code": "Unreliable speed indication (and UPRT)",
+           "page": "XFTDA6UNRASPD01",
+           "pdf": 608
+          }
+         ]
+        }
+       ],
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "FCTM",
+         "code": "PR-AEP-MISC",
+         "page": "P 29/32",
+         "pdf": 474
+        }
+       ]
+      },
+      {
+       "kind": "note",
+       "text": "To avoid dual inputs, know at all times who has control. If the PM wants to act on the sidestick: announce \"I have control\", then press and maintain the sidestick pushbutton",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "FCTM",
+         "code": "PR-AEP-MISC",
+         "page": "P 29/32",
+         "pdf": 474
+        },
+        {
+         "book": "FCTM",
+         "code": "AOP-10-30-20",
+         "page": "P 1/2",
+         "pdf": 62
+        }
+       ]
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "phase": "Nose high",
+   "steps": [
+    {
+     "actor": "PF",
+     "items": [
+      {
+       "kind": "action",
+       "text": "Takeover and disconnect AP and A/THR",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "FCTM",
+         "code": "PR-AEP-MISC",
+         "page": "P 30/32",
+         "pdf": 475
+        },
+        {
+         "book": "PDP",
+         "code": "Unreliable speed indication (and UPRT)",
+         "page": "XFTDA6UNRASPD01",
+         "pdf": 612
+        }
+       ]
+      },
+      {
+       "kind": "note",
+       "text": "If the AP and A/THR responses enable to stop the flight path divergence, the flight crew may keep them engaged",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "FCTM",
+         "code": "PR-AEP-MISC",
+         "page": "P 31/32",
+         "pdf": 476
+        },
+        {
+         "book": "PDP",
+         "code": "Unreliable speed indication (and UPRT)",
+         "page": "XFTDA6UNRASPD01",
+         "pdf": 613
+        }
+       ]
+      },
+      {
+       "kind": "action",
+       "text": "Apply nose down pitch order: as much as required to obtain a nose down pitch rate",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "FCTM",
+         "code": "PR-AEP-MISC",
+         "page": "P 30/32",
+         "pdf": 475
+        },
+        {
+         "book": "FCTM",
+         "code": "PR-AEP-MISC",
+         "page": "P 31/32",
+         "pdf": 476
+        }
+       ]
+      },
+      {
+       "kind": "condition",
+       "text": "In the case of lack of pitch down authority",
+       "children": [
+        {
+         "kind": "action",
+         "text": "Use incremental inputs on the trim (nose down) to improve the effectiveness of the elevator control",
+         "applies_to": [
+          "all"
+         ],
+         "refs": [
+          {
+           "book": "FCTM",
+           "code": "PR-AEP-MISC",
+           "page": "P 31/32",
+           "pdf": 476
+          },
+          {
+           "book": "PDP",
+           "code": "Unreliable speed indication (and UPRT)",
+           "page": "XFTDA6UNRASPD01",
+           "pdf": 615
+          }
+         ]
+        },
+        {
+         "kind": "note",
+         "text": "Excessive use of pitch trim may make the upset situation worse or may result in high structural loads",
+         "applies_to": [
+          "all"
+         ],
+         "refs": [
+          {
+           "book": "FCTM",
+           "code": "PR-AEP-MISC",
+           "page": "P 30/32",
+           "pdf": 475
+          },
+          {
+           "book": "PDP",
+           "code": "Unreliable speed indication (and UPRT)",
+           "page": "XFTDA6UNRASPD01",
+           "pdf": 615
+          }
+         ]
+        }
+       ],
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "FCTM",
+         "code": "PR-AEP-MISC",
+         "page": "P 31/32",
+         "pdf": 476
+        }
+       ]
+      },
+      {
+       "kind": "action",
+       "text": "Adjust the thrust: select up to maximum thrust available while ensuring adequate pitch control",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "FCTM",
+         "code": "PR-AEP-MISC",
+         "page": "P 30/32",
+         "pdf": 475
+        },
+        {
+         "book": "FCTM",
+         "code": "PR-AEP-MISC",
+         "page": "P 31/32",
+         "pdf": 476
+        }
+       ]
+      },
+      {
+       "kind": "note",
+       "text": "Increasing thrust may reduce the effectiveness of nose-down pitch control. It may be necessary to limit or reduce thrust to the point where control of the pitch is achieved",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "FCTM",
+         "code": "PR-AEP-MISC",
+         "page": "P 31/32",
+         "pdf": 476
+        },
+        {
+         "book": "PDP",
+         "code": "Unreliable speed indication (and UPRT)",
+         "page": "XFTDA6UNRASPD01",
+         "pdf": 617
+        }
+       ]
+      },
+      {
+       "kind": "action",
+       "text": "Adjust the roll not to exceed 60 degrees",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "FCTM",
+         "code": "PR-AEP-MISC",
+         "page": "P 30/32",
+         "pdf": 475
+        },
+        {
+         "book": "FCTM",
+         "code": "PR-AEP-MISC",
+         "page": "P 31/32",
+         "pdf": 476
+        }
+       ]
+      },
+      {
+       "kind": "condition",
+       "text": "If all normal pitch control techniques are unsuccessful",
+       "children": [
+        {
+         "kind": "action",
+         "text": "Keep the current bank angle or bank the aircraft to enable the nose to drop toward the horizon",
+         "applies_to": [
+          "all"
+         ],
+         "refs": [
+          {
+           "book": "FCTM",
+           "code": "PR-AEP-MISC",
+           "page": "P 31/32",
+           "pdf": 476
+          },
+          {
+           "book": "PDP",
+           "code": "Unreliable speed indication (and UPRT)",
+           "page": "XFTDA6UNRASPD01",
+           "pdf": 619
+          }
+         ]
+        },
+        {
+         "kind": "note",
+         "text": "The least bank possible to start the nose down, never exceeding approximately 60°. If already greater than 60°, reduce it to less than 60°",
+         "applies_to": [
+          "all"
+         ],
+         "refs": [
+          {
+           "book": "FCTM",
+           "code": "PR-AEP-MISC",
+           "page": "P 31/32",
+           "pdf": 476
+          },
+          {
+           "book": "PDP",
+           "code": "Unreliable speed indication (and UPRT)",
+           "page": "XFTDA6UNRASPD01",
+           "pdf": 619
+          }
+         ]
+        }
+       ],
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "FCTM",
+         "code": "PR-AEP-MISC",
+         "page": "P 31/32",
+         "pdf": 476
+        }
+       ]
+      },
+      {
+       "kind": "action",
+       "text": "Recover the level flight",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "FCTM",
+         "code": "PR-AEP-MISC",
+         "page": "P 30/32",
+         "pdf": 475
+        }
+       ]
+      },
+      {
+       "kind": "note",
+       "text": "At a sufficient airspeed while avoiding a stall due to premature recovery at low speed, or excessive g-loading at high speed",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "FCTM",
+         "code": "PR-AEP-MISC",
+         "page": "P 31/32",
+         "pdf": 476
+        },
+        {
+         "book": "PDP",
+         "code": "Unreliable speed indication (and UPRT)",
+         "page": "XFTDA6UNRASPD01",
+         "pdf": 621
+        }
+       ]
+      }
+     ]
+    },
+    {
+     "actor": "PM",
+     "items": [
+      {
+       "kind": "action",
+       "text": "Monitor the airspeed and the attitude throughout the recovery",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "FCTM",
+         "code": "PR-AEP-MISC",
+         "page": "P 30/32",
+         "pdf": 475
+        }
+       ]
+      },
+      {
+       "kind": "action",
+       "text": "Announce the flight path divergence if the recovery maneuver is not efficient",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "FCTM",
+         "code": "PR-AEP-MISC",
+         "page": "P 30/32",
+         "pdf": 475
+        }
+       ]
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "phase": "Nose low",
+   "steps": [
+    {
+     "actor": "PF",
+     "items": [
+      {
+       "kind": "action",
+       "text": "Takeover and disconnect AP and A/THR",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "FCTM",
+         "code": "PR-AEP-MISC",
+         "page": "P 31/32",
+         "pdf": 476
+        },
+        {
+         "book": "PDP",
+         "code": "Unreliable speed indication (and UPRT)",
+         "page": "XFTDA6UNRASPD01",
+         "pdf": 626
+        }
+       ]
+      },
+      {
+       "kind": "note",
+       "text": "If the AP and A/THR responses enable to stop the flight path divergence, the flight crew may keep them engaged",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "FCTM",
+         "code": "PR-AEP-MISC",
+         "page": "P 32/32",
+         "pdf": 477
+        },
+        {
+         "book": "PDP",
+         "code": "Unreliable speed indication (and UPRT)",
+         "page": "XFTDA6UNRASPD01",
+         "pdf": 627
+        }
+       ]
+      },
+      {
+       "kind": "condition",
+       "text": "If required",
+       "children": [
+        {
+         "kind": "action",
+         "text": "Recover from stall",
+         "applies_to": [
+          "all"
+         ],
+         "refs": [
+          {
+           "book": "FCTM",
+           "code": "PR-AEP-MISC",
+           "page": "P 31/32",
+           "pdf": 476
+          },
+          {
+           "book": "PDP",
+           "code": "Unreliable speed indication (and UPRT)",
+           "page": "XFTDA6UNRASPD01",
+           "pdf": 628
+          }
+         ]
+        },
+        {
+         "kind": "note",
+         "text": "Even in a nose low situation, the aircraft may be stalled and it would be necessary to recover from a stall first",
+         "applies_to": [
+          "all"
+         ],
+         "refs": [
+          {
+           "book": "FCTM",
+           "code": "PR-AEP-MISC",
+           "page": "P 32/32",
+           "pdf": 477
+          },
+          {
+           "book": "PDP",
+           "code": "Unreliable speed indication (and UPRT)",
+           "page": "XFTDA6UNRASPD01",
+           "pdf": 629
+          }
+         ]
+        }
+       ],
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "FCTM",
+         "code": "PR-AEP-MISC",
+         "page": "P 31/32",
+         "pdf": 476
+        }
+       ]
+      },
+      {
+       "kind": "note",
+       "text": "Excessive use of pitch trim may make the upset situation worse or may result in high structural loads",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "FCTM",
+         "code": "PR-AEP-MISC",
+         "page": "P 31/32",
+         "pdf": 476
+        }
+       ]
+      },
+      {
+       "kind": "action",
+       "text": "Adjust the roll in the shortest direction to wings level",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "FCTM",
+         "code": "PR-AEP-MISC",
+         "page": "P 31/32",
+         "pdf": 476
+        }
+       ]
+      },
+      {
+       "kind": "note",
+       "text": "A nose low with high angle of bank requires prompt action, because the decreasing altitude is rapidly being exchanged for an increasing airspeed. It may be necessary to reduce the g-loading to improve roll effectiveness. The bank angle indicator shows the shortest direction",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "FCTM",
+         "code": "PR-AEP-MISC",
+         "page": "P 32/32",
+         "pdf": 477
+        },
+        {
+         "book": "PDP",
+         "code": "Unreliable speed indication (and UPRT)",
+         "page": "XFTDA6UNRASPD01",
+         "pdf": 631
+        }
+       ]
+      },
+      {
+       "kind": "action",
+       "text": "Adjust the thrust and the drag: reduce the thrust and/or use the speedbrakes to control the speed",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "FCTM",
+         "code": "PR-AEP-MISC",
+         "page": "P 31/32",
+         "pdf": 476
+        },
+        {
+         "book": "FCTM",
+         "code": "PR-AEP-MISC",
+         "page": "P 32/32",
+         "pdf": 477
+        }
+       ]
+      },
+      {
+       "kind": "action",
+       "text": "Recover the level flight",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "FCTM",
+         "code": "PR-AEP-MISC",
+         "page": "P 31/32",
+         "pdf": 476
+        }
+       ]
+      },
+      {
+       "kind": "note",
+       "text": "At a sufficient airspeed while avoiding a stall due to premature recovery at low speed, or excessive g-loading at high speed",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "FCTM",
+         "code": "PR-AEP-MISC",
+         "page": "P 32/32",
+         "pdf": 477
+        },
+        {
+         "book": "PDP",
+         "code": "Unreliable speed indication (and UPRT)",
+         "page": "XFTDA6UNRASPD01",
+         "pdf": 635
+        }
+       ]
+      }
+     ]
+    },
+    {
+     "actor": "PM",
+     "items": [
+      {
+       "kind": "action",
+       "text": "Monitor the airspeed and the attitude throughout the recovery",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "FCTM",
+         "code": "PR-AEP-MISC",
+         "page": "P 30/32",
+         "pdf": 475
+        }
+       ]
+      },
+      {
+       "kind": "action",
+       "text": "Announce the flight path divergence if the recovery maneuver is not efficient",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "FCTM",
+         "code": "PR-AEP-MISC",
+         "page": "P 30/32",
+         "pdf": 475
+        }
+       ]
+      }
+     ]
+    }
+   ]
+  }
+ ],
+ "procedures": [
+  {
+   "title": "Nose High Actions",
+   "source": "FCTM PR-AEP-MISC P 30/32",
+   "lines": [
+    {
+     "kind": "info",
+     "text": "Recognize and confirm the situation",
+     "level": 0,
+     "applies_to": [
+      "all"
+     ],
+     "refs": [
+      {
+       "book": "FCTM",
+       "code": "PR-AEP-MISC",
+       "page": "P 30/32",
+       "pdf": 475
+      }
+     ]
+    },
+    {
+     "kind": "info",
+     "text": "Takeover and disconnect AP and A/THR",
+     "level": 0,
+     "applies_to": [
+      "all"
+     ],
+     "refs": [
+      {
+       "book": "FCTM",
+       "code": "PR-AEP-MISC",
+       "page": "P 30/32",
+       "pdf": 475
+      }
+     ]
+    },
+    {
+     "kind": "info",
+     "text": "Apply nose down pitch order",
+     "level": 0,
+     "applies_to": [
+      "all"
+     ],
+     "refs": [
+      {
+       "book": "FCTM",
+       "code": "PR-AEP-MISC",
+       "page": "P 30/32",
+       "pdf": 475
+      }
+     ]
+    },
+    {
+     "kind": "note",
+     "text": "Excessive use of pitch trim may make the upset situation worse or may result in high structural loads.",
+     "level": 0,
+     "applies_to": [
+      "all"
+     ],
+     "refs": [
+      {
+       "book": "FCTM",
+       "code": "PR-AEP-MISC",
+       "page": "P 30/32",
+       "pdf": 475
+      }
+     ]
+    },
+    {
+     "kind": "info",
+     "text": "Adjust the thrust",
+     "level": 0,
+     "applies_to": [
+      "all"
+     ],
+     "refs": [
+      {
+       "book": "FCTM",
+       "code": "PR-AEP-MISC",
+       "page": "P 30/32",
+       "pdf": 475
+      }
+     ]
+    },
+    {
+     "kind": "info",
+     "text": "Adjust the roll not to exceed 60 degrees",
+     "level": 0,
+     "applies_to": [
+      "all"
+     ],
+     "refs": [
+      {
+       "book": "FCTM",
+       "code": "PR-AEP-MISC",
+       "page": "P 30/32",
+       "pdf": 475
+      }
+     ]
+    },
+    {
+     "kind": "info",
+     "text": "Recover the level flight",
+     "level": 0,
+     "applies_to": [
+      "all"
+     ],
+     "refs": [
+      {
+       "book": "FCTM",
+       "code": "PR-AEP-MISC",
+       "page": "P 30/32",
+       "pdf": 475
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "title": "Nose Low Actions",
+   "source": "FCTM PR-AEP-MISC P 31/32",
+   "lines": [
+    {
+     "kind": "info",
+     "text": "Recognize and confirm the situation",
+     "level": 0,
+     "applies_to": [
+      "all"
+     ],
+     "refs": [
+      {
+       "book": "FCTM",
+       "code": "PR-AEP-MISC",
+       "page": "P 31/32",
+       "pdf": 476
+      }
+     ]
+    },
+    {
+     "kind": "info",
+     "text": "Takeover and disconnect AP and A/THR",
+     "level": 0,
+     "applies_to": [
+      "all"
+     ],
+     "refs": [
+      {
+       "book": "FCTM",
+       "code": "PR-AEP-MISC",
+       "page": "P 31/32",
+       "pdf": 476
+      }
+     ]
+    },
+    {
+     "kind": "info",
+     "text": "Recover from stall if required",
+     "level": 0,
+     "applies_to": [
+      "all"
+     ],
+     "refs": [
+      {
+       "book": "FCTM",
+       "code": "PR-AEP-MISC",
+       "page": "P 31/32",
+       "pdf": 476
+      }
+     ]
+    },
+    {
+     "kind": "note",
+     "text": "Excessive use of pitch trim may make the upset situation worse or may result in high structural loads.",
+     "level": 0,
+     "applies_to": [
+      "all"
+     ],
+     "refs": [
+      {
+       "book": "FCTM",
+       "code": "PR-AEP-MISC",
+       "page": "P 31/32",
+       "pdf": 476
+      }
+     ]
+    },
+    {
+     "kind": "info",
+     "text": "Adjust the roll in the shortest direction to wings level",
+     "level": 0,
+     "applies_to": [
+      "all"
+     ],
+     "refs": [
+      {
+       "book": "FCTM",
+       "code": "PR-AEP-MISC",
+       "page": "P 31/32",
+       "pdf": 476
+      }
+     ]
+    },
+    {
+     "kind": "info",
+     "text": "Adjust the thrust and the drag",
+     "level": 0,
+     "applies_to": [
+      "all"
+     ],
+     "refs": [
+      {
+       "book": "FCTM",
+       "code": "PR-AEP-MISC",
+       "page": "P 31/32",
+       "pdf": 476
+      }
+     ]
+    },
+    {
+     "kind": "info",
+     "text": "Recover the level flight",
+     "level": 0,
+     "applies_to": [
+      "all"
+     ],
+     "refs": [
+      {
+       "book": "FCTM",
+       "code": "PR-AEP-MISC",
+       "page": "P 31/32",
+       "pdf": 476
+      }
+     ]
+    }
+   ]
+  }
+ ],
+ "status": null,
+ "tables": [
+  {
+   "title": "Abnormal attitude law",
+   "caption": "The law engages when one of these values is reached.",
+   "columns": [
+    "Parameter",
+    "Value"
+   ],
+   "rows": [
+    [
+     "Bank angle",
+     "Above 125°"
+    ],
+    [
+     "Pitch attitude, if at least 2 ADC are valid and consistent",
+     "Above 50° nose up or below 30° nose down"
+    ],
+    [
+     "Pitch attitude, in all other cases",
+     "Above 40° nose up or below 20° nose down"
+    ],
+    [
+     "Speed",
+     "Below 70 to 90 kt (depending on the aircraft pitch attitude), or above 440 kt"
+    ],
+    [
+     "Mach",
+     "Above 0.91"
+    ],
+    [
+     "Angle of attack",
+     "Above 40°"
+    ]
+   ],
+   "applies_to": [
+    "all"
+   ],
+   "refs": [
+    {
+     "book": "FCOM",
+     "code": "DSC-27-20-20",
+     "page": "P 18/20",
+     "pdf": 1629
+    }
+   ]
+  }
+ ],
+ "background": [
+  {
+   "text": "An upset is an undesired aircraft state characterized by unintentional divergences from parameters normally experienced during operations. It may involve pitch and/or bank angle divergences and may lead to inappropriate airspeeds for the conditions.",
+   "applies_to": [
+    "all"
+   ],
+   "refs": [
+    {
+     "book": "FCTM",
+     "code": "PR-AEP-MISC",
+     "page": "P 28/32",
+     "pdf": 473
+    }
+   ]
+  },
+  {
+   "text": "Prevention relies on effective monitoring of the environment, the aircraft energy state, the flight path and the technical state (flight control laws, system failures). All flight crew members are responsible for it.",
+   "applies_to": [
+    "all"
+   ],
+   "refs": [
+    {
+     "book": "FCTM",
+     "code": "PR-AEP-MISC",
+     "page": "P 28/32",
+     "pdf": 473
+    }
+   ]
+  },
+  {
+   "text": "When the abnormal attitude law engages: pitch alternate law with no protection (no load factor limitation), roll direct law, yaw mechanical law. Autotrim is not available, so USE MAN PITCH TRIM is displayed on the PFDs, and F/CTL DIRECT LAW is displayed on the ECAM.",
+   "applies_to": [
+    "all"
+   ],
+   "refs": [
+    {
+     "book": "FCOM",
+     "code": "DSC-27-20-20",
+     "page": "P 18/20",
+     "pdf": 1629
+    }
+   ]
+  },
+  {
+   "text": "Back within the normal flight envelope, these conditions remain for the remainder of the flight: pitch alternate law without reduced protection, roll direct law, yaw alternate law, and F/CTL ALTN LAW on the ECAM.",
+   "applies_to": [
+    "all"
+   ],
+   "refs": [
+    {
+     "book": "FCOM",
+     "code": "DSC-27-20-20",
+     "page": "P 18/20",
+     "pdf": 1629
+    }
+   ]
+  }
+ ],
+ "technique": [
+  {
+   "text": "The nose high and nose low techniques are a logical progression and are not necessarily procedural. The sequence is guidance only: a series of options to consider depending on the situation. The crew may apply these actions or part of them, mainly if the recovery is effective.",
+   "applies_to": [
+    "all"
+   ],
+   "refs": [
+    {
+     "book": "FCTM",
+     "code": "PR-AEP-MISC",
+     "page": "P 30/32",
+     "pdf": 475
+    },
+    {
+     "book": "PDP",
+     "code": "Unreliable speed indication (and UPRT)",
+     "page": "XFTDA6UNRASPD01",
+     "pdf": 608
+    }
+   ]
+  },
+  {
+   "text": "Troubleshooting the cause of the upset is secondary to initiating the recovery, but the pilot must still recognize and confirm the situation first.",
+   "applies_to": [
+    "all"
+   ],
+   "refs": [
+    {
+     "book": "PDP",
+     "code": "Unreliable speed indication (and UPRT)",
+     "page": "XFTDA6UNRASPD01",
+     "pdf": 611
+    },
+    {
+     "book": "FCTM",
+     "code": "PR-AEP-MISC",
+     "page": "P 29/32",
+     "pdf": 474
+    }
+   ]
+  },
+  {
+   "text": "All upset recovery techniques assume the aircraft is not stalled. When needed, recover from the stall first.",
+   "applies_to": [
+    "all"
+   ],
+   "refs": [
+    {
+     "book": "PDP",
+     "code": "Unreliable speed indication (and UPRT)",
+     "page": "XFTDA6UNRASPD01",
+     "pdf": 608
+    },
+    {
+     "book": "FCTM",
+     "code": "PR-AEP-MISC",
+     "page": "P 29/32",
+     "pdf": 474
+    }
+   ]
+  },
+  {
+   "text": "The PFD is a primary reference for recovery. Even in extreme attitudes, some portion of the sky or ground indications is present on the pitch scale, and the bank indicator gives the aircraft bank.",
+   "applies_to": [
+    "all"
+   ],
+   "refs": [
+    {
+     "book": "FCTM",
+     "code": "PR-AEP-MISC",
+     "page": "P 29/32",
+     "pdf": 474
+    }
+   ]
+  },
+  {
+   "text": "Avoid exaggerated control inputs through reflex responses. Inputs must be smooth, positive and proportional to the amount and rate of pitch, roll or yaw experienced.",
+   "applies_to": [
+    "all"
+   ],
+   "refs": [
+    {
+     "book": "PDP",
+     "code": "Unreliable speed indication (and UPRT)",
+     "page": "XFTDA6UNRASPD01",
+     "pdf": 608
+    }
+   ]
+  },
+  {
+   "text": "Aggressive and opposite flight control inputs must not be applied: they can lead to loads higher than the limit and result in structural damage or failure. If you sense an over control, set the sidestick to the neutral position.",
+   "applies_to": [
+    "all"
+   ],
+   "refs": [
+    {
+     "book": "PDP",
+     "code": "Unreliable speed indication (and UPRT)",
+     "page": "XFTDA6UNRASPD01",
+     "pdf": 574
+    }
+   ]
+  },
+  {
+   "text": "The rudder should not be used to induce roll, or to counter roll induced by any type of turbulence.",
+   "applies_to": [
+    "all"
+   ],
+   "refs": [
+    {
+     "book": "PDP",
+     "code": "Unreliable speed indication (and UPRT)",
+     "page": "XFTDA6UNRASPD01",
+     "pdf": 575
+    }
+   ]
+  }
+ ],
+ "related": [
+  {
+   "title": "[MEM] STALL RECOVERY",
+   "why": "A stalled condition can exist in any attitude and takes priority over the upset actions.",
+   "key_actions": [
+    "NOSE DOWN PITCH CONTROL: APPLY",
+    "BANK: WINGS LEVEL",
+    "When out of stall: thrust, speedbrakes, flight path"
+   ],
+   "refs": [
+    {
+     "book": "FCOM",
+     "code": "PRO-ABN-MISC",
+     "page": "P 2/30",
+     "pdf": 3797
+    },
+    {
+     "book": "FCTM",
+     "code": "PR-AEP-MISC",
+     "page": "P 29/32",
+     "pdf": 474
+    }
+   ]
+  },
+  {
+   "title": "LOW ENERGY",
+   "why": "The \"SPEED, SPEED, SPEED\" aural alert (if installed) announces a low energy situation. See Gaps.",
+   "key_actions": [
+    "Increase the thrust and/or adjust the pitch depending on the situation, until the aural alert stops",
+    "Available in CONF 2, 3 and FULL",
+    "Inhibited when TOGA is selected, below 100 ft RA, above 2 000 ft RA, at alpha floor or a ground proximity warning system alert, in alternate or direct law, or if both radio altimeters fail"
+   ],
+   "refs": [
+    {
+     "book": "FCTM",
+     "code": "PR-AEP-MISC",
+     "page": "P 12/32",
+     "pdf": 457
+    },
+    {
+     "book": "FCOM",
+     "code": "DSC-22_40-30",
+     "page": "P 4/4",
+     "pdf": 1279
+    },
+    {
+     "book": "FCOM",
+     "code": "DSC-27-20-10-20",
+     "page": "P 13/14",
+     "pdf": 1600
+    }
+   ]
+  }
+ ],
+ "differences": [],
+ "gaps": [
+  {
+   "text": "The manuals have no ECAM or QRH procedure for an upset. This brief uses the FCTM technique and the PDP slides. Including it as a brief is confirmed by the user.",
+   "applies_to": [
+    "all"
+   ],
+   "refs": [
+    {
+     "book": "FCTM",
+     "code": "PR-AEP-MISC",
+     "page": "P 30/32",
+     "pdf": 475
+    }
+   ]
+  },
+  {
+   "text": "The manuals do not describe inverted flight by name. The nearest text is the nose low technique and the abnormal attitude law above 125° of bank. Linking such an exercise to this brief without further wording is confirmed by the user.",
+   "applies_to": [
+    "all"
+   ],
+   "refs": [
+    {
+     "book": "FCTM",
+     "code": "PR-AEP-MISC",
+     "page": "P 31/32",
+     "pdf": 476
+    },
+    {
+     "book": "FCTM",
+     "code": "PR-AEP-MISC",
+     "page": "P 32/32",
+     "pdf": 477
+    },
+    {
+     "book": "FCOM",
+     "code": "DSC-27-20-20",
+     "page": "P 18/20",
+     "pdf": 1629
+    }
+   ]
+  },
+  {
+   "text": "The FCTM says the PF applies the required actions but says \"flight crew\" for the pitch trim. The PF on the pitch trim wheel is instructor practice, not from the manuals.",
+   "applies_to": [
+    "all"
+   ],
+   "refs": [
+    {
+     "book": "FCTM",
+     "code": "PR-AEP-MISC",
+     "page": "P 30/32",
+     "pdf": 475
+    },
+    {
+     "book": "FCTM",
+     "code": "PR-AEP-MISC",
+     "page": "P 31/32",
+     "pdf": 476
+    }
+   ]
+  },
+  {
+   "text": "The FCOM system description applies the low energy aural alert to ALL, but another FCOM page heads it \"IF INSTALLED\", the FCTM says \"if available\", and the IF INSTALLED table in FCOM GEN has no row for it. Whether HS-TX aircraft have it is unconfirmed. Keeping the Related entry on that basis is confirmed by the user.",
+   "applies_to": [
+    "all"
+   ],
+   "refs": [
+    {
+     "book": "FCOM",
+     "code": "DSC-22_40-30",
+     "page": "P 4/4",
+     "pdf": 1279
+    },
+    {
+     "book": "FCOM",
+     "code": "DSC-27-20-10-20",
+     "page": "P 13/14",
+     "pdf": 1600
+    },
+    {
+     "book": "FCTM",
+     "code": "PR-AEP-MISC",
+     "page": "P 12/32",
+     "pdf": 457
+    },
+    {
+     "book": "FCOM",
+     "code": "GEN",
+     "page": "P 29/78",
+     "pdf": 122
+    }
+   ]
+  },
+  {
+   "text": "The manuals do not describe a nose high, low energy exercise by name. Linking such an exercise to this brief, which says to recover from any stall first, is confirmed by the user.",
+   "applies_to": [
+    "all"
+   ],
+   "refs": [
+    {
+     "book": "FCTM",
+     "code": "PR-AEP-MISC",
+     "page": "P 29/32",
+     "pdf": 474
+    },
+    {
+     "book": "FCTM",
+     "code": "PR-AEP-MISC",
+     "page": "P 30/32",
+     "pdf": 475
+    }
+   ]
+  },
+  {
+   "text": "The manuals give no callout wording for the PM announcing an inefficient recovery, beyond \"NOSE HIGH\" and \"NOSE LOW\".",
+   "applies_to": [
+    "all"
+   ],
+   "refs": [
+    {
+     "book": "FCTM",
+     "code": "PR-AEP-MISC",
+     "page": "P 29/32",
+     "pdf": 474
+    },
+    {
+     "book": "FCTM",
+     "code": "PR-AEP-MISC",
+     "page": "P 30/32",
+     "pdf": 475
+    }
+   ]
+  },
+  {
+   "text": "The PDP lists the takeover step as \"(if required)\" where the FCTM figure relies on its note (1); the meaning is the same. The FCTM figure also places the pitch trim note in the nose low actions, and the PDP nose low slides do not show it. This brief follows the FCTM.",
+   "applies_to": [
+    "all"
+   ],
+   "refs": [
+    {
+     "book": "FCTM",
+     "code": "PR-AEP-MISC",
+     "page": "P 30/32",
+     "pdf": 475
+    },
+    {
+     "book": "FCTM",
+     "code": "PR-AEP-MISC",
+     "page": "P 31/32",
+     "pdf": 476
+    },
+    {
+     "book": "PDP",
+     "code": "Unreliable speed indication (and UPRT)",
+     "page": "XFTDA6UNRASPD01",
+     "pdf": 626
+    }
+   ]
+  },
+  {
+   "text": "After recovery, the PDP slide shows yaw mechanical control, and the FCOM says the yaw alternate law is active. This brief follows the FCOM.",
+   "applies_to": [
+    "all"
+   ],
+   "refs": [
+    {
+     "book": "FCOM",
+     "code": "DSC-27-20-20",
+     "page": "P 18/20",
+     "pdf": 1629
+    },
+    {
+     "book": "PDP",
+     "code": "Unreliable speed indication (and UPRT)",
+     "page": "XFTDA6UNRASPD01",
+     "pdf": 577
+    }
+   ]
+  }
+ ],
+ "sources": [
+  {
+   "book": "FCTM",
+   "section": "PR-AEP-MISC — UPSET PREVENTION AND RECOVERY",
+   "pages": "P 28–32/32",
+   "pdf": "473–477",
+   "rev": "26 MAY 26"
+  },
+  {
+   "book": "FCTM",
+   "section": "PR-AEP-MISC — LOW ENERGY",
+   "pages": "P 12/32",
+   "pdf": "457",
+   "rev": "26 MAY 26"
+  },
+  {
+   "book": "FCTM",
+   "section": "AOP-10-30-20 — USE OF SIDESTICK",
+   "pages": "P 1/2",
+   "pdf": "62",
+   "rev": "25 FEB 25"
+  },
+  {
+   "book": "FCOM",
+   "section": "DSC-27-20-20 — ABNORMAL ATTITUDE LAWS",
+   "pages": "P 18/20",
+   "pdf": "1629",
+   "rev": "18 FEB 26"
+  },
+  {
+   "book": "FCOM",
+   "section": "DSC-22_40-30 — LOW - ENERGY AURAL ALERT",
+   "pages": "P 4/4",
+   "pdf": "1279",
+   "rev": "18 FEB 26"
+  },
+  {
+   "book": "FCOM",
+   "section": "DSC-27-20-10-20 — low energy aural alert",
+   "pages": "P 13/14",
+   "pdf": "1600",
+   "rev": "18 FEB 26"
+  },
+  {
+   "book": "FCOM",
+   "section": "GEN — IF INSTALLED TABLE",
+   "pages": "P 7–46/78",
+   "pdf": "100–139",
+   "rev": "14 JUL 26"
+  },
+  {
+   "book": "FCOM",
+   "section": "PRO-ABN-MISC — [MEM] STALL RECOVERY",
+   "pages": "P 2/30",
+   "pdf": "3797",
+   "rev": "18 FEB 26"
+  },
+  {
+   "book": "PDP",
+   "section": "Unreliable speed indication (and UPRT) (XFTDA6UNRASPD01)",
+   "pages": "slides",
+   "pdf": "574–577, 608–636",
+   "rev": "OCT 2022"
+  }
+ ],
+ "schema": "a320-ecam-abnormal/3",
+ "generated": "2026-10-31",
+ "qrh": []
+}

@@ -49,6 +49,7 @@ FAILURE_NUMBERS = {
     'ffs-5': (1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 13, 18, 19),
     'ffs-6': (3, 4, 6, 8, 9, 11, 13, 15, 16, 17, 18, 19),
     'ffs-7': (2, 5, 6, 7, 9, 10, 12, 13, 15, 16, 17, 18, 20, 21, 22, 23, 24, 25, 26),
+    'ffs-8': (9, 12, 13, 14, 15, 16, 17, 18, 19, 20),
     'ffs-9': (3, 4, 5, 6, 7, 12, 13, 14, 15),
     'ffs-10': (1, 4, 8, 9, 11, 12, 14, 15, 16, 17, 18, 19),
 }
@@ -76,7 +77,7 @@ FAILURE_SUMMARIES = {
     'ffs-5': ('Engine failure', 'Dual-engine failure', 'RNP degradation', 'Emergency electrical configuration', 'Unreliable speed'),
     'ffs-6': ('RNP degradation', 'Probe anti-ice', 'Hydraulic system low pressure', 'Flaps/slats faults', 'Stabilizer jam', 'Engine fire', 'Emergency evacuation'),
     'ffs-7': ('Crew incapacitation', 'FCU fault', 'Engine severe damage/separation', 'Fuel imbalance', 'RNP degradation', 'APU shutdown/fire', 'Loss of braking', 'Fuel leak', 'APU generator fault', 'Cabin smoke', 'Emergency evacuation', 'Engine failure'),
-    'ffs-8': (),
+    'ffs-8': ('Stall recovery', 'Upset recovery'),
     'ffs-9': ('IDG overheat', 'Navigation/FMGS failure', 'Engine failure', 'Fuel imbalance', 'Hydraulic reservoir low level', 'ADR faults', 'Duct leak / pack overheat', 'Cargo smoke'),
     'ffs-10': ('Engine start fault', 'Decompression', 'Hydraulic system failure', 'Flaps fault', 'Engine failure', 'Engine fire', 'Emergency evacuation'),
 }
@@ -169,6 +170,10 @@ PROCEDURE_GROUPS = {
                             ('handling-the-aircraft-in-the-case-of-severe-damage', 'Severe damage', 'Trainee A only: engine severe damage/separation between V1 and V2, at night.'),
                             ('eng-relight-in-flight', 'Relight in flight', 'Trainee B only.'))),
     ],
+    'ffs-8': [
+        ('Stall recovery', (('stall-recovery', 'Stall recovery'),)),
+        ('Upset recovery', (('upset-prevention-and-recovery', 'Upset recovery'),)),
+    ],
 }
 # A summary subject that opens another subject's group, because a brief can only sit in one group per session.
 SUMMARY_GROUP_ALIASES = {'ffs-7': {'Engine severe damage/separation': 'Engine failure'}}
@@ -212,6 +217,11 @@ EXERCISE_BRIEFS = {
     'ffs-7-apu-fire': 'apu-fire', 'ffs-7-e18': 'loss-of-braking', 'ffs-7-e20': 'fuel-leak',
     'ffs-7-e22': 'elec-apu-gen-fault', 'ffs-7-e23': 'removal-of-smoke-fumes', 'ffs-7-e24': 'emer-evac',
     'ffs-7-e25': 'eng-1-2-fail', 'ffs-7-e26': 'eng-relight-in-flight',
+    'ffs-8-e09': 'stall-recovery', 'ffs-8-e16': 'stall-recovery',
+    'ffs-8-e19': 'stall-recovery', 'ffs-8-e20': 'stall-recovery',
+    'ffs-8-e12': 'upset-prevention-and-recovery', 'ffs-8-e13': 'upset-prevention-and-recovery',
+    'ffs-8-e14': 'upset-prevention-and-recovery', 'ffs-8-e15': 'upset-prevention-and-recovery',
+    'ffs-8-e17': 'upset-prevention-and-recovery', 'ffs-8-e18': 'upset-prevention-and-recovery',
 }
 ALERT_LABELS = {'warning': 'Red warning', 'caution': 'Amber caution', 'qrh': 'QRH procedure',
                 'memory': 'Memory items', 'technique': 'Technique'}

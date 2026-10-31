@@ -31,7 +31,7 @@ sh .claude/skills/syllabus-session-briefs/scripts/run_check.sh <session-id>   # 
 1. `syllabus_sessions.json` holds reviewed, frozen session facts: exercises with ids `<sid>-eNN` and A/B assignment, ordered `topics` per trainee (each topic lists its `exercise_ids`), setup, weather and conditionals. `curate_sessions.py` is the separate, one-off step that froze the A/B exercise mapping. The renderer never infers equivalence. Don't change syllabus facts.
 2. `build_comparison.py` holds hand-curated presentation mappings, validates everything and builds the view model:
    - `FAILURE_NUMBERS` / `FAILURE_IDS`: which exercise rows are orange (failure or recovery).
-   - `FAILURE_SUMMARIES`: the failure subjects in each session's summary line. An empty tuple means "No failure exercises" (mftd-2, ffs-1, ffs-2, ffs-8).
+   - `FAILURE_SUMMARIES`: the failure subjects in each session's summary line. An empty tuple means "No failure exercises" (mftd-2, ffs-1, ffs-2).
    - `PROCEDURE_GROUPS[sid]`: `(summary label, ((slug, tab_label[, session_note]), …))`. The label must equal a `FAILURE_SUMMARIES` entry exactly.
    - `EXERCISE_BRIEFS`: exercise id → brief slug. Schedule topics link automatically through their `exercise_ids`, and a linked row gets the dotted-underline "opens a procedure" cue.
    - `SUMMARY_GROUP_ALIASES`: a summary subject that opens another subject's group, because a brief can sit in only one group per session (ffs-7: engine severe damage/separation and engine failure share `eng-1-2-fail`).
@@ -51,7 +51,7 @@ sh .claude/skills/syllabus-session-briefs/scripts/run_check.sh <session-id>   # 
 - **Skills:** create briefs with the project skills, not by hand.
   - `a320-ecam-abnormal` builds one brief, using `scripts/manuals.py` to search the PDFs and `scripts/brief_kit.py` to author it.
   - `syllabus-session-briefs` does a whole session: scope, reuse, mapping and checks.
-- **Scope:** ECAM/QRH abnormals only. Recovery manoeuvres (one-engine-inoperative approach, go-around, autoland) stay plain rows.
+- **Scope:** ECAM/QRH abnormals only. Recovery manoeuvres (one-engine-inoperative approach, go-around, autoland) stay plain rows. Exception (user decision): upset recovery has an FCTM technique brief, because it is the point of the FFS 8 UPRT session.
 - **Sources:** only `books/`: THA FCOM/FCTM/QRH (14 JUL 26) plus the Airbus PDP tutorial slides. Read the slides visually; their text extraction is scrambled. Every fact carries a locator.
 - **Aircraft:** HS-TX registrations only. Never use HS-TO-only content; show HS-TX splits as `applies_to` branches.
 - **ECAM flow rules,** which `render_md.py` enforces:

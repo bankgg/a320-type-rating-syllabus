@@ -1,0 +1,1276 @@
+{
+ "slug": "stall-recovery",
+ "title": "STALL RECOVERY",
+ "kind": "qrh",
+ "alert": {
+  "level": "memory",
+  "land_asap": "none",
+  "memory_items": true,
+  "qrh_summary": false,
+  "trigger": "Any stall indication: aural warning, \"STALL STALL\" red message on the PFD, buffet, etc.",
+  "inhibited_phases": [],
+  "refs": [
+   {
+    "book": "FCOM",
+    "code": "PRO-ABN-MISC",
+    "page": "P 2/30",
+    "pdf": 3797
+   },
+   {
+    "book": "FCOM",
+    "code": "PRO-ABN-NAV",
+    "page": "P 123/124",
+    "pdf": 3948
+   }
+  ]
+ },
+ "effectivity": {
+  "branches": [],
+  "note": "Applicable to ALL."
+ },
+ "summary": "Memory item for any stall indication. Reduce the angle of attack first: nose down pitch control and wings level. Only when the stall indications have stopped, increase thrust smoothly, check the speedbrakes retracted and recover the flight path smoothly. Minimizing the loss of altitude is secondary to regaining lift.",
+ "key_limits": [
+  {
+   "label": "First action",
+   "value": "Nose down pitch control",
+   "applies_to": [
+    "all"
+   ],
+   "refs": [
+    {
+     "book": "FCOM",
+     "code": "PRO-ABN-MISC",
+     "page": "P 2/30",
+     "pdf": 3797
+    },
+    {
+     "book": "FCTM",
+     "code": "PR-AEP-MISC",
+     "page": "P 26/32",
+     "pdf": 471
+    }
+   ]
+  },
+  {
+   "label": "Bank",
+   "value": "Wings level",
+   "applies_to": [
+    "all"
+   ],
+   "refs": [
+    {
+     "book": "FCOM",
+     "code": "PRO-ABN-MISC",
+     "page": "P 2/30",
+     "pdf": 3797
+    }
+   ]
+  },
+  {
+   "label": "Thrust",
+   "value": "Only when out of stall: increase smoothly as needed",
+   "applies_to": [
+    "all"
+   ],
+   "refs": [
+    {
+     "book": "FCOM",
+     "code": "PRO-ABN-MISC",
+     "page": "P 2/30",
+     "pdf": 3797
+    },
+    {
+     "book": "FCTM",
+     "code": "PR-AEP-MISC",
+     "page": "P 26/32",
+     "pdf": 471
+    }
+   ]
+  },
+  {
+   "label": "FLAPS 1",
+   "value": "Clean, below FL 200 and below VFE Next",
+   "applies_to": [
+    "all"
+   ],
+   "refs": [
+    {
+     "book": "FCOM",
+     "code": "PRO-ABN-MISC",
+     "page": "P 2/30",
+     "pdf": 3797
+    },
+    {
+     "book": "FCTM",
+     "code": "PR-AEP-MISC",
+     "page": "P 27/32",
+     "pdf": 472
+    },
+    {
+     "book": "PDP",
+     "code": "Unreliable speed indication (and UPRT)",
+     "page": "XFTDA6UNRASPD01",
+     "pdf": 671
+    }
+   ]
+  }
+ ],
+ "flow": [
+  {
+   "phase": "Recognise",
+   "steps": [
+    {
+     "actor": "PF",
+     "items": [
+      {
+       "kind": "note",
+       "text": "Any stall indication: \"STALL, STALL\" synthetic voice then cricket, \"STALL STALL\" red message on the PFD, or buffet",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "FCOM",
+         "code": "PRO-ABN-MISC",
+         "page": "P 2/30",
+         "pdf": 3797
+        },
+        {
+         "book": "FCOM",
+         "code": "PRO-ABN-NAV",
+         "page": "P 123/124",
+         "pdf": 3948
+        },
+        {
+         "book": "FCTM",
+         "code": "PR-AEP-MISC",
+         "page": "P 26/32",
+         "pdf": 471
+        },
+        {
+         "book": "PDP",
+         "code": "Stall recovery",
+         "page": "XFTDA4STALLRC01",
+         "pdf": 542
+        }
+       ]
+      },
+      {
+       "kind": "callout",
+       "text": "STALL, I have control",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "FCOM",
+         "code": "PRO-ABN-ABN-00",
+         "page": "P 10/12",
+         "pdf": 2833
+        },
+        {
+         "book": "PDP",
+         "code": "Stall recovery",
+         "page": "XFTDA4STALLRC01",
+         "pdf": 543
+        }
+       ]
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "phase": "Reduce the angle of attack",
+   "steps": [
+    {
+     "actor": "PF",
+     "items": [
+      {
+       "kind": "ecam",
+       "item": "NOSE DOWN PITCH CONTROL",
+       "setting": "APPLY",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "FCOM",
+         "code": "PRO-ABN-MISC",
+         "page": "P 2/30",
+         "pdf": 3797
+        },
+        {
+         "book": "PDP",
+         "code": "Stall recovery",
+         "page": "XFTDA4STALLRC01",
+         "pdf": 543
+        }
+       ]
+      },
+      {
+       "kind": "note",
+       "text": "This will reduce angle of attack",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "FCOM",
+         "code": "PRO-ABN-MISC",
+         "page": "P 2/30",
+         "pdf": 3797
+        }
+       ]
+      },
+      {
+       "kind": "condition",
+       "text": "In the case of lack of pitch down authority",
+       "children": [
+        {
+         "kind": "action",
+         "text": "Reducing thrust may be necessary",
+         "applies_to": [
+          "all"
+         ],
+         "refs": [
+          {
+           "book": "FCOM",
+           "code": "PRO-ABN-MISC",
+           "page": "P 2/30",
+           "pdf": 3797
+          },
+          {
+           "book": "FCTM",
+           "code": "PR-AEP-MISC",
+           "page": "P 26/32",
+           "pdf": 471
+          },
+          {
+           "book": "PDP",
+           "code": "Stall recovery",
+           "page": "XFTDA4STALLRC01",
+           "pdf": 543
+          }
+         ]
+        }
+       ],
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "FCOM",
+         "code": "PRO-ABN-MISC",
+         "page": "P 2/30",
+         "pdf": 3797
+        }
+       ]
+      },
+      {
+       "kind": "ecam",
+       "item": "BANK",
+       "setting": "WINGS LEVEL",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "FCOM",
+         "code": "PRO-ABN-MISC",
+         "page": "P 2/30",
+         "pdf": 3797
+        },
+        {
+         "book": "PDP",
+         "code": "Stall recovery",
+         "page": "XFTDA4STALLRC01",
+         "pdf": 543
+        }
+       ]
+      },
+      {
+       "kind": "note",
+       "text": "Simultaneously with the nose down order: wings level reduces the lift necessary for the flight and so the required angle of attack",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "FCTM",
+         "code": "PR-AEP-MISC",
+         "page": "P 26/32",
+         "pdf": 471
+        }
+       ]
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "phase": "Increase energy",
+   "steps": [
+    {
+     "actor": "PF",
+     "items": [
+      {
+       "kind": "condition",
+       "text": "When out of stall (no longer stall indications)",
+       "children": [
+        {
+         "kind": "ecam",
+         "item": "THRUST",
+         "setting": "INCREASE SMOOTHLY AS NEEDED",
+         "applies_to": [
+          "all"
+         ],
+         "refs": [
+          {
+           "book": "FCOM",
+           "code": "PRO-ABN-MISC",
+           "page": "P 2/30",
+           "pdf": 3797
+          },
+          {
+           "book": "PDP",
+           "code": "Stall recovery",
+           "page": "XFTDA4STALLRC01",
+           "pdf": 543
+          }
+         ]
+        },
+        {
+         "kind": "note",
+         "text": "In the case of one engine inoperative, progressively compensate the thrust asymmetry with rudder",
+         "applies_to": [
+          "all"
+         ],
+         "refs": [
+          {
+           "book": "FCOM",
+           "code": "PRO-ABN-MISC",
+           "page": "P 2/30",
+           "pdf": 3797
+          }
+         ]
+        },
+        {
+         "kind": "ecam",
+         "item": "SPEEDBRAKES",
+         "setting": "CHECK RETRACTED",
+         "applies_to": [
+          "all"
+         ],
+         "refs": [
+          {
+           "book": "FCOM",
+           "code": "PRO-ABN-MISC",
+           "page": "P 2/30",
+           "pdf": 3797
+          },
+          {
+           "book": "PDP",
+           "code": "Stall recovery",
+           "page": "XFTDA4STALLRC01",
+           "pdf": 543
+          }
+         ]
+        },
+        {
+         "kind": "ecam",
+         "item": "FLIGHT PATH",
+         "setting": "RECOVER SMOOTHLY",
+         "applies_to": [
+          "all"
+         ],
+         "refs": [
+          {
+           "book": "FCOM",
+           "code": "PRO-ABN-MISC",
+           "page": "P 2/30",
+           "pdf": 3797
+          },
+          {
+           "book": "PDP",
+           "code": "Stall recovery",
+           "page": "XFTDA4STALLRC01",
+           "pdf": 543
+          }
+         ]
+        }
+       ],
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "FCOM",
+         "code": "PRO-ABN-MISC",
+         "page": "P 2/30",
+         "pdf": 3797
+        },
+        {
+         "book": "PDP",
+         "code": "Stall recovery",
+         "page": "XFTDA4STALLRC01",
+         "pdf": 543
+        }
+       ]
+      },
+      {
+       "kind": "condition",
+       "text": "If a risk of ground contact exists, once clearly out of stall",
+       "children": [
+        {
+         "kind": "action",
+         "text": "Establish smoothly a positive climb gradient",
+         "applies_to": [
+          "all"
+         ],
+         "refs": [
+          {
+           "book": "FCOM",
+           "code": "PRO-ABN-MISC",
+           "page": "P 2/30",
+           "pdf": 3797
+          }
+         ]
+        }
+       ],
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "FCOM",
+         "code": "PRO-ABN-MISC",
+         "page": "P 2/30",
+         "pdf": 3797
+        }
+       ]
+      },
+      {
+       "kind": "condition",
+       "text": "If in clean configuration, below FL 200 and below VFE Next",
+       "children": [
+        {
+         "kind": "callout",
+         "text": "FLAPS 1",
+         "applies_to": [
+          "all"
+         ],
+         "refs": [
+          {
+           "book": "PDP",
+           "code": "Stall recovery",
+           "page": "XFTDA4STALLRC01",
+           "pdf": 543
+          }
+         ]
+        }
+       ],
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "FCOM",
+         "code": "PRO-ABN-MISC",
+         "page": "P 2/30",
+         "pdf": 3797
+        },
+        {
+         "book": "FCTM",
+         "code": "PR-AEP-MISC",
+         "page": "P 27/32",
+         "pdf": 472
+        },
+        {
+         "book": "PDP",
+         "code": "Unreliable speed indication (and UPRT)",
+         "page": "XFTDA6UNRASPD01",
+         "pdf": 671
+        }
+       ]
+      }
+     ]
+    },
+    {
+     "actor": "PM",
+     "items": [
+      {
+       "kind": "ecam",
+       "item": "FLAPS 1",
+       "setting": "SELECT",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "FCOM",
+         "code": "PRO-ABN-MISC",
+         "page": "P 2/30",
+         "pdf": 3797
+        },
+        {
+         "book": "PDP",
+         "code": "Stall recovery",
+         "page": "XFTDA4STALLRC01",
+         "pdf": 543
+        }
+       ]
+      },
+      {
+       "kind": "note",
+       "text": "This increases the margin to the AOAstall",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "FCTM",
+         "code": "PR-AEP-MISC",
+         "page": "P 27/32",
+         "pdf": 472
+        },
+        {
+         "book": "PDP",
+         "code": "Stall recovery",
+         "page": "XFTDA4STALLRC01",
+         "pdf": 544
+        }
+       ]
+      }
+     ]
+    }
+   ]
+  }
+ ],
+ "procedures": [
+  {
+   "title": "[MEM] STALL RECOVERY",
+   "source": "FCOM PRO-ABN-MISC P 2/30",
+   "lines": [
+    {
+     "kind": "info",
+     "text": "As soon as any stall indication (could be aural warning, \"STALL STALL\" red message on PFD, buffet, etc.) is recognized, apply the immediate actions:",
+     "level": 0,
+     "applies_to": [
+      "all"
+     ],
+     "refs": [
+      {
+       "book": "FCOM",
+       "code": "PRO-ABN-MISC",
+       "page": "P 2/30",
+       "pdf": 3797
+      }
+     ]
+    },
+    {
+     "kind": "action",
+     "item": "NOSE DOWN PITCH CONTROL",
+     "setting": "APPLY",
+     "text": "",
+     "level": 0,
+     "applies_to": [
+      "all"
+     ],
+     "refs": [
+      {
+       "book": "FCOM",
+       "code": "PRO-ABN-MISC",
+       "page": "P 2/30",
+       "pdf": 3797
+      }
+     ]
+    },
+    {
+     "kind": "info",
+     "text": "This will reduce angle of attack",
+     "level": 0,
+     "applies_to": [
+      "all"
+     ],
+     "refs": [
+      {
+       "book": "FCOM",
+       "code": "PRO-ABN-MISC",
+       "page": "P 2/30",
+       "pdf": 3797
+      }
+     ]
+    },
+    {
+     "kind": "note",
+     "text": "In the case of lack of pitch down authority, reducing thrust may be necessary.",
+     "level": 0,
+     "applies_to": [
+      "all"
+     ],
+     "refs": [
+      {
+       "book": "FCOM",
+       "code": "PRO-ABN-MISC",
+       "page": "P 2/30",
+       "pdf": 3797
+      }
+     ]
+    },
+    {
+     "kind": "action",
+     "item": "BANK",
+     "setting": "WINGS LEVEL",
+     "text": "",
+     "level": 0,
+     "applies_to": [
+      "all"
+     ],
+     "refs": [
+      {
+       "book": "FCOM",
+       "code": "PRO-ABN-MISC",
+       "page": "P 2/30",
+       "pdf": 3797
+      }
+     ]
+    },
+    {
+     "kind": "condition",
+     "text": "When out of stall (no longer stall indications) :",
+     "level": 0,
+     "applies_to": [
+      "all"
+     ],
+     "refs": [
+      {
+       "book": "FCOM",
+       "code": "PRO-ABN-MISC",
+       "page": "P 2/30",
+       "pdf": 3797
+      }
+     ]
+    },
+    {
+     "kind": "action",
+     "item": "THRUST",
+     "setting": "INCREASE SMOOTHLY AS NEEDED",
+     "text": "",
+     "level": 1,
+     "applies_to": [
+      "all"
+     ],
+     "refs": [
+      {
+       "book": "FCOM",
+       "code": "PRO-ABN-MISC",
+       "page": "P 2/30",
+       "pdf": 3797
+      }
+     ]
+    },
+    {
+     "kind": "note",
+     "text": "In the case of one engine inoperative, progressively compensate the thrust asymmetry with rudder.",
+     "level": 1,
+     "applies_to": [
+      "all"
+     ],
+     "refs": [
+      {
+       "book": "FCOM",
+       "code": "PRO-ABN-MISC",
+       "page": "P 2/30",
+       "pdf": 3797
+      }
+     ]
+    },
+    {
+     "kind": "action",
+     "item": "SPEEDBRAKES",
+     "setting": "CHECK RETRACTED",
+     "text": "",
+     "level": 1,
+     "applies_to": [
+      "all"
+     ],
+     "refs": [
+      {
+       "book": "FCOM",
+       "code": "PRO-ABN-MISC",
+       "page": "P 2/30",
+       "pdf": 3797
+      }
+     ]
+    },
+    {
+     "kind": "action",
+     "item": "FLIGHT PATH",
+     "setting": "RECOVER SMOOTHLY",
+     "text": "",
+     "level": 1,
+     "applies_to": [
+      "all"
+     ],
+     "refs": [
+      {
+       "book": "FCOM",
+       "code": "PRO-ABN-MISC",
+       "page": "P 2/30",
+       "pdf": 3797
+      }
+     ]
+    },
+    {
+     "kind": "condition",
+     "text": "If in clean configuration and below 20 000 ft :",
+     "level": 1,
+     "applies_to": [
+      "all"
+     ],
+     "refs": [
+      {
+       "book": "FCOM",
+       "code": "PRO-ABN-MISC",
+       "page": "P 2/30",
+       "pdf": 3797
+      }
+     ]
+    },
+    {
+     "kind": "action",
+     "item": "FLAPS 1",
+     "setting": "SELECT",
+     "text": "",
+     "level": 2,
+     "applies_to": [
+      "all"
+     ],
+     "refs": [
+      {
+       "book": "FCOM",
+       "code": "PRO-ABN-MISC",
+       "page": "P 2/30",
+       "pdf": 3797
+      }
+     ]
+    },
+    {
+     "kind": "note",
+     "text": "If a risk of ground contact exists, once clearly out of stall (no longer stall indications), establish smoothly a positive climb gradient.",
+     "level": 1,
+     "applies_to": [
+      "all"
+     ],
+     "refs": [
+      {
+       "book": "FCOM",
+       "code": "PRO-ABN-MISC",
+       "page": "P 2/30",
+       "pdf": 3797
+      }
+     ]
+    }
+   ]
+  }
+ ],
+ "status": null,
+ "background": [
+  {
+   "text": "The stall is a condition where the angle of attack increases beyond a point such that the lift begins to decrease. Above AOAstall the airflow separates from the wing surface and the lift coefficient decreases.",
+   "applies_to": [
+    "all"
+   ],
+   "refs": [
+    {
+     "book": "FCTM",
+     "code": "PR-AEP-MISC",
+     "page": "P 23/32",
+     "pdf": 468
+    },
+    {
+     "book": "FCTM",
+     "code": "PR-AEP-MISC",
+     "page": "P 24/32",
+     "pdf": 469
+    }
+   ]
+  },
+  {
+   "text": "The stall always occurs at the same angle of attack for a given configuration, Mach number and altitude. AOAstall depends on the aircraft configuration (slats, flaps, speed brakes), Mach and altitude, and wing contamination.",
+   "applies_to": [
+    "all"
+   ],
+   "refs": [
+    {
+     "book": "FCTM",
+     "code": "PR-AEP-MISC",
+     "page": "P 24/32",
+     "pdf": 469
+    },
+    {
+     "book": "FCTM",
+     "code": "PR-AEP-MISC",
+     "page": "P 25/32",
+     "pdf": 470
+    }
+   ]
+  },
+  {
+   "text": "When the threshold is reached, permanent aural and visual alerts (\"STALL, STALL\" synthetic voice then cricket, \"STALL STALL\" red message on PFD) are triggered until a correct angle of attack is recovered.",
+   "applies_to": [
+    "all"
+   ],
+   "refs": [
+    {
+     "book": "FCOM",
+     "code": "PRO-ABN-NAV",
+     "page": "P 123/124",
+     "pdf": 3948
+    }
+   ]
+  },
+  {
+   "text": "Stall warnings give sufficient margin to alert the crew in advance of the actual stall, even with contaminated wings. Stall buffet is airframe vibration from the airflow separating when approaching AOAstall.",
+   "applies_to": [
+    "all"
+   ],
+   "refs": [
+    {
+     "book": "FCTM",
+     "code": "PR-AEP-MISC",
+     "page": "P 26/32",
+     "pdf": 471
+    }
+   ]
+  },
+  {
+   "text": "High altitude: buffeting increases due to the high Mach number, and both AOAstall and CL MAX decrease as Mach increases. For some Mach numbers the buffet may appear just before the stall warnings.",
+   "applies_to": [
+    "all"
+   ],
+   "refs": [
+    {
+     "book": "FCTM",
+     "code": "PR-AEP-MISC",
+     "page": "P 23/32",
+     "pdf": 468
+    },
+    {
+     "book": "FCTM",
+     "code": "PR-AEP-MISC",
+     "page": "P 26/32",
+     "pdf": 471
+    }
+   ]
+  },
+  {
+   "text": "Near the maximum altitude, margins reach their required minimum. Icing conditions or turbulence could rapidly lead to a slowdown, a buffet onset, a stall condition and, subsequently, a high altitude upset.",
+   "applies_to": [
+    "all"
+   ],
+   "refs": [
+    {
+     "book": "PDP",
+     "code": "Unreliable speed indication (and UPRT)",
+     "page": "XFTDA6UNRASPD01",
+     "pdf": 586
+    }
+   ]
+  },
+  {
+   "text": "In alternate law the stall warnings are activated at an appropriate margin from the stall condition, the PFD speed scale shows a black/red barber pole below the stall warning, and the α floor protection is inoperative. In direct law, stall warnings are available as for alternate law.",
+   "applies_to": [
+    "all"
+   ],
+   "refs": [
+    {
+     "book": "FCOM",
+     "code": "DSC-27-20-20",
+     "page": "P 12/20",
+     "pdf": 1623
+    },
+    {
+     "book": "FCOM",
+     "code": "DSC-27-20-20",
+     "page": "P 15/20",
+     "pdf": 1626
+    },
+    {
+     "book": "FCOM",
+     "code": "DSC-27-20-20",
+     "page": "P 17/20",
+     "pdf": 1628
+    }
+   ]
+  }
+ ],
+ "technique": [
+  {
+   "text": "The immediate key action is to reduce the angle of attack with a nose down pitch order on the sidestick: this ensures an immediate aircraft response.",
+   "applies_to": [
+    "all"
+   ],
+   "refs": [
+    {
+     "book": "FCTM",
+     "code": "PR-AEP-MISC",
+     "page": "P 26/32",
+     "pdf": 471
+    }
+   ]
+  },
+  {
+   "text": "Minimizing the loss of altitude is secondary to reducing the angle of attack, as the first priority is to regain lift.",
+   "applies_to": [
+    "all"
+   ],
+   "refs": [
+    {
+     "book": "FCTM",
+     "code": "PR-AEP-MISC",
+     "page": "P 26/32",
+     "pdf": 471
+    }
+   ]
+  },
+  {
+   "text": "Immediate maximum thrust on stall recognition is not appropriate. Engine spool up makes the speed increase slow, so it does not reduce the angle of attack instantaneously, and the thrust increase from under wing mounted engines generates a pitch up that may prevent the reduction.",
+   "applies_to": [
+    "all"
+   ],
+   "refs": [
+    {
+     "book": "FCTM",
+     "code": "PR-AEP-MISC",
+     "page": "P 26/32",
+     "pdf": 471
+    }
+   ]
+  },
+  {
+   "text": "When stall indications have stopped and the aircraft has recovered sufficient energy, smoothly recover the initial flight path.",
+   "applies_to": [
+    "all"
+   ],
+   "refs": [
+    {
+     "book": "FCTM",
+     "code": "PR-AEP-MISC",
+     "page": "P 26/32",
+     "pdf": 471
+    }
+   ]
+  },
+  {
+   "text": "A stalled condition can exist in any attitude. Recover from the stall first, then apply the appropriate upset recovery technique.",
+   "applies_to": [
+    "all"
+   ],
+   "refs": [
+    {
+     "book": "FCTM",
+     "code": "PR-AEP-MISC",
+     "page": "P 29/32",
+     "pdf": 474
+    },
+    {
+     "book": "PDP",
+     "code": "Unreliable speed indication (and UPRT)",
+     "page": "XFTDA6UNRASPD01",
+     "pdf": 608
+    },
+    {
+     "book": "PDP",
+     "code": "Unreliable speed indication (and UPRT)",
+     "page": "XFTDA6UNRASPD01",
+     "pdf": 667
+    }
+   ]
+  }
+ ],
+ "related": [
+  {
+   "title": "[MEM] STALL WARNING AT LIFTOFF",
+   "why": "A separate memory item with different actions, for stall warnings triggered at liftoff.",
+   "key_actions": [
+    "THRUST: TOGA",
+    "At the same time: PITCH ATTITUDE 15°, BANK WINGS LEVEL",
+    "Callout: \"STALL, TOGA 15°\"",
+    "When a safe flight path and speed are achieved, consider warnings that are still active as spurious"
+   ],
+   "refs": [
+    {
+     "book": "FCOM",
+     "code": "PRO-ABN-MISC",
+     "page": "P 3/30",
+     "pdf": 3798
+    },
+    {
+     "book": "FCOM",
+     "code": "PRO-ABN-ABN-00",
+     "page": "P 10/12",
+     "pdf": 2833
+    },
+    {
+     "book": "FCTM",
+     "code": "PR-AEP-MISC",
+     "page": "P 27/32",
+     "pdf": 472
+    }
+   ]
+  },
+  {
+   "title": "UPSET PREVENTION AND RECOVERY",
+   "why": "All upset recovery techniques assume the aircraft is not stalled. Once out of stall, apply the appropriate technique.",
+   "key_actions": [
+    "Nose high or nose low actions, as needed"
+   ],
+   "refs": [
+    {
+     "book": "FCTM",
+     "code": "PR-AEP-MISC",
+     "page": "P 29/32",
+     "pdf": 474
+    },
+    {
+     "book": "PDP",
+     "code": "Unreliable speed indication (and UPRT)",
+     "page": "XFTDA6UNRASPD01",
+     "pdf": 608
+    },
+    {
+     "book": "PDP",
+     "code": "Unreliable speed indication (and UPRT)",
+     "page": "XFTDA6UNRASPD01",
+     "pdf": 667
+    }
+   ]
+  }
+ ],
+ "differences": [],
+ "gaps": [
+  {
+   "text": "The FLAPS 1 condition differs between the sources: the FCOM says \"If in clean configuration and below 20 000 ft\", the FCTM says \"below FL 200\", and a PDP example says \"if speed is still lower than VFE Next\". The flow combines them as clean, below FL 200 and below VFE Next. Confirmed by the user. The verbatim FCOM procedure above is unchanged.",
+   "applies_to": [
+    "all"
+   ],
+   "refs": [
+    {
+     "book": "FCOM",
+     "code": "PRO-ABN-MISC",
+     "page": "P 2/30",
+     "pdf": 3797
+    },
+    {
+     "book": "FCTM",
+     "code": "PR-AEP-MISC",
+     "page": "P 27/32",
+     "pdf": 472
+    },
+    {
+     "book": "PDP",
+     "code": "Unreliable speed indication (and UPRT)",
+     "page": "XFTDA6UNRASPD01",
+     "pdf": 671
+    }
+   ]
+  },
+  {
+   "text": "The manuals describe no stick shaker. Their stall indications are the aural warning, the PFD message and buffet. Any training wording that mentions a stick shaker is left out of this brief. Confirmed by the user.",
+   "applies_to": [
+    "all"
+   ],
+   "refs": [
+    {
+     "book": "FCOM",
+     "code": "PRO-ABN-MISC",
+     "page": "P 2/30",
+     "pdf": 3797
+    },
+    {
+     "book": "FCOM",
+     "code": "PRO-ABN-NAV",
+     "page": "P 123/124",
+     "pdf": 3948
+    }
+   ]
+  },
+  {
+   "text": "The manuals do not describe an \"accelerated stall\" by name. The nearest text is that a stalled condition can exist in any attitude. Linking such an exercise to this brief without further wording is confirmed by the user.",
+   "applies_to": [
+    "all"
+   ],
+   "refs": [
+    {
+     "book": "FCTM",
+     "code": "PR-AEP-MISC",
+     "page": "P 29/32",
+     "pdf": 474
+    }
+   ]
+  },
+  {
+   "text": "The FCOM gives the callout \"STALL, I have control\" without naming a pilot, and the manuals do not cover the PM noticing the stall first. The PDP slide shows the callout in the PF column, and this brief shows the PF. Confirmed by the user. The PF/PM split for FLAPS 1 also comes from the PDP slide.",
+   "applies_to": [
+    "all"
+   ],
+   "refs": [
+    {
+     "book": "FCOM",
+     "code": "PRO-ABN-ABN-00",
+     "page": "P 10/12",
+     "pdf": 2833
+    },
+    {
+     "book": "PDP",
+     "code": "Stall recovery",
+     "page": "XFTDA4STALLRC01",
+     "pdf": 543
+    }
+   ]
+  },
+  {
+   "text": "This brief describes stall warnings in alternate and direct law only. Normal law, with its high angle-of-attack protection, is not covered. Confirmed by the user.",
+   "applies_to": [
+    "all"
+   ],
+   "refs": [
+    {
+     "book": "FCOM",
+     "code": "DSC-27-20-20",
+     "page": "P 12/20",
+     "pdf": 1623
+    },
+    {
+     "book": "FCOM",
+     "code": "DSC-27-20-20",
+     "page": "P 15/20",
+     "pdf": 1626
+    },
+    {
+     "book": "FCOM",
+     "code": "DSC-27-20-20",
+     "page": "P 17/20",
+     "pdf": 1628
+    },
+    {
+     "book": "FCOM",
+     "code": "DSC-27-20-10-20",
+     "page": "P 9/14",
+     "pdf": 1596
+    }
+   ]
+  },
+  {
+   "text": "The manuals have no stall guidance specific to the landing configuration beyond the ground contact note, and FLAPS 1 applies only in clean configuration. Linking such an exercise to this brief is confirmed by the user.",
+   "applies_to": [
+    "all"
+   ],
+   "refs": [
+    {
+     "book": "FCOM",
+     "code": "PRO-ABN-MISC",
+     "page": "P 2/30",
+     "pdf": 3797
+    },
+    {
+     "book": "FCTM",
+     "code": "PR-AEP-MISC",
+     "page": "P 27/32",
+     "pdf": 472
+    }
+   ]
+  },
+  {
+   "text": "The QRH has no stall recovery procedure, and the manuals give no other PM action for this procedure.",
+   "applies_to": [
+    "all"
+   ],
+   "refs": [
+    {
+     "book": "FCOM",
+     "code": "PRO-ABN-MISC",
+     "page": "P 2/30",
+     "pdf": 3797
+    },
+    {
+     "book": "PDP",
+     "code": "Stall recovery",
+     "page": "XFTDA4STALLRC01",
+     "pdf": 543
+    }
+   ]
+  }
+ ],
+ "sources": [
+  {
+   "book": "FCOM",
+   "section": "PRO-ABN-MISC — [MEM] STALL RECOVERY, [MEM] STALL WARNING AT LIFTOFF",
+   "pages": "P 2–3/30",
+   "pdf": "3797–3798",
+   "rev": "18 FEB 26"
+  },
+  {
+   "book": "FCOM",
+   "section": "PRO-ABN-ABN-00 — memory callouts",
+   "pages": "P 10/12",
+   "pdf": "2833",
+   "rev": "26 MAY 26"
+  },
+  {
+   "book": "FCOM",
+   "section": "PRO-ABN-NAV — STALL WARNING",
+   "pages": "P 123/124",
+   "pdf": "3948",
+   "rev": "26 MAY 26"
+  },
+  {
+   "book": "FCOM",
+   "section": "DSC-27-20-20 — alternate and direct law",
+   "pages": "P 12/20, 15/20, 17/20",
+   "pdf": "1623, 1626, 1628",
+   "rev": "18 FEB 26"
+  },
+  {
+   "book": "FCOM",
+   "section": "DSC-27-20-10-20 — high angle-of-attack protection",
+   "pages": "P 9/14",
+   "pdf": "1596",
+   "rev": "18 FEB 26"
+  },
+  {
+   "book": "FCTM",
+   "section": "PR-AEP-MISC — STALL RECOVERY",
+   "pages": "P 23–27/32",
+   "pdf": "468–472",
+   "rev": "26 MAY 26"
+  },
+  {
+   "book": "FCTM",
+   "section": "PR-AEP-MISC — UPSET PREVENTION AND RECOVERY",
+   "pages": "P 29/32",
+   "pdf": "474",
+   "rev": "26 MAY 26"
+  },
+  {
+   "book": "PDP",
+   "section": "Stall recovery (XFTDA4STALLRC01)",
+   "pages": "slides",
+   "pdf": "541–544",
+   "rev": "OCT 2018"
+  },
+  {
+   "book": "PDP",
+   "section": "Unreliable speed indication (and UPRT) (XFTDA6UNRASPD01)",
+   "pages": "slides",
+   "pdf": "586, 608, 667, 671",
+   "rev": "OCT 2022"
+  }
+ ],
+ "schema": "a320-ecam-abnormal/3",
+ "generated": "2026-10-31",
+ "qrh": [],
+ "tables": []
+}
