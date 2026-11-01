@@ -1,0 +1,1110 @@
+{
+ "slug": "air-l-r-wing-leak",
+ "title": "AIR L(R) WING LEAK",
+ "kind": "ecam",
+ "alert": {
+  "level": "caution",
+  "land_asap": "none",
+  "memory_items": false,
+  "qrh_summary": false,
+  "trigger": "Both BMCs are operative and detect a temperature above 124 °C for the L(R) wing, or one BMC is failed and the other detects a temperature above 124 °C for the L(R) wing.",
+  "inhibited_phases": [
+   3,
+   4,
+   5,
+   7,
+   8
+  ],
+  "refs": [
+   {
+    "book": "FCOM",
+    "code": "PRO-ABN-AIR",
+    "page": "P 65/82",
+    "pdf": 2954
+   }
+  ]
+ },
+ "effectivity": {
+  "branches": [],
+  "note": "One version for all HS-TX (the HS-TO version is not used)."
+ },
+ "summary": "An amber caution: an overheat is detected near the hot air ducts in one wing. Switch the affected engine bleed OFF, shut the crossbleed and switch wing anti-ice OFF, so the crew must avoid icing conditions. For a left wing leak, also switch the APU bleed OFF if it has not closed. The STATUS lists the engine bleed, the pack on that side and wing anti-ice as inoperative.",
+ "key_limits": [
+  {
+   "label": "Trigger",
+   "value": "Above 124 °C for the L(R) wing",
+   "applies_to": [
+    "all"
+   ],
+   "refs": [
+    {
+     "book": "FCOM",
+     "code": "PRO-ABN-AIR",
+     "page": "P 65/82",
+     "pdf": 2954
+    }
+   ]
+  },
+  {
+   "label": "X BLEED",
+   "value": "SHUT",
+   "applies_to": [
+    "all"
+   ],
+   "refs": [
+    {
+     "book": "FCOM",
+     "code": "PRO-ABN-AIR",
+     "page": "P 65/82",
+     "pdf": 2954
+    }
+   ]
+  },
+  {
+   "label": "If severe ice accretion",
+   "value": "MIN SPD VLS +10 / G DOT",
+   "applies_to": [
+    "all"
+   ],
+   "refs": [
+    {
+     "book": "FCOM",
+     "code": "PRO-ABN-AIR",
+     "page": "P 66/82",
+     "pdf": 2955
+    }
+   ]
+  }
+ ],
+ "flow": [
+  {
+   "phase": "Detection",
+   "steps": [
+    {
+     "actor": "BOTH",
+     "items": [
+      {
+       "kind": "action",
+       "text": "First to notice: MASTER WARNING / CAUTION reset",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "FCTM",
+         "code": "AOP-30-30",
+         "page": "P 2/6",
+         "pdf": 83
+        },
+        {
+         "book": "PDP",
+         "code": "Management of abnormal operations",
+         "page": "XFTDN6ECAM00001",
+         "pdf": 424
+        }
+       ]
+      }
+     ]
+    },
+    {
+     "actor": "PM",
+     "items": [
+      {
+       "kind": "callout",
+       "text": "AIR L(R) WING LEAK",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "FCTM",
+         "code": "AOP-30-30",
+         "page": "P 2/6",
+         "pdf": 83
+        },
+        {
+         "book": "FCOM",
+         "code": "PRO-ABN-AIR",
+         "page": "P 65/82",
+         "pdf": 2954
+        },
+        {
+         "book": "PDP",
+         "code": "Management of abnormal operations",
+         "page": "XFTDN6ECAM00001",
+         "pdf": 424
+        }
+       ]
+      },
+      {
+       "kind": "action",
+       "text": "Confirm the failure on the SD page and overhead panel before acting",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "FCTM",
+         "code": "AOP-30-30",
+         "page": "P 2/6",
+         "pdf": 83
+        },
+        {
+         "book": "PDP",
+         "code": "Management of abnormal operations",
+         "page": "XFTDN6ECAM00001",
+         "pdf": 424
+        }
+       ]
+      }
+     ]
+    },
+    {
+     "actor": "PF",
+     "items": [
+      {
+       "kind": "callout",
+       "text": "ECAM ACTIONS",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "FCOM",
+         "code": "PRO-ABN-ABN-00",
+         "page": "P 8/12",
+         "pdf": 2831
+        },
+        {
+         "book": "FCTM",
+         "code": "AOP-30-30",
+         "page": "P 3/6",
+         "pdf": 84
+        },
+        {
+         "book": "PDP",
+         "code": "Management of abnormal operations",
+         "page": "XFTDN6ECAM00001",
+         "pdf": 424
+        }
+       ]
+      },
+      {
+       "kind": "note",
+       "text": "PF now flies, navigates and communicates",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "FCTM",
+         "code": "AOP-20",
+         "page": "P 1–2/10",
+         "pdf": 68
+        },
+        {
+         "book": "PDP",
+         "code": "Management of abnormal operations",
+         "page": "XFTDN6ECAM00001",
+         "pdf": 424
+        }
+       ]
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "phase": "ECAM actions",
+   "steps": [
+    {
+     "actor": "PM",
+     "items": [
+      {
+       "kind": "ecam",
+       "item": "ENG BLEED (AFFECTED)",
+       "setting": "OFF",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "FCOM",
+         "code": "PRO-ABN-AIR",
+         "page": "P 65/82",
+         "pdf": 2954
+        }
+       ]
+      },
+      {
+       "kind": "note",
+       "text": "When the pb-sw is OFF, the FAULT light goes off when the overheat disappears",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "FCOM",
+         "code": "PRO-ABN-AIR",
+         "page": "P 65/82",
+         "pdf": 2954
+        }
+       ]
+      },
+      {
+       "kind": "condition",
+       "text": "If AIR L WING LEAK",
+       "children": [
+        {
+         "kind": "ecam",
+         "item": "APU BLEED (IF NOT CLOSED)",
+         "setting": "OFF",
+         "applies_to": [
+          "all"
+         ],
+         "refs": [
+          {
+           "book": "FCOM",
+           "code": "PRO-ABN-AIR",
+           "page": "P 65/82",
+           "pdf": 2954
+          }
+         ]
+        }
+       ],
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "FCOM",
+         "code": "PRO-ABN-AIR",
+         "page": "P 65/82",
+         "pdf": 2954
+        }
+       ]
+      },
+      {
+       "kind": "ecam",
+       "item": "X BLEED",
+       "setting": "SHUT",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "FCOM",
+         "code": "PRO-ABN-AIR",
+         "page": "P 65/82",
+         "pdf": 2954
+        }
+       ]
+      },
+      {
+       "kind": "ecam",
+       "item": "WING ANTI-ICE",
+       "setting": "OFF",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "FCOM",
+         "code": "PRO-ABN-AIR",
+         "page": "P 65/82",
+         "pdf": 2954
+        }
+       ]
+      },
+      {
+       "kind": "action",
+       "text": "AVOID ICING CONDITIONS",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "FCOM",
+         "code": "PRO-ABN-AIR",
+         "page": "P 65/82",
+         "pdf": 2954
+        }
+       ]
+      },
+      {
+       "kind": "note",
+       "text": "Overhead actions: point to the panel and announce the system, the control and the action, then check the SD page",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "FCTM",
+         "code": "AOP-30-20",
+         "page": "P 1/2",
+         "pdf": 80
+        }
+       ]
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "phase": "STATUS",
+   "steps": [
+    {
+     "actor": "PM",
+     "items": [
+      {
+       "kind": "callout",
+       "text": "CLEAR AIR ?",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "FCOM",
+         "code": "PRO-ABN-ABN-00",
+         "page": "P 8/12",
+         "pdf": 2831
+        },
+        {
+         "book": "FCTM",
+         "code": "AOP-30-30",
+         "page": "P 3/6",
+         "pdf": 84
+        },
+        {
+         "book": "PDP",
+         "code": "Management of abnormal operations",
+         "page": "XFTDN6ECAM00001",
+         "pdf": 424
+        }
+       ]
+      }
+     ]
+    },
+    {
+     "actor": "PF",
+     "items": [
+      {
+       "kind": "callout",
+       "text": "CLEAR AIR",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "FCOM",
+         "code": "PRO-ABN-ABN-00",
+         "page": "P 8/12",
+         "pdf": 2831
+        },
+        {
+         "book": "FCTM",
+         "code": "AOP-30-30",
+         "page": "P 3/6",
+         "pdf": 84
+        },
+        {
+         "book": "PDP",
+         "code": "Management of abnormal operations",
+         "page": "XFTDN6ECAM00001",
+         "pdf": 424
+        }
+       ]
+      }
+     ]
+    },
+    {
+     "actor": "PM",
+     "items": [
+      {
+       "kind": "callout",
+       "text": "STATUS",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "FCTM",
+         "code": "AOP-30-30",
+         "page": "P 3/6",
+         "pdf": 84
+        },
+        {
+         "book": "PDP",
+         "code": "Management of abnormal operations",
+         "page": "XFTDN6ECAM00001",
+         "pdf": 426
+        }
+       ]
+      }
+     ]
+    },
+    {
+     "actor": "PF",
+     "items": [
+      {
+       "kind": "callout",
+       "text": "STOP ECAM",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "FCTM",
+         "code": "AOP-30-30",
+         "page": "P 3/6",
+         "pdf": 84
+        },
+        {
+         "book": "PDP",
+         "code": "Management of abnormal operations",
+         "page": "XFTDN6ECAM00001",
+         "pdf": 426
+        }
+       ]
+      }
+     ]
+    },
+    {
+     "actor": "PM",
+     "items": [
+      {
+       "kind": "ecam",
+       "item": "ECAM ACTIONS",
+       "setting": "STOP",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "PDP",
+         "code": "Management of abnormal operations",
+         "page": "XFTDN6ECAM00001",
+         "pdf": 426
+        }
+       ]
+      }
+     ]
+    },
+    {
+     "actor": "PF",
+     "items": [
+      {
+       "kind": "action",
+       "text": "Normal C/L as applicable; system resets only per QRH",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "FCTM",
+         "code": "AOP-30-30",
+         "page": "P 4/6",
+         "pdf": 85
+        },
+        {
+         "book": "PDP",
+         "code": "Management of abnormal operations",
+         "page": "XFTDN6ECAM00001",
+         "pdf": 426
+        }
+       ]
+      },
+      {
+       "kind": "callout",
+       "text": "CONTINUE ECAM",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "FCTM",
+         "code": "AOP-30-30",
+         "page": "P 3/6",
+         "pdf": 84
+        },
+        {
+         "book": "PDP",
+         "code": "Management of abnormal operations",
+         "page": "XFTDN6ECAM00001",
+         "pdf": 426
+        }
+       ]
+      }
+     ]
+    },
+    {
+     "actor": "PM",
+     "items": [
+      {
+       "kind": "action",
+       "text": "Read the whole STATUS page; preview APPR PROC workload",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "FCTM",
+         "code": "AOP-30-30",
+         "page": "P 3/6",
+         "pdf": 84
+        },
+        {
+         "book": "PDP",
+         "code": "Management of abnormal operations",
+         "page": "XFTDN6ECAM00001",
+         "pdf": 426
+        }
+       ]
+      },
+      {
+       "kind": "callout",
+       "text": "REMOVE STATUS ?",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "FCTM",
+         "code": "AOP-30-30",
+         "page": "P 3/6",
+         "pdf": 84
+        },
+        {
+         "book": "PDP",
+         "code": "Management of abnormal operations",
+         "page": "XFTDN6ECAM00001",
+         "pdf": 426
+        }
+       ]
+      }
+     ]
+    },
+    {
+     "actor": "PF",
+     "items": [
+      {
+       "kind": "callout",
+       "text": "REMOVE STATUS",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "FCOM",
+         "code": "PRO-ABN-ABN-00",
+         "page": "P 8/12",
+         "pdf": 2831
+        },
+        {
+         "book": "FCTM",
+         "code": "AOP-30-30",
+         "page": "P 3/6",
+         "pdf": 84
+        },
+        {
+         "book": "PDP",
+         "code": "Management of abnormal operations",
+         "page": "XFTDN6ECAM00001",
+         "pdf": 426
+        }
+       ]
+      }
+     ]
+    },
+    {
+     "actor": "PM",
+     "items": [
+      {
+       "kind": "callout",
+       "text": "ECAM ACTIONS COMPLETE",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "FCOM",
+         "code": "PRO-ABN-ABN-00",
+         "page": "P 8/12",
+         "pdf": 2831
+        },
+        {
+         "book": "PDP",
+         "code": "Management of abnormal operations",
+         "page": "XFTDN6ECAM00001",
+         "pdf": 426
+        }
+       ]
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "phase": "Flight continuation",
+   "steps": [
+    {
+     "actor": "PF",
+     "items": [
+      {
+       "kind": "action",
+       "text": "Avoid icing conditions",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "FCOM",
+         "code": "PRO-ABN-AIR",
+         "page": "P 66/82",
+         "pdf": 2955
+        }
+       ]
+      },
+      {
+       "kind": "condition",
+       "text": "If severe ice accretion",
+       "children": [
+        {
+         "kind": "ecam",
+         "item": "MIN SPD",
+         "setting": "VLS +10 / G DOT",
+         "applies_to": [
+          "all"
+         ],
+         "refs": [
+          {
+           "book": "FCOM",
+           "code": "PRO-ABN-AIR",
+           "page": "P 66/82",
+           "pdf": 2955
+          }
+         ]
+        },
+        {
+         "kind": "action",
+         "text": "Maneuver with care",
+         "applies_to": [
+          "all"
+         ],
+         "refs": [
+          {
+           "book": "FCOM",
+           "code": "PRO-ABN-AIR",
+           "page": "P 66/82",
+           "pdf": 2955
+          }
+         ]
+        },
+        {
+         "kind": "ecam",
+         "item": "LDG DIST PROC",
+         "setting": "APPLY",
+         "applies_to": [
+          "all"
+         ],
+         "refs": [
+          {
+           "book": "FCOM",
+           "code": "PRO-ABN-AIR",
+           "page": "P 66/82",
+           "pdf": 2955
+          }
+         ]
+        }
+       ],
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "FCOM",
+         "code": "PRO-ABN-AIR",
+         "page": "P 66/82",
+         "pdf": 2955
+        }
+       ]
+      }
+     ]
+    }
+   ]
+  }
+ ],
+ "procedures": [
+  {
+   "title": "AIR L(R) WING LEAK",
+   "source": "FCOM PRO-ABN-AIR (HS-TX)",
+   "lines": [
+    {
+     "kind": "action",
+     "item": "ENG BLEED (AFFECTED)",
+     "setting": "OFF",
+     "text": "",
+     "level": 0,
+     "applies_to": [
+      "all"
+     ],
+     "refs": [
+      {
+       "book": "FCOM",
+       "code": "PRO-ABN-AIR",
+       "page": "P 65/82",
+       "pdf": 2954
+      }
+     ]
+    },
+    {
+     "kind": "info",
+     "text": "When the ENG BLEED pb-sw is ON, the FAULT light remains on. When the ENG BLEED pb-sw is OFF, the FAULT light goes off when the overheat disappears.",
+     "level": 0,
+     "applies_to": [
+      "all"
+     ],
+     "refs": [
+      {
+       "book": "FCOM",
+       "code": "PRO-ABN-AIR",
+       "page": "P 65/82",
+       "pdf": 2954
+      }
+     ]
+    },
+    {
+     "kind": "condition",
+     "text": "If AIR L WING LEAK:",
+     "level": 0,
+     "applies_to": [
+      "all"
+     ],
+     "refs": [
+      {
+       "book": "FCOM",
+       "code": "PRO-ABN-AIR",
+       "page": "P 65/82",
+       "pdf": 2954
+      }
+     ]
+    },
+    {
+     "kind": "action",
+     "item": "APU BLEED (IF NOT CLOSED)",
+     "setting": "OFF",
+     "text": "",
+     "level": 1,
+     "applies_to": [
+      "all"
+     ],
+     "refs": [
+      {
+       "book": "FCOM",
+       "code": "PRO-ABN-AIR",
+       "page": "P 65/82",
+       "pdf": 2954
+      }
+     ]
+    },
+    {
+     "kind": "action",
+     "item": "X BLEED",
+     "setting": "SHUT",
+     "text": "",
+     "level": 0,
+     "applies_to": [
+      "all"
+     ],
+     "refs": [
+      {
+       "book": "FCOM",
+       "code": "PRO-ABN-AIR",
+       "page": "P 65/82",
+       "pdf": 2954
+      }
+     ]
+    },
+    {
+     "kind": "action",
+     "item": "WING ANTI-ICE",
+     "setting": "OFF",
+     "text": "",
+     "level": 0,
+     "applies_to": [
+      "all"
+     ],
+     "refs": [
+      {
+       "book": "FCOM",
+       "code": "PRO-ABN-AIR",
+       "page": "P 65/82",
+       "pdf": 2954
+      }
+     ]
+    },
+    {
+     "kind": "info",
+     "text": "AVOID ICING CONDITIONS",
+     "level": 0,
+     "applies_to": [
+      "all"
+     ],
+     "refs": [
+      {
+       "book": "FCOM",
+       "code": "PRO-ABN-AIR",
+       "page": "P 65/82",
+       "pdf": 2954
+      }
+     ]
+    }
+   ]
+  }
+ ],
+ "status": {
+  "limitations": [
+   {
+    "text": "AVOID ICING CONDITIONS",
+    "applies_to": [
+     "all"
+    ],
+    "refs": [
+     {
+      "book": "FCOM",
+      "code": "PRO-ABN-AIR",
+      "page": "P 66/82",
+      "pdf": 2955
+     }
+    ]
+   }
+  ],
+  "info": [
+   {
+    "text": "IF SEVERE ICE ACCRETION: MIN SPD VLS +10 / G DOT; MANEUVER WITH CARE; LDG DIST PROC APPLY",
+    "applies_to": [
+     "all"
+    ],
+    "refs": [
+     {
+      "book": "FCOM",
+      "code": "PRO-ABN-AIR",
+      "page": "P 66/82",
+      "pdf": 2955
+     }
+    ]
+   }
+  ],
+  "appr_proc": [],
+  "inop_sys": [
+   {
+    "text": "WING A.ICE",
+    "applies_to": [
+     "all"
+    ],
+    "refs": [
+     {
+      "book": "FCOM",
+      "code": "PRO-ABN-AIR",
+      "page": "P 66/82",
+      "pdf": 2955
+     }
+    ]
+   },
+   {
+    "text": "ENG 1(2) BLEED",
+    "applies_to": [
+     "all"
+    ],
+    "refs": [
+     {
+      "book": "FCOM",
+      "code": "PRO-ABN-AIR",
+      "page": "P 66/82",
+      "pdf": 2955
+     }
+    ]
+   },
+   {
+    "text": "PACK 1(2)",
+    "applies_to": [
+     "all"
+    ],
+    "refs": [
+     {
+      "book": "FCOM",
+      "code": "PRO-ABN-AIR",
+      "page": "P 66/82",
+      "pdf": 2955
+     }
+    ]
+   }
+  ]
+ },
+ "background": [
+  {
+   "text": "Leak detection loops detect overheating near the hot air ducts. A wing has a double loop: a wing leak signal needs both loops, or one loop with the other inoperative.",
+   "applies_to": [
+    "all"
+   ],
+   "refs": [
+    {
+     "book": "FCOM",
+     "code": "DSC-36-10-50",
+     "page": "P 1/4",
+     "pdf": 2352
+    }
+   ]
+  },
+  {
+   "text": "A wing leak signal closes the bleed valve on the related side, turns on the FAULT light on the AIR COND panel and closes the x-bleed valve (except during an engine start). For a left wing leak, it also closes the APU bleed valve if open (except during an engine start).",
+   "applies_to": [
+    "all"
+   ],
+   "refs": [
+    {
+     "book": "FCOM",
+     "code": "DSC-36-10-50",
+     "page": "P 1/4",
+     "pdf": 2352
+    },
+    {
+     "book": "FCOM",
+     "code": "DSC-36-10-30",
+     "page": "P 1/2",
+     "pdf": 2348
+    }
+   ]
+  },
+  {
+   "text": "If one BMC fails, the other still issues the wing leak warning, but the associated FAULT light is lost and the associated bleed valve does not close automatically.",
+   "applies_to": [
+    "all"
+   ],
+   "refs": [
+    {
+     "book": "FCOM",
+     "code": "DSC-36-10-60",
+     "page": "P 1/2",
+     "pdf": 2356
+    }
+   ]
+  }
+ ],
+ "technique": [],
+ "related": [
+  {
+   "title": "AIR ENG 1+2 BLEED FAULT (LEFT LEAK)",
+   "why": "A separate procedure when both engine bleed supply systems are lost with a left wing leak or a pylon leak on side 1.",
+   "key_actions": [
+    "If unsuccessful: DES TO FL 100/MEA-MORA",
+    "See the FCOM procedure"
+   ],
+   "refs": [
+    {
+     "book": "FCOM",
+     "code": "PRO-ABN-AIR",
+     "page": "P 30/82",
+     "pdf": 2919
+    },
+    {
+     "book": "FCOM",
+     "code": "PRO-ABN-AIR",
+     "page": "P 31/82",
+     "pdf": 2920
+    }
+   ]
+  }
+ ],
+ "gaps": [
+  {
+   "text": "The FCTM has no chapter for this alert and no PDP module covers it; the flow is the standard ECAM sequence.",
+   "applies_to": [
+    "all"
+   ],
+   "refs": [
+    {
+     "book": "FCTM",
+     "code": "AOP-30-30",
+     "page": "P 2/6",
+     "pdf": 83
+    },
+    {
+     "book": "PDP",
+     "code": "Management of abnormal operations",
+     "page": "XFTDN6ECAM00001",
+     "pdf": 424
+    }
+   ]
+  },
+  {
+   "text": "The FCTM example of the overhead announcement is \"AIR, XBLEED, CLOSE\"; the ECAM line for this alert reads X BLEED SHUT. The flow does not quote an announcement for it.",
+   "applies_to": [
+    "all"
+   ],
+   "refs": [
+    {
+     "book": "FCTM",
+     "code": "AOP-30-20",
+     "page": "P 1/2",
+     "pdf": 80
+    },
+    {
+     "book": "FCOM",
+     "code": "PRO-ABN-AIR",
+     "page": "P 65/82",
+     "pdf": 2954
+    }
+   ]
+  },
+  {
+   "text": "The HS-TO version of this procedure (FCOM P 66–67/82) is not used.",
+   "applies_to": [
+    "all"
+   ],
+   "refs": [
+    {
+     "book": "FCOM",
+     "code": "PRO-ABN-AIR",
+     "page": "P 66/82",
+     "pdf": 2955
+    }
+   ]
+  }
+ ],
+ "sources": [
+  {
+   "book": "FCOM",
+   "section": "PRO-ABN-AIR — AIR L(R) WING LEAK, AIR ENG 1+2 BLEED FAULT LEFT LEAK (HS-TX)",
+   "pages": "P 30–31, 65–66/82",
+   "pdf": "2919–2920, 2954–2955",
+   "rev": "26 MAY 26"
+  },
+  {
+   "book": "FCOM",
+   "section": "DSC-36-10 — leak detection, BMC failure, APU bleed",
+   "pages": "DSC-36-10-50 P 1/4; DSC-36-10-60 P 1/2; DSC-36-10-30 P 1/2",
+   "pdf": "2352, 2356, 2348",
+   "rev": "18 FEB 26"
+  },
+  {
+   "book": "FCTM",
+   "section": "AOP-20 / AOP-30 — task sharing and ECAM handling",
+   "pages": "AOP-20 P 1–2/10, AOP-30 P 1–6/6",
+   "pdf": "68–69, 79–86",
+   "rev": "26 MAY 26"
+  },
+  {
+   "book": "PDP",
+   "section": "Management of abnormal operations (XFTDN6ECAM00001)",
+   "pages": "ECAM actions, STATUS, QRH, confirm",
+   "pdf": "424–432",
+   "rev": "JAN 2024"
+  }
+ ],
+ "schema": "a320-ecam-abnormal/3",
+ "generated": "2026-11-01",
+ "qrh": [],
+ "tables": [],
+ "differences": []
+}

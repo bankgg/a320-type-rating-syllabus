@@ -78,7 +78,7 @@ FAILURE_SUMMARIES = {
     'ffs-6': ('RNP degradation', 'Probe anti-ice', 'Hydraulic system low pressure', 'Flaps/slats faults', 'Stabilizer jam', 'Engine fire', 'Emergency evacuation'),
     'ffs-7': ('Crew incapacitation', 'FCU fault', 'Engine severe damage/separation', 'Fuel imbalance', 'RNP degradation', 'APU shutdown/fire', 'Loss of braking', 'Fuel leak', 'APU generator fault', 'Cabin smoke', 'Emergency evacuation', 'Engine failure'),
     'ffs-8': ('Stall recovery', 'Upset recovery'),
-    'ffs-9': ('IDG overheat', 'Navigation/FMGS failure', 'Engine failure', 'Fuel imbalance', 'Hydraulic reservoir low level', 'ADR faults', 'Duct leak / pack overheat', 'Cargo smoke'),
+    'ffs-9': ('IDG overheat', 'Navigation/FMGS failure', 'Engine failure', 'Diversion', 'Fuel imbalance', 'Hydraulic reservoir low level', 'ADR faults', 'Duct leak / pack overheat', 'Cargo smoke'),
     'ffs-10': ('Engine start fault', 'Decompression', 'Hydraulic system failure', 'Flaps fault', 'Engine failure', 'Engine fire', 'Emergency evacuation'),
 }
 
@@ -174,6 +174,21 @@ PROCEDURE_GROUPS = {
         ('Stall recovery', (('stall-recovery', 'Stall recovery'),)),
         ('Upset recovery', (('upset-prevention-and-recovery', 'Upset recovery'),)),
     ],
+    'ffs-9': [
+        ('IDG overheat', (('elec-idg-1-2-oil-lo-pr-ovht', 'IDG OIL OVHT', 'IDG 2 overheat at 15 min to EEP, then use of the APU (see the APU phase).'),)),
+        ('Navigation/FMGS failure', (('fmgc-failure', 'FMGC 1+2', 'Listed in the syllabus as "navigation failure, both FMGS fault", on entering the ETOPS area. Use the dual FMGC part of the flow.'),)),
+        ('Engine failure', (('eng-1-2-fail', 'Engine failure', 'Engine 1 or 2 at ETP. The syllabus then says "strategies" (see Drift down, and Diversion for the fixed speed strategy).'),
+                            ('eng-failure-cruise-strategy', 'Drift down'))),
+        ('Diversion', (('etops-diversion-and-abnormal-procedures', 'ETOPS diversion'),)),
+        ('Fuel imbalance', (('fuel-imbalance', 'Fuel imbalance', 'Listed in the syllabus as "Fuel monitoring and imbalance".'),)),
+        ('Hydraulic reservoir low level', (('hyd-g-rsvr-lo-lvl', 'HYD G RSVR LO LVL', 'At 15 min to EEP. The syllabus says "restore". The manuals give no in-flight restoration for this alert, so the instructor removes the failure after the procedure.'),)),
+        ('ADR faults', (('nav-adr-1-2-3-fault-buss', 'ALL ADR FAULT', 'On entering the ETOPS area. The alert triggers by itself here, so start at the ECAM actions (phase 2); the "Below FL 250" limit belongs to the unreliable-speed route, not to this ECAM procedure. The syllabus says "restore". The BUSS is not reversible, so the instructor removes the failure after the procedure.'),)),
+        ('Duct leak / pack overheat', (('air-l-r-wing-leak', 'L WING LEAK', 'Listed in the syllabus as "LEFT WING DUCT LEAK", at ETP, followed by PACK 2 OVHT.'),
+                                       ('air-pack-1-2-ovht', 'PACK 2 OVHT', 'After the left wing leak, pack 1 is already lost, so PACK 2 OFF leaves no pack until the overheat clears.'),
+                                       ('air-pack-1-2-fault', 'PACK 1+2 FAULT', 'The last step after the left wing leak and PACK 2 OVHT. The manuals give no procedure for those two failures together, and this alert\'s trigger names both ACSCs failed (see Gaps).'))),
+        ('Cargo smoke', (('smoke-aft-cargo-smoke', 'AFT CARGO SMOKE', 'The syllabus says only "Cargo smoke" and does not name the hold.'),
+                         ('smoke-fwd-cargo-smoke', 'FWD CARGO SMOKE', 'The syllabus says only "Cargo smoke" and does not name the hold.'))),
+    ],
 }
 # A summary subject that opens another subject's group, because a brief can only sit in one group per session.
 SUMMARY_GROUP_ALIASES = {'ffs-7': {'Engine severe damage/separation': 'Engine failure'}}
@@ -222,6 +237,10 @@ EXERCISE_BRIEFS = {
     'ffs-8-e12': 'upset-prevention-and-recovery', 'ffs-8-e13': 'upset-prevention-and-recovery',
     'ffs-8-e14': 'upset-prevention-and-recovery', 'ffs-8-e15': 'upset-prevention-and-recovery',
     'ffs-8-e17': 'upset-prevention-and-recovery', 'ffs-8-e18': 'upset-prevention-and-recovery',
+    'ffs-9-e03': 'elec-idg-1-2-oil-lo-pr-ovht', 'ffs-9-e04': 'fmgc-failure', 'ffs-9-e05': 'eng-1-2-fail',
+    'ffs-9-e06': 'etops-diversion-and-abnormal-procedures', 'ffs-9-e07': 'fuel-imbalance',
+    'ffs-9-e12': 'hyd-g-rsvr-lo-lvl', 'ffs-9-e13': 'nav-adr-1-2-3-fault-buss',
+    'ffs-9-e14': 'air-l-r-wing-leak', 'ffs-9-e15': 'smoke-aft-cargo-smoke',
 }
 ALERT_LABELS = {'warning': 'Red warning', 'caution': 'Amber caution', 'qrh': 'QRH procedure',
                 'memory': 'Memory items', 'technique': 'Technique'}

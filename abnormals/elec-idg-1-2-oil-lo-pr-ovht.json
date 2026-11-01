@@ -1,0 +1,1275 @@
+{
+ "slug": "elec-idg-1-2-oil-lo-pr-ovht",
+ "title": "ELEC IDG 1(2) OIL LO PR/OVHT",
+ "kind": "ecam",
+ "alert": {
+  "level": "caution",
+  "land_asap": "none",
+  "memory_items": false,
+  "qrh_summary": false,
+  "trigger": "ELEC IDG 1(2) OIL LO PR: the IDG oil pressure is low. ELEC IDG 1(2) OIL OVHT: the IDG outlet oil temperature rises above 180 °C.",
+  "inhibited_phases": [
+   1,
+   4,
+   5,
+   7,
+   8,
+   10
+  ],
+  "refs": [
+   {
+    "book": "FCOM",
+    "code": "PRO-ABN-ELEC",
+    "page": "P 117/122",
+    "pdf": 3242
+   }
+  ]
+ },
+ "effectivity": {
+  "branches": [],
+  "note": "One version for all HS-TX (the HS-TO version is not used)."
+ },
+ "summary": "An amber caution: the IDG oil pressure is low or its oil is above 180 °C. Disconnect the IDG with its guarded pushbutton after a crosscheck, pressing until the GEN FAULT light comes on and for no more than 3 s. Only maintenance can reconnect it. If available, the APU may be started and the APU GEN used; on an ETOPS flight, start the APU and use its electrical channel. Landing capability drops to CAT 3 SINGLE.",
+ "key_limits": [
+  {
+   "label": "IDG pb-sw",
+   "value": "Press until GEN FAULT light on · not more than 3 s",
+   "applies_to": [
+    "all"
+   ],
+   "refs": [
+    {
+     "book": "FCOM",
+     "code": "PRO-ABN-ELEC",
+     "page": "P 117/122",
+     "pdf": 3242
+    },
+    {
+     "book": "FCOM",
+     "code": "DSC-24-20",
+     "page": "P 3/22",
+     "pdf": 1466
+    }
+   ]
+  },
+  {
+   "label": "Engine",
+   "value": "At or above idle to disconnect",
+   "applies_to": [
+    "all"
+   ],
+   "refs": [
+    {
+     "book": "FCOM",
+     "code": "PRO-ABN-ELEC",
+     "page": "P 117/122",
+     "pdf": 3242
+    }
+   ]
+  },
+  {
+   "label": "Oil overheat",
+   "value": "Above 180 °C · automatic disconnection at 200 °C",
+   "applies_to": [
+    "all"
+   ],
+   "refs": [
+    {
+     "book": "FCOM",
+     "code": "PRO-ABN-ELEC",
+     "page": "P 117/122",
+     "pdf": 3242
+    },
+    {
+     "book": "FCOM",
+     "code": "DSC-24-20",
+     "page": "P 3/22",
+     "pdf": 1466
+    }
+   ]
+  },
+  {
+   "label": "Landing capability",
+   "value": "CAT 3 SINGLE ONLY",
+   "applies_to": [
+    "all"
+   ],
+   "refs": [
+    {
+     "book": "FCOM",
+     "code": "PRO-ABN-ELEC",
+     "page": "P 118/122",
+     "pdf": 3243
+    }
+   ]
+  }
+ ],
+ "flow": [
+  {
+   "phase": "Detection",
+   "steps": [
+    {
+     "actor": "BOTH",
+     "items": [
+      {
+       "kind": "action",
+       "text": "First to notice: MASTER WARNING / CAUTION reset",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "FCTM",
+         "code": "AOP-30-30",
+         "page": "P 2/6",
+         "pdf": 83
+        },
+        {
+         "book": "PDP",
+         "code": "Management of abnormal operations",
+         "page": "XFTDN6ECAM00001",
+         "pdf": 424
+        }
+       ]
+      }
+     ]
+    },
+    {
+     "actor": "PM",
+     "items": [
+      {
+       "kind": "callout",
+       "text": "ELEC IDG 1(2) OIL OVHT",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "FCTM",
+         "code": "AOP-30-30",
+         "page": "P 2/6",
+         "pdf": 83
+        },
+        {
+         "book": "FCOM",
+         "code": "PRO-ABN-ELEC",
+         "page": "P 117/122",
+         "pdf": 3242
+        },
+        {
+         "book": "PDP",
+         "code": "Management of abnormal operations",
+         "page": "XFTDN6ECAM00001",
+         "pdf": 424
+        }
+       ]
+      },
+      {
+       "kind": "action",
+       "text": "Confirm the failure on the SD page and overhead panel before acting",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "FCTM",
+         "code": "AOP-30-30",
+         "page": "P 2/6",
+         "pdf": 83
+        },
+        {
+         "book": "PDP",
+         "code": "Management of abnormal operations",
+         "page": "XFTDN6ECAM00001",
+         "pdf": 424
+        }
+       ]
+      }
+     ]
+    },
+    {
+     "actor": "PF",
+     "items": [
+      {
+       "kind": "callout",
+       "text": "ECAM ACTIONS",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "FCOM",
+         "code": "PRO-ABN-ABN-00",
+         "page": "P 8/12",
+         "pdf": 2831
+        },
+        {
+         "book": "FCTM",
+         "code": "AOP-30-30",
+         "page": "P 3/6",
+         "pdf": 84
+        },
+        {
+         "book": "PDP",
+         "code": "Management of abnormal operations",
+         "page": "XFTDN6ECAM00001",
+         "pdf": 424
+        }
+       ]
+      },
+      {
+       "kind": "note",
+       "text": "PF now flies, navigates and communicates",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "FCTM",
+         "code": "AOP-20",
+         "page": "P 1–2/10",
+         "pdf": 68
+        },
+        {
+         "book": "PDP",
+         "code": "Management of abnormal operations",
+         "page": "XFTDN6ECAM00001",
+         "pdf": 424
+        }
+       ]
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "phase": "ECAM actions",
+   "steps": [
+    {
+     "actor": "PM",
+     "items": [
+      {
+       "kind": "ecam",
+       "item": "IDG (AFFECTED)",
+       "setting": "OFF",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "FCOM",
+         "code": "PRO-ABN-ELEC",
+         "page": "P 117/122",
+         "pdf": 3242
+        }
+       ]
+      },
+      {
+       "kind": "note",
+       "text": "Guarded pb-sw: point to it and ask confirmation",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "FCOM",
+         "code": "DSC-24-20",
+         "page": "P 3/22",
+         "pdf": 1466
+        },
+        {
+         "book": "FCTM",
+         "code": "AOP-30-20",
+         "page": "P 1/2",
+         "pdf": 80
+        },
+        {
+         "book": "PDP",
+         "code": "Management of abnormal operations",
+         "page": "XFTDN6ECAM00001",
+         "pdf": 432
+        }
+       ]
+      }
+     ]
+    },
+    {
+     "actor": "PM",
+     "items": [
+      {
+       "kind": "callout",
+       "text": "CONFIRM?",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "PDP",
+         "code": "Management of abnormal operations",
+         "page": "XFTDN6ECAM00001",
+         "pdf": 432
+        },
+        {
+         "book": "FCOM",
+         "code": "DSC-24-20",
+         "page": "P 3/22",
+         "pdf": 1466
+        },
+        {
+         "book": "FCTM",
+         "code": "AOP-30-20",
+         "page": "P 1/2",
+         "pdf": 80
+        }
+       ]
+      }
+     ]
+    },
+    {
+     "actor": "PF",
+     "items": [
+      {
+       "kind": "callout",
+       "text": "CONFIRMED",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "PDP",
+         "code": "Management of abnormal operations",
+         "page": "XFTDN6ECAM00001",
+         "pdf": 432
+        }
+       ]
+      },
+      {
+       "kind": "note",
+       "text": "After verifying the control the PM points to",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "PDP",
+         "code": "Management of abnormal operations",
+         "page": "XFTDN6ECAM00001",
+         "pdf": 432
+        },
+        {
+         "book": "FCTM",
+         "code": "AOP-30-20",
+         "page": "P 1/2",
+         "pdf": 80
+        }
+       ]
+      }
+     ]
+    },
+    {
+     "actor": "PM",
+     "items": [
+      {
+       "kind": "action",
+       "text": "Press the IDG pb-sw until the GEN FAULT light comes on, for no more than 3 s",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "FCOM",
+         "code": "PRO-ABN-ELEC",
+         "page": "P 117/122",
+         "pdf": 3242
+        },
+        {
+         "book": "FCOM",
+         "code": "DSC-24-20",
+         "page": "P 3/22",
+         "pdf": 1466
+        }
+       ]
+      },
+      {
+       "kind": "note",
+       "text": "The engine must be at or above idle: disconnection is inhibited when the engine is stopped or below idle",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "FCOM",
+         "code": "PRO-ABN-ELEC",
+         "page": "P 117/122",
+         "pdf": 3242
+        }
+       ]
+      },
+      {
+       "kind": "note",
+       "text": "The IDG FAULT light goes off when the IDG is disconnected",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "FCOM",
+         "code": "PRO-ABN-ELEC",
+         "page": "P 117/122",
+         "pdf": 3242
+        }
+       ]
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "phase": "STATUS",
+   "steps": [
+    {
+     "actor": "PM",
+     "items": [
+      {
+       "kind": "callout",
+       "text": "CLEAR ELEC ?",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "FCOM",
+         "code": "PRO-ABN-ABN-00",
+         "page": "P 8/12",
+         "pdf": 2831
+        },
+        {
+         "book": "FCTM",
+         "code": "AOP-30-30",
+         "page": "P 3/6",
+         "pdf": 84
+        },
+        {
+         "book": "PDP",
+         "code": "Management of abnormal operations",
+         "page": "XFTDN6ECAM00001",
+         "pdf": 424
+        }
+       ]
+      }
+     ]
+    },
+    {
+     "actor": "PF",
+     "items": [
+      {
+       "kind": "callout",
+       "text": "CLEAR ELEC",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "FCOM",
+         "code": "PRO-ABN-ABN-00",
+         "page": "P 8/12",
+         "pdf": 2831
+        },
+        {
+         "book": "FCTM",
+         "code": "AOP-30-30",
+         "page": "P 3/6",
+         "pdf": 84
+        },
+        {
+         "book": "PDP",
+         "code": "Management of abnormal operations",
+         "page": "XFTDN6ECAM00001",
+         "pdf": 424
+        }
+       ]
+      }
+     ]
+    },
+    {
+     "actor": "PM",
+     "items": [
+      {
+       "kind": "callout",
+       "text": "STATUS",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "FCTM",
+         "code": "AOP-30-30",
+         "page": "P 3/6",
+         "pdf": 84
+        },
+        {
+         "book": "PDP",
+         "code": "Management of abnormal operations",
+         "page": "XFTDN6ECAM00001",
+         "pdf": 426
+        }
+       ]
+      }
+     ]
+    },
+    {
+     "actor": "PF",
+     "items": [
+      {
+       "kind": "callout",
+       "text": "STOP ECAM",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "FCTM",
+         "code": "AOP-30-30",
+         "page": "P 3/6",
+         "pdf": 84
+        },
+        {
+         "book": "PDP",
+         "code": "Management of abnormal operations",
+         "page": "XFTDN6ECAM00001",
+         "pdf": 426
+        }
+       ]
+      }
+     ]
+    },
+    {
+     "actor": "PM",
+     "items": [
+      {
+       "kind": "ecam",
+       "item": "ECAM ACTIONS",
+       "setting": "STOP",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "PDP",
+         "code": "Management of abnormal operations",
+         "page": "XFTDN6ECAM00001",
+         "pdf": 426
+        }
+       ]
+      }
+     ]
+    },
+    {
+     "actor": "PF",
+     "items": [
+      {
+       "kind": "action",
+       "text": "Normal C/L as applicable; system resets only per QRH",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "FCTM",
+         "code": "AOP-30-30",
+         "page": "P 4/6",
+         "pdf": 85
+        },
+        {
+         "book": "PDP",
+         "code": "Management of abnormal operations",
+         "page": "XFTDN6ECAM00001",
+         "pdf": 426
+        }
+       ]
+      },
+      {
+       "kind": "callout",
+       "text": "CONTINUE ECAM",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "FCTM",
+         "code": "AOP-30-30",
+         "page": "P 3/6",
+         "pdf": 84
+        },
+        {
+         "book": "PDP",
+         "code": "Management of abnormal operations",
+         "page": "XFTDN6ECAM00001",
+         "pdf": 426
+        }
+       ]
+      }
+     ]
+    },
+    {
+     "actor": "PM",
+     "items": [
+      {
+       "kind": "action",
+       "text": "Read the whole STATUS page; preview APPR PROC workload",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "FCTM",
+         "code": "AOP-30-30",
+         "page": "P 3/6",
+         "pdf": 84
+        },
+        {
+         "book": "PDP",
+         "code": "Management of abnormal operations",
+         "page": "XFTDN6ECAM00001",
+         "pdf": 426
+        }
+       ]
+      },
+      {
+       "kind": "callout",
+       "text": "REMOVE STATUS ?",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "FCTM",
+         "code": "AOP-30-30",
+         "page": "P 3/6",
+         "pdf": 84
+        },
+        {
+         "book": "PDP",
+         "code": "Management of abnormal operations",
+         "page": "XFTDN6ECAM00001",
+         "pdf": 426
+        }
+       ]
+      }
+     ]
+    },
+    {
+     "actor": "PF",
+     "items": [
+      {
+       "kind": "callout",
+       "text": "REMOVE STATUS",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "FCOM",
+         "code": "PRO-ABN-ABN-00",
+         "page": "P 8/12",
+         "pdf": 2831
+        },
+        {
+         "book": "FCTM",
+         "code": "AOP-30-30",
+         "page": "P 3/6",
+         "pdf": 84
+        },
+        {
+         "book": "PDP",
+         "code": "Management of abnormal operations",
+         "page": "XFTDN6ECAM00001",
+         "pdf": 426
+        }
+       ]
+      }
+     ]
+    },
+    {
+     "actor": "PM",
+     "items": [
+      {
+       "kind": "callout",
+       "text": "ECAM ACTIONS COMPLETE",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "FCOM",
+         "code": "PRO-ABN-ABN-00",
+         "page": "P 8/12",
+         "pdf": 2831
+        },
+        {
+         "book": "PDP",
+         "code": "Management of abnormal operations",
+         "page": "XFTDN6ECAM00001",
+         "pdf": 426
+        }
+       ]
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "phase": "APU",
+   "steps": [
+    {
+     "actor": "PF",
+     "items": [
+      {
+       "kind": "note",
+       "text": "STATUS: if available, the APU may be started and the APU GEN used",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "FCOM",
+         "code": "PRO-ABN-ELEC",
+         "page": "P 118/122",
+         "pdf": 3243
+        }
+       ]
+      },
+      {
+       "kind": "condition",
+       "text": "On an ETOPS flight",
+       "children": [
+        {
+         "kind": "action",
+         "text": "Start the APU and use the APU electrical channel",
+         "applies_to": [
+          "all"
+         ],
+         "refs": [
+          {
+           "book": "FCOM",
+           "code": "PRO-SPO-40-50",
+           "page": "P 2/4",
+           "pdf": 4589
+          }
+         ]
+        }
+       ],
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "FCOM",
+         "code": "PRO-SPO-40-50",
+         "page": "P 2/4",
+         "pdf": 4589
+        }
+       ]
+      }
+     ]
+    },
+    {
+     "actor": "PM",
+     "items": [
+      {
+       "kind": "ecam",
+       "item": "APU MASTER SW pb-sw",
+       "setting": "ON",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "FCOM",
+         "code": "PRO-NOR-SOP-04",
+         "page": "P 5/14",
+         "pdf": 4084
+        }
+       ]
+      },
+      {
+       "kind": "note",
+       "text": "Wait at least 3 s",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "FCOM",
+         "code": "PRO-NOR-SOP-04",
+         "page": "P 5/14",
+         "pdf": 4084
+        }
+       ]
+      },
+      {
+       "kind": "ecam",
+       "item": "APU START pb-sw",
+       "setting": "ON",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "FCOM",
+         "code": "PRO-NOR-SOP-04",
+         "page": "P 5/14",
+         "pdf": 4084
+        }
+       ]
+      },
+      {
+       "kind": "note",
+       "text": "Engine generators have priority over the APU generator, which can supply the entire network",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "FCOM",
+         "code": "DSC-24-10-30-10",
+         "page": "P 1/2",
+         "pdf": 1446
+        }
+       ]
+      },
+      {
+       "kind": "note",
+       "text": "After three consecutive start attempts, wait 60 min",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "FCOM",
+         "code": "LIM-APU",
+         "page": "P 1/2",
+         "pdf": 4690
+        }
+       ]
+      }
+     ]
+    }
+   ]
+  }
+ ],
+ "procedures": [
+  {
+   "title": "ELEC IDG 1(2) OIL LO PR/OVHT",
+   "source": "FCOM PRO-ABN-ELEC (HS-TX)",
+   "lines": [
+    {
+     "kind": "action",
+     "item": "IDG (AFFECTED)",
+     "setting": "OFF",
+     "text": "",
+     "level": 0,
+     "applies_to": [
+      "all"
+     ],
+     "refs": [
+      {
+       "book": "FCOM",
+       "code": "PRO-ABN-ELEC",
+       "page": "P 117/122",
+       "pdf": 3242
+      }
+     ]
+    },
+    {
+     "kind": "info",
+     "text": "If the associated engine is running, the IDG must be disconnected from the engine at or above idle to prevent damage to the disconnect mechanism.",
+     "level": 0,
+     "applies_to": [
+      "all"
+     ],
+     "refs": [
+      {
+       "book": "FCOM",
+       "code": "PRO-ABN-ELEC",
+       "page": "P 117/122",
+       "pdf": 3242
+      }
+     ]
+    },
+    {
+     "kind": "note",
+     "text": "The IDG disconnection is inhibited, when the engine is stopped or below idle. Press the IDG pb-sw until the GEN FAULT light comes on. However, do not press for more than 3 s, to avoid damage to the disconnect solenoid. The IDG FAULT light goes off, when the IDG is disconnected.",
+     "level": 0,
+     "applies_to": [
+      "all"
+     ],
+     "refs": [
+      {
+       "book": "FCOM",
+       "code": "PRO-ABN-ELEC",
+       "page": "P 117/122",
+       "pdf": 3242
+      }
+     ]
+    },
+    {
+     "kind": "info",
+     "text": "When the IDG is disconnected before takeoff, the oil temperature of the affected IDG may reach a higher value than during normal operations, but without exceeding 150 °C.",
+     "level": 0,
+     "applies_to": [
+      "all"
+     ],
+     "refs": [
+      {
+       "book": "FCOM",
+       "code": "PRO-ABN-ELEC",
+       "page": "P 117/122",
+       "pdf": 3242
+      }
+     ]
+    }
+   ]
+  }
+ ],
+ "status": {
+  "limitations": [
+   {
+    "text": "CAT 3 SINGLE ONLY",
+    "applies_to": [
+     "all"
+    ],
+    "refs": [
+     {
+      "book": "FCOM",
+      "code": "PRO-ABN-ELEC",
+      "page": "P 118/122",
+      "pdf": 3243
+     }
+    ]
+   }
+  ],
+  "info": [
+   {
+    "text": "Note: If available, the APU may be started and the APU GEN used.",
+    "applies_to": [
+     "all"
+    ],
+    "refs": [
+     {
+      "book": "FCOM",
+      "code": "PRO-ABN-ELEC",
+      "page": "P 118/122",
+      "pdf": 3243
+     }
+    ]
+   }
+  ],
+  "appr_proc": [],
+  "inop_sys": [
+   {
+    "text": "MAIN GALLEY (only if APU GEN is not online)",
+    "applies_to": [
+     "all"
+    ],
+    "refs": [
+     {
+      "book": "FCOM",
+      "code": "PRO-ABN-ELEC",
+      "page": "P 118/122",
+      "pdf": 3243
+     }
+    ]
+   },
+   {
+    "text": "GEN 1(2)",
+    "applies_to": [
+     "all"
+    ],
+    "refs": [
+     {
+      "book": "FCOM",
+      "code": "PRO-ABN-ELEC",
+      "page": "P 118/122",
+      "pdf": 3243
+     }
+    ]
+   },
+   {
+    "text": "CAT 3 DUAL",
+    "applies_to": [
+     "all"
+    ],
+    "refs": [
+     {
+      "book": "FCOM",
+      "code": "PRO-ABN-ELEC",
+      "page": "P 118/122",
+      "pdf": 3243
+     }
+    ]
+   }
+  ]
+ },
+ "background": [
+  {
+   "text": "The IDG FAULT light comes on if the oil outlet overheats above 180 °C or the oil pressure is low; it goes off when the IDG is disconnected.",
+   "applies_to": [
+    "all"
+   ],
+   "refs": [
+    {
+     "book": "FCOM",
+     "code": "DSC-24-20",
+     "page": "P 3/22",
+     "pdf": 1466
+    }
+   ]
+  },
+  {
+   "text": "Pressing the IDG pb-sw disconnects the IDG from its driveshaft, and only maintenance personnel can reconnect it. Disconnect only with the engine running or windmilling. An automatic thermal disconnection occurs at 200 °C.",
+   "applies_to": [
+    "all"
+   ],
+   "refs": [
+    {
+     "book": "FCOM",
+     "code": "DSC-24-20",
+     "page": "P 3/22",
+     "pdf": 1466
+    }
+   ]
+  },
+  {
+   "text": "GEN 1 and 2 have priority over the APU generator. The APU generator can supply the entire network.",
+   "applies_to": [
+    "all"
+   ],
+   "refs": [
+    {
+     "book": "FCOM",
+     "code": "DSC-24-10-30-10",
+     "page": "P 1/2",
+     "pdf": 1446
+    }
+   ]
+  },
+  {
+   "text": "In flight, the APU backs up the electrical system. APU starting is permitted throughout the normal flight envelope.",
+   "applies_to": [
+    "all"
+   ],
+   "refs": [
+    {
+     "book": "FCOM",
+     "code": "DSC-49-10-10",
+     "page": "P 1/2",
+     "pdf": 2570
+    }
+   ]
+  }
+ ],
+ "technique": [
+  {
+   "text": "ETOPS flights, engine or IDG failure: start the APU and use the APU electrical channel.",
+   "applies_to": [
+    "all"
+   ],
+   "refs": [
+    {
+     "book": "FCOM",
+     "code": "PRO-SPO-40-50",
+     "page": "P 2/4",
+     "pdf": 4589
+    }
+   ]
+  },
+  {
+   "text": "ETOPS flights, one IDG failed: a diversion is required in the case of blue hydraulic circuit low level, low pressure or overheat, APU no start, APU or APU generator inoperative, or a second IDG failure.",
+   "applies_to": [
+    "all"
+   ],
+   "refs": [
+    {
+     "book": "FCOM",
+     "code": "PRO-SPO-40-40",
+     "page": "P 1/2",
+     "pdf": 4586
+    }
+   ]
+  }
+ ],
+ "related": [
+  {
+   "title": "ELEC IDG 1(2) DISCONNECTED",
+   "why": "Triggers when the IDG is disconnected.",
+   "key_actions": [
+    "Crew awareness",
+    "Same STATUS: APU may be started and APU GEN used; CAT 3 SINGLE ONLY"
+   ],
+   "refs": [
+    {
+     "book": "FCOM",
+     "code": "PRO-ABN-ELEC",
+     "page": "P 115/122",
+     "pdf": 3240
+    }
+   ]
+  },
+  {
+   "title": "IDG OIL TEMP advisory",
+   "why": "ECAM advisory at IDG OIL TEMP ≥ 147 °C, before the overheat alert.",
+   "key_actions": [
+    "Reduce IDG load, if possible (GALLEY or GEN OFF)",
+    "If required, restore when the temperature has dropped",
+    "Restrict generator use to a short time, if the temperature rises again excessively"
+   ],
+   "refs": [
+    {
+     "book": "FCOM",
+     "code": "PRO-ABN-ABN-ADV",
+     "page": "P 1/6",
+     "pdf": 2836
+    },
+    {
+     "book": "QRH",
+     "code": "01.01",
+     "page": "01.01A",
+     "pdf": 46
+    }
+   ]
+  }
+ ],
+ "gaps": [
+  {
+   "text": "The FCTM ELEC chapter covers only the emergency electrical configuration, and no PDP module covers this alert; the flow is the standard ECAM sequence.",
+   "applies_to": [
+    "all"
+   ],
+   "refs": [
+    {
+     "book": "FCTM",
+     "code": "PR-AEP-ELEC",
+     "page": "P 1/2",
+     "pdf": 400
+    },
+    {
+     "book": "PDP",
+     "code": "Management of abnormal operations",
+     "page": "XFTDN6ECAM00001",
+     "pdf": 424
+    }
+   ]
+  },
+  {
+   "text": "The QRH reset table has no entry for this alert, and the FCOM says only maintenance personnel can reconnect the IDG.",
+   "applies_to": [
+    "all"
+   ],
+   "refs": [
+    {
+     "book": "QRH",
+     "code": "02.01",
+     "page": "02.01A",
+     "pdf": 50
+    },
+    {
+     "book": "FCOM",
+     "code": "DSC-24-20",
+     "page": "P 3/22",
+     "pdf": 1466
+    }
+   ]
+  },
+  {
+   "text": "The manuals name no role for the APU start. Confirmed by the user: the PM. The APU switch lines come from the normal cockpit preparation SOP.",
+   "applies_to": [
+    "all"
+   ],
+   "refs": [
+    {
+     "book": "FCTM",
+     "code": "AOP-30-20",
+     "page": "P 1/2",
+     "pdf": 80
+    },
+    {
+     "book": "FCOM",
+     "code": "PRO-NOR-SOP-04",
+     "page": "P 5/14",
+     "pdf": 4084
+    }
+   ]
+  },
+  {
+   "text": "The HS-TO version of this procedure (FCOM P 118–119/122) is not used.",
+   "applies_to": [
+    "all"
+   ],
+   "refs": [
+    {
+     "book": "FCOM",
+     "code": "PRO-ABN-ELEC",
+     "page": "P 118/122",
+     "pdf": 3243
+    }
+   ]
+  }
+ ],
+ "sources": [
+  {
+   "book": "FCOM",
+   "section": "PRO-ABN-ELEC — ELEC IDG 1(2) OIL LO PR/OVHT, ELEC IDG 1(2) DISCONNECTED (HS-TX)",
+   "pages": "P 115, 117–118/122",
+   "pdf": "3240, 3242–3243",
+   "rev": "26 MAY 26"
+  },
+  {
+   "book": "FCOM",
+   "section": "DSC-24 — IDG pb-sw, generator priority",
+   "pages": "DSC-24-20 P 3/22; DSC-24-10-30-10 P 1/2",
+   "pdf": "1466, 1446",
+   "rev": "21 MAY 25, 22 MAR 16"
+  },
+  {
+   "book": "FCOM",
+   "section": "PRO-SPO-40-40, 40-50 — ETOPS diversion, abnormal procedures",
+   "pages": "P 1/2; P 2/4",
+   "pdf": "4586, 4589",
+   "rev": "15 FEB 23, 18 FEB 26"
+  },
+  {
+   "book": "FCOM",
+   "section": "PRO-NOR-SOP-04; LIM-APU; DSC-49-10-10; PRO-ABN-ABN-ADV",
+   "pages": "P 5/14; P 1/2; P 1/2; P 1/6",
+   "pdf": "4084, 4690, 2570, 2836",
+   "rev": "18 FEB 26"
+  },
+  {
+   "book": "QRH",
+   "section": "01.01 advisory; 02.01 system reset",
+   "pages": "01.01A; 02.01A",
+   "pdf": "46, 50",
+   "rev": "18 FEB 26, 26 MAY 26"
+  },
+  {
+   "book": "FCTM",
+   "section": "AOP-20 / AOP-30 — task sharing and ECAM handling",
+   "pages": "AOP-20 P 1–2/10, AOP-30 P 1–6/6",
+   "pdf": "68–69, 79–86",
+   "rev": "26 MAY 26"
+  },
+  {
+   "book": "PDP",
+   "section": "Management of abnormal operations (XFTDN6ECAM00001)",
+   "pages": "ECAM actions, STATUS, QRH, confirm",
+   "pdf": "424–432",
+   "rev": "JAN 2024"
+  }
+ ],
+ "schema": "a320-ecam-abnormal/3",
+ "generated": "2026-11-01",
+ "qrh": [],
+ "tables": [],
+ "differences": []
+}

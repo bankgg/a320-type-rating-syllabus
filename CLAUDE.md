@@ -51,7 +51,7 @@ sh .claude/skills/syllabus-session-briefs/scripts/run_check.sh <session-id>   # 
 - **Skills:** create briefs with the project skills, not by hand.
   - `a320-ecam-abnormal` builds one brief, using `scripts/manuals.py` to search the PDFs and `scripts/brief_kit.py` to author it.
   - `syllabus-session-briefs` does a whole session: scope, reuse, mapping and checks.
-- **Scope:** ECAM/QRH abnormals only. Recovery manoeuvres (one-engine-inoperative approach, go-around, autoland) stay plain rows. Exception (user decision): upset recovery has an FCTM technique brief, because it is the point of the FFS 8 UPRT session.
+- **Scope:** ECAM/QRH abnormals only. Recovery manoeuvres (one-engine-inoperative approach, go-around, autoland) stay plain rows. Exceptions (user decisions): upset recovery has an FCTM technique brief, because it is the point of the FFS 8 UPRT session; the FFS 9 diversion row opens an ETOPS brief from FCOM PRO-SPO-40.
 - **Sources:** only `books/`: THA FCOM/FCTM/QRH (14 JUL 26) plus the Airbus PDP tutorial slides. Read the slides visually; their text extraction is scrambled. Every fact carries a locator.
 - **Aircraft:** HS-TX registrations only. Never use HS-TO-only content; show HS-TX splits as `applies_to` branches.
 - **ECAM flow rules,** which `render_md.py` enforces:

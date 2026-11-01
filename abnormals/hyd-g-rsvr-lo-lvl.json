@@ -1,0 +1,1473 @@
+{
+ "slug": "hyd-g-rsvr-lo-lvl",
+ "title": "HYD G RSVR LO LVL",
+ "kind": "ecam",
+ "alert": {
+  "level": "caution",
+  "land_asap": "none",
+  "memory_items": false,
+  "qrh_summary": false,
+  "trigger": "The fluid quantity is below 3.5 l (0.92 US Gal). Inhibited for the first 15 s of flight phase 5.",
+  "inhibited_phases": [
+   4,
+   5,
+   7,
+   8
+  ],
+  "refs": [
+   {
+    "book": "FCOM",
+    "code": "PRO-ABN-HYD",
+    "page": "P 17/76",
+    "pdf": 3706
+   }
+  ]
+ },
+ "effectivity": {
+  "branches": [],
+  "note": "One procedure for all aircraft."
+ },
+ "summary": "An amber caution: the green reservoir is low. Switch the PTU OFF without delay, because a PTU overheat may occur two minutes later and may lead to the loss of the second hydraulic circuit, then switch the green engine 1 pump OFF. The green system is lost. Plan a gravity gear extension, alternate braking and slow slats and flaps, apply the landing distance procedure and use the fuel penalty factor instead of the FMS predictions.",
+ "key_limits": [
+  {
+   "label": "Trigger",
+   "value": "Fluid below 3.5 l (0.92 US Gal)",
+   "applies_to": [
+    "all"
+   ],
+   "refs": [
+    {
+     "book": "FCOM",
+     "code": "PRO-ABN-HYD",
+     "page": "P 17/76",
+     "pdf": 3706
+    }
+   ]
+  },
+  {
+   "label": "PTU",
+   "value": "OFF without delay",
+   "applies_to": [
+    "all"
+   ],
+   "refs": [
+    {
+     "book": "FCOM",
+     "code": "PRO-ABN-HYD",
+     "page": "P 18/76",
+     "pdf": 3707
+    },
+    {
+     "book": "FCTM",
+     "code": "PR-AEP-HYD",
+     "page": "P 1/4",
+     "pdf": 438
+    }
+   ]
+  },
+  {
+   "label": "Landing gear",
+   "value": "L/G GRVTY PROC APPLY",
+   "applies_to": [
+    "all"
+   ],
+   "refs": [
+    {
+     "book": "FCOM",
+     "code": "PRO-ABN-HYD",
+     "page": "P 19/76",
+     "pdf": 3708
+    }
+   ]
+  },
+  {
+   "label": "Braking",
+   "value": "ALTN Y BRK WITH A/SKID",
+   "applies_to": [
+    "all"
+   ],
+   "refs": [
+    {
+     "book": "FCOM",
+     "code": "PRO-ABN-HYD",
+     "page": "P 19/76",
+     "pdf": 3708
+    }
+   ]
+  },
+  {
+   "label": "Landing capability",
+   "value": "CAT 3 SINGLE ONLY",
+   "applies_to": [
+    "all"
+   ],
+   "refs": [
+    {
+     "book": "FCOM",
+     "code": "PRO-ABN-HYD",
+     "page": "P 19/76",
+     "pdf": 3708
+    }
+   ]
+  }
+ ],
+ "flow": [
+  {
+   "phase": "Detection",
+   "steps": [
+    {
+     "actor": "BOTH",
+     "items": [
+      {
+       "kind": "action",
+       "text": "First to notice: MASTER WARNING / CAUTION reset",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "FCTM",
+         "code": "AOP-30-30",
+         "page": "P 2/6",
+         "pdf": 83
+        },
+        {
+         "book": "PDP",
+         "code": "Management of abnormal operations",
+         "page": "XFTDN6ECAM00001",
+         "pdf": 424
+        }
+       ]
+      }
+     ]
+    },
+    {
+     "actor": "PM",
+     "items": [
+      {
+       "kind": "callout",
+       "text": "HYD G RSVR LO LVL",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "FCTM",
+         "code": "AOP-30-30",
+         "page": "P 2/6",
+         "pdf": 83
+        },
+        {
+         "book": "FCOM",
+         "code": "PRO-ABN-HYD",
+         "page": "P 17/76",
+         "pdf": 3706
+        },
+        {
+         "book": "PDP",
+         "code": "Management of abnormal operations",
+         "page": "XFTDN6ECAM00001",
+         "pdf": 424
+        }
+       ]
+      },
+      {
+       "kind": "action",
+       "text": "Confirm the failure on the SD page and overhead panel before acting",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "FCTM",
+         "code": "AOP-30-30",
+         "page": "P 2/6",
+         "pdf": 83
+        },
+        {
+         "book": "PDP",
+         "code": "Management of abnormal operations",
+         "page": "XFTDN6ECAM00001",
+         "pdf": 424
+        }
+       ]
+      }
+     ]
+    },
+    {
+     "actor": "PF",
+     "items": [
+      {
+       "kind": "callout",
+       "text": "ECAM ACTIONS",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "FCOM",
+         "code": "PRO-ABN-ABN-00",
+         "page": "P 8/12",
+         "pdf": 2831
+        },
+        {
+         "book": "FCTM",
+         "code": "AOP-30-30",
+         "page": "P 3/6",
+         "pdf": 84
+        },
+        {
+         "book": "PDP",
+         "code": "Management of abnormal operations",
+         "page": "XFTDN6ECAM00001",
+         "pdf": 424
+        }
+       ]
+      },
+      {
+       "kind": "note",
+       "text": "PF now flies, navigates and communicates",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "FCTM",
+         "code": "AOP-20",
+         "page": "P 1–2/10",
+         "pdf": 68
+        },
+        {
+         "book": "PDP",
+         "code": "Management of abnormal operations",
+         "page": "XFTDN6ECAM00001",
+         "pdf": 424
+        }
+       ]
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "phase": "ECAM actions",
+   "steps": [
+    {
+     "actor": "PM",
+     "items": [
+      {
+       "kind": "ecam",
+       "item": "PTU",
+       "setting": "OFF",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "FCOM",
+         "code": "PRO-ABN-HYD",
+         "page": "P 18/76",
+         "pdf": 3707
+        }
+       ]
+      },
+      {
+       "kind": "note",
+       "text": "Without delay: a PTU overheat may occur two minutes later and may lead to the loss of the second hydraulic circuit",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "FCTM",
+         "code": "PR-AEP-HYD",
+         "page": "P 1/4",
+         "pdf": 438
+        }
+       ]
+      },
+      {
+       "kind": "ecam",
+       "item": "GREEN ENG 1 PUMP",
+       "setting": "OFF",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "FCOM",
+         "code": "PRO-ABN-HYD",
+         "page": "P 18/76",
+         "pdf": 3707
+        }
+       ]
+      },
+      {
+       "kind": "note",
+       "text": "G ENG 1 PUMP LO PR",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "FCOM",
+         "code": "PRO-ABN-HYD",
+         "page": "P 18/76",
+         "pdf": 3707
+        }
+       ]
+      }
+     ]
+    },
+    {
+     "actor": "PM",
+     "items": [
+      {
+       "kind": "callout",
+       "text": "CLEAR HYD ?",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "FCOM",
+         "code": "PRO-ABN-ABN-00",
+         "page": "P 8/12",
+         "pdf": 2831
+        },
+        {
+         "book": "FCTM",
+         "code": "AOP-30-30",
+         "page": "P 3/6",
+         "pdf": 84
+        },
+        {
+         "book": "PDP",
+         "code": "Management of abnormal operations",
+         "page": "XFTDN6ECAM00001",
+         "pdf": 424
+        }
+       ]
+      }
+     ]
+    },
+    {
+     "actor": "PF",
+     "items": [
+      {
+       "kind": "callout",
+       "text": "CLEAR HYD",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "FCOM",
+         "code": "PRO-ABN-ABN-00",
+         "page": "P 8/12",
+         "pdf": 2831
+        },
+        {
+         "book": "FCTM",
+         "code": "AOP-30-30",
+         "page": "P 3/6",
+         "pdf": 84
+        },
+        {
+         "book": "PDP",
+         "code": "Management of abnormal operations",
+         "page": "XFTDN6ECAM00001",
+         "pdf": 424
+        }
+       ]
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "phase": "Associated procedure and SD pages",
+   "steps": [
+    {
+     "actor": "PM",
+     "items": [
+      {
+       "kind": "action",
+       "text": "Associated procedure G SYS LO PR; FUEL CONSUMPT INCRSD; FMS PRED UNRELIABLE",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "FCOM",
+         "code": "PRO-ABN-HYD",
+         "page": "P 18/76",
+         "pdf": 3707
+        }
+       ]
+      }
+     ]
+    },
+    {
+     "actor": "BOTH",
+     "items": [
+      {
+       "kind": "action",
+       "text": "Analyze the SD pages for the secondary failures: WHEEL, F/CTL",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "FCOM",
+         "code": "PRO-ABN-HYD",
+         "page": "P 18/76",
+         "pdf": 3707
+        },
+        {
+         "book": "FCTM",
+         "code": "AOP-30-30",
+         "page": "P 3/6",
+         "pdf": 84
+        },
+        {
+         "book": "PDP",
+         "code": "Management of abnormal operations",
+         "page": "XFTDN6ECAM00001",
+         "pdf": 424
+        }
+       ]
+      }
+     ]
+    },
+    {
+     "actor": "PM",
+     "items": [
+      {
+       "kind": "callout",
+       "text": "CLEAR WHEEL ?",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "FCOM",
+         "code": "PRO-ABN-ABN-00",
+         "page": "P 8/12",
+         "pdf": 2831
+        },
+        {
+         "book": "FCTM",
+         "code": "AOP-30-30",
+         "page": "P 3/6",
+         "pdf": 84
+        },
+        {
+         "book": "PDP",
+         "code": "Management of abnormal operations",
+         "page": "XFTDN6ECAM00001",
+         "pdf": 424
+        }
+       ]
+      }
+     ]
+    },
+    {
+     "actor": "PF",
+     "items": [
+      {
+       "kind": "callout",
+       "text": "CLEAR WHEEL",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "FCOM",
+         "code": "PRO-ABN-ABN-00",
+         "page": "P 8/12",
+         "pdf": 2831
+        },
+        {
+         "book": "FCTM",
+         "code": "AOP-30-30",
+         "page": "P 3/6",
+         "pdf": 84
+        },
+        {
+         "book": "PDP",
+         "code": "Management of abnormal operations",
+         "page": "XFTDN6ECAM00001",
+         "pdf": 424
+        }
+       ]
+      }
+     ]
+    },
+    {
+     "actor": "PM",
+     "items": [
+      {
+       "kind": "callout",
+       "text": "CLEAR FLIGHT CONTROL ?",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "FCOM",
+         "code": "PRO-ABN-ABN-00",
+         "page": "P 8/12",
+         "pdf": 2831
+        },
+        {
+         "book": "FCTM",
+         "code": "AOP-30-30",
+         "page": "P 3/6",
+         "pdf": 84
+        },
+        {
+         "book": "PDP",
+         "code": "Management of abnormal operations",
+         "page": "XFTDN6ECAM00001",
+         "pdf": 425
+        }
+       ]
+      }
+     ]
+    },
+    {
+     "actor": "PF",
+     "items": [
+      {
+       "kind": "callout",
+       "text": "CLEAR FLIGHT CONTROL",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "FCOM",
+         "code": "PRO-ABN-ABN-00",
+         "page": "P 8/12",
+         "pdf": 2831
+        },
+        {
+         "book": "FCTM",
+         "code": "AOP-30-30",
+         "page": "P 3/6",
+         "pdf": 84
+        },
+        {
+         "book": "PDP",
+         "code": "Management of abnormal operations",
+         "page": "XFTDN6ECAM00001",
+         "pdf": 425
+        }
+       ]
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "phase": "STATUS",
+   "steps": [
+    {
+     "actor": "PM",
+     "items": [
+      {
+       "kind": "callout",
+       "text": "STATUS",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "FCTM",
+         "code": "AOP-30-30",
+         "page": "P 3/6",
+         "pdf": 84
+        },
+        {
+         "book": "PDP",
+         "code": "Management of abnormal operations",
+         "page": "XFTDN6ECAM00001",
+         "pdf": 426
+        }
+       ]
+      }
+     ]
+    },
+    {
+     "actor": "PF",
+     "items": [
+      {
+       "kind": "callout",
+       "text": "STOP ECAM",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "FCTM",
+         "code": "AOP-30-30",
+         "page": "P 3/6",
+         "pdf": 84
+        },
+        {
+         "book": "PDP",
+         "code": "Management of abnormal operations",
+         "page": "XFTDN6ECAM00001",
+         "pdf": 426
+        }
+       ]
+      }
+     ]
+    },
+    {
+     "actor": "PM",
+     "items": [
+      {
+       "kind": "ecam",
+       "item": "ECAM ACTIONS",
+       "setting": "STOP",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "PDP",
+         "code": "Management of abnormal operations",
+         "page": "XFTDN6ECAM00001",
+         "pdf": 426
+        }
+       ]
+      }
+     ]
+    },
+    {
+     "actor": "PF",
+     "items": [
+      {
+       "kind": "action",
+       "text": "Normal C/L as applicable; system resets only per QRH",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "FCTM",
+         "code": "AOP-30-30",
+         "page": "P 4/6",
+         "pdf": 85
+        },
+        {
+         "book": "PDP",
+         "code": "Management of abnormal operations",
+         "page": "XFTDN6ECAM00001",
+         "pdf": 426
+        }
+       ]
+      },
+      {
+       "kind": "callout",
+       "text": "CONTINUE ECAM",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "FCTM",
+         "code": "AOP-30-30",
+         "page": "P 3/6",
+         "pdf": 84
+        },
+        {
+         "book": "PDP",
+         "code": "Management of abnormal operations",
+         "page": "XFTDN6ECAM00001",
+         "pdf": 426
+        }
+       ]
+      }
+     ]
+    },
+    {
+     "actor": "PM",
+     "items": [
+      {
+       "kind": "action",
+       "text": "Read the whole STATUS page; preview APPR PROC workload",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "FCTM",
+         "code": "AOP-30-30",
+         "page": "P 3/6",
+         "pdf": 84
+        },
+        {
+         "book": "PDP",
+         "code": "Management of abnormal operations",
+         "page": "XFTDN6ECAM00001",
+         "pdf": 426
+        }
+       ]
+      },
+      {
+       "kind": "callout",
+       "text": "REMOVE STATUS ?",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "FCTM",
+         "code": "AOP-30-30",
+         "page": "P 3/6",
+         "pdf": 84
+        },
+        {
+         "book": "PDP",
+         "code": "Management of abnormal operations",
+         "page": "XFTDN6ECAM00001",
+         "pdf": 426
+        }
+       ]
+      }
+     ]
+    },
+    {
+     "actor": "PF",
+     "items": [
+      {
+       "kind": "callout",
+       "text": "REMOVE STATUS",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "FCOM",
+         "code": "PRO-ABN-ABN-00",
+         "page": "P 8/12",
+         "pdf": 2831
+        },
+        {
+         "book": "FCTM",
+         "code": "AOP-30-30",
+         "page": "P 3/6",
+         "pdf": 84
+        },
+        {
+         "book": "PDP",
+         "code": "Management of abnormal operations",
+         "page": "XFTDN6ECAM00001",
+         "pdf": 426
+        }
+       ]
+      }
+     ]
+    },
+    {
+     "actor": "PM",
+     "items": [
+      {
+       "kind": "callout",
+       "text": "ECAM ACTIONS COMPLETE",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "FCOM",
+         "code": "PRO-ABN-ABN-00",
+         "page": "P 8/12",
+         "pdf": 2831
+        },
+        {
+         "book": "PDP",
+         "code": "Management of abnormal operations",
+         "page": "XFTDN6ECAM00001",
+         "pdf": 426
+        }
+       ]
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "phase": "Approach and landing",
+   "steps": [
+    {
+     "actor": "BOTH",
+     "items": [
+      {
+       "kind": "action",
+       "text": "Disregard FMS fuel predictions; find the fuel penalty factor in QRH/OPS Fuel Penalty Factors/ECAM Alert Table",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "FCOM",
+         "code": "PRO-ABN-HYD",
+         "page": "P 19/76",
+         "pdf": 3708
+        },
+        {
+         "book": "QRH",
+         "code": "OPS.04",
+         "page": "OPS.04C",
+         "pdf": 275
+        },
+        {
+         "book": "QRH",
+         "code": "OPS.04",
+         "page": "OPS.04E",
+         "pdf": 277
+        }
+       ]
+      },
+      {
+       "kind": "action",
+       "text": "LDG DIST PROC: apply",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "FCOM",
+         "code": "PRO-ABN-HYD",
+         "page": "P 19/76",
+         "pdf": 3708
+        }
+       ]
+      }
+     ]
+    },
+    {
+     "actor": "PF",
+     "items": [
+      {
+       "kind": "note",
+       "text": "SLATS/FLAPS SLOW",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "FCOM",
+         "code": "PRO-ABN-HYD",
+         "page": "P 19/76",
+         "pdf": 3708
+        }
+       ]
+      },
+      {
+       "kind": "note",
+       "text": "ALTN Y BRK WITH A/SKID; no autobrake or normal braking; reverser 1 inoperative",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "FCOM",
+         "code": "PRO-ABN-HYD",
+         "page": "P 19/76",
+         "pdf": 3708
+        }
+       ]
+      }
+     ]
+    },
+    {
+     "actor": "PM",
+     "items": [
+      {
+       "kind": "ecam",
+       "item": "L/G GRVTY PROC",
+       "setting": "APPLY",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "FCOM",
+         "code": "PRO-ABN-HYD",
+         "page": "P 19/76",
+         "pdf": 3708
+        }
+       ]
+      },
+      {
+       "kind": "note",
+       "text": "See the QRH L/G GRAVITY EXTENSION brief. Fuel consumption is increased for flight with L/G extended",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "FCOM",
+         "code": "PRO-ABN-HYD",
+         "page": "P 19/76",
+         "pdf": 3708
+        },
+        {
+         "book": "QRH",
+         "code": "24.02",
+         "page": "24.02A",
+         "pdf": 216
+        }
+       ]
+      }
+     ]
+    }
+   ]
+  }
+ ],
+ "procedures": [
+  {
+   "title": "HYD G RSVR LO LVL",
+   "source": "FCOM PRO-ABN-HYD",
+   "lines": [
+    {
+     "kind": "action",
+     "item": "PTU",
+     "setting": "OFF",
+     "text": "",
+     "level": 0,
+     "applies_to": [
+      "all"
+     ],
+     "refs": [
+      {
+       "book": "FCOM",
+       "code": "PRO-ABN-HYD",
+       "page": "P 18/76",
+       "pdf": 3707
+      }
+     ]
+    },
+    {
+     "kind": "action",
+     "item": "GREEN ENG 1 PUMP",
+     "setting": "OFF",
+     "text": "",
+     "level": 0,
+     "applies_to": [
+      "all"
+     ],
+     "refs": [
+      {
+       "book": "FCOM",
+       "code": "PRO-ABN-HYD",
+       "page": "P 18/76",
+       "pdf": 3707
+      }
+     ]
+    },
+    {
+     "kind": "info",
+     "text": "G ENG 1 PUMP LO PR",
+     "level": 0,
+     "applies_to": [
+      "all"
+     ],
+     "refs": [
+      {
+       "book": "FCOM",
+       "code": "PRO-ABN-HYD",
+       "page": "P 18/76",
+       "pdf": 3707
+      }
+     ]
+    },
+    {
+     "kind": "info",
+     "text": "ASSOCIATED PROCEDURES: G SYS LO PR; FUEL CONSUMPT INCRSD; FMS PRED UNRELIABLE",
+     "level": 0,
+     "applies_to": [
+      "all"
+     ],
+     "refs": [
+      {
+       "book": "FCOM",
+       "code": "PRO-ABN-HYD",
+       "page": "P 18/76",
+       "pdf": 3707
+      }
+     ]
+    },
+    {
+     "kind": "info",
+     "text": "SECONDARY FAILURES: *WHEEL; *F/CTL",
+     "level": 0,
+     "applies_to": [
+      "all"
+     ],
+     "refs": [
+      {
+       "book": "FCOM",
+       "code": "PRO-ABN-HYD",
+       "page": "P 18/76",
+       "pdf": 3707
+      }
+     ]
+    }
+   ]
+  }
+ ],
+ "status": {
+  "limitations": [
+   {
+    "text": "L/G GRVTY PROC ....... APPLY",
+    "applies_to": [
+     "all"
+    ],
+    "refs": [
+     {
+      "book": "FCOM",
+      "code": "PRO-ABN-HYD",
+      "page": "P 19/76",
+      "pdf": 3708
+     }
+    ]
+   },
+   {
+    "text": "LDG DIST PROC ....... APPLY",
+    "applies_to": [
+     "all"
+    ],
+    "refs": [
+     {
+      "book": "FCOM",
+      "code": "PRO-ABN-HYD",
+      "page": "P 19/76",
+      "pdf": 3708
+     }
+    ]
+   }
+  ],
+  "info": [
+   {
+    "text": "Refer to PRO-ABN-LG [QRH] L/G GRAVITY EXTENSION. CAUTION: For flight with L/G extended, fuel consumption is increased. Refer to QRH/OPS Fuel Penalty Factors/ECAM Alert Table.",
+    "applies_to": [
+     "all"
+    ],
+    "refs": [
+     {
+      "book": "FCOM",
+      "code": "PRO-ABN-HYD",
+      "page": "P 19/76",
+      "pdf": 3708
+     }
+    ]
+   },
+   {
+    "text": "FUEL CONSUMPT INCRSD: triggered when the failure (or combination of failures) affects the nominal aerodynamic characteristics of the aircraft.",
+    "applies_to": [
+     "all"
+    ],
+    "refs": [
+     {
+      "book": "FCOM",
+      "code": "PRO-ABN-HYD",
+      "page": "P 19/76",
+      "pdf": 3708
+     }
+    ]
+   },
+   {
+    "text": "FMS PRED UNRELIABLE: disregard FMS fuel predictions and refer to QRH/OPS Fuel Penalty Factors/ECAM Alert Table in order to find the applicable Fuel Penalty Factor.",
+    "applies_to": [
+     "all"
+    ],
+    "refs": [
+     {
+      "book": "FCOM",
+      "code": "PRO-ABN-HYD",
+      "page": "P 19/76",
+      "pdf": 3708
+     }
+    ]
+   },
+   {
+    "text": "ALTN Y BRK WITH A/SKID",
+    "applies_to": [
+     "all"
+    ],
+    "refs": [
+     {
+      "book": "FCOM",
+      "code": "PRO-ABN-HYD",
+      "page": "P 19/76",
+      "pdf": 3708
+     }
+    ]
+   },
+   {
+    "text": "SLATS/FLAPS SLOW",
+    "applies_to": [
+     "all"
+    ],
+    "refs": [
+     {
+      "book": "FCOM",
+      "code": "PRO-ABN-HYD",
+      "page": "P 19/76",
+      "pdf": 3708
+     }
+    ]
+   },
+   {
+    "text": "CAT 3 SINGLE ONLY",
+    "applies_to": [
+     "all"
+    ],
+    "refs": [
+     {
+      "book": "FCOM",
+      "code": "PRO-ABN-HYD",
+      "page": "P 19/76",
+      "pdf": 3708
+     }
+    ]
+   }
+  ],
+  "appr_proc": [],
+  "inop_sys": [
+   {
+    "text": "GREEN HYD",
+    "applies_to": [
+     "all"
+    ],
+    "refs": [
+     {
+      "book": "FCOM",
+      "code": "PRO-ABN-HYD",
+      "page": "P 19/76",
+      "pdf": 3708
+     }
+    ]
+   },
+   {
+    "text": "SPLR 1 + 5",
+    "applies_to": [
+     "all"
+    ],
+    "refs": [
+     {
+      "book": "FCOM",
+      "code": "PRO-ABN-HYD",
+      "page": "P 19/76",
+      "pdf": 3708
+     }
+    ]
+   },
+   {
+    "text": "CAT 3 DUAL",
+    "applies_to": [
+     "all"
+    ],
+    "refs": [
+     {
+      "book": "FCOM",
+      "code": "PRO-ABN-HYD",
+      "page": "P 19/76",
+      "pdf": 3708
+     }
+    ]
+   },
+   {
+    "text": "AUTO BRK (in flight, or on ground with at least one engine running)",
+    "applies_to": [
+     "all"
+    ],
+    "refs": [
+     {
+      "book": "FCOM",
+      "code": "PRO-ABN-HYD",
+      "page": "P 19/76",
+      "pdf": 3708
+     }
+    ]
+   },
+   {
+    "text": "NORM BRK",
+    "applies_to": [
+     "all"
+    ],
+    "refs": [
+     {
+      "book": "FCOM",
+      "code": "PRO-ABN-HYD",
+      "page": "P 19/76",
+      "pdf": 3708
+     }
+    ]
+   },
+   {
+    "text": "L/G RETRACT",
+    "applies_to": [
+     "all"
+    ],
+    "refs": [
+     {
+      "book": "FCOM",
+      "code": "PRO-ABN-HYD",
+      "page": "P 19/76",
+      "pdf": 3708
+     }
+    ]
+   },
+   {
+    "text": "REVERSER 1",
+    "applies_to": [
+     "all"
+    ],
+    "refs": [
+     {
+      "book": "FCOM",
+      "code": "PRO-ABN-HYD",
+      "page": "P 19/76",
+      "pdf": 3708
+     }
+    ]
+   },
+   {
+    "text": "YAW DAMPER 1 (in flight, or on ground with both engines running)",
+    "applies_to": [
+     "all"
+    ],
+    "refs": [
+     {
+      "book": "FCOM",
+      "code": "PRO-ABN-HYD",
+      "page": "P 19/76",
+      "pdf": 3708
+     }
+    ]
+   }
+  ]
+ },
+ "background": [
+  {
+   "text": "A pump driven by engine 1 pressurizes the green system.",
+   "applies_to": [
+    "all"
+   ],
+   "refs": [
+    {
+     "book": "FCOM",
+     "code": "DSC-29-10-20",
+     "page": "P 1/6",
+     "pdf": 1744
+    }
+   ]
+  },
+  {
+   "text": "The bidirectional PTU comes into action automatically when the differential pressure between the green and yellow systems is greater than 500 PSI. Hydraulic fluid cannot be transferred from one system to another.",
+   "applies_to": [
+    "all"
+   ],
+   "refs": [
+    {
+     "book": "FCOM",
+     "code": "DSC-29-10-20",
+     "page": "P 3/6",
+     "pdf": 1746
+    },
+    {
+     "book": "FCTM",
+     "code": "PR-AEP-HYD",
+     "page": "P 1/4",
+     "pdf": 438
+    }
+   ]
+  },
+  {
+   "text": "Single hydraulic failures have very little effect on the handling of the aircraft but degrade the landing capability to CAT 3 SINGLE.",
+   "applies_to": [
+    "all"
+   ],
+   "refs": [
+    {
+     "book": "FCTM",
+     "code": "PR-AEP-HYD",
+     "page": "P 1/4",
+     "pdf": 438
+    }
+   ]
+  }
+ ],
+ "technique": [
+  {
+   "text": "In case of reservoir low level, the PTU must be switched OFF as required by ECAM to avoid a PTU overheat which may occur two minutes later. A PTU overheat may lead to the loss of the second hydraulic circuit.",
+   "applies_to": [
+    "all"
+   ],
+   "refs": [
+    {
+     "book": "FCTM",
+     "code": "PR-AEP-HYD",
+     "page": "P 1/4",
+     "pdf": 438
+    }
+   ]
+  }
+ ],
+ "related": [
+  {
+   "title": "L/G GRAVITY EXTENSION",
+   "why": "STATUS: L/G GRVTY PROC APPLY.",
+   "key_actions": [
+    "See the L/G gravity extension brief"
+   ],
+   "refs": [
+    {
+     "book": "FCOM",
+     "code": "PRO-ABN-HYD",
+     "page": "P 19/76",
+     "pdf": 3708
+    },
+    {
+     "book": "QRH",
+     "code": "24.02",
+     "page": "24.02A",
+     "pdf": 216
+    }
+   ]
+  },
+  {
+   "title": "Fuel Penalty Factors/ECAM Alert Table",
+   "why": "FMS PRED UNRELIABLE and FUEL CONSUMPT INCRSD. The G SYS LO PR row depends on whether spoilers 1 and 5 are indicated extended.",
+   "key_actions": [
+    "Find the factor in the QRH table for the registration"
+   ],
+   "refs": [
+    {
+     "book": "QRH",
+     "code": "OPS.04",
+     "page": "OPS.04C",
+     "pdf": 275
+    },
+    {
+     "book": "QRH",
+     "code": "OPS.04",
+     "page": "OPS.04E",
+     "pdf": 277
+    }
+   ]
+  }
+ ],
+ "gaps": [
+  {
+   "text": "No PDP module covers this alert; the flow is the standard ECAM sequence with the FCTM PTU recommendation.",
+   "applies_to": [
+    "all"
+   ],
+   "refs": [
+    {
+     "book": "PDP",
+     "code": "Management of abnormal operations",
+     "page": "XFTDN6ECAM00001",
+     "pdf": 424
+    },
+    {
+     "book": "FCTM",
+     "code": "PR-AEP-HYD",
+     "page": "P 1/4",
+     "pdf": 438
+    }
+   ]
+  },
+  {
+   "text": "The QRH reset table has no entry for this alert.",
+   "applies_to": [
+    "all"
+   ],
+   "refs": [
+    {
+     "book": "QRH",
+     "code": "02.01",
+     "page": "02.01A",
+     "pdf": 50
+    }
+   ]
+  },
+  {
+   "text": "The manuals name no PF/PM split for the approach items here; the split follows the task sharing and the L/G gravity extension brief.",
+   "applies_to": [
+    "all"
+   ],
+   "refs": [
+    {
+     "book": "FCTM",
+     "code": "AOP-20",
+     "page": "P 1–2/10",
+     "pdf": 68
+    },
+    {
+     "book": "QRH",
+     "code": "24.02",
+     "page": "24.02A",
+     "pdf": 216
+    }
+   ]
+  }
+ ],
+ "sources": [
+  {
+   "book": "FCOM",
+   "section": "PRO-ABN-HYD — HYD G RSVR LO LVL",
+   "pages": "P 17–19/76",
+   "pdf": "3706–3708",
+   "rev": "26 MAY 26"
+  },
+  {
+   "book": "FCOM",
+   "section": "DSC-29-10-20 — green pump, PTU",
+   "pages": "P 1/6, 3/6",
+   "pdf": "1744, 1746",
+   "rev": "11 MAR 19"
+  },
+  {
+   "book": "FCTM",
+   "section": "PR-AEP-HYD — hydraulic generation particularities",
+   "pages": "P 1/4",
+   "pdf": "438",
+   "rev": "26 MAY 26"
+  },
+  {
+   "book": "QRH",
+   "section": "24.02 L/G gravity extension; OPS.04 fuel penalty factors; 02.01 system reset",
+   "pages": "24.02A; OPS.04C, E; 02.01A",
+   "pdf": "216, 275, 277, 50",
+   "rev": "26 MAY 26, 14 JUL 26"
+  },
+  {
+   "book": "FCTM",
+   "section": "AOP-20 / AOP-30 — task sharing and ECAM handling",
+   "pages": "AOP-20 P 1–2/10, AOP-30 P 1–6/6",
+   "pdf": "68–69, 79–86",
+   "rev": "26 MAY 26"
+  },
+  {
+   "book": "PDP",
+   "section": "Management of abnormal operations (XFTDN6ECAM00001)",
+   "pages": "ECAM actions, STATUS, QRH, confirm",
+   "pdf": "424–432",
+   "rev": "JAN 2024"
+  }
+ ],
+ "schema": "a320-ecam-abnormal/3",
+ "generated": "2026-11-01",
+ "qrh": [],
+ "tables": [],
+ "differences": []
+}

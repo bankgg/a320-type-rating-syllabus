@@ -1,0 +1,1435 @@
+{
+ "slug": "air-pack-1-2-fault",
+ "title": "AIR PACK 1+2 FAULT",
+ "kind": "ecam",
+ "alert": {
+  "level": "caution",
+  "land_asap": "none",
+  "memory_items": false,
+  "qrh_summary": false,
+  "trigger": "Both ACSCs are failed.",
+  "inhibited_phases": [
+   3,
+   4,
+   5,
+   7,
+   8
+  ],
+  "refs": [
+   {
+    "book": "FCOM",
+    "code": "PRO-ABN-AIR",
+    "page": "P 70/82",
+    "pdf": 2959
+   }
+  ]
+ },
+ "effectivity": {
+  "branches": [],
+  "note": "One version for all HS-TX (the HS-TO version is not used)."
+ },
+ "summary": "An amber caution: neither pack is available. Switch both packs OFF and descend to FL 100 or MEA-MORA, whichever is higher. Below FL 100 with differential pressure under 1 PSI, switch RAM AIR ON (guarded, crosscheck first) and stay at or below FL 100/MEA-MORA. If the fault was due to an overheat, switch the affected pack back ON when the overheat clears.",
+ "key_limits": [
+  {
+   "label": "Descent",
+   "value": "FL 100 or MEA-MORA, whichever is higher",
+   "applies_to": [
+    "all"
+   ],
+   "refs": [
+    {
+     "book": "FCOM",
+     "code": "PRO-ABN-AIR",
+     "page": "P 71/82",
+     "pdf": 2960
+    }
+   ]
+  },
+  {
+   "label": "RAM AIR",
+   "value": "ON when DIFF PR < 1 PSI and FL below 100",
+   "applies_to": [
+    "all"
+   ],
+   "refs": [
+    {
+     "book": "FCOM",
+     "code": "PRO-ABN-AIR",
+     "page": "P 71/82",
+     "pdf": 2960
+    }
+   ]
+  },
+  {
+   "label": "MAX FL",
+   "value": "100/MEA-MORA",
+   "applies_to": [
+    "all"
+   ],
+   "refs": [
+    {
+     "book": "FCOM",
+     "code": "PRO-ABN-AIR",
+     "page": "P 71/82",
+     "pdf": 2960
+    }
+   ]
+  }
+ ],
+ "flow": [
+  {
+   "phase": "Detection",
+   "steps": [
+    {
+     "actor": "BOTH",
+     "items": [
+      {
+       "kind": "action",
+       "text": "First to notice: MASTER WARNING / CAUTION reset",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "FCTM",
+         "code": "AOP-30-30",
+         "page": "P 2/6",
+         "pdf": 83
+        },
+        {
+         "book": "PDP",
+         "code": "Management of abnormal operations",
+         "page": "XFTDN6ECAM00001",
+         "pdf": 424
+        }
+       ]
+      }
+     ]
+    },
+    {
+     "actor": "PM",
+     "items": [
+      {
+       "kind": "callout",
+       "text": "AIR PACK 1+2 FAULT",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "FCTM",
+         "code": "AOP-30-30",
+         "page": "P 2/6",
+         "pdf": 83
+        },
+        {
+         "book": "FCOM",
+         "code": "PRO-ABN-AIR",
+         "page": "P 70/82",
+         "pdf": 2959
+        },
+        {
+         "book": "PDP",
+         "code": "Management of abnormal operations",
+         "page": "XFTDN6ECAM00001",
+         "pdf": 424
+        }
+       ]
+      },
+      {
+       "kind": "action",
+       "text": "Confirm the failure on the SD page and overhead panel before acting",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "FCTM",
+         "code": "AOP-30-30",
+         "page": "P 2/6",
+         "pdf": 83
+        },
+        {
+         "book": "PDP",
+         "code": "Management of abnormal operations",
+         "page": "XFTDN6ECAM00001",
+         "pdf": 424
+        }
+       ]
+      }
+     ]
+    },
+    {
+     "actor": "PF",
+     "items": [
+      {
+       "kind": "callout",
+       "text": "ECAM ACTIONS",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "FCOM",
+         "code": "PRO-ABN-ABN-00",
+         "page": "P 8/12",
+         "pdf": 2831
+        },
+        {
+         "book": "FCTM",
+         "code": "AOP-30-30",
+         "page": "P 3/6",
+         "pdf": 84
+        },
+        {
+         "book": "PDP",
+         "code": "Management of abnormal operations",
+         "page": "XFTDN6ECAM00001",
+         "pdf": 424
+        }
+       ]
+      },
+      {
+       "kind": "note",
+       "text": "PF now flies, navigates and communicates",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "FCTM",
+         "code": "AOP-20",
+         "page": "P 1–2/10",
+         "pdf": 68
+        },
+        {
+         "book": "PDP",
+         "code": "Management of abnormal operations",
+         "page": "XFTDN6ECAM00001",
+         "pdf": 424
+        }
+       ]
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "phase": "ECAM actions",
+   "steps": [
+    {
+     "actor": "PM",
+     "items": [
+      {
+       "kind": "ecam",
+       "item": "PACK 1",
+       "setting": "OFF",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "FCOM",
+         "code": "PRO-ABN-AIR",
+         "page": "P 71/82",
+         "pdf": 2960
+        }
+       ]
+      },
+      {
+       "kind": "ecam",
+       "item": "PACK 2",
+       "setting": "OFF",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "FCOM",
+         "code": "PRO-ABN-AIR",
+         "page": "P 71/82",
+         "pdf": 2960
+        }
+       ]
+      },
+      {
+       "kind": "note",
+       "text": "The fault light goes off when the failure disappears",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "FCOM",
+         "code": "PRO-ABN-AIR",
+         "page": "P 71/82",
+         "pdf": 2960
+        }
+       ]
+      },
+      {
+       "kind": "action",
+       "text": "DESCENT TO FL 100/MEA-MORA",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "FCOM",
+         "code": "PRO-ABN-AIR",
+         "page": "P 71/82",
+         "pdf": 2960
+        }
+       ]
+      }
+     ]
+    },
+    {
+     "actor": "PF",
+     "items": [
+      {
+       "kind": "action",
+       "text": "Descend to FL 100 or MEA-MORA, whichever is higher, and handle ATC, while the PM continues the ECAM",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "FCOM",
+         "code": "PRO-ABN-AIR",
+         "page": "P 71/82",
+         "pdf": 2960
+        },
+        {
+         "book": "FCTM",
+         "code": "AOP-20",
+         "page": "P 1–2/10",
+         "pdf": 68
+        }
+       ]
+      }
+     ]
+    },
+    {
+     "actor": "PM",
+     "items": [
+      {
+       "kind": "condition",
+       "text": "WHEN DIFF PR < 1 PSI AND FL BELOW 100",
+       "children": [
+        {
+         "kind": "ecam",
+         "item": "RAM AIR",
+         "setting": "ON",
+         "applies_to": [
+          "all"
+         ],
+         "refs": [
+          {
+           "book": "FCOM",
+           "code": "PRO-ABN-AIR",
+           "page": "P 71/82",
+           "pdf": 2960
+          }
+         ]
+        },
+        {
+         "kind": "note",
+         "text": "Guarded pb: point to it and ask confirmation",
+         "applies_to": [
+          "all"
+         ],
+         "refs": [
+          {
+           "book": "FCOM",
+           "code": "DSC-21-10-50",
+           "page": "P 3/16",
+           "pdf": 230
+          },
+          {
+           "book": "FCTM",
+           "code": "AOP-30-20",
+           "page": "P 1/2",
+           "pdf": 80
+          },
+          {
+           "book": "PDP",
+           "code": "Management of abnormal operations",
+           "page": "XFTDN6ECAM00001",
+           "pdf": 432
+          }
+         ]
+        }
+       ],
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "FCOM",
+         "code": "PRO-ABN-AIR",
+         "page": "P 71/82",
+         "pdf": 2960
+        }
+       ]
+      }
+     ]
+    },
+    {
+     "actor": "PM",
+     "items": [
+      {
+       "kind": "callout",
+       "text": "CONFIRM?",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "PDP",
+         "code": "Management of abnormal operations",
+         "page": "XFTDN6ECAM00001",
+         "pdf": 432
+        },
+        {
+         "book": "FCOM",
+         "code": "DSC-21-10-50",
+         "page": "P 3/16",
+         "pdf": 230
+        },
+        {
+         "book": "FCTM",
+         "code": "AOP-30-20",
+         "page": "P 1/2",
+         "pdf": 80
+        }
+       ]
+      }
+     ]
+    },
+    {
+     "actor": "PF",
+     "items": [
+      {
+       "kind": "callout",
+       "text": "CONFIRMED",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "PDP",
+         "code": "Management of abnormal operations",
+         "page": "XFTDN6ECAM00001",
+         "pdf": 432
+        }
+       ]
+      },
+      {
+       "kind": "note",
+       "text": "After verifying the control the PM points to",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "PDP",
+         "code": "Management of abnormal operations",
+         "page": "XFTDN6ECAM00001",
+         "pdf": 432
+        },
+        {
+         "book": "FCTM",
+         "code": "AOP-30-20",
+         "page": "P 1/2",
+         "pdf": 80
+        }
+       ]
+      }
+     ]
+    },
+    {
+     "actor": "PM",
+     "items": [
+      {
+       "kind": "action",
+       "text": "Press the RAM AIR pb: the ON light comes on white",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "FCOM",
+         "code": "DSC-21-10-50",
+         "page": "P 3/16",
+         "pdf": 230
+        }
+       ]
+      },
+      {
+       "kind": "ecam",
+       "item": "MAX FL",
+       "setting": "100/MEA-MORA",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "FCOM",
+         "code": "PRO-ABN-AIR",
+         "page": "P 71/82",
+         "pdf": 2960
+        }
+       ]
+      },
+      {
+       "kind": "condition",
+       "text": "If FAULT was due to an overheat",
+       "children": [
+        {
+         "kind": "action",
+         "text": "Associated procedure AIR PACK 1(2) OVHT",
+         "applies_to": [
+          "all"
+         ],
+         "refs": [
+          {
+           "book": "FCOM",
+           "code": "PRO-ABN-AIR",
+           "page": "P 71/82",
+           "pdf": 2960
+          }
+         ]
+        },
+        {
+         "kind": "condition",
+         "text": "WHEN PACK OVHT OUT",
+         "children": [
+          {
+           "kind": "ecam",
+           "item": "PACK (AFFECTED)",
+           "setting": "ON",
+           "applies_to": [
+            "all"
+           ],
+           "refs": [
+            {
+             "book": "FCOM",
+             "code": "PRO-ABN-AIR",
+             "page": "P 71/82",
+             "pdf": 2960
+            }
+           ]
+          }
+         ],
+         "applies_to": [
+          "all"
+         ],
+         "refs": [
+          {
+           "book": "FCOM",
+           "code": "PRO-ABN-AIR",
+           "page": "P 71/82",
+           "pdf": 2960
+          }
+         ]
+        }
+       ],
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "FCOM",
+         "code": "PRO-ABN-AIR",
+         "page": "P 71/82",
+         "pdf": 2960
+        }
+       ]
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "phase": "STATUS",
+   "steps": [
+    {
+     "actor": "PM",
+     "items": [
+      {
+       "kind": "callout",
+       "text": "CLEAR AIR ?",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "FCOM",
+         "code": "PRO-ABN-ABN-00",
+         "page": "P 8/12",
+         "pdf": 2831
+        },
+        {
+         "book": "FCTM",
+         "code": "AOP-30-30",
+         "page": "P 3/6",
+         "pdf": 84
+        },
+        {
+         "book": "PDP",
+         "code": "Management of abnormal operations",
+         "page": "XFTDN6ECAM00001",
+         "pdf": 424
+        }
+       ]
+      }
+     ]
+    },
+    {
+     "actor": "PF",
+     "items": [
+      {
+       "kind": "callout",
+       "text": "CLEAR AIR",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "FCOM",
+         "code": "PRO-ABN-ABN-00",
+         "page": "P 8/12",
+         "pdf": 2831
+        },
+        {
+         "book": "FCTM",
+         "code": "AOP-30-30",
+         "page": "P 3/6",
+         "pdf": 84
+        },
+        {
+         "book": "PDP",
+         "code": "Management of abnormal operations",
+         "page": "XFTDN6ECAM00001",
+         "pdf": 424
+        }
+       ]
+      }
+     ]
+    },
+    {
+     "actor": "PM",
+     "items": [
+      {
+       "kind": "callout",
+       "text": "STATUS",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "FCTM",
+         "code": "AOP-30-30",
+         "page": "P 3/6",
+         "pdf": 84
+        },
+        {
+         "book": "PDP",
+         "code": "Management of abnormal operations",
+         "page": "XFTDN6ECAM00001",
+         "pdf": 426
+        }
+       ]
+      }
+     ]
+    },
+    {
+     "actor": "PF",
+     "items": [
+      {
+       "kind": "callout",
+       "text": "STOP ECAM",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "FCTM",
+         "code": "AOP-30-30",
+         "page": "P 3/6",
+         "pdf": 84
+        },
+        {
+         "book": "PDP",
+         "code": "Management of abnormal operations",
+         "page": "XFTDN6ECAM00001",
+         "pdf": 426
+        }
+       ]
+      }
+     ]
+    },
+    {
+     "actor": "PM",
+     "items": [
+      {
+       "kind": "ecam",
+       "item": "ECAM ACTIONS",
+       "setting": "STOP",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "PDP",
+         "code": "Management of abnormal operations",
+         "page": "XFTDN6ECAM00001",
+         "pdf": 426
+        }
+       ]
+      }
+     ]
+    },
+    {
+     "actor": "PF",
+     "items": [
+      {
+       "kind": "action",
+       "text": "Normal C/L as applicable; system resets only per QRH",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "FCTM",
+         "code": "AOP-30-30",
+         "page": "P 4/6",
+         "pdf": 85
+        },
+        {
+         "book": "PDP",
+         "code": "Management of abnormal operations",
+         "page": "XFTDN6ECAM00001",
+         "pdf": 426
+        }
+       ]
+      },
+      {
+       "kind": "callout",
+       "text": "CONTINUE ECAM",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "FCTM",
+         "code": "AOP-30-30",
+         "page": "P 3/6",
+         "pdf": 84
+        },
+        {
+         "book": "PDP",
+         "code": "Management of abnormal operations",
+         "page": "XFTDN6ECAM00001",
+         "pdf": 426
+        }
+       ]
+      }
+     ]
+    },
+    {
+     "actor": "PM",
+     "items": [
+      {
+       "kind": "action",
+       "text": "Read the whole STATUS page; preview APPR PROC workload",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "FCTM",
+         "code": "AOP-30-30",
+         "page": "P 3/6",
+         "pdf": 84
+        },
+        {
+         "book": "PDP",
+         "code": "Management of abnormal operations",
+         "page": "XFTDN6ECAM00001",
+         "pdf": 426
+        }
+       ]
+      },
+      {
+       "kind": "callout",
+       "text": "REMOVE STATUS ?",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "FCTM",
+         "code": "AOP-30-30",
+         "page": "P 3/6",
+         "pdf": 84
+        },
+        {
+         "book": "PDP",
+         "code": "Management of abnormal operations",
+         "page": "XFTDN6ECAM00001",
+         "pdf": 426
+        }
+       ]
+      }
+     ]
+    },
+    {
+     "actor": "PF",
+     "items": [
+      {
+       "kind": "callout",
+       "text": "REMOVE STATUS",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "FCOM",
+         "code": "PRO-ABN-ABN-00",
+         "page": "P 8/12",
+         "pdf": 2831
+        },
+        {
+         "book": "FCTM",
+         "code": "AOP-30-30",
+         "page": "P 3/6",
+         "pdf": 84
+        },
+        {
+         "book": "PDP",
+         "code": "Management of abnormal operations",
+         "page": "XFTDN6ECAM00001",
+         "pdf": 426
+        }
+       ]
+      }
+     ]
+    },
+    {
+     "actor": "PM",
+     "items": [
+      {
+       "kind": "callout",
+       "text": "ECAM ACTIONS COMPLETE",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "FCOM",
+         "code": "PRO-ABN-ABN-00",
+         "page": "P 8/12",
+         "pdf": 2831
+        },
+        {
+         "book": "PDP",
+         "code": "Management of abnormal operations",
+         "page": "XFTDN6ECAM00001",
+         "pdf": 426
+        }
+       ]
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "phase": "ETOPS flight",
+   "steps": [
+    {
+     "actor": "PM",
+     "items": [
+      {
+       "kind": "condition",
+       "text": "Loss of the air conditioning capability, at FL 100 with the RAM AIR opened",
+       "children": [
+        {
+         "kind": "ecam",
+         "item": "CAB FANS",
+         "setting": "OFF",
+         "applies_to": [
+          "all"
+         ],
+         "refs": [
+          {
+           "book": "FCOM",
+           "code": "PRO-SPO-40-50",
+           "page": "P 2/4",
+           "pdf": 4589
+          }
+         ]
+        }
+       ],
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "FCOM",
+         "code": "PRO-SPO-40-50",
+         "page": "P 2/4",
+         "pdf": 4589
+        }
+       ]
+      }
+     ]
+    }
+   ]
+  }
+ ],
+ "procedures": [
+  {
+   "title": "AIR PACK 1+2 FAULT",
+   "source": "FCOM PRO-ABN-AIR (HS-TX)",
+   "lines": [
+    {
+     "kind": "action",
+     "item": "PACK 1",
+     "setting": "OFF",
+     "text": "",
+     "level": 0,
+     "applies_to": [
+      "all"
+     ],
+     "refs": [
+      {
+       "book": "FCOM",
+       "code": "PRO-ABN-AIR",
+       "page": "P 71/82",
+       "pdf": 2960
+      }
+     ]
+    },
+    {
+     "kind": "action",
+     "item": "PACK 2",
+     "setting": "OFF",
+     "text": "",
+     "level": 0,
+     "applies_to": [
+      "all"
+     ],
+     "refs": [
+      {
+       "book": "FCOM",
+       "code": "PRO-ABN-AIR",
+       "page": "P 71/82",
+       "pdf": 2960
+      }
+     ]
+    },
+    {
+     "kind": "info",
+     "text": "The fault light goes off, when the failure disappears.",
+     "level": 0,
+     "applies_to": [
+      "all"
+     ],
+     "refs": [
+      {
+       "book": "FCOM",
+       "code": "PRO-ABN-AIR",
+       "page": "P 71/82",
+       "pdf": 2960
+      }
+     ]
+    },
+    {
+     "kind": "note",
+     "text": "The rate at which the cabin altitude increases may be minimized by closing the FWD CARGO ISOL VALVE, if the cargo freight permits.",
+     "level": 0,
+     "applies_to": [
+      "all"
+     ],
+     "refs": [
+      {
+       "book": "FCOM",
+       "code": "PRO-ABN-AIR",
+       "page": "P 71/82",
+       "pdf": 2960
+      }
+     ]
+    },
+    {
+     "kind": "info",
+     "text": "DESCENT TO FL 100/MEA-MORA. Descend to FL 100, or MEA-MORA, whichever is higher.",
+     "level": 0,
+     "applies_to": [
+      "all"
+     ],
+     "refs": [
+      {
+       "book": "FCOM",
+       "code": "PRO-ABN-AIR",
+       "page": "P 71/82",
+       "pdf": 2960
+      }
+     ]
+    },
+    {
+     "kind": "condition",
+     "text": "WHEN DIFF PR < 1 PSI AND FL BELOW 100:",
+     "level": 0,
+     "applies_to": [
+      "all"
+     ],
+     "refs": [
+      {
+       "book": "FCOM",
+       "code": "PRO-ABN-AIR",
+       "page": "P 71/82",
+       "pdf": 2960
+      }
+     ]
+    },
+    {
+     "kind": "action",
+     "item": "RAM AIR",
+     "setting": "ON",
+     "text": "",
+     "level": 1,
+     "applies_to": [
+      "all"
+     ],
+     "refs": [
+      {
+       "book": "FCOM",
+       "code": "PRO-ABN-AIR",
+       "page": "P 71/82",
+       "pdf": 2960
+      }
+     ]
+    },
+    {
+     "kind": "action",
+     "item": "MAX FL",
+     "setting": "100/MEA-MORA",
+     "text": "",
+     "level": 1,
+     "applies_to": [
+      "all"
+     ],
+     "refs": [
+      {
+       "book": "FCOM",
+       "code": "PRO-ABN-AIR",
+       "page": "P 71/82",
+       "pdf": 2960
+      }
+     ]
+    },
+    {
+     "kind": "condition",
+     "text": "If FAULT was due to an overheat:",
+     "level": 0,
+     "applies_to": [
+      "all"
+     ],
+     "refs": [
+      {
+       "book": "FCOM",
+       "code": "PRO-ABN-AIR",
+       "page": "P 71/82",
+       "pdf": 2960
+      }
+     ]
+    },
+    {
+     "kind": "info",
+     "text": "ASSOCIATED PROCEDURES: AIR PACK 1 (2) OVHT",
+     "level": 1,
+     "applies_to": [
+      "all"
+     ],
+     "refs": [
+      {
+       "book": "FCOM",
+       "code": "PRO-ABN-AIR",
+       "page": "P 71/82",
+       "pdf": 2960
+      }
+     ]
+    },
+    {
+     "kind": "condition",
+     "text": "WHEN PACK OVHT OUT:",
+     "level": 1,
+     "applies_to": [
+      "all"
+     ],
+     "refs": [
+      {
+       "book": "FCOM",
+       "code": "PRO-ABN-AIR",
+       "page": "P 71/82",
+       "pdf": 2960
+      }
+     ]
+    },
+    {
+     "kind": "action",
+     "item": "PACK (AFFECTED)",
+     "setting": "ON",
+     "text": "",
+     "level": 2,
+     "applies_to": [
+      "all"
+     ],
+     "refs": [
+      {
+       "book": "FCOM",
+       "code": "PRO-ABN-AIR",
+       "page": "P 71/82",
+       "pdf": 2960
+      }
+     ]
+    }
+   ]
+  }
+ ],
+ "status": {
+  "limitations": [
+   {
+    "text": "If packs not recovered: MAX FL ....... 100/MEA-MORA",
+    "applies_to": [
+     "all"
+    ],
+    "refs": [
+     {
+      "book": "FCOM",
+      "code": "PRO-ABN-AIR",
+      "page": "P 71/82",
+      "pdf": 2960
+     }
+    ]
+   }
+  ],
+  "info": [
+   {
+    "text": "If packs not recovered: CKPT AT FIXED TEMP; CAB AT FIXED TEMP",
+    "applies_to": [
+     "all"
+    ],
+    "refs": [
+     {
+      "book": "FCOM",
+      "code": "PRO-ABN-AIR",
+      "page": "P 71/82",
+      "pdf": 2960
+     }
+    ]
+   },
+   {
+    "text": "If FAULT was due to an overheat: WHEN PACK OVHT OUT: PACK (AFFECTED) ON",
+    "applies_to": [
+     "all"
+    ],
+    "refs": [
+     {
+      "book": "FCOM",
+      "code": "PRO-ABN-AIR",
+      "page": "P 71/82",
+      "pdf": 2960
+     }
+    ]
+   }
+  ],
+  "appr_proc": [],
+  "inop_sys": [
+   {
+    "text": "PACK 1 + 2",
+    "applies_to": [
+     "all"
+    ],
+    "refs": [
+     {
+      "book": "FCOM",
+      "code": "PRO-ABN-AIR",
+      "page": "P 71/82",
+      "pdf": 2960
+     }
+    ]
+   },
+   {
+    "text": "COND CTL 1",
+    "applies_to": [
+     "all"
+    ],
+    "refs": [
+     {
+      "book": "FCOM",
+      "code": "PRO-ABN-AIR",
+      "page": "P 71/82",
+      "pdf": 2960
+     }
+    ]
+   },
+   {
+    "text": "COND CTL 2",
+    "applies_to": [
+     "all"
+    ],
+    "refs": [
+     {
+      "book": "FCOM",
+      "code": "PRO-ABN-AIR",
+      "page": "P 71/82",
+      "pdf": 2960
+     }
+    ]
+   },
+   {
+    "text": "FWD CRG HEAT",
+    "applies_to": [
+     "all"
+    ],
+    "refs": [
+     {
+      "book": "FCOM",
+      "code": "PRO-ABN-AIR",
+      "page": "P 71/82",
+      "pdf": 2960
+     }
+    ]
+   }
+  ]
+ },
+ "background": [
+  {
+   "text": "Each controller has two lanes. If both lanes fail, the related pack is lost and the hot air pressure-regulating valve closes.",
+   "applies_to": [
+    "all"
+   ],
+   "refs": [
+    {
+     "book": "FCOM",
+     "code": "DSC-21-10-40",
+     "page": "P 1/2",
+     "pdf": 226
+    }
+   ]
+  },
+  {
+   "text": "RAM AIR pb (guarded): the emergency ram air inlet opens. If Δp ≥ 1 PSI, the outflow valve control remains normal and no emergency ram air flows in. If Δp < 1 PSI, the outflow valve opens to about 50 % under automatic control, and ram air goes directly to the mixer unit.",
+   "applies_to": [
+    "all"
+   ],
+   "refs": [
+    {
+     "book": "FCOM",
+     "code": "DSC-21-10-50",
+     "page": "P 3/16",
+     "pdf": 230
+    }
+   ]
+  }
+ ],
+ "technique": [
+  {
+   "text": "ETOPS flights: in the case of loss of the air conditioning capability (loss of both packs, loss of both bleeds without APU bleed, etc.), when at FL 100 with the RAM AIR opened, the CAB FANS must be switched off.",
+   "applies_to": [
+    "all"
+   ],
+   "refs": [
+    {
+     "book": "FCOM",
+     "code": "PRO-SPO-40-50",
+     "page": "P 2/4",
+     "pdf": 4589
+    }
+   ]
+  }
+ ],
+ "related": [
+  {
+   "title": "AIR PACK 1(2) OVHT",
+   "why": "Associated procedure if the fault was due to an overheat.",
+   "key_actions": [
+    "WHEN PACK OVHT OUT: PACK (AFFECTED) ON"
+   ],
+   "refs": [
+    {
+     "book": "FCOM",
+     "code": "PRO-ABN-AIR",
+     "page": "P 71/82",
+     "pdf": 2960
+    },
+    {
+     "book": "FCOM",
+     "code": "PRO-ABN-AIR",
+     "page": "P 76/82",
+     "pdf": 2965
+    }
+   ]
+  }
+ ],
+ "gaps": [
+  {
+   "text": "The FCOM trigger names only both ACSCs failed, but the procedure also has the branch \"If FAULT was due to an overheat\". The manuals do not state that this alert follows an AIR L(R) WING LEAK with an AIR PACK 1(2) OVHT. Confirmed by the user: show it as the third step of that sequence.",
+   "applies_to": [
+    "all"
+   ],
+   "refs": [
+    {
+     "book": "FCOM",
+     "code": "PRO-ABN-AIR",
+     "page": "P 70/82",
+     "pdf": 2959
+    },
+    {
+     "book": "FCOM",
+     "code": "PRO-ABN-AIR",
+     "page": "P 71/82",
+     "pdf": 2960
+    },
+    {
+     "book": "FCOM",
+     "code": "PRO-ABN-AIR",
+     "page": "P 66/82",
+     "pdf": 2955
+    },
+    {
+     "book": "FCOM",
+     "code": "PRO-ABN-AIR",
+     "page": "P 76/82",
+     "pdf": 2965
+    }
+   ]
+  },
+  {
+   "text": "The FCOM note on closing the FWD CARGO ISOL VALVE is left out of the flow: the If Installed table lists the FWD ISOL Valve as not installed, and likewise FWD Cargo Heating, although STATUS prints FWD CRG HEAT.",
+   "applies_to": [
+    "all"
+   ],
+   "refs": [
+    {
+     "book": "FCOM",
+     "code": "PRO-ABN-AIR",
+     "page": "P 71/82",
+     "pdf": 2960
+    },
+    {
+     "book": "FCOM",
+     "code": "GEN",
+     "page": "P 26/78",
+     "pdf": 119
+    }
+   ]
+  },
+  {
+   "text": "The FCTM has no chapter for this alert and no PDP module covers it. Confirmed by the user: the PF flies the descent and the ECAM continues, with no STOP ECAM before STATUS.",
+   "applies_to": [
+    "all"
+   ],
+   "refs": [
+    {
+     "book": "FCTM",
+     "code": "AOP-30-30",
+     "page": "P 4/6",
+     "pdf": 85
+    },
+    {
+     "book": "PDP",
+     "code": "Management of abnormal operations",
+     "page": "XFTDN6ECAM00001",
+     "pdf": 430
+    }
+   ]
+  },
+  {
+   "text": "The manuals name no role for the ETOPS CAB FANS line. Confirmed by the user: the PM.",
+   "applies_to": [
+    "all"
+   ],
+   "refs": [
+    {
+     "book": "FCOM",
+     "code": "PRO-SPO-40-50",
+     "page": "P 2/4",
+     "pdf": 4589
+    },
+    {
+     "book": "FCTM",
+     "code": "AOP-30-20",
+     "page": "P 1/2",
+     "pdf": 80
+    }
+   ]
+  },
+  {
+   "text": "The HS-TO version of this procedure (FCOM P 72–74/82) is not used.",
+   "applies_to": [
+    "all"
+   ],
+   "refs": [
+    {
+     "book": "FCOM",
+     "code": "PRO-ABN-AIR",
+     "page": "P 72/82",
+     "pdf": 2961
+    }
+   ]
+  }
+ ],
+ "sources": [
+  {
+   "book": "FCOM",
+   "section": "PRO-ABN-AIR — AIR PACK 1+2 FAULT (HS-TX)",
+   "pages": "P 70–71/82",
+   "pdf": "2959–2960",
+   "rev": "26 MAY 26"
+  },
+  {
+   "book": "FCOM",
+   "section": "DSC-21-10 — controllers, RAM AIR pb",
+   "pages": "DSC-21-10-40 P 1/2; DSC-21-10-50 P 3/16",
+   "pdf": "226, 230",
+   "rev": "23 AUG 23, 18 FEB 26"
+  },
+  {
+   "book": "FCOM",
+   "section": "PRO-SPO-40-50 — ETOPS loss of air conditioning",
+   "pages": "P 2/4",
+   "pdf": "4589",
+   "rev": "18 FEB 26"
+  },
+  {
+   "book": "FCOM",
+   "section": "GEN — If Installed table",
+   "pages": "P 26/78",
+   "pdf": "119",
+   "rev": "14 JUL 26"
+  },
+  {
+   "book": "FCTM",
+   "section": "AOP-20 / AOP-30 — task sharing and ECAM handling",
+   "pages": "AOP-20 P 1–2/10, AOP-30 P 1–6/6",
+   "pdf": "68–69, 79–86",
+   "rev": "26 MAY 26"
+  },
+  {
+   "book": "PDP",
+   "section": "Management of abnormal operations (XFTDN6ECAM00001)",
+   "pages": "ECAM actions, STATUS, QRH, confirm",
+   "pdf": "424–432",
+   "rev": "JAN 2024"
+  }
+ ],
+ "schema": "a320-ecam-abnormal/3",
+ "generated": "2026-11-01",
+ "qrh": [],
+ "tables": [],
+ "differences": []
+}

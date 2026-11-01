@@ -1,0 +1,1146 @@
+{
+ "slug": "etops-diversion-and-abnormal-procedures",
+ "title": "ETOPS · diversion and abnormal procedures",
+ "kind": "technique",
+ "alert": {
+  "level": "technique",
+  "land_asap": "none",
+  "memory_items": false,
+  "qrh_summary": false,
+  "trigger": "A failure, or a diversion airport becoming unsuitable, on an ETOPS flight. These procedures apply in addition to the SOP and the ABNORMAL and EMERGENCY procedures.",
+  "inhibited_phases": [],
+  "refs": [
+   {
+    "book": "FCOM",
+    "code": "PRO-SPO-40-50",
+    "page": "P 1/4",
+    "pdf": 4588
+   },
+   {
+    "book": "FCOM",
+    "code": "PRO-SPO-40-40",
+    "page": "P 1/2",
+    "pdf": 4586
+   }
+  ]
+ },
+ "effectivity": {
+  "branches": [],
+  "note": "FCOM special operations, FCTM technique and Airbus PDP tutorial; applies to all HS-TX."
+ },
+ "summary": "On an ETOPS flight, four technical criteria govern a re-routing or diversion: loss of NAT-HLA capability, diversion airports going below minima or becoming unsuitable, LAND ASAP failures, and failures whose increased fuel consumption exceeds the reserves. After an engine or IDG failure, start the APU and use its electrical channel. After an engine failure, the fixed speed strategy is the one recommended for ETOPS, with the speed established before dispatch.",
+ "key_limits": [
+  {
+   "label": "Engine or IDG failure",
+   "value": "Start the APU · use the APU electrical channel",
+   "applies_to": [
+    "all"
+   ],
+   "refs": [
+    {
+     "book": "FCOM",
+     "code": "PRO-SPO-40-50",
+     "page": "P 2/4",
+     "pdf": 4589
+    }
+   ]
+  },
+  {
+   "label": "Blue hydraulic low level, low pressure or overheat",
+   "value": "Start the APU to ensure the APU generator",
+   "applies_to": [
+    "all"
+   ],
+   "refs": [
+    {
+     "book": "FCOM",
+     "code": "PRO-SPO-40-50",
+     "page": "P 2/4",
+     "pdf": 4589
+    }
+   ]
+  },
+  {
+   "label": "Fixed speed strategy",
+   "value": "Speed value as established before dispatch",
+   "applies_to": [
+    "all"
+   ],
+   "refs": [
+    {
+     "book": "PDP",
+     "code": "Engine failure in cruise",
+     "page": "EFTDA1ENGFCRZ01",
+     "pdf": 507
+    },
+    {
+     "book": "FCTM",
+     "code": "PR-AEP-ENG",
+     "page": "P 17/26",
+     "pdf": 418
+    }
+   ]
+  },
+  {
+   "label": "Loss of air conditioning",
+   "value": "At FL 100 with RAM AIR opened: CAB FANS off",
+   "applies_to": [
+    "all"
+   ],
+   "refs": [
+    {
+     "book": "FCOM",
+     "code": "PRO-SPO-40-50",
+     "page": "P 2/4",
+     "pdf": 4589
+    }
+   ]
+  }
+ ],
+ "flow": [
+  {
+   "phase": "Assess",
+   "steps": [
+    {
+     "actor": "BOTH",
+     "items": [
+      {
+       "kind": "action",
+       "text": "First maintain a safe flight path; apply the ECAM or QRH procedure",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "FCTM",
+         "code": "AOP-30-30",
+         "page": "P 1/6",
+         "pdf": 82
+        }
+       ]
+      },
+      {
+       "kind": "action",
+       "text": "Fly, navigate, communicate",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "FCTM",
+         "code": "AOP-20",
+         "page": "P 1–2/10",
+         "pdf": 68
+        }
+       ]
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "phase": "Engine failure: strategy",
+   "steps": [
+    {
+     "actor": "BOTH",
+     "items": [
+      {
+       "kind": "ecam",
+       "item": "STRATEGY",
+       "setting": "DETERMINE",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "PDP",
+         "code": "Engine failure in cruise",
+         "page": "EFTDA1ENGFCRZ01",
+         "pdf": 506
+        },
+        {
+         "book": "PDP",
+         "code": "Engine failure in cruise",
+         "page": "EFTDA1ENGFCRZ01",
+         "pdf": 507
+        }
+       ]
+      }
+     ]
+    },
+    {
+     "actor": "PF",
+     "items": [
+      {
+       "kind": "condition",
+       "text": "A specific procedure was established before dispatch for ETOPS",
+       "children": [
+        {
+         "kind": "action",
+         "text": "Fixed speed strategy: fly the speed value as established before dispatch",
+         "applies_to": [
+          "all"
+         ],
+         "refs": [
+          {
+           "book": "PDP",
+           "code": "Engine failure in cruise",
+           "page": "EFTDA1ENGFCRZ01",
+           "pdf": 507
+          },
+          {
+           "book": "FCTM",
+           "code": "PR-AEP-ENG",
+           "page": "P 17/26",
+           "pdf": 418
+          }
+         ]
+        }
+       ],
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "FCTM",
+         "code": "PR-AEP-ENG",
+         "page": "P 15/26",
+         "pdf": 416
+        },
+        {
+         "book": "FCTM",
+         "code": "PR-AEP-ENG",
+         "page": "P 17/26",
+         "pdf": 418
+        }
+       ]
+      },
+      {
+       "kind": "note",
+       "text": "Unless a specific procedure has been established before dispatch, the standard strategy is used",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "FCTM",
+         "code": "PR-AEP-ENG",
+         "page": "P 15/26",
+         "pdf": 416
+        }
+       ]
+      },
+      {
+       "kind": "note",
+       "text": "See the drift-down brief for the thrust, heading and descent lines",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "FCTM",
+         "code": "PR-AEP-ENG",
+         "page": "P 15/26",
+         "pdf": 416
+        },
+        {
+         "book": "PDP",
+         "code": "Engine failure in cruise",
+         "page": "EFTDA1ENGFCRZ01",
+         "pdf": 506
+        }
+       ]
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "phase": "ETOPS actions",
+   "steps": [
+    {
+     "actor": "PM",
+     "items": [
+      {
+       "kind": "condition",
+       "text": "Engine or IDG failure",
+       "children": [
+        {
+         "kind": "action",
+         "text": "Start the APU and use the APU electrical channel",
+         "applies_to": [
+          "all"
+         ],
+         "refs": [
+          {
+           "book": "FCOM",
+           "code": "PRO-SPO-40-50",
+           "page": "P 2/4",
+           "pdf": 4589
+          }
+         ]
+        }
+       ],
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "FCOM",
+         "code": "PRO-SPO-40-50",
+         "page": "P 2/4",
+         "pdf": 4589
+        }
+       ]
+      },
+      {
+       "kind": "condition",
+       "text": "Blue hydraulic circuit low level, low pressure or overheat",
+       "children": [
+        {
+         "kind": "action",
+         "text": "Start the APU to ensure availability of the APU generator",
+         "applies_to": [
+          "all"
+         ],
+         "refs": [
+          {
+           "book": "FCOM",
+           "code": "PRO-SPO-40-50",
+           "page": "P 2/4",
+           "pdf": 4589
+          }
+         ]
+        }
+       ],
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "FCOM",
+         "code": "PRO-SPO-40-50",
+         "page": "P 2/4",
+         "pdf": 4589
+        }
+       ]
+      },
+      {
+       "kind": "condition",
+       "text": "Loss of the air conditioning capability, at FL 100 with the RAM AIR opened",
+       "children": [
+        {
+         "kind": "ecam",
+         "item": "CAB FANS",
+         "setting": "OFF",
+         "applies_to": [
+          "all"
+         ],
+         "refs": [
+          {
+           "book": "FCOM",
+           "code": "PRO-SPO-40-50",
+           "page": "P 2/4",
+           "pdf": 4589
+          }
+         ]
+        }
+       ],
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "FCOM",
+         "code": "PRO-SPO-40-50",
+         "page": "P 2/4",
+         "pdf": 4589
+        }
+       ]
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "phase": "Diversion decision",
+   "steps": [
+    {
+     "actor": "BOTH",
+     "items": [
+      {
+       "kind": "action",
+       "text": "Assess the failure against the diversion criteria (see Procedure); consider LAND ASAP, fuel and weather",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "FCOM",
+         "code": "PRO-SPO-40-40",
+         "page": "P 1/2",
+         "pdf": 4586
+        },
+        {
+         "book": "PDP",
+         "code": "Management of abnormal operations",
+         "page": "XFTDN6ECAM00001",
+         "pdf": 428
+        }
+       ]
+      },
+      {
+       "kind": "action",
+       "text": "Decide",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "FCTM",
+         "code": "AOP-30-30",
+         "page": "P 5/6",
+         "pdf": 86
+        },
+        {
+         "book": "PDP",
+         "code": "Management of abnormal operations",
+         "page": "XFTDN6ECAM00001",
+         "pdf": 428
+        }
+       ]
+      }
+     ]
+    },
+    {
+     "actor": "PF",
+     "items": [
+      {
+       "kind": "action",
+       "text": "Inform ATC, cabin crew, passengers and airline operations as required",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "FCTM",
+         "code": "AOP-30-30",
+         "page": "P 5/6",
+         "pdf": 86
+        },
+        {
+         "book": "PDP",
+         "code": "Management of abnormal operations",
+         "page": "XFTDN6ECAM00001",
+         "pdf": 428
+        }
+       ]
+      }
+     ]
+    }
+   ]
+  }
+ ],
+ "procedures": [
+  {
+   "title": "Diversion decision making",
+   "source": "FCOM PRO-SPO-40-40",
+   "lines": [
+    {
+     "kind": "info",
+     "text": "The technical criteria governing a re-routing or diversion decision can be classified into four categories:",
+     "level": 0,
+     "applies_to": [
+      "all"
+     ],
+     "refs": [
+      {
+       "book": "FCOM",
+       "code": "PRO-SPO-40-40",
+       "page": "P 1/2",
+       "pdf": 4586
+      }
+     ]
+    },
+    {
+     "kind": "info",
+     "text": "Loss of NAT-HLA capability, before entering the NAT-HLA area (as applicable)",
+     "level": 1,
+     "applies_to": [
+      "all"
+     ],
+     "refs": [
+      {
+       "book": "FCOM",
+       "code": "PRO-SPO-40-40",
+       "page": "P 1/2",
+       "pdf": 4586
+      }
+     ]
+    },
+    {
+     "kind": "info",
+     "text": "Weather minima at diversion airport(s) going below the company/crew en-route minima, before reaching the ETOPS Entry Point, or diversion airport(s) becoming unsuitable for any reason",
+     "level": 1,
+     "applies_to": [
+      "all"
+     ],
+     "refs": [
+      {
+       "book": "FCOM",
+       "code": "PRO-SPO-40-40",
+       "page": "P 1/2",
+       "pdf": 4586
+      }
+     ]
+    },
+    {
+     "kind": "info",
+     "text": "Failure cases requiring a diversion to the nearest airport (cases leading to a LAND ASAP message on the ECAM and/or in the QRH)",
+     "level": 1,
+     "applies_to": [
+      "all"
+     ],
+     "refs": [
+      {
+       "book": "FCOM",
+       "code": "PRO-SPO-40-40",
+       "page": "P 1/2",
+       "pdf": 4586
+      }
+     ]
+    },
+    {
+     "kind": "info",
+     "text": "Failure cases resulting in increased fuel consumption, exceeding the available fuel reserves",
+     "level": 1,
+     "applies_to": [
+      "all"
+     ],
+     "refs": [
+      {
+       "book": "FCOM",
+       "code": "PRO-SPO-40-40",
+       "page": "P 1/2",
+       "pdf": 4586
+      }
+     ]
+    },
+    {
+     "kind": "condition",
+     "text": "Electrical generation. If one IDG fails, a diversion is required in the case of:",
+     "level": 0,
+     "applies_to": [
+      "all"
+     ],
+     "refs": [
+      {
+       "book": "FCOM",
+       "code": "PRO-SPO-40-40",
+       "page": "P 1/2",
+       "pdf": 4586
+      }
+     ]
+    },
+    {
+     "kind": "info",
+     "text": "Blue hydraulic circuit low level, low pressure or overheat",
+     "level": 1,
+     "applies_to": [
+      "all"
+     ],
+     "refs": [
+      {
+       "book": "FCOM",
+       "code": "PRO-SPO-40-40",
+       "page": "P 1/2",
+       "pdf": 4586
+      }
+     ]
+    },
+    {
+     "kind": "info",
+     "text": "APU no start",
+     "level": 1,
+     "applies_to": [
+      "all"
+     ],
+     "refs": [
+      {
+       "book": "FCOM",
+       "code": "PRO-SPO-40-40",
+       "page": "P 1/2",
+       "pdf": 4586
+      }
+     ]
+    },
+    {
+     "kind": "info",
+     "text": "APU or APU generator inoperative",
+     "level": 1,
+     "applies_to": [
+      "all"
+     ],
+     "refs": [
+      {
+       "book": "FCOM",
+       "code": "PRO-SPO-40-40",
+       "page": "P 1/2",
+       "pdf": 4586
+      }
+     ]
+    },
+    {
+     "kind": "info",
+     "text": "Second IDG failure",
+     "level": 1,
+     "applies_to": [
+      "all"
+     ],
+     "refs": [
+      {
+       "book": "FCOM",
+       "code": "PRO-SPO-40-40",
+       "page": "P 1/2",
+       "pdf": 4586
+      }
+     ]
+    },
+    {
+     "kind": "info",
+     "text": "Fuel system. Some failure cases may lead to fuel gravity feeding which implies flight at lower altitude or to some fuel being unusable. The flight crew's evaluation of the actual situation and the fuel remaining may lead to the decision that a diversion is required.",
+     "level": 0,
+     "applies_to": [
+      "all"
+     ],
+     "refs": [
+      {
+       "book": "FCOM",
+       "code": "PRO-SPO-40-40",
+       "page": "P 1/2",
+       "pdf": 4586
+      }
+     ]
+    },
+    {
+     "kind": "condition",
+     "text": "Hydraulic system. If there is low level, low pressure or overheat on blue hydraulic circuit, a diversion is required in the case of:",
+     "level": 0,
+     "applies_to": [
+      "all"
+     ],
+     "refs": [
+      {
+       "book": "FCOM",
+       "code": "PRO-SPO-40-40",
+       "page": "P 1/2",
+       "pdf": 4586
+      }
+     ]
+    },
+    {
+     "kind": "info",
+     "text": "One IDG failure",
+     "level": 1,
+     "applies_to": [
+      "all"
+     ],
+     "refs": [
+      {
+       "book": "FCOM",
+       "code": "PRO-SPO-40-40",
+       "page": "P 1/2",
+       "pdf": 4586
+      }
+     ]
+    },
+    {
+     "kind": "info",
+     "text": "APU no start",
+     "level": 1,
+     "applies_to": [
+      "all"
+     ],
+     "refs": [
+      {
+       "book": "FCOM",
+       "code": "PRO-SPO-40-40",
+       "page": "P 1/2",
+       "pdf": 4586
+      }
+     ]
+    },
+    {
+     "kind": "info",
+     "text": "APU/APU GEN failure",
+     "level": 1,
+     "applies_to": [
+      "all"
+     ],
+     "refs": [
+      {
+       "book": "FCOM",
+       "code": "PRO-SPO-40-40",
+       "page": "P 1/2",
+       "pdf": 4586
+      }
+     ]
+    },
+    {
+     "kind": "condition",
+     "text": "APU. If APU/APU GEN fails, a diversion is required in the case of:",
+     "level": 0,
+     "applies_to": [
+      "all"
+     ],
+     "refs": [
+      {
+       "book": "FCOM",
+       "code": "PRO-SPO-40-40",
+       "page": "P 1/2",
+       "pdf": 4586
+      }
+     ]
+    },
+    {
+     "kind": "info",
+     "text": "Blue hydraulic circuit low level, low pressure or overheat",
+     "level": 1,
+     "applies_to": [
+      "all"
+     ],
+     "refs": [
+      {
+       "book": "FCOM",
+       "code": "PRO-SPO-40-40",
+       "page": "P 1/2",
+       "pdf": 4586
+      }
+     ]
+    },
+    {
+     "kind": "info",
+     "text": "One IDG failure",
+     "level": 1,
+     "applies_to": [
+      "all"
+     ],
+     "refs": [
+      {
+       "book": "FCOM",
+       "code": "PRO-SPO-40-40",
+       "page": "P 1/2",
+       "pdf": 4586
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "title": "ETOPS abnormal and emergency procedures",
+   "source": "FCOM PRO-SPO-40-50 (HS-TX)",
+   "lines": [
+    {
+     "kind": "condition",
+     "text": "ELECTRICAL EMERGENCY CONFIGURATION. Complete the ECAM procedure using the following:",
+     "level": 0,
+     "applies_to": [
+      "all"
+     ],
+     "refs": [
+      {
+       "book": "FCOM",
+       "code": "PRO-SPO-40-50",
+       "page": "P 1/4",
+       "pdf": 4588
+      }
+     ]
+    },
+    {
+     "kind": "info",
+     "text": "AIR CONDITIONING: As cockpit and cabin temperature control is lost, it is recommended to open the cockpit door.",
+     "level": 1,
+     "applies_to": [
+      "all"
+     ],
+     "refs": [
+      {
+       "book": "FCOM",
+       "code": "PRO-SPO-40-50",
+       "page": "P 1/4",
+       "pdf": 4588
+      }
+     ]
+    },
+    {
+     "kind": "info",
+     "text": "FUEL: As all fuel pumps are lost, the engines are fed by gravity. Refer to GRVTY FUEL FEEDING Procedure.",
+     "level": 1,
+     "applies_to": [
+      "all"
+     ],
+     "refs": [
+      {
+       "book": "FCOM",
+       "code": "PRO-SPO-40-50",
+       "page": "P 1/4",
+       "pdf": 4588
+      }
+     ]
+    },
+    {
+     "kind": "info",
+     "text": "ENGINE ANTI-ICE: Engine anti-ice valves are permanently open, although the ECAM memo ENG A. ICE is not displayed on the ECAM (except if the ENG A. ICE pb is at ON).",
+     "level": 1,
+     "applies_to": [
+      "all"
+     ],
+     "refs": [
+      {
+       "book": "FCOM",
+       "code": "PRO-SPO-40-50",
+       "page": "P 2/4",
+       "pdf": 4589
+      }
+     ]
+    },
+    {
+     "kind": "info",
+     "text": "WING ANTI-ICE: If only one ENG BLEED is available, PACK 1 must be switched OFF, to avoid having both packs and wing anti-ice supplied by a single bleed source.",
+     "level": 1,
+     "applies_to": [
+      "all"
+     ],
+     "refs": [
+      {
+       "book": "FCOM",
+       "code": "PRO-SPO-40-50",
+       "page": "P 2/4",
+       "pdf": 4589
+      }
+     ]
+    },
+    {
+     "kind": "info",
+     "text": "ENGINE: As the engines are in degraded N1 mode, the power setting has to be done using tables.",
+     "level": 1,
+     "applies_to": [
+      "all"
+     ],
+     "refs": [
+      {
+       "book": "FCOM",
+       "code": "PRO-SPO-40-50",
+       "page": "P 2/4",
+       "pdf": 4589
+      }
+     ]
+    },
+    {
+     "kind": "info",
+     "text": "BLUE HYDRAULIC CIRCUIT LOW LEVEL OR LOW PRESSURE OR OVERHEAT: Start the APU to ensure availability of the APU generator.",
+     "level": 0,
+     "applies_to": [
+      "all"
+     ],
+     "refs": [
+      {
+       "book": "FCOM",
+       "code": "PRO-SPO-40-50",
+       "page": "P 2/4",
+       "pdf": 4589
+      }
+     ]
+    },
+    {
+     "kind": "info",
+     "text": "ENGINE OR IDG FAILURE: Start the APU and use the APU electrical channel.",
+     "level": 0,
+     "applies_to": [
+      "all"
+     ],
+     "refs": [
+      {
+       "book": "FCOM",
+       "code": "PRO-SPO-40-50",
+       "page": "P 2/4",
+       "pdf": 4589
+      }
+     ]
+    },
+    {
+     "kind": "info",
+     "text": "LOSS OF AIR CONDITIONING: In the case of loss of the air conditioning capability (loss of both packs, loss of both bleeds without APU bleed etc.), when at FL 100 with the RAM AIR opened, the CAB FANS must be switched off.",
+     "level": 0,
+     "applies_to": [
+      "all"
+     ],
+     "refs": [
+      {
+       "book": "FCOM",
+       "code": "PRO-SPO-40-50",
+       "page": "P 2/4",
+       "pdf": 4589
+      }
+     ]
+    }
+   ]
+  }
+ ],
+ "status": null,
+ "background": [
+  {
+   "text": "When an engine failure occurs during cruise, three strategies apply: standard, obstacle and fixed speed. Unless a specific procedure has been established before dispatch (considering ETOPS or mountainous areas), the standard strategy is used.",
+   "applies_to": [
+    "all"
+   ],
+   "refs": [
+    {
+     "book": "FCTM",
+     "code": "PR-AEP-ENG",
+     "page": "P 15/26",
+     "pdf": 416
+    }
+   ]
+  },
+  {
+   "text": "The FCTM says the fixed speed strategy is recommended for ETOPS operation and refers to the FCOM diversion decision making section. The PDP gives \"ETOPS constraint\" and \"Speed value as established before dispatch\".",
+   "applies_to": [
+    "all"
+   ],
+   "refs": [
+    {
+     "book": "FCTM",
+     "code": "PR-AEP-ENG",
+     "page": "P 17/26",
+     "pdf": 418
+    },
+    {
+     "book": "PDP",
+     "code": "Engine failure in cruise",
+     "page": "EFTDA1ENGFCRZ01",
+     "pdf": 507
+    }
+   ]
+  },
+  {
+   "text": "The FCOM maximum diversion distance tables are computed for ISA, no wind, the optimum diversion level after an engine failure and a single engine diversion speed schedule, with the schedules MCT/VMO and MCT/320 kt. Obstacles are not considered to determine if a route is an ETOPS route.",
+   "applies_to": [
+    "all"
+   ],
+   "refs": [
+    {
+     "book": "FCOM",
+     "code": "PRO-SPO-40-60",
+     "page": "P 1/4",
+     "pdf": 4592
+    },
+    {
+     "book": "FCOM",
+     "code": "PRO-SPO-40-60",
+     "page": "P 2/4",
+     "pdf": 4593
+    }
+   ]
+  }
+ ],
+ "technique": [
+  {
+   "text": "The fixed speed section of the FCTM gives no speed, thrust or descent lines of its own.",
+   "applies_to": [
+    "all"
+   ],
+   "refs": [
+    {
+     "book": "FCTM",
+     "code": "PR-AEP-ENG",
+     "page": "P 17/26",
+     "pdf": 418
+    }
+   ]
+  }
+ ],
+ "related": [
+  {
+   "title": "Engine failure in cruise · drift-down strategy",
+   "why": "The thrust, heading and descent lines for the standard and obstacle strategies.",
+   "key_actions": [
+    "All thrust levers MCT, A/THR OFF",
+    "Do not decelerate below green dot"
+   ],
+   "refs": [
+    {
+     "book": "FCTM",
+     "code": "PR-AEP-ENG",
+     "page": "P 15/26",
+     "pdf": 416
+    },
+    {
+     "book": "PDP",
+     "code": "Engine failure in cruise",
+     "page": "EFTDA1ENGFCRZ01",
+     "pdf": 506
+    }
+   ]
+  },
+  {
+   "title": "Maximum diversion distance",
+   "why": "Dispatch performance table; it differs between HS-TXA..TXF and HS-TXG..TXU.",
+   "key_actions": [
+    "See the FCOM table"
+   ],
+   "refs": [
+    {
+     "book": "FCOM",
+     "code": "PRO-SPO-40-60",
+     "page": "P 1/4",
+     "pdf": 4592
+    },
+    {
+     "book": "FCOM",
+     "code": "PRO-SPO-40-60",
+     "page": "P 2/4",
+     "pdf": 4593
+    }
+   ]
+  }
+ ],
+ "gaps": [
+  {
+   "text": "The manuals give no value for the fixed speed strategy; the speed comes from the operator's dispatch procedure, which is not in the supplied manuals. The MCT/VMO and MCT/320 kt schedules are from the maximum diversion distance tables, and no source calls them the fixed speed. Confirmed by the user: no number is shown.",
+   "applies_to": [
+    "all"
+   ],
+   "refs": [
+    {
+     "book": "FCTM",
+     "code": "PR-AEP-ENG",
+     "page": "P 17/26",
+     "pdf": 418
+    },
+    {
+     "book": "PDP",
+     "code": "Engine failure in cruise",
+     "page": "EFTDA1ENGFCRZ01",
+     "pdf": 507
+    },
+    {
+     "book": "FCOM",
+     "code": "PRO-SPO-40-60",
+     "page": "P 1/4",
+     "pdf": 4592
+    },
+    {
+     "book": "FCOM",
+     "code": "PRO-SPO-40-60",
+     "page": "P 2/4",
+     "pdf": 4593
+    }
+   ]
+  },
+  {
+   "text": "This brief goes beyond the ECAM/QRH scope of the other briefs. Confirmed by the user: add it as a brief for the diversion row.",
+   "applies_to": [
+    "all"
+   ],
+   "refs": [
+    {
+     "book": "FCOM",
+     "code": "PRO-SPO-40-40",
+     "page": "P 1/2",
+     "pdf": 4586
+    }
+   ]
+  },
+  {
+   "text": "No source names roles for these ETOPS lines. Confirmed by the user: the PM performs the APU start and the CAB FANS line.",
+   "applies_to": [
+    "all"
+   ],
+   "refs": [
+    {
+     "book": "FCOM",
+     "code": "PRO-SPO-40-50",
+     "page": "P 2/4",
+     "pdf": 4589
+    },
+    {
+     "book": "FCTM",
+     "code": "AOP-30-20",
+     "page": "P 1/2",
+     "pdf": 80
+    }
+   ]
+  },
+  {
+   "text": "The HS-TO versions (FCOM PRO-SPO-40-50 P 2–4/4, PRO-SPO-40-60 P 3–4/4) are not used.",
+   "applies_to": [
+    "all"
+   ],
+   "refs": [
+    {
+     "book": "FCOM",
+     "code": "PRO-SPO-40-50",
+     "page": "P 2/4",
+     "pdf": 4589
+    }
+   ]
+  }
+ ],
+ "sources": [
+  {
+   "book": "FCOM",
+   "section": "PRO-SPO-40-40 — Diversion decision making",
+   "pages": "P 1/2",
+   "pdf": "4586",
+   "rev": "15 FEB 23"
+  },
+  {
+   "book": "FCOM",
+   "section": "PRO-SPO-40-50 — ETOPS procedures (HS-TX)",
+   "pages": "P 1–2/4",
+   "pdf": "4588–4589",
+   "rev": "18 FEB 26"
+  },
+  {
+   "book": "FCOM",
+   "section": "PRO-SPO-40-60 — Maximum diversion distance (HS-TX)",
+   "pages": "P 1–2/4",
+   "pdf": "4592–4593",
+   "rev": "18 FEB 26"
+  },
+  {
+   "book": "FCTM",
+   "section": "PR-AEP-ENG — Engine failure during cruise",
+   "pages": "P 15, 17/26",
+   "pdf": "416, 418",
+   "rev": "26 MAY 26"
+  },
+  {
+   "book": "PDP",
+   "section": "Engine failure in cruise (EFTDA1ENGFCRZ01)",
+   "pages": "Detection and initial actions",
+   "pdf": "506–507",
+   "rev": "JAN 2024"
+  },
+  {
+   "book": "FCTM",
+   "section": "AOP-20 / AOP-30 — task sharing and ECAM handling",
+   "pages": "AOP-20 P 1–2/10, AOP-30 P 1–6/6",
+   "pdf": "68–69, 79–86",
+   "rev": "26 MAY 26"
+  },
+  {
+   "book": "PDP",
+   "section": "Management of abnormal operations (XFTDN6ECAM00001)",
+   "pages": "ECAM actions, STATUS, QRH, confirm",
+   "pdf": "424–432",
+   "rev": "JAN 2024"
+  }
+ ],
+ "schema": "a320-ecam-abnormal/3",
+ "generated": "2026-11-01",
+ "qrh": [],
+ "tables": [],
+ "differences": []
+}
