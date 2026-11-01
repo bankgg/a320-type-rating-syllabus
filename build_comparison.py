@@ -189,6 +189,16 @@ PROCEDURE_GROUPS = {
         ('Cargo smoke', (('smoke-aft-cargo-smoke', 'AFT CARGO SMOKE', 'The syllabus says only "Cargo smoke" and does not name the hold.'),
                          ('smoke-fwd-cargo-smoke', 'FWD CARGO SMOKE', 'The syllabus says only "Cargo smoke" and does not name the hold.'))),
     ],
+    'ffs-10': [
+        ('Engine start fault', (('eng-1-2-start-fault', 'START FAULT', 'The syllabus names no cause. The flow follows the on-ground automatic start; the other causes are in the ECAM procedure.'),)),
+        ('Decompression', (('cab-pr-excess-cab-alt', 'Excess cab alt · emer descent', 'In cruise. Listed in the syllabus as "decompression / emergency descent"; it does not say whether structural damage is suspected.'),)),
+        ('Hydraulic system failure', (('hyd-g-y-sys-lo-pr', 'HYD G+Y', 'Listed in the syllabus as "low level". The recovery lines for RSVR LO AIR PR and RSVR OVHT do not apply, so use the IF HYD NOT RECOVERED branch.'),)),
+        ('Flaps fault', (('f-ctl-flaps-fault-locked', 'FLAPS FAULT/LOCKED', 'Listed straight after the HYD G+Y failure; the syllabus does not say how the two are linked. HYD G+Y already loses the flaps (see the HYD G+Y brief). Either way, the landing uses the jammed procedure (see Landing · S/F jammed).'),
+                         ('landing-with-slats-or-flaps-jammed', 'Landing · S/F jammed', 'Listed in the syllabus as "Landing without extended flaps".'))),
+        ('Engine failure', (('eng-1-2-fail', 'Engine failure', 'Between V1 and VR on take-off, followed by the ILS, the one-engine-inoperative go-around, the visual approach and the landing.'),)),
+        ('Engine fire', (('eng-1-2-fire-on-ground', 'On ground · RTO', 'Engine fire before V1, then the rejected take-off and the emergency evacuation. Trainee B\'s schedule says "at a reasonable speed before V1".'),)),
+        ('Emergency evacuation', (('emer-evac', 'Emergency evacuation', 'After the rejected take-off for the engine fire.'),)),
+    ],
 }
 # A summary subject that opens another subject's group, because a brief can only sit in one group per session.
 SUMMARY_GROUP_ALIASES = {'ffs-7': {'Engine severe damage/separation': 'Engine failure'}}
@@ -241,6 +251,11 @@ EXERCISE_BRIEFS = {
     'ffs-9-e06': 'etops-diversion-and-abnormal-procedures', 'ffs-9-e07': 'fuel-imbalance',
     'ffs-9-e12': 'hyd-g-rsvr-lo-lvl', 'ffs-9-e13': 'nav-adr-1-2-3-fault-buss',
     'ffs-9-e14': 'air-l-r-wing-leak', 'ffs-9-e15': 'smoke-aft-cargo-smoke',
+    'ffs-10-e01': 'eng-1-2-start-fault', 'ffs-10-e04': 'cab-pr-excess-cab-alt',
+    'ffs-10-e08': 'hyd-g-y-sys-lo-pr', 'ffs-10-e09': 'f-ctl-flaps-fault-locked',
+    'ffs-10-e11': 'landing-with-slats-or-flaps-jammed', 'ffs-10-e12': 'eng-1-2-fail',
+    'ffs-10-e17': 'eng-1-2-fire-on-ground', 'ffs-10-e18': 'eng-1-2-fire-on-ground',
+    'ffs-10-e19': 'emer-evac',
 }
 ALERT_LABELS = {'warning': 'Red warning', 'caution': 'Amber caution', 'qrh': 'QRH procedure',
                 'memory': 'Memory items', 'technique': 'Technique'}
