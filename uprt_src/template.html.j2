@@ -1,0 +1,231 @@
+{% macro icon(name, cls='icon') -%}
+<svg class="{{ cls }}" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">{% if name == 'previous' %}<path d="m14 6-6 6 6 6"/>{% elif name == 'next' %}<path d="m10 6 6 6-6 6"/>{% elif name == 'plane' %}<path d="m12 3 2 7 7 4v2l-7-2v5l2 2H8l2-2v-5l-7 2v-2l7-4 2-7Z"/>{% elif name == 'play' %}<path d="M8 5.5v13l10.5-6.5L8 5.5Z" fill="currentColor"/>{% elif name == 'pause' %}<path d="M8 5.5v13M16 5.5v13" stroke-width="3"/>{% elif name == 'restart' %}<path d="M4.5 12a7.5 7.5 0 1 0 2.3-5.4"/><path d="M4.5 4.5v4.2h4.2"/>{% elif name == 'step-back' %}<path d="M6.5 5.5v13M18 6l-8 6 8 6V6Z"/>{% elif name == 'step-next' %}<path d="M17.5 5.5v13M6 6l8 6-8 6V6Z"/>{% elif name == 'mirror' %}<path d="M12 3v18M9 7 4 12l5 5V7ZM15 7l5 5-5 5V7Z"/>{% elif name == 'sound' %}<path d="M4 9.5h3.5L12 6v12l-4.5-3.5H4v-5Z"/><path d="M15.5 9a4.2 4.2 0 0 1 0 6M18 6.5a7.8 7.8 0 0 1 0 11"/>{% endif %}</svg>
+{%- endmacro %}
+{% macro refs_line(refs) -%}
+<span class="refs">{% for r in refs %}<span class="ref" title="{{ data.sources[r].label }}">{{ data.sources[r]|source_label }}</span>{% if not loop.last %}<span class="ref-sep" aria-hidden="true"> · </span>{% endif %}{% endfor %}</span>
+{%- endmacro %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="color-scheme" content="light">
+  <title>A320 UPRT demonstrations · FFS 8</title>
+  <style>
+{{ css|safe }}
+  </style>
+</head>
+<body>
+  <header class="toolbar">
+    <div class="toolbar-inner">
+      <h1 class="site-title">{{ icon('plane') }}UPRT demonstrations<span class="title-session">FFS 8</span></h1>
+      <a class="control" href="index.html?session=ffs-8">{{ icon('previous') }}Syllabus</a>
+    </div>
+  </header>
+  <main>
+    <section class="player" id="player" hidden>
+      <div class="picker">
+        <select class="row-select" id="row-select" aria-label="Exercise">
+          {% for group in data.groups %}
+          <optgroup label="{{ group.label }}">
+            {% for ex in group.members %}<option value="{{ ex.row }}"{% if not ex.animated %} data-static="1"{% endif %}>{{ ex.row }}. {{ ex.title }}{% if ex.listed_only %} (listed only){% elif not ex.animated %} (text only for now){% endif %}</option>
+            {% endfor %}
+          </optgroup>
+          {% endfor %}
+        </select>
+        <div class="picker-nav">
+          <button class="control icon-only" type="button" id="prev-row" title="Previous exercise">{{ icon('previous') }}</button>
+          <button class="control icon-only" type="button" id="next-row" title="Next exercise">{{ icon('next') }}</button>
+        </div>
+        <div class="part-tabs" id="part-tabs" role="tablist"></div>
+        <span class="aircraft-chip">{{ data.aircraft }} · {{ data.weight }}</span>
+      </div>
+      <div class="stage" id="stage">
+        <div class="stage-main">
+          <div class="pfd-wrap" id="pfd-wrap"><div class="pfd" id="pfd"></div></div>
+          <div class="transport" id="transport">
+            <div class="transport-row">
+              <button class="control primary play" type="button" id="play"><span class="when-paused">{{ icon('play') }}Play</span><span class="when-playing">{{ icon('pause') }}Pause</span></button>
+              <button class="control icon-only" type="button" id="restart" title="Restart">{{ icon('restart') }}</button>
+              <button class="control icon-only" type="button" id="step-back" title="Previous step">{{ icon('step-back') }}</button>
+              <button class="control icon-only" type="button" id="step-next" title="Next step">{{ icon('step-next') }}</button>
+              <div class="scrub">
+                <div class="scrub-ticks" id="scrub-ticks"></div>
+                <input type="range" id="scrub" min="0" max="10" step="0.01" value="0" aria-label="Time">
+              </div>
+              <output class="clock" id="clock">0.0 s</output>
+            </div>
+            <div class="transport-row">
+              <div class="speed" role="group" aria-label="Speed">
+                <button class="control" type="button" data-speed="0.5">0.5×</button>
+                <button class="control" type="button" data-speed="1" aria-pressed="true">1×</button>
+                <button class="control" type="button" data-speed="2">2×</button>
+              </div>
+              <button class="control toggle" type="button" id="mirror" aria-pressed="false">{{ icon('mirror') }}Mirror</button>
+              <button class="control toggle" type="button" id="sound" aria-pressed="false">{{ icon('sound') }}Sound</button>
+            </div>
+          </div>
+        </div>
+        <div class="stage-side">
+          <div class="alerts" id="alerts">
+            <span class="lamp lamp-warn" data-lamp="mw">MASTER WARN</span>
+            <span class="lamp lamp-caut" data-lamp="mc">MASTER CAUT</span>
+            <span class="status-chip" data-read="law">Normal law</span>
+            <span class="status-chip ecam" data-read="ecam" hidden></span>
+            <span class="status-chip aural" data-read="aural" hidden></span>
+            <span class="status-chip gload" data-read="gload" hidden></span>
+            <span class="status-chip buffet" data-read="buffet" hidden>Buffet</span>
+          </div>
+          <div class="caption" id="caption">
+            <div class="caption-head"><span class="actor" id="cap-actor"></span><q class="callout" id="cap-callout" hidden></q><span class="cap-time" id="cap-time"></span></div>
+            <p class="cap-text" id="cap-text"></p>
+            <blockquote class="cap-quote" id="cap-quote" hidden><p id="cap-quote-text"></p><cite id="cap-quote-src"></cite></blockquote>
+            <p class="cap-refs" id="cap-refs"></p>
+          </div>
+          <div class="controls" id="controls">
+            <figure class="ctl ctl-stick" data-stick="capt">
+              <figcaption><span class="ctl-name">CAPT sidestick</span><span class="ctl-who">Instructor</span></figcaption>
+              <svg class="stick-svg" viewBox="0 0 120 120" aria-hidden="true">
+                <rect class="gate" x="6" y="6" width="108" height="108" rx="12"/>
+                <path class="gate-cross" d="M60 14v92M14 60h92"/>
+                <circle class="gate-centre" cx="60" cy="60" r="4"/>
+                <text class="gate-label" x="60" y="22">FWD</text><text class="gate-label" x="60" y="110">AFT</text>
+                <line class="stick-shaft" x1="60" y1="60" x2="60" y2="60"/>
+                <circle class="stick-knob" cx="60" cy="60" r="11"/>
+                <circle class="stick-pb" cx="60" cy="60" r="4.5"/>
+              </svg>
+              <p class="ctl-read" data-read="capt">Neutral</p>
+            </figure>
+            <figure class="ctl ctl-stick" data-stick="fo">
+              <figcaption><span class="ctl-name">F/O sidestick</span><span class="ctl-who">Trainee (PF)</span></figcaption>
+              <svg class="stick-svg" viewBox="0 0 120 120" aria-hidden="true">
+                <rect class="gate" x="6" y="6" width="108" height="108" rx="12"/>
+                <path class="gate-cross" d="M60 14v92M14 60h92"/>
+                <circle class="gate-centre" cx="60" cy="60" r="4"/>
+                <text class="gate-label" x="60" y="22">FWD</text><text class="gate-label" x="60" y="110">AFT</text>
+                <line class="stick-shaft" x1="60" y1="60" x2="60" y2="60"/>
+                <circle class="stick-knob" cx="60" cy="60" r="11"/>
+                <circle class="stick-pb" cx="60" cy="60" r="4.5"/>
+              </svg>
+              <p class="ctl-read" data-read="fo">Neutral</p>
+            </figure>
+            <figure class="ctl ctl-levers">
+              <figcaption><span class="ctl-name">Thrust levers</span></figcaption>
+              <svg class="lever-svg" viewBox="0 0 150 120" aria-hidden="true">
+                <g class="detents">
+                  <path d="M66 14h76M66 32h76M66 54h76M66 104h76"/>
+                  <text x="60" y="18">TOGA</text><text x="60" y="36">MCT</text><text x="60" y="58">CL</text><text x="60" y="108">IDLE</text>
+                </g>
+                <path class="lever-track" d="M86 10v98M122 10v98"/>
+                <g class="lever" data-lever="1"><rect x="73" y="-6" width="26" height="12" rx="3"/><text x="86" y="4">1</text></g>
+                <g class="lever" data-lever="2"><rect x="109" y="-6" width="26" height="12" rx="3"/><text x="122" y="4">2</text></g>
+              </svg>
+              <p class="ctl-read" data-read="levers">N1 –</p>
+            </figure>
+            <figure class="ctl ctl-trim">
+              <figcaption><span class="ctl-name">Pitch trim</span></figcaption>
+              <svg class="trim-svg" viewBox="0 0 150 120" aria-hidden="true">
+                <g class="trim-wheel-g" transform="translate(48 60)">
+                  <circle class="trim-wheel" r="40"/>
+                  <g class="trim-marks"><path d="M0-40v14M0 40V26M-40 0h14M40 0H26M-28-28l10 10M28 28 18 18M-28 28l10-10M28-28 18-18"/></g>
+                </g>
+                <path class="trim-scale" d="M118 12v96"/>
+                <path class="trim-zero" d="M112 85h12"/>
+                <text class="trim-label" x="134" y="18">UP</text><text class="trim-label" x="134" y="112">DN</text>
+                <path class="trim-pointer" d="M118 0l-9-5v10Z"/>
+              </svg>
+              <p class="ctl-read" data-read="trim">THS –</p>
+            </figure>
+            <figure class="ctl ctl-rudder">
+              <figcaption><span class="ctl-name">Rudder pedals</span></figcaption>
+              <svg class="rudder-svg" viewBox="0 0 150 60" aria-hidden="true">
+                <path class="rudder-track" d="M12 30h126"/>
+                <path class="rudder-centre" d="M75 18v24"/>
+                <text class="gate-label" x="14" y="16">L</text><text class="gate-label" x="136" y="16">R</text>
+                <rect class="rudder-knob" x="67" y="20" width="16" height="20" rx="3"/>
+              </svg>
+              <p class="ctl-read" data-read="rudder">Neutral</p>
+            </figure>
+            <figure class="ctl ctl-config">
+              <figcaption><span class="ctl-name">Configuration</span></figcaption>
+              <dl class="config-list">
+                <div><dt>Speedbrake</dt><dd data-read="spdbrk">RET</dd></div>
+                <div><dt>Flaps</dt><dd data-read="flaps">0</dd></div>
+                <div><dt>Gear</dt><dd data-read="gear">UP</dd></div>
+              </dl>
+            </figure>
+          </div>
+          <p class="illustrative" id="illustrative"></p>
+        </div>
+      </div>
+    </section>
+    <p class="no-js-note" id="no-js-note">The animations need JavaScript. Every exercise below is complete without it.</p>
+    <div class="sheets">
+      {% for ex in data.exercises %}
+      <article class="sheet" id="row-{{ ex.row }}" data-row="{{ ex.row }}">
+        <h2 class="sheet-title"><span class="row-number">{{ ex.row }}</span>{{ ex.title }}</h2>
+        {% if ex.listed_only %}<p class="sheet-status">Listed only: this row has no animation.</p>{% elif not ex.animated %}<p class="sheet-status">The animation for this row is not built yet; the exercise text is complete.</p>{% endif %}
+        {% if ex.conditions %}
+        <dl class="conditions">{% for k, v in ex.conditions.items() %}<div><dt>{{ k }}</dt><dd>{{ v }}</dd></div>{% endfor %}</dl>
+        {% endif %}
+        {% if ex.setup %}<p class="setup"><span class="field-label">Set-up</span>{{ ex.setup }}</p>{% endif %}
+        {% if ex.guidance %}
+        <h3>Session guidance</h3>
+        <ul class="guidance">
+          {% for g in ex.guidance %}<li class="{{ 'g-heading' if g.heading else ('g-sub' if g.sub else '') }}" data-g="{{ g.id }}">{{ g.text }}</li>
+          {% endfor %}
+        </ul>
+        <p class="source-line">Quoted from the photo: {{ data.sources[ex.source].label }}{% for g in ex.guidance if g.source and g.source != ex.source %}{% if loop.first %}; continued on {{ data.sources[g.source].label.split(', ')[-1] }}{% endif %}{% endfor %}.</p>
+        {% endif %}
+        <h3>Topics form</h3>
+        <dl class="form-row">
+          <div><dt>Topic</dt><dd>{{ ex.form.title }}</dd></div>
+          <div><dt>AP</dt><dd>{{ ex.form.ap or '–' }}</dd></div>
+          <div><dt>AT</dt><dd>{{ ex.form.at or '–' }}</dd></div>
+          <div><dt>FG</dt><dd>{{ {'bird': 'Bird', 'FD': 'FD'}.get(ex.form.fg, '–') }}</dd></div>
+          <div><dt>Time</dt><dd>{{ ex.form.time or '–' }}</dd></div>
+        </dl>
+        {% if ex.form_note %}<p class="differs"><span class="field-label">Differs</span>{{ ex.form_note }} The session guidance is followed.</p>{% endif %}
+        {% if ex.notes %}
+        <h3>A320 notes</h3>
+        <ul class="notes">
+          {% for n in ex.notes %}<li>{{ n.text }} {{ refs_line(n.refs) }}</li>
+          {% endfor %}
+        </ul>
+        {% endif %}
+        {% for part in ex.parts %}
+        <h3>{% if ex.parts|length > 1 %}Part {{ part.id|upper }}: {{ part.label }}{% else %}Animation steps{% endif %}</h3>
+        <ol class="steps">
+          {% for s in part.steps %}<li><button class="step-seek" type="button" data-part="{{ part.id }}" data-t="{{ s.t }}" disabled>{{ '%.1f'|format(s.t) }} s</button><span class="step-body"><span class="step-actor">{{ {'aircraft': 'Aircraft', 'instructor': 'Instructor', 'trainee': 'Trainee', 'ios': 'IOS'}[s.actor] }}</span>{% if s.callout %} <q class="callout">{{ s.callout }}</q>{% endif %} {{ s.text|replace('{left}', 'left')|replace('{right}', 'right')|replace('{Left}', 'Left')|replace('{Right}', 'Right')|replace('{eng1}', 'ENG 1')|replace('{eng2}', 'ENG 2') }} {{ refs_line(s.refs) }}</span></li>
+          {% endfor %}
+        </ol>
+        <p class="illustrative-note">{{ part.illustrative }}</p>
+        {% endfor %}
+      </article>
+      {% endfor %}
+    </div>
+    <section class="about" id="about">
+      <h2>About these demonstrations</h2>
+      <ul class="notes">
+        {% for n in data.page_notes %}<li>{{ n.text }} {{ refs_line(n.refs) }}</li>
+        {% endfor %}
+      </ul>
+      <h3>Why the PFD shows this</h3>
+      <ul class="notes rules">
+        {% for r in data.rules %}<li data-rule="{{ r.id }}">{{ r.text }} {{ refs_line(r.refs) }}</li>
+        {% endfor %}
+      </ul>
+      <h3>Sources</h3>
+      <ul class="sources">
+        {% for s in data.sources_used %}<li><span class="source-id">{{ s|source_label }}</span>: {{ s.label }}</li>
+        {% endfor %}
+      </ul>
+      <p class="sound-note" id="sound-note">Sounds are synthesized in the browser to resemble the cockpit alerts; voice alerts use the device's speech voice.</p>
+    </section>
+  </main>
+  <script type="application/json" id="uprt-data">{{ payload|safe }}</script>
+  <script>
+{{ js|safe }}
+  </script>
+</body>
+</html>

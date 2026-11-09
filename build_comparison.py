@@ -8,6 +8,8 @@ import re
 from pathlib import Path
 
 from jinja2 import Environment, FileSystemLoader
+
+import build_uprt
 ROOT = Path(__file__).resolve().parent
 DATA = ROOT / 'syllabus_sessions.json'
 HTML_OUT = ROOT / 'index.html'
@@ -200,6 +202,8 @@ PROCEDURE_GROUPS = {
         ('Emergency evacuation', (('emer-evac', 'Emergency evacuation', 'After the rejected take-off for the engine fire.'),)),
     ],
 }
+# Pages beyond index.html that a session header links to. uprt.html is built by build_uprt.py.
+SESSION_PAGES = {'ffs-8': ('uprt.html', 'UPRT demonstrations: animated PFD and sidesticks')}
 # A summary subject that opens another subject's group, because a brief can only sit in one group per session.
 SUMMARY_GROUP_ALIASES = {'ffs-7': {'Engine severe damage/separation': 'Engine failure'}}
 # The exercise rows that decide a companion brief's trainees, when only some of its group's trainees practise it.
@@ -439,6 +443,8 @@ def view_model(data, briefs):
     for session in sessions:
         sid = session['id']
         session['failure_summary'] = ' • '.join(FAILURE_SUMMARIES[sid]) or 'No failure exercises.'
+        page = SESSION_PAGES.get(sid)
+        session['page_link'] = {'href': page[0], 'label': page[1]} if page else None
         procedure_view(session, briefs)
         session['topics_different'] = any(
             row['status'] != 'shared'
@@ -527,6 +533,11 @@ def main():
     print(f'HTML: {HTML_OUT}')
     print(f'{len(sessions)} sessions · {sum(len(s["exercises"]) for s in sessions)} practice groups · '
           f'{sum(len(g["briefs"]) for s in sessions for g in s["procedure_groups"])} procedure briefs')
+    # The FFS 8 header links to uprt.html, so both pages are built together.
+    try:
+        build_uprt.build()
+    except build_uprt.Invalid as exc:
+        raise SystemExit(f'uprt validation failed: {exc}')
 
 
 if __name__ == '__main__':

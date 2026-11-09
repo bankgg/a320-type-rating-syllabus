@@ -25,10 +25,10 @@ CHECK = """() => {
   const scope = d && d.open ? d : document;
   const vis = e => e.getClientRects().length && getComputedStyle(e).visibility !== 'hidden';
   const textNodes = e => Array.from(e.childNodes).some(n => n.nodeType === 3 && n.textContent.trim());
-  const small = Array.from(scope.querySelectorAll('p, li, td, th, dd, dt, span, button, summary, h4, h5, h6, q'))
+  const small = Array.from(scope.querySelectorAll('p, li, td, th, dd, dt, span, button, summary, a, h4, h5, h6, q'))
     .filter(e => vis(e) && textNodes(e) && parseFloat(getComputedStyle(e).fontSize) < 15.9)
     .map(e => e.className + ':' + e.textContent.trim().slice(0, 30));
-  const targets = Array.from(scope.querySelectorAll('button, summary')).filter(vis)
+  const targets = Array.from(scope.querySelectorAll('button, summary, a[href]')).filter(vis)
     .filter(e => e.getBoundingClientRect().height < 43.5 && !e.classList.contains('summary-link'))
     .map(e => e.className + ':' + e.textContent.trim().slice(0, 30));
   const brief = d && d.open ? d.querySelector('.brief:not([hidden])') : null;

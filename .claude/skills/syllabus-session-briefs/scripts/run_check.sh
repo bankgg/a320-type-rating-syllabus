@@ -5,7 +5,7 @@
 # system libraries. Both are fetched once without root into ../cache/libs.
 set -e
 HERE=$(cd "$(dirname "$0")" && pwd)
-SID=${1:?session id, e.g. mftd-9}
+SID=${1:?session id, e.g. mftd-9, or uprt for uprt.html}
 OUT=${2:-$HERE/../cache/shots/$SID}
 LIBS=$HERE/../cache/libs
 if [ ! -f "$LIBS/root/usr/lib/x86_64-linux-gnu/libasound.so.2" ]; then
@@ -52,5 +52,16 @@ EOF
   export WEBKIT_RUN="$WKLIBS/run.sh" PLAYWRIGHT_SKIP_VALIDATE_HOST_REQUIREMENTS=1
 fi
 
+if [ "$SID" = uprt ]; then
+  # uprt.html (FFS 8 UPRT animations): check_uprt.py takes the output dir and optional flags.
+  shift
+  OUT=$HERE/../cache/shots/uprt
+  if [ $# -gt 0 ] && [ "${1#--}" = "$1" ]; then OUT=$1; shift; fi
+  set -- "$OUT" "$@"
+  CHECK=check_uprt.py
+else
+  set -- "$SID" "$OUT"
+  CHECK=check_session.py
+fi
 LD_LIBRARY_PATH="$LIBS/root/usr/lib/x86_64-linux-gnu" UV_CACHE_DIR=${UV_CACHE_DIR:-/tmp/claude-1000/uv-cache} \
-  uv run --no-project --with playwright==1.63.0 python "$HERE/check_session.py" "$SID" "$OUT"
+  uv run --no-project --with playwright==1.63.0 python "$HERE/$CHECK" "$@"

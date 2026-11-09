@@ -160,6 +160,9 @@
     .summary-link { display: inline; padding: 4px 0; margin: 0; line-height: 1.35; border: 0; background: none; color: var(--blue); font-weight: 500; text-decoration: underline; text-decoration-color: #9db8ec; text-decoration-thickness: 1px; text-underline-offset: 3px; }
     @media (hover: hover) { .summary-link:hover:not(:disabled) { color: var(--blue-hover); text-decoration-color: currentColor; } }
     .summary-link:disabled { color: var(--muted); opacity: 1; text-decoration: none; }
+    .session-links { margin: 0; }
+    .page-link { display: inline-flex; align-items: center; gap: 6px; min-height: 44px; color: var(--blue); font-weight: 500; text-decoration: underline; text-decoration-color: #9db8ec; text-decoration-thickness: 1px; text-underline-offset: 3px; }
+    @media (hover: hover) { .page-link:hover { color: var(--blue-hover); text-decoration-color: currentColor; } }
     .brief-key { color: var(--muted); }
     .brief-cell { padding: 0; }
     .brief-open { display: flex; align-items: flex-start; gap: 0; width: 100%; min-height: 44px; padding: 6px 10px; border: 0; background: transparent; color: inherit; text-align: left; }
@@ -452,6 +455,7 @@
       <header class="session-header">
         <div class="session-heading"><h2 id="mftd-2-title">MFTD/FBS 2</h2><span class="session-number">Session 1 of 18</span></div>
         <p class="session-summary">No failure exercises.</p>
+
       </header>
       <div class="brief-strip" aria-label="Session flight summary">
         <dl class="brief-values">
@@ -763,6 +767,7 @@
       <header class="session-header">
         <div class="session-heading"><h2 id="mftd-3-title">MFTD/FBS 3</h2><span class="session-number">Session 2 of 18</span></div>
         <p class="session-summary">APU inoperative (MEL) • Loss of braking (conditional)</p>
+
       </header>
       <div class="brief-strip" aria-label="Session flight summary">
         <dl class="brief-values">
@@ -1129,6 +1134,7 @@
       <header class="session-header">
         <div class="session-heading"><h2 id="mftd-4-title">MFTD/FBS 4</h2><span class="session-number">Session 3 of 18</span></div>
         <p class="session-summary">Fuel pump low pressure • Engine failure • IDG oil low pressure/overheat • Cabin pressure system fault</p>
+
       </header>
       <div class="brief-strip" aria-label="Session flight summary">
         <dl class="brief-values">
@@ -1521,6 +1527,7 @@
       <header class="session-header">
         <div class="session-heading"><h2 id="mftd-5-title">MFTD/FBS 5</h2><span class="session-number">Session 4 of 18</span></div>
         <p class="session-summary">Hot start • Slats fault/locked • Cargo smoke • Emergency evacuation • Engine failure • Hydraulic reservoir low level • Loss of braking</p>
+
       </header>
       <div class="brief-strip" aria-label="Session flight summary">
         <dl class="brief-values">
@@ -1930,6 +1937,7 @@
       <header class="session-header">
         <div class="session-heading"><h2 id="mftd-6-title">MFTD/FBS 6</h2><span class="session-number">Session 5 of 18</span></div>
         <p class="session-summary">Unreliable speed • Cabin pressure failure • ADR faults • Fuel leak • Start valve fault • Air conditioning smoke</p>
+
       </header>
       <div class="brief-strip" aria-label="Session flight summary">
         <dl class="brief-values">
@@ -2270,6 +2278,7 @@
       <header class="session-header">
         <div class="session-heading"><h2 id="mftd-7-title">MFTD/FBS 7</h2><span class="session-number">Session 6 of 18</span></div>
         <p class="session-summary">Engine failure • Engine fire • APU fire • Emergency evacuation</p>
+
       </header>
       <div class="brief-strip" aria-label="Session flight summary">
         <dl class="brief-values">
@@ -2645,6 +2654,7 @@
       <header class="session-header">
         <div class="session-heading"><h2 id="mftd-8-title">MFTD/FBS 8</h2><span class="session-number">Session 7 of 18</span></div>
         <p class="session-summary"><button class="summary-link" type="button" data-group="mftd-8-procedures-1" data-brief="eng-1-2-fail" aria-haspopup="dialog" disabled>Engine failure</button>&nbsp;• <button class="summary-link" type="button" data-group="mftd-8-procedures-2" data-brief="anti-ice-stby-pitot-stat-aoa" aria-haspopup="dialog" disabled>ANTI ICE STBY PITOT / STAT / AOA</button>&nbsp;• <button class="summary-link" type="button" data-group="mftd-8-procedures-3" data-brief="eng-1-2-fire-on-ground" aria-haspopup="dialog" disabled>Engine fire</button>&nbsp;• <button class="summary-link" type="button" data-group="mftd-8-procedures-4" data-brief="emer-evac" aria-haspopup="dialog" disabled>Emergency evacuation</button>&nbsp;• <button class="summary-link" type="button" data-group="mftd-8-procedures-5" data-brief="fmgc-failure" aria-haspopup="dialog" disabled>FMGC faults</button>&nbsp;• <button class="summary-link" type="button" data-group="mftd-8-procedures-6" data-brief="fws-sdac-1-2-fault" aria-haspopup="dialog" disabled>SDAC/FWC faults</button>&nbsp;• <button class="summary-link" type="button" data-group="mftd-8-procedures-7" data-brief="unreliable-speed-indication" aria-haspopup="dialog" disabled>Unreliable speed</button>&nbsp;• <button class="summary-link" type="button" data-group="mftd-8-procedures-8" data-brief="elec-emer-config" aria-haspopup="dialog" disabled>Emergency electrical configuration</button></p>
+
       </header>
       <div class="brief-strip" aria-label="Session flight summary">
         <dl class="brief-values">
@@ -5008,6 +5018,7 @@
       <header class="session-header">
         <div class="session-heading"><h2 id="mftd-9-title">MFTD/FBS 9</h2><span class="session-number">Session 8 of 18</span></div>
         <p class="session-summary"><button class="summary-link" type="button" data-group="mftd-9-procedures-1" data-brief="eng-1-2-start-fault" aria-haspopup="dialog" disabled>Hot start</button>&nbsp;• <button class="summary-link" type="button" data-group="mftd-9-procedures-2" data-brief="eng-1-2-fire-in-flight" aria-haspopup="dialog" disabled>Engine fire</button>&nbsp;• <button class="summary-link" type="button" data-group="mftd-9-procedures-3" data-brief="emer-evac" aria-haspopup="dialog" disabled>Emergency evacuation</button>&nbsp;• <button class="summary-link" type="button" data-group="mftd-9-procedures-4" data-brief="cab-pr-excess-cab-alt" aria-haspopup="dialog" disabled>Cabin pressure failure</button>&nbsp;• <button class="summary-link" type="button" data-group="mftd-9-procedures-5" data-brief="l-g-gear-not-downlocked" aria-haspopup="dialog" disabled>Gear not downlocked</button>&nbsp;• <button class="summary-link" type="button" data-group="mftd-9-procedures-6" data-brief="eng-1-2-fail" aria-haspopup="dialog" disabled>Engine failure with damage</button></p>
+
       </header>
       <div class="brief-strip" aria-label="Session flight summary">
         <dl class="brief-values">
@@ -7061,6 +7072,7 @@
       <header class="session-header">
         <div class="session-heading"><h2 id="ffs-1-title">FFS 1</h2><span class="session-number">Session 9 of 18</span></div>
         <p class="session-summary">No failure exercises.</p>
+
       </header>
       <div class="brief-strip" aria-label="Session flight summary">
         <dl class="brief-values">
@@ -7490,6 +7502,7 @@
       <header class="session-header">
         <div class="session-heading"><h2 id="ffs-2-title">FFS 2</h2><span class="session-number">Session 10 of 18</span></div>
         <p class="session-summary">No failure exercises.</p>
+
       </header>
       <div class="brief-strip" aria-label="Session flight summary">
         <dl class="brief-values">
@@ -7948,6 +7961,7 @@
       <header class="session-header">
         <div class="session-heading"><h2 id="ffs-3-title">FFS 3</h2><span class="session-number">Session 11 of 18</span></div>
         <p class="session-summary"><button class="summary-link" type="button" data-group="ffs-3-procedures-1" data-brief="anti-ice-l-r-window" aria-haspopup="dialog" disabled>ANTI ICE L(R) WINDOW</button></p>
+
       </header>
       <div class="brief-strip" aria-label="Session flight summary">
         <dl class="brief-values">
@@ -8608,6 +8622,7 @@
       <header class="session-header">
         <div class="session-heading"><h2 id="ffs-4-title">FFS 4</h2><span class="session-number">Session 12 of 18</span></div>
         <p class="session-summary"><button class="summary-link" type="button" data-group="ffs-4-procedures-1" data-brief="nav-ir-1-2-3-fault" aria-haspopup="dialog" disabled>IR faults</button>&nbsp;• <button class="summary-link" type="button" data-group="ffs-4-procedures-2" data-brief="f-ctl-altn-law" aria-haspopup="dialog" disabled>Alternate/direct law</button>&nbsp;• <button class="summary-link" type="button" data-group="ffs-4-procedures-3" data-brief="mechanical-backup" aria-haspopup="dialog" disabled>Mechanical backup</button>&nbsp;• <button class="summary-link" type="button" data-group="ffs-4-procedures-4" data-brief="cab-pr-excess-cab-alt" aria-haspopup="dialog" disabled>Cabin pressure failure</button>&nbsp;• <button class="summary-link" type="button" data-group="ffs-4-procedures-5" data-brief="nav-ra-1-and-2-fault" aria-haspopup="dialog" disabled>Radio altimeter faults</button>&nbsp;• <button class="summary-link" type="button" data-group="ffs-4-procedures-6" data-brief="smoke-aft-cargo-smoke" aria-haspopup="dialog" disabled>Cargo smoke</button>&nbsp;• <button class="summary-link" type="button" data-group="ffs-4-procedures-7" data-brief="nav-adr-1-2-3-fault" aria-haspopup="dialog" disabled>ADR faults</button>&nbsp;• <button class="summary-link" type="button" data-group="ffs-4-procedures-8" data-brief="emer-evac" aria-haspopup="dialog" disabled>Emergency evacuation</button></p>
+
       </header>
       <div class="brief-strip" aria-label="Session flight summary">
         <dl class="brief-values">
@@ -11282,6 +11297,7 @@
       <header class="session-header">
         <div class="session-heading"><h2 id="ffs-5-title">FFS 5</h2><span class="session-number">Session 13 of 18</span></div>
         <p class="session-summary"><button class="summary-link" type="button" data-group="ffs-5-procedures-1" data-brief="eng-1-2-fail" aria-haspopup="dialog" disabled>Engine failure</button>&nbsp;• <button class="summary-link" type="button" data-group="ffs-5-procedures-2" data-brief="eng-all-engines-failure" aria-haspopup="dialog" disabled>Dual-engine failure</button>&nbsp;• <button class="summary-link" type="button" data-group="ffs-5-procedures-3" data-brief="rnp-approach-degraded-navigation" aria-haspopup="dialog" disabled>RNP degradation</button>&nbsp;• <button class="summary-link" type="button" data-group="ffs-5-procedures-4" data-brief="elec-emer-config" aria-haspopup="dialog" disabled>Emergency electrical configuration</button>&nbsp;• <button class="summary-link" type="button" data-group="ffs-5-procedures-5" data-brief="unreliable-speed-indication" aria-haspopup="dialog" disabled>Unreliable speed</button></p>
+
       </header>
       <div class="brief-strip" aria-label="Session flight summary">
         <dl class="brief-values">
@@ -13459,6 +13475,7 @@
       <header class="session-header">
         <div class="session-heading"><h2 id="ffs-6-title">FFS 6</h2><span class="session-number">Session 14 of 18</span></div>
         <p class="session-summary"><button class="summary-link" type="button" data-group="ffs-6-procedures-1" data-brief="rnav-departure-degraded-navigation" aria-haspopup="dialog" disabled>RNP degradation</button>&nbsp;• <button class="summary-link" type="button" data-group="ffs-6-procedures-2" data-brief="anti-ice-capt-probes" aria-haspopup="dialog" disabled>Probe anti-ice</button>&nbsp;• <button class="summary-link" type="button" data-group="ffs-6-procedures-3" data-brief="hyd-g-b-sys-lo-pr" aria-haspopup="dialog" disabled>Hydraulic system low pressure</button>&nbsp;• <button class="summary-link" type="button" data-group="ffs-6-procedures-4" data-brief="f-ctl-flaps-fault-locked" aria-haspopup="dialog" disabled>Flaps/slats faults</button>&nbsp;• <button class="summary-link" type="button" data-group="ffs-6-procedures-5" data-brief="f-ctl-stabilizer-jam" aria-haspopup="dialog" disabled>Stabilizer jam</button>&nbsp;• <button class="summary-link" type="button" data-group="ffs-6-procedures-6" data-brief="eng-1-2-fire-on-ground" aria-haspopup="dialog" disabled>Engine fire</button>&nbsp;• <button class="summary-link" type="button" data-group="ffs-6-procedures-7" data-brief="emer-evac" aria-haspopup="dialog" disabled>Emergency evacuation</button></p>
+
       </header>
       <div class="brief-strip" aria-label="Session flight summary">
         <dl class="brief-values">
@@ -16163,6 +16180,7 @@
       <header class="session-header">
         <div class="session-heading"><h2 id="ffs-7-title">FFS 7</h2><span class="session-number">Session 15 of 18</span></div>
         <p class="session-summary"><button class="summary-link" type="button" data-group="ffs-7-procedures-1" data-brief="flight-crew-incapacitation" aria-haspopup="dialog" disabled>Crew incapacitation</button>&nbsp;• <button class="summary-link" type="button" data-group="ffs-7-procedures-2" data-brief="auto-flt-fcu-1-2-fault" aria-haspopup="dialog" disabled>FCU fault</button>&nbsp;• <button class="summary-link" type="button" data-group="ffs-7-procedures-11" data-brief="eng-1-2-fail" aria-haspopup="dialog" disabled>Engine severe damage/separation</button>&nbsp;• <button class="summary-link" type="button" data-group="ffs-7-procedures-3" data-brief="fuel-imbalance" aria-haspopup="dialog" disabled>Fuel imbalance</button>&nbsp;• <button class="summary-link" type="button" data-group="ffs-7-procedures-4" data-brief="rnp-approach-degraded-navigation" aria-haspopup="dialog" disabled>RNP degradation</button>&nbsp;• <button class="summary-link" type="button" data-group="ffs-7-procedures-5" data-brief="apu-auto-emer-shut-down" aria-haspopup="dialog" disabled>APU shutdown/fire</button>&nbsp;• <button class="summary-link" type="button" data-group="ffs-7-procedures-6" data-brief="loss-of-braking" aria-haspopup="dialog" disabled>Loss of braking</button>&nbsp;• <button class="summary-link" type="button" data-group="ffs-7-procedures-7" data-brief="fuel-leak" aria-haspopup="dialog" disabled>Fuel leak</button>&nbsp;• <button class="summary-link" type="button" data-group="ffs-7-procedures-8" data-brief="elec-apu-gen-fault" aria-haspopup="dialog" disabled>APU generator fault</button>&nbsp;• <button class="summary-link" type="button" data-group="ffs-7-procedures-9" data-brief="smoke-fumes-avncs-smoke" aria-haspopup="dialog" disabled>Cabin smoke</button>&nbsp;• <button class="summary-link" type="button" data-group="ffs-7-procedures-10" data-brief="emer-evac" aria-haspopup="dialog" disabled>Emergency evacuation</button>&nbsp;• <button class="summary-link" type="button" data-group="ffs-7-procedures-11" data-brief="eng-1-2-fail" aria-haspopup="dialog" disabled>Engine failure</button></p>
+
       </header>
       <div class="brief-strip" aria-label="Session flight summary">
         <dl class="brief-values">
@@ -19131,6 +19149,7 @@
       <header class="session-header">
         <div class="session-heading"><h2 id="ffs-8-title">FFS 8</h2><span class="session-number">Session 16 of 18</span></div>
         <p class="session-summary"><button class="summary-link" type="button" data-group="ffs-8-procedures-1" data-brief="stall-recovery" aria-haspopup="dialog" disabled>Stall recovery</button>&nbsp;• <button class="summary-link" type="button" data-group="ffs-8-procedures-2" data-brief="upset-prevention-and-recovery" aria-haspopup="dialog" disabled>Upset recovery</button></p>
+        <p class="session-links"><a class="page-link" href="uprt.html"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M8 5.5v13L18.5 12 8 5.5Z"/></svg>UPRT demonstrations: animated PFD and sidesticks</a></p>
       </header>
       <div class="brief-strip" aria-label="Session flight summary">
         <dl class="brief-values">
@@ -19783,6 +19802,7 @@
       <header class="session-header">
         <div class="session-heading"><h2 id="ffs-9-title">FFS 9</h2><span class="session-number">Session 17 of 18</span></div>
         <p class="session-summary"><button class="summary-link" type="button" data-group="ffs-9-procedures-1" data-brief="elec-idg-1-2-oil-lo-pr-ovht" aria-haspopup="dialog" disabled>IDG overheat</button>&nbsp;• <button class="summary-link" type="button" data-group="ffs-9-procedures-2" data-brief="fmgc-failure" aria-haspopup="dialog" disabled>Navigation/FMGS failure</button>&nbsp;• <button class="summary-link" type="button" data-group="ffs-9-procedures-3" data-brief="eng-1-2-fail" aria-haspopup="dialog" disabled>Engine failure</button>&nbsp;• <button class="summary-link" type="button" data-group="ffs-9-procedures-4" data-brief="etops-diversion-and-abnormal-procedures" aria-haspopup="dialog" disabled>Diversion</button>&nbsp;• <button class="summary-link" type="button" data-group="ffs-9-procedures-5" data-brief="fuel-imbalance" aria-haspopup="dialog" disabled>Fuel imbalance</button>&nbsp;• <button class="summary-link" type="button" data-group="ffs-9-procedures-6" data-brief="hyd-g-rsvr-lo-lvl" aria-haspopup="dialog" disabled>Hydraulic reservoir low level</button>&nbsp;• <button class="summary-link" type="button" data-group="ffs-9-procedures-7" data-brief="nav-adr-1-2-3-fault-buss" aria-haspopup="dialog" disabled>ADR faults</button>&nbsp;• <button class="summary-link" type="button" data-group="ffs-9-procedures-8" data-brief="air-l-r-wing-leak" aria-haspopup="dialog" disabled>Duct leak / pack overheat</button>&nbsp;• <button class="summary-link" type="button" data-group="ffs-9-procedures-9" data-brief="smoke-aft-cargo-smoke" aria-haspopup="dialog" disabled>Cargo smoke</button></p>
+
       </header>
       <div class="brief-strip" aria-label="Session flight summary">
         <dl class="brief-values">
@@ -22551,6 +22571,7 @@
       <header class="session-header">
         <div class="session-heading"><h2 id="ffs-10-title">FFS 10</h2><span class="session-number">Session 18 of 18</span></div>
         <p class="session-summary"><button class="summary-link" type="button" data-group="ffs-10-procedures-1" data-brief="eng-1-2-start-fault" aria-haspopup="dialog" disabled>Engine start fault</button>&nbsp;• <button class="summary-link" type="button" data-group="ffs-10-procedures-2" data-brief="cab-pr-excess-cab-alt" aria-haspopup="dialog" disabled>Decompression</button>&nbsp;• <button class="summary-link" type="button" data-group="ffs-10-procedures-3" data-brief="hyd-g-y-sys-lo-pr" aria-haspopup="dialog" disabled>Hydraulic system failure</button>&nbsp;• <button class="summary-link" type="button" data-group="ffs-10-procedures-4" data-brief="f-ctl-flaps-fault-locked" aria-haspopup="dialog" disabled>Flaps fault</button>&nbsp;• <button class="summary-link" type="button" data-group="ffs-10-procedures-5" data-brief="eng-1-2-fail" aria-haspopup="dialog" disabled>Engine failure</button>&nbsp;• <button class="summary-link" type="button" data-group="ffs-10-procedures-6" data-brief="eng-1-2-fire-on-ground" aria-haspopup="dialog" disabled>Engine fire</button>&nbsp;• <button class="summary-link" type="button" data-group="ffs-10-procedures-7" data-brief="emer-evac" aria-haspopup="dialog" disabled>Emergency evacuation</button></p>
+
       </header>
       <div class="brief-strip" aria-label="Session flight summary">
         <dl class="brief-values">
