@@ -122,6 +122,8 @@ def check_status_sequence(d):
 
 
 def ref(r):
+    if r['book'] == 'OM-A':  # THAI Operations Manual Part A (not in books/); section number only
+        return f"OM-A {r['code']}"
     if r['book'] == 'QRH':
         return f"QRH {r['page']}, PDF {r['pdf']}"
     if r['book'] == 'PDP':
@@ -179,7 +181,8 @@ def render(d):
     a = d['alert']
     o = [f"# {d['title']} — handling plan (HS-TX)", '',
          '> Study aid built from uncontrolled copies of the THA A320/A321 FCOM, FCTM and QRH '
-         '(14 JUL 26 edition) and the Airbus PDP tutorials (Jan 2024) in `books/`. Not for operational use. '
+         '(14 JUL 26 edition) and the Airbus PDP tutorials (Jan 2024) in `books/`'
+         f"{', plus the THAI OM-A' if any(x['book'] == 'OM-A' for x in d['sources']) else ''}. Not for operational use. "
          f"Generated {d['generated']} with the `a320-ecam-abnormal` skill.", '']
     bits = [LEVELS[a['level']]]
     if a.get('land_asap', 'none') != 'none':

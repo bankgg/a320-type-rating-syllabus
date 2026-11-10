@@ -52,7 +52,7 @@ sh .claude/skills/syllabus-session-briefs/scripts/run_check.sh <session-id>   # 
   - `a320-ecam-abnormal` builds one brief, using `scripts/manuals.py` to search the PDFs and `scripts/brief_kit.py` to author it.
   - `syllabus-session-briefs` does a whole session: scope, reuse, mapping and checks.
 - **Scope:** ECAM/QRH abnormals only. Recovery manoeuvres (one-engine-inoperative approach, go-around, autoland) stay plain rows. Exceptions (user decisions): upset recovery has an FCTM technique brief, because it is the point of the FFS 8 UPRT session; the FFS 9 diversion row opens an ETOPS brief from FCOM PRO-SPO-40.
-- **Sources:** only `books/`: THA FCOM/FCTM/QRH (14 JUL 26) plus the Airbus PDP tutorial slides. Read the slides visually; their text extraction is scrambled. Every fact carries a locator.
+- **Sources:** only `books/`: THA FCOM/FCTM/QRH (14 JUL 26) plus the Airbus PDP tutorial slides. Read the slides visually; their text extraction is scrambled. Every fact carries a locator. Exception (user decision): the ETOPS brief cites THAI OM-A 8.5.4.4 for the M.78/320 kt OEI diversion speed (ref `{"book": "OM-A", "code": "8.5.4.4", "page": "", "pdf": ""}`).
 - **Aircraft:** HS-TX registrations only. Never use HS-TO-only content; show HS-TX splits as `applies_to` branches.
 - **ECAM flow rules,** which `render_md.py` enforces:
   - Every ECAM procedure that reaches STATUS uses `brief_kit.status_turns`: PM "STATUS" → PF "STOP ECAM" → PM ECAM ACTIONS STOP → PF "CONTINUE ECAM" → PM read, "REMOVE STATUS ?" → PF "REMOVE STATUS" → PM "ECAM ACTIONS COMPLETE" (FCTM AOP-30-30, PDP PDF 426).

@@ -1,11 +1,11 @@
 # ETOPS · diversion and abnormal procedures — handling plan (HS-TX)
 
-> Study aid built from uncontrolled copies of the THA A320/A321 FCOM, FCTM and QRH (14 JUL 26 edition) and the Airbus PDP tutorials (Jan 2024) in `books/`. Not for operational use. Generated 2026-11-01 with the `a320-ecam-abnormal` skill.
+> Study aid built from uncontrolled copies of the THA A320/A321 FCOM, FCTM and QRH (14 JUL 26 edition) and the Airbus PDP tutorials (Jan 2024) in `books/`, plus the THAI OM-A. Not for operational use. Generated 2026-11-01 with the `a320-ecam-abnormal` skill.
 
 **Technique · no memory items**  
 **Applicability:** all HS-TX — FCOM special operations, FCTM technique and Airbus PDP tutorial; applies to all HS-TX.
 
-On an ETOPS flight, four technical criteria govern a re-routing or diversion: loss of NAT-HLA capability, diversion airports going below minima or becoming unsuitable, LAND ASAP failures, and failures whose increased fuel consumption exceeds the reserves. After an engine or IDG failure, start the APU and use its electrical channel. After an engine failure, the fixed speed strategy is the one recommended for ETOPS, with the speed established before dispatch.
+On an ETOPS flight, four technical criteria govern a re-routing or diversion: loss of NAT-HLA capability, diversion airports going below minima or becoming unsuitable, LAND ASAP failures, and failures whose increased fuel consumption exceeds the reserves. After an engine or IDG failure, start the APU and use its electrical channel. After an engine failure, the fixed speed strategy is the one recommended for ETOPS: M.78/320 kt at MCT, the approved one-engine-inoperative diversion speed.
 
 ## 1. What it is
 - **Trigger:** A failure, or a diversion airport becoming unsuitable, on an ETOPS flight. These procedures apply in addition to the SOP and the ABNORMAL and EMERGENCY procedures. [FCOM PRO-SPO-40-50 P 1/4, PDF 4588; FCOM PRO-SPO-40-40 P 1/2, PDF 4586]
@@ -17,7 +17,7 @@ On an ETOPS flight, four technical criteria govern a re-routing or diversion: lo
 ## 2. Key limits
 - **Engine or IDG failure:** Start the APU · use the APU electrical channel [FCOM PRO-SPO-40-50 P 2/4, PDF 4589]
 - **Blue hydraulic low level, low pressure or overheat:** Start the APU to ensure the APU generator [FCOM PRO-SPO-40-50 P 2/4, PDF 4589]
-- **Fixed speed strategy:** Speed value as established before dispatch [PDP Engine failure in cruise, PDF 507; FCTM PR-AEP-ENG P 17/26, PDF 418]
+- **Fixed speed strategy:** M.78/320 kt at MCT (approved OEI diversion speed) [PDP Engine failure in cruise, PDF 507; FCTM PR-AEP-ENG P 17/26, PDF 418; FCOM PRO-SPO-40-60 P 1/4, PDF 4592; FCOM PRO-SPO-40-60 P 2/4, PDF 4593; OM-A 8.5.4.4]
 - **Loss of air conditioning:** At FL 100 with RAM AIR opened: CAB FANS off [FCOM PRO-SPO-40-50 P 2/4, PDF 4589]
 
 ## 3. Flow (PF / PM)
@@ -31,7 +31,8 @@ On an ETOPS flight, four technical criteria govern a re-routing or diversion: lo
 - STRATEGY …… DETERMINE [PDP Engine failure in cruise, PDF 506; PDP Engine failure in cruise, PDF 507]
 **2.2 PF**
 - **A specific procedure was established before dispatch for ETOPS** [FCTM PR-AEP-ENG P 15/26, PDF 416; FCTM PR-AEP-ENG P 17/26, PDF 418]
-  - Fixed speed strategy: fly the speed value as established before dispatch [PDP Engine failure in cruise, PDF 507; FCTM PR-AEP-ENG P 17/26, PDF 418]
+  - Fixed speed strategy: MCT, speed M.78/320 kt (approved OEI diversion speed) [PDP Engine failure in cruise, PDF 507; FCTM PR-AEP-ENG P 17/26, PDF 418; FCOM PRO-SPO-40-60 P 1/4, PDF 4592; FCOM PRO-SPO-40-60 P 2/4, PDF 4593; OM-A 8.5.4.4]
+- The diversion FL depends on the weight at the critical point (70 000 kg: FL 180) [FCOM PRO-SPO-40-60 P 1/4, PDF 4592; FCOM PRO-SPO-40-60 P 2/4, PDF 4593]
 - Unless a specific procedure has been established before dispatch, the standard strategy is used [FCTM PR-AEP-ENG P 15/26, PDF 416]
 - See the drift-down brief for the thrust, heading and descent lines [FCTM PR-AEP-ENG P 15/26, PDF 416; PDP Engine failure in cruise, PDF 506]
 
@@ -96,7 +97,7 @@ On an ETOPS flight, four technical criteria govern a re-routing or diversion: lo
 None — the content applies to every HS-TX registration.
 
 ## 10. Gaps and omissions
-- The manuals give no value for the fixed speed strategy; the speed comes from the operator's dispatch procedure, which is not in the supplied manuals. The MCT/VMO and MCT/320 kt schedules are from the maximum diversion distance tables, and no source calls them the fixed speed. Confirmed by the user: no number is shown. [FCTM PR-AEP-ENG P 17/26, PDF 418; PDP Engine failure in cruise, PDF 507; FCOM PRO-SPO-40-60 P 1/4, PDF 4592; FCOM PRO-SPO-40-60 P 2/4, PDF 4593]
+- The FCOM maximum diversion distance table gives the MCT/320 kt schedule with no Mach number and does not call it the fixed speed. The M.78/320 kt comes from the THAI OM-A table of approved diversion times, speeds and distances (A320-200: 70 t, 90 min, OEI 0.78/320, 628 nm, the same as the FCOM HS-TXG to HS-TXU figure). The OM-A is not in books/; confirmed by the user to cite it. Its note refers to the A320 OPSPEC for the aircraft-specific approval, which was not checked. [FCTM PR-AEP-ENG P 17/26, PDF 418; FCOM PRO-SPO-40-60 P 1/4, PDF 4592; FCOM PRO-SPO-40-60 P 2/4, PDF 4593; OM-A 8.5.4.4]
 - This brief goes beyond the ECAM/QRH scope of the other briefs. Confirmed by the user: add it as a brief for the diversion row. [FCOM PRO-SPO-40-40 P 1/2, PDF 4586]
 - No source names roles for these ETOPS lines. Confirmed by the user: the PM performs the APU start and the CAB FANS line. [FCOM PRO-SPO-40-50 P 2/4, PDF 4589; FCTM AOP-30-20 P 1/2, PDF 80]
 - The HS-TO versions (FCOM PRO-SPO-40-50 P 2–4/4, PRO-SPO-40-60 P 3–4/4) are not used. [FCOM PRO-SPO-40-50 P 2/4, PDF 4589]
@@ -107,6 +108,7 @@ None — the content applies to every HS-TX registration.
 | FCOM | PRO-SPO-40-40 — Diversion decision making | P 1/2 | 4586 | 15 FEB 23 |
 | FCOM | PRO-SPO-40-50 — ETOPS procedures (HS-TX) | P 1–2/4 | 4588–4589 | 18 FEB 26 |
 | FCOM | PRO-SPO-40-60 — Maximum diversion distance (HS-TX) | P 1–2/4 | 4592–4593 | 18 FEB 26 |
+| OM-A | 8.5.4.4 — THAI's fleet approved diversion time, speeds and distances | 8.5.4.4 | — |  |
 | FCTM | PR-AEP-ENG — Engine failure during cruise | P 15, 17/26 | 416, 418 | 26 MAY 26 |
 | PDP | Engine failure in cruise (EFTDA1ENGFCRZ01) | Detection and initial actions | 506–507 | JAN 2024 |
 | FCTM | AOP-20 / AOP-30 — task sharing and ECAM handling | AOP-20 P 1–2/10, AOP-30 P 1–6/6 | 68–69, 79–86 | 26 MAY 26 |

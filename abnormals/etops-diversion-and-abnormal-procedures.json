@@ -28,7 +28,7 @@
   "branches": [],
   "note": "FCOM special operations, FCTM technique and Airbus PDP tutorial; applies to all HS-TX."
  },
- "summary": "On an ETOPS flight, four technical criteria govern a re-routing or diversion: loss of NAT-HLA capability, diversion airports going below minima or becoming unsuitable, LAND ASAP failures, and failures whose increased fuel consumption exceeds the reserves. After an engine or IDG failure, start the APU and use its electrical channel. After an engine failure, the fixed speed strategy is the one recommended for ETOPS, with the speed established before dispatch.",
+ "summary": "On an ETOPS flight, four technical criteria govern a re-routing or diversion: loss of NAT-HLA capability, diversion airports going below minima or becoming unsuitable, LAND ASAP failures, and failures whose increased fuel consumption exceeds the reserves. After an engine or IDG failure, start the APU and use its electrical channel. After an engine failure, the fixed speed strategy is the one recommended for ETOPS: M.78/320 kt at MCT, the approved one-engine-inoperative diversion speed.",
  "key_limits": [
   {
    "label": "Engine or IDG failure",
@@ -62,7 +62,7 @@
   },
   {
    "label": "Fixed speed strategy",
-   "value": "Speed value as established before dispatch",
+   "value": "M.78/320 kt at MCT (approved OEI diversion speed)",
    "applies_to": [
     "all"
    ],
@@ -78,6 +78,24 @@
      "code": "PR-AEP-ENG",
      "page": "P 17/26",
      "pdf": 418
+    },
+    {
+     "book": "FCOM",
+     "code": "PRO-SPO-40-60",
+     "page": "P 1/4",
+     "pdf": 4592
+    },
+    {
+     "book": "FCOM",
+     "code": "PRO-SPO-40-60",
+     "page": "P 2/4",
+     "pdf": 4593
+    },
+    {
+     "book": "OM-A",
+     "code": "8.5.4.4",
+     "page": "",
+     "pdf": ""
     }
    ]
   },
@@ -177,7 +195,7 @@
        "children": [
         {
          "kind": "action",
-         "text": "Fixed speed strategy: fly the speed value as established before dispatch",
+         "text": "Fixed speed strategy: MCT, speed M.78/320 kt (approved OEI diversion speed)",
          "applies_to": [
           "all"
          ],
@@ -193,6 +211,24 @@
            "code": "PR-AEP-ENG",
            "page": "P 17/26",
            "pdf": 418
+          },
+          {
+           "book": "FCOM",
+           "code": "PRO-SPO-40-60",
+           "page": "P 1/4",
+           "pdf": 4592
+          },
+          {
+           "book": "FCOM",
+           "code": "PRO-SPO-40-60",
+           "page": "P 2/4",
+           "pdf": 4593
+          },
+          {
+           "book": "OM-A",
+           "code": "8.5.4.4",
+           "page": "",
+           "pdf": ""
           }
          ]
         }
@@ -212,6 +248,27 @@
          "code": "PR-AEP-ENG",
          "page": "P 17/26",
          "pdf": 418
+        }
+       ]
+      },
+      {
+       "kind": "note",
+       "text": "The diversion FL depends on the weight at the critical point (70 000 kg: FL 180)",
+       "applies_to": [
+        "all"
+       ],
+       "refs": [
+        {
+         "book": "FCOM",
+         "code": "PRO-SPO-40-60",
+         "page": "P 1/4",
+         "pdf": 4592
+        },
+        {
+         "book": "FCOM",
+         "code": "PRO-SPO-40-60",
+         "page": "P 2/4",
+         "pdf": 4593
         }
        ]
       },
@@ -1007,7 +1064,7 @@
  ],
  "gaps": [
   {
-   "text": "The manuals give no value for the fixed speed strategy; the speed comes from the operator's dispatch procedure, which is not in the supplied manuals. The MCT/VMO and MCT/320 kt schedules are from the maximum diversion distance tables, and no source calls them the fixed speed. Confirmed by the user: no number is shown.",
+   "text": "The FCOM maximum diversion distance table gives the MCT/320 kt schedule with no Mach number and does not call it the fixed speed. The M.78/320 kt comes from the THAI OM-A table of approved diversion times, speeds and distances (A320-200: 70 t, 90 min, OEI 0.78/320, 628 nm, the same as the FCOM HS-TXG to HS-TXU figure). The OM-A is not in books/; confirmed by the user to cite it. Its note refers to the A320 OPSPEC for the aircraft-specific approval, which was not checked.",
    "applies_to": [
     "all"
    ],
@@ -1017,12 +1074,6 @@
      "code": "PR-AEP-ENG",
      "page": "P 17/26",
      "pdf": 418
-    },
-    {
-     "book": "PDP",
-     "code": "Engine failure in cruise",
-     "page": "EFTDA1ENGFCRZ01",
-     "pdf": 507
     },
     {
      "book": "FCOM",
@@ -1035,6 +1086,12 @@
      "code": "PRO-SPO-40-60",
      "page": "P 2/4",
      "pdf": 4593
+    },
+    {
+     "book": "OM-A",
+     "code": "8.5.4.4",
+     "page": "",
+     "pdf": ""
     }
    ]
   },
@@ -1108,6 +1165,13 @@
    "pages": "P 1–2/4",
    "pdf": "4592–4593",
    "rev": "18 FEB 26"
+  },
+  {
+   "book": "OM-A",
+   "section": "8.5.4.4 — THAI's fleet approved diversion time, speeds and distances",
+   "pages": "8.5.4.4",
+   "pdf": "—",
+   "rev": ""
   },
   {
    "book": "FCTM",

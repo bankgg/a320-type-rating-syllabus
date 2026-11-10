@@ -179,8 +179,8 @@ PROCEDURE_GROUPS = {
     'ffs-9': [
         ('IDG overheat', (('elec-idg-1-2-oil-lo-pr-ovht', 'IDG OIL OVHT', 'IDG 2 overheat at 15 min to EEP, then use of the APU (see the APU phase).'),)),
         ('Navigation/FMGS failure', (('fmgc-failure', 'FMGC 1+2', 'Listed in the syllabus as "navigation failure, both FMGS fault", on entering the ETOPS area. Use the dual FMGC part of the flow.'),)),
-        ('Engine failure', (('eng-1-2-fail', 'Engine failure', 'Engine 1 or 2 at ETP. The syllabus then says "strategies" (see Drift down, and Diversion for the fixed speed strategy).'),
-                            ('eng-failure-cruise-strategy', 'Drift down'))),
+        ('Engine failure', (('eng-1-2-fail', 'Engine failure', 'Engine 1 or 2 at ETP. The syllabus then says "strategies": on this ETOPS sector, the fixed speed strategy (see Drift down and Diversion).'),
+                            ('eng-failure-cruise-strategy', 'Drift down', 'ETOPS sector: fly the fixed speed strategy, M.78/320 kt at MCT, instead of the standard M.78/300 kt (see Diversion). The thrust, heading and OPEN DES lines are the same.'))),
         ('Diversion', (('etops-diversion-and-abnormal-procedures', 'ETOPS diversion'),)),
         ('Fuel imbalance', (('fuel-imbalance', 'Fuel imbalance', 'Listed in the syllabus as "Fuel monitoring and imbalance".'),)),
         ('Hydraulic reservoir low level', (('hyd-g-rsvr-lo-lvl', 'HYD G RSVR LO LVL', 'At 15 min to EEP. The syllabus says "restore". The manuals give no in-flight restoration for this alert, so the instructor removes the failure after the procedure.'),)),
@@ -306,6 +306,8 @@ def load_briefs():
 
 
 def ref_label(ref):
+    if ref['book'] == 'OM-A':
+        return f"OM-A {ref['code']}"
     if ref['book'] == 'QRH':
         return f"QRH {ref['page']} · PDF {ref['pdf']}"
     if ref['book'] == 'PDP':
